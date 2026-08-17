@@ -39,7 +39,16 @@ function loadQuizState(testId: string, mode: string): PersistedQuizState | null 
 
 
 export const Route = createFileRoute("/quiz/$testId")({
-  head: () => ({ meta: [{ title: "Quiz — Neet Buddy" }] }),
+  head: () => ({
+    meta: [
+      { title: "NEET Quiz — Neet Buddy" },
+      { name: "description", content: "Take a NEET practice quiz with diagrams, math questions, saved progress, and detailed results." },
+      { property: "og:title", content: "NEET Quiz — Neet Buddy" },
+      { property: "og:description", content: "Take a NEET practice quiz with diagrams, math questions, saved progress, and detailed results." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   validateSearch: (s: Record<string, unknown>): { mode?: "quiz" | "exam" | "cbt" } => ({
     mode: (s.mode === "quiz" ? "quiz" : s.mode === "cbt" ? "cbt" : "exam") as "quiz" | "exam" | "cbt",
   }),
