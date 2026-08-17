@@ -17,6 +17,26 @@ import { AntiCheatGate, hasAckedAntiCheat } from "@/components/anti-cheat-gate";
 import { ReasonBreakdown } from "@/components/reason-breakdown";
 import { SaveQuestionSheet } from "@/components/save-question-sheet";
 
+function getQuizStorageKey(testId: string, mode: string) {
+  return `quiz_state_${testId}_${mode}`;
+}
+
+type PersistedQuizState = {
+  answers: Record<string, number>;
+  idx: number;
+  visited: string[];
+  marked: string[];
+  endTime?: number;
+};
+
+function loadQuizState(testId: string, mode: string): PersistedQuizState | null {
+  try {
+    const raw = localStorage.getItem(getQuizStorageKey(testId, mode));
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+
 
 export const Route = createFileRoute("/quiz/$testId")({
   head: () => ({ meta: [{ title: "Quiz — Neet Buddy" }] }),
