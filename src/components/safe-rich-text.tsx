@@ -24,10 +24,13 @@ class RichTextBoundary extends Component<
 }
 
 function toPlainText(src: string): string {
+  if (!src) return "";
   return src
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/?(?:p|div|li|tr)>/gi, "\n")
-    .replace(/<(?!img|![)[^>]+>/g, "")
+    // Preserve image info before stripping tags
+    .replace(/<img\b[^>]+src=["']([^"']+)["'][^>]*>/gi, " [Image: $1] ")
+    .replace(/<[^>]+>/g, "")
     .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
@@ -47,7 +50,7 @@ export function SafeRichText({
   if (children == null) return null;
   const raw = typeof children === "string" ? children : String(children);
   const fallback = (
-    <span className={cn("whitespace-normal break-words", className)}>
+    <span className={cn("whitespace-pre-wrap break-words", className)}>
       {toPlainText(raw)}
     </span>
   );

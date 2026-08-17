@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useRef, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, type ReactNode } from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -19,11 +19,10 @@ import { qbankImageUrl } from "@/lib/qbank-images";
  *     inline/block math, images, tikz/mermaid/svg blocks.
  */
 export function RichText({ children, className }: { children?: string | null; className?: string }) {
-  const src = useMemo(
-    () => children ? resolveImageRefs(wrapBareDataImages(normalizeRichText(children))) : "",
-    [children],
-  );
-  if (!src) return null;
+  if (!children) return null;
+  // Resolve every image reference (markdown or <img>) to a real URL FIRST, so
+  // stored paths like `chemistry/15_103519_question_1.png` work in both modes.
+  const src = resolveImageRefs(wrapBareDataImages(normalizeRichText(children)));
   if (containsHtml(src)) {
     // HTML mode used to render `![diagram](...)` as literal text because
     // dangerouslySetInnerHTML does no markdown parsing. Convert first.
@@ -33,10 +32,10 @@ export function RichText({ children, className }: { children?: string | null; cl
   // never leak through as literal text.
   const md = htmlImgToMarkdown(src);
   try {
-    return <span className={cn("whitespace-normal break-words", className)}>{renderBlocks(md)}</span>;
+    return <span className={cn("whitespace-pre-wrap break-words", className)}>{renderBlocks(md)}</span>;
   } catch (error) {
     console.error("[rich-text] render failed", error, { preview: md.slice(0, 180) });
-    return <span className={cn("whitespace-normal break-words", className)}>{md}</span>;
+    return <span className={cn("whitespace-pre-wrap break-words", className)}>{md}</span>;
   }
 }
 
@@ -102,7 +101,9 @@ function HtmlRichText({ html, className }: { html: string; className?: string })
     // on screen — hide it instead. Keeps future image uploads risk-free.
     el.querySelectorAll("img").forEach((img) => {
       img.addEventListener("error", () => {
-        img.style.opacity = "0.3"; img.classList.add("bg-muted", "border", "border-dashed");
+        // Instead of hiding completely, show a placeholder or fade it so the user knows something is missing
+        img.style.opacity = "0.3";
+        img.classList.add("bg-muted", "border", "border-dashed");
         console.warn("[rich-text] diagram failed to load", img.getAttribute("src"));
       });
       img.setAttribute("loading", img.getAttribute("loading") ?? "lazy");
@@ -164,11 +165,6 @@ function renderMathIn(root: HTMLElement) {
 function normalizeRichText(src: string): string {
   let s = src.replace(/\r\n/g, "\n");
 
-  // Repair malformed display-math delimiters found in older imports. JSON
-  // exporters escaped `\[` / `\]` as `\/[` / `\/]`, which left raw slashes
-  // and braces on screen instead of sending the expression to KaTeX.
-  s = s.replace(/\\\/\[/g, "\\[").replace(/\\\/\]/g, "\\]");
-
   // AI sometimes emits the literal two-character sequence `\n` (backslash-n)
   // instead of a real newline. Turn those into real line breaks so
   // whitespace-pre-wrap actually breaks the line. Preserve `\\n` (escaped).
@@ -183,12 +179,13 @@ function normalizeRichText(src: string): string {
   // Older AI rows were stored with JSON-escaped LaTeX as real text, e.g.
   // `\\text{CH}_3` instead of `\text{CH}_3`, which KaTeX renders as raw
   // "text...". Keep table row breaks (`\\`) while fixing commands.
-  s = s.replace(/\\{2,}([A-Za-z])/g, "\\$1");
+  // Fix: Be more conservative with collapsing double backslashes.
+  s = s.replace(/\\{4,}([A-Za-z])/g, "\\$1");
   s = s.replace(/\\{4,}(?=\s*(?:\n|$))/g, "\\\\");
   // NOTE: braces are excluded here on purpose. Inside `\begin{array}` a `\\`
   // row break is regularly followed by `{`, and collapsing it to `\{` broke
   // the whole array so KaTeX printed the raw source in red.
-  s = s.replace(/\\{2,}([\[\]()])/g, "\\$1");
+  s = s.replace(/\\{4,}([\[\]()])/g, "\\$1");
 
   // Decode common HTML entities that leak into plain-text option/question
   // content (e.g. option row `A &ndash; R` from imported question banks).
@@ -223,7 +220,7 @@ function normalizeRichText(src: string): string {
   return s;
 }
 
-const INLINE_SAFE_BLOCK = /^[^\n]{1,90}$/;
+const INLINE_SAFE_BLOCK = /^[^\n]{1,120}$/;
 function demoteShortBlocks(s: string): string {
   return s.replace(/\$\$([\s\S]+?)\$\$/g, (whole, inner: string) => {
     const tex = inner.trim();
@@ -251,7 +248,10 @@ function promoteMultiLineInline(s: string): string {
       const end = findClosingDollar(s, i + 1);
       if (end === -1) { parts.push(s[i]); i++; continue; }
       const inner = s.slice(i + 1, end);
-      const needsBlock = /\n|\\begin\{(?:array|matrix|pmatrix|bmatrix|cases|align|aligned|gather)\}/.test(inner);
+      // Only promote if it actually contains a newline OR a complex environment
+      // that absolutely needs block mode. Small arrays might work inline if KaTeX allows.
+      const needsBlock = (inner.includes("\n") && inner.length > 50) || 
+                         /\\begin\{(?:array|matrix|pmatrix|bmatrix|cases|align|aligned|gather)\}/.test(inner);
       parts.push(needsBlock ? `$$${inner}$$` : `$${inner}$`);
       i = end + 1;
       continue;
@@ -279,7 +279,7 @@ function decodeHtmlEntities(s: string): string {
     ndash: "–", mdash: "—", hellip: "…",
     laquo: "«", raquo: "»", lsquo: "‘", rsquo: "’", sbquo: "‚", bdquo: "„",
     ldquo: "“", rdquo: "”", times: "×", divide: "÷",
-    deg: "°", plusmn: "±", micro: "µ", middot: "·",
+    deg: "°", plusmn: "±", micro: "μ", middot: "·",
     rarr: "→", larr: "←", uarr: "↑", darr: "↓",
     harr: "↔", infin: "∞", asymp: "≈", ne: "≠",
     le: "≤", ge: "≥",
@@ -322,7 +322,6 @@ function renderBlocks(src: string): ReactNode[] {
   while ((m = re.exec(src))) {
     if (m.index > last) out.push(<Fragment key={k++}>{renderInline(src.slice(last, m.index))}</Fragment>);
     if (m[1] !== undefined) {
-      const imgUrl = m[2];
       out.push(<TikzBlock key={k++} code={m[1].trim()} />);
     } else if (m[2] !== undefined) {
       out.push(<MermaidBlock key={k++} code={m[2].trim()} />);
@@ -374,14 +373,13 @@ function renderInline(src: string): ReactNode[] {
   // image must be first to avoid * being parsed
   // Image URL accepts: https://, http://, /, data:image/... (base64), and blob:
   // URLs are already resolved by resolveImageRefs, so accept any non-space URL.
-  const re = /!\[([^\]]*)\]\(\s*([^\s)]+)\s*\)|\$([^$\n]+?)\$|\\\(([^\n]+?)\\\)|\*\*([^*\n]+?)\*\*|\*([^*\n]+?)\*|`([^`\n]+?)`/g;
+  const re = /!\[([^\]]*)\]\(\s*([^\s)]+)\s*\)|\$([^$]+?)\$|\\\(([^\n]+?)\\\)|\*\*([^*\n]+?)\*\*|\*([^*\n]+?)\*|`([^`\n]+?)`/g;
   let last = 0; let m: RegExpExecArray | null; let k = 0;
   while ((m = re.exec(src))) {
     if (m.index > last) out.push(<Fragment key={k++}>{src.slice(last, m.index)}</Fragment>);
     if (m[1] !== undefined) {
       const imgUrl = m[2];
       out.push(
-
         <img
           key={k++}
           src={imgUrl}
@@ -389,7 +387,9 @@ function renderInline(src: string): ReactNode[] {
           loading="lazy"
           decoding="async"
           onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.opacity = "0.3"; (e.currentTarget as HTMLImageElement).classList.add("bg-muted", "border", "border-dashed");
+            const img = e.currentTarget as HTMLImageElement;
+            img.style.opacity = "0.3";
+            img.classList.add("bg-muted", "border", "border-dashed");
             console.warn("[rich-text] diagram failed to load", imgUrl);
           }}
           className="my-2 inline-block max-h-80 max-w-full object-contain"
