@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useRef, type ReactNode } from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -19,10 +19,11 @@ import { qbankImageUrl } from "@/lib/qbank-images";
  *     inline/block math, images, tikz/mermaid/svg blocks.
  */
 export function RichText({ children, className }: { children?: string | null; className?: string }) {
-  if (!children) return null;
-  // Resolve every image reference (markdown or <img>) to a real URL FIRST, so
-  // stored paths like `chemistry/15_103519_question_1.png` work in both modes.
-  const src = resolveImageRefs(wrapBareDataImages(normalizeRichText(children)));
+  const src = useMemo(
+    () => children ? resolveImageRefs(wrapBareDataImages(normalizeRichText(children))) : "",
+    [children],
+  );
+  if (!src) return null;
   if (containsHtml(src)) {
     // HTML mode used to render `![diagram](...)` as literal text because
     // dangerouslySetInnerHTML does no markdown parsing. Convert first.
@@ -32,10 +33,10 @@ export function RichText({ children, className }: { children?: string | null; cl
   // never leak through as literal text.
   const md = htmlImgToMarkdown(src);
   try {
-    return <span className={cn("whitespace-pre-wrap break-words", className)}>{renderBlocks(md)}</span>;
+    return <span className={cn("whitespace-normal break-words", className)}>{renderBlocks(md)}</span>;
   } catch (error) {
     console.error("[rich-text] render failed", error, { preview: md.slice(0, 180) });
-    return <span className={cn("whitespace-pre-wrap break-words", className)}>{md}</span>;
+    return <span className={cn("whitespace-normal break-words", className)}>{md}</span>;
   }
 }
 
@@ -162,6 +163,11 @@ function renderMathIn(root: HTMLElement) {
 
 function normalizeRichText(src: string): string {
   let s = src.replace(/\r\n/g, "\n");
+
+  // Repair malformed display-math delimiters found in older imports. JSON
+  // exporters escaped `\[` / `\]` as `\/[` / `\/]`, which left raw slashes
+  // and braces on screen instead of sending the expression to KaTeX.
+  s = s.replace(/\\\/\[/g, "\\[").replace(/\\\/\]/g, "\\]");
 
   // AI sometimes emits the literal two-character sequence `\n` (backslash-n)
   // instead of a real newline. Turn those into real line breaks so

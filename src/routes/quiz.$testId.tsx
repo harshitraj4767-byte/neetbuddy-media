@@ -53,6 +53,14 @@ type Test = {
 };
 type Lookup = Record<string, string>;
 type NameLookupRow = { id: string; name: string };
+type SavedQuizProgress = {
+  answers: Record<string, number>;
+  idx: number;
+  bookmarks: string[];
+  visited: string[];
+  marked: string[];
+  deadline: number | null;
+};
 
 function diffClass(d: string) {
   const k = d?.toLowerCase();
@@ -103,6 +111,7 @@ function QuizPlayer() {
   const [contestDone, setContestDone] = useState<null | { score: number; correct: number; wrong: number; attempted: number }>(null);
   const [alreadyAttempted, setAlreadyAttempted] = useState<null | { contestId: string | null; score: number | null }>(null);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
+  const [progressReady, setProgressReady] = useState(false);
   const startedAt = useRef<number>(Date.now());
   const paletteRef = useRef<HTMLDivElement>(null);
   const isContest = test?.type === "contest";
@@ -310,10 +319,53 @@ function QuizPlayer() {
         }
       }
 
+      // Every unfinished test survives a browser refresh. Database attempts
+      // remain the durable source for practice; this local snapshot also
+      // covers exam, mock, CBT, battle and contest modes without write lag.
+      if (user) {
+        try {
+          const key = `quiz-progress:${user.id}:${testId}:${mode}`;
+          const raw = window.localStorage.getItem(key);
+          if (raw) {
+            const saved = JSON.parse(raw) as Partial<SavedQuizProgress>;
+            if (saved.answers && typeof saved.answers === "object") setAnswers(saved.answers);
+            if (Array.isArray(saved.bookmarks)) setBookmarks((b) => new Set([...b, ...saved.bookmarks!]));
+            if (Array.isArray(saved.visited)) setVisited(new Set(saved.visited));
+            if (Array.isArray(saved.marked)) setMarked(new Set(saved.marked));
+            if (Number.isInteger(saved.idx)) setIdx(Math.max(0, Math.min(ordered.length - 1, saved.idx ?? 0)));
+            if (typeof saved.deadline === "number" && (mode === "exam" || mode === "cbt")) {
+              setSecondsLeft(Math.max(0, Math.ceil((saved.deadline - Date.now()) / 1000)));
+            }
+          }
+        } catch (error) {
+          console.warn("[quiz] could not restore local progress", error);
+        }
+      }
+
+      setProgressReady(true);
       setLoading(false);
       startedAt.current = Date.now();
     })();
   }, [testId, user?.id, mode]);
+
+  useEffect(() => {
+    if (!progressReady || !user || loading || submitted || questions.length === 0) return;
+    const key = `quiz-progress:${user.id}:${testId}:${mode}`;
+    const saved: SavedQuizProgress = {
+      answers,
+      idx,
+      bookmarks: Array.from(bookmarks),
+      visited: Array.from(visited),
+      marked: Array.from(marked),
+      deadline: isExam ? Date.now() + secondsLeft * 1000 : null,
+    };
+    window.localStorage.setItem(key, JSON.stringify(saved));
+  }, [answers, bookmarks, idx, isExam, loading, marked, mode, progressReady, questions.length, secondsLeft, submitted, testId, user, visited]);
+
+  const clearSavedProgress = useCallback(() => {
+    if (!user) return;
+    window.localStorage.removeItem(`quiz-progress:${user.id}:${testId}:${mode}`);
+  }, [mode, testId, user]);
 
   // Persist answers in real-time for chapter-wise quizzes (no submit button).
   const persistAnswers = async (next: Record<string, number>) => {
@@ -399,6 +451,7 @@ function QuizPlayer() {
       const isReattempt = (priorCount ?? 0) > 1; // current insert above is included
       // XP is awarded server-side via SECURITY DEFINER RPC (+4 correct / -1 wrong)
       if (ins?.id) {
+        clearSavedProgress();
         await supabase.rpc("award_attempt_xp", { _attempt_id: ins.id });
       }
       void isReattempt;
@@ -430,7 +483,7 @@ function QuizPlayer() {
     }
     setSubmitted(result);
     setSubmitting(false);
-  }, [answers, bookmarks, nav, questions, submitted, submitting, testId, user, test, battleMatchId]);
+  }, [answers, bookmarks, nav, questions, submitted, submitting, testId, user, test, battleMatchId, clearSavedProgress]);
 
   useEffect(() => {
     if (loading || submitted || !isExam) return;

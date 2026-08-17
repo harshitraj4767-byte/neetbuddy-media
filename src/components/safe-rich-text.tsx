@@ -47,7 +47,7 @@ export function SafeRichText({
   if (children == null) return null;
   const raw = typeof children === "string" ? children : String(children);
   const fallback = (
-    <span className={cn("whitespace-pre-wrap break-words", className)}>
+    <span className={cn("whitespace-normal break-words", className)}>
       {toPlainText(raw)}
     </span>
   );
