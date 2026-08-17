@@ -165,6 +165,10 @@ function renderMathIn(root: HTMLElement) {
 function normalizeRichText(src: string): string {
   let s = src.replace(/\r\n/g, "\n");
 
+  // Repair malformed display-math delimiters from legacy JSON exports.
+  // `\/[...\/]` is intended to be the standard KaTeX `\[...\]` form.
+  s = s.replace(/\\\/\[/g, "\\[").replace(/\\\/\]/g, "\\]");
+
   // AI sometimes emits the literal two-character sequence `\n` (backslash-n)
   // instead of a real newline. Turn those into real line breaks so
   // whitespace-pre-wrap actually breaks the line. Preserve `\\n` (escaped).

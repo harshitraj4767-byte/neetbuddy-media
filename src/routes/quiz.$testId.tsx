@@ -349,7 +349,10 @@ function QuizPlayer() {
           if (raw) {
             const saved = JSON.parse(raw) as Partial<SavedQuizProgress>;
             if (saved.answers && typeof saved.answers === "object") setAnswers(saved.answers);
-            if (Array.isArray(saved.bookmarks)) setBookmarks((b) => new Set([...b, ...saved.bookmarks!]));
+            if (Array.isArray(saved.bookmarks)) {
+              const savedBookmarks = saved.bookmarks;
+              setBookmarks((b) => new Set([...b, ...savedBookmarks]));
+            }
             if (Array.isArray(saved.visited)) setVisited(new Set(saved.visited));
             if (Array.isArray(saved.marked)) setMarked(new Set(saved.marked));
             if (Number.isInteger(saved.idx)) setIdx(Math.max(0, Math.min(ordered.length - 1, saved.idx ?? 0)));
