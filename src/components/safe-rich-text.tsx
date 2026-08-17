@@ -27,7 +27,7 @@ function toPlainText(src: string): string {
   return src
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/?(?:p|div|li|tr)>/gi, "\n")
-    .replace(/<[^>]+>/g, "")
+    .replace(/<(?!img|![)[^>]+>/g, "")
     .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")

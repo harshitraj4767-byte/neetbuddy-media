@@ -327,7 +327,7 @@ function renderBlocks(src: string): ReactNode[] {
     } else {
       const tex = (m[5] ?? m[6] ?? "") as string;
       out.push(
-        <span key={k++} className="my-2 block overflow-x-auto">
+        <span key={k++} className="my-2 block sm:inline-block min-w-full overflow-x-auto text-center">
           <BlockMath math={tex} renderError={() => <span className="font-sans text-base not-italic">{plainLatex(tex)}</span>} />
         </span>,
       );
