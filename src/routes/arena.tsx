@@ -1,0 +1,87 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { PageShell } from "@/components/page-shell";
+import { Trophy, Swords, Crown } from "lucide-react";
+import { toast } from "sonner";
+
+export const Route = createFileRoute("/arena")({
+  head: () => ({
+    meta: [
+      { title: "Arena — Contests, Battlegrounds & Tournaments · Neet Buddy" },
+      { name: "description", content: "Compete live: contests, 1v1 battlegrounds, and bracket tournaments — all in one arena." },
+    ],
+  }),
+  component: ArenaPage,
+});
+
+function ArenaPage() {
+  return (
+    <PageShell
+      eyebrow="Compete"
+      title="Arena"
+      description="Contests, battlegrounds and tournaments — everything competitive, in one place."
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Link to="/contests" className="group">
+          <Tile
+            title="Daily Live Quiz"
+            desc="Daily 6 PM live quiz with leaderboards and XP rewards."
+            icon={Trophy}
+            grad="from-amber-500 to-orange-600"
+            badge="LIVE"
+          />
+        </Link>
+        <Link to="/battlegrounds" className="group">
+          <Tile
+            title="Battlegrounds"
+            desc="Quick 1v1 quiz duels — subject-wise, real opponents."
+            icon={Swords}
+            grad="from-rose-500 to-red-600"
+            badge="LIVE"
+          />
+        </Link>
+        <button
+          type="button"
+          onClick={() => toast.info("Tournaments — Coming Soon", { description: "Bracket-style elimination coming shortly." })}
+          className="text-left"
+        >
+          <Tile
+            title="Tournaments"
+            desc="Bracket-style elimination rounds with big prize pools."
+            icon={Crown}
+            grad="from-fuchsia-500 to-purple-600"
+            badge="SOON"
+          />
+        </button>
+      </div>
+    </PageShell>
+  );
+}
+
+function Tile({
+  title, desc, icon: Icon, grad, badge,
+}: {
+  title: string; desc: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  grad: string; badge: "LIVE" | "SOON";
+}) {
+  const isLive = badge === "LIVE";
+  return (
+    <div className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all group-hover:-translate-y-0.5 group-hover:shadow-elegant hover:-translate-y-0.5 hover:shadow-elegant">
+      <div className="flex items-start justify-between gap-3">
+        <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${grad} text-white shadow-md`}>
+          <Icon className="h-6 w-6" strokeWidth={1.6} />
+        </div>
+        <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+          isLive ? "bg-red-500/15 text-red-600 dark:text-red-400" : "bg-muted text-muted-foreground"
+        }`}>
+          {isLive && <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-current" />}
+          {badge}
+        </span>
+      </div>
+      <div>
+        <div className="text-base font-bold">{title}</div>
+        <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+      </div>
+    </div>
+  );
+}
