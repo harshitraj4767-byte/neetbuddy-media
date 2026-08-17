@@ -9,305 +9,90 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SubscriptionRouteImport } from './routes/subscription'
-import { Route as StudyViewRouteImport } from './routes/study-view'
-import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
-import { Route as ScorePredictorRouteImport } from './routes/score-predictor'
-import { Route as RefundRouteImport } from './routes/refund'
-import { Route as ReferralsRouteImport } from './routes/referrals'
-import { Route as PyqsRouteImport } from './routes/pyqs'
-import { Route as ProgressRouteImport } from './routes/progress'
-import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PremiumRouteImport } from './routes/premium'
-import { Route as NeetlabRouteImport } from './routes/neetlab'
-import { Route as NcertHighlightsRouteImport } from './routes/ncert-highlights'
-import { Route as MocksRouteImport } from './routes/mocks'
-import { Route as MistakesRouteImport } from './routes/mistakes'
-import { Route as MentorshipRouteImport } from './routes/mentorship'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as LeaderboardRouteImport } from './routes/leaderboard'
-import { Route as InfiniteRunRouteImport } from './routes/infinite-run'
-import { Route as ImprovementRouteImport } from './routes/improvement'
-import { Route as HighlightedNcertRouteImport } from './routes/highlighted-ncert'
-import { Route as GenerateRouteImport } from './routes/generate'
-import { Route as FlashcardsRouteImport } from './routes/flashcards'
-import { Route as FeedbackRouteImport } from './routes/feedback'
-import { Route as DppRouteImport } from './routes/dpp'
-import { Route as DeleteAccountRouteImport } from './routes/delete-account'
-import { Route as DedicatedProgramRouteImport } from './routes/dedicated-program'
-import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as DailyChecklistRouteImport } from './routes/daily-checklist'
-import { Route as DailyRouteImport } from './routes/daily'
-import { Route as ContestsRouteImport } from './routes/contests'
-import { Route as CommunityRouteImport } from './routes/community'
-import { Route as CollaboratorsRouteImport } from './routes/collaborators'
-import { Route as BookmarksRouteImport } from './routes/bookmarks'
-import { Route as BattlegroundsRouteImport } from './routes/battlegrounds'
-import { Route as ArenaRouteImport } from './routes/arena'
-import { Route as AnalyticsRouteImport } from './routes/analytics'
-import { Route as AiPathRouteImport } from './routes/ai-path'
-import { Route as AdminStudyMaterialsRouteImport } from './routes/admin-study-materials'
-import { Route as AdminMockCategoriesRouteImport } from './routes/admin-mock-categories'
-import { Route as AdminInboxRouteImport } from './routes/admin-inbox'
-import { Route as AdminCollaboratorsRouteImport } from './routes/admin-collaborators'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as StudyGroupsIndexRouteImport } from './routes/study-groups.index'
-import { Route as SubjectsSubjectRouteImport } from './routes/subjects.$subject'
-import { Route as StudyGroupsGroupIdRouteImport } from './routes/study-groups.$groupId'
-import { Route as QuizTestIdRouteImport } from './routes/quiz.$testId'
-import { Route as ContestContestIdRouteImport } from './routes/contest.$contestId'
-import { Route as BattlegroundsViewAllRouteImport } from './routes/battlegrounds.view-all'
-import { Route as BattlegroundsHistoryRouteImport } from './routes/battlegrounds.history'
-import { Route as BatchesCompareRouteImport } from './routes/batches.compare'
-import { Route as BatchesBatchIdRouteImport } from './routes/batches.$batchId'
-import { Route as AnalysisAttemptIdRouteImport } from './routes/analysis.$attemptId'
-import { Route as AdminSupportRouteImport } from './routes/admin.support'
-import { Route as AdminQuestionScanRouteImport } from './routes/admin.question-scan'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AdminCollaboratorsRouteImport } from './routes/admin-collaborators'
+import { Route as AdminInboxRouteImport } from './routes/admin-inbox'
+import { Route as AdminMockCategoriesRouteImport } from './routes/admin-mock-categories'
+import { Route as AdminStudyMaterialsRouteImport } from './routes/admin-study-materials'
+import { Route as AiPathRouteImport } from './routes/ai-path'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as ArenaRouteImport } from './routes/arena'
+import { Route as BattlegroundsRouteImport } from './routes/battlegrounds'
+import { Route as BookmarksRouteImport } from './routes/bookmarks'
+import { Route as CollaboratorsRouteImport } from './routes/collaborators'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ContestsRouteImport } from './routes/contests'
+import { Route as DailyRouteImport } from './routes/daily'
+import { Route as DailyChecklistRouteImport } from './routes/daily-checklist'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DedicatedProgramRouteImport } from './routes/dedicated-program'
+import { Route as DeleteAccountRouteImport } from './routes/delete-account'
+import { Route as DppRouteImport } from './routes/dpp'
+import { Route as FeedbackRouteImport } from './routes/feedback'
+import { Route as FlashcardsRouteImport } from './routes/flashcards'
+import { Route as GenerateRouteImport } from './routes/generate'
+import { Route as HighlightedNcertRouteImport } from './routes/highlighted-ncert'
+import { Route as ImprovementRouteImport } from './routes/improvement'
+import { Route as InfiniteRunRouteImport } from './routes/infinite-run'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MentorshipRouteImport } from './routes/mentorship'
+import { Route as MistakesRouteImport } from './routes/mistakes'
+import { Route as MocksRouteImport } from './routes/mocks'
+import { Route as NcertHighlightsRouteImport } from './routes/ncert-highlights'
+import { Route as NeetlabRouteImport } from './routes/neetlab'
+import { Route as PremiumRouteImport } from './routes/premium'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as PyqsRouteImport } from './routes/pyqs'
+import { Route as ReferralsRouteImport } from './routes/referrals'
+import { Route as RefundRouteImport } from './routes/refund'
+import { Route as ScorePredictorRouteImport } from './routes/score-predictor'
+import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
+import { Route as StudyViewRouteImport } from './routes/study-view'
+import { Route as SubscriptionRouteImport } from './routes/subscription'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminFeedbackRouteImport } from './routes/admin.feedback'
-import { Route as PyqsResultAttemptIdRouteImport } from './routes/pyqs.result.$attemptId'
-import { Route as ContestContestIdResultsRouteImport } from './routes/contest.$contestId.results'
-import { Route as ContestContestIdJoinRouteImport } from './routes/contest.$contestId.join'
-import { Route as BattleMatchIdResultRouteImport } from './routes/battle.$matchId.result'
-import { Route as BattleMatchIdPlayRouteImport } from './routes/battle.$matchId.play'
+import { Route as AdminQuestionScanRouteImport } from './routes/admin.question-scan'
+import { Route as AdminSupportRouteImport } from './routes/admin.support'
+import { Route as AnalysisAttemptIdRouteImport } from './routes/analysis.$attemptId'
+import { Route as BatchesBatchIdRouteImport } from './routes/batches.$batchId'
+import { Route as BatchesCompareRouteImport } from './routes/batches.compare'
+import { Route as BattlegroundsHistoryRouteImport } from './routes/battlegrounds.history'
+import { Route as BattlegroundsViewAllRouteImport } from './routes/battlegrounds.view-all'
+import { Route as ContestContestIdRouteImport } from './routes/contest.$contestId'
+import { Route as QuizTestIdRouteImport } from './routes/quiz.$testId'
+import { Route as StudyGroupsIndexRouteImport } from './routes/study-groups.index'
+import { Route as StudyGroupsGroupIdRouteImport } from './routes/study-groups.$groupId'
+import { Route as SubjectsSubjectRouteImport } from './routes/subjects.$subject'
 import { Route as ApiPublicAppVersionRouteImport } from './routes/api/public/app-version'
-import { Route as ApiPublicTelegramStudyBotRouteImport } from './routes/api/public/telegram/study-bot'
-import { Route as ApiPublicTelegramLoginRouteImport } from './routes/api/public/telegram/login'
-import { Route as ApiPublicRazorpayOrderRouteImport } from './routes/api/public/razorpay.order'
-import { Route as ApiPublicHooksVerifyReportedQuestionsRouteImport } from './routes/api/public/hooks/verify-reported-questions'
-import { Route as ApiPublicHooksVerifyDiagramDppRouteImport } from './routes/api/public/hooks/verify-diagram-dpp'
-import { Route as ApiPublicHooksGenerateDiagramDppRouteImport } from './routes/api/public/hooks/generate-diagram-dpp'
-import { Route as ApiPublicHooksGenerateDailyQuizRouteImport } from './routes/api/public/hooks/generate-daily-quiz'
-import { Route as ApiPublicHooksDedupeQuestionsRouteImport } from './routes/api/public/hooks/dedupe-questions'
-import { Route as ApiPublicDiagramIdRouteImport } from './routes/api/public/diagram.$id'
-import { Route as ApiPublicCronKeepaliveRouteImport } from './routes/api/public/cron.keepalive'
-import { Route as ApiPublicCronInfiniteRunRouteImport } from './routes/api/public/cron.infinite-run'
-import { Route as ApiPublicCronFinalizeContestsRouteImport } from './routes/api/public/cron.finalize-contests'
-import { Route as ApiPublicCronDailyDppRouteImport } from './routes/api/public/cron.daily-dpp'
+import { Route as BattleMatchIdPlayRouteImport } from './routes/battle.$matchId.play'
+import { Route as BattleMatchIdResultRouteImport } from './routes/battle.$matchId.result'
+import { Route as ContestContestIdJoinRouteImport } from './routes/contest.$contestId.join'
+import { Route as ContestContestIdResultsRouteImport } from './routes/contest.$contestId.results'
+import { Route as PyqsResultAttemptIdRouteImport } from './routes/pyqs.result.$attemptId'
 import { Route as ApiPublicCronDailyContestRouteImport } from './routes/api/public/cron.daily-contest'
+import { Route as ApiPublicCronDailyDppRouteImport } from './routes/api/public/cron.daily-dpp'
+import { Route as ApiPublicCronFinalizeContestsRouteImport } from './routes/api/public/cron.finalize-contests'
+import { Route as ApiPublicCronInfiniteRunRouteImport } from './routes/api/public/cron.infinite-run'
+import { Route as ApiPublicCronKeepaliveRouteImport } from './routes/api/public/cron.keepalive'
+import { Route as ApiPublicDiagramIdRouteImport } from './routes/api/public/diagram.$id'
+import { Route as ApiPublicHooksDedupeQuestionsRouteImport } from './routes/api/public/hooks/dedupe-questions'
+import { Route as ApiPublicHooksGenerateDailyQuizRouteImport } from './routes/api/public/hooks/generate-daily-quiz'
+import { Route as ApiPublicHooksGenerateDiagramDppRouteImport } from './routes/api/public/hooks/generate-diagram-dpp'
+import { Route as ApiPublicHooksVerifyDiagramDppRouteImport } from './routes/api/public/hooks/verify-diagram-dpp'
+import { Route as ApiPublicHooksVerifyReportedQuestionsRouteImport } from './routes/api/public/hooks/verify-reported-questions'
+import { Route as ApiPublicRazorpayOrderRouteImport } from './routes/api/public/razorpay.order'
+import { Route as ApiPublicTelegramLoginRouteImport } from './routes/api/public/telegram/login'
+import { Route as ApiPublicTelegramStudyBotRouteImport } from './routes/api/public/telegram/study-bot'
 import { Route as ApiPublicOptionImageQidIdxRouteImport } from './routes/api/public/option-image.$qid.$idx'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SubscriptionRoute = SubscriptionRouteImport.update({
-  id: '/subscription',
-  path: '/subscription',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyViewRoute = StudyViewRouteImport.update({
-  id: '/study-view',
-  path: '/study-view',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyEssentialsRoute = StudyEssentialsRouteImport.update({
-  id: '/study-essentials',
-  path: '/study-essentials',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ScorePredictorRoute = ScorePredictorRouteImport.update({
-  id: '/score-predictor',
-  path: '/score-predictor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RefundRoute = RefundRouteImport.update({
-  id: '/refund',
-  path: '/refund',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReferralsRoute = ReferralsRouteImport.update({
-  id: '/referrals',
-  path: '/referrals',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PyqsRoute = PyqsRouteImport.update({
-  id: '/pyqs',
-  path: '/pyqs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProgressRoute = ProgressRouteImport.update({
-  id: '/progress',
-  path: '/progress',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PremiumRoute = PremiumRouteImport.update({
-  id: '/premium',
-  path: '/premium',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NeetlabRoute = NeetlabRouteImport.update({
-  id: '/neetlab',
-  path: '/neetlab',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NcertHighlightsRoute = NcertHighlightsRouteImport.update({
-  id: '/ncert-highlights',
-  path: '/ncert-highlights',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MocksRoute = MocksRouteImport.update({
-  id: '/mocks',
-  path: '/mocks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MistakesRoute = MistakesRouteImport.update({
-  id: '/mistakes',
-  path: '/mistakes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MentorshipRoute = MentorshipRouteImport.update({
-  id: '/mentorship',
-  path: '/mentorship',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeaderboardRoute = LeaderboardRouteImport.update({
-  id: '/leaderboard',
-  path: '/leaderboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InfiniteRunRoute = InfiniteRunRouteImport.update({
-  id: '/infinite-run',
-  path: '/infinite-run',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImprovementRoute = ImprovementRouteImport.update({
-  id: '/improvement',
-  path: '/improvement',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HighlightedNcertRoute = HighlightedNcertRouteImport.update({
-  id: '/highlighted-ncert',
-  path: '/highlighted-ncert',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GenerateRoute = GenerateRouteImport.update({
-  id: '/generate',
-  path: '/generate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FlashcardsRoute = FlashcardsRouteImport.update({
-  id: '/flashcards',
-  path: '/flashcards',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeedbackRoute = FeedbackRouteImport.update({
-  id: '/feedback',
-  path: '/feedback',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DppRoute = DppRouteImport.update({
-  id: '/dpp',
-  path: '/dpp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DeleteAccountRoute = DeleteAccountRouteImport.update({
-  id: '/delete-account',
-  path: '/delete-account',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DedicatedProgramRoute = DedicatedProgramRouteImport.update({
-  id: '/dedicated-program',
-  path: '/dedicated-program',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DailyChecklistRoute = DailyChecklistRouteImport.update({
-  id: '/daily-checklist',
-  path: '/daily-checklist',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DailyRoute = DailyRouteImport.update({
-  id: '/daily',
-  path: '/daily',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContestsRoute = ContestsRouteImport.update({
-  id: '/contests',
-  path: '/contests',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CommunityRoute = CommunityRouteImport.update({
-  id: '/community',
-  path: '/community',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CollaboratorsRoute = CollaboratorsRouteImport.update({
-  id: '/collaborators',
-  path: '/collaborators',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BookmarksRoute = BookmarksRouteImport.update({
-  id: '/bookmarks',
-  path: '/bookmarks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BattlegroundsRoute = BattlegroundsRouteImport.update({
-  id: '/battlegrounds',
-  path: '/battlegrounds',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArenaRoute = ArenaRouteImport.update({
-  id: '/arena',
-  path: '/arena',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AnalyticsRoute = AnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AiPathRoute = AiPathRouteImport.update({
-  id: '/ai-path',
-  path: '/ai-path',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminStudyMaterialsRoute = AdminStudyMaterialsRouteImport.update({
-  id: '/admin-study-materials',
-  path: '/admin-study-materials',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminMockCategoriesRoute = AdminMockCategoriesRouteImport.update({
-  id: '/admin-mock-categories',
-  path: '/admin-mock-categories',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminInboxRoute = AdminInboxRouteImport.update({
-  id: '/admin-inbox',
-  path: '/admin-inbox',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminCollaboratorsRoute = AdminCollaboratorsRouteImport.update({
-  id: '/admin-collaborators',
-  path: '/admin-collaborators',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -315,64 +100,229 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StudyGroupsIndexRoute = StudyGroupsIndexRouteImport.update({
-  id: '/study-groups/',
-  path: '/study-groups/',
+const AdminCollaboratorsRoute = AdminCollaboratorsRouteImport.update({
+  id: '/admin-collaborators',
+  path: '/admin-collaborators',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SubjectsSubjectRoute = SubjectsSubjectRouteImport.update({
-  id: '/subjects/$subject',
-  path: '/subjects/$subject',
+const AdminInboxRoute = AdminInboxRouteImport.update({
+  id: '/admin-inbox',
+  path: '/admin-inbox',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StudyGroupsGroupIdRoute = StudyGroupsGroupIdRouteImport.update({
-  id: '/study-groups/$groupId',
-  path: '/study-groups/$groupId',
+const AdminMockCategoriesRoute = AdminMockCategoriesRouteImport.update({
+  id: '/admin-mock-categories',
+  path: '/admin-mock-categories',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuizTestIdRoute = QuizTestIdRouteImport.update({
-  id: '/quiz/$testId',
-  path: '/quiz/$testId',
+const AdminStudyMaterialsRoute = AdminStudyMaterialsRouteImport.update({
+  id: '/admin-study-materials',
+  path: '/admin-study-materials',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContestContestIdRoute = ContestContestIdRouteImport.update({
-  id: '/contest/$contestId',
-  path: '/contest/$contestId',
+const AiPathRoute = AiPathRouteImport.update({
+  id: '/ai-path',
+  path: '/ai-path',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BattlegroundsViewAllRoute = BattlegroundsViewAllRouteImport.update({
-  id: '/view-all',
-  path: '/view-all',
-  getParentRoute: () => BattlegroundsRoute,
-} as any)
-const BattlegroundsHistoryRoute = BattlegroundsHistoryRouteImport.update({
-  id: '/history',
-  path: '/history',
-  getParentRoute: () => BattlegroundsRoute,
-} as any)
-const BatchesCompareRoute = BatchesCompareRouteImport.update({
-  id: '/batches/compare',
-  path: '/batches/compare',
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BatchesBatchIdRoute = BatchesBatchIdRouteImport.update({
-  id: '/batches/$batchId',
-  path: '/batches/$batchId',
+const ArenaRoute = ArenaRouteImport.update({
+  id: '/arena',
+  path: '/arena',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AnalysisAttemptIdRoute = AnalysisAttemptIdRouteImport.update({
-  id: '/analysis/$attemptId',
-  path: '/analysis/$attemptId',
+const BattlegroundsRoute = BattlegroundsRouteImport.update({
+  id: '/battlegrounds',
+  path: '/battlegrounds',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminSupportRoute = AdminSupportRouteImport.update({
-  id: '/support',
-  path: '/support',
+const BookmarksRoute = BookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaboratorsRoute = CollaboratorsRouteImport.update({
+  id: '/collaborators',
+  path: '/collaborators',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContestsRoute = ContestsRouteImport.update({
+  id: '/contests',
+  path: '/contests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailyRoute = DailyRouteImport.update({
+  id: '/daily',
+  path: '/daily',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailyChecklistRoute = DailyChecklistRouteImport.update({
+  id: '/daily-checklist',
+  path: '/daily-checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DedicatedProgramRoute = DedicatedProgramRouteImport.update({
+  id: '/dedicated-program',
+  path: '/dedicated-program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeleteAccountRoute = DeleteAccountRouteImport.update({
+  id: '/delete-account',
+  path: '/delete-account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DppRoute = DppRouteImport.update({
+  id: '/dpp',
+  path: '/dpp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlashcardsRoute = FlashcardsRouteImport.update({
+  id: '/flashcards',
+  path: '/flashcards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenerateRoute = GenerateRouteImport.update({
+  id: '/generate',
+  path: '/generate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HighlightedNcertRoute = HighlightedNcertRouteImport.update({
+  id: '/highlighted-ncert',
+  path: '/highlighted-ncert',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImprovementRoute = ImprovementRouteImport.update({
+  id: '/improvement',
+  path: '/improvement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InfiniteRunRoute = InfiniteRunRouteImport.update({
+  id: '/infinite-run',
+  path: '/infinite-run',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorshipRoute = MentorshipRouteImport.update({
+  id: '/mentorship',
+  path: '/mentorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MistakesRoute = MistakesRouteImport.update({
+  id: '/mistakes',
+  path: '/mistakes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MocksRoute = MocksRouteImport.update({
+  id: '/mocks',
+  path: '/mocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcertHighlightsRoute = NcertHighlightsRouteImport.update({
+  id: '/ncert-highlights',
+  path: '/ncert-highlights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NeetlabRoute = NeetlabRouteImport.update({
+  id: '/neetlab',
+  path: '/neetlab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PyqsRoute = PyqsRouteImport.update({
+  id: '/pyqs',
+  path: '/pyqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferralsRoute = ReferralsRouteImport.update({
+  id: '/referrals',
+  path: '/referrals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundRoute = RefundRouteImport.update({
+  id: '/refund',
+  path: '/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScorePredictorRoute = ScorePredictorRouteImport.update({
+  id: '/score-predictor',
+  path: '/score-predictor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyEssentialsRoute = StudyEssentialsRouteImport.update({
+  id: '/study-essentials',
+  path: '/study-essentials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyViewRoute = StudyViewRouteImport.update({
+  id: '/study-view',
+  path: '/study-view',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubscriptionRoute = SubscriptionRouteImport.update({
+  id: '/subscription',
+  path: '/subscription',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFeedbackRoute = AdminFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminQuestionScanRoute = AdminQuestionScanRouteImport.update({
@@ -380,34 +330,59 @@ const AdminQuestionScanRoute = AdminQuestionScanRouteImport.update({
   path: '/question-scan',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminFeedbackRoute = AdminFeedbackRouteImport.update({
-  id: '/feedback',
-  path: '/feedback',
+const AdminSupportRoute = AdminSupportRouteImport.update({
+  id: '/support',
+  path: '/support',
   getParentRoute: () => AdminRoute,
 } as any)
-const PyqsResultAttemptIdRoute = PyqsResultAttemptIdRouteImport.update({
-  id: '/result/$attemptId',
-  path: '/result/$attemptId',
-  getParentRoute: () => PyqsRoute,
-} as any)
-const ContestContestIdResultsRoute = ContestContestIdResultsRouteImport.update({
-  id: '/results',
-  path: '/results',
-  getParentRoute: () => ContestContestIdRoute,
-} as any)
-const ContestContestIdJoinRoute = ContestContestIdJoinRouteImport.update({
-  id: '/join',
-  path: '/join',
-  getParentRoute: () => ContestContestIdRoute,
-} as any)
-const BattleMatchIdResultRoute = BattleMatchIdResultRouteImport.update({
-  id: '/battle/$matchId/result',
-  path: '/battle/$matchId/result',
+const AnalysisAttemptIdRoute = AnalysisAttemptIdRouteImport.update({
+  id: '/analysis/$attemptId',
+  path: '/analysis/$attemptId',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BattleMatchIdPlayRoute = BattleMatchIdPlayRouteImport.update({
-  id: '/battle/$matchId/play',
-  path: '/battle/$matchId/play',
+const BatchesBatchIdRoute = BatchesBatchIdRouteImport.update({
+  id: '/batches/$batchId',
+  path: '/batches/$batchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatchesCompareRoute = BatchesCompareRouteImport.update({
+  id: '/batches/compare',
+  path: '/batches/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattlegroundsHistoryRoute = BattlegroundsHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => BattlegroundsRoute,
+} as any)
+const BattlegroundsViewAllRoute = BattlegroundsViewAllRouteImport.update({
+  id: '/view-all',
+  path: '/view-all',
+  getParentRoute: () => BattlegroundsRoute,
+} as any)
+const ContestContestIdRoute = ContestContestIdRouteImport.update({
+  id: '/contest/$contestId',
+  path: '/contest/$contestId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizTestIdRoute = QuizTestIdRouteImport.update({
+  id: '/quiz/$testId',
+  path: '/quiz/$testId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyGroupsIndexRoute = StudyGroupsIndexRouteImport.update({
+  id: '/study-groups/',
+  path: '/study-groups/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyGroupsGroupIdRoute = StudyGroupsGroupIdRouteImport.update({
+  id: '/study-groups/$groupId',
+  path: '/study-groups/$groupId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubjectsSubjectRoute = SubjectsSubjectRouteImport.update({
+  id: '/subjects/$subject',
+  path: '/subjects/$subject',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicAppVersionRoute = ApiPublicAppVersionRouteImport.update({
@@ -415,38 +390,68 @@ const ApiPublicAppVersionRoute = ApiPublicAppVersionRouteImport.update({
   path: '/api/public/app-version',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicTelegramStudyBotRoute =
-  ApiPublicTelegramStudyBotRouteImport.update({
-    id: '/api/public/telegram/study-bot',
-    path: '/api/public/telegram/study-bot',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ApiPublicTelegramLoginRoute = ApiPublicTelegramLoginRouteImport.update({
-  id: '/api/public/telegram/login',
-  path: '/api/public/telegram/login',
+const BattleMatchIdPlayRoute = BattleMatchIdPlayRouteImport.update({
+  id: '/battle/$matchId/play',
+  path: '/battle/$matchId/play',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicRazorpayOrderRoute = ApiPublicRazorpayOrderRouteImport.update({
-  id: '/api/public/razorpay/order',
-  path: '/api/public/razorpay/order',
+const BattleMatchIdResultRoute = BattleMatchIdResultRouteImport.update({
+  id: '/battle/$matchId/result',
+  path: '/battle/$matchId/result',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicHooksVerifyReportedQuestionsRoute =
-  ApiPublicHooksVerifyReportedQuestionsRouteImport.update({
-    id: '/api/public/hooks/verify-reported-questions',
-    path: '/api/public/hooks/verify-reported-questions',
+const ContestContestIdJoinRoute = ContestContestIdJoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => ContestContestIdRoute,
+} as any)
+const ContestContestIdResultsRoute = ContestContestIdResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => ContestContestIdRoute,
+} as any)
+const PyqsResultAttemptIdRoute = PyqsResultAttemptIdRouteImport.update({
+  id: '/result/$attemptId',
+  path: '/result/$attemptId',
+  getParentRoute: () => PyqsRoute,
+} as any)
+const ApiPublicCronDailyContestRoute =
+  ApiPublicCronDailyContestRouteImport.update({
+    id: '/api/public/cron/daily-contest',
+    path: '/api/public/cron/daily-contest',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicHooksVerifyDiagramDppRoute =
-  ApiPublicHooksVerifyDiagramDppRouteImport.update({
-    id: '/api/public/hooks/verify-diagram-dpp',
-    path: '/api/public/hooks/verify-diagram-dpp',
+const ApiPublicCronDailyDppRoute = ApiPublicCronDailyDppRouteImport.update({
+  id: '/api/public/cron/daily-dpp',
+  path: '/api/public/cron/daily-dpp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicCronFinalizeContestsRoute =
+  ApiPublicCronFinalizeContestsRouteImport.update({
+    id: '/api/public/cron/finalize-contests',
+    path: '/api/public/cron/finalize-contests',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicHooksGenerateDiagramDppRoute =
-  ApiPublicHooksGenerateDiagramDppRouteImport.update({
-    id: '/api/public/hooks/generate-diagram-dpp',
-    path: '/api/public/hooks/generate-diagram-dpp',
+const ApiPublicCronInfiniteRunRoute =
+  ApiPublicCronInfiniteRunRouteImport.update({
+    id: '/api/public/cron/infinite-run',
+    path: '/api/public/cron/infinite-run',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCronKeepaliveRoute = ApiPublicCronKeepaliveRouteImport.update({
+  id: '/api/public/cron/keepalive',
+  path: '/api/public/cron/keepalive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicDiagramIdRoute = ApiPublicDiagramIdRouteImport.update({
+  id: '/api/public/diagram/$id',
+  path: '/api/public/diagram/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicHooksDedupeQuestionsRoute =
+  ApiPublicHooksDedupeQuestionsRouteImport.update({
+    id: '/api/public/hooks/dedupe-questions',
+    path: '/api/public/hooks/dedupe-questions',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ApiPublicHooksGenerateDailyQuizRoute =
@@ -455,43 +460,38 @@ const ApiPublicHooksGenerateDailyQuizRoute =
     path: '/api/public/hooks/generate-daily-quiz',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicHooksDedupeQuestionsRoute =
-  ApiPublicHooksDedupeQuestionsRouteImport.update({
-    id: '/api/public/hooks/dedupe-questions',
-    path: '/api/public/hooks/dedupe-questions',
+const ApiPublicHooksGenerateDiagramDppRoute =
+  ApiPublicHooksGenerateDiagramDppRouteImport.update({
+    id: '/api/public/hooks/generate-diagram-dpp',
+    path: '/api/public/hooks/generate-diagram-dpp',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicDiagramIdRoute = ApiPublicDiagramIdRouteImport.update({
-  id: '/api/public/diagram/$id',
-  path: '/api/public/diagram/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiPublicCronKeepaliveRoute = ApiPublicCronKeepaliveRouteImport.update({
-  id: '/api/public/cron/keepalive',
-  path: '/api/public/cron/keepalive',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiPublicCronInfiniteRunRoute =
-  ApiPublicCronInfiniteRunRouteImport.update({
-    id: '/api/public/cron/infinite-run',
-    path: '/api/public/cron/infinite-run',
+const ApiPublicHooksVerifyDiagramDppRoute =
+  ApiPublicHooksVerifyDiagramDppRouteImport.update({
+    id: '/api/public/hooks/verify-diagram-dpp',
+    path: '/api/public/hooks/verify-diagram-dpp',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicCronFinalizeContestsRoute =
-  ApiPublicCronFinalizeContestsRouteImport.update({
-    id: '/api/public/cron/finalize-contests',
-    path: '/api/public/cron/finalize-contests',
+const ApiPublicHooksVerifyReportedQuestionsRoute =
+  ApiPublicHooksVerifyReportedQuestionsRouteImport.update({
+    id: '/api/public/hooks/verify-reported-questions',
+    path: '/api/public/hooks/verify-reported-questions',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicCronDailyDppRoute = ApiPublicCronDailyDppRouteImport.update({
-  id: '/api/public/cron/daily-dpp',
-  path: '/api/public/cron/daily-dpp',
+const ApiPublicRazorpayOrderRoute = ApiPublicRazorpayOrderRouteImport.update({
+  id: '/api/public/razorpay/order',
+  path: '/api/public/razorpay/order',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicCronDailyContestRoute =
-  ApiPublicCronDailyContestRouteImport.update({
-    id: '/api/public/cron/daily-contest',
-    path: '/api/public/cron/daily-contest',
+const ApiPublicTelegramLoginRoute = ApiPublicTelegramLoginRouteImport.update({
+  id: '/api/public/telegram/login',
+  path: '/api/public/telegram/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTelegramStudyBotRoute =
+  ApiPublicTelegramStudyBotRouteImport.update({
+    id: '/api/public/telegram/study-bot',
+    path: '/api/public/telegram/study-bot',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ApiPublicOptionImageQidIdxRoute =
@@ -1074,312 +1074,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/subscription': {
-      id: '/subscription'
-      path: '/subscription'
-      fullPath: '/subscription'
-      preLoaderRoute: typeof SubscriptionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-view': {
-      id: '/study-view'
-      path: '/study-view'
-      fullPath: '/study-view'
-      preLoaderRoute: typeof StudyViewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-essentials': {
-      id: '/study-essentials'
-      path: '/study-essentials'
-      fullPath: '/study-essentials'
-      preLoaderRoute: typeof StudyEssentialsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/score-predictor': {
-      id: '/score-predictor'
-      path: '/score-predictor'
-      fullPath: '/score-predictor'
-      preLoaderRoute: typeof ScorePredictorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/refund': {
-      id: '/refund'
-      path: '/refund'
-      fullPath: '/refund'
-      preLoaderRoute: typeof RefundRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/referrals': {
-      id: '/referrals'
-      path: '/referrals'
-      fullPath: '/referrals'
-      preLoaderRoute: typeof ReferralsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pyqs': {
-      id: '/pyqs'
-      path: '/pyqs'
-      fullPath: '/pyqs'
-      preLoaderRoute: typeof PyqsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/progress': {
-      id: '/progress'
-      path: '/progress'
-      fullPath: '/progress'
-      preLoaderRoute: typeof ProgressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/premium': {
-      id: '/premium'
-      path: '/premium'
-      fullPath: '/premium'
-      preLoaderRoute: typeof PremiumRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/neetlab': {
-      id: '/neetlab'
-      path: '/neetlab'
-      fullPath: '/neetlab'
-      preLoaderRoute: typeof NeetlabRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ncert-highlights': {
-      id: '/ncert-highlights'
-      path: '/ncert-highlights'
-      fullPath: '/ncert-highlights'
-      preLoaderRoute: typeof NcertHighlightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mocks': {
-      id: '/mocks'
-      path: '/mocks'
-      fullPath: '/mocks'
-      preLoaderRoute: typeof MocksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mistakes': {
-      id: '/mistakes'
-      path: '/mistakes'
-      fullPath: '/mistakes'
-      preLoaderRoute: typeof MistakesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mentorship': {
-      id: '/mentorship'
-      path: '/mentorship'
-      fullPath: '/mentorship'
-      preLoaderRoute: typeof MentorshipRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leaderboard': {
-      id: '/leaderboard'
-      path: '/leaderboard'
-      fullPath: '/leaderboard'
-      preLoaderRoute: typeof LeaderboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/infinite-run': {
-      id: '/infinite-run'
-      path: '/infinite-run'
-      fullPath: '/infinite-run'
-      preLoaderRoute: typeof InfiniteRunRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/improvement': {
-      id: '/improvement'
-      path: '/improvement'
-      fullPath: '/improvement'
-      preLoaderRoute: typeof ImprovementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/highlighted-ncert': {
-      id: '/highlighted-ncert'
-      path: '/highlighted-ncert'
-      fullPath: '/highlighted-ncert'
-      preLoaderRoute: typeof HighlightedNcertRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/generate': {
-      id: '/generate'
-      path: '/generate'
-      fullPath: '/generate'
-      preLoaderRoute: typeof GenerateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flashcards': {
-      id: '/flashcards'
-      path: '/flashcards'
-      fullPath: '/flashcards'
-      preLoaderRoute: typeof FlashcardsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/feedback': {
-      id: '/feedback'
-      path: '/feedback'
-      fullPath: '/feedback'
-      preLoaderRoute: typeof FeedbackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dpp': {
-      id: '/dpp'
-      path: '/dpp'
-      fullPath: '/dpp'
-      preLoaderRoute: typeof DppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/delete-account': {
-      id: '/delete-account'
-      path: '/delete-account'
-      fullPath: '/delete-account'
-      preLoaderRoute: typeof DeleteAccountRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dedicated-program': {
-      id: '/dedicated-program'
-      path: '/dedicated-program'
-      fullPath: '/dedicated-program'
-      preLoaderRoute: typeof DedicatedProgramRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/daily-checklist': {
-      id: '/daily-checklist'
-      path: '/daily-checklist'
-      fullPath: '/daily-checklist'
-      preLoaderRoute: typeof DailyChecklistRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/daily': {
-      id: '/daily'
-      path: '/daily'
-      fullPath: '/daily'
-      preLoaderRoute: typeof DailyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contests': {
-      id: '/contests'
-      path: '/contests'
-      fullPath: '/contests'
-      preLoaderRoute: typeof ContestsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/community': {
-      id: '/community'
-      path: '/community'
-      fullPath: '/community'
-      preLoaderRoute: typeof CommunityRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/collaborators': {
-      id: '/collaborators'
-      path: '/collaborators'
-      fullPath: '/collaborators'
-      preLoaderRoute: typeof CollaboratorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bookmarks': {
-      id: '/bookmarks'
-      path: '/bookmarks'
-      fullPath: '/bookmarks'
-      preLoaderRoute: typeof BookmarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/battlegrounds': {
-      id: '/battlegrounds'
-      path: '/battlegrounds'
-      fullPath: '/battlegrounds'
-      preLoaderRoute: typeof BattlegroundsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/arena': {
-      id: '/arena'
-      path: '/arena'
-      fullPath: '/arena'
-      preLoaderRoute: typeof ArenaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/analytics': {
-      id: '/analytics'
-      path: '/analytics'
-      fullPath: '/analytics'
-      preLoaderRoute: typeof AnalyticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ai-path': {
-      id: '/ai-path'
-      path: '/ai-path'
-      fullPath: '/ai-path'
-      preLoaderRoute: typeof AiPathRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin-study-materials': {
-      id: '/admin-study-materials'
-      path: '/admin-study-materials'
-      fullPath: '/admin-study-materials'
-      preLoaderRoute: typeof AdminStudyMaterialsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin-mock-categories': {
-      id: '/admin-mock-categories'
-      path: '/admin-mock-categories'
-      fullPath: '/admin-mock-categories'
-      preLoaderRoute: typeof AdminMockCategoriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin-inbox': {
-      id: '/admin-inbox'
-      path: '/admin-inbox'
-      fullPath: '/admin-inbox'
-      preLoaderRoute: typeof AdminInboxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin-collaborators': {
-      id: '/admin-collaborators'
-      path: '/admin-collaborators'
-      fullPath: '/admin-collaborators'
-      preLoaderRoute: typeof AdminCollaboratorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -1389,88 +1088,319 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/study-groups/': {
-      id: '/study-groups/'
-      path: '/study-groups'
-      fullPath: '/study-groups/'
-      preLoaderRoute: typeof StudyGroupsIndexRouteImport
+    '/admin-collaborators': {
+      id: '/admin-collaborators'
+      path: '/admin-collaborators'
+      fullPath: '/admin-collaborators'
+      preLoaderRoute: typeof AdminCollaboratorsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/subjects/$subject': {
-      id: '/subjects/$subject'
-      path: '/subjects/$subject'
-      fullPath: '/subjects/$subject'
-      preLoaderRoute: typeof SubjectsSubjectRouteImport
+    '/admin-inbox': {
+      id: '/admin-inbox'
+      path: '/admin-inbox'
+      fullPath: '/admin-inbox'
+      preLoaderRoute: typeof AdminInboxRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/study-groups/$groupId': {
-      id: '/study-groups/$groupId'
-      path: '/study-groups/$groupId'
-      fullPath: '/study-groups/$groupId'
-      preLoaderRoute: typeof StudyGroupsGroupIdRouteImport
+    '/admin-mock-categories': {
+      id: '/admin-mock-categories'
+      path: '/admin-mock-categories'
+      fullPath: '/admin-mock-categories'
+      preLoaderRoute: typeof AdminMockCategoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quiz/$testId': {
-      id: '/quiz/$testId'
-      path: '/quiz/$testId'
-      fullPath: '/quiz/$testId'
-      preLoaderRoute: typeof QuizTestIdRouteImport
+    '/admin-study-materials': {
+      id: '/admin-study-materials'
+      path: '/admin-study-materials'
+      fullPath: '/admin-study-materials'
+      preLoaderRoute: typeof AdminStudyMaterialsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contest/$contestId': {
-      id: '/contest/$contestId'
-      path: '/contest/$contestId'
-      fullPath: '/contest/$contestId'
-      preLoaderRoute: typeof ContestContestIdRouteImport
+    '/ai-path': {
+      id: '/ai-path'
+      path: '/ai-path'
+      fullPath: '/ai-path'
+      preLoaderRoute: typeof AiPathRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/battlegrounds/view-all': {
-      id: '/battlegrounds/view-all'
-      path: '/view-all'
-      fullPath: '/battlegrounds/view-all'
-      preLoaderRoute: typeof BattlegroundsViewAllRouteImport
-      parentRoute: typeof BattlegroundsRoute
-    }
-    '/battlegrounds/history': {
-      id: '/battlegrounds/history'
-      path: '/history'
-      fullPath: '/battlegrounds/history'
-      preLoaderRoute: typeof BattlegroundsHistoryRouteImport
-      parentRoute: typeof BattlegroundsRoute
-    }
-    '/batches/compare': {
-      id: '/batches/compare'
-      path: '/batches/compare'
-      fullPath: '/batches/compare'
-      preLoaderRoute: typeof BatchesCompareRouteImport
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/batches/$batchId': {
-      id: '/batches/$batchId'
-      path: '/batches/$batchId'
-      fullPath: '/batches/$batchId'
-      preLoaderRoute: typeof BatchesBatchIdRouteImport
+    '/arena': {
+      id: '/arena'
+      path: '/arena'
+      fullPath: '/arena'
+      preLoaderRoute: typeof ArenaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/analysis/$attemptId': {
-      id: '/analysis/$attemptId'
-      path: '/analysis/$attemptId'
-      fullPath: '/analysis/$attemptId'
-      preLoaderRoute: typeof AnalysisAttemptIdRouteImport
+    '/battlegrounds': {
+      id: '/battlegrounds'
+      path: '/battlegrounds'
+      fullPath: '/battlegrounds'
+      preLoaderRoute: typeof BattlegroundsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/support': {
-      id: '/admin/support'
-      path: '/support'
-      fullPath: '/admin/support'
-      preLoaderRoute: typeof AdminSupportRouteImport
+    '/bookmarks': {
+      id: '/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof BookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaborators': {
+      id: '/collaborators'
+      path: '/collaborators'
+      fullPath: '/collaborators'
+      preLoaderRoute: typeof CollaboratorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contests': {
+      id: '/contests'
+      path: '/contests'
+      fullPath: '/contests'
+      preLoaderRoute: typeof ContestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily': {
+      id: '/daily'
+      path: '/daily'
+      fullPath: '/daily'
+      preLoaderRoute: typeof DailyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily-checklist': {
+      id: '/daily-checklist'
+      path: '/daily-checklist'
+      fullPath: '/daily-checklist'
+      preLoaderRoute: typeof DailyChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dedicated-program': {
+      id: '/dedicated-program'
+      path: '/dedicated-program'
+      fullPath: '/dedicated-program'
+      preLoaderRoute: typeof DedicatedProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delete-account': {
+      id: '/delete-account'
+      path: '/delete-account'
+      fullPath: '/delete-account'
+      preLoaderRoute: typeof DeleteAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dpp': {
+      id: '/dpp'
+      path: '/dpp'
+      fullPath: '/dpp'
+      preLoaderRoute: typeof DppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flashcards': {
+      id: '/flashcards'
+      path: '/flashcards'
+      fullPath: '/flashcards'
+      preLoaderRoute: typeof FlashcardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/generate': {
+      id: '/generate'
+      path: '/generate'
+      fullPath: '/generate'
+      preLoaderRoute: typeof GenerateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/highlighted-ncert': {
+      id: '/highlighted-ncert'
+      path: '/highlighted-ncert'
+      fullPath: '/highlighted-ncert'
+      preLoaderRoute: typeof HighlightedNcertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/improvement': {
+      id: '/improvement'
+      path: '/improvement'
+      fullPath: '/improvement'
+      preLoaderRoute: typeof ImprovementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/infinite-run': {
+      id: '/infinite-run'
+      path: '/infinite-run'
+      fullPath: '/infinite-run'
+      preLoaderRoute: typeof InfiniteRunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentorship': {
+      id: '/mentorship'
+      path: '/mentorship'
+      fullPath: '/mentorship'
+      preLoaderRoute: typeof MentorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mistakes': {
+      id: '/mistakes'
+      path: '/mistakes'
+      fullPath: '/mistakes'
+      preLoaderRoute: typeof MistakesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mocks': {
+      id: '/mocks'
+      path: '/mocks'
+      fullPath: '/mocks'
+      preLoaderRoute: typeof MocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncert-highlights': {
+      id: '/ncert-highlights'
+      path: '/ncert-highlights'
+      fullPath: '/ncert-highlights'
+      preLoaderRoute: typeof NcertHighlightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/neetlab': {
+      id: '/neetlab'
+      path: '/neetlab'
+      fullPath: '/neetlab'
+      preLoaderRoute: typeof NeetlabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pyqs': {
+      id: '/pyqs'
+      path: '/pyqs'
+      fullPath: '/pyqs'
+      preLoaderRoute: typeof PyqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referrals': {
+      id: '/referrals'
+      path: '/referrals'
+      fullPath: '/referrals'
+      preLoaderRoute: typeof ReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund': {
+      id: '/refund'
+      path: '/refund'
+      fullPath: '/refund'
+      preLoaderRoute: typeof RefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/score-predictor': {
+      id: '/score-predictor'
+      path: '/score-predictor'
+      fullPath: '/score-predictor'
+      preLoaderRoute: typeof ScorePredictorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-essentials': {
+      id: '/study-essentials'
+      path: '/study-essentials'
+      fullPath: '/study-essentials'
+      preLoaderRoute: typeof StudyEssentialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-view': {
+      id: '/study-view'
+      path: '/study-view'
+      fullPath: '/study-view'
+      preLoaderRoute: typeof StudyViewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subscription': {
+      id: '/subscription'
+      path: '/subscription'
+      fullPath: '/subscription'
+      preLoaderRoute: typeof SubscriptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/feedback': {
+      id: '/admin/feedback'
+      path: '/feedback'
+      fullPath: '/admin/feedback'
+      preLoaderRoute: typeof AdminFeedbackRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/question-scan': {
@@ -1480,46 +1410,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminQuestionScanRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/feedback': {
-      id: '/admin/feedback'
-      path: '/feedback'
-      fullPath: '/admin/feedback'
-      preLoaderRoute: typeof AdminFeedbackRouteImport
+    '/admin/support': {
+      id: '/admin/support'
+      path: '/support'
+      fullPath: '/admin/support'
+      preLoaderRoute: typeof AdminSupportRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/pyqs/result/$attemptId': {
-      id: '/pyqs/result/$attemptId'
-      path: '/result/$attemptId'
-      fullPath: '/pyqs/result/$attemptId'
-      preLoaderRoute: typeof PyqsResultAttemptIdRouteImport
-      parentRoute: typeof PyqsRoute
-    }
-    '/contest/$contestId/results': {
-      id: '/contest/$contestId/results'
-      path: '/results'
-      fullPath: '/contest/$contestId/results'
-      preLoaderRoute: typeof ContestContestIdResultsRouteImport
-      parentRoute: typeof ContestContestIdRoute
-    }
-    '/contest/$contestId/join': {
-      id: '/contest/$contestId/join'
-      path: '/join'
-      fullPath: '/contest/$contestId/join'
-      preLoaderRoute: typeof ContestContestIdJoinRouteImport
-      parentRoute: typeof ContestContestIdRoute
-    }
-    '/battle/$matchId/result': {
-      id: '/battle/$matchId/result'
-      path: '/battle/$matchId/result'
-      fullPath: '/battle/$matchId/result'
-      preLoaderRoute: typeof BattleMatchIdResultRouteImport
+    '/analysis/$attemptId': {
+      id: '/analysis/$attemptId'
+      path: '/analysis/$attemptId'
+      fullPath: '/analysis/$attemptId'
+      preLoaderRoute: typeof AnalysisAttemptIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/battle/$matchId/play': {
-      id: '/battle/$matchId/play'
-      path: '/battle/$matchId/play'
-      fullPath: '/battle/$matchId/play'
-      preLoaderRoute: typeof BattleMatchIdPlayRouteImport
+    '/batches/$batchId': {
+      id: '/batches/$batchId'
+      path: '/batches/$batchId'
+      fullPath: '/batches/$batchId'
+      preLoaderRoute: typeof BatchesBatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/batches/compare': {
+      id: '/batches/compare'
+      path: '/batches/compare'
+      fullPath: '/batches/compare'
+      preLoaderRoute: typeof BatchesCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battlegrounds/history': {
+      id: '/battlegrounds/history'
+      path: '/history'
+      fullPath: '/battlegrounds/history'
+      preLoaderRoute: typeof BattlegroundsHistoryRouteImport
+      parentRoute: typeof BattlegroundsRoute
+    }
+    '/battlegrounds/view-all': {
+      id: '/battlegrounds/view-all'
+      path: '/view-all'
+      fullPath: '/battlegrounds/view-all'
+      preLoaderRoute: typeof BattlegroundsViewAllRouteImport
+      parentRoute: typeof BattlegroundsRoute
+    }
+    '/contest/$contestId': {
+      id: '/contest/$contestId'
+      path: '/contest/$contestId'
+      fullPath: '/contest/$contestId'
+      preLoaderRoute: typeof ContestContestIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/$testId': {
+      id: '/quiz/$testId'
+      path: '/quiz/$testId'
+      fullPath: '/quiz/$testId'
+      preLoaderRoute: typeof QuizTestIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-groups/': {
+      id: '/study-groups/'
+      path: '/study-groups'
+      fullPath: '/study-groups/'
+      preLoaderRoute: typeof StudyGroupsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-groups/$groupId': {
+      id: '/study-groups/$groupId'
+      path: '/study-groups/$groupId'
+      fullPath: '/study-groups/$groupId'
+      preLoaderRoute: typeof StudyGroupsGroupIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subjects/$subject': {
+      id: '/subjects/$subject'
+      path: '/subjects/$subject'
+      fullPath: '/subjects/$subject'
+      preLoaderRoute: typeof SubjectsSubjectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/app-version': {
@@ -1529,88 +1494,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicAppVersionRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/telegram/study-bot': {
-      id: '/api/public/telegram/study-bot'
-      path: '/api/public/telegram/study-bot'
-      fullPath: '/api/public/telegram/study-bot'
-      preLoaderRoute: typeof ApiPublicTelegramStudyBotRouteImport
+    '/battle/$matchId/play': {
+      id: '/battle/$matchId/play'
+      path: '/battle/$matchId/play'
+      fullPath: '/battle/$matchId/play'
+      preLoaderRoute: typeof BattleMatchIdPlayRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/telegram/login': {
-      id: '/api/public/telegram/login'
-      path: '/api/public/telegram/login'
-      fullPath: '/api/public/telegram/login'
-      preLoaderRoute: typeof ApiPublicTelegramLoginRouteImport
+    '/battle/$matchId/result': {
+      id: '/battle/$matchId/result'
+      path: '/battle/$matchId/result'
+      fullPath: '/battle/$matchId/result'
+      preLoaderRoute: typeof BattleMatchIdResultRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/razorpay/order': {
-      id: '/api/public/razorpay/order'
-      path: '/api/public/razorpay/order'
-      fullPath: '/api/public/razorpay/order'
-      preLoaderRoute: typeof ApiPublicRazorpayOrderRouteImport
-      parentRoute: typeof rootRouteImport
+    '/contest/$contestId/join': {
+      id: '/contest/$contestId/join'
+      path: '/join'
+      fullPath: '/contest/$contestId/join'
+      preLoaderRoute: typeof ContestContestIdJoinRouteImport
+      parentRoute: typeof ContestContestIdRoute
     }
-    '/api/public/hooks/verify-reported-questions': {
-      id: '/api/public/hooks/verify-reported-questions'
-      path: '/api/public/hooks/verify-reported-questions'
-      fullPath: '/api/public/hooks/verify-reported-questions'
-      preLoaderRoute: typeof ApiPublicHooksVerifyReportedQuestionsRouteImport
-      parentRoute: typeof rootRouteImport
+    '/contest/$contestId/results': {
+      id: '/contest/$contestId/results'
+      path: '/results'
+      fullPath: '/contest/$contestId/results'
+      preLoaderRoute: typeof ContestContestIdResultsRouteImport
+      parentRoute: typeof ContestContestIdRoute
     }
-    '/api/public/hooks/verify-diagram-dpp': {
-      id: '/api/public/hooks/verify-diagram-dpp'
-      path: '/api/public/hooks/verify-diagram-dpp'
-      fullPath: '/api/public/hooks/verify-diagram-dpp'
-      preLoaderRoute: typeof ApiPublicHooksVerifyDiagramDppRouteImport
-      parentRoute: typeof rootRouteImport
+    '/pyqs/result/$attemptId': {
+      id: '/pyqs/result/$attemptId'
+      path: '/result/$attemptId'
+      fullPath: '/pyqs/result/$attemptId'
+      preLoaderRoute: typeof PyqsResultAttemptIdRouteImport
+      parentRoute: typeof PyqsRoute
     }
-    '/api/public/hooks/generate-diagram-dpp': {
-      id: '/api/public/hooks/generate-diagram-dpp'
-      path: '/api/public/hooks/generate-diagram-dpp'
-      fullPath: '/api/public/hooks/generate-diagram-dpp'
-      preLoaderRoute: typeof ApiPublicHooksGenerateDiagramDppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/hooks/generate-daily-quiz': {
-      id: '/api/public/hooks/generate-daily-quiz'
-      path: '/api/public/hooks/generate-daily-quiz'
-      fullPath: '/api/public/hooks/generate-daily-quiz'
-      preLoaderRoute: typeof ApiPublicHooksGenerateDailyQuizRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/hooks/dedupe-questions': {
-      id: '/api/public/hooks/dedupe-questions'
-      path: '/api/public/hooks/dedupe-questions'
-      fullPath: '/api/public/hooks/dedupe-questions'
-      preLoaderRoute: typeof ApiPublicHooksDedupeQuestionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/diagram/$id': {
-      id: '/api/public/diagram/$id'
-      path: '/api/public/diagram/$id'
-      fullPath: '/api/public/diagram/$id'
-      preLoaderRoute: typeof ApiPublicDiagramIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/cron/keepalive': {
-      id: '/api/public/cron/keepalive'
-      path: '/api/public/cron/keepalive'
-      fullPath: '/api/public/cron/keepalive'
-      preLoaderRoute: typeof ApiPublicCronKeepaliveRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/cron/infinite-run': {
-      id: '/api/public/cron/infinite-run'
-      path: '/api/public/cron/infinite-run'
-      fullPath: '/api/public/cron/infinite-run'
-      preLoaderRoute: typeof ApiPublicCronInfiniteRunRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/cron/finalize-contests': {
-      id: '/api/public/cron/finalize-contests'
-      path: '/api/public/cron/finalize-contests'
-      fullPath: '/api/public/cron/finalize-contests'
-      preLoaderRoute: typeof ApiPublicCronFinalizeContestsRouteImport
+    '/api/public/cron/daily-contest': {
+      id: '/api/public/cron/daily-contest'
+      path: '/api/public/cron/daily-contest'
+      fullPath: '/api/public/cron/daily-contest'
+      preLoaderRoute: typeof ApiPublicCronDailyContestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/cron/daily-dpp': {
@@ -1620,11 +1543,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicCronDailyDppRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/cron/daily-contest': {
-      id: '/api/public/cron/daily-contest'
-      path: '/api/public/cron/daily-contest'
-      fullPath: '/api/public/cron/daily-contest'
-      preLoaderRoute: typeof ApiPublicCronDailyContestRouteImport
+    '/api/public/cron/finalize-contests': {
+      id: '/api/public/cron/finalize-contests'
+      path: '/api/public/cron/finalize-contests'
+      fullPath: '/api/public/cron/finalize-contests'
+      preLoaderRoute: typeof ApiPublicCronFinalizeContestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/infinite-run': {
+      id: '/api/public/cron/infinite-run'
+      path: '/api/public/cron/infinite-run'
+      fullPath: '/api/public/cron/infinite-run'
+      preLoaderRoute: typeof ApiPublicCronInfiniteRunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/keepalive': {
+      id: '/api/public/cron/keepalive'
+      path: '/api/public/cron/keepalive'
+      fullPath: '/api/public/cron/keepalive'
+      preLoaderRoute: typeof ApiPublicCronKeepaliveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/diagram/$id': {
+      id: '/api/public/diagram/$id'
+      path: '/api/public/diagram/$id'
+      fullPath: '/api/public/diagram/$id'
+      preLoaderRoute: typeof ApiPublicDiagramIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/dedupe-questions': {
+      id: '/api/public/hooks/dedupe-questions'
+      path: '/api/public/hooks/dedupe-questions'
+      fullPath: '/api/public/hooks/dedupe-questions'
+      preLoaderRoute: typeof ApiPublicHooksDedupeQuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/generate-daily-quiz': {
+      id: '/api/public/hooks/generate-daily-quiz'
+      path: '/api/public/hooks/generate-daily-quiz'
+      fullPath: '/api/public/hooks/generate-daily-quiz'
+      preLoaderRoute: typeof ApiPublicHooksGenerateDailyQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/generate-diagram-dpp': {
+      id: '/api/public/hooks/generate-diagram-dpp'
+      path: '/api/public/hooks/generate-diagram-dpp'
+      fullPath: '/api/public/hooks/generate-diagram-dpp'
+      preLoaderRoute: typeof ApiPublicHooksGenerateDiagramDppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/verify-diagram-dpp': {
+      id: '/api/public/hooks/verify-diagram-dpp'
+      path: '/api/public/hooks/verify-diagram-dpp'
+      fullPath: '/api/public/hooks/verify-diagram-dpp'
+      preLoaderRoute: typeof ApiPublicHooksVerifyDiagramDppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/verify-reported-questions': {
+      id: '/api/public/hooks/verify-reported-questions'
+      path: '/api/public/hooks/verify-reported-questions'
+      fullPath: '/api/public/hooks/verify-reported-questions'
+      preLoaderRoute: typeof ApiPublicHooksVerifyReportedQuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/razorpay/order': {
+      id: '/api/public/razorpay/order'
+      path: '/api/public/razorpay/order'
+      fullPath: '/api/public/razorpay/order'
+      preLoaderRoute: typeof ApiPublicRazorpayOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/login': {
+      id: '/api/public/telegram/login'
+      path: '/api/public/telegram/login'
+      fullPath: '/api/public/telegram/login'
+      preLoaderRoute: typeof ApiPublicTelegramLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/study-bot': {
+      id: '/api/public/telegram/study-bot'
+      path: '/api/public/telegram/study-bot'
+      fullPath: '/api/public/telegram/study-bot'
+      preLoaderRoute: typeof ApiPublicTelegramStudyBotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/option-image/$qid/$idx': {
@@ -1766,3 +1766,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
