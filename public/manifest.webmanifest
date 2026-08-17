@@ -1,0 +1,19 @@
+{
+  "name": "Neet Buddy",
+  "short_name": "Neet Buddy",
+  "description": "Crack NEET smarter — daily DPPs, AI quizzes, full mocks, PYQs, flashcards and free live subject battles.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1f6b",
+  "theme_color": "#1d4ed8",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}

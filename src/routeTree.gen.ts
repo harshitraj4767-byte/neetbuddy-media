@@ -10,33 +10,1066 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AdminCollaboratorsRouteImport } from './routes/admin-collaborators'
+import { Route as AdminInboxRouteImport } from './routes/admin-inbox'
+import { Route as AdminMockCategoriesRouteImport } from './routes/admin-mock-categories'
+import { Route as AdminStudyMaterialsRouteImport } from './routes/admin-study-materials'
+import { Route as AiPathRouteImport } from './routes/ai-path'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as ArenaRouteImport } from './routes/arena'
+import { Route as BattlegroundsRouteImport } from './routes/battlegrounds'
+import { Route as BookmarksRouteImport } from './routes/bookmarks'
+import { Route as CollaboratorsRouteImport } from './routes/collaborators'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ContestsRouteImport } from './routes/contests'
+import { Route as DailyRouteImport } from './routes/daily'
+import { Route as DailyChecklistRouteImport } from './routes/daily-checklist'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DedicatedProgramRouteImport } from './routes/dedicated-program'
+import { Route as DeleteAccountRouteImport } from './routes/delete-account'
+import { Route as DppRouteImport } from './routes/dpp'
+import { Route as FeedbackRouteImport } from './routes/feedback'
+import { Route as FlashcardsRouteImport } from './routes/flashcards'
+import { Route as GenerateRouteImport } from './routes/generate'
+import { Route as HighlightedNcertRouteImport } from './routes/highlighted-ncert'
+import { Route as ImprovementRouteImport } from './routes/improvement'
+import { Route as InfiniteRunRouteImport } from './routes/infinite-run'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MentorshipRouteImport } from './routes/mentorship'
+import { Route as MistakesRouteImport } from './routes/mistakes'
+import { Route as MocksRouteImport } from './routes/mocks'
+import { Route as NcertHighlightsRouteImport } from './routes/ncert-highlights'
+import { Route as NeetlabRouteImport } from './routes/neetlab'
+import { Route as PremiumRouteImport } from './routes/premium'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as PyqsRouteImport } from './routes/pyqs'
+import { Route as ReferralsRouteImport } from './routes/referrals'
+import { Route as RefundRouteImport } from './routes/refund'
+import { Route as ScorePredictorRouteImport } from './routes/score-predictor'
+import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
+import { Route as StudyViewRouteImport } from './routes/study-view'
+import { Route as SubscriptionRouteImport } from './routes/subscription'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AdminFeedbackRouteImport } from './routes/admin.feedback'
+import { Route as AdminQuestionScanRouteImport } from './routes/admin.question-scan'
+import { Route as AdminSupportRouteImport } from './routes/admin.support'
+import { Route as AnalysisAttemptIdRouteImport } from './routes/analysis.$attemptId'
+import { Route as BatchesBatchIdRouteImport } from './routes/batches.$batchId'
+import { Route as BatchesCompareRouteImport } from './routes/batches.compare'
+import { Route as BattlegroundsHistoryRouteImport } from './routes/battlegrounds.history'
+import { Route as BattlegroundsViewAllRouteImport } from './routes/battlegrounds.view-all'
+import { Route as ContestContestIdRouteImport } from './routes/contest.$contestId'
+import { Route as QuizTestIdRouteImport } from './routes/quiz.$testId'
+import { Route as StudyGroupsIndexRouteImport } from './routes/study-groups.index'
+import { Route as StudyGroupsGroupIdRouteImport } from './routes/study-groups.$groupId'
+import { Route as SubjectsSubjectRouteImport } from './routes/subjects.$subject'
+import { Route as ApiPublicAppVersionRouteImport } from './routes/api/public/app-version'
+import { Route as BattleMatchIdPlayRouteImport } from './routes/battle.$matchId.play'
+import { Route as BattleMatchIdResultRouteImport } from './routes/battle.$matchId.result'
+import { Route as ContestContestIdJoinRouteImport } from './routes/contest.$contestId.join'
+import { Route as ContestContestIdResultsRouteImport } from './routes/contest.$contestId.results'
+import { Route as PyqsResultAttemptIdRouteImport } from './routes/pyqs.result.$attemptId'
+import { Route as ApiPublicCronDailyContestRouteImport } from './routes/api/public/cron.daily-contest'
+import { Route as ApiPublicCronDailyDppRouteImport } from './routes/api/public/cron.daily-dpp'
+import { Route as ApiPublicCronFinalizeContestsRouteImport } from './routes/api/public/cron.finalize-contests'
+import { Route as ApiPublicCronInfiniteRunRouteImport } from './routes/api/public/cron.infinite-run'
+import { Route as ApiPublicCronKeepaliveRouteImport } from './routes/api/public/cron.keepalive'
+import { Route as ApiPublicDiagramIdRouteImport } from './routes/api/public/diagram.$id'
+import { Route as ApiPublicHooksDedupeQuestionsRouteImport } from './routes/api/public/hooks/dedupe-questions'
+import { Route as ApiPublicHooksGenerateDailyQuizRouteImport } from './routes/api/public/hooks/generate-daily-quiz'
+import { Route as ApiPublicHooksGenerateDiagramDppRouteImport } from './routes/api/public/hooks/generate-diagram-dpp'
+import { Route as ApiPublicHooksVerifyDiagramDppRouteImport } from './routes/api/public/hooks/verify-diagram-dpp'
+import { Route as ApiPublicHooksVerifyReportedQuestionsRouteImport } from './routes/api/public/hooks/verify-reported-questions'
+import { Route as ApiPublicRazorpayOrderRouteImport } from './routes/api/public/razorpay.order'
+import { Route as ApiPublicTelegramLoginRouteImport } from './routes/api/public/telegram/login'
+import { Route as ApiPublicTelegramStudyBotRouteImport } from './routes/api/public/telegram/study-bot'
+import { Route as ApiPublicOptionImageQidIdxRouteImport } from './routes/api/public/option-image.$qid.$idx'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCollaboratorsRoute = AdminCollaboratorsRouteImport.update({
+  id: '/admin-collaborators',
+  path: '/admin-collaborators',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminInboxRoute = AdminInboxRouteImport.update({
+  id: '/admin-inbox',
+  path: '/admin-inbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMockCategoriesRoute = AdminMockCategoriesRouteImport.update({
+  id: '/admin-mock-categories',
+  path: '/admin-mock-categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminStudyMaterialsRoute = AdminStudyMaterialsRouteImport.update({
+  id: '/admin-study-materials',
+  path: '/admin-study-materials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiPathRoute = AiPathRouteImport.update({
+  id: '/ai-path',
+  path: '/ai-path',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArenaRoute = ArenaRouteImport.update({
+  id: '/arena',
+  path: '/arena',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattlegroundsRoute = BattlegroundsRouteImport.update({
+  id: '/battlegrounds',
+  path: '/battlegrounds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookmarksRoute = BookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaboratorsRoute = CollaboratorsRouteImport.update({
+  id: '/collaborators',
+  path: '/collaborators',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContestsRoute = ContestsRouteImport.update({
+  id: '/contests',
+  path: '/contests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailyRoute = DailyRouteImport.update({
+  id: '/daily',
+  path: '/daily',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailyChecklistRoute = DailyChecklistRouteImport.update({
+  id: '/daily-checklist',
+  path: '/daily-checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DedicatedProgramRoute = DedicatedProgramRouteImport.update({
+  id: '/dedicated-program',
+  path: '/dedicated-program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeleteAccountRoute = DeleteAccountRouteImport.update({
+  id: '/delete-account',
+  path: '/delete-account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DppRoute = DppRouteImport.update({
+  id: '/dpp',
+  path: '/dpp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlashcardsRoute = FlashcardsRouteImport.update({
+  id: '/flashcards',
+  path: '/flashcards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenerateRoute = GenerateRouteImport.update({
+  id: '/generate',
+  path: '/generate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HighlightedNcertRoute = HighlightedNcertRouteImport.update({
+  id: '/highlighted-ncert',
+  path: '/highlighted-ncert',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImprovementRoute = ImprovementRouteImport.update({
+  id: '/improvement',
+  path: '/improvement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InfiniteRunRoute = InfiniteRunRouteImport.update({
+  id: '/infinite-run',
+  path: '/infinite-run',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorshipRoute = MentorshipRouteImport.update({
+  id: '/mentorship',
+  path: '/mentorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MistakesRoute = MistakesRouteImport.update({
+  id: '/mistakes',
+  path: '/mistakes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MocksRoute = MocksRouteImport.update({
+  id: '/mocks',
+  path: '/mocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcertHighlightsRoute = NcertHighlightsRouteImport.update({
+  id: '/ncert-highlights',
+  path: '/ncert-highlights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NeetlabRoute = NeetlabRouteImport.update({
+  id: '/neetlab',
+  path: '/neetlab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PyqsRoute = PyqsRouteImport.update({
+  id: '/pyqs',
+  path: '/pyqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferralsRoute = ReferralsRouteImport.update({
+  id: '/referrals',
+  path: '/referrals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundRoute = RefundRouteImport.update({
+  id: '/refund',
+  path: '/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScorePredictorRoute = ScorePredictorRouteImport.update({
+  id: '/score-predictor',
+  path: '/score-predictor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyEssentialsRoute = StudyEssentialsRouteImport.update({
+  id: '/study-essentials',
+  path: '/study-essentials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyViewRoute = StudyViewRouteImport.update({
+  id: '/study-view',
+  path: '/study-view',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubscriptionRoute = SubscriptionRouteImport.update({
+  id: '/subscription',
+  path: '/subscription',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFeedbackRoute = AdminFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuestionScanRoute = AdminQuestionScanRouteImport.update({
+  id: '/question-scan',
+  path: '/question-scan',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSupportRoute = AdminSupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AnalysisAttemptIdRoute = AnalysisAttemptIdRouteImport.update({
+  id: '/analysis/$attemptId',
+  path: '/analysis/$attemptId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatchesBatchIdRoute = BatchesBatchIdRouteImport.update({
+  id: '/batches/$batchId',
+  path: '/batches/$batchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatchesCompareRoute = BatchesCompareRouteImport.update({
+  id: '/batches/compare',
+  path: '/batches/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattlegroundsHistoryRoute = BattlegroundsHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => BattlegroundsRoute,
+} as any)
+const BattlegroundsViewAllRoute = BattlegroundsViewAllRouteImport.update({
+  id: '/view-all',
+  path: '/view-all',
+  getParentRoute: () => BattlegroundsRoute,
+} as any)
+const ContestContestIdRoute = ContestContestIdRouteImport.update({
+  id: '/contest/$contestId',
+  path: '/contest/$contestId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizTestIdRoute = QuizTestIdRouteImport.update({
+  id: '/quiz/$testId',
+  path: '/quiz/$testId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyGroupsIndexRoute = StudyGroupsIndexRouteImport.update({
+  id: '/study-groups/',
+  path: '/study-groups/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyGroupsGroupIdRoute = StudyGroupsGroupIdRouteImport.update({
+  id: '/study-groups/$groupId',
+  path: '/study-groups/$groupId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubjectsSubjectRoute = SubjectsSubjectRouteImport.update({
+  id: '/subjects/$subject',
+  path: '/subjects/$subject',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAppVersionRoute = ApiPublicAppVersionRouteImport.update({
+  id: '/api/public/app-version',
+  path: '/api/public/app-version',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattleMatchIdPlayRoute = BattleMatchIdPlayRouteImport.update({
+  id: '/battle/$matchId/play',
+  path: '/battle/$matchId/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattleMatchIdResultRoute = BattleMatchIdResultRouteImport.update({
+  id: '/battle/$matchId/result',
+  path: '/battle/$matchId/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContestContestIdJoinRoute = ContestContestIdJoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => ContestContestIdRoute,
+} as any)
+const ContestContestIdResultsRoute = ContestContestIdResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => ContestContestIdRoute,
+} as any)
+const PyqsResultAttemptIdRoute = PyqsResultAttemptIdRouteImport.update({
+  id: '/result/$attemptId',
+  path: '/result/$attemptId',
+  getParentRoute: () => PyqsRoute,
+} as any)
+const ApiPublicCronDailyContestRoute =
+  ApiPublicCronDailyContestRouteImport.update({
+    id: '/api/public/cron/daily-contest',
+    path: '/api/public/cron/daily-contest',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCronDailyDppRoute = ApiPublicCronDailyDppRouteImport.update({
+  id: '/api/public/cron/daily-dpp',
+  path: '/api/public/cron/daily-dpp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicCronFinalizeContestsRoute =
+  ApiPublicCronFinalizeContestsRouteImport.update({
+    id: '/api/public/cron/finalize-contests',
+    path: '/api/public/cron/finalize-contests',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCronInfiniteRunRoute =
+  ApiPublicCronInfiniteRunRouteImport.update({
+    id: '/api/public/cron/infinite-run',
+    path: '/api/public/cron/infinite-run',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCronKeepaliveRoute = ApiPublicCronKeepaliveRouteImport.update({
+  id: '/api/public/cron/keepalive',
+  path: '/api/public/cron/keepalive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicDiagramIdRoute = ApiPublicDiagramIdRouteImport.update({
+  id: '/api/public/diagram/$id',
+  path: '/api/public/diagram/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicHooksDedupeQuestionsRoute =
+  ApiPublicHooksDedupeQuestionsRouteImport.update({
+    id: '/api/public/hooks/dedupe-questions',
+    path: '/api/public/hooks/dedupe-questions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicHooksGenerateDailyQuizRoute =
+  ApiPublicHooksGenerateDailyQuizRouteImport.update({
+    id: '/api/public/hooks/generate-daily-quiz',
+    path: '/api/public/hooks/generate-daily-quiz',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicHooksGenerateDiagramDppRoute =
+  ApiPublicHooksGenerateDiagramDppRouteImport.update({
+    id: '/api/public/hooks/generate-diagram-dpp',
+    path: '/api/public/hooks/generate-diagram-dpp',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicHooksVerifyDiagramDppRoute =
+  ApiPublicHooksVerifyDiagramDppRouteImport.update({
+    id: '/api/public/hooks/verify-diagram-dpp',
+    path: '/api/public/hooks/verify-diagram-dpp',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicHooksVerifyReportedQuestionsRoute =
+  ApiPublicHooksVerifyReportedQuestionsRouteImport.update({
+    id: '/api/public/hooks/verify-reported-questions',
+    path: '/api/public/hooks/verify-reported-questions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicRazorpayOrderRoute = ApiPublicRazorpayOrderRouteImport.update({
+  id: '/api/public/razorpay/order',
+  path: '/api/public/razorpay/order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTelegramLoginRoute = ApiPublicTelegramLoginRouteImport.update({
+  id: '/api/public/telegram/login',
+  path: '/api/public/telegram/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTelegramStudyBotRoute =
+  ApiPublicTelegramStudyBotRouteImport.update({
+    id: '/api/public/telegram/study-bot',
+    path: '/api/public/telegram/study-bot',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicOptionImageQidIdxRoute =
+  ApiPublicOptionImageQidIdxRouteImport.update({
+    id: '/api/public/option-image/$qid/$idx',
+    path: '/api/public/option-image/$qid/$idx',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/admin-collaborators': typeof AdminCollaboratorsRoute
+  '/admin-inbox': typeof AdminInboxRoute
+  '/admin-mock-categories': typeof AdminMockCategoriesRoute
+  '/admin-study-materials': typeof AdminStudyMaterialsRoute
+  '/ai-path': typeof AiPathRoute
+  '/analytics': typeof AnalyticsRoute
+  '/arena': typeof ArenaRoute
+  '/battlegrounds': typeof BattlegroundsRouteWithChildren
+  '/bookmarks': typeof BookmarksRoute
+  '/collaborators': typeof CollaboratorsRoute
+  '/community': typeof CommunityRoute
+  '/contests': typeof ContestsRoute
+  '/daily': typeof DailyRoute
+  '/daily-checklist': typeof DailyChecklistRoute
+  '/dashboard': typeof DashboardRoute
+  '/dedicated-program': typeof DedicatedProgramRoute
+  '/delete-account': typeof DeleteAccountRoute
+  '/dpp': typeof DppRoute
+  '/feedback': typeof FeedbackRoute
+  '/flashcards': typeof FlashcardsRoute
+  '/generate': typeof GenerateRoute
+  '/highlighted-ncert': typeof HighlightedNcertRoute
+  '/improvement': typeof ImprovementRoute
+  '/infinite-run': typeof InfiniteRunRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/mentorship': typeof MentorshipRoute
+  '/mistakes': typeof MistakesRoute
+  '/mocks': typeof MocksRoute
+  '/ncert-highlights': typeof NcertHighlightsRoute
+  '/neetlab': typeof NeetlabRoute
+  '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/progress': typeof ProgressRoute
+  '/pyqs': typeof PyqsRouteWithChildren
+  '/referrals': typeof ReferralsRoute
+  '/refund': typeof RefundRoute
+  '/score-predictor': typeof ScorePredictorRoute
+  '/study-essentials': typeof StudyEssentialsRoute
+  '/study-view': typeof StudyViewRoute
+  '/subscription': typeof SubscriptionRoute
+  '/terms': typeof TermsRoute
+  '/admin/feedback': typeof AdminFeedbackRoute
+  '/admin/question-scan': typeof AdminQuestionScanRoute
+  '/admin/support': typeof AdminSupportRoute
+  '/analysis/$attemptId': typeof AnalysisAttemptIdRoute
+  '/batches/$batchId': typeof BatchesBatchIdRoute
+  '/batches/compare': typeof BatchesCompareRoute
+  '/battlegrounds/history': typeof BattlegroundsHistoryRoute
+  '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
+  '/contest/$contestId': typeof ContestContestIdRouteWithChildren
+  '/quiz/$testId': typeof QuizTestIdRoute
+  '/study-groups/$groupId': typeof StudyGroupsGroupIdRoute
+  '/subjects/$subject': typeof SubjectsSubjectRoute
+  '/study-groups/': typeof StudyGroupsIndexRoute
+  '/api/public/app-version': typeof ApiPublicAppVersionRoute
+  '/battle/$matchId/play': typeof BattleMatchIdPlayRoute
+  '/battle/$matchId/result': typeof BattleMatchIdResultRoute
+  '/contest/$contestId/join': typeof ContestContestIdJoinRoute
+  '/contest/$contestId/results': typeof ContestContestIdResultsRoute
+  '/pyqs/result/$attemptId': typeof PyqsResultAttemptIdRoute
+  '/api/public/cron/daily-contest': typeof ApiPublicCronDailyContestRoute
+  '/api/public/cron/daily-dpp': typeof ApiPublicCronDailyDppRoute
+  '/api/public/cron/finalize-contests': typeof ApiPublicCronFinalizeContestsRoute
+  '/api/public/cron/infinite-run': typeof ApiPublicCronInfiniteRunRoute
+  '/api/public/cron/keepalive': typeof ApiPublicCronKeepaliveRoute
+  '/api/public/diagram/$id': typeof ApiPublicDiagramIdRoute
+  '/api/public/hooks/dedupe-questions': typeof ApiPublicHooksDedupeQuestionsRoute
+  '/api/public/hooks/generate-daily-quiz': typeof ApiPublicHooksGenerateDailyQuizRoute
+  '/api/public/hooks/generate-diagram-dpp': typeof ApiPublicHooksGenerateDiagramDppRoute
+  '/api/public/hooks/verify-diagram-dpp': typeof ApiPublicHooksVerifyDiagramDppRoute
+  '/api/public/hooks/verify-reported-questions': typeof ApiPublicHooksVerifyReportedQuestionsRoute
+  '/api/public/razorpay/order': typeof ApiPublicRazorpayOrderRoute
+  '/api/public/telegram/login': typeof ApiPublicTelegramLoginRoute
+  '/api/public/telegram/study-bot': typeof ApiPublicTelegramStudyBotRoute
+  '/api/public/option-image/$qid/$idx': typeof ApiPublicOptionImageQidIdxRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/admin-collaborators': typeof AdminCollaboratorsRoute
+  '/admin-inbox': typeof AdminInboxRoute
+  '/admin-mock-categories': typeof AdminMockCategoriesRoute
+  '/admin-study-materials': typeof AdminStudyMaterialsRoute
+  '/ai-path': typeof AiPathRoute
+  '/analytics': typeof AnalyticsRoute
+  '/arena': typeof ArenaRoute
+  '/battlegrounds': typeof BattlegroundsRouteWithChildren
+  '/bookmarks': typeof BookmarksRoute
+  '/collaborators': typeof CollaboratorsRoute
+  '/community': typeof CommunityRoute
+  '/contests': typeof ContestsRoute
+  '/daily': typeof DailyRoute
+  '/daily-checklist': typeof DailyChecklistRoute
+  '/dashboard': typeof DashboardRoute
+  '/dedicated-program': typeof DedicatedProgramRoute
+  '/delete-account': typeof DeleteAccountRoute
+  '/dpp': typeof DppRoute
+  '/feedback': typeof FeedbackRoute
+  '/flashcards': typeof FlashcardsRoute
+  '/generate': typeof GenerateRoute
+  '/highlighted-ncert': typeof HighlightedNcertRoute
+  '/improvement': typeof ImprovementRoute
+  '/infinite-run': typeof InfiniteRunRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/mentorship': typeof MentorshipRoute
+  '/mistakes': typeof MistakesRoute
+  '/mocks': typeof MocksRoute
+  '/ncert-highlights': typeof NcertHighlightsRoute
+  '/neetlab': typeof NeetlabRoute
+  '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/progress': typeof ProgressRoute
+  '/pyqs': typeof PyqsRouteWithChildren
+  '/referrals': typeof ReferralsRoute
+  '/refund': typeof RefundRoute
+  '/score-predictor': typeof ScorePredictorRoute
+  '/study-essentials': typeof StudyEssentialsRoute
+  '/study-view': typeof StudyViewRoute
+  '/subscription': typeof SubscriptionRoute
+  '/terms': typeof TermsRoute
+  '/admin/feedback': typeof AdminFeedbackRoute
+  '/admin/question-scan': typeof AdminQuestionScanRoute
+  '/admin/support': typeof AdminSupportRoute
+  '/analysis/$attemptId': typeof AnalysisAttemptIdRoute
+  '/batches/$batchId': typeof BatchesBatchIdRoute
+  '/batches/compare': typeof BatchesCompareRoute
+  '/battlegrounds/history': typeof BattlegroundsHistoryRoute
+  '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
+  '/contest/$contestId': typeof ContestContestIdRouteWithChildren
+  '/quiz/$testId': typeof QuizTestIdRoute
+  '/study-groups/$groupId': typeof StudyGroupsGroupIdRoute
+  '/subjects/$subject': typeof SubjectsSubjectRoute
+  '/study-groups': typeof StudyGroupsIndexRoute
+  '/api/public/app-version': typeof ApiPublicAppVersionRoute
+  '/battle/$matchId/play': typeof BattleMatchIdPlayRoute
+  '/battle/$matchId/result': typeof BattleMatchIdResultRoute
+  '/contest/$contestId/join': typeof ContestContestIdJoinRoute
+  '/contest/$contestId/results': typeof ContestContestIdResultsRoute
+  '/pyqs/result/$attemptId': typeof PyqsResultAttemptIdRoute
+  '/api/public/cron/daily-contest': typeof ApiPublicCronDailyContestRoute
+  '/api/public/cron/daily-dpp': typeof ApiPublicCronDailyDppRoute
+  '/api/public/cron/finalize-contests': typeof ApiPublicCronFinalizeContestsRoute
+  '/api/public/cron/infinite-run': typeof ApiPublicCronInfiniteRunRoute
+  '/api/public/cron/keepalive': typeof ApiPublicCronKeepaliveRoute
+  '/api/public/diagram/$id': typeof ApiPublicDiagramIdRoute
+  '/api/public/hooks/dedupe-questions': typeof ApiPublicHooksDedupeQuestionsRoute
+  '/api/public/hooks/generate-daily-quiz': typeof ApiPublicHooksGenerateDailyQuizRoute
+  '/api/public/hooks/generate-diagram-dpp': typeof ApiPublicHooksGenerateDiagramDppRoute
+  '/api/public/hooks/verify-diagram-dpp': typeof ApiPublicHooksVerifyDiagramDppRoute
+  '/api/public/hooks/verify-reported-questions': typeof ApiPublicHooksVerifyReportedQuestionsRoute
+  '/api/public/razorpay/order': typeof ApiPublicRazorpayOrderRoute
+  '/api/public/telegram/login': typeof ApiPublicTelegramLoginRoute
+  '/api/public/telegram/study-bot': typeof ApiPublicTelegramStudyBotRoute
+  '/api/public/option-image/$qid/$idx': typeof ApiPublicOptionImageQidIdxRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/admin-collaborators': typeof AdminCollaboratorsRoute
+  '/admin-inbox': typeof AdminInboxRoute
+  '/admin-mock-categories': typeof AdminMockCategoriesRoute
+  '/admin-study-materials': typeof AdminStudyMaterialsRoute
+  '/ai-path': typeof AiPathRoute
+  '/analytics': typeof AnalyticsRoute
+  '/arena': typeof ArenaRoute
+  '/battlegrounds': typeof BattlegroundsRouteWithChildren
+  '/bookmarks': typeof BookmarksRoute
+  '/collaborators': typeof CollaboratorsRoute
+  '/community': typeof CommunityRoute
+  '/contests': typeof ContestsRoute
+  '/daily': typeof DailyRoute
+  '/daily-checklist': typeof DailyChecklistRoute
+  '/dashboard': typeof DashboardRoute
+  '/dedicated-program': typeof DedicatedProgramRoute
+  '/delete-account': typeof DeleteAccountRoute
+  '/dpp': typeof DppRoute
+  '/feedback': typeof FeedbackRoute
+  '/flashcards': typeof FlashcardsRoute
+  '/generate': typeof GenerateRoute
+  '/highlighted-ncert': typeof HighlightedNcertRoute
+  '/improvement': typeof ImprovementRoute
+  '/infinite-run': typeof InfiniteRunRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/mentorship': typeof MentorshipRoute
+  '/mistakes': typeof MistakesRoute
+  '/mocks': typeof MocksRoute
+  '/ncert-highlights': typeof NcertHighlightsRoute
+  '/neetlab': typeof NeetlabRoute
+  '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/progress': typeof ProgressRoute
+  '/pyqs': typeof PyqsRouteWithChildren
+  '/referrals': typeof ReferralsRoute
+  '/refund': typeof RefundRoute
+  '/score-predictor': typeof ScorePredictorRoute
+  '/study-essentials': typeof StudyEssentialsRoute
+  '/study-view': typeof StudyViewRoute
+  '/subscription': typeof SubscriptionRoute
+  '/terms': typeof TermsRoute
+  '/admin/feedback': typeof AdminFeedbackRoute
+  '/admin/question-scan': typeof AdminQuestionScanRoute
+  '/admin/support': typeof AdminSupportRoute
+  '/analysis/$attemptId': typeof AnalysisAttemptIdRoute
+  '/batches/$batchId': typeof BatchesBatchIdRoute
+  '/batches/compare': typeof BatchesCompareRoute
+  '/battlegrounds/history': typeof BattlegroundsHistoryRoute
+  '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
+  '/contest/$contestId': typeof ContestContestIdRouteWithChildren
+  '/quiz/$testId': typeof QuizTestIdRoute
+  '/study-groups/$groupId': typeof StudyGroupsGroupIdRoute
+  '/subjects/$subject': typeof SubjectsSubjectRoute
+  '/study-groups/': typeof StudyGroupsIndexRoute
+  '/api/public/app-version': typeof ApiPublicAppVersionRoute
+  '/battle/$matchId/play': typeof BattleMatchIdPlayRoute
+  '/battle/$matchId/result': typeof BattleMatchIdResultRoute
+  '/contest/$contestId/join': typeof ContestContestIdJoinRoute
+  '/contest/$contestId/results': typeof ContestContestIdResultsRoute
+  '/pyqs/result/$attemptId': typeof PyqsResultAttemptIdRoute
+  '/api/public/cron/daily-contest': typeof ApiPublicCronDailyContestRoute
+  '/api/public/cron/daily-dpp': typeof ApiPublicCronDailyDppRoute
+  '/api/public/cron/finalize-contests': typeof ApiPublicCronFinalizeContestsRoute
+  '/api/public/cron/infinite-run': typeof ApiPublicCronInfiniteRunRoute
+  '/api/public/cron/keepalive': typeof ApiPublicCronKeepaliveRoute
+  '/api/public/diagram/$id': typeof ApiPublicDiagramIdRoute
+  '/api/public/hooks/dedupe-questions': typeof ApiPublicHooksDedupeQuestionsRoute
+  '/api/public/hooks/generate-daily-quiz': typeof ApiPublicHooksGenerateDailyQuizRoute
+  '/api/public/hooks/generate-diagram-dpp': typeof ApiPublicHooksGenerateDiagramDppRoute
+  '/api/public/hooks/verify-diagram-dpp': typeof ApiPublicHooksVerifyDiagramDppRoute
+  '/api/public/hooks/verify-reported-questions': typeof ApiPublicHooksVerifyReportedQuestionsRoute
+  '/api/public/razorpay/order': typeof ApiPublicRazorpayOrderRoute
+  '/api/public/telegram/login': typeof ApiPublicTelegramLoginRoute
+  '/api/public/telegram/study-bot': typeof ApiPublicTelegramStudyBotRoute
+  '/api/public/option-image/$qid/$idx': typeof ApiPublicOptionImageQidIdxRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/admin-collaborators'
+    | '/admin-inbox'
+    | '/admin-mock-categories'
+    | '/admin-study-materials'
+    | '/ai-path'
+    | '/analytics'
+    | '/arena'
+    | '/battlegrounds'
+    | '/bookmarks'
+    | '/collaborators'
+    | '/community'
+    | '/contests'
+    | '/daily'
+    | '/daily-checklist'
+    | '/dashboard'
+    | '/dedicated-program'
+    | '/delete-account'
+    | '/dpp'
+    | '/feedback'
+    | '/flashcards'
+    | '/generate'
+    | '/highlighted-ncert'
+    | '/improvement'
+    | '/infinite-run'
+    | '/leaderboard'
+    | '/login'
+    | '/mentorship'
+    | '/mistakes'
+    | '/mocks'
+    | '/ncert-highlights'
+    | '/neetlab'
+    | '/premium'
+    | '/privacy'
+    | '/profile'
+    | '/progress'
+    | '/pyqs'
+    | '/referrals'
+    | '/refund'
+    | '/score-predictor'
+    | '/study-essentials'
+    | '/study-view'
+    | '/subscription'
+    | '/terms'
+    | '/admin/feedback'
+    | '/admin/question-scan'
+    | '/admin/support'
+    | '/analysis/$attemptId'
+    | '/batches/$batchId'
+    | '/batches/compare'
+    | '/battlegrounds/history'
+    | '/battlegrounds/view-all'
+    | '/contest/$contestId'
+    | '/quiz/$testId'
+    | '/study-groups/$groupId'
+    | '/subjects/$subject'
+    | '/study-groups/'
+    | '/api/public/app-version'
+    | '/battle/$matchId/play'
+    | '/battle/$matchId/result'
+    | '/contest/$contestId/join'
+    | '/contest/$contestId/results'
+    | '/pyqs/result/$attemptId'
+    | '/api/public/cron/daily-contest'
+    | '/api/public/cron/daily-dpp'
+    | '/api/public/cron/finalize-contests'
+    | '/api/public/cron/infinite-run'
+    | '/api/public/cron/keepalive'
+    | '/api/public/diagram/$id'
+    | '/api/public/hooks/dedupe-questions'
+    | '/api/public/hooks/generate-daily-quiz'
+    | '/api/public/hooks/generate-diagram-dpp'
+    | '/api/public/hooks/verify-diagram-dpp'
+    | '/api/public/hooks/verify-reported-questions'
+    | '/api/public/razorpay/order'
+    | '/api/public/telegram/login'
+    | '/api/public/telegram/study-bot'
+    | '/api/public/option-image/$qid/$idx'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/admin-collaborators'
+    | '/admin-inbox'
+    | '/admin-mock-categories'
+    | '/admin-study-materials'
+    | '/ai-path'
+    | '/analytics'
+    | '/arena'
+    | '/battlegrounds'
+    | '/bookmarks'
+    | '/collaborators'
+    | '/community'
+    | '/contests'
+    | '/daily'
+    | '/daily-checklist'
+    | '/dashboard'
+    | '/dedicated-program'
+    | '/delete-account'
+    | '/dpp'
+    | '/feedback'
+    | '/flashcards'
+    | '/generate'
+    | '/highlighted-ncert'
+    | '/improvement'
+    | '/infinite-run'
+    | '/leaderboard'
+    | '/login'
+    | '/mentorship'
+    | '/mistakes'
+    | '/mocks'
+    | '/ncert-highlights'
+    | '/neetlab'
+    | '/premium'
+    | '/privacy'
+    | '/profile'
+    | '/progress'
+    | '/pyqs'
+    | '/referrals'
+    | '/refund'
+    | '/score-predictor'
+    | '/study-essentials'
+    | '/study-view'
+    | '/subscription'
+    | '/terms'
+    | '/admin/feedback'
+    | '/admin/question-scan'
+    | '/admin/support'
+    | '/analysis/$attemptId'
+    | '/batches/$batchId'
+    | '/batches/compare'
+    | '/battlegrounds/history'
+    | '/battlegrounds/view-all'
+    | '/contest/$contestId'
+    | '/quiz/$testId'
+    | '/study-groups/$groupId'
+    | '/subjects/$subject'
+    | '/study-groups'
+    | '/api/public/app-version'
+    | '/battle/$matchId/play'
+    | '/battle/$matchId/result'
+    | '/contest/$contestId/join'
+    | '/contest/$contestId/results'
+    | '/pyqs/result/$attemptId'
+    | '/api/public/cron/daily-contest'
+    | '/api/public/cron/daily-dpp'
+    | '/api/public/cron/finalize-contests'
+    | '/api/public/cron/infinite-run'
+    | '/api/public/cron/keepalive'
+    | '/api/public/diagram/$id'
+    | '/api/public/hooks/dedupe-questions'
+    | '/api/public/hooks/generate-daily-quiz'
+    | '/api/public/hooks/generate-diagram-dpp'
+    | '/api/public/hooks/verify-diagram-dpp'
+    | '/api/public/hooks/verify-reported-questions'
+    | '/api/public/razorpay/order'
+    | '/api/public/telegram/login'
+    | '/api/public/telegram/study-bot'
+    | '/api/public/option-image/$qid/$idx'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/admin-collaborators'
+    | '/admin-inbox'
+    | '/admin-mock-categories'
+    | '/admin-study-materials'
+    | '/ai-path'
+    | '/analytics'
+    | '/arena'
+    | '/battlegrounds'
+    | '/bookmarks'
+    | '/collaborators'
+    | '/community'
+    | '/contests'
+    | '/daily'
+    | '/daily-checklist'
+    | '/dashboard'
+    | '/dedicated-program'
+    | '/delete-account'
+    | '/dpp'
+    | '/feedback'
+    | '/flashcards'
+    | '/generate'
+    | '/highlighted-ncert'
+    | '/improvement'
+    | '/infinite-run'
+    | '/leaderboard'
+    | '/login'
+    | '/mentorship'
+    | '/mistakes'
+    | '/mocks'
+    | '/ncert-highlights'
+    | '/neetlab'
+    | '/premium'
+    | '/privacy'
+    | '/profile'
+    | '/progress'
+    | '/pyqs'
+    | '/referrals'
+    | '/refund'
+    | '/score-predictor'
+    | '/study-essentials'
+    | '/study-view'
+    | '/subscription'
+    | '/terms'
+    | '/admin/feedback'
+    | '/admin/question-scan'
+    | '/admin/support'
+    | '/analysis/$attemptId'
+    | '/batches/$batchId'
+    | '/batches/compare'
+    | '/battlegrounds/history'
+    | '/battlegrounds/view-all'
+    | '/contest/$contestId'
+    | '/quiz/$testId'
+    | '/study-groups/$groupId'
+    | '/subjects/$subject'
+    | '/study-groups/'
+    | '/api/public/app-version'
+    | '/battle/$matchId/play'
+    | '/battle/$matchId/result'
+    | '/contest/$contestId/join'
+    | '/contest/$contestId/results'
+    | '/pyqs/result/$attemptId'
+    | '/api/public/cron/daily-contest'
+    | '/api/public/cron/daily-dpp'
+    | '/api/public/cron/finalize-contests'
+    | '/api/public/cron/infinite-run'
+    | '/api/public/cron/keepalive'
+    | '/api/public/diagram/$id'
+    | '/api/public/hooks/dedupe-questions'
+    | '/api/public/hooks/generate-daily-quiz'
+    | '/api/public/hooks/generate-diagram-dpp'
+    | '/api/public/hooks/verify-diagram-dpp'
+    | '/api/public/hooks/verify-reported-questions'
+    | '/api/public/razorpay/order'
+    | '/api/public/telegram/login'
+    | '/api/public/telegram/study-bot'
+    | '/api/public/option-image/$qid/$idx'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  AdminCollaboratorsRoute: typeof AdminCollaboratorsRoute
+  AdminInboxRoute: typeof AdminInboxRoute
+  AdminMockCategoriesRoute: typeof AdminMockCategoriesRoute
+  AdminStudyMaterialsRoute: typeof AdminStudyMaterialsRoute
+  AiPathRoute: typeof AiPathRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  ArenaRoute: typeof ArenaRoute
+  BattlegroundsRoute: typeof BattlegroundsRouteWithChildren
+  BookmarksRoute: typeof BookmarksRoute
+  CollaboratorsRoute: typeof CollaboratorsRoute
+  CommunityRoute: typeof CommunityRoute
+  ContestsRoute: typeof ContestsRoute
+  DailyRoute: typeof DailyRoute
+  DailyChecklistRoute: typeof DailyChecklistRoute
+  DashboardRoute: typeof DashboardRoute
+  DedicatedProgramRoute: typeof DedicatedProgramRoute
+  DeleteAccountRoute: typeof DeleteAccountRoute
+  DppRoute: typeof DppRoute
+  FeedbackRoute: typeof FeedbackRoute
+  FlashcardsRoute: typeof FlashcardsRoute
+  GenerateRoute: typeof GenerateRoute
+  HighlightedNcertRoute: typeof HighlightedNcertRoute
+  ImprovementRoute: typeof ImprovementRoute
+  InfiniteRunRoute: typeof InfiniteRunRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  LoginRoute: typeof LoginRoute
+  MentorshipRoute: typeof MentorshipRoute
+  MistakesRoute: typeof MistakesRoute
+  MocksRoute: typeof MocksRoute
+  NcertHighlightsRoute: typeof NcertHighlightsRoute
+  NeetlabRoute: typeof NeetlabRoute
+  PremiumRoute: typeof PremiumRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProfileRoute: typeof ProfileRoute
+  ProgressRoute: typeof ProgressRoute
+  PyqsRoute: typeof PyqsRouteWithChildren
+  ReferralsRoute: typeof ReferralsRoute
+  RefundRoute: typeof RefundRoute
+  ScorePredictorRoute: typeof ScorePredictorRoute
+  StudyEssentialsRoute: typeof StudyEssentialsRoute
+  StudyViewRoute: typeof StudyViewRoute
+  SubscriptionRoute: typeof SubscriptionRoute
+  TermsRoute: typeof TermsRoute
+  AnalysisAttemptIdRoute: typeof AnalysisAttemptIdRoute
+  BatchesBatchIdRoute: typeof BatchesBatchIdRoute
+  BatchesCompareRoute: typeof BatchesCompareRoute
+  ContestContestIdRoute: typeof ContestContestIdRouteWithChildren
+  QuizTestIdRoute: typeof QuizTestIdRoute
+  StudyGroupsGroupIdRoute: typeof StudyGroupsGroupIdRoute
+  SubjectsSubjectRoute: typeof SubjectsSubjectRoute
+  StudyGroupsIndexRoute: typeof StudyGroupsIndexRoute
+  ApiPublicAppVersionRoute: typeof ApiPublicAppVersionRoute
+  BattleMatchIdPlayRoute: typeof BattleMatchIdPlayRoute
+  BattleMatchIdResultRoute: typeof BattleMatchIdResultRoute
+  ApiPublicCronDailyContestRoute: typeof ApiPublicCronDailyContestRoute
+  ApiPublicCronDailyDppRoute: typeof ApiPublicCronDailyDppRoute
+  ApiPublicCronFinalizeContestsRoute: typeof ApiPublicCronFinalizeContestsRoute
+  ApiPublicCronInfiniteRunRoute: typeof ApiPublicCronInfiniteRunRoute
+  ApiPublicCronKeepaliveRoute: typeof ApiPublicCronKeepaliveRoute
+  ApiPublicDiagramIdRoute: typeof ApiPublicDiagramIdRoute
+  ApiPublicHooksDedupeQuestionsRoute: typeof ApiPublicHooksDedupeQuestionsRoute
+  ApiPublicHooksGenerateDailyQuizRoute: typeof ApiPublicHooksGenerateDailyQuizRoute
+  ApiPublicHooksGenerateDiagramDppRoute: typeof ApiPublicHooksGenerateDiagramDppRoute
+  ApiPublicHooksVerifyDiagramDppRoute: typeof ApiPublicHooksVerifyDiagramDppRoute
+  ApiPublicHooksVerifyReportedQuestionsRoute: typeof ApiPublicHooksVerifyReportedQuestionsRoute
+  ApiPublicRazorpayOrderRoute: typeof ApiPublicRazorpayOrderRoute
+  ApiPublicTelegramLoginRoute: typeof ApiPublicTelegramLoginRoute
+  ApiPublicTelegramStudyBotRoute: typeof ApiPublicTelegramStudyBotRoute
+  ApiPublicOptionImageQidIdxRoute: typeof ApiPublicOptionImageQidIdxRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +1081,687 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-collaborators': {
+      id: '/admin-collaborators'
+      path: '/admin-collaborators'
+      fullPath: '/admin-collaborators'
+      preLoaderRoute: typeof AdminCollaboratorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-inbox': {
+      id: '/admin-inbox'
+      path: '/admin-inbox'
+      fullPath: '/admin-inbox'
+      preLoaderRoute: typeof AdminInboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-mock-categories': {
+      id: '/admin-mock-categories'
+      path: '/admin-mock-categories'
+      fullPath: '/admin-mock-categories'
+      preLoaderRoute: typeof AdminMockCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-study-materials': {
+      id: '/admin-study-materials'
+      path: '/admin-study-materials'
+      fullPath: '/admin-study-materials'
+      preLoaderRoute: typeof AdminStudyMaterialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-path': {
+      id: '/ai-path'
+      path: '/ai-path'
+      fullPath: '/ai-path'
+      preLoaderRoute: typeof AiPathRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/arena': {
+      id: '/arena'
+      path: '/arena'
+      fullPath: '/arena'
+      preLoaderRoute: typeof ArenaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battlegrounds': {
+      id: '/battlegrounds'
+      path: '/battlegrounds'
+      fullPath: '/battlegrounds'
+      preLoaderRoute: typeof BattlegroundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bookmarks': {
+      id: '/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof BookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaborators': {
+      id: '/collaborators'
+      path: '/collaborators'
+      fullPath: '/collaborators'
+      preLoaderRoute: typeof CollaboratorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contests': {
+      id: '/contests'
+      path: '/contests'
+      fullPath: '/contests'
+      preLoaderRoute: typeof ContestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily': {
+      id: '/daily'
+      path: '/daily'
+      fullPath: '/daily'
+      preLoaderRoute: typeof DailyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily-checklist': {
+      id: '/daily-checklist'
+      path: '/daily-checklist'
+      fullPath: '/daily-checklist'
+      preLoaderRoute: typeof DailyChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dedicated-program': {
+      id: '/dedicated-program'
+      path: '/dedicated-program'
+      fullPath: '/dedicated-program'
+      preLoaderRoute: typeof DedicatedProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delete-account': {
+      id: '/delete-account'
+      path: '/delete-account'
+      fullPath: '/delete-account'
+      preLoaderRoute: typeof DeleteAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dpp': {
+      id: '/dpp'
+      path: '/dpp'
+      fullPath: '/dpp'
+      preLoaderRoute: typeof DppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flashcards': {
+      id: '/flashcards'
+      path: '/flashcards'
+      fullPath: '/flashcards'
+      preLoaderRoute: typeof FlashcardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/generate': {
+      id: '/generate'
+      path: '/generate'
+      fullPath: '/generate'
+      preLoaderRoute: typeof GenerateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/highlighted-ncert': {
+      id: '/highlighted-ncert'
+      path: '/highlighted-ncert'
+      fullPath: '/highlighted-ncert'
+      preLoaderRoute: typeof HighlightedNcertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/improvement': {
+      id: '/improvement'
+      path: '/improvement'
+      fullPath: '/improvement'
+      preLoaderRoute: typeof ImprovementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/infinite-run': {
+      id: '/infinite-run'
+      path: '/infinite-run'
+      fullPath: '/infinite-run'
+      preLoaderRoute: typeof InfiniteRunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentorship': {
+      id: '/mentorship'
+      path: '/mentorship'
+      fullPath: '/mentorship'
+      preLoaderRoute: typeof MentorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mistakes': {
+      id: '/mistakes'
+      path: '/mistakes'
+      fullPath: '/mistakes'
+      preLoaderRoute: typeof MistakesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mocks': {
+      id: '/mocks'
+      path: '/mocks'
+      fullPath: '/mocks'
+      preLoaderRoute: typeof MocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncert-highlights': {
+      id: '/ncert-highlights'
+      path: '/ncert-highlights'
+      fullPath: '/ncert-highlights'
+      preLoaderRoute: typeof NcertHighlightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/neetlab': {
+      id: '/neetlab'
+      path: '/neetlab'
+      fullPath: '/neetlab'
+      preLoaderRoute: typeof NeetlabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pyqs': {
+      id: '/pyqs'
+      path: '/pyqs'
+      fullPath: '/pyqs'
+      preLoaderRoute: typeof PyqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referrals': {
+      id: '/referrals'
+      path: '/referrals'
+      fullPath: '/referrals'
+      preLoaderRoute: typeof ReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund': {
+      id: '/refund'
+      path: '/refund'
+      fullPath: '/refund'
+      preLoaderRoute: typeof RefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/score-predictor': {
+      id: '/score-predictor'
+      path: '/score-predictor'
+      fullPath: '/score-predictor'
+      preLoaderRoute: typeof ScorePredictorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-essentials': {
+      id: '/study-essentials'
+      path: '/study-essentials'
+      fullPath: '/study-essentials'
+      preLoaderRoute: typeof StudyEssentialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-view': {
+      id: '/study-view'
+      path: '/study-view'
+      fullPath: '/study-view'
+      preLoaderRoute: typeof StudyViewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subscription': {
+      id: '/subscription'
+      path: '/subscription'
+      fullPath: '/subscription'
+      preLoaderRoute: typeof SubscriptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/feedback': {
+      id: '/admin/feedback'
+      path: '/feedback'
+      fullPath: '/admin/feedback'
+      preLoaderRoute: typeof AdminFeedbackRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/question-scan': {
+      id: '/admin/question-scan'
+      path: '/question-scan'
+      fullPath: '/admin/question-scan'
+      preLoaderRoute: typeof AdminQuestionScanRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/support': {
+      id: '/admin/support'
+      path: '/support'
+      fullPath: '/admin/support'
+      preLoaderRoute: typeof AdminSupportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/analysis/$attemptId': {
+      id: '/analysis/$attemptId'
+      path: '/analysis/$attemptId'
+      fullPath: '/analysis/$attemptId'
+      preLoaderRoute: typeof AnalysisAttemptIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/batches/$batchId': {
+      id: '/batches/$batchId'
+      path: '/batches/$batchId'
+      fullPath: '/batches/$batchId'
+      preLoaderRoute: typeof BatchesBatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/batches/compare': {
+      id: '/batches/compare'
+      path: '/batches/compare'
+      fullPath: '/batches/compare'
+      preLoaderRoute: typeof BatchesCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battlegrounds/history': {
+      id: '/battlegrounds/history'
+      path: '/history'
+      fullPath: '/battlegrounds/history'
+      preLoaderRoute: typeof BattlegroundsHistoryRouteImport
+      parentRoute: typeof BattlegroundsRoute
+    }
+    '/battlegrounds/view-all': {
+      id: '/battlegrounds/view-all'
+      path: '/view-all'
+      fullPath: '/battlegrounds/view-all'
+      preLoaderRoute: typeof BattlegroundsViewAllRouteImport
+      parentRoute: typeof BattlegroundsRoute
+    }
+    '/contest/$contestId': {
+      id: '/contest/$contestId'
+      path: '/contest/$contestId'
+      fullPath: '/contest/$contestId'
+      preLoaderRoute: typeof ContestContestIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/$testId': {
+      id: '/quiz/$testId'
+      path: '/quiz/$testId'
+      fullPath: '/quiz/$testId'
+      preLoaderRoute: typeof QuizTestIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-groups/': {
+      id: '/study-groups/'
+      path: '/study-groups'
+      fullPath: '/study-groups/'
+      preLoaderRoute: typeof StudyGroupsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-groups/$groupId': {
+      id: '/study-groups/$groupId'
+      path: '/study-groups/$groupId'
+      fullPath: '/study-groups/$groupId'
+      preLoaderRoute: typeof StudyGroupsGroupIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subjects/$subject': {
+      id: '/subjects/$subject'
+      path: '/subjects/$subject'
+      fullPath: '/subjects/$subject'
+      preLoaderRoute: typeof SubjectsSubjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/app-version': {
+      id: '/api/public/app-version'
+      path: '/api/public/app-version'
+      fullPath: '/api/public/app-version'
+      preLoaderRoute: typeof ApiPublicAppVersionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battle/$matchId/play': {
+      id: '/battle/$matchId/play'
+      path: '/battle/$matchId/play'
+      fullPath: '/battle/$matchId/play'
+      preLoaderRoute: typeof BattleMatchIdPlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battle/$matchId/result': {
+      id: '/battle/$matchId/result'
+      path: '/battle/$matchId/result'
+      fullPath: '/battle/$matchId/result'
+      preLoaderRoute: typeof BattleMatchIdResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contest/$contestId/join': {
+      id: '/contest/$contestId/join'
+      path: '/join'
+      fullPath: '/contest/$contestId/join'
+      preLoaderRoute: typeof ContestContestIdJoinRouteImport
+      parentRoute: typeof ContestContestIdRoute
+    }
+    '/contest/$contestId/results': {
+      id: '/contest/$contestId/results'
+      path: '/results'
+      fullPath: '/contest/$contestId/results'
+      preLoaderRoute: typeof ContestContestIdResultsRouteImport
+      parentRoute: typeof ContestContestIdRoute
+    }
+    '/pyqs/result/$attemptId': {
+      id: '/pyqs/result/$attemptId'
+      path: '/result/$attemptId'
+      fullPath: '/pyqs/result/$attemptId'
+      preLoaderRoute: typeof PyqsResultAttemptIdRouteImport
+      parentRoute: typeof PyqsRoute
+    }
+    '/api/public/cron/daily-contest': {
+      id: '/api/public/cron/daily-contest'
+      path: '/api/public/cron/daily-contest'
+      fullPath: '/api/public/cron/daily-contest'
+      preLoaderRoute: typeof ApiPublicCronDailyContestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/daily-dpp': {
+      id: '/api/public/cron/daily-dpp'
+      path: '/api/public/cron/daily-dpp'
+      fullPath: '/api/public/cron/daily-dpp'
+      preLoaderRoute: typeof ApiPublicCronDailyDppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/finalize-contests': {
+      id: '/api/public/cron/finalize-contests'
+      path: '/api/public/cron/finalize-contests'
+      fullPath: '/api/public/cron/finalize-contests'
+      preLoaderRoute: typeof ApiPublicCronFinalizeContestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/infinite-run': {
+      id: '/api/public/cron/infinite-run'
+      path: '/api/public/cron/infinite-run'
+      fullPath: '/api/public/cron/infinite-run'
+      preLoaderRoute: typeof ApiPublicCronInfiniteRunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/cron/keepalive': {
+      id: '/api/public/cron/keepalive'
+      path: '/api/public/cron/keepalive'
+      fullPath: '/api/public/cron/keepalive'
+      preLoaderRoute: typeof ApiPublicCronKeepaliveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/diagram/$id': {
+      id: '/api/public/diagram/$id'
+      path: '/api/public/diagram/$id'
+      fullPath: '/api/public/diagram/$id'
+      preLoaderRoute: typeof ApiPublicDiagramIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/dedupe-questions': {
+      id: '/api/public/hooks/dedupe-questions'
+      path: '/api/public/hooks/dedupe-questions'
+      fullPath: '/api/public/hooks/dedupe-questions'
+      preLoaderRoute: typeof ApiPublicHooksDedupeQuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/generate-daily-quiz': {
+      id: '/api/public/hooks/generate-daily-quiz'
+      path: '/api/public/hooks/generate-daily-quiz'
+      fullPath: '/api/public/hooks/generate-daily-quiz'
+      preLoaderRoute: typeof ApiPublicHooksGenerateDailyQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/generate-diagram-dpp': {
+      id: '/api/public/hooks/generate-diagram-dpp'
+      path: '/api/public/hooks/generate-diagram-dpp'
+      fullPath: '/api/public/hooks/generate-diagram-dpp'
+      preLoaderRoute: typeof ApiPublicHooksGenerateDiagramDppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/verify-diagram-dpp': {
+      id: '/api/public/hooks/verify-diagram-dpp'
+      path: '/api/public/hooks/verify-diagram-dpp'
+      fullPath: '/api/public/hooks/verify-diagram-dpp'
+      preLoaderRoute: typeof ApiPublicHooksVerifyDiagramDppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/verify-reported-questions': {
+      id: '/api/public/hooks/verify-reported-questions'
+      path: '/api/public/hooks/verify-reported-questions'
+      fullPath: '/api/public/hooks/verify-reported-questions'
+      preLoaderRoute: typeof ApiPublicHooksVerifyReportedQuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/razorpay/order': {
+      id: '/api/public/razorpay/order'
+      path: '/api/public/razorpay/order'
+      fullPath: '/api/public/razorpay/order'
+      preLoaderRoute: typeof ApiPublicRazorpayOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/login': {
+      id: '/api/public/telegram/login'
+      path: '/api/public/telegram/login'
+      fullPath: '/api/public/telegram/login'
+      preLoaderRoute: typeof ApiPublicTelegramLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/study-bot': {
+      id: '/api/public/telegram/study-bot'
+      path: '/api/public/telegram/study-bot'
+      fullPath: '/api/public/telegram/study-bot'
+      preLoaderRoute: typeof ApiPublicTelegramStudyBotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/option-image/$qid/$idx': {
+      id: '/api/public/option-image/$qid/$idx'
+      path: '/api/public/option-image/$qid/$idx'
+      fullPath: '/api/public/option-image/$qid/$idx'
+      preLoaderRoute: typeof ApiPublicOptionImageQidIdxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminFeedbackRoute: typeof AdminFeedbackRoute
+  AdminQuestionScanRoute: typeof AdminQuestionScanRoute
+  AdminSupportRoute: typeof AdminSupportRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminFeedbackRoute: AdminFeedbackRoute,
+  AdminQuestionScanRoute: AdminQuestionScanRoute,
+  AdminSupportRoute: AdminSupportRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface BattlegroundsRouteChildren {
+  BattlegroundsHistoryRoute: typeof BattlegroundsHistoryRoute
+  BattlegroundsViewAllRoute: typeof BattlegroundsViewAllRoute
+}
+
+const BattlegroundsRouteChildren: BattlegroundsRouteChildren = {
+  BattlegroundsHistoryRoute: BattlegroundsHistoryRoute,
+  BattlegroundsViewAllRoute: BattlegroundsViewAllRoute,
+}
+
+const BattlegroundsRouteWithChildren = BattlegroundsRoute._addFileChildren(
+  BattlegroundsRouteChildren,
+)
+
+interface PyqsRouteChildren {
+  PyqsResultAttemptIdRoute: typeof PyqsResultAttemptIdRoute
+}
+
+const PyqsRouteChildren: PyqsRouteChildren = {
+  PyqsResultAttemptIdRoute: PyqsResultAttemptIdRoute,
+}
+
+const PyqsRouteWithChildren = PyqsRoute._addFileChildren(PyqsRouteChildren)
+
+interface ContestContestIdRouteChildren {
+  ContestContestIdJoinRoute: typeof ContestContestIdJoinRoute
+  ContestContestIdResultsRoute: typeof ContestContestIdResultsRoute
+}
+
+const ContestContestIdRouteChildren: ContestContestIdRouteChildren = {
+  ContestContestIdJoinRoute: ContestContestIdJoinRoute,
+  ContestContestIdResultsRoute: ContestContestIdResultsRoute,
+}
+
+const ContestContestIdRouteWithChildren =
+  ContestContestIdRoute._addFileChildren(ContestContestIdRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
+  AdminCollaboratorsRoute: AdminCollaboratorsRoute,
+  AdminInboxRoute: AdminInboxRoute,
+  AdminMockCategoriesRoute: AdminMockCategoriesRoute,
+  AdminStudyMaterialsRoute: AdminStudyMaterialsRoute,
+  AiPathRoute: AiPathRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  ArenaRoute: ArenaRoute,
+  BattlegroundsRoute: BattlegroundsRouteWithChildren,
+  BookmarksRoute: BookmarksRoute,
+  CollaboratorsRoute: CollaboratorsRoute,
+  CommunityRoute: CommunityRoute,
+  ContestsRoute: ContestsRoute,
+  DailyRoute: DailyRoute,
+  DailyChecklistRoute: DailyChecklistRoute,
+  DashboardRoute: DashboardRoute,
+  DedicatedProgramRoute: DedicatedProgramRoute,
+  DeleteAccountRoute: DeleteAccountRoute,
+  DppRoute: DppRoute,
+  FeedbackRoute: FeedbackRoute,
+  FlashcardsRoute: FlashcardsRoute,
+  GenerateRoute: GenerateRoute,
+  HighlightedNcertRoute: HighlightedNcertRoute,
+  ImprovementRoute: ImprovementRoute,
+  InfiniteRunRoute: InfiniteRunRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  LoginRoute: LoginRoute,
+  MentorshipRoute: MentorshipRoute,
+  MistakesRoute: MistakesRoute,
+  MocksRoute: MocksRoute,
+  NcertHighlightsRoute: NcertHighlightsRoute,
+  NeetlabRoute: NeetlabRoute,
+  PremiumRoute: PremiumRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProfileRoute: ProfileRoute,
+  ProgressRoute: ProgressRoute,
+  PyqsRoute: PyqsRouteWithChildren,
+  ReferralsRoute: ReferralsRoute,
+  RefundRoute: RefundRoute,
+  ScorePredictorRoute: ScorePredictorRoute,
+  StudyEssentialsRoute: StudyEssentialsRoute,
+  StudyViewRoute: StudyViewRoute,
+  SubscriptionRoute: SubscriptionRoute,
+  TermsRoute: TermsRoute,
+  AnalysisAttemptIdRoute: AnalysisAttemptIdRoute,
+  BatchesBatchIdRoute: BatchesBatchIdRoute,
+  BatchesCompareRoute: BatchesCompareRoute,
+  ContestContestIdRoute: ContestContestIdRouteWithChildren,
+  QuizTestIdRoute: QuizTestIdRoute,
+  StudyGroupsGroupIdRoute: StudyGroupsGroupIdRoute,
+  SubjectsSubjectRoute: SubjectsSubjectRoute,
+  StudyGroupsIndexRoute: StudyGroupsIndexRoute,
+  ApiPublicAppVersionRoute: ApiPublicAppVersionRoute,
+  BattleMatchIdPlayRoute: BattleMatchIdPlayRoute,
+  BattleMatchIdResultRoute: BattleMatchIdResultRoute,
+  ApiPublicCronDailyContestRoute: ApiPublicCronDailyContestRoute,
+  ApiPublicCronDailyDppRoute: ApiPublicCronDailyDppRoute,
+  ApiPublicCronFinalizeContestsRoute: ApiPublicCronFinalizeContestsRoute,
+  ApiPublicCronInfiniteRunRoute: ApiPublicCronInfiniteRunRoute,
+  ApiPublicCronKeepaliveRoute: ApiPublicCronKeepaliveRoute,
+  ApiPublicDiagramIdRoute: ApiPublicDiagramIdRoute,
+  ApiPublicHooksDedupeQuestionsRoute: ApiPublicHooksDedupeQuestionsRoute,
+  ApiPublicHooksGenerateDailyQuizRoute: ApiPublicHooksGenerateDailyQuizRoute,
+  ApiPublicHooksGenerateDiagramDppRoute: ApiPublicHooksGenerateDiagramDppRoute,
+  ApiPublicHooksVerifyDiagramDppRoute: ApiPublicHooksVerifyDiagramDppRoute,
+  ApiPublicHooksVerifyReportedQuestionsRoute:
+    ApiPublicHooksVerifyReportedQuestionsRoute,
+  ApiPublicRazorpayOrderRoute: ApiPublicRazorpayOrderRoute,
+  ApiPublicTelegramLoginRoute: ApiPublicTelegramLoginRoute,
+  ApiPublicTelegramStudyBotRoute: ApiPublicTelegramStudyBotRoute,
+  ApiPublicOptionImageQidIdxRoute: ApiPublicOptionImageQidIdxRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

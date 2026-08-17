@@ -1,15 +1,30 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - TanStack devtools (dev-only, first), tanstackStart, viteReact, tailwindcss, tsConfigPaths,
-//     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
-//     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+// Bake public Supabase URL + publishable key into the client bundle from
+// the canonical runtime secrets. One env per value:
+//   SB_URL, SB_PUBLISHABLE_KEY  (client-visible; baked at build time)
+//   SB_SERVICE_ROLE_KEY, SB_DB_URL, SB_PROJECT_ID  (server-only)
+const APP_SUPABASE_URL = JSON.stringify(process.env.SB_URL ?? "");
+const APP_SUPABASE_PUBLISHABLE_KEY = JSON.stringify(
+  process.env.SB_PUBLISHABLE_KEY ?? "",
+);
 
 export default defineConfig({
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
     server: { entry: "server" },
+  },
+  nitro: {
+    preset: "cloudflare-module",
+    output: {
+      dir: "dist",
+      serverDir: "dist/server",
+      publicDir: "dist/client",
+    },
+  },
+  vite: {
+    define: {
+      __APP_SUPABASE_URL__: APP_SUPABASE_URL,
+      __APP_SUPABASE_PUBLISHABLE_KEY__: APP_SUPABASE_PUBLISHABLE_KEY,
+    },
   },
 });
