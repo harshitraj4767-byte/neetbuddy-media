@@ -24,9 +24,12 @@ class RichTextBoundary extends Component<
 }
 
 function toPlainText(src: string): string {
+  if (!src) return "";
   return src
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/?(?:p|div|li|tr)>/gi, "\n")
+    // Preserve image info before stripping tags
+    .replace(/<img\b[^>]+src=["']([^"']+)["'][^>]*>/gi, " [Image: $1] ")
     .replace(/<[^>]+>/g, "")
     .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/g, "&")

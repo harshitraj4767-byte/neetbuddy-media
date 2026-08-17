@@ -72,9 +72,13 @@ export function attachQuestionMedia<T extends MediaQuestion>(
   }
 
   const options = (q.options ?? []).map((o, i) => {
-    if (!extra?.optionImageIndexes?.has(i)) return o;
-    const url = `/api/public/option-image/${q.id}/${i}`;
+    // Image-only options are sometimes stored as an empty string / [image]
+    // while the metadata SELECT is unavailable to the browser. Still point
+    // them at the authenticated image endpoint; RichText hides a genuine 404.
     const plain = (o ?? "").trim();
+    const looksImageOnly = !plain || /^\[image\]$/i.test(plain);
+    if (!extra?.optionImageIndexes?.has(i) && !looksImageOnly) return o;
+    const url = `/api/public/option-image/${q.id}/${i}`;
     const label = plain && plain !== "[image]" ? plain : "";
     return `${label ? label + "\n\n" : ""}![option](${url})`;
   });
