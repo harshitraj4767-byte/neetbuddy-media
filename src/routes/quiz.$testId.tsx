@@ -142,6 +142,7 @@ function QuizPlayer() {
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   const [progressReady, setProgressReady] = useState(false);
   const startedAt = useRef<number>(Date.now());
+  const deadlineRef = useRef<number | null>(null);
   const paletteRef = useRef<HTMLDivElement>(null);
   const isContest = test?.type === "contest";
   const isMock = test?.type === "mock";
@@ -214,6 +215,9 @@ function QuizPlayer() {
 
       const totalSeconds = battleActive ? 5 * 60 : (t.duration_min ?? 30) * 60;
       setSecondsLeft(totalSeconds);
+      deadlineRef.current = mode === "exam" || mode === "cbt"
+        ? Date.now() + totalSeconds * 1000
+        : null;
       let ids = (t.question_ids as string[]) ?? [];
       if (battleActive) ids = ids.slice(0, 5);
       if (ids.length === 0) {
@@ -366,6 +370,7 @@ function QuizPlayer() {
             if (Array.isArray(saved.marked)) setMarked(new Set(saved.marked));
             if (Number.isInteger(saved.idx)) setIdx(Math.max(0, Math.min(ordered.length - 1, saved.idx ?? 0)));
             if (typeof saved.deadline === "number" && (mode === "exam" || mode === "cbt")) {
+              deadlineRef.current = saved.deadline;
               setSecondsLeft(Math.max(0, Math.ceil((saved.deadline - Date.now()) / 1000)));
             }
           }
@@ -389,7 +394,7 @@ function QuizPlayer() {
       bookmarks: Array.from(bookmarks),
       visited: Array.from(visited),
       marked: Array.from(marked),
-      deadline: isExam ? Date.now() + secondsLeft * 1000 : null,
+      deadline: isExam ? deadlineRef.current : null,
     };
     window.localStorage.setItem(key, JSON.stringify(saved));
   }, [answers, bookmarks, idx, isExam, loading, marked, mode, progressReady, questions.length, secondsLeft, submitted, testId, user, visited]);
