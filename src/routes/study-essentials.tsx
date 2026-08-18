@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/page-shell";
-import { BookOpen, Highlighter, ScrollText, Layers, GraduationCap, BookMarked } from "lucide-react";
+import { BookOpen, Highlighter, ScrollText, Layers, GraduationCap, BookMarked, FlaskConical, FileText, ListChecks } from "lucide-react";
 import { ShortNotesBrowser } from "@/components/short-notes-browser";
 
 export const Route = createFileRoute("/study-essentials")({
@@ -27,12 +27,15 @@ function StudyEssentialsPage() {
     );
   }
 
-  const tiles: { key: string; label: string; desc: string; Icon: typeof BookOpen; onClick?: () => void; to?: "/ncert-highlights" | "/highlighted-ncert" | "/flashcards" | "/pyqs" }[] = [
+  const tiles: { key: string; label: string; desc: string; Icon: typeof BookOpen; onClick?: () => void; to?: "/ncert-highlights" | "/highlighted-ncert" | "/flashcards" | "/pyqs" | "/neetlab" | "/study-view" | "/daily-checklist" }[] = [
     { key: "ncert", label: "NCERT Highlights", desc: "Chapter-wise NCERT key points and facts.", Icon: GraduationCap, to: "/ncert-highlights" },
     { key: "hncert", label: "Highlighted NCERT", desc: "Important NCERT lines, highlighted for you.", Icon: Highlighter, to: "/highlighted-ncert" },
     { key: "notes", label: "Short Notes", desc: "Crisp chapter-wise revision notes.", Icon: ScrollText, onClick: () => setView("short_notes") },
     { key: "cards", label: "Flashcards", desc: "Quick-recall cards for active revision.", Icon: Layers, to: "/flashcards" },
     { key: "pyqs", label: "NEET PYQs", desc: "Full papers from 2016–2025 in CBT mode.", Icon: BookMarked, to: "/pyqs" },
+    { key: "neetlab", label: "NEET Lab", desc: "Interactive 3D models, simulations and virtual labs.", Icon: FlaskConical, to: "/neetlab" },
+    { key: "materials", label: "Study Materials", desc: "PDFs, modules and resources shared by mentors.", Icon: FileText, to: "/study-view" },
+    { key: "checklist", label: "Daily Checklist", desc: "Track your daily syllabus targets.", Icon: ListChecks, to: "/daily-checklist" },
   ];
 
   return (
