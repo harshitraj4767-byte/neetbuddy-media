@@ -32,10 +32,10 @@ export function RichText({ children, className }: { children?: string | null; cl
   // never leak through as literal text.
   const md = htmlImgToMarkdown(src);
   try {
-    return <span className={cn("whitespace-pre-wrap break-words", className)}>{renderBlocks(md)}</span>;
+    return <span className={cn("whitespace-normal break-words", className)}>{renderBlocks(md)}</span>;
   } catch (error) {
     console.error("[rich-text] render failed", error, { preview: md.slice(0, 180) });
-    return <span className={cn("whitespace-pre-wrap break-words", className)}>{md}</span>;
+    return <span className={cn("whitespace-normal break-words", className)}>{md}</span>;
   }
 }
 

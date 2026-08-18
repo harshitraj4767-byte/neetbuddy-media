@@ -16,6 +16,8 @@ import { OnboardingTour } from "@/components/onboarding-tour";
 import { SupportWidget } from "@/components/support-widget";
 import { AppVersionGate } from "@/components/app-version-gate";
 import { PremiumGate } from "@/components/premium-gate";
+import { BottomNav } from "@/components/bottom-nav";
+import { MaintenanceNotice } from "@/components/maintenance-notice";
 import { getPublicSupabaseConfig } from "@/integrations/supabase/config";
 
 const THEME_INIT = `(function(){try{var t=localStorage.getItem('neetiq-theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){}})();`;
@@ -140,6 +142,8 @@ function RootComponent() {
           <SupportWidget />
           <AppVersionGate />
           <PremiumGate />
+          <MaintenanceNotice />
+          <BottomNav />
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
