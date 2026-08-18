@@ -17,6 +17,7 @@ import { Route as AdminInboxRouteImport } from './routes/admin-inbox'
 import { Route as AdminMockCategoriesRouteImport } from './routes/admin-mock-categories'
 import { Route as AdminStudyMaterialsRouteImport } from './routes/admin-study-materials'
 import { Route as AiPathRouteImport } from './routes/ai-path'
+import { Route as AnalyseRouteImport } from './routes/analyse'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as ArenaRouteImport } from './routes/arena'
 import { Route as BattlegroundsRouteImport } from './routes/battlegrounds'
@@ -55,6 +56,7 @@ import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
 import { Route as StudyViewRouteImport } from './routes/study-view'
 import { Route as SubscriptionRouteImport } from './routes/subscription'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TestRouteImport } from './routes/test'
 import { Route as AdminFeedbackRouteImport } from './routes/admin.feedback'
 import { Route as AdminQuestionScanRouteImport } from './routes/admin.question-scan'
 import { Route as AdminSupportRouteImport } from './routes/admin.support'
@@ -64,7 +66,9 @@ import { Route as BatchesCompareRouteImport } from './routes/batches.compare'
 import { Route as BattlegroundsHistoryRouteImport } from './routes/battlegrounds.history'
 import { Route as BattlegroundsViewAllRouteImport } from './routes/battlegrounds.view-all'
 import { Route as ContestContestIdRouteImport } from './routes/contest.$contestId'
+import { Route as QuizIndexRouteImport } from './routes/quiz.index'
 import { Route as QuizTestIdRouteImport } from './routes/quiz.$testId'
+import { Route as QuizSubjectsRouteImport } from './routes/quiz.subjects'
 import { Route as StudyGroupsIndexRouteImport } from './routes/study-groups.index'
 import { Route as StudyGroupsGroupIdRouteImport } from './routes/study-groups.$groupId'
 import { Route as SubjectsSubjectRouteImport } from './routes/subjects.$subject'
@@ -128,6 +132,11 @@ const AdminStudyMaterialsRoute = AdminStudyMaterialsRouteImport.update({
 const AiPathRoute = AiPathRouteImport.update({
   id: '/ai-path',
   path: '/ai-path',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyseRoute = AnalyseRouteImport.update({
+  id: '/analyse',
+  path: '/analyse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
@@ -320,6 +329,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TestRoute = TestRouteImport.update({
+  id: '/test',
+  path: '/test',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminFeedbackRoute = AdminFeedbackRouteImport.update({
   id: '/feedback',
   path: '/feedback',
@@ -365,9 +379,19 @@ const ContestContestIdRoute = ContestContestIdRouteImport.update({
   path: '/contest/$contestId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizIndexRoute = QuizIndexRouteImport.update({
+  id: '/quiz/',
+  path: '/quiz/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizTestIdRoute = QuizTestIdRouteImport.update({
   id: '/quiz/$testId',
   path: '/quiz/$testId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizSubjectsRoute = QuizSubjectsRouteImport.update({
+  id: '/quiz/subjects',
+  path: '/quiz/subjects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudyGroupsIndexRoute = StudyGroupsIndexRouteImport.update({
@@ -510,6 +534,7 @@ export interface FileRoutesByFullPath {
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
   '/admin-study-materials': typeof AdminStudyMaterialsRoute
   '/ai-path': typeof AiPathRoute
+  '/analyse': typeof AnalyseRoute
   '/analytics': typeof AnalyticsRoute
   '/arena': typeof ArenaRoute
   '/battlegrounds': typeof BattlegroundsRouteWithChildren
@@ -548,6 +573,7 @@ export interface FileRoutesByFullPath {
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
   '/terms': typeof TermsRoute
+  '/test': typeof TestRoute
   '/admin/feedback': typeof AdminFeedbackRoute
   '/admin/question-scan': typeof AdminQuestionScanRoute
   '/admin/support': typeof AdminSupportRoute
@@ -558,8 +584,10 @@ export interface FileRoutesByFullPath {
   '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
   '/contest/$contestId': typeof ContestContestIdRouteWithChildren
   '/quiz/$testId': typeof QuizTestIdRoute
+  '/quiz/subjects': typeof QuizSubjectsRoute
   '/study-groups/$groupId': typeof StudyGroupsGroupIdRoute
   '/subjects/$subject': typeof SubjectsSubjectRoute
+  '/quiz/': typeof QuizIndexRoute
   '/study-groups/': typeof StudyGroupsIndexRoute
   '/api/public/app-version': typeof ApiPublicAppVersionRoute
   '/battle/$matchId/play': typeof BattleMatchIdPlayRoute
@@ -592,6 +620,7 @@ export interface FileRoutesByTo {
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
   '/admin-study-materials': typeof AdminStudyMaterialsRoute
   '/ai-path': typeof AiPathRoute
+  '/analyse': typeof AnalyseRoute
   '/analytics': typeof AnalyticsRoute
   '/arena': typeof ArenaRoute
   '/battlegrounds': typeof BattlegroundsRouteWithChildren
@@ -630,6 +659,7 @@ export interface FileRoutesByTo {
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
   '/terms': typeof TermsRoute
+  '/test': typeof TestRoute
   '/admin/feedback': typeof AdminFeedbackRoute
   '/admin/question-scan': typeof AdminQuestionScanRoute
   '/admin/support': typeof AdminSupportRoute
@@ -640,8 +670,10 @@ export interface FileRoutesByTo {
   '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
   '/contest/$contestId': typeof ContestContestIdRouteWithChildren
   '/quiz/$testId': typeof QuizTestIdRoute
+  '/quiz/subjects': typeof QuizSubjectsRoute
   '/study-groups/$groupId': typeof StudyGroupsGroupIdRoute
   '/subjects/$subject': typeof SubjectsSubjectRoute
+  '/quiz': typeof QuizIndexRoute
   '/study-groups': typeof StudyGroupsIndexRoute
   '/api/public/app-version': typeof ApiPublicAppVersionRoute
   '/battle/$matchId/play': typeof BattleMatchIdPlayRoute
@@ -675,6 +707,7 @@ export interface FileRoutesById {
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
   '/admin-study-materials': typeof AdminStudyMaterialsRoute
   '/ai-path': typeof AiPathRoute
+  '/analyse': typeof AnalyseRoute
   '/analytics': typeof AnalyticsRoute
   '/arena': typeof ArenaRoute
   '/battlegrounds': typeof BattlegroundsRouteWithChildren
@@ -713,6 +746,7 @@ export interface FileRoutesById {
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
   '/terms': typeof TermsRoute
+  '/test': typeof TestRoute
   '/admin/feedback': typeof AdminFeedbackRoute
   '/admin/question-scan': typeof AdminQuestionScanRoute
   '/admin/support': typeof AdminSupportRoute
@@ -723,8 +757,10 @@ export interface FileRoutesById {
   '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
   '/contest/$contestId': typeof ContestContestIdRouteWithChildren
   '/quiz/$testId': typeof QuizTestIdRoute
+  '/quiz/subjects': typeof QuizSubjectsRoute
   '/study-groups/$groupId': typeof StudyGroupsGroupIdRoute
   '/subjects/$subject': typeof SubjectsSubjectRoute
+  '/quiz/': typeof QuizIndexRoute
   '/study-groups/': typeof StudyGroupsIndexRoute
   '/api/public/app-version': typeof ApiPublicAppVersionRoute
   '/battle/$matchId/play': typeof BattleMatchIdPlayRoute
@@ -759,6 +795,7 @@ export interface FileRouteTypes {
     | '/admin-mock-categories'
     | '/admin-study-materials'
     | '/ai-path'
+    | '/analyse'
     | '/analytics'
     | '/arena'
     | '/battlegrounds'
@@ -797,6 +834,7 @@ export interface FileRouteTypes {
     | '/study-view'
     | '/subscription'
     | '/terms'
+    | '/test'
     | '/admin/feedback'
     | '/admin/question-scan'
     | '/admin/support'
@@ -807,8 +845,10 @@ export interface FileRouteTypes {
     | '/battlegrounds/view-all'
     | '/contest/$contestId'
     | '/quiz/$testId'
+    | '/quiz/subjects'
     | '/study-groups/$groupId'
     | '/subjects/$subject'
+    | '/quiz/'
     | '/study-groups/'
     | '/api/public/app-version'
     | '/battle/$matchId/play'
@@ -841,6 +881,7 @@ export interface FileRouteTypes {
     | '/admin-mock-categories'
     | '/admin-study-materials'
     | '/ai-path'
+    | '/analyse'
     | '/analytics'
     | '/arena'
     | '/battlegrounds'
@@ -879,6 +920,7 @@ export interface FileRouteTypes {
     | '/study-view'
     | '/subscription'
     | '/terms'
+    | '/test'
     | '/admin/feedback'
     | '/admin/question-scan'
     | '/admin/support'
@@ -889,8 +931,10 @@ export interface FileRouteTypes {
     | '/battlegrounds/view-all'
     | '/contest/$contestId'
     | '/quiz/$testId'
+    | '/quiz/subjects'
     | '/study-groups/$groupId'
     | '/subjects/$subject'
+    | '/quiz'
     | '/study-groups'
     | '/api/public/app-version'
     | '/battle/$matchId/play'
@@ -923,6 +967,7 @@ export interface FileRouteTypes {
     | '/admin-mock-categories'
     | '/admin-study-materials'
     | '/ai-path'
+    | '/analyse'
     | '/analytics'
     | '/arena'
     | '/battlegrounds'
@@ -961,6 +1006,7 @@ export interface FileRouteTypes {
     | '/study-view'
     | '/subscription'
     | '/terms'
+    | '/test'
     | '/admin/feedback'
     | '/admin/question-scan'
     | '/admin/support'
@@ -971,8 +1017,10 @@ export interface FileRouteTypes {
     | '/battlegrounds/view-all'
     | '/contest/$contestId'
     | '/quiz/$testId'
+    | '/quiz/subjects'
     | '/study-groups/$groupId'
     | '/subjects/$subject'
+    | '/quiz/'
     | '/study-groups/'
     | '/api/public/app-version'
     | '/battle/$matchId/play'
@@ -1006,6 +1054,7 @@ export interface RootRouteChildren {
   AdminMockCategoriesRoute: typeof AdminMockCategoriesRoute
   AdminStudyMaterialsRoute: typeof AdminStudyMaterialsRoute
   AiPathRoute: typeof AiPathRoute
+  AnalyseRoute: typeof AnalyseRoute
   AnalyticsRoute: typeof AnalyticsRoute
   ArenaRoute: typeof ArenaRoute
   BattlegroundsRoute: typeof BattlegroundsRouteWithChildren
@@ -1044,13 +1093,16 @@ export interface RootRouteChildren {
   StudyViewRoute: typeof StudyViewRoute
   SubscriptionRoute: typeof SubscriptionRoute
   TermsRoute: typeof TermsRoute
+  TestRoute: typeof TestRoute
   AnalysisAttemptIdRoute: typeof AnalysisAttemptIdRoute
   BatchesBatchIdRoute: typeof BatchesBatchIdRoute
   BatchesCompareRoute: typeof BatchesCompareRoute
   ContestContestIdRoute: typeof ContestContestIdRouteWithChildren
   QuizTestIdRoute: typeof QuizTestIdRoute
+  QuizSubjectsRoute: typeof QuizSubjectsRoute
   StudyGroupsGroupIdRoute: typeof StudyGroupsGroupIdRoute
   SubjectsSubjectRoute: typeof SubjectsSubjectRoute
+  QuizIndexRoute: typeof QuizIndexRoute
   StudyGroupsIndexRoute: typeof StudyGroupsIndexRoute
   ApiPublicAppVersionRoute: typeof ApiPublicAppVersionRoute
   BattleMatchIdPlayRoute: typeof BattleMatchIdPlayRoute
@@ -1128,6 +1180,13 @@ declare module '@tanstack/react-router' {
       path: '/ai-path'
       fullPath: '/ai-path'
       preLoaderRoute: typeof AiPathRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analyse': {
+      id: '/analyse'
+      path: '/analyse'
+      fullPath: '/analyse'
+      preLoaderRoute: typeof AnalyseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analytics': {
@@ -1396,6 +1455,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/test': {
+      id: '/test'
+      path: '/test'
+      fullPath: '/test'
+      preLoaderRoute: typeof TestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/feedback': {
       id: '/admin/feedback'
       path: '/feedback'
@@ -1459,11 +1525,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContestContestIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz/': {
+      id: '/quiz/'
+      path: '/quiz'
+      fullPath: '/quiz/'
+      preLoaderRoute: typeof QuizIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz/$testId': {
       id: '/quiz/$testId'
       path: '/quiz/$testId'
       fullPath: '/quiz/$testId'
       preLoaderRoute: typeof QuizTestIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/subjects': {
+      id: '/quiz/subjects'
+      path: '/quiz/subjects'
+      fullPath: '/quiz/subjects'
+      preLoaderRoute: typeof QuizSubjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study-groups/': {
@@ -1697,6 +1777,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminMockCategoriesRoute: AdminMockCategoriesRoute,
   AdminStudyMaterialsRoute: AdminStudyMaterialsRoute,
   AiPathRoute: AiPathRoute,
+  AnalyseRoute: AnalyseRoute,
   AnalyticsRoute: AnalyticsRoute,
   ArenaRoute: ArenaRoute,
   BattlegroundsRoute: BattlegroundsRouteWithChildren,
@@ -1735,13 +1816,16 @@ const rootRouteChildren: RootRouteChildren = {
   StudyViewRoute: StudyViewRoute,
   SubscriptionRoute: SubscriptionRoute,
   TermsRoute: TermsRoute,
+  TestRoute: TestRoute,
   AnalysisAttemptIdRoute: AnalysisAttemptIdRoute,
   BatchesBatchIdRoute: BatchesBatchIdRoute,
   BatchesCompareRoute: BatchesCompareRoute,
   ContestContestIdRoute: ContestContestIdRouteWithChildren,
   QuizTestIdRoute: QuizTestIdRoute,
+  QuizSubjectsRoute: QuizSubjectsRoute,
   StudyGroupsGroupIdRoute: StudyGroupsGroupIdRoute,
   SubjectsSubjectRoute: SubjectsSubjectRoute,
+  QuizIndexRoute: QuizIndexRoute,
   StudyGroupsIndexRoute: StudyGroupsIndexRoute,
   ApiPublicAppVersionRoute: ApiPublicAppVersionRoute,
   BattleMatchIdPlayRoute: BattleMatchIdPlayRoute,
