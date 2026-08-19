@@ -51,6 +51,7 @@ import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as PyqsRouteImport } from './routes/pyqs'
 import { Route as ReferralsRouteImport } from './routes/referrals'
 import { Route as RefundRouteImport } from './routes/refund'
+import { Route as RtdevRouteImport } from './routes/rtdev'
 import { Route as ScorePredictorRouteImport } from './routes/score-predictor'
 import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
 import { Route as StudyViewRouteImport } from './routes/study-view'
@@ -302,6 +303,11 @@ const ReferralsRoute = ReferralsRouteImport.update({
 const RefundRoute = RefundRouteImport.update({
   id: '/refund',
   path: '/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RtdevRoute = RtdevRouteImport.update({
+  id: '/rtdev',
+  path: '/rtdev',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScorePredictorRoute = ScorePredictorRouteImport.update({
@@ -568,6 +574,7 @@ export interface FileRoutesByFullPath {
   '/pyqs': typeof PyqsRouteWithChildren
   '/referrals': typeof ReferralsRoute
   '/refund': typeof RefundRoute
+  '/rtdev': typeof RtdevRoute
   '/score-predictor': typeof ScorePredictorRoute
   '/study-essentials': typeof StudyEssentialsRoute
   '/study-view': typeof StudyViewRoute
@@ -654,6 +661,7 @@ export interface FileRoutesByTo {
   '/pyqs': typeof PyqsRouteWithChildren
   '/referrals': typeof ReferralsRoute
   '/refund': typeof RefundRoute
+  '/rtdev': typeof RtdevRoute
   '/score-predictor': typeof ScorePredictorRoute
   '/study-essentials': typeof StudyEssentialsRoute
   '/study-view': typeof StudyViewRoute
@@ -741,6 +749,7 @@ export interface FileRoutesById {
   '/pyqs': typeof PyqsRouteWithChildren
   '/referrals': typeof ReferralsRoute
   '/refund': typeof RefundRoute
+  '/rtdev': typeof RtdevRoute
   '/score-predictor': typeof ScorePredictorRoute
   '/study-essentials': typeof StudyEssentialsRoute
   '/study-view': typeof StudyViewRoute
@@ -829,6 +838,7 @@ export interface FileRouteTypes {
     | '/pyqs'
     | '/referrals'
     | '/refund'
+    | '/rtdev'
     | '/score-predictor'
     | '/study-essentials'
     | '/study-view'
@@ -915,6 +925,7 @@ export interface FileRouteTypes {
     | '/pyqs'
     | '/referrals'
     | '/refund'
+    | '/rtdev'
     | '/score-predictor'
     | '/study-essentials'
     | '/study-view'
@@ -1001,6 +1012,7 @@ export interface FileRouteTypes {
     | '/pyqs'
     | '/referrals'
     | '/refund'
+    | '/rtdev'
     | '/score-predictor'
     | '/study-essentials'
     | '/study-view'
@@ -1088,6 +1100,7 @@ export interface RootRouteChildren {
   PyqsRoute: typeof PyqsRouteWithChildren
   ReferralsRoute: typeof ReferralsRoute
   RefundRoute: typeof RefundRoute
+  RtdevRoute: typeof RtdevRoute
   ScorePredictorRoute: typeof ScorePredictorRoute
   StudyEssentialsRoute: typeof StudyEssentialsRoute
   StudyViewRoute: typeof StudyViewRoute
@@ -1418,6 +1431,13 @@ declare module '@tanstack/react-router' {
       path: '/refund'
       fullPath: '/refund'
       preLoaderRoute: typeof RefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rtdev': {
+      id: '/rtdev'
+      path: '/rtdev'
+      fullPath: '/rtdev'
+      preLoaderRoute: typeof RtdevRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/score-predictor': {
@@ -1811,6 +1831,7 @@ const rootRouteChildren: RootRouteChildren = {
   PyqsRoute: PyqsRouteWithChildren,
   ReferralsRoute: ReferralsRoute,
   RefundRoute: RefundRoute,
+  RtdevRoute: RtdevRoute,
   ScorePredictorRoute: ScorePredictorRoute,
   StudyEssentialsRoute: StudyEssentialsRoute,
   StudyViewRoute: StudyViewRoute,
