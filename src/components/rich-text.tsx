@@ -380,7 +380,7 @@ function renderInline(src: string): ReactNode[] {
   const re = /!\[([^\]]*)\]\(\s*([^\s)]+)\s*\)|\$([^$]+?)\$|\\\(([^\n]+?)\\\)|\*\*([^*\n]+?)\*\*|\*([^*\n]+?)\*|`([^`\n]+?)`/g;
   let last = 0; let m: RegExpExecArray | null; let k = 0;
   while ((m = re.exec(src))) {
-    if (m.index > last) out.push(<Fragment key={k++}>{src.slice(last, m.index)}</Fragment>);
+    if (m.index > last) out.push(<Fragment key={k++}>{withBreaks(src.slice(last, m.index), `t${k}`)}</Fragment>);
     if (m[1] !== undefined) {
       const imgUrl = m[2];
       out.push(
