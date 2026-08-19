@@ -406,7 +406,7 @@ function renderInline(src: string): ReactNode[] {
       // Wrapped so a long formula never gets split across lines mid-expression:
       // it stays one inline-block and scrolls horizontally if it overflows.
       out.push(
-        <span key={k++} className="inline-block max-w-full overflow-x-auto align-middle">
+        <span key={k++} className="inline-block max-w-full overflow-x-auto overflow-y-hidden py-[2px] align-middle">
           <InlineMath math={tex} renderError={() => <span>{plainLatex(tex)}</span>} />
         </span>,
       );
