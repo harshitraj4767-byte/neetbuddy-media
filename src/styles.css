@@ -289,9 +289,9 @@
 
 /* Question math: a formula must never be split across lines mid-expression.
    Each KaTeX span stays one inline block and scrolls if it is too wide. */
-.rich-html .katex,
-.rich-text-math .katex { white-space: nowrap; }
-.rich-html .katex:not(.katex-display .katex) {
+.katex { white-space: nowrap; }
+.katex-display > .katex { white-space: normal; }
+.rich-html .katex:not(.katex-display > .katex) {
   display: inline-block;
   max-width: 100%;
   overflow-x: auto;
