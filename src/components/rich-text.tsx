@@ -419,7 +419,23 @@ function renderInline(src: string): ReactNode[] {
     }
     last = m.index + m[0].length;
   }
-  if (last < src.length) out.push(<Fragment key={k++}>{src.slice(last)}</Fragment>);
+  if (last < src.length) out.push(<Fragment key={k++}>{withBreaks(src.slice(last), `t${k}`)}</Fragment>);
+  return out;
+}
+
+/**
+ * Text uses `whitespace-normal` (so a sentence never gets shredded into one
+ * word per line), which means real newlines collapse. Intentional line breaks
+ * from `<br>` / newlines are therefore emitted as explicit <br /> elements.
+ */
+function withBreaks(text: string, keyPrefix: string): ReactNode[] {
+  if (!text.includes("\n")) return [text];
+  const lines = text.split(/\n+/);
+  const out: ReactNode[] = [];
+  lines.forEach((line, i) => {
+    if (i > 0) out.push(<br key={`${keyPrefix}-br-${i}`} />);
+    if (line) out.push(<Fragment key={`${keyPrefix}-l-${i}`}>{line}</Fragment>);
+  });
   return out;
 }
 
