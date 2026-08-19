@@ -287,6 +287,18 @@
 }
 .study-watermark > * { position: relative; z-index: 1; }
 
+/* Question math: a formula must never be split across lines mid-expression.
+   Each KaTeX span stays one inline block and scrolls if it is too wide. */
+.rich-html .katex,
+.rich-text-math .katex { white-space: nowrap; }
+.rich-html .katex:not(.katex-display .katex) {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  vertical-align: middle;
+}
+.katex-display { margin: 0.4em 0; overflow-x: auto; overflow-y: hidden; }
+
 /* Rich-text HTML rendering for question content */
 .rich-html { line-height: 1.55; }
 .rich-html br { display: block; content: ""; margin-top: 0.35rem; }
