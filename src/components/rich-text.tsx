@@ -403,7 +403,13 @@ function renderInline(src: string): ReactNode[] {
 
     } else if (m[3] !== undefined || m[4] !== undefined) {
       const tex = (m[3] ?? m[4]) as string;
-      out.push(<InlineMath key={k++} math={tex} renderError={() => <span>{plainLatex(tex)}</span>} />);
+      // Wrapped so a long formula never gets split across lines mid-expression:
+      // it stays one inline-block and scrolls horizontally if it overflows.
+      out.push(
+        <span key={k++} className="inline-block max-w-full overflow-x-auto align-middle">
+          <InlineMath math={tex} renderError={() => <span>{plainLatex(tex)}</span>} />
+        </span>,
+      );
     } else if (m[5] !== undefined) {
       out.push(<strong key={k++}>{m[5]}</strong>);
     } else if (m[6] !== undefined) {
