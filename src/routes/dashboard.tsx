@@ -4,10 +4,9 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
-  Loader2, ArrowRight, CalendarDays, Flame, Clock, Target as TargetIcon,
+  Loader2, ArrowRight, CalendarDays, Flame, Target as TargetIcon,
   Atom, FlaskConical, Leaf, Brain, Sparkles,
-  FileText, BookMarked, RefreshCw, TrendingUp, Trophy,
-  Gift, MessageSquare, Users, Route as RouteIcon, Target,
+  RefreshCw, Trophy, Gift, MessageSquare, Users,
   GraduationCap, BarChart3, Bot, CheckCircle2,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
@@ -186,23 +185,21 @@ function Dashboard() {
               <Sparkles className="h-4 w-4 shrink-0 text-primary" />
               <span className="italic">&ldquo;Discipline today, success tomorrow.&rdquo;</span>
             </div>
+            <Link
+              to="/leaderboard"
+              className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-border bg-card/90 px-3 py-1.5 shadow-sm backdrop-blur"
+            >
+              <Flame className="h-4 w-4 text-orange-500" />
+              <span className="text-sm font-bold">{streak}</span>
+              <span className="text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">Day Streak</span>
+            </Link>
           </div>
           <img
             src="/illustrations/study-desk.png"
             alt="Student studying at a desk"
             loading="lazy"
-            className="pointer-events-none absolute -bottom-2 right-0 w-[46%] max-w-[300px] select-none object-contain opacity-95"
+            className="pointer-events-none absolute -bottom-2 right-0 w-[40%] max-w-[260px] select-none object-contain opacity-95"
           />
-          <Link
-            to="/leaderboard"
-            className="absolute right-3 top-3 z-10 flex items-center gap-2 rounded-2xl border border-border bg-card/90 px-3 py-1.5 shadow-sm backdrop-blur"
-          >
-            <Flame className="h-4 w-4 text-orange-500" />
-            <div className="leading-tight">
-              <div className="text-sm font-bold">{streak}</div>
-              <div className="text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">Day Streak</div>
-            </div>
-          </Link>
         </div>
 
         {/* ── Today's progress ──────────────────────────────────────── */}
@@ -210,7 +207,7 @@ function Dashboard() {
           <div className="flex items-center justify-between">
             <div className="text-sm font-bold">Today&apos;s Progress</div>
             <Link
-              to="/analytics"
+              to="/progress"
               className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-xs font-semibold transition hover:bg-white/20"
             >
               View All <ArrowRight className="h-3.5 w-3.5" />
@@ -218,9 +215,8 @@ function Dashboard() {
           </div>
           <div className="mt-4 flex items-center gap-4 sm:gap-8">
             <ProgressRing percent={stats.completion} />
-            <div className="grid flex-1 grid-cols-3 divide-x divide-white/10 text-center">
+            <div className="grid flex-1 grid-cols-2 divide-x divide-white/10 text-center">
               <MetricCell icon={CheckCircle2} label="Questions Solved" value={`${stats.attempted}`} suffix={`/ ${stats.goal}`} />
-              <MetricCell icon={Clock} label="Study Time" value={`${Math.floor(stats.seconds / 3600)}h`} suffix={`${Math.floor((stats.seconds % 3600) / 60)}m`} />
               <MetricCell icon={TargetIcon} label="Accuracy" value={`${stats.accuracy}%`} />
             </div>
           </div>
@@ -258,22 +254,22 @@ function Dashboard() {
         </div>
 
         {/* ── Performance overview ─────────────────────────────────── */}
-        <SectionHead title="Performance Overview" actionLabel="Detailed Analytics" to="/analytics" />
+        <SectionHead title="Performance Overview" actionLabel="Weekly Progress Report" to="/progress" />
         <div className="grid gap-4 rounded-3xl border border-border bg-card p-5 shadow-soft md:grid-cols-2">
           <div>
             <div className="text-xs font-bold uppercase tracking-wide text-muted-foreground">This Week</div>
-            <div className="mt-4 flex h-32 items-end gap-2">
+            <div className="mt-4 flex items-end gap-2">
               {stats.week.map((d, i) => {
                 const max = Math.max(1, ...stats.week.map((w) => w.value));
+                const h = Math.round(Math.max(6, (d.value / max) * 104));
                 return (
                   <div key={i} className="flex flex-1 flex-col items-center gap-2">
-                    <div className="flex w-full flex-1 items-end">
-                      <div
-                        className="w-full rounded-t-md bg-gradient-to-t from-primary/40 to-primary transition-all"
-                        style={{ height: `${Math.max(4, (d.value / max) * 100)}%` }}
-                        title={`${d.value} questions`}
-                      />
-                    </div>
+                    <span className="text-[10px] font-semibold text-muted-foreground">{d.value}</span>
+                    <div
+                      className="w-full rounded-t-md bg-gradient-to-t from-primary/40 to-primary transition-all"
+                      style={{ height: `${h}px` }}
+                      title={`${d.value} questions`}
+                    />
                     <span className="text-[10px] font-semibold text-muted-foreground">{d.label}</span>
                   </div>
                 );
@@ -340,22 +336,6 @@ function Dashboard() {
             </span>
           </div>
         </Link>
-
-        {/* ── Study tools ──────────────────────────────────────────── */}
-        <SectionHead title="Study Tools" />
-        <div className="grid gap-3 md:grid-cols-2">
-          <ToolCard to="/study-essentials" title="Study Essentials" subtitle="Mind maps · Formula sheets · Short notes · Flashcards · NCERT highlights" icon={GraduationCap} tint="from-blue-500 via-indigo-500 to-purple-600" />
-          <ToolCard to="/improvement" title="Improvement Zone" subtitle="My Mistakes · Bookmarks · Performance Analysis" icon={RefreshCw} tint="from-red-500 to-rose-600" />
-          <div className="grid grid-cols-2 grid-rows-2 gap-3 md:col-span-2">
-            <div className="row-span-2">
-              <SmallTool to="/generate" title="Generate Test" subtitle="Custom DPP wizard" icon={FileText} bonus={5} tint="from-orange-500 to-rose-600" />
-            </div>
-            <SmallTool to="/neetlab" title="NEETLab" subtitle="3D simulations & PYQs" icon={BookMarked} tint="from-amber-500 to-yellow-600" />
-            <SmallTool to="/ai-path" title="AI Path" subtitle="7-day personalized plan" icon={RouteIcon} bonus={45} tint="from-fuchsia-500 to-purple-600" />
-          </div>
-          <ToolCard to="/score-predictor" title="Score Predictor" subtitle="AI NEET score & rank forecast" icon={Target} tint="from-red-500 to-orange-600" bonus={25} />
-          <ToolCard to="/progress" title="Weekly Progress Report" subtitle="Parent dashboard analytics · trends & charts" icon={TrendingUp} tint="from-teal-500 to-emerald-600" />
-        </div>
 
         {/* ── Compete & test ───────────────────────────────────────── */}
         <SectionHead title="Compete & Test" />
@@ -627,34 +607,6 @@ function tintStyles(tint?: string) {
     border: `border-${c}-500/40 hover:border-${c}-500/70`,
     pill: `bg-${c}-500/20 text-${c}-700 dark:text-${c}-300`,
   };
-}
-
-function ToolCard({ to, params, title, subtitle, icon: Icon, bonus, tint, badge }: {
-  to: string; params?: Record<string, string>; title: string; subtitle: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-  bonus?: number; tint?: string; badge?: string;
-}) {
-  const grad = tint ?? "from-primary to-blue-600";
-  const s = tintStyles(tint);
-  return (
-    <Link to={to as never} params={params as never} className="block">
-      <div className={`relative overflow-hidden rounded-2xl border ${s.border} ${s.bg} p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-elegant`}>
-        <div className="flex items-center justify-between gap-4">
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <div className="text-[15px] font-bold uppercase tracking-wide text-foreground">{title}</div>
-              {badge && <BadgePill text={badge} />}
-            </div>
-            <div className="mt-1 text-sm text-muted-foreground">{subtitle}</div>
-            {bonus !== undefined && <BonusPill amount={bonus} className={`mt-2 ${s.pill}`} />}
-          </div>
-          <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${grad} text-white shadow-md`}>
-            <Icon className="h-7 w-7" strokeWidth={1.6} />
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
 }
 
 function SmallTool({ to, title, subtitle, icon: Icon, bonus, tall, tint, badge, onClick }: {
