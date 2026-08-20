@@ -12,6 +12,7 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { TrialBanner } from "@/components/dashboard/trial-banner";
+import { BannerCarousel } from "@/components/dashboard/banner-carousel";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
@@ -201,6 +202,9 @@ function Dashboard() {
             className="pointer-events-none absolute -bottom-2 right-0 w-[40%] max-w-[260px] select-none object-contain opacity-95"
           />
         </div>
+
+        {/* ── Banner plot (admin managed, 8:3 like the hero card) ───── */}
+        <BannerCarousel />
 
         {/* ── Today's progress ──────────────────────────────────────── */}
         <div className="mt-4 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-5 text-slate-100 shadow-elegant">
