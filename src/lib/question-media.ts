@@ -17,6 +17,7 @@
  */
 
 import { qbankImageUrl } from "@/lib/qbank-images";
+import { optionImageUrl, questionTextImageUrls } from "@/lib/option-images";
 
 export type MediaQuestion = {
   id: string;
@@ -42,6 +43,8 @@ export function attachQuestionMedia<T extends MediaQuestion>(
   const questionUrls: string[] = [];
   const dbUrl = qbankImageUrl(q.question_image_url);
   if (dbUrl) questionUrls.push(dbUrl);
+  // Extra question-text panels (`*_qtext_1.png`) have no DB column either.
+  for (const u of questionTextImageUrls(q.id)) if (!questionUrls.includes(u)) questionUrls.push(u);
   for (const u of extra?.diagramUrls ?? []) if (!questionUrls.includes(u)) questionUrls.push(u);
 
   let text = q.text ?? "";
@@ -72,14 +75,20 @@ export function attachQuestionMedia<T extends MediaQuestion>(
   }
 
   const options = (q.options ?? []).map((o, i) => {
-    // Image-only options are sometimes stored as an empty string / [image]
-    // while the metadata SELECT is unavailable to the browser. Still point
-    // them at the authenticated image endpoint; RichText hides a genuine 404.
     const plain = (o ?? "").trim();
     const looksImageOnly = !plain || /^\[image\]$/i.test(plain);
-    if (!extra?.optionImageIndexes?.has(i) && !looksImageOnly) return o;
-    const url = `/api/public/option-image/${q.id}/${i}`;
-    const label = plain && plain !== "[image]" ? plain : "";
+    // 1) Static file manifest (`{subject}/{chapter}_{qid}_optimg_{n}_1.png`).
+    //    This is the only source that actually has data: the DB has no
+    //    per-option image rows, so without it image-only options render blank.
+    // 2) `question_option_images` rows, when a question really has them.
+    const fileUrl = optionImageUrl(q.id, i);
+    const url = fileUrl ?? (extra?.optionImageIndexes?.has(i) || looksImageOnly
+      ? `/api/public/option-image/${q.id}/${i}`
+      : null);
+    if (!url) return o;
+    // Don't duplicate an image the option text already embeds.
+    if (plain && EMBEDDED_IMG_RE.test(plain) && alreadyHas(plain, url)) return o;
+    const label = plain && plain !== "[image]" && !EMBEDDED_IMG_RE.test(plain) ? plain : "";
     return `${label ? label + "\n\n" : ""}![option](${url})`;
   });
 

@@ -14,6 +14,7 @@ import { SafeRichText as RichText } from "@/components/safe-rich-text";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { createMistakesTest } from "@/lib/trial-limits.functions";
 import { toast } from "sonner";
+import { attachQuestionMedia } from "@/lib/question-media";
 
 export const Route = createFileRoute("/mistakes")({
   head: () => ({
@@ -86,7 +87,7 @@ function MistakesPage() {
       .in("id", ids);
     // Preserve most-recent-first order using wq order
     const qMap = new Map((qs ?? []).map((q) => [q.id, q]));
-    const list = ids.map((id) => qMap.get(id)).filter(Boolean) as Row[];
+    const list = (ids.map((id) => qMap.get(id)).filter(Boolean) as Row[]).map((q) => attachQuestionMedia(q));
     setRows(list);
     const subjIds = [...new Set(list.map((q) => q.subject_id).filter(Boolean))] as string[];
     const chapIds = [...new Set(list.map((q) => q.chapter_id).filter(Boolean))] as string[];

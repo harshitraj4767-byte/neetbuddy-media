@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import { SafeRichText as RichText } from "@/components/safe-rich-text";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { createBookmarkTest } from "@/lib/trial-limits.functions";
+import { attachQuestionMedia } from "@/lib/question-media";
 
 
 export const Route = createFileRoute("/bookmarks")({
@@ -44,7 +45,7 @@ function BookmarksPage() {
     if (!ids.length) { setItems([]); setSubjects({}); setChapters({}); return; }
     const { data: qs } = await supabase.from("questions").select("id,text,options,difficulty,subject_id,chapter_id").in("id", ids);
     // preserve bookmark order
-    const ordered = ids.map((id) => qs?.find((q) => q.id === id)).filter(Boolean) as Q[];
+    const ordered = (ids.map((id) => qs?.find((q) => q.id === id)).filter(Boolean) as Q[]).map((q) => attachQuestionMedia(q));
     setItems(ordered);
 
     const sIds = Array.from(new Set(ordered.map((q) => q.subject_id).filter(Boolean))) as string[];
