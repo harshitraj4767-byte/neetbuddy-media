@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useRef, type ReactNode } from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -93,15 +93,19 @@ function escapeAttr(s: string): string {
 
 function HtmlRichText({ html, className }: { html: string; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
+  // Math is rendered into the HTML string *before* it is injected, so the raw
+  // `$...$` / `\[...\]` source is never painted to screen (the old effect-based
+  // pass left literal LaTeX visible whenever it ran late or not at all).
+  const rendered = useMemo(() => renderMathInHtml(html), [html]);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Safety net for any math the string pass could not reach.
     renderMathIn(el);
     // A diagram that 404s must never leave a broken-image box or literal path
-    // on screen — hide it instead. Keeps future image uploads risk-free.
+    // on screen — fade it instead. Keeps future image uploads risk-free.
     el.querySelectorAll("img").forEach((img) => {
       img.addEventListener("error", () => {
-        // Instead of hiding completely, show a placeholder or fade it so the user knows something is missing
         img.style.opacity = "0.3";
         img.classList.add("bg-muted", "border", "border-dashed");
         console.warn("[rich-text] diagram failed to load", img.getAttribute("src"));
@@ -109,14 +113,46 @@ function HtmlRichText({ html, className }: { html: string; className?: string })
       img.setAttribute("loading", img.getAttribute("loading") ?? "lazy");
       img.setAttribute("decoding", "async");
     });
-  }, [html]);
+  }, [rendered]);
   return (
     <div
       ref={ref}
       className={cn("rich-html break-words", className)}
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: rendered }}
     />
   );
+}
+
+const MATH_RE = /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\$([^$\n]+?)\$|\\\(([^\n]+?)\\\)/g;
+const SKIP_TAG_RE = /^<\/?(script|style|code|pre)\b/i;
+
+/**
+ * Replace LaTeX runs inside the *text* portions of an HTML string with
+ * KaTeX-rendered markup. Tags are left untouched, and script/style/code/pre
+ * bodies are skipped.
+ */
+function renderMathInHtml(html: string): string {
+  const parts = html.split(/(<[^>]+>)/);
+  let skipDepth = 0;
+  return parts
+    .map((part) => {
+      if (part.startsWith("<") && part.endsWith(">")) {
+        if (SKIP_TAG_RE.test(part)) skipDepth += part.startsWith("</") ? -1 : 1;
+        return part;
+      }
+      if (skipDepth > 0 || !/\$|\\\(|\\\[/.test(part)) return part;
+      return part.replace(MATH_RE, (whole, b1?: string, b2?: string, i1?: string, i2?: string) => {
+        const displayMode = b1 !== undefined || b2 !== undefined;
+        const tex = (b1 ?? b2 ?? i1 ?? i2 ?? "").trim();
+        if (!tex) return whole;
+        try {
+          return katex.renderToString(tex, { displayMode, throwOnError: false, output: "html" });
+        } catch {
+          return escapeAttr(plainLatex(tex));
+        }
+      });
+    })
+    .join("");
 }
 
 
@@ -221,6 +257,12 @@ function normalizeRichText(src: string): string {
   // the sentence. Short, single-line, non-environment math goes back inline.
   s = demoteShortBlocks(s);
 
+  // Imported question banks use `\[..\]` (LaTeX display delimiters) even for
+  // single symbols mid-sentence (`the drift velocity \[v_d\] in a material`).
+  // Rendering those in display mode threw every symbol onto its own centred
+  // line and shredded the sentence, so short single-line runs go inline.
+  s = demoteShortBracketBlocks(s);
+
   return s;
 }
 
@@ -234,6 +276,16 @@ function demoteShortBlocks(s: string): string {
   });
 }
 
+
+
+function demoteShortBracketBlocks(s: string): string {
+  return s.replace(/\\\[([\s\S]+?)\\\]/g, (whole, inner: string) => {
+    const tex = inner.trim();
+    if (!INLINE_SAFE_BLOCK.test(tex)) return whole;
+    if (/\\begin\{|\\\\|\\hline|\\displaystyle/.test(tex)) return whole;
+    return `$${tex}$`;
+  });
+}
 
 
 function promoteMultiLineInline(s: string): string {
