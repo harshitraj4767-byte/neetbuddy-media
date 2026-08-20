@@ -10,7 +10,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
-import { Plus, Trash2, Loader2, ShieldAlert, Sparkles, IndianRupee, Trophy, Check, X, MessageCircle, Infinity as InfinityIcon, ArrowRight, Bot, Search, User as UserIcon, Wallet as WalletIcon, Filter } from "lucide-react";
+import { Plus, Trash2, Loader2, ShieldAlert, Sparkles, IndianRupee, Trophy, Check, X, MessageCircle, Infinity as InfinityIcon, ArrowRight, Bot, Search, User as UserIcon, Wallet as WalletIcon, Filter, Image as ImageIcon } from "lucide-react";
 import { adminListTopWallets } from "@/lib/admin-top-wallets.functions";
 import { getUserReport } from "@/lib/admin-user-report.functions";
 import { adminSuspendUser, adminAdjustBalance } from "@/lib/admin-user-actions.functions";
@@ -119,6 +119,9 @@ function AdminPanel() {
         </Button>
         <Button asChild size="sm" variant="outline" className="gap-1.5">
           <Link to="/admin-study-materials"><Sparkles className="h-4 w-4" /> Study Materials</Link>
+        </Button>
+        <Button asChild size="sm" variant="outline" className="gap-1.5">
+          <Link to="/admin-banners"><ImageIcon className="h-4 w-4" /> Dashboard banners</Link>
         </Button>
         <Button asChild size="sm" variant="outline" className="gap-1.5">
           <Link to="/admin-collaborators"><Sparkles className="h-4 w-4" /> Collaborators</Link>

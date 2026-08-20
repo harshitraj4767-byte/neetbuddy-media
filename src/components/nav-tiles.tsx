@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -24,15 +25,15 @@ export type NavTile = {
   onClick?: () => void;
 };
 
-const ACCENT: Record<TileAccent, { icon: string; tag: string; glow: string }> = {
-  blue: { icon: "from-blue-500 to-indigo-500", tag: "bg-blue-500/15 text-blue-700 dark:text-blue-300", glow: "hover:border-blue-500/40" },
-  emerald: { icon: "from-emerald-500 to-teal-500", tag: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300", glow: "hover:border-emerald-500/40" },
-  orange: { icon: "from-orange-500 to-amber-500", tag: "bg-orange-500/15 text-orange-700 dark:text-orange-300", glow: "hover:border-orange-500/40" },
-  violet: { icon: "from-violet-500 to-purple-500", tag: "bg-violet-500/15 text-violet-700 dark:text-violet-300", glow: "hover:border-violet-500/40" },
-  pink: { icon: "from-pink-500 to-rose-500", tag: "bg-pink-500/15 text-pink-700 dark:text-pink-300", glow: "hover:border-pink-500/40" },
-  cyan: { icon: "from-cyan-500 to-sky-500", tag: "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300", glow: "hover:border-cyan-500/40" },
-  amber: { icon: "from-amber-500 to-yellow-500", tag: "bg-amber-500/15 text-amber-700 dark:text-amber-300", glow: "hover:border-amber-500/40" },
-  rose: { icon: "from-rose-500 to-red-500", tag: "bg-rose-500/15 text-rose-700 dark:text-rose-300", glow: "hover:border-rose-500/40" },
+const ACCENT: Record<TileAccent, { icon: string; tag: string; glow: string; wash: string }> = {
+  blue: { icon: "from-blue-500 to-indigo-500", tag: "bg-blue-500/15 text-blue-700 dark:text-blue-300", glow: "hover:border-blue-500/40", wash: "from-blue-100 via-sky-50 to-indigo-100 dark:from-blue-950/60 dark:via-sky-950/40 dark:to-indigo-950/60" },
+  emerald: { icon: "from-emerald-500 to-teal-500", tag: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300", glow: "hover:border-emerald-500/40", wash: "from-emerald-100 via-teal-50 to-green-100 dark:from-emerald-950/60 dark:via-teal-950/40 dark:to-green-950/60" },
+  orange: { icon: "from-orange-500 to-amber-500", tag: "bg-orange-500/15 text-orange-700 dark:text-orange-300", glow: "hover:border-orange-500/40", wash: "from-orange-100 via-amber-50 to-yellow-100 dark:from-orange-950/60 dark:via-amber-950/40 dark:to-yellow-950/60" },
+  violet: { icon: "from-violet-500 to-purple-500", tag: "bg-violet-500/15 text-violet-700 dark:text-violet-300", glow: "hover:border-violet-500/40", wash: "from-violet-100 via-purple-50 to-indigo-100 dark:from-violet-950/60 dark:via-purple-950/40 dark:to-indigo-950/60" },
+  pink: { icon: "from-pink-500 to-rose-500", tag: "bg-pink-500/15 text-pink-700 dark:text-pink-300", glow: "hover:border-pink-500/40", wash: "from-pink-100 via-rose-50 to-fuchsia-100 dark:from-pink-950/60 dark:via-rose-950/40 dark:to-fuchsia-950/60" },
+  cyan: { icon: "from-cyan-500 to-sky-500", tag: "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300", glow: "hover:border-cyan-500/40", wash: "from-cyan-100 via-sky-50 to-blue-100 dark:from-cyan-950/60 dark:via-sky-950/40 dark:to-blue-950/60" },
+  amber: { icon: "from-amber-500 to-yellow-500", tag: "bg-amber-500/15 text-amber-700 dark:text-amber-300", glow: "hover:border-amber-500/40", wash: "from-amber-100 via-yellow-50 to-orange-100 dark:from-amber-950/60 dark:via-yellow-950/40 dark:to-orange-950/60" },
+  rose: { icon: "from-rose-500 to-red-500", tag: "bg-rose-500/15 text-rose-700 dark:text-rose-300", glow: "hover:border-rose-500/40", wash: "from-rose-100 via-red-50 to-orange-100 dark:from-rose-950/60 dark:via-red-950/40 dark:to-orange-950/60" },
 };
 
 const ORDER: TileAccent[] = ["blue", "emerald", "orange", "violet", "pink", "cyan", "amber", "rose"];
@@ -111,6 +112,9 @@ export function HubHero({
   accent = "blue",
   image,
   imageAlt,
+  variant = "default",
+  hideEyebrow = false,
+  children,
 }: {
   eyebrow: string;
   title: string;
@@ -121,29 +125,57 @@ export function HubHero({
   /** Optional 3D illustration shown on the right instead of the icon badge. */
   image?: string;
   imageAlt?: string;
+  /** "banner" renders the soft tinted illustration banner used on the hub pages. */
+  variant?: "default" | "banner";
+  hideEyebrow?: boolean;
+  /** Optional chips / stats rendered under the description. */
+  children?: ReactNode;
 }) {
   const a = ACCENT[accent];
+  const banner = variant === "banner";
   return (
-    <div className="relative mb-6 overflow-hidden rounded-3xl border border-border/70 bg-card/60 p-5 shadow-soft backdrop-blur-xl sm:p-6">
-      <span
-        aria-hidden
-        className={cn("pointer-events-none absolute inset-0 bg-gradient-to-br opacity-[0.07]", a.icon)}
-      />
+    <div
+      className={cn(
+        "relative mb-6 overflow-hidden rounded-3xl border shadow-soft",
+        banner
+          ? cn("border-transparent bg-gradient-to-br p-5 sm:p-7", a.wash)
+          : "border-border/70 bg-card/60 p-5 backdrop-blur-xl sm:p-6",
+      )}
+    >
+      {!banner && (
+        <span
+          aria-hidden
+          className={cn("pointer-events-none absolute inset-0 bg-gradient-to-br opacity-[0.07]", a.icon)}
+        />
+      )}
+      {banner && (
+        <svg
+          aria-hidden
+          viewBox="0 0 400 160"
+          preserveAspectRatio="none"
+          className="pointer-events-none absolute inset-0 h-full w-full text-white/50 dark:text-white/5"
+        >
+          <path d="M0 120 C 90 70 150 150 240 105 S 340 60 400 92 L400 160 L0 160 Z" fill="currentColor" opacity="0.75" />
+          <path d="M0 96 C 80 130 160 60 250 96 S 350 130 400 106 L400 160 L0 160 Z" fill="currentColor" opacity="0.45" />
+        </svg>
+      )}
       <span
         aria-hidden
         className={cn("pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br opacity-25 blur-3xl", a.icon)}
       />
       <div className="relative flex items-center gap-3 sm:gap-4">
         <div className="min-w-0 flex-1">
-          <span
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-full border border-current/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em]",
-              a.tag,
-            )}
-          >
-            <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
-            {eyebrow}
-          </span>
+          {!hideEyebrow && (
+            <span
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full border border-current/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em]",
+                a.tag,
+              )}
+            >
+              <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
+              {eyebrow}
+            </span>
+          )}
           <h1 className="mt-3 text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
             {title}
             {highlight && (
@@ -155,13 +187,19 @@ export function HubHero({
           </h1>
           <span aria-hidden className={cn("mt-3 block h-1 w-8 rounded-full bg-gradient-to-r", a.icon)} />
           <p className="mt-3 max-w-xl text-xs leading-relaxed text-muted-foreground sm:text-sm">{description}</p>
+          {children && <div className="mt-4 flex flex-wrap items-center gap-2">{children}</div>}
         </div>
         {image ? (
           <img
             src={image}
             alt={imageAlt ?? ""}
             loading="lazy"
-            className="pointer-events-none w-[38%] max-w-[190px] shrink-0 select-none object-contain sm:w-[34%] sm:max-w-[240px]"
+            className={cn(
+              "pointer-events-none shrink-0 select-none object-contain drop-shadow-xl",
+              banner
+                ? "w-[42%] max-w-[210px] sm:w-[36%] sm:max-w-[270px]"
+                : "w-[38%] max-w-[190px] sm:w-[34%] sm:max-w-[240px]",
+            )}
           />
         ) : (
           <div

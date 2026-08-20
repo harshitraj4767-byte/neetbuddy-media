@@ -27,12 +27,15 @@ function SubjectQuizPage() {
   return (
     <PageShell>
       <HubHero
+        variant="banner"
         eyebrow="Practice"
         title="Subject-wise"
         highlight="Quiz"
         description="Pick a subject, choose chapters and start practising instantly."
         Icon={BookOpenCheck}
         accent="emerald"
+        image="/illustrations/hero-subjects.png"
+        imageAlt="Books with Physics, Chemistry and Biology subject icons"
       />
       <NavTiles tiles={TILES} />
     </PageShell>

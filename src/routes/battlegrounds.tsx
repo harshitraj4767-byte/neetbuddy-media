@@ -2,9 +2,10 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { PageShell } from "@/components/page-shell";
+import { HubHero } from "@/components/nav-tiles";
 import { Button } from "@/components/ui/button";
 import {
-  Loader2, Swords, ArrowRight, Flame, Users, Trophy, X, Zap, BookOpen, Clock, History, Atom, FlaskConical, Leaf, Dna,
+  Loader2, ArrowRight, Flame, Users, Trophy, X, Zap, BookOpen, Clock, History, Atom, FlaskConical, Leaf, Dna,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase as supabaseTyped } from "@/integrations/supabase/client";
@@ -300,38 +301,30 @@ function BattlegroundsPage() {
 
   return (
     <PageShell>
-      {/* Hero */}
-      <div className="overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/90 via-accent/75 to-primary/80 p-6 text-primary-foreground shadow-soft sm:p-8">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
-              <Flame className="h-3.5 w-3.5" /> 1v1 Subject Battles
-            </div>
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Battlegrounds</h1>
-            <p className="mt-2 max-w-sm text-sm text-white/90">
-              Pick a subject. We match you with a live opponent on the current hour's chapter. Win to earn +10 XP.
-            </p>
-          </div>
-          <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur sm:flex">
-            <Swords className="h-10 w-10" strokeWidth={1.5} />
-          </div>
-        </div>
-        <div className="mt-5 flex flex-wrap items-center gap-2 text-xs">
-          <span className="inline-flex items-center gap-1 rounded-full bg-white/20 px-3 py-1.5 font-semibold backdrop-blur">
-            <Trophy className="h-3.5 w-3.5" /> XP: {Number(profile?.xp_total ?? 0)}
+      <HubHero
+        variant="banner"
+        eyebrow="1v1 Subject Battles"
+        title="Battlegrounds"
+        description="Pick a subject. Win battles. Earn XP and climb higher!"
+        Icon={Flame}
+        accent="blue"
+        image="/illustrations/hero-battlegrounds.png"
+        imageAlt="Shield and swords on a podium with an XP coin and trophy"
+      >
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1.5 text-[11px] font-semibold text-blue-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-blue-200">
+          <Trophy className="h-3.5 w-3.5" /> XP: {Number(profile?.xp_total ?? 0)}
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1.5 text-[11px] font-semibold text-emerald-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-emerald-300">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/30 px-3 py-1.5 font-semibold backdrop-blur">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            {liveCount === null ? "…" : liveCount} live now
-          </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1.5 font-semibold backdrop-blur">
-            Free to play · No entry fee
-          </span>
-        </div>
-      </div>
+          {liveCount === null ? "…" : liveCount} live now
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1.5 text-[11px] font-semibold text-foreground/70 shadow-sm backdrop-blur dark:bg-white/10">
+          Free to play · No entry fee
+        </span>
+      </HubHero>
 
       {/* How it works */}
       <div className="mt-6 grid grid-cols-3 gap-2 text-center">

@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/page-shell";
+import { HubHero } from "@/components/nav-tiles";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -85,26 +86,21 @@ function ContestsPage() {
 
   return (
     <PageShell>
-      {/* Hero — muted blue */}
-      <div className="overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/90 via-accent/75 to-primary/80 p-6 text-primary-foreground shadow-soft sm:p-8">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" /> Daily live
-            </div>
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Daily Live Quiz</h1>
-            <p className="mt-2 max-w-md text-sm text-white/90">Compete daily. Free to join — top ranks earn XP and bragging rights.</p>
-          </div>
-          <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur sm:flex">
-            <Trophy className="h-10 w-10" strokeWidth={1.5} />
-          </div>
-        </div>
-        <div className="mt-5 flex flex-wrap items-center gap-2 text-xs">
-          <span className="inline-flex items-center gap-1 rounded-full bg-white/20 px-3 py-1.5 font-semibold backdrop-blur">
-            Free to join · XP rewards
-          </span>
-        </div>
-      </div>
+      <HubHero
+        variant="banner"
+        eyebrow="Daily live"
+        title="Daily Live"
+        highlight="Quiz"
+        description="Compete daily. Free to join — top ranks earn XP and bragging rights!"
+        Icon={Sparkles}
+        accent="violet"
+        image="/illustrations/hero-contest.png"
+        imageAlt="Live quiz clipboard with a trophy"
+      >
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1.5 text-[11px] font-semibold text-violet-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-violet-200">
+          <Trophy className="h-3.5 w-3.5" /> Free to join · XP rewards
+        </span>
+      </HubHero>
 
       {contests === null ? <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div> : (
         <>
