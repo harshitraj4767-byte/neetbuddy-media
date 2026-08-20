@@ -300,6 +300,10 @@
   vertical-align: middle;
 }
 .katex-display { margin: 0.4em 0; overflow-x: auto; overflow-y: hidden; }
+/* Wide formulas scroll instead of clipping dead — give them momentum scroll
+   and a thin visible scrollbar so it is obvious there is more to the right. */
+.rich-html .katex:not(.katex-display > .katex),
+.katex-display { -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
 
 /* Rich-text HTML rendering for question content */
 .rich-html { line-height: 1.55; }
