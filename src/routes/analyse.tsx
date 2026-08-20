@@ -38,6 +38,8 @@ function AnalyseHub() {
         description="Understand your preparation with data, not guesswork."
         Icon={Sparkles}
         accent="violet"
+        image="/illustrations/hub-analyse.png"
+        imageAlt="Dartboard and performance charts"
       />
       <NavTiles tiles={TILES} />
     </PageShell>

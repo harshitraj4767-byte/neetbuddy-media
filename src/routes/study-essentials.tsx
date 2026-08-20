@@ -50,6 +50,8 @@ function StudyEssentialsPage() {
         description="NCERT highlights, short notes, flashcards, labs and materials — all in one place."
         Icon={BookOpen}
         accent="emerald"
+        image="/illustrations/hub-books.png"
+        imageAlt="Stack of books with notes and a flask"
       />
       <NavTiles tiles={tiles} />
     </PageShell>

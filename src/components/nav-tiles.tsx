@@ -109,6 +109,8 @@ export function HubHero({
   description,
   Icon,
   accent = "blue",
+  image,
+  imageAlt,
 }: {
   eyebrow: string;
   title: string;
@@ -116,18 +118,33 @@ export function HubHero({
   description: string;
   Icon: LucideIcon;
   accent?: TileAccent;
+  /** Optional 3D illustration shown on the right instead of the icon badge. */
+  image?: string;
+  imageAlt?: string;
 }) {
   const a = ACCENT[accent];
   return (
-    <div className="relative mb-6 overflow-hidden rounded-3xl border border-border/70 bg-card/60 p-6 shadow-soft backdrop-blur-xl">
+    <div className="relative mb-6 overflow-hidden rounded-3xl border border-border/70 bg-card/60 p-5 shadow-soft backdrop-blur-xl sm:p-6">
+      <span
+        aria-hidden
+        className={cn("pointer-events-none absolute inset-0 bg-gradient-to-br opacity-[0.07]", a.icon)}
+      />
       <span
         aria-hidden
         className={cn("pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br opacity-25 blur-3xl", a.icon)}
       />
-      <div className="relative flex items-start gap-4">
+      <div className="relative flex items-center gap-3 sm:gap-4">
         <div className="min-w-0 flex-1">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">{eyebrow}</div>
-          <h1 className="mt-2 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
+          <span
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full border border-current/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em]",
+              a.tag,
+            )}
+          >
+            <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
+            {eyebrow}
+          </span>
+          <h1 className="mt-3 text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
             {title}
             {highlight && (
               <>
@@ -136,17 +153,28 @@ export function HubHero({
               </>
             )}
           </h1>
-          <p className="mt-3 max-w-xl text-sm text-muted-foreground">{description}</p>
+          <span aria-hidden className={cn("mt-3 block h-1 w-8 rounded-full bg-gradient-to-r", a.icon)} />
+          <p className="mt-3 max-w-xl text-xs leading-relaxed text-muted-foreground sm:text-sm">{description}</p>
         </div>
-        <div
-          className={cn(
-            "hidden h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br text-white shadow-glow sm:flex",
-            a.icon,
-          )}
-        >
-          <Icon className="h-10 w-10" strokeWidth={1.8} />
-        </div>
+        {image ? (
+          <img
+            src={image}
+            alt={imageAlt ?? ""}
+            loading="lazy"
+            className="pointer-events-none w-[38%] max-w-[190px] shrink-0 select-none object-contain sm:w-[34%] sm:max-w-[240px]"
+          />
+        ) : (
+          <div
+            className={cn(
+              "hidden h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br text-white shadow-glow sm:flex",
+              a.icon,
+            )}
+          >
+            <Icon className="h-10 w-10" strokeWidth={1.8} />
+          </div>
+        )}
       </div>
     </div>
   );
 }
+

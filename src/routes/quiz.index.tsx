@@ -29,11 +29,13 @@ function QuizHub() {
     <PageShell>
       <HubHero
         eyebrow="Practice"
-        title="Quiz"
-        highlight="Zone"
+        title="Quiz your way"
+        highlight="to success"
         description="Pick how you want to practise today — chapters, AI tests, battles or contests."
         Icon={Brain}
-        accent="blue"
+        accent="violet"
+        image="/illustrations/hub-quiz.png"
+        imageAlt="Trophy, dartboard and winners podium"
       />
       <NavTiles tiles={TILES} />
     </PageShell>

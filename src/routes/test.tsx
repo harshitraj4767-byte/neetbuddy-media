@@ -34,6 +34,8 @@ function TestHub() {
         description="Timed, full-length and CBT-accurate — everything you need before the real thing."
         Icon={ClipboardList}
         accent="blue"
+        image="/illustrations/hub-test.png"
+        imageAlt="Mock test checklist with a stopwatch"
       />
       <NavTiles tiles={TILES} />
     </PageShell>

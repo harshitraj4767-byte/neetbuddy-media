@@ -199,7 +199,7 @@ function Dashboard() {
             src="/illustrations/study-desk.png"
             alt="Student studying at a desk"
             loading="lazy"
-            className="pointer-events-none absolute -bottom-2 right-0 w-[40%] max-w-[260px] select-none object-contain opacity-95"
+            className="pointer-events-none absolute -bottom-1 -right-2 w-[46%] max-w-[300px] select-none object-contain drop-shadow-sm sm:-right-1"
           />
         </div>
 
