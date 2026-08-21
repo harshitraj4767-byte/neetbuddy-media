@@ -279,6 +279,7 @@ function SubjectPage() {
     <PageShell>
       <HubHero
         variant="banner"
+        compact
         eyebrow="Subject"
         title={subject}
         highlight="Chapter practice"
@@ -288,67 +289,55 @@ function SubjectPage() {
         image={meta.image}
         imageAlt={meta.alt}
       >
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-3 py-1.5 text-xs font-semibold shadow-sm backdrop-blur">
-          <Icon className="h-4 w-4" strokeWidth={2.2} />
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-2 py-1 text-[10px] font-semibold shadow-sm backdrop-blur">
+          <Icon className="h-3 w-3" strokeWidth={2.2} />
           {chapters?.length ?? 0} chapters
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-3 py-1.5 text-xs font-semibold shadow-sm backdrop-blur">
-          NEET 2027 syllabus
         </span>
       </HubHero>
 
-      <div className="mb-4 rounded-2xl border border-border/70 bg-card/70 p-4 shadow-soft backdrop-blur-xl">
-        <div className="mb-3 flex items-center gap-2">
-          <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
-          <span className="text-sm font-semibold">Filters</span>
-          {filtersActive && (
-            <Button
-              size="sm"
-              variant="ghost"
-              className="ml-auto h-7 px-2 text-xs"
-              onClick={() => { setDifficulty("any"); setQType("any"); setExcluded(new Set()); }}
-            >
-              Reset
-            </Button>
-          )}
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div className="space-y-1.5">
-            <Label className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Difficulty</Label>
-            <Select value={difficulty} onValueChange={setDifficulty}>
-              <SelectTrigger className="h-11 rounded-xl"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="any">Any difficulty</SelectItem>
-                {DIFFICULTIES.map((d) => (
-                  <SelectItem key={d} value={d}>{d}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-1.5">
-            <Label className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Question type</Label>
-            <Select value={qtype} onValueChange={setQType}>
-              <SelectTrigger className="h-11 rounded-xl"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="any">Any type</SelectItem>
-                {QTYPES.map((t) => (
-                  <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
+      {/* Consolidated, single-row compact filter bar */}
+      <div className="mb-3 flex items-center gap-2 rounded-xl border border-border/70 bg-card/70 px-2 py-1.5 shadow-sm backdrop-blur-xl">
+        <SlidersHorizontal className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+        <Select value={difficulty} onValueChange={setDifficulty}>
+          <SelectTrigger className="h-8 min-w-0 flex-1 rounded-lg border-0 bg-secondary/60 px-2 text-xs">
+            <SelectValue placeholder="Difficulty" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="any">Any difficulty</SelectItem>
+            {DIFFICULTIES.map((d) => (
+              <SelectItem key={d} value={d}>{d}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select value={qtype} onValueChange={setQType}>
+          <SelectTrigger className="h-8 min-w-0 flex-1 rounded-lg border-0 bg-secondary/60 px-2 text-xs">
+            <SelectValue placeholder="Type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="any">Any type</SelectItem>
+            {QTYPES.map((t) => (
+              <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {filtersActive && (
+          <Button
+            size="sm"
+            variant="ghost"
+            className="h-8 shrink-0 px-2 text-[11px]"
+            onClick={() => { setDifficulty("any"); setQType("any"); setExcluded(new Set()); }}
+          >
+            Reset
+          </Button>
+        )}
       </div>
 
-
-      {filtersActive && (
-        <div className="mb-4 flex flex-wrap items-center gap-2">
-          <Badge variant="secondary" className="gap-1"><SlidersHorizontal className="h-3 w-3" /> Filters on</Badge>
-          {difficulty !== "any" && <Badge variant="outline">{difficulty}</Badge>}
-          {qtype !== "any" && <Badge variant="outline">{qtype}</Badge>}
-          {excluded.size > 0 && <Badge variant="outline">{topicStats.selected}/{topicStats.total} topics</Badge>}
+      {filtersActive && excluded.size > 0 && (
+        <div className="mb-3 flex flex-wrap items-center gap-1.5">
+          <Badge variant="outline" className="text-[10px]">{topicStats.selected}/{topicStats.total} topics</Badge>
         </div>
       )}
+
 
       {chapters === null ? (
         <Loader2 className="h-5 w-5 animate-spin text-primary" />

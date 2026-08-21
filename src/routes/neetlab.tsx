@@ -10,6 +10,7 @@ import { PhyTopic } from "@/neetlab/components/PhysicsTopic";
 import { ChemTopic } from "@/neetlab/components/ChemistryTopic";
 import { subjects } from "@/neetlab/data/topics";
 import { FeatureLock } from "@/components/feature-lock";
+import { HubHero } from "@/components/nav-tiles";
 
 export const Route = createFileRoute("/neetlab")({
   head: () => ({ meta: [{ title: "NEETLab — 3D Sims & Simulations" }] }),
@@ -25,15 +26,18 @@ function NEETLabPage() {
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 pb-24 pt-6">
-        <div className="mb-6 flex items-center gap-3">
-          <div className="rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 p-3 text-white shadow-lg">
-            <FlaskConical className="h-6 w-6" />
-          </div>
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold sm:text-3xl">NEETLab</h1>
-            <p className="text-sm text-muted-foreground">3D models & interactive physics / chemistry / biology simulations.</p>
-          </div>
-        </div>
+        <HubHero
+          variant="banner"
+          compact
+          eyebrow="NEETLab"
+          title="Explore. Simulate."
+          highlight="Understand better."
+          description="3D models, interactive simulations and virtual labs for NEET aspirants."
+          Icon={FlaskConical}
+          accent="orange"
+          image="/illustrations/banner-neetlab.png"
+          imageAlt="3D microscope, DNA helix, molecules and the NEETLab app illustration"
+        />
 
         <Tabs defaultValue="biology" className="w-full">
           <TabsList className="mb-4 grid w-full grid-cols-3 max-w-md">

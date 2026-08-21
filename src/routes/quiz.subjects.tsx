@@ -28,6 +28,7 @@ function SubjectQuizPage() {
     <PageShell>
       <HubHero
         variant="banner"
+        compact
         eyebrow="Practice"
         title="Subject-wise"
         highlight="Quiz"
