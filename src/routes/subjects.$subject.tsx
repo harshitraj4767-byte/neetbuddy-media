@@ -347,14 +347,6 @@ function SubjectPage() {
           {difficulty !== "any" && <Badge variant="outline">{difficulty}</Badge>}
           {qtype !== "any" && <Badge variant="outline">{qtype}</Badge>}
           {excluded.size > 0 && <Badge variant="outline">{topicStats.selected}/{topicStats.total} topics</Badge>}
-          <Button
-            size="sm"
-            variant="ghost"
-            className="h-7 px-2 text-xs"
-            onClick={() => { setDifficulty("any"); setQType("any"); setExcluded(new Set()); }}
-          >
-            Reset
-          </Button>
         </div>
       )}
 
