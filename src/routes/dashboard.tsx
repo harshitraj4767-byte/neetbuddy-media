@@ -175,10 +175,26 @@ function Dashboard() {
       <div className="mx-auto w-full max-w-5xl">
 
         {/* ── Greeting hero ─────────────────────────────────────────── */}
-        <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-sky-500/15 p-5 shadow-soft sm:p-7">
-          <div className="relative z-10 max-w-[62%] sm:max-w-[58%]">
+        <div className="relative isolate overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-sky-500/15 p-4 shadow-soft sm:p-7">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.16] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:14px_14px] text-foreground/40 [mask-image:linear-gradient(to_bottom_right,black,transparent_70%)]"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 animate-pulse rounded-full bg-gradient-to-br from-primary to-sky-400 opacity-25 blur-3xl [animation-duration:7s]"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 animate-pulse rounded-full bg-gradient-to-br from-sky-400 to-violet-500 opacity-20 blur-3xl [animation-duration:9s]"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-40 dark:via-white/[0.05]"
+          />
+          <div className="relative z-10 max-w-[60%] sm:max-w-[58%]">
             <div className="text-sm font-semibold text-muted-foreground">{greeting}, {firstName}! 👋</div>
-            <h1 className="mt-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+            <h1 className="mt-2 text-[clamp(1.3rem,5.6vw,1.6rem)] font-extrabold leading-tight tracking-tight sm:text-3xl">
               Let&apos;s make today count towards your{" "}
               <span className="text-primary">NEET {targetYear} dream</span>.
             </h1>
@@ -199,7 +215,7 @@ function Dashboard() {
             src="/illustrations/study-desk.png"
             alt="Student studying at a desk"
             loading="lazy"
-            className="pointer-events-none absolute -bottom-1 -right-2 w-[46%] max-w-[300px] select-none object-contain drop-shadow-sm sm:-right-1"
+            className="pointer-events-none absolute bottom-0 right-0 z-0 h-[78%] max-h-[190px] w-[42%] max-w-[280px] select-none object-contain object-bottom drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[86%] sm:max-h-[240px]"
           />
         </div>
 
