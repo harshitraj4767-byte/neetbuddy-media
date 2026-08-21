@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AdminBannersRouteImport } from './routes/admin-banners'
 import { Route as AdminCollaboratorsRouteImport } from './routes/admin-collaborators'
 import { Route as AdminInboxRouteImport } from './routes/admin-inbox'
 import { Route as AdminMockCategoriesRouteImport } from './routes/admin-mock-categories'
@@ -107,6 +108,11 @@ const AboutRoute = AboutRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminBannersRoute = AdminBannersRouteImport.update({
+  id: '/admin-banners',
+  path: '/admin-banners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminCollaboratorsRoute = AdminCollaboratorsRouteImport.update({
@@ -529,6 +535,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/admin-banners': typeof AdminBannersRoute
   '/admin-collaborators': typeof AdminCollaboratorsRoute
   '/admin-inbox': typeof AdminInboxRoute
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
@@ -615,6 +622,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/admin-banners': typeof AdminBannersRoute
   '/admin-collaborators': typeof AdminCollaboratorsRoute
   '/admin-inbox': typeof AdminInboxRoute
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
@@ -702,6 +710,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/admin-banners': typeof AdminBannersRoute
   '/admin-collaborators': typeof AdminCollaboratorsRoute
   '/admin-inbox': typeof AdminInboxRoute
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
@@ -790,6 +799,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/admin-banners'
     | '/admin-collaborators'
     | '/admin-inbox'
     | '/admin-mock-categories'
@@ -876,6 +886,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/admin-banners'
     | '/admin-collaborators'
     | '/admin-inbox'
     | '/admin-mock-categories'
@@ -962,6 +973,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/admin-banners'
     | '/admin-collaborators'
     | '/admin-inbox'
     | '/admin-mock-categories'
@@ -1049,6 +1061,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
+  AdminBannersRoute: typeof AdminBannersRoute
   AdminCollaboratorsRoute: typeof AdminCollaboratorsRoute
   AdminInboxRoute: typeof AdminInboxRoute
   AdminMockCategoriesRoute: typeof AdminMockCategoriesRoute
@@ -1145,6 +1158,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-banners': {
+      id: '/admin-banners'
+      path: '/admin-banners'
+      fullPath: '/admin-banners'
+      preLoaderRoute: typeof AdminBannersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin-collaborators': {
@@ -1772,6 +1792,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
+  AdminBannersRoute: AdminBannersRoute,
   AdminCollaboratorsRoute: AdminCollaboratorsRoute,
   AdminInboxRoute: AdminInboxRoute,
   AdminMockCategoriesRoute: AdminMockCategoriesRoute,
