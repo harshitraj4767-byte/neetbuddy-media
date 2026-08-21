@@ -62,7 +62,7 @@ function TileBody({ tile, accent }: { tile: NavTile; accent: TileAccent }) {
       {tile.image ? (
         <div
           className={cn(
-            "relative flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-gradient-to-br shadow-md dark:border-white/10 sm:h-28 sm:w-28",
+            "relative flex h-[6.75rem] w-[6.75rem] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-gradient-to-br shadow-md dark:border-white/10 sm:h-32 sm:w-32",
             a.wash,
           )}
         >
@@ -80,17 +80,17 @@ function TileBody({ tile, accent }: { tile: NavTile; accent: TileAccent }) {
             loading="lazy"
             width={816}
             height={816}
-            className="relative h-[86%] w-[86%] select-none object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.22)] transition-transform duration-300 group-hover:scale-105"
+            className="relative h-[94%] w-[94%] select-none object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.22)] transition-transform duration-300 group-hover:scale-105"
           />
         </div>
       ) : (
         <div
           className={cn(
-            "relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md sm:h-20 sm:w-20",
+            "relative flex h-[5.25rem] w-[5.25rem] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md sm:h-24 sm:w-24",
             a.icon,
           )}
         >
-          <tile.Icon className="h-10 w-10 sm:h-11 sm:w-11" strokeWidth={2.1} />
+          <tile.Icon className="h-12 w-12 sm:h-14 sm:w-14" strokeWidth={2.1} />
         </div>
       )}
       <div className="relative min-w-0 flex-1">
@@ -266,9 +266,9 @@ export function HubHero({
               className={cn(
                 "pointer-events-none relative select-none object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.28)]",
                 banner
-                  ? "h-[130px] w-[44vw] max-w-[230px] sm:h-auto sm:w-[38%] sm:max-w-[320px]"
-                  : "h-[120px] w-[40vw] max-w-[210px] sm:h-auto sm:w-[36%] sm:max-w-[290px]",
-                compact && banner && "h-[78px] w-[30vw] max-w-[140px] sm:max-w-[180px]",
+                  ? "h-[150px] w-[46vw] max-w-[260px] sm:h-auto sm:w-[42%] sm:max-w-[360px]"
+                  : "h-[140px] w-[43vw] max-w-[240px] sm:h-auto sm:w-[40%] sm:max-w-[330px]",
+                compact && banner && "h-[96px] w-[34vw] max-w-[168px] sm:max-w-[210px]",
               )}
             />
           </div>

@@ -192,7 +192,7 @@ function Dashboard() {
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-40 dark:via-white/[0.05]"
           />
-          <div className="relative z-10 max-w-[60%] sm:max-w-[58%]">
+          <div className="relative z-10 max-w-[58%] sm:max-w-[56%]">
             <div className="text-sm font-semibold text-muted-foreground">{greeting}, {firstName}! 👋</div>
             <h1 className="mt-2 text-[clamp(1.3rem,5.6vw,1.6rem)] font-extrabold leading-tight tracking-tight sm:text-3xl">
               Let&apos;s make today count towards your{" "}
@@ -215,7 +215,7 @@ function Dashboard() {
             src="/illustrations/study-desk.png"
             alt="Student studying at a desk"
             loading="lazy"
-            className="pointer-events-none absolute bottom-0 right-0 z-0 h-[78%] max-h-[190px] w-[42%] max-w-[280px] select-none object-contain object-bottom drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[86%] sm:max-h-[240px]"
+            className="pointer-events-none absolute bottom-0 right-0 z-0 h-[88%] max-h-[220px] w-[46%] max-w-[320px] select-none object-contain object-bottom object-right drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[94%] sm:max-h-[275px]"
           />
         </div>
 

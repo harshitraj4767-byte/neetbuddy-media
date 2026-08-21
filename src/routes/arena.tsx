@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { Trophy, Swords, Crown } from "lucide-react";
+import { HubHero } from "@/components/nav-tiles";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/arena")({
@@ -15,11 +16,18 @@ export const Route = createFileRoute("/arena")({
 
 function ArenaPage() {
   return (
-    <PageShell
-      eyebrow="Compete"
-      title="Arena"
-      description="Contests, battlegrounds and tournaments — everything competitive, in one place."
-    >
+    <PageShell>
+      <HubHero
+        eyebrow="Compete"
+        title="Enter the"
+        highlight="Arena"
+        description="Contests, battlegrounds and tournaments — everything competitive, in one place."
+        Icon={Swords}
+        accent="amber"
+        variant="banner"
+        image="/illustrations/hub-arena.png"
+        imageAlt="Golden trophy on a podium with crossed swords"
+      />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Link to="/contests" className="group">
           <Tile
