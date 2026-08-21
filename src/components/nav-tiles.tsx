@@ -62,7 +62,7 @@ function TileBody({ tile, accent }: { tile: NavTile; accent: TileAccent }) {
       {tile.image ? (
         <div
           className={cn(
-            "relative flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-gradient-to-br shadow-md dark:border-white/10 sm:h-[5.5rem] sm:w-[5.5rem]",
+            "relative flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-gradient-to-br shadow-md dark:border-white/10 sm:h-28 sm:w-28",
             a.wash,
           )}
         >
@@ -86,11 +86,11 @@ function TileBody({ tile, accent }: { tile: NavTile; accent: TileAccent }) {
       ) : (
         <div
           className={cn(
-            "relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md",
+            "relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md sm:h-20 sm:w-20",
             a.icon,
           )}
         >
-          <tile.Icon className="h-9 w-9" strokeWidth={2.1} />
+          <tile.Icon className="h-10 w-10 sm:h-11 sm:w-11" strokeWidth={2.1} />
         </div>
       )}
       <div className="relative min-w-0 flex-1">
@@ -255,8 +255,8 @@ export function HubHero({
               className={cn(
                 "pointer-events-none relative select-none object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.28)]",
                 banner
-                  ? "h-[92px] w-[38vw] max-w-[170px] sm:h-auto sm:w-[34%] sm:max-w-[260px]"
-                  : "h-[86px] w-[34vw] max-w-[150px] sm:h-auto sm:w-[32%] sm:max-w-[230px]",
+                  ? "h-[130px] w-[44vw] max-w-[230px] sm:h-auto sm:w-[38%] sm:max-w-[320px]"
+                  : "h-[120px] w-[40vw] max-w-[210px] sm:h-auto sm:w-[36%] sm:max-w-[290px]",
               )}
             />
           </div>

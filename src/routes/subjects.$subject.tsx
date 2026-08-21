@@ -19,6 +19,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { CheckCircle2, RotateCcw, Eye } from "lucide-react";
+import { HubHero, type TileAccent } from "@/components/nav-tiles";
 
 export const Route = createFileRoute("/subjects/$subject")({
   head: () => ({ meta: [{ title: "Subject — Neet Buddy" }] }),
@@ -41,10 +42,34 @@ const QTYPES = [
   { value: "Graph/Figure", label: "Diagram / graph based" },
 ] as const;
 
-const META: Record<string, { icon: typeof Atom; tint: string }> = {
-  Physics: { icon: Atom, tint: "from-sky-100 to-blue-100" },
-  Chemistry: { icon: FlaskConical, tint: "from-orange-100 to-amber-100" },
-  Biology: { icon: Leaf, tint: "from-emerald-100 to-green-100" },
+const META: Record<
+  string,
+  { icon: typeof Atom; tint: string; accent: TileAccent; image: string; alt: string; blurb: string }
+> = {
+  Physics: {
+    icon: Atom,
+    tint: "from-sky-100 to-blue-100",
+    accent: "blue",
+    image: "/illustrations/banner-physics.png",
+    alt: "3D atom, magnet and lightning bolt illustration",
+    blurb: "Numericals first, then concept one-liners — chapter by chapter.",
+  },
+  Chemistry: {
+    icon: FlaskConical,
+    tint: "from-orange-100 to-amber-100",
+    accent: "orange",
+    image: "/illustrations/banner-chemistry.png",
+    alt: "3D lab flasks and molecule illustration",
+    blurb: "Physical, Organic and Inorganic chapters in one flow.",
+  },
+  Biology: {
+    icon: Leaf,
+    tint: "from-emerald-100 to-green-100",
+    accent: "emerald",
+    image: "/illustrations/banner-biology.png",
+    alt: "3D leaf, DNA helix and microscope illustration",
+    blurb: "NCERT-aligned Botany and Zoology, 360 marks worth of practice.",
+  },
 };
 
 type Filters = { difficulty: string; qtype: string };
