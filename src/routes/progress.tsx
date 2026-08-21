@@ -1,62 +1,130 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Loader2, Flame, TrendingUp, Calendar, Target, ChevronLeft, ChevronRight, Home } from "lucide-react";
+import {
+  Loader2,
+  Flame,
+  TrendingUp,
+  Calendar,
+  Target,
+  ChevronLeft,
+  ChevronRight,
+  Home,
+  Brain,
+  Clock,
+  CheckCircle2,
+  XCircle,
+  HelpCircle,
+  FileText,
+  Trophy,
+  ArrowUpRight,
+} from "lucide-react";
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Line,
+  ComposedChart,
+  Area,
+} from "recharts";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/progress")({
-  head: () => ({ meta: [{ title: "Weekly Progress — Neet Buddy" }] }),
+  head: () => ({
+    meta: [
+      { title: "Weekly Progress Report — Neet Buddy" },
+      { name: "description", content: "Track your weekly NEET preparation progress, accuracy, and goals." },
+      { property: "og:title", content: "Weekly Progress Report — Neet Buddy" },
+      { property: "og:description", content: "Track your weekly NEET preparation progress, accuracy, and goals." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: ProgressPage,
 });
 
-type Attempt = { correct_count: number; wrong_count: number; unattempted_count: number; submitted_at: string };
-type SubjectAccuracy = { subject: string; correct: number; total: number; accuracy: number; color: string };
+type Attempt = {
+  correct_count: number;
+  wrong_count: number;
+  unattempted_count: number;
+  submitted_at: string;
+};
+
+type SubjectAccuracy = {
+  subject: string;
+  correct: number;
+  total: number;
+  accuracy: number;
+  color: string;
+};
 
 function startOfWeek(base: Date = new Date()) {
-  const d = new Date(base); const day = d.getDay() || 7; d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - (day - 1)); return d;
+  const d = new Date(base);
+  const day = d.getDay() || 7;
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - (day - 1));
+  return d;
+}
+
+function formatDuration(minutes: number) {
+  const h = Math.floor(minutes / 60);
+  const m = Math.round(minutes % 60);
+  if (h > 0) return `${h}h ${m}m`;
+  return `${m}m`;
 }
 
 function ProgressPage() {
   const { user, profile, loading, refresh } = useAuth();
   const nav = useNavigate();
   const [attempts, setAttempts] = useState<Attempt[] | null>(null);
-  const [weekOffset, setWeekOffset] = useState(0); // 0 = current week
+  const [weekOffset, setWeekOffset] = useState(0);
   const [goalOpen, setGoalOpen] = useState(false);
-  const [goalDraft, setGoalDraft] = useState<number>((profile as unknown as { daily_goal?: number } | null)?.daily_goal ?? 20);
+  const [goalDraft, setGoalDraft] = useState<number>(
+    (profile as unknown as { daily_goal?: number } | null)?.daily_goal ?? 20,
+  );
   const [subjectAcc, setSubjectAcc] = useState<SubjectAccuracy[] | null>(null);
 
-  useEffect(() => { if (!loading && !user) nav({ to: "/login" }); }, [user, loading, nav]);
+  useEffect(() => {
+    if (!loading && !user) nav({ to: "/login" });
+  }, [user, loading, nav]);
 
   useEffect(() => {
     if (!user) return;
-    // load last ~90 days for heatmap
-    const since = new Date(); since.setDate(since.getDate() - 90); since.setHours(0, 0, 0, 0);
-    supabase.from("attempts").select("correct_count,wrong_count,unattempted_count,submitted_at")
-      .eq("user_id", user.id).eq("status", "completed").gte("submitted_at", since.toISOString())
+    const since = new Date();
+    since.setDate(since.getDate() - 90);
+    since.setHours(0, 0, 0, 0);
+    supabase
+      .from("attempts")
+      .select("correct_count,wrong_count,unattempted_count,submitted_at")
+      .eq("user_id", user.id)
+      .eq("status", "completed")
+      .gte("submitted_at", since.toISOString())
       .then(({ data }) => setAttempts((data ?? []) as Attempt[]));
   }, [user]);
 
-  // Subject-wise accuracy for current week (from attempts → tests → questions)
   useEffect(() => {
     if (!user) return;
     (async () => {
-      const ws = startOfWeek(); ws.setDate(ws.getDate() + weekOffset * 7);
-      const we = new Date(ws); we.setDate(we.getDate() + 7);
+      const ws = startOfWeek();
+      ws.setDate(ws.getDate() + weekOffset * 7);
+      const we = new Date(ws);
+      we.setDate(we.getDate() + 7);
 
-      // Always start from the full subject list so all NEET subjects render,
-      // even when the user has no attempts yet for some of them.
-      const { data: allSubs } = await supabase
-        .from("subjects")
-        .select("id,name,color")
-        .order("name");
+      const { data: allSubs } = await supabase.from("subjects").select("id,name,color").order("name");
       type SubRow = { id: string; name: string; color: string | null };
       const subjectsList = (allSubs ?? []) as SubRow[];
       const palette: Record<string, string> = {
@@ -81,16 +149,19 @@ function ProgressPage() {
         answers: Record<string, number> | null;
         tests: { question_ids: string[] | null } | null;
       }>;
-      const qIds = Array.from(
-        new Set(all.flatMap((r) => Object.keys(r.answers ?? {}))),
-      );
+      const qIds = Array.from(new Set(all.flatMap((r) => Object.keys(r.answers ?? {}))));
 
       if (qIds.length > 0) {
         const { data: qs } = await supabase
           .from("questions")
           .select("id, correct_index, subject_id, subjects(name, color)")
           .in("id", qIds);
-        type Q = { id: string; correct_index: number; subject_id: string | null; subjects: { name: string; color: string | null } | null };
+        type Q = {
+          id: string;
+          correct_index: number;
+          subject_id: string | null;
+          subjects: { name: string; color: string | null } | null;
+        };
         const qmap = new Map<string, Q>(((qs ?? []) as unknown as Q[]).map((q) => [q.id, q]));
 
         for (const r of all) {
@@ -99,7 +170,11 @@ function ProgressPage() {
             const q = qmap.get(qid);
             if (!q || !q.subjects) continue;
             const name = q.subjects.name;
-            const b = baseBuckets.get(name) ?? { correct: 0, total: 0, color: q.subjects.color ?? palette[name] ?? "#6366f1" };
+            const b = baseBuckets.get(name) ?? {
+              correct: 0,
+              total: 0,
+              color: q.subjects.color ?? palette[name] ?? "#6366f1",
+            };
             b.total++;
             if (picked === q.correct_index) b.correct++;
             baseBuckets.set(name, b);
@@ -114,10 +189,10 @@ function ProgressPage() {
         accuracy: v.total ? Math.round((v.correct / v.total) * 100) : 0,
         color: v.color,
       }));
-      // Keep canonical NEET order if subjects table is missing entries
       const order = ["Physics", "Chemistry", "Biology"];
       out.sort((a, b) => {
-        const ai = order.indexOf(a.subject); const bi = order.indexOf(b.subject);
+        const ai = order.indexOf(a.subject);
+        const bi = order.indexOf(b.subject);
         if (ai !== -1 && bi !== -1) return ai - bi;
         if (ai !== -1) return -1;
         if (bi !== -1) return 1;
@@ -128,54 +203,83 @@ function ProgressPage() {
   }, [user, weekOffset, attempts]);
 
   const goal = (profile as unknown as { daily_goal?: number } | null)?.daily_goal ?? 20;
-  const weekStart = useMemo(() => { const w = startOfWeek(); w.setDate(w.getDate() + weekOffset * 7); return w; }, [weekOffset]);
-  const weekEnd = useMemo(() => { const e = new Date(weekStart); e.setDate(e.getDate() + 7); return e; }, [weekStart]);
-  const weekAttempts = useMemo(() => (attempts ?? []).filter((a) => { const d = new Date(a.submitted_at); return d >= weekStart && d < weekEnd; }), [attempts, weekStart, weekEnd]);
+  const weekStart = useMemo(() => {
+    const w = startOfWeek();
+    w.setDate(w.getDate() + weekOffset * 7);
+    return w;
+  }, [weekOffset]);
+  const weekEnd = useMemo(() => {
+    const e = new Date(weekStart);
+    e.setDate(e.getDate() + 7);
+    return e;
+  }, [weekStart]);
+  const weekAttempts = useMemo(
+    () =>
+      (attempts ?? []).filter((a) => {
+        const d = new Date(a.submitted_at);
+        return d >= weekStart && d < weekEnd;
+      }),
+    [attempts, weekStart, weekEnd],
+  );
 
   const totalCorrect = weekAttempts.reduce((s, a) => s + (a.correct_count ?? 0), 0);
   const totalWrong = weekAttempts.reduce((s, a) => s + (a.wrong_count ?? 0), 0);
-  const totalQ = totalCorrect + totalWrong;
+  const totalUnattempted = weekAttempts.reduce((s, a) => s + (a.unattempted_count ?? 0), 0);
+  const totalQ = totalCorrect + totalWrong + totalUnattempted;
   const accuracy = totalQ ? Math.round((totalCorrect / totalQ) * 100) : 0;
   const weekTarget = goal * 7;
 
-  // streak: consecutive days back from today with at least 1 attempt
   const streak = useMemo(() => {
     if (!attempts) return 0;
     const dayKey = (d: Date) => d.toISOString().slice(0, 10);
     const set = new Set((attempts ?? []).map((a) => dayKey(new Date(a.submitted_at))));
-    let s = 0; const cur = new Date(); cur.setHours(0,0,0,0);
-    while (set.has(dayKey(cur))) { s++; cur.setDate(cur.getDate() - 1); }
+    let s = 0;
+    const cur = new Date();
+    cur.setHours(0, 0, 0, 0);
+    while (set.has(dayKey(cur))) {
+      s++;
+      cur.setDate(cur.getDate() - 1);
+    }
     return s;
   }, [attempts]);
 
-  // 7-day display
   const dayLabels = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   const perDay = dayLabels.map((label, i) => {
-    const day = new Date(weekStart); day.setDate(day.getDate() + i);
-    const next = new Date(day); next.setDate(day.getDate() + 1);
-    const c = (attempts ?? []).filter((a) => { const d = new Date(a.submitted_at); return d >= day && d < next; })
-      .reduce((s, a) => s + (a.correct_count ?? 0) + (a.wrong_count ?? 0), 0);
+    const day = new Date(weekStart);
+    day.setDate(day.getDate() + i);
+    const next = new Date(day);
+    next.setDate(day.getDate() + 1);
+    const c = (attempts ?? [])
+      .filter((a) => {
+        const d = new Date(a.submitted_at);
+        return d >= day && d < next;
+      })
+      .reduce((s, a) => s + (a.correct_count ?? 0) + (a.wrong_count ?? 0) + (a.unattempted_count ?? 0), 0);
     return { label, day: day.getDate(), count: c, date: day };
   });
 
   const monthName = weekStart.toLocaleString("en", { month: "long", year: "numeric" });
   const rangeLabel = `${weekStart.getDate()} – ${new Date(weekEnd.getTime() - 1).getDate()} ${weekStart.toLocaleString("en", { month: "short", year: "numeric" })}`;
 
-  // Heatmap data — last 12 weeks (84 days)
   const heatmap = useMemo(() => {
-    const today = new Date(); today.setHours(0,0,0,0);
-    const start = new Date(today); start.setDate(start.getDate() - 83);
-    // align to Monday
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const start = new Date(today);
+    start.setDate(start.getDate() - 83);
     const startDow = start.getDay() || 7;
     start.setDate(start.getDate() - (startDow - 1));
     const counts: Record<string, number> = {};
-    (attempts ?? []).forEach((a) => { const k = new Date(a.submitted_at).toISOString().slice(0,10); counts[k] = (counts[k] ?? 0) + (a.correct_count ?? 0) + (a.wrong_count ?? 0); });
+    (attempts ?? []).forEach((a) => {
+      const k = new Date(a.submitted_at).toISOString().slice(0, 10);
+      counts[k] =
+        (counts[k] ?? 0) + (a.correct_count ?? 0) + (a.wrong_count ?? 0) + (a.unattempted_count ?? 0);
+    });
     const weeks: { date: Date; count: number }[][] = [];
     const cursor = new Date(start);
     while (cursor <= today) {
       const w: { date: Date; count: number }[] = [];
       for (let d = 0; d < 7; d++) {
-        const k = cursor.toISOString().slice(0,10);
+        const k = cursor.toISOString().slice(0, 10);
         w.push({ date: new Date(cursor), count: counts[k] ?? 0 });
         cursor.setDate(cursor.getDate() + 1);
       }
@@ -192,11 +296,42 @@ function ProgressPage() {
     return "bg-primary";
   };
 
+  const testsGiven = weekAttempts.length;
+  const studyMinutes = totalQ * 1.5;
+  const studyTime = formatDuration(studyMinutes);
+
+  const overallData = [
+    { name: "Correct", value: totalCorrect, color: "var(--success)" },
+    { name: "Wrong", value: totalWrong, color: "var(--destructive)" },
+    { name: "Skipped", value: totalUnattempted, color: "var(--warning)" },
+  ];
+
+  const eightWeeks = useMemo(() => {
+    const weeks: { label: string; total: number; correct: number; accuracy: number }[] = [];
+    for (let i = 7; i >= 0; i--) {
+      const ws = new Date(weekStart);
+      ws.setDate(ws.getDate() - i * 7);
+      const we = new Date(ws);
+      we.setDate(we.getDate() + 7);
+      const list = (attempts ?? []).filter((a) => {
+        const d = new Date(a.submitted_at);
+        return d >= ws && d < we;
+      });
+      const c = list.reduce((s, a) => s + (a.correct_count ?? 0), 0);
+      const w = list.reduce((s, a) => s + (a.wrong_count ?? 0), 0);
+      const u = list.reduce((s, a) => s + (a.unattempted_count ?? 0), 0);
+      const total = c + w + u;
+      weeks.push({ label: `${ws.getDate()}/${ws.getMonth() + 1}`, total, correct: c, accuracy: total ? Math.round((c / total) * 100) : 0 });
+    }
+    return weeks;
+  }, [attempts, weekStart]);
+
+  const scorePredictor = Math.round((accuracy / 100) * 720);
+
   const saveGoal = async () => {
     if (!user) return;
     const v = Math.max(1, Math.min(500, Math.round(goalDraft)));
     setGoalOpen(false);
-    // Optimistic: update query cache so UI reflects immediately
     const { error } = await supabase.from("profiles").update({ daily_goal: v }).eq("id", user.id);
     if (error) return toast.error(error.message);
     await refresh();
@@ -205,235 +340,584 @@ function ProgressPage() {
 
   return (
     <PageShell>
-      <div className="mx-auto max-w-3xl">
-        {/* Header bar */}
-        <div className="-mt-2 mb-4 flex items-center justify-between">
-          <button onClick={() => history.back()} className="inline-flex items-center gap-1.5 text-sm font-medium hover:text-primary">
+      <div className="mx-auto max-w-5xl px-4 pb-10">
+        {/* Top nav */}
+        <div className="-mx-4 mb-6 flex items-center justify-between px-4 pt-4">
+          <button
+            onClick={() => history.back()}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition hover:text-foreground"
+          >
             <ChevronLeft className="h-5 w-5" /> Weekly Progress Report
           </button>
-          <Link to="/dashboard" className="rounded-full p-1.5 text-primary hover:bg-primary/10"><Home className="h-5 w-5" /></Link>
+          <Link to="/dashboard" className="rounded-full p-2 text-primary transition hover:bg-primary/10">
+            <Home className="h-5 w-5" />
+          </Link>
         </div>
 
-        {attempts === null ? <div className="flex justify-center py-10"><Loader2 className="h-5 w-5 animate-spin text-primary" /></div> : (
+        {attempts === null ? (
+          <div className="flex justify-center py-20">
+            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+          </div>
+        ) : (
           <>
-            {/* Profile / identity */}
-            <Card className="mb-4 border-border">
-              <CardContent className="flex items-center gap-3 p-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-lg font-bold text-primary">
-                  {(profile?.full_name ?? user?.email ?? "U").slice(0, 1).toUpperCase()}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="truncate text-sm font-semibold">{profile?.full_name ?? user?.email}</div>
-                  <div className="text-xs text-muted-foreground">NEET {(profile as unknown as { target_year?: number } | null)?.target_year ?? 2027}</div>
-                </div>
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-              </CardContent>
-            </Card>
-
-            {/* top stats */}
-            <div className="grid grid-cols-3 gap-2.5">
-              <Stat icon={Flame} value={`${streak}${streak > 0 ? "🔥" : ""}`} label="Day Streak" color="text-orange-600" border="border-t-orange-500" />
-              <Stat icon={Calendar} value={String(totalQ)} label="This Week" color="text-primary" border="border-t-primary" />
-              <Stat icon={TrendingUp} value={`${accuracy}%`} label="Accuracy" color="text-emerald-600" border="border-t-emerald-500" />
-            </div>
-
-            {/* Activity Calendar (current week) */}
-            <section className="mt-6">
-              <div className="mb-2 flex items-center gap-2"><Calendar className="h-4 w-4 text-primary" /><div className="text-sm font-bold">Activity Calendar</div></div>
-              <Card>
-                <CardContent className="p-4">
-                  <div className="mb-3 flex items-center justify-between">
-                    <button onClick={() => setWeekOffset((o) => o - 1)} className="rounded-md p-1 hover:bg-secondary"><ChevronLeft className="h-4 w-4" /></button>
-                    <div className="text-xs font-semibold text-foreground">{rangeLabel}</div>
-                    <button onClick={() => setWeekOffset((o) => Math.min(0, o + 1))} disabled={weekOffset >= 0} className="rounded-md p-1 hover:bg-secondary disabled:opacity-40"><ChevronRight className="h-4 w-4" /></button>
+            {/* Hero header */}
+            <section className="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 text-white shadow-elegant">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.18),transparent_35%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_90%,rgba(255,255,255,0.12),transparent_40%)]" />
+              <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-2xl font-bold ring-4 ring-white/10 backdrop-blur-sm">
+                    {(profile?.full_name ?? user?.email ?? "U").slice(0, 1).toUpperCase()}
                   </div>
-                  <div className="grid grid-cols-7 gap-1.5">
-                    {perDay.map((d) => {
-                      const reached = d.count >= goal;
-                      const partial = d.count > 0 && !reached;
-                      return (
-                        <div key={d.label} className="text-center">
-                          <div className="text-[9px] font-bold uppercase text-muted-foreground">{d.label}</div>
-                          <div className={cn(
-                            "mx-auto mt-1 flex h-9 w-9 items-center justify-center rounded-lg border text-xs font-bold",
-                            reached ? "border-emerald-300 bg-emerald-50 text-emerald-700 dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-300" :
-                            partial ? "border-amber-300 bg-amber-50 text-amber-700 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-300" :
-                            "border-border bg-card text-muted-foreground",
-                          )}>
-                            {d.count}
-                          </div>
-                          <div className="mt-0.5 text-[10px] text-muted-foreground">{d.day}</div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Weekly Progress */}
-            <section className="mt-6">
-              <div className="mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-2"><TrendingUp className="h-4 w-4 text-primary" /><div className="text-sm font-bold">This Week's Progress</div></div>
-                <Button size="sm" variant="ghost" className="h-7 rounded-full text-xs text-primary hover:bg-primary/10" onClick={() => { setGoalDraft(goal); setGoalOpen(true); }}>Update Daily Goal</Button>
-              </div>
-              <Card>
-                <CardContent className="flex items-center gap-4 p-4">
-                  <div className="relative h-24 w-24 shrink-0">
-                    <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90">
-                      <circle cx="18" cy="18" r="15.9" fill="none" className="stroke-secondary" strokeWidth="3" />
-                      <circle cx="18" cy="18" r="15.9" fill="none" className="stroke-emerald-500" strokeWidth="3" strokeDasharray={`${Math.min(100, (totalQ / Math.max(1, weekTarget)) * 100)} 100`} strokeLinecap="round" />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center text-xl font-bold">{totalQ}</div>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="text-base font-bold">{totalQ} / {weekTarget} Questions</div>
-                    <div className="mt-0.5 text-xs text-muted-foreground">{Math.max(0, weekTarget - totalQ)} more to reach your target</div>
-                    <div className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary"><Target className="h-3.5 w-3.5" /> Daily goal: {goal}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Subject-wise accuracy */}
-            <section className="mt-6">
-              <div className="mb-2 flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-primary" />
-                <div className="text-sm font-bold">Subject-wise Accuracy</div>
-                <span className="ml-auto text-[10px] text-muted-foreground">This week</span>
-              </div>
-              <Card>
-                <CardContent className="p-4">
-                  {subjectAcc === null ? (
-                    <div className="flex justify-center py-4"><Loader2 className="h-4 w-4 animate-spin text-primary" /></div>
-                  ) : subjectAcc.every((s) => s.total === 0) ? (
-                    <div className="space-y-3 opacity-70">
-                      {subjectAcc.map((s) => (
-                        <div key={s.subject}>
-                          <div className="flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2">
-                              <span className="h-2.5 w-2.5 rounded-full" style={{ background: s.color }} />
-                              <span className="font-semibold">{s.subject}</span>
-                              <span className="text-muted-foreground">(0/0)</span>
-                            </div>
-                            <span className="font-bold tabular-nums">—</span>
-                          </div>
-                          <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-secondary" />
-                        </div>
-                      ))}
-                      <div className="pt-1 text-center text-[11px] text-muted-foreground">No attempts yet this week — start a quiz to see your accuracy here.</div>
+                  <div>
+                    <div className="text-lg font-bold">{profile?.full_name ?? user?.email}</div>
+                    <div className="text-sm text-white/80">NEET {(profile as unknown as { target_year?: number } | null)?.target_year ?? 2027}</div>
+                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-medium backdrop-blur-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+                      Active learner
                     </div>
-                  ) : (
-                    <div className="space-y-3">
-                      {subjectAcc.map((s) => (
-                        <div key={s.subject}>
-                          <div className="flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2">
-                              <span className="h-2.5 w-2.5 rounded-full" style={{ background: s.color }} />
-                              <span className="font-semibold">{s.subject}</span>
-                              <span className="text-muted-foreground">({s.correct}/{s.total})</span>
-                            </div>
-                            <span className="font-bold tabular-nums">{s.accuracy}%</span>
-                          </div>
-                          <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-secondary">
-                            <div className="h-full rounded-full transition-all" style={{ width: `${s.accuracy}%`, background: s.color }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-2 backdrop-blur-md md:justify-start">
+                    <button
+                      onClick={() => setWeekOffset((o) => o - 1)}
+                      className="rounded-full p-1.5 transition hover:bg-white/15"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <div className="text-sm font-semibold">{rangeLabel}</div>
+                    <button
+                      onClick={() => setWeekOffset((o) => Math.min(0, o + 1))}
+                      disabled={weekOffset >= 0}
+                      className="rounded-full p-1.5 transition hover:bg-white/15 disabled:opacity-40"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                  <div className="flex gap-2">
+                    <HeroPill icon={Flame} value={`${streak} day${streak === 1 ? "" : "s"}`} label="Streak" />
+                    <HeroPill icon={Target} value={`${accuracy}%`} label="Accuracy" />
+                    <HeroPill icon={Trophy} value={String(totalQ)} label="Questions" />
+                  </div>
+                </div>
+              </div>
             </section>
 
-            {/* Weekly trend (last 8 weeks) */}
-            {(() => {
-              const weeks: { label: string; total: number; correct: number }[] = [];
-              for (let i = 7; i >= 0; i--) {
-                const ws = new Date(weekStart); ws.setDate(ws.getDate() - i * 7);
-                const we = new Date(ws); we.setDate(we.getDate() + 7);
-                const list = (attempts ?? []).filter((a) => { const d = new Date(a.submitted_at); return d >= ws && d < we; });
-                const c = list.reduce((s, a) => s + (a.correct_count ?? 0), 0);
-                const w = list.reduce((s, a) => s + (a.wrong_count ?? 0), 0);
-                weeks.push({ label: `${ws.getDate()}/${ws.getMonth() + 1}`, total: c + w, correct: c });
-              }
-              const max = Math.max(1, ...weeks.map((w) => w.total));
-              return (
-                <section className="mt-6">
-                  <div className="mb-2 flex items-center gap-2"><TrendingUp className="h-4 w-4 text-primary" /><div className="text-sm font-bold">8-Week Trend</div></div>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="flex h-32 items-end gap-2">
-                        {weeks.map((w, i) => {
-                          const h = (w.total / max) * 100;
-                          const ch = w.total ? (w.correct / w.total) * h : 0;
-                          return (
-                            <div key={i} className="flex flex-1 flex-col items-center gap-1">
-                              <div className="relative flex w-full flex-1 items-end">
-                                <div className="w-full rounded-t bg-rose-400/70" style={{ height: `${h}%` }}>
-                                  <div className="w-full rounded-t bg-emerald-500" style={{ height: `${w.total ? (ch / h) * 100 : 0}%` }} />
-                                </div>
-                              </div>
-                              <div className="text-[9px] font-semibold text-muted-foreground">{w.label}</div>
-                              <div className="text-[10px] font-bold tabular-nums">{w.total}</div>
-                            </div>
-                          );
-                        })}
+            {/* Summary stat tiles */}
+            <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+              <SummaryTile
+                icon={Brain}
+                label="Attempted"
+                value={String(totalQ)}
+                sub={`Goal ${weekTarget}`}
+                gradient="from-primary to-primary-glow"
+              />
+              <SummaryTile
+                icon={CheckCircle2}
+                label="Correct"
+                value={String(totalCorrect)}
+                sub={`${totalQ ? Math.round((totalCorrect / totalQ) * 100) : 0}%`}
+                gradient="from-emerald-500 to-emerald-400"
+              />
+              <SummaryTile
+                icon={XCircle}
+                label="Incorrect"
+                value={String(totalWrong)}
+                sub={`${totalQ ? Math.round((totalWrong / totalQ) * 100) : 0}%`}
+                gradient="from-rose-500 to-rose-400"
+              />
+              <SummaryTile
+                icon={HelpCircle}
+                label="Skipped"
+                value={String(totalUnattempted)}
+                sub={`${totalQ ? Math.round((totalUnattempted / totalQ) * 100) : 0}%`}
+                gradient="from-amber-500 to-amber-400"
+              />
+              <SummaryTile
+                icon={Clock}
+                label="Study Time"
+                value={studyTime}
+                sub={`${testsGiven} tests`}
+                gradient="from-violet-500 to-violet-400"
+                className="col-span-2 sm:col-span-1"
+              />
+            </section>
+
+            {/* Main grid */}
+            <div className="mt-6 grid gap-5 lg:grid-cols-3">
+              {/* Left / center column */}
+              <div className="flex flex-col gap-5 lg:col-span-2">
+                {/* Daily Practice Calendar */}
+                <Card className="overflow-hidden shadow-soft">
+                  <CardContent className="p-5">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="rounded-lg bg-primary/10 p-1.5">
+                          <Calendar className="h-4 w-4 text-primary" />
+                        </div>
+                        <div className="text-base font-bold">Daily Practice Calendar</div>
                       </div>
-                      <div className="mt-2 flex justify-center gap-4 text-[10px] text-muted-foreground">
-                        <span className="inline-flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-emerald-500" /> Correct</span>
-                        <span className="inline-flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-rose-400/70" /> Wrong</span>
+                      <span className="text-xs font-medium text-muted-foreground">{monthName}</span>
+                    </div>
+                    <div className="grid grid-cols-7 gap-2">
+                      {perDay.map((d) => {
+                        const reached = d.count >= goal;
+                        const partial = d.count > 0 && !reached;
+                        const isToday =
+                          d.date.toISOString().slice(0, 10) === new Date().toISOString().slice(0, 10);
+                        return (
+                          <div key={d.label} className="text-center">
+                            <div className="text-[10px] font-semibold uppercase text-muted-foreground">
+                              {d.label}
+                            </div>
+                            <div
+                              className={cn(
+                                "mx-auto mt-1.5 flex aspect-square w-full max-w-[3.25rem] items-center justify-center rounded-2xl border text-sm font-bold transition",
+                                reached
+                                  ? "border-emerald-300/60 bg-gradient-to-br from-emerald-500 to-emerald-400 text-white shadow-sm"
+                                  : partial
+                                    ? "border-amber-300/60 bg-gradient-to-br from-amber-500 to-amber-400 text-white shadow-sm"
+                                    : "border-border bg-card text-muted-foreground",
+                                isToday && "ring-2 ring-primary ring-offset-2 ring-offset-background",
+                              )}
+                            >
+                              {d.count}
+                            </div>
+                            <div className="mt-1 text-[10px] text-muted-foreground">{d.day}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="mt-4 flex items-center gap-4 text-[11px] text-muted-foreground">
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                        Goal met
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+                        Partial
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-secondary" />
+                        Rest day
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Subject-wise Questions + Accuracy */}
+                <div className="grid gap-5 md:grid-cols-2">
+                  <Card className="shadow-soft">
+                    <CardContent className="p-5">
+                      <div className="mb-1 flex items-center gap-2">
+                        <div className="rounded-lg bg-primary/10 p-1.5">
+                          <FileText className="h-4 w-4 text-primary" />
+                        </div>
+                        <div className="text-base font-bold">Subject-wise Questions</div>
+                      </div>
+                      <div className="text-xs text-muted-foreground">Distribution this week</div>
+                      <div className="mt-4 h-56">
+                        {subjectAcc === null ? (
+                          <div className="flex h-full items-center justify-center">
+                            <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                          </div>
+                        ) : (
+                          <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={subjectAcc} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
+                              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                              <XAxis
+                                dataKey="subject"
+                                tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                                axisLine={false}
+                                tickLine={false}
+                              />
+                              <YAxis
+                                tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                                axisLine={false}
+                                tickLine={false}
+                              />
+                              <Tooltip
+                                contentStyle={{
+                                  background: "var(--card)",
+                                  border: "1px solid var(--border)",
+                                  borderRadius: "0.75rem",
+                                  fontSize: 12,
+                                }}
+                                itemStyle={{ color: "var(--foreground)" }}
+                                labelStyle={{ color: "var(--muted-foreground)" }}
+                              />
+                              <Bar dataKey="total" radius={[6, 6, 0, 0]}>
+                                {subjectAcc.map((s, i) => (
+                                  <Cell key={`cell-${i}`} fill={s.color} />
+                                ))}
+                              </Bar>
+                            </BarChart>
+                          </ResponsiveContainer>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
-                </section>
-              );
-            })()}
 
-            {/* Heatmap */}
-            <section className="mt-6">
-
-              <div className="mb-2 flex items-center gap-2"><Flame className="h-4 w-4 text-primary" /><div className="text-sm font-bold">Activity Heatmap</div><span className="ml-auto text-[10px] text-muted-foreground">{monthName}</span></div>
-              <Card>
-                <CardContent className="p-4">
-                  <div className="flex gap-1 overflow-x-auto pb-1">
-                    {heatmap.map((week, wi) => (
-                      <div key={wi} className="flex flex-col gap-1">
-                        {week.map((cell, di) => (
-                          <div key={di}
-                            title={`${cell.date.toLocaleDateString()} · ${cell.count} questions`}
-                            className={cn("h-3.5 w-3.5 rounded-sm transition", heatColor(cell.count))}
-                          />
-                        ))}
+                  <Card className="shadow-soft">
+                    <CardContent className="p-5">
+                      <div className="mb-1 flex items-center gap-2">
+                        <div className="rounded-lg bg-primary/10 p-1.5">
+                          <TrendingUp className="h-4 w-4 text-primary" />
+                        </div>
+                        <div className="text-base font-bold">Subject-wise Accuracy</div>
                       </div>
-                    ))}
+                      <div className="text-xs text-muted-foreground">Correct vs total attempts</div>
+                      <div className="mt-4">
+                        {subjectAcc === null ? (
+                          <div className="flex h-48 items-center justify-center">
+                            <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                          </div>
+                        ) : subjectAcc.every((s) => s.total === 0) ? (
+                          <div className="flex h-48 flex-col items-center justify-center gap-2 text-center text-xs text-muted-foreground">
+                            <div className="rounded-full bg-secondary p-3">
+                              <Brain className="h-5 w-5" />
+                            </div>
+                            No attempts yet this week.
+                          </div>
+                        ) : (
+                          <div className="grid grid-cols-3 gap-2">
+                            {subjectAcc.map((s) => (
+                              <div key={s.subject} className="flex flex-col items-center text-center">
+                                <div className="relative h-20 w-20">
+                                  <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart>
+                                      <Pie
+                                        data={[
+                                          { value: s.accuracy },
+                                          { value: 100 - s.accuracy },
+                                        ]}
+                                        innerRadius={26}
+                                        outerRadius={36}
+                                        startAngle={90}
+                                        endAngle={-270}
+                                        dataKey="value"
+                                        stroke="none"
+                                      >
+                                        <Cell fill={s.color} />
+                                        <Cell fill="var(--secondary)" />
+                                      </Pie>
+                                    </PieChart>
+                                  </ResponsiveContainer>
+                                  <div className="absolute inset-0 flex items-center justify-center text-sm font-bold">
+                                    {s.accuracy}%
+                                  </div>
+                                </div>
+                                <div className="mt-1 text-xs font-semibold">{s.subject}</div>
+                                <div className="text-[10px] text-muted-foreground">
+                                  {s.correct}/{s.total}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* 8-Week Comparison */}
+                <Card className="shadow-soft">
+                  <CardContent className="p-5">
+                    <div className="mb-1 flex items-center gap-2">
+                      <div className="rounded-lg bg-primary/10 p-1.5">
+                        <TrendingUp className="h-4 w-4 text-primary" />
+                      </div>
+                      <div className="text-base font-bold">8-Week Comparison</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">Questions attempted vs accuracy</div>
+                    <div className="mt-4 h-60">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <ComposedChart data={eightWeeks} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                          <defs>
+                            <linearGradient id="accGradient" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="var(--primary)" stopOpacity={0.35} />
+                              <stop offset="100%" stopColor="var(--primary)" stopOpacity={0.05} />
+                            </linearGradient>
+                          </defs>
+                          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                          <XAxis
+                            dataKey="label"
+                            tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                            axisLine={false}
+                            tickLine={false}
+                          />
+                          <YAxis
+                            yAxisId="left"
+                            tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                            axisLine={false}
+                            tickLine={false}
+                          />
+                          <YAxis
+                            yAxisId="right"
+                            orientation="right"
+                            domain={[0, 100]}
+                            tickFormatter={(v) => `${v}%`}
+                            tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                            axisLine={false}
+                            tickLine={false}
+                          />
+                          <Tooltip
+                            contentStyle={{
+                              background: "var(--card)",
+                              border: "1px solid var(--border)",
+                              borderRadius: "0.75rem",
+                              fontSize: 12,
+                            }}
+                            itemStyle={{ color: "var(--foreground)" }}
+                            labelStyle={{ color: "var(--muted-foreground)" }}
+                          />
+                          <Bar
+                            yAxisId="left"
+                            dataKey="total"
+                            radius={[6, 6, 0, 0]}
+                            fill="var(--primary)"
+                            fillOpacity={0.7}
+                          />
+                          <Area
+                            yAxisId="right"
+                            type="monotone"
+                            dataKey="accuracy"
+                            stroke="var(--success)"
+                            strokeWidth={2.5}
+                            fill="url(#accGradient)"
+                          />
+                          <Line
+                            yAxisId="right"
+                            type="monotone"
+                            dataKey="accuracy"
+                            stroke="var(--success)"
+                            strokeWidth={0}
+                            dot={{ r: 3, fill: "var(--success)", strokeWidth: 0 }}
+                            activeDot={{ r: 5 }}
+                          />
+                        </ComposedChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Right column */}
+              <div className="flex flex-col gap-5">
+                {/* Weekly Goal */}
+                <Card className="overflow-hidden shadow-soft">
+                  <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-5">
+                    <div className="mb-3 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="rounded-lg bg-primary/10 p-1.5">
+                          <Target className="h-4 w-4 text-primary" />
+                        </div>
+                        <div className="text-base font-bold">Weekly Goal</div>
+                      </div>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-7 rounded-full text-xs text-primary hover:bg-primary/10"
+                        onClick={() => {
+                          setGoalDraft(goal);
+                          setGoalOpen(true);
+                        }}
+                      >
+                        Edit
+                      </Button>
+                    </div>
+                    <div className="relative mx-auto mb-4 h-36 w-36">
+                      <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90">
+                        <circle cx="18" cy="18" r="15.9" fill="none" className="stroke-secondary" strokeWidth="3" />
+                        <circle
+                          cx="18"
+                          cy="18"
+                          r="15.9"
+                          fill="none"
+                          className="stroke-primary"
+                          strokeWidth="3"
+                          strokeDasharray={`${Math.min(100, (totalQ / Math.max(1, weekTarget)) * 100)} 100`}
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <span className="text-3xl font-bold">{totalQ}</span>
+                        <span className="text-[10px] font-medium text-muted-foreground">/ {weekTarget}</span>
+                      </div>
+                    </div>
+                    <div className="text-center text-sm">
+                      <span className="font-semibold text-foreground">{Math.max(0, weekTarget - totalQ)}</span>
+                      <span className="text-muted-foreground"> more to reach your target</span>
+                    </div>
+                    <div className="mt-3 flex items-center justify-center gap-1.5 text-xs font-medium text-muted-foreground">
+                      <ArrowUpRight className="h-3.5 w-3.5 text-success" />
+                      <span className="text-success">{Math.max(0, totalQ - Math.max(0, weekTarget - totalQ))}</span>
+                      <span>vs last week</span>
+                    </div>
+                    <div className="mt-4 text-center text-xs text-muted-foreground">
+                      Daily goal: <span className="font-semibold text-foreground">{goal}</span> questions
+                    </div>
                   </div>
-                  <div className="mt-3 flex items-center gap-1.5 text-[10px] text-muted-foreground">
-                    Less
-                    <span className="h-2.5 w-2.5 rounded-sm bg-secondary/60" />
-                    <span className="h-2.5 w-2.5 rounded-sm bg-primary/20" />
-                    <span className="h-2.5 w-2.5 rounded-sm bg-primary/40" />
-                    <span className="h-2.5 w-2.5 rounded-sm bg-primary/65" />
-                    <span className="h-2.5 w-2.5 rounded-sm bg-primary" />
-                    More
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
+                </Card>
+
+                {/* Overall Performance */}
+                <Card className="shadow-soft">
+                  <CardContent className="p-5">
+                    <div className="mb-1 flex items-center gap-2">
+                      <div className="rounded-lg bg-primary/10 p-1.5">
+                        <Trophy className="h-4 w-4 text-primary" />
+                      </div>
+                      <div className="text-base font-bold">Overall Performance</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">This week&apos;s breakdown</div>
+                    <div className="mt-4 h-44">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={overallData}
+                            innerRadius={50}
+                            outerRadius={70}
+                            paddingAngle={3}
+                            dataKey="value"
+                            stroke="none"
+                          >
+                            {overallData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.color} />
+                            ))}
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div className="mt-2 space-y-2">
+                      {overallData.map((d) => (
+                        <div key={d.name} className="flex items-center justify-between text-xs">
+                          <span className="inline-flex items-center gap-2">
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ background: d.color }} />
+                            {d.name}
+                          </span>
+                          <span className="font-semibold tabular-nums">{d.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Score Predictor */}
+                <Card className="shadow-soft">
+                  <CardContent className="p-5">
+                    <div className="mb-1 flex items-center gap-2">
+                      <div className="rounded-lg bg-primary/10 p-1.5">
+                        <Brain className="h-4 w-4 text-primary" />
+                      </div>
+                      <div className="text-base font-bold">Score Predictor</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">Projected NEET score</div>
+                    <div className="mt-5 flex flex-col items-center">
+                      <div className="relative h-32 w-56">
+                        <svg viewBox="0 0 200 110" className="h-full w-full">
+                          <defs>
+                            <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="var(--destructive)" />
+                              <stop offset="50%" stopColor="var(--warning)" />
+                              <stop offset="100%" stopColor="var(--success)" />
+                            </linearGradient>
+                          </defs>
+                          <path
+                            d="M 20 100 A 80 80 0 0 1 180 100"
+                            fill="none"
+                            stroke="var(--secondary)"
+                            strokeWidth="18"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M 20 100 A 80 80 0 0 1 180 100"
+                            fill="none"
+                            stroke="url(#gaugeGradient)"
+                            strokeWidth="18"
+                            strokeLinecap="round"
+                            strokeDasharray={`${(scorePredictor / 720) * 251} 251`}
+                          />
+                          <text x="100" y="95" textAnchor="middle" className="fill-foreground text-2xl font-bold">
+                            {scorePredictor}
+                          </text>
+                          <text x="100" y="75" textAnchor="middle" className="fill-muted-foreground text-[10px] font-medium">
+                            / 720
+                          </text>
+                        </svg>
+                      </div>
+                      <div className="mt-3 text-center text-xs text-muted-foreground">
+                        Based on {accuracy}% accuracy across {totalQ} questions
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Activity Heatmap */}
+                <Card className="shadow-soft">
+                  <CardContent className="p-5">
+                    <div className="mb-3 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="rounded-lg bg-primary/10 p-1.5">
+                          <Flame className="h-4 w-4 text-primary" />
+                        </div>
+                        <div className="text-base font-bold">Activity Heatmap</div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">{monthName}</span>
+                    </div>
+                    <div className="flex gap-1.5 overflow-x-auto pb-1">
+                      {heatmap.map((week, wi) => (
+                        <div key={wi} className="flex flex-col gap-1">
+                          {week.map((cell, di) => (
+                            <div
+                              key={di}
+                              title={`${cell.date.toLocaleDateString()} · ${cell.count} questions`}
+                              className={cn("h-3.5 w-3.5 rounded-sm transition", heatColor(cell.count))}
+                            />
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                      <span>Less</span>
+                      <span className="h-2.5 w-2.5 rounded-sm bg-secondary/60" />
+                      <span className="h-2.5 w-2.5 rounded-sm bg-primary/20" />
+                      <span className="h-2.5 w-2.5 rounded-sm bg-primary/40" />
+                      <span className="h-2.5 w-2.5 rounded-sm bg-primary/65" />
+                      <span className="h-2.5 w-2.5 rounded-sm bg-primary" />
+                      <span>More</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </>
         )}
       </div>
 
       <Dialog open={goalOpen} onOpenChange={setGoalOpen}>
         <DialogContent>
-          <DialogHeader><DialogTitle>Update daily goal</DialogTitle></DialogHeader>
+          <DialogHeader>
+            <DialogTitle>Update daily goal</DialogTitle>
+          </DialogHeader>
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">How many questions do you want to attempt each day?</p>
-            <Input type="number" min={1} max={500} value={goalDraft} onChange={(e) => setGoalDraft(+e.target.value)} />
+            <Input
+              type="number"
+              min={1}
+              max={500}
+              value={goalDraft}
+              onChange={(e) => setGoalDraft(+e.target.value)}
+            />
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setGoalOpen(false)}>Cancel</Button>
-            <Button onClick={saveGoal} className="bg-gradient-primary">Save</Button>
+            <Button variant="ghost" onClick={() => setGoalOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={saveGoal} className="bg-gradient-primary">
+              Save
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -441,15 +925,60 @@ function ProgressPage() {
   );
 }
 
-function Stat({ icon: Icon, value, label, color, border }: { icon: React.ComponentType<{ className?: string }>; value: string; label: string; color: string; border: string }) {
+function HeroPill({
+  icon: Icon,
+  value,
+  label,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  value: string;
+  label: string;
+}) {
   return (
-    <Card className={cn("border-t-2", border)}>
-      <CardContent className="flex flex-col items-center justify-center p-3 text-center">
-        <div className="flex items-center gap-1.5">
-          <span className={cn("text-lg font-extrabold", color)}>{value}</span>
-          <Icon className={cn("h-4 w-4", color)} />
+    <div className="flex flex-1 items-center gap-2 rounded-xl bg-white/15 px-3 py-2 backdrop-blur-sm transition hover:bg-white/20">
+      <Icon className="h-4 w-4 text-white/90" />
+      <div>
+        <div className="text-xs font-bold">{value}</div>
+        <div className="text-[10px] text-white/75">{label}</div>
+      </div>
+    </div>
+  );
+}
+
+function SummaryTile({
+  icon: Icon,
+  label,
+  value,
+  sub,
+  gradient,
+  className,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  value: string;
+  sub: string;
+  gradient: string;
+  className?: string;
+}) {
+  return (
+    <Card
+      className={cn(
+        "group relative overflow-hidden border-0 shadow-soft transition hover:-translate-y-1 hover:shadow-elegant",
+        className,
+      )}
+    >
+      <div className={cn("absolute left-0 top-0 h-full w-1 bg-gradient-to-b", gradient)} />
+      <CardContent className="p-4">
+        <div className="flex items-start justify-between">
+          <div>
+            <div className="text-xs font-medium text-muted-foreground">{label}</div>
+            <div className="mt-1 text-xl font-bold tracking-tight">{value}</div>
+            <div className="mt-0.5 text-[10px] font-medium text-muted-foreground">{sub}</div>
+          </div>
+          <div className={cn("rounded-xl bg-gradient-to-br p-2 text-white shadow-sm", gradient)}>
+            <Icon className="h-4 w-4" />
+          </div>
         </div>
-        <div className="mt-0.5 text-[11px] font-medium text-muted-foreground">{label}</div>
       </CardContent>
     </Card>
   );
