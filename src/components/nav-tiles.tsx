@@ -266,9 +266,9 @@ export function HubHero({
               className={cn(
                 "pointer-events-none relative select-none object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.28)]",
                 banner
-                  ? "h-[150px] w-[46vw] max-w-[260px] sm:h-auto sm:w-[42%] sm:max-w-[360px]"
-                  : "h-[140px] w-[43vw] max-w-[240px] sm:h-auto sm:w-[40%] sm:max-w-[330px]",
-                compact && banner && "h-[96px] w-[34vw] max-w-[168px] sm:max-w-[210px]",
+                  ? "h-[160px] w-[48vw] max-w-[280px] sm:h-auto sm:w-[46%] sm:max-w-[420px] lg:max-w-[500px] xl:max-w-[560px]"
+                  : "h-[150px] w-[45vw] max-w-[260px] sm:h-auto sm:w-[44%] sm:max-w-[380px] lg:max-w-[460px] xl:max-w-[520px]",
+                compact && banner && "h-[104px] w-[36vw] max-w-[180px] sm:h-auto sm:w-[34%] sm:max-w-[280px] lg:max-w-[330px]",
               )}
             />
           </div>
