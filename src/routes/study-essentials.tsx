@@ -31,14 +31,14 @@ function StudyEssentialsPage() {
   }
 
   const tiles: NavTile[] = [
-    { to: "/ncert-highlights", label: "NCERT Highlights", tag: "Key Points", accent: "blue", desc: "Chapter-wise NCERT key points and facts.", Icon: GraduationCap },
-    { to: "/highlighted-ncert", label: "Highlighted NCERT", tag: "Important", accent: "amber", desc: "Important NCERT lines, highlighted for you.", Icon: Highlighter },
-    { label: "Short Notes", tag: "Revision", accent: "emerald", desc: "Crisp chapter-wise revision notes.", Icon: ScrollText, onClick: () => setView("short_notes") },
-    { to: "/flashcards", label: "Flashcards", tag: "Recall", accent: "violet", desc: "Quick-recall cards for active revision.", Icon: Layers },
-    { to: "/pyqs", label: "NEET PYQs", tag: "2016–2025", accent: "pink", desc: "Full papers in real CBT mode.", Icon: BookMarked },
-    { to: "/neetlab", label: "NEET Lab", tag: "3D + Sims", accent: "cyan", desc: "Interactive 3D models, simulations and virtual labs.", Icon: FlaskConical },
-    { to: "/study-view", label: "Study Materials", tag: "PDFs", accent: "orange", desc: "Modules and resources shared by mentors.", Icon: FileText },
-    { to: "/daily-checklist", label: "Daily Checklist", tag: "Habit", accent: "rose", desc: "Track your daily syllabus targets.", Icon: ListChecks },
+    { to: "/ncert-highlights", label: "NCERT Highlights", tag: "Key Points", accent: "blue", desc: "Chapter-wise NCERT key points and facts.", Icon: GraduationCap, image: "/illustrations/i3d-ncert-highlights.png", imageAlt: "3D graduation cap on books icon" },
+    { to: "/highlighted-ncert", label: "Highlighted NCERT", tag: "Important", accent: "amber", desc: "Important NCERT lines, highlighted for you.", Icon: Highlighter, image: "/illustrations/i3d-highlighted-ncert.png", imageAlt: "3D highlighter pen icon" },
+    { label: "Short Notes", tag: "Revision", accent: "emerald", desc: "Crisp chapter-wise revision notes.", Icon: ScrollText, onClick: () => setView("short_notes"), image: "/illustrations/i3d-short-notes.png", imageAlt: "3D notebook icon" },
+    { to: "/flashcards", label: "Flashcards", tag: "Recall", accent: "violet", desc: "Quick-recall cards for active revision.", Icon: Layers, image: "/illustrations/i3d-flashcards.png", imageAlt: "3D flashcards icon" },
+    { to: "/pyqs", label: "NEET PYQs", tag: "2016–2025", accent: "pink", desc: "Full papers in real CBT mode.", Icon: BookMarked, image: "/illustrations/i3d-neet-pyqs.png", imageAlt: "3D PYQ clipboard icon" },
+    { to: "/neetlab", label: "NEET Lab", tag: "3D + Sims", accent: "cyan", desc: "Interactive 3D models, simulations and virtual labs.", Icon: FlaskConical, image: "/illustrations/i3d-neet-lab.png", imageAlt: "3D lab flask icon" },
+    { to: "/study-view", label: "Study Materials", tag: "PDFs", accent: "orange", desc: "Modules and resources shared by mentors.", Icon: FileText, image: "/illustrations/i3d-study-materials.png", imageAlt: "3D PDF folder icon" },
+    { to: "/daily-checklist", label: "Daily Checklist", tag: "Habit", accent: "rose", desc: "Track your daily syllabus targets.", Icon: ListChecks, image: "/illustrations/i3d-daily-checklist.png", imageAlt: "3D checklist icon" },
   ];
 
   return (

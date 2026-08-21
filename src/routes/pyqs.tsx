@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PageShell } from "@/components/page-shell";
+import { HubHero } from "@/components/nav-tiles";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -99,11 +100,19 @@ function PyqPage() {
   }
 
   return (
-    <PageShell
-      eyebrow="Previous Years · CBT Mode"
-      title="NEET PYQ Full Papers"
-      description="Every NEET paper from 2002–2025 in a real NTA computer-based test interface. Grid palette, timer, mark for review, and full analysis."
-    >
+    <PageShell>
+      <HubHero
+        variant="banner"
+        compact
+        eyebrow="Previous Years · CBT Mode"
+        title="NEET PYQ"
+        highlight="Full Papers"
+        description="Every NEET paper from 2002–2025 in a real NTA computer-based test interface — grid palette, timer, mark for review and full analysis."
+        Icon={BookMarked}
+        accent="violet"
+        image="/illustrations/hero-pyq.png"
+        imageAlt="NEET PYQ clipboard with books, pen and trophy"
+      />
       <PaperList onPick={setActivePaper} />
     </PageShell>
   );
