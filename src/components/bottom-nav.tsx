@@ -46,7 +46,7 @@ export function BottomNav() {
                   active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                <item.icon className={cn("h-5 w-5", active && "scale-110")} strokeWidth={active ? 2.4 : 1.8} />
+                <item.icon className={cn("h-6 w-6", active && "scale-110")} strokeWidth={active ? 2.4 : 1.8} />
                 {item.label}
               </Link>
             </li>

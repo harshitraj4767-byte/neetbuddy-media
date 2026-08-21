@@ -18,9 +18,9 @@ export const Route = createFileRoute("/quiz/subjects")({
 });
 
 const TILES: NavTile[] = [
-  { to: "/subjects/$subject", params: { subject: "Physics" }, label: "Physics", tag: "Numericals", accent: "blue", desc: "Chapter-wise practice with difficulty filters.", Icon: Atom },
-  { to: "/subjects/$subject", params: { subject: "Chemistry" }, label: "Chemistry", tag: "P + O + I", accent: "orange", desc: "Physical, Organic and Inorganic chapters.", Icon: FlaskConical },
-  { to: "/subjects/$subject", params: { subject: "Biology" }, label: "Biology", tag: "360 marks", accent: "emerald", desc: "Botany and Zoology, NCERT-aligned.", Icon: Leaf },
+  { to: "/subjects/$subject", params: { subject: "Physics" }, label: "Physics", tag: "Numericals", accent: "blue", desc: "Chapter-wise practice with difficulty filters.", Icon: Atom, image: "/illustrations/icon-physics.png", imageAlt: "3D atom icon for Physics" },
+  { to: "/subjects/$subject", params: { subject: "Chemistry" }, label: "Chemistry", tag: "P + O + I", accent: "orange", desc: "Physical, Organic and Inorganic chapters.", Icon: FlaskConical, image: "/illustrations/icon-chemistry.png", imageAlt: "3D lab flasks icon for Chemistry" },
+  { to: "/subjects/$subject", params: { subject: "Biology" }, label: "Biology", tag: "360 marks", accent: "emerald", desc: "Botany and Zoology, NCERT-aligned.", Icon: Leaf, image: "/illustrations/icon-biology.png", imageAlt: "3D leaf, DNA and microscope icon for Biology" },
 ];
 
 function SubjectQuizPage() {

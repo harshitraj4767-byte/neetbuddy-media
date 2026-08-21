@@ -22,6 +22,9 @@ export type NavTile = {
   tag?: string;
   accent?: TileAccent;
   Icon: LucideIcon;
+  /** Optional 3D illustration shown instead of the lucide icon badge. */
+  image?: string;
+  imageAlt?: string;
   onClick?: () => void;
 };
 
@@ -56,24 +59,50 @@ function TileBody({ tile, accent }: { tile: NavTile; accent: TileAccent }) {
           a.icon,
         )}
       />
-      <div
-        className={cn(
-          "relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md",
-          a.icon,
-        )}
-      >
-        <tile.Icon className="h-6 w-6" strokeWidth={2.2} />
-      </div>
+      {tile.image ? (
+        <div
+          className={cn(
+            "relative flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-gradient-to-br shadow-md dark:border-white/10 sm:h-[5.5rem] sm:w-[5.5rem]",
+            a.wash,
+          )}
+        >
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.18] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:10px_10px] text-foreground/40"
+          />
+          <span
+            aria-hidden
+            className={cn("pointer-events-none absolute -bottom-6 -right-6 h-16 w-16 rounded-full bg-gradient-to-br opacity-30 blur-2xl", a.icon)}
+          />
+          <img
+            src={tile.image}
+            alt={tile.imageAlt ?? ""}
+            loading="lazy"
+            width={816}
+            height={816}
+            className="relative h-[86%] w-[86%] select-none object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.22)] transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md",
+            a.icon,
+          )}
+        >
+          <tile.Icon className="h-9 w-9" strokeWidth={2.1} />
+        </div>
+      )}
       <div className="relative min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[0.95rem] font-bold leading-tight">{tile.label}</span>
+          <span className="text-[1.05rem] font-bold leading-tight">{tile.label}</span>
           {tile.tag && (
             <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-semibold", a.tag)}>{tile.tag}</span>
           )}
         </div>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{tile.desc}</p>
       </div>
-      <ChevronRight className="relative h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground" />
+      <ChevronRight className="relative h-6 w-6 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground" />
     </div>
   );
 }
@@ -81,7 +110,7 @@ function TileBody({ tile, accent }: { tile: NavTile; accent: TileAccent }) {
 /** Shared tile list used by the Quiz / Test / Books / Analyse hub pages. */
 export function NavTiles({ tiles }: { tiles: NavTile[] }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div className={cn("grid gap-3 sm:grid-cols-2", tiles.length % 3 === 0 && "lg:grid-cols-3")}>
       {tiles.map((t, i) => {
         const accent = t.accent ?? ORDER[i % ORDER.length];
         const body = <TileBody tile={t} accent={accent} />;
@@ -193,7 +222,7 @@ export function HubHero({
                 a.tag,
               )}
             >
-              <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
+              <Icon className="h-4 w-4" strokeWidth={2.2} />
               {eyebrow}
             </span>
           )}
@@ -234,11 +263,11 @@ export function HubHero({
         ) : (
           <div
             className={cn(
-              "hidden h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br text-white shadow-glow sm:flex",
+              "hidden h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br text-white shadow-glow sm:flex",
               a.icon,
             )}
           >
-            <Icon className="h-10 w-10" strokeWidth={1.8} />
+            <Icon className="h-12 w-12" strokeWidth={1.8} />
           </div>
         )}
       </div>
