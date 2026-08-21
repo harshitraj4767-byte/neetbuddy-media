@@ -136,12 +136,17 @@ export function HubHero({
   return (
     <div
       className={cn(
-        "relative mb-6 overflow-hidden rounded-3xl border shadow-soft",
+        "relative isolate mb-6 overflow-hidden rounded-3xl border shadow-soft",
         banner
-          ? cn("border-transparent bg-gradient-to-br p-5 sm:p-7", a.wash)
-          : "border-border/70 bg-card/60 p-5 backdrop-blur-xl sm:p-6",
+          ? cn("border-transparent bg-gradient-to-br p-4 sm:p-7", a.wash)
+          : "border-border/70 bg-card/60 p-4 backdrop-blur-xl sm:p-6",
       )}
     >
+      {/* dotted texture */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.18] dark:opacity-[0.12] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:14px_14px] text-foreground/40 [mask-image:linear-gradient(to_bottom_right,black,transparent_70%)]"
+      />
       {!banner && (
         <span
           aria-hidden
@@ -153,22 +158,38 @@ export function HubHero({
           aria-hidden
           viewBox="0 0 400 160"
           preserveAspectRatio="none"
-          className="pointer-events-none absolute inset-0 h-full w-full text-white/50 dark:text-white/5"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 w-full text-white/50 dark:text-white/5"
         >
           <path d="M0 120 C 90 70 150 150 240 105 S 340 60 400 92 L400 160 L0 160 Z" fill="currentColor" opacity="0.75" />
           <path d="M0 96 C 80 130 160 60 250 96 S 350 130 400 106 L400 160 L0 160 Z" fill="currentColor" opacity="0.45" />
         </svg>
       )}
+      {/* ambient glows */}
       <span
         aria-hidden
-        className={cn("pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br opacity-25 blur-3xl", a.icon)}
+        className={cn(
+          "pointer-events-none absolute -right-16 -top-20 h-56 w-56 animate-pulse rounded-full bg-gradient-to-br opacity-30 blur-3xl [animation-duration:7s] sm:h-72 sm:w-72",
+          a.icon,
+        )}
       />
-      <div className="relative flex items-center gap-3 sm:gap-4">
+      <span
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute -bottom-24 -left-16 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br opacity-20 blur-3xl [animation-duration:9s] sm:h-64 sm:w-64",
+          a.icon,
+        )}
+      />
+      {/* diagonal sheen */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/25 to-transparent opacity-40 dark:via-white/[0.06]"
+      />
+      <div className="relative flex items-center gap-3 sm:gap-5">
         <div className="min-w-0 flex-1">
           {!hideEyebrow && (
             <span
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border border-current/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em]",
+                "inline-flex items-center gap-1.5 rounded-full border border-current/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] backdrop-blur-sm",
                 a.tag,
               )}
             >
@@ -176,7 +197,7 @@ export function HubHero({
               {eyebrow}
             </span>
           )}
-          <h1 className="mt-3 text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
+          <h1 className="mt-3 text-[clamp(1.35rem,6.2vw,1.75rem)] font-extrabold leading-[1.12] tracking-tight sm:text-4xl">
             {title}
             {highlight && (
               <>
@@ -190,17 +211,26 @@ export function HubHero({
           {children && <div className="mt-4 flex flex-wrap items-center gap-2">{children}</div>}
         </div>
         {image ? (
-          <img
-            src={image}
-            alt={imageAlt ?? ""}
-            loading="lazy"
-            className={cn(
-              "pointer-events-none shrink-0 select-none object-contain drop-shadow-xl",
-              banner
-                ? "w-[42%] max-w-[210px] sm:w-[36%] sm:max-w-[270px]"
-                : "w-[38%] max-w-[190px] sm:w-[34%] sm:max-w-[240px]",
-            )}
-          />
+          <div className="relative flex shrink-0 items-center justify-center self-center">
+            <span
+              aria-hidden
+              className={cn(
+                "pointer-events-none absolute inset-[-18%] rounded-full bg-gradient-to-br opacity-30 blur-2xl",
+                a.icon,
+              )}
+            />
+            <img
+              src={image}
+              alt={imageAlt ?? ""}
+              loading="lazy"
+              className={cn(
+                "pointer-events-none relative select-none object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.28)]",
+                banner
+                  ? "h-[92px] w-[38vw] max-w-[170px] sm:h-auto sm:w-[34%] sm:max-w-[260px]"
+                  : "h-[86px] w-[34vw] max-w-[150px] sm:h-auto sm:w-[32%] sm:max-w-[230px]",
+              )}
+            />
+          </div>
         ) : (
           <div
             className={cn(
