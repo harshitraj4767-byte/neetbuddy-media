@@ -276,45 +276,70 @@ function SubjectPage() {
   const filtersActive = difficulty !== "any" || qtype !== "any" || excluded.size > 0;
 
   return (
-    <PageShell
-      eyebrow="Subject"
-      title={subject}
-      description="Pick a chapter to begin practice. Multi-statement, numerical, diagram, assertion-reason and match-the-column questions are placed first and mixed with quick one-liners."
-    >
-      <div className={`mb-6 flex items-center gap-4 rounded-2xl bg-gradient-to-br ${meta.tint} p-5 shadow-soft`}>
-        <Icon className="h-10 w-10" strokeWidth={1.6} />
-        <div>
-          <div className="text-xs uppercase tracking-widest text-foreground/60">NEET 2027 Syllabus</div>
-          <div className="text-lg font-bold">{chapters?.length ?? 0} Chapters</div>
+    <PageShell>
+      <HubHero
+        variant="banner"
+        eyebrow="Subject"
+        title={subject}
+        highlight="Chapter practice"
+        description={meta.blurb}
+        Icon={Icon}
+        accent={meta.accent}
+        image={meta.image}
+        imageAlt={meta.alt}
+      >
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-3 py-1.5 text-xs font-semibold shadow-sm backdrop-blur">
+          <Icon className="h-4 w-4" strokeWidth={2.2} />
+          {chapters?.length ?? 0} chapters
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-3 py-1.5 text-xs font-semibold shadow-sm backdrop-blur">
+          NEET 2027 syllabus
+        </span>
+      </HubHero>
+
+      <div className="mb-4 rounded-2xl border border-border/70 bg-card/70 p-4 shadow-soft backdrop-blur-xl">
+        <div className="mb-3 flex items-center gap-2">
+          <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
+          <span className="text-sm font-semibold">Filters</span>
+          {filtersActive && (
+            <Button
+              size="sm"
+              variant="ghost"
+              className="ml-auto h-7 px-2 text-xs"
+              onClick={() => { setDifficulty("any"); setQType("any"); setExcluded(new Set()); }}
+            >
+              Reset
+            </Button>
+          )}
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="space-y-1.5">
+            <Label className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Difficulty</Label>
+            <Select value={difficulty} onValueChange={setDifficulty}>
+              <SelectTrigger className="h-11 rounded-xl"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="any">Any difficulty</SelectItem>
+                {DIFFICULTIES.map((d) => (
+                  <SelectItem key={d} value={d}>{d}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-1.5">
+            <Label className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Question type</Label>
+            <Select value={qtype} onValueChange={setQType}>
+              <SelectTrigger className="h-11 rounded-xl"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="any">Any type</SelectItem>
+                {QTYPES.map((t) => (
+                  <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
 
-      <div className="mb-4 grid gap-3 sm:grid-cols-2">
-        <div>
-          <Label className="text-xs">Difficulty</Label>
-          <Select value={difficulty} onValueChange={setDifficulty}>
-            <SelectTrigger><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="any">Any difficulty</SelectItem>
-              {DIFFICULTIES.map((d) => (
-                <SelectItem key={d} value={d}>{d}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <Label className="text-xs">Question type</Label>
-          <Select value={qtype} onValueChange={setQType}>
-            <SelectTrigger><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="any">Any type</SelectItem>
-              {QTYPES.map((t) => (
-                <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
 
       {filtersActive && (
         <div className="mb-4 flex flex-wrap items-center gap-2">
