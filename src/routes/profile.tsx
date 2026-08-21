@@ -14,11 +14,12 @@ import { useServerFn } from "@tanstack/react-start";
 import { getLeaderboardData } from "@/lib/leaderboard.functions";
 import {
   Loader2, Trophy, Flame, Target, Calendar, Award, BookmarkCheck,
-  TrendingUp, LogOut, Save, Sparkles, Smile, Check,
+  TrendingUp, LogOut, Save, Sparkles, Smile, Check, ArrowRight,
 } from "lucide-react";
 import { NEETIQ_AVATARS } from "@/lib/neetiq-avatars";
 import { avatarUrl } from "@/lib/avatar";
 import { cn } from "@/lib/utils";
+import { DR_VANSHU_IMG, startAppTour } from "@/components/onboarding-tour";
 
 export const Route = createFileRoute("/profile")({
   head: () => ({ meta: [
@@ -242,6 +243,28 @@ function ProfilePage() {
         <StatTile icon={<BookmarkCheck className="h-4 w-4" />} label="Bookmarks" value={stats?.bookmarks ?? 0} />
         <StatTile icon={<Calendar className="h-4 w-4" />} label="Active days" value={stats?.activeDates.length ?? 0} />
       </div>
+
+      {/* Guided app tour */}
+      <Card className="mt-4 overflow-hidden">
+        <CardContent className="flex items-center gap-3 p-4">
+          <img
+            src={DR_VANSHU_IMG}
+            alt="Dr. Vanshu, your Neet Buddy guide"
+            className="h-16 w-16 shrink-0 select-none object-contain"
+          />
+          <div className="min-w-0 flex-1">
+            <div className="text-sm font-bold leading-tight text-foreground">Take a tour with Dr. Vanshu</div>
+            <div className="mt-0.5 text-xs text-muted-foreground">
+              A quick guided walkthrough of every feature and page.
+            </div>
+          </div>
+          <Button size="sm" className="shrink-0" onClick={() => startAppTour()}>
+            Start tour <ArrowRight className="ml-1 h-3.5 w-3.5" />
+          </Button>
+        </CardContent>
+      </Card>
+
+
 
       {/* Daily goal */}
       <Card className="mt-4">

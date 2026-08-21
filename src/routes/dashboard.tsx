@@ -357,12 +357,6 @@ function Dashboard() {
           </div>
         </Link>
 
-        {/* ── Compete & test ───────────────────────────────────────── */}
-        <SectionHead title="Compete & Test" />
-        <div className="grid grid-cols-2 gap-3">
-          <SmallTool to="/arena" title="Arena" subtitle="Contests & Battles" icon={Trophy} tint="from-amber-500 to-orange-600" badge="LIVE" tall />
-          <SmallTool to="/mocks" title="Mock Tests" subtitle="Full-length NEET mocks" icon={Brain} tint="from-violet-500 to-indigo-600" tall />
-        </div>
 
         {/* ── More ─────────────────────────────────────────────────── */}
         <SectionHead title="More" />

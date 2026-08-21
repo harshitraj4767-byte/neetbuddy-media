@@ -1,40 +1,167 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Sparkles, ArrowRight, X } from "lucide-react";
+import {
+  ArrowRight, X, Hand, MonitorPlay, CalendarDays, Wand2, Layers, BookOpen,
+  Compass, Target, Brain, FileQuestion, Trophy, Swords, BarChart3, RefreshCw,
+  BookmarkCheck, Users, Gift, Crown, LifeBuoy, Sparkles, type LucideIcon,
+} from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
+
+export const DR_VANSHU_IMG = "/mascot/dr-vanshu.png";
+export const TOUR_EVENT = "neetbuddy:start-tour";
+
+/** Start (or restart) the guided tour from anywhere in the app. */
+export function startAppTour() {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(TOUR_EVENT));
+}
 
 type Step = {
   route: string;
   title: string;
   body: string;
-  highlight?: string; // CSS selector to spotlight (optional)
+  icon: LucideIcon;
 };
 
 const STEPS: Step[] = [
-  { route: "/dashboard", title: "Welcome to Neet Buddy 👋", body: "Quick tour of every feature. The app stays fully interactive — tap around and explore as we go. Skip anytime." },
   {
     route: "/dashboard",
-    title: "CBT Mode — the real NEET feel 🖥️",
+    title: "Hi, I'm Dr. Vanshu",
     body:
-      "Every quiz, DPP, mock and battle runs in true NEET CBT mode: 180 questions across Physics, Chemistry & Biology, +4 / −1 marking, per-question timer, palette navigation, bookmark & review, subject-locked ordering (Phy → Chem → Bio in mocks) and auto-submit at time-up — the exact interface you'll get on exam day.",
+      "I'll walk you through Neet Buddy in under a minute. The app stays fully interactive during the tour — tap anything as we go, or skip whenever you like.",
+    icon: Hand,
   },
-  { route: "/daily", title: "Daily DPP", body: "A fresh AI-generated Daily Practice Problem set every morning. Free, forever." },
-  { route: "/generate", title: "Generate a test", body: "Pick subject, chapters and difficulty. AI builds you a custom test in seconds." },
-  { route: "/flashcards", title: "Flashcards 🧠", body: "Flip through high-yield cards, reveal the answer, then rate yourself Easy / Medium / Hard. Open a deck to try it now." },
-  { route: "/ncert-highlights", title: "NCERT Highlights ✨", body: "The most-repeated NCERT lines that show up in NEET. Quick, exam-focused revision." },
-  { route: "/ai-path", title: "AI Path 🧭", body: "A personalized 7-day study plan generated from your performance — knows exactly what to fix next." },
-  { route: "/score-predictor", title: "Score Predictor 🎯", body: "AI forecasts your NEET marks and rank band from your attempts, with tips to push higher." },
-  { route: "/mocks", title: "Mock tests", body: "Full-length NEET pattern mocks with timers, negative marking and detailed analysis." },
-  { route: "/pyqs", title: "Previous Year Questions", body: "Browse and practice tagged PYQs across every chapter." },
-  { route: "/contests", title: "Live contests", body: "Compete with everyone for real prize money. Free daily + paid weekly contests." },
-  { route: "/leaderboard", title: "Leaderboard 🏆", body: "See where you rank among all aspirants — weekly and all-time. Climb it by keeping your streak and winning contests." },
-  { route: "/analytics", title: "Progress & analytics", body: "Subject-wise accuracy, time per question, weak chapters and your weekly progress report." },
-  { route: "/referrals", title: "Refer & earn 💸", body: "Share your code — when a friend joins and buys any batch, you earn real cash (₹300–₹1,000 per referral). Withdraw straight to your bank." },
-
-  { route: "/subscription", title: "Premium 👑", body: "Unlock unlimited AI tests, every paid mock and free access to all premium study tools." },
-  { route: "/dashboard", title: "Need help? 🛟", body: "Tap the floating support button bottom-right anytime. You're all set — go explore! 🚀" },
+  {
+    route: "/dashboard",
+    title: "Your dashboard",
+    body:
+      "Today's progress, streak, weekly performance and personalised recommendations — everything you need to decide what to study next, in one screen.",
+    icon: Compass,
+  },
+  {
+    route: "/dashboard",
+    title: "True NEET CBT mode",
+    body:
+      "Every quiz, DPP, mock and battle runs in the real exam interface: +4 / −1 marking, per-question timer, question palette, bookmark & review, subject-locked ordering and auto-submit at time-up.",
+    icon: MonitorPlay,
+  },
+  {
+    route: "/daily",
+    title: "Daily DPP",
+    body: "A fresh, AI-generated daily practice set every morning — free forever, and it keeps your streak alive.",
+    icon: CalendarDays,
+  },
+  {
+    route: "/generate",
+    title: "Custom test generator",
+    body: "Choose subject, chapters, difficulty and length. A tailored test is built for you in seconds.",
+    icon: Wand2,
+  },
+  {
+    route: "/quiz",
+    title: "Practice by chapter",
+    body: "Chapter-wise question banks across Physics, Chemistry and Biology with instant solutions and explanations.",
+    icon: BookOpen,
+  },
+  {
+    route: "/pyqs",
+    title: "Previous year questions",
+    body: "Tagged NEET PYQs by chapter and year, with year-wise accuracy tracking so you know what repeats.",
+    icon: FileQuestion,
+  },
+  {
+    route: "/mocks",
+    title: "Full-length mocks",
+    body: "180-question NEET pattern mocks with timers, negative marking, ranks and deep post-test analysis.",
+    icon: Brain,
+  },
+  {
+    route: "/flashcards",
+    title: "Flashcards",
+    body: "High-yield cards you flip and self-rate Easy / Medium / Hard — spaced revision that fits between sessions.",
+    icon: Layers,
+  },
+  {
+    route: "/study-essentials",
+    title: "Study essentials",
+    body: "Mind maps, formula sheets, short notes and NCERT highlights — the most-repeated lines condensed for revision.",
+    icon: BookOpen,
+  },
+  {
+    route: "/neetlab",
+    title: "NEET Lab",
+    body: "Interactive 3D simulations and visual experiments that make tough concepts click.",
+    icon: Sparkles,
+  },
+  {
+    route: "/ai-path",
+    title: "AI Path & AI Tutor",
+    body: "A 7-day plan generated from your own performance, plus an AI tutor for instant doubt-solving and explanations.",
+    icon: Compass,
+  },
+  {
+    route: "/score-predictor",
+    title: "Score predictor",
+    body: "Forecast your NEET marks and rank band from real attempt data, with targeted tips to push higher.",
+    icon: Target,
+  },
+  {
+    route: "/improvement",
+    title: "Improvement zone",
+    body: "Weak chapters surfaced automatically, so revision always starts where it matters most.",
+    icon: RefreshCw,
+  },
+  {
+    route: "/mistakes",
+    title: "Mistakes & bookmarks",
+    body: "Every wrong answer and saved question collected in one place for focused re-attempts.",
+    icon: BookmarkCheck,
+  },
+  {
+    route: "/analytics",
+    title: "Analytics & reports",
+    body: "Subject-wise accuracy, time per question, trends over weeks and a shareable progress report.",
+    icon: BarChart3,
+  },
+  {
+    route: "/battlegrounds",
+    title: "Battlegrounds",
+    body: "Challenge another aspirant to a live 1v1 question duel — fast, timed and ranked.",
+    icon: Swords,
+  },
+  {
+    route: "/contests",
+    title: "Contests & leaderboard",
+    body: "Free daily and paid weekly contests with real prizes, plus weekly and all-time leaderboards.",
+    icon: Trophy,
+  },
+  {
+    route: "/community",
+    title: "Community & mentorship",
+    body: "Join our WhatsApp and Telegram channels, or get a 1-on-1 mentor to plan your months ahead.",
+    icon: Users,
+  },
+  {
+    route: "/referrals",
+    title: "Refer & earn",
+    body: "Share your code — when a friend joins and buys a batch, you earn real cash withdrawable to your bank.",
+    icon: Gift,
+  },
+  {
+    route: "/subscription",
+    title: "Premium",
+    body: "Unlimited AI tests, every paid mock and full access to all premium study tools.",
+    icon: Crown,
+  },
+  {
+    route: "/dashboard",
+    title: "You're all set",
+    body:
+      "Need anything? Tap the floating support button any time — or reopen this tour from your profile. Good luck, doctor.",
+    icon: LifeBuoy,
+  },
 ];
 
 const LS_KEY = "neetiq_tour_done_v1";
@@ -46,15 +173,25 @@ export function OnboardingTour() {
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
 
-  // Decide whether to start the tour
+  // Decide whether to auto-start the tour
   useEffect(() => {
     if (loading || !user) return;
     if (typeof window === "undefined") return;
     if (localStorage.getItem(LS_KEY) === "1") return;
-    // Don't auto-open on login or admin screens
     if (path.startsWith("/login") || path.startsWith("/admin")) return;
     setOpen(true);
   }, [user, loading, path]);
+
+  // Manual restart from anywhere
+  const restart = useCallback(() => {
+    setIdx(0);
+    setOpen(true);
+  }, []);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.addEventListener(TOUR_EVENT, restart);
+    return () => window.removeEventListener(TOUR_EVENT, restart);
+  }, [restart]);
 
   // Navigate to each step's route as we advance
   useEffect(() => {
@@ -81,18 +218,25 @@ export function OnboardingTour() {
   if (!open) return null;
   const step = STEPS[idx];
   const isLast = idx === STEPS.length - 1;
+  const StepIcon = step.icon;
+  const pct = Math.round(((idx + 1) / STEPS.length) * 100);
 
   return (
     <>
       {/* No backdrop — the app stays fully interactive so users can explore
           each feature during the tour. */}
-      {/* Tour card */}
       <div className="fixed inset-x-3 bottom-3 z-[101] mx-auto max-w-md sm:bottom-6 sm:right-6 sm:left-auto">
+        {/* Dr. Vanshu sits on the edge of the card */}
+        <img
+          src={DR_VANSHU_IMG}
+          alt="Dr. Vanshu, your Neet Buddy guide"
+          className="pointer-events-none relative z-10 -mb-6 ml-1 h-24 w-24 select-none object-contain drop-shadow-lg sm:h-28 sm:w-28"
+        />
         <div className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-2xl">
           <div className="flex items-center gap-2 bg-gradient-primary px-4 py-3 text-primary-foreground">
-            <Sparkles className="h-4 w-4" />
+            <StepIcon className="h-4 w-4" strokeWidth={2} />
             <div className="text-xs font-semibold uppercase tracking-widest">
-              Live tour · {idx + 1}/{STEPS.length}
+              Tour with Dr. Vanshu · {idx + 1}/{STEPS.length}
             </div>
             <button
               className="ml-auto rounded-md p-1 transition hover:bg-white/15"
@@ -102,9 +246,12 @@ export function OnboardingTour() {
               <X className="h-4 w-4" />
             </button>
           </div>
+          <div className="h-1 w-full bg-muted">
+            <div className="h-full bg-primary transition-all duration-300" style={{ width: `${pct}%` }} />
+          </div>
           <div className="space-y-2 p-5">
             <div className="text-lg font-bold leading-tight">{step.title}</div>
-            <p className="text-sm text-muted-foreground">{step.body}</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">{step.body}</p>
             <div className="flex items-center justify-between pt-3">
               <button
                 className="text-xs font-medium text-muted-foreground hover:text-foreground"
