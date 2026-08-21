@@ -23,6 +23,7 @@ import { RichText } from "@/components/rich-text";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/contest/$contestId")({
   head: () => ({ meta: [{ title: "Daily Live Quiz — Neet Buddy" }] }),
@@ -106,9 +107,7 @@ function ContestPage() {
 
   if (loading || (!d && !err))
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="contest" />
     );
 
   if (err || !d)

@@ -16,6 +16,7 @@ import { ReportQuestionButton } from "@/components/report-question-button";
 import { AntiCheatGate, hasAckedAntiCheat } from "@/components/anti-cheat-gate";
 import { ReasonBreakdown } from "@/components/reason-breakdown";
 import { SaveQuestionSheet } from "@/components/save-question-sheet";
+import { LoadingScreen } from "@/components/loading-screen";
 
 function getQuizStorageKey(testId: string, mode: string) {
   return `quiz_state_${testId}_${mode}`;
@@ -777,9 +778,7 @@ function QuizPlayer() {
 
   if (loading || authLoading)
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="quiz" />
     );
 
   if (!test)

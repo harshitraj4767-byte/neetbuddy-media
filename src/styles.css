@@ -400,3 +400,105 @@
   height: auto;
   display: inline-block;
 }
+
+/* ---- Dr Vanshu loading screen ---- */
+.dv-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 168px;
+  height: 168px;
+}
+.dv-glow {
+  position: absolute;
+  inset: 8%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 50% 55%,
+    color-mix(in oklab, var(--primary) 26%, transparent),
+    transparent 70%
+  );
+  filter: blur(6px);
+  animation: dvPulse 2.4s ease-in-out infinite;
+}
+.dv-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px dashed color-mix(in oklab, var(--primary) 45%, transparent);
+  animation: dvSpin 9s linear infinite;
+}
+.dv-mascot {
+  position: relative;
+  width: 76%;
+  height: auto;
+  object-fit: contain;
+  animation: dvFloat 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 12px 18px color-mix(in oklab, var(--foreground) 18%, transparent));
+}
+.dv-title {
+  animation: dvFadeIn 0.5s ease-out both;
+}
+.dv-dots {
+  display: inline-flex;
+  gap: 3px;
+  margin-left: 4px;
+  vertical-align: baseline;
+}
+.dv-dots i {
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--primary);
+  animation: dvBlink 1.2s ease-in-out infinite;
+}
+.dv-dots i:nth-child(2) { animation-delay: 0.18s; }
+.dv-dots i:nth-child(3) { animation-delay: 0.36s; }
+.dv-bar {
+  position: relative;
+  width: 168px;
+  max-width: 60vw;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--primary) 14%, transparent);
+}
+.dv-bar > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary),
+    color-mix(in oklab, var(--primary) 40%, transparent)
+  );
+  animation: dvSlide 1.4s ease-in-out infinite;
+}
+@keyframes dvFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1.5deg); }
+}
+@keyframes dvSpin { to { transform: rotate(360deg); } }
+@keyframes dvPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes dvBlink {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+@keyframes dvSlide {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(255%); }
+}
+@keyframes dvFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dv-mascot, .dv-ring, .dv-glow, .dv-dots i, .dv-bar > span, .dv-title {
+    animation: none;
+  }
+}

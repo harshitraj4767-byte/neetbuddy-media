@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowLeft, Crown, Loader2, Swords, Trophy } from "lucide-react";
+import { ArrowLeft, Crown, Swords, Trophy } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { supabase as supabaseTyped } from "@/integrations/supabase/client";
 import { avatarUrl } from "@/lib/avatar";
 import { avatarForName } from "@/lib/neetiq-avatars";
 import { cn } from "@/lib/utils";
+import { LoadingScreen } from "@/components/loading-screen";
 
 const supabase = supabaseTyped as unknown as {
   from: (t: string) => any;
@@ -160,9 +161,7 @@ function BattlegroundHistoryPage() {
 
   if (loading || pageLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="battle" />
     );
   }
 

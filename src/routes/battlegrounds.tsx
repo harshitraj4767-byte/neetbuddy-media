@@ -14,6 +14,7 @@ import { avatarForName } from "@/lib/neetiq-avatars";
 import { SUBJECT_CHAPTERS, getSubjectRotation, type BattleSubject } from "@/data/battleground-chapters";
 import { useServerFn } from "@tanstack/react-start";
 import { getBattleQueueState, matchWithBot } from "@/lib/battleground-match.functions";
+import { LoadingScreen } from "@/components/loading-screen";
 
 const supabase = supabaseTyped as unknown as {
   from: (t: string) => any;
@@ -253,7 +254,7 @@ function BattlegroundsPage() {
   }, [Math.floor(Date.now() / 60_000)]);
 
   if (loading || !user) {
-    return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+    return <LoadingScreen variant="battle" />;
   }
 
   async function joinSubject(subject: BattleSubject) {

@@ -11,6 +11,7 @@ import {
   getInfiniteRunStatus, startInfiniteRun, pauseInfiniteRun, stopInfiniteRun, tickInfiniteRun,
 } from "@/lib/infinite-run.functions";
 import { toast } from "sonner";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/infinite-run")({
   head: () => ({ meta: [{ title: "Infinite Run — Neet Buddy" }] }),
@@ -102,7 +103,7 @@ function InfiniteRunPage() {
   };
 
   if (loading || !user || !state) {
-    return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+    return <LoadingScreen variant="quiz" />;
   }
 
   const run = state.run;

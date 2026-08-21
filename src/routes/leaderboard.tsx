@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Loader2, ChevronLeft, Info, Trophy, Flame } from "lucide-react";
+import { ChevronLeft, Info, Trophy, Flame } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
 import { useServerFn } from "@tanstack/react-start";
 import { getLeaderboardData, getStreakLeaderboard } from "@/lib/leaderboard.functions";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/leaderboard")({
   head: () => ({ meta: [{ title: "Leaderboard — Neet Buddy" }, { name: "description", content: "Top XP earners and longest streaks across Neet Buddy." }] }),
@@ -107,7 +108,7 @@ function LeaderboardPage() {
 
         <TabsContent value="xp" className="mt-3">
           {rows === null ? (
-            <div className="flex justify-center py-10"><Loader2 className="h-5 w-5 animate-spin text-primary" /></div>
+            <LoadingScreen variant="leaderboard" fullScreen={false} />
           ) : rows.length === 0 ? (
             <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">No XP yet. Be the first — <Link to="/dashboard" className="text-primary underline">start a quiz</Link>.</CardContent></Card>
           ) : (
@@ -138,7 +139,7 @@ function LeaderboardPage() {
 
         <TabsContent value="streak" className="mt-3">
           {streakRows === null ? (
-            <div className="flex justify-center py-10"><Loader2 className="h-5 w-5 animate-spin text-primary" /></div>
+            <LoadingScreen variant="leaderboard" fullScreen={false} />
           ) : streakRows.length === 0 ? (
             <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">No streaks yet. Complete a quiz daily to build yours.</CardContent></Card>
           ) : (

@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, CheckCircle2, XCircle, SkipForward, Loader2, Target, ClipboardCheck, Clock, BarChart3, ChevronDown, HelpCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle2, XCircle, SkipForward, Target, ClipboardCheck, Clock, BarChart3, ChevronDown, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SafeRichText as RichText } from "@/components/safe-rich-text";
 import { attachQuestionMedia } from "@/lib/question-media";
@@ -13,6 +13,7 @@ import { attachQuestionMedia } from "@/lib/question-media";
 import { ReportQuestionButton } from "@/components/report-question-button";
 import { ReasonBreakdown } from "@/components/reason-breakdown";
 import { toast } from "sonner";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/analysis/$attemptId")({
   head: () => ({ meta: [{ title: "Analysis — Neet Buddy" }] }),
@@ -90,7 +91,7 @@ function AnalysisPage() {
     })();
   }, [attemptId, nav]);
 
-  if (loading || authLoading) return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+  if (loading || authLoading) return <LoadingScreen variant="result" />;
   if (!attempt || !test) return (
     <div className="flex min-h-screen items-center justify-center p-6 text-center">
       <div>

@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
-import { Loader2, Swords, Clock, Check, X } from "lucide-react";
+import { Swords, Clock, Check, X } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,6 +14,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { scheduleBotMatchSubmission, submitBattleAttempt } from "@/lib/battle-bot-schedule.functions";
 import { avatarForName } from "@/lib/neetiq-avatars";
 import { AntiCheatGate, hasAckedAntiCheat } from "@/components/anti-cheat-gate";
+import { LoadingScreen } from "@/components/loading-screen";
 
 
 const supabase = supabaseTyped as unknown as {
@@ -621,7 +622,7 @@ function BattlePlayPage() {
 
 
   if (authLoading || !user || (!match && !err)) {
-    return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+    return <LoadingScreen variant="battle" />;
   }
   if (err) {
     return (
@@ -660,7 +661,7 @@ function BattlePlayPage() {
 
 
   if (!current) {
-    return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+    return <LoadingScreen variant="battle" />;
   }
 
   const isRevealed = !!revealed[current.id];

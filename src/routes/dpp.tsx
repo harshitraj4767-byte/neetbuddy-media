@@ -12,6 +12,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { startDppAttempt } from "@/lib/dpp-gate.functions";
 import { toast } from "sonner";
 import { QuizModePicker } from "@/components/quiz-mode-picker";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/dpp")({
   head: () => ({ meta: [{ title: "DPP & Quiz — Neet Buddy" }] }),
@@ -98,7 +99,7 @@ function DppPage() {
           </button>
         )}
       </div>
-      {tests === null ? <Loader2 className="h-5 w-5 animate-spin text-primary" /> :
+      {tests === null ? <LoadingScreen variant="quiz" fullScreen={false} /> :
         (filtered ?? []).length === 0 ? (
           <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">
             {tests.length === 0 ? "No DPPs yet." : `No DPPs match "${query}".`}

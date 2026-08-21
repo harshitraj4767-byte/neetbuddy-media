@@ -4,9 +4,10 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Target, CheckCircle2, XCircle, MinusCircle, TrendingUp } from "lucide-react";
+import { Target, CheckCircle2, XCircle, MinusCircle, TrendingUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { LoadingScreen } from "@/components/loading-screen";
 
 type Attempt = { id: string; test_id: string; score: number; correct_count: number; wrong_count: number; unattempted_count: number; submitted_at: string | null; time_taken_sec: number | null };
 type Test = { id: string; title: string; type: string };
@@ -42,7 +43,7 @@ function AnalyticsPage() {
     })();
   }, [user]);
 
-  if (attempts === null) return <PageShell title="Analytics"><Loader2 className="h-5 w-5 animate-spin text-primary" /></PageShell>;
+  if (attempts === null) return <PageShell title="Analytics"><LoadingScreen variant="analysis" fullScreen={false} /></PageShell>;
 
   const totalC = attempts.reduce((s, a) => s + (a.correct_count ?? 0), 0);
   const totalW = attempts.reduce((s, a) => s + (a.wrong_count ?? 0), 0);

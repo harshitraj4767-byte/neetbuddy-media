@@ -12,6 +12,7 @@ import {
   getContestDetail,
 } from "@/lib/contests.functions";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/contest/$contestId/join")({
   head: () => ({ meta: [{ title: "Join Daily Live Quiz — Neet Buddy" }] }),
@@ -42,9 +43,7 @@ function JoinPage() {
 
   if (loading || (!detail && !err))
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="contest" />
     );
 
   if (err || !detail)

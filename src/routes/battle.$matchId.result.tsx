@@ -22,6 +22,7 @@ import { avatarUrl } from "@/lib/avatar";
 import { useServerFn } from "@tanstack/react-start";
 import { finalizeBotMatch } from "@/lib/battle-bot-finalize.functions";
 import { avatarForName } from "@/lib/neetiq-avatars";
+import { LoadingScreen } from "@/components/loading-screen";
 
 const supabase = supabaseTyped as unknown as {
   from: (t: string) => any;
@@ -243,9 +244,7 @@ function BattleResultPage() {
 
   if (loading || (!match && !err)) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="result" />
     );
   }
 

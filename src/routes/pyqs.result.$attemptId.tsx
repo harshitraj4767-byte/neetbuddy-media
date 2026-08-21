@@ -4,10 +4,11 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Loader2, ArrowLeft, CheckCircle2, XCircle, Clock, Target, SkipForward, ClipboardCheck } from "lucide-react";
+import { ArrowLeft, CheckCircle2, XCircle, Clock, Target, SkipForward, ClipboardCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { PyqRichText } from "@/components/pyq-rich-text";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/pyqs/result/$attemptId")({
   head: () => ({
@@ -137,7 +138,7 @@ function PyqResultPage() {
     </PageShell>
   );
   if (!attempt || !paper || !questions || !analysis) return (
-    <PageShell title="Loading result…"><div className="flex items-center justify-center py-16"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div></PageShell>
+    <PageShell title="Loading result…"><LoadingScreen variant="result" fullScreen={false} /></PageShell>
   );
 
   const timeUsed = attempt.time_spent_sec ?? 0;

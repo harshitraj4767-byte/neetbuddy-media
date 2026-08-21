@@ -14,6 +14,7 @@ import { SafeRichText as RichText } from "@/components/safe-rich-text";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { createBookmarkTest } from "@/lib/trial-limits.functions";
 import { attachQuestionMedia } from "@/lib/question-media";
+import { LoadingScreen } from "@/components/loading-screen";
 
 
 export const Route = createFileRoute("/bookmarks")({
@@ -115,7 +116,7 @@ function BookmarksPage() {
       </div>
 
       {items === null ? (
-        <div className="flex justify-center py-10"><Loader2 className="h-5 w-5 animate-spin text-primary" /></div>
+        <LoadingScreen fullScreen={false} />
       ) : (filtered?.length ?? 0) === 0 ? (
         <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">No bookmarks yet. Tap the bookmark icon during a quiz to save a question for review.</CardContent></Card>
       ) : (

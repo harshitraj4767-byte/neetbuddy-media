@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { useAttemptStates, type AttemptState } from "@/hooks/use-attempt-state";
 import { AttemptActions, AttemptBadge } from "@/components/attempt-actions";
+import { LoadingScreen } from "@/components/loading-screen";
 
 type SyllabusEntry = { subjectId: string; subjectName: string; chapters: { id: string; name: string }[] };
 
@@ -99,7 +100,7 @@ function MocksPage() {
 
   return (
     <PageShell eyebrow="Practice" title="Mock tests" description="Full-length NEET-pattern tests. Filter by category and start any published mock.">
-      {tests === null ? <Loader2 className="h-5 w-5 animate-spin text-primary" />
+      {tests === null ? <LoadingScreen variant="quiz" fullScreen={false} />
         : tests.length === 0 ? (
           <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">No mocks published yet.</CardContent></Card>
         ) : (

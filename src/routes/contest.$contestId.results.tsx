@@ -5,19 +5,12 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import {
-  Loader2,
-  ArrowLeft,
-  Medal,
-  CheckCircle2,
-  XCircle,
-  ChevronDown,
-  Trophy,
-} from "lucide-react";
+import { ArrowLeft, Medal, CheckCircle2, XCircle, ChevronDown, Trophy } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { getContestDetail } from "@/lib/contests.functions";
 import { cn } from "@/lib/utils";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/contest/$contestId/results")({
   head: () => ({ meta: [{ title: "Contest results — Neet Buddy" }] }),
@@ -87,9 +80,7 @@ function ResultsPage() {
 
   if (loading || (!detail && !err))
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="result" />
     );
 
   if (err || !detail)

@@ -15,6 +15,7 @@ import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { createMistakesTest } from "@/lib/trial-limits.functions";
 import { toast } from "sonner";
 import { attachQuestionMedia } from "@/lib/question-media";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/mistakes")({
   head: () => ({
@@ -158,9 +159,7 @@ function MistakesPage() {
 
   if (loading || busy) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
-      </div>
+      <LoadingScreen variant="analysis" />
     );
   }
 

@@ -10,6 +10,7 @@ import { Loader2, Trophy, Timer, Users, Sparkles, ArrowRight } from "lucide-reac
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { listPastContests } from "@/lib/contests.functions";
+import { LoadingScreen } from "@/components/loading-screen";
 
 
 export const Route = createFileRoute("/contests")({
@@ -79,7 +80,7 @@ function ContestsPage() {
   // which handles pre / live / post states + confirm-join dialog.
   const goToContest = (c: Contest) => nav({ to: "/contest/$contestId", params: { contestId: c.id } });
 
-  if (loading || !user) return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+  if (loading || !user) return <LoadingScreen variant="contest" />;
 
   const live = (contests ?? []).filter((c) => { const n = Date.now(); return n >= new Date(c.starts_at).getTime() && n < new Date(c.ends_at).getTime(); });
   const upcoming = (contests ?? []).filter((c) => Date.now() < new Date(c.starts_at).getTime());
@@ -102,7 +103,7 @@ function ContestsPage() {
         </span>
       </HubHero>
 
-      {contests === null ? <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div> : (
+      {contests === null ? <LoadingScreen variant="contest" fullScreen={false} /> : (
         <>
           <Section title="Live now" count={live.length}>
             {live.length === 0 ? <EmptyHint text="No contest live right now. Check back at 7 PM." />

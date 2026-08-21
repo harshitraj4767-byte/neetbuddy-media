@@ -42,6 +42,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export const Route = createFileRoute("/progress")({
   head: () => ({
@@ -355,9 +356,7 @@ function ProgressPage() {
         </div>
 
         {attempts === null ? (
-          <div className="flex justify-center py-20">
-            <Loader2 className="h-6 w-6 animate-spin text-primary" />
-          </div>
+          <LoadingScreen variant="analysis" fullScreen={false} />
         ) : (
           <>
             {/* Hero header */}
