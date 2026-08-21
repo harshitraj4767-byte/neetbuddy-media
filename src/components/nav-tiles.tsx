@@ -216,20 +216,24 @@ export function HubHero({
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/25 to-transparent opacity-40 dark:via-white/[0.06]"
       />
-      <div className="relative flex items-center gap-3 sm:gap-5">
+      <div className={cn("relative flex items-center gap-3 sm:gap-5", compact && "gap-2 sm:gap-4")}>
         <div className="min-w-0 flex-1">
           {!hideEyebrow && (
             <span
               className={cn(
                 "inline-flex items-center gap-1.5 rounded-full border border-current/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] backdrop-blur-sm",
+                compact && "px-2 py-0.5 text-[9px]",
                 a.tag,
               )}
             >
-              <Icon className="h-4 w-4" strokeWidth={2.2} />
+              <Icon className={cn("h-4 w-4", compact && "h-3 w-3")} strokeWidth={2.2} />
               {eyebrow}
             </span>
           )}
-          <h1 className="mt-3 text-[clamp(1.35rem,6.2vw,1.75rem)] font-extrabold leading-[1.12] tracking-tight sm:text-4xl">
+          <h1 className={cn(
+            "mt-3 text-[clamp(1.35rem,6.2vw,1.75rem)] font-extrabold leading-[1.12] tracking-tight sm:text-4xl",
+            compact && "mt-2 text-[clamp(1.1rem,5.2vw,1.5rem)] sm:text-3xl",
+          )}>
             {title}
             {highlight && (
               <>
@@ -239,15 +243,19 @@ export function HubHero({
             )}
           </h1>
           <span aria-hidden className={cn("mt-3 block h-1 w-8 rounded-full bg-gradient-to-r", a.icon)} />
-          <p className="mt-3 max-w-xl text-xs leading-relaxed text-muted-foreground sm:text-sm">{description}</p>
-          {children && <div className="mt-4 flex flex-wrap items-center gap-2">{children}</div>}
+          <p className={cn(
+            "mt-3 max-w-xl text-xs leading-relaxed text-muted-foreground sm:text-sm",
+            compact && "mt-1.5 max-w-md text-[11px] sm:text-xs",
+          )}>{description}</p>
+          {children && <div className={cn("mt-4 flex flex-wrap items-center gap-2", compact && "mt-2 gap-1.5")}>{children}</div>}
         </div>
         {image ? (
-          <div className="relative flex shrink-0 items-center justify-center self-center">
+          <div className={cn("relative flex shrink-0 items-center justify-center self-center", compact && "self-end")}>
             <span
               aria-hidden
               className={cn(
                 "pointer-events-none absolute inset-[-18%] rounded-full bg-gradient-to-br opacity-30 blur-2xl",
+                compact && "inset-[-10%] opacity-25",
                 a.icon,
               )}
             />
@@ -260,6 +268,7 @@ export function HubHero({
                 banner
                   ? "h-[130px] w-[44vw] max-w-[230px] sm:h-auto sm:w-[38%] sm:max-w-[320px]"
                   : "h-[120px] w-[40vw] max-w-[210px] sm:h-auto sm:w-[36%] sm:max-w-[290px]",
+                compact && banner && "h-[78px] w-[30vw] max-w-[140px] sm:max-w-[180px]",
               )}
             />
           </div>
@@ -267,10 +276,11 @@ export function HubHero({
           <div
             className={cn(
               "hidden h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br text-white shadow-glow sm:flex",
+              compact && "h-16 w-16",
               a.icon,
             )}
           >
-            <Icon className="h-12 w-12" strokeWidth={1.8} />
+            <Icon className={cn("h-12 w-12", compact && "h-8 w-8")} strokeWidth={1.8} />
           </div>
         )}
       </div>
