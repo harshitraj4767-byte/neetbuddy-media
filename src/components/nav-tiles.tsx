@@ -143,6 +143,7 @@ export function HubHero({
   imageAlt,
   variant = "default",
   hideEyebrow = false,
+  compact = false,
   children,
 }: {
   eyebrow: string;
@@ -157,6 +158,8 @@ export function HubHero({
   /** "banner" renders the soft tinted illustration banner used on the hub pages. */
   variant?: "default" | "banner";
   hideEyebrow?: boolean;
+  /** Compact mode: smaller padding, title and image for dense screens. */
+  compact?: boolean;
   /** Optional chips / stats rendered under the description. */
   children?: ReactNode;
 }) {
@@ -167,8 +170,8 @@ export function HubHero({
       className={cn(
         "relative isolate mb-6 overflow-hidden rounded-3xl border shadow-soft",
         banner
-          ? cn("border-transparent bg-gradient-to-br p-4 sm:p-7", a.wash)
-          : "border-border/70 bg-card/60 p-4 backdrop-blur-xl sm:p-6",
+          ? cn("border-transparent bg-gradient-to-br p-4 sm:p-7", compact && "p-3 sm:p-5", a.wash)
+          : cn("border-border/70 bg-card/60 p-4 backdrop-blur-xl sm:p-6", compact && "p-3 sm:p-5"),
       )}
     >
       {/* dotted texture */}
