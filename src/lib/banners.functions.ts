@@ -4,6 +4,20 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { assertAdmin } from "./admin-content.server";
 
+/**
+ * Destination is stored as an in-app path (e.g. "/batches") so renames of the
+ * public site or domain never break a banner. Absolute http(s) links are still
+ * allowed for external campaigns.
+ */
+const destinationSchema = z
+  .string()
+  .max(2000)
+  .trim()
+  .refine(
+    (v) => v === "" || v.startsWith("/") || /^https?:\/\//i.test(v),
+    "Destination must be an in-app path like /batches or a full https link",
+  );
+
 export type BannerRow = {
   id: string;
   title: string | null;
@@ -46,7 +60,7 @@ export const adminUpsertBanner = createServerFn({ method: "POST" })
         id: z.string().uuid().optional(),
         title: z.string().max(120).optional().nullable(),
         image_url: z.string().url().max(2000),
-        link_url: z.string().url().max(2000).optional().nullable(),
+        link_url: destinationSchema.optional().nullable(),
         sort_order: z.number().int().min(0).max(9999).default(0),
         active: z.boolean().default(true),
       })
@@ -90,4 +104,24 @@ export const adminDeleteBanner = createServerFn({ method: "POST" })
       .eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
+  });
+
+
+/**
+ * Admin: hand back a signed upload URL so the browser can push the artwork
+ * straight into the public `banner-images` bucket (no third-party host needed).
+ */
+export const adminCreateBannerUploadUrl = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) => z.object({ filename: z.string().min(1).max(160) }).parse(d))
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.userId);
+    const ext = (data.filename.split(".").pop() ?? "jpg").toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
+    const path = `banners/${crypto.randomUUID()}.${ext}`;
+    const { data: signed, error } = await supabaseAdmin.storage
+      .from("banner-images")
+      .createSignedUploadUrl(path);
+    if (error || !signed) throw new Error(error?.message ?? "Could not create upload URL");
+    const { data: pub } = supabaseAdmin.storage.from("banner-images").getPublicUrl(path);
+    return { path, token: signed.token, public_url: pub.publicUrl };
   });

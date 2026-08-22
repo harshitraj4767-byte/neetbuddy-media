@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
+import { Link } from "@tanstack/react-router";
 import { listActiveBanners, type BannerRow } from "@/lib/banners.functions";
 
 const AUTO_MS = 10_000;
@@ -73,17 +74,23 @@ export function BannerCarousel() {
             );
             return (
               <div key={b.id} className="h-full w-full shrink-0 grow-0 basis-full">
-                {b.link_url ? (
+                {!b.link_url ? (
+                  img
+                ) : b.link_url.startsWith("/") ? (
+                  // In-app destinations are stored as paths, so client-side nav works
+                  // regardless of the deployment URL.
+                  <Link to={b.link_url} className="block h-full w-full">
+                    {img}
+                  </Link>
+                ) : (
                   <a
                     href={b.link_url}
-                    target={b.link_url.startsWith("http") ? "_blank" : undefined}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="block h-full w-full"
                   >
                     {img}
                   </a>
-                ) : (
-                  img
                 )}
               </div>
             );

@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,13 +7,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Loader2, Plus, Trash2, Save, ExternalLink } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Loader2, Plus, Trash2, Save, ExternalLink, Upload, ImagePlus } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/use-auth";
+import { supabase } from "@/integrations/supabase/client";
+import { APP_DESTINATIONS } from "@/lib/app-destinations";
 import {
   adminListBanners,
   adminUpsertBanner,
   adminDeleteBanner,
+  adminCreateBannerUploadUrl,
   type BannerRow,
 } from "@/lib/banners.functions";
 
@@ -21,15 +31,146 @@ export const Route = createFileRoute("/admin-banners")({
   head: () => ({
     meta: [
       { title: "Admin · Dashboard Banners — Neet Buddy" },
-      { name: "description", content: "Add, order and manage the sliding banners shown on the student dashboard." },
+      { name: "description", content: "Upload banner artwork and pick where each banner sends students." },
       { property: "og:title", content: "Admin · Dashboard Banners — Neet Buddy" },
-      { property: "og:description", content: "Manage dashboard banner images, links and ordering." },
+      { property: "og:description", content: "Manage dashboard banner images, destinations and ordering." },
     ],
   }),
   component: BannersAdmin,
 });
 
 const EMPTY = { title: "", image_url: "", link_url: "", sort_order: 50, active: true };
+const CUSTOM = "__custom__";
+const NONE = "__none__";
+
+/** Upload artwork straight into storage and return its public URL. */
+function ImageField({
+  value,
+  onChange,
+  idPrefix,
+}: {
+  value: string;
+  onChange: (url: string) => void;
+  idPrefix: string;
+}) {
+  const createUrl = useServerFn(adminCreateBannerUploadUrl);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+
+  async function upload(file: File) {
+    if (!file.type.startsWith("image/")) return toast.error("Pick an image file");
+    if (file.size > 10 * 1024 * 1024) return toast.error("Image must be under 10 MB");
+    setUploading(true);
+    try {
+      const r = await createUrl({ data: { filename: file.name } });
+      const { error } = await supabase.storage
+        .from("banner-images")
+        .uploadToSignedUrl(r.path, r.token, file, { contentType: file.type });
+      if (error) throw error;
+      onChange(r.public_url);
+      toast.success("Banner image uploaded");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Upload failed");
+    } finally {
+      setUploading(false);
+      if (fileRef.current) fileRef.current.value = "";
+    }
+  }
+
+  return (
+    <div className="space-y-2 sm:col-span-2">
+      <Label htmlFor={`${idPrefix}-file`}>Banner image (1200 × 450)</Label>
+      {value ? (
+        <div className="overflow-hidden rounded-2xl border border-border">
+          <img src={value} alt="Banner preview" className="aspect-[8/3] w-full object-cover" />
+        </div>
+      ) : (
+        <div className="flex aspect-[8/3] w-full items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 text-xs text-muted-foreground">
+          <ImagePlus className="mr-2 h-4 w-4" /> No image yet
+        </div>
+      )}
+      <input
+        id={`${idPrefix}-file`}
+        ref={fileRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => {
+          const f = e.target.files?.[0];
+          if (f) void upload(f);
+        }}
+      />
+      <div className="flex flex-wrap items-center gap-2">
+        <Button type="button" variant="outline" size="sm" disabled={uploading}
+          onClick={() => fileRef.current?.click()}>
+          {uploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Upload className="mr-2 h-4 w-4" />}
+          {value ? "Replace image" : "Upload image"}
+        </Button>
+        {value ? (
+          <Button type="button" variant="ghost" size="sm" onClick={() => onChange("")}>
+            Remove
+          </Button>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+/** Pick an in-app destination path (preferred) or a custom path / external link. */
+function DestinationField({
+  value,
+  onChange,
+  idPrefix,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  idPrefix: string;
+}) {
+  const known = APP_DESTINATIONS.some((d) => d.path === value);
+  const [custom, setCustom] = useState(!!value && !known);
+  const select = custom ? CUSTOM : value ? value : NONE;
+
+  return (
+    <div className="space-y-1.5 sm:col-span-2">
+      <Label htmlFor={`${idPrefix}-dest`}>Destination</Label>
+      <Select
+        value={select}
+        onValueChange={(v) => {
+          if (v === CUSTOM) {
+            setCustom(true);
+            return;
+          }
+          setCustom(false);
+          onChange(v === NONE ? "" : v);
+        }}
+      >
+        <SelectTrigger id={`${idPrefix}-dest`}>
+          <SelectValue placeholder="Where should this banner go?" />
+        </SelectTrigger>
+        <SelectContent className="max-h-72">
+          <SelectItem value={NONE}>No link (image only)</SelectItem>
+          {APP_DESTINATIONS.map((d) => (
+            <SelectItem key={d.path} value={d.path}>
+              {d.label} — {d.path}
+            </SelectItem>
+          ))}
+          <SelectItem value={CUSTOM}>Custom path or external link…</SelectItem>
+        </SelectContent>
+      </Select>
+      {custom ? (
+        <Input
+          value={value}
+          placeholder="/batches or https://example.com"
+          onChange={(e) => onChange(e.target.value)}
+        />
+      ) : null}
+      <p className="text-xs text-muted-foreground">
+        In-app paths like <code>/batches</code> are stored as-is, so the banner keeps working even if
+        the app URL changes later.
+      </p>
+    </div>
+  );
+}
 
 function BannersAdmin() {
   const { user, isAdmin, loading } = useAuth();
@@ -62,7 +203,7 @@ function BannersAdmin() {
   }, [user?.id, isAdmin]);
 
   const create = async () => {
-    if (!form.image_url.trim()) return toast.error("Image URL is required");
+    if (!form.image_url.trim()) return toast.error("Upload a banner image first");
     setBusy(true);
     try {
       await save({
@@ -92,7 +233,7 @@ function BannersAdmin() {
           id: row.id,
           title: row.title,
           image_url: row.image_url,
-          link_url: row.link_url,
+          link_url: row.link_url?.trim() || null,
           sort_order: row.sort_order,
           active: row.active,
         },
@@ -157,22 +298,11 @@ function BannersAdmin() {
                 <Input id="b-order" type="number" value={form.sort_order}
                   onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="b-img">Image URL (1200 × 450)</Label>
-                <Input id="b-img" value={form.image_url} placeholder="https://…/banner.jpg"
-                  onChange={(e) => setForm({ ...form, image_url: e.target.value })} />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="b-link">Destination link (optional)</Label>
-                <Input id="b-link" value={form.link_url} placeholder="https://…/batches"
-                  onChange={(e) => setForm({ ...form, link_url: e.target.value })} />
-              </div>
+              <ImageField idPrefix="new" value={form.image_url}
+                onChange={(url) => setForm({ ...form, image_url: url })} />
+              <DestinationField idPrefix="new" value={form.link_url}
+                onChange={(v) => setForm({ ...form, link_url: v })} />
             </div>
-            {form.image_url ? (
-              <div className="overflow-hidden rounded-2xl border border-border">
-                <img src={form.image_url} alt="Banner preview" className="aspect-[8/3] w-full object-cover" />
-              </div>
-            ) : null}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Switch id="b-active" checked={form.active}
@@ -197,9 +327,6 @@ function BannersAdmin() {
           rows.map((row) => (
             <Card key={row.id}>
               <CardContent className="space-y-3 p-4">
-                <div className="overflow-hidden rounded-2xl border border-border">
-                  <img src={row.image_url} alt={row.title ?? "Banner"} className="aspect-[8/3] w-full object-cover" />
-                </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="space-y-1.5">
                     <Label>Title</Label>
@@ -210,14 +337,10 @@ function BannersAdmin() {
                     <Input type="number" value={row.sort_order}
                       onChange={(e) => patch(row.id, { sort_order: Number(e.target.value) })} />
                   </div>
-                  <div className="space-y-1.5 sm:col-span-2">
-                    <Label>Image URL</Label>
-                    <Input value={row.image_url} onChange={(e) => patch(row.id, { image_url: e.target.value })} />
-                  </div>
-                  <div className="space-y-1.5 sm:col-span-2">
-                    <Label>Destination link</Label>
-                    <Input value={row.link_url ?? ""} onChange={(e) => patch(row.id, { link_url: e.target.value })} />
-                  </div>
+                  <ImageField idPrefix={row.id} value={row.image_url}
+                    onChange={(url) => patch(row.id, { image_url: url })} />
+                  <DestinationField idPrefix={row.id} value={row.link_url ?? ""}
+                    onChange={(v) => patch(row.id, { link_url: v })} />
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
