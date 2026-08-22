@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { NavTiles, HubHero, type NavTile } from "@/components/nav-tiles";
-import { BookOpen, Highlighter, ScrollText, Layers, GraduationCap, BookMarked, FlaskConical, FileText, ListChecks } from "lucide-react";
+import { BookOpen, Highlighter, ScrollText, Layers, GraduationCap, BookMarked, FlaskConical, ListChecks } from "lucide-react";
 import { ShortNotesBrowser } from "@/components/short-notes-browser";
 
 export const Route = createFileRoute("/study-essentials")({
@@ -37,7 +37,6 @@ function StudyEssentialsPage() {
     { to: "/flashcards", label: "Flashcards", tag: "Recall", accent: "violet", desc: "Quick-recall cards for active revision.", Icon: Layers, image: "/illustrations/i3d-flashcards.png", imageAlt: "3D flashcards icon" },
     { to: "/pyqs", label: "NEET PYQs", tag: "2016–2025", accent: "pink", desc: "Full papers in real CBT mode.", Icon: BookMarked, image: "/illustrations/i3d-neet-pyqs.png", imageAlt: "3D PYQ clipboard icon" },
     { to: "/neetlab", label: "NEET Lab", tag: "3D + Sims", accent: "cyan", desc: "Interactive 3D models, simulations and virtual labs.", Icon: FlaskConical, image: "/illustrations/i3d-neet-lab.png", imageAlt: "3D lab flask icon" },
-    { to: "/study-view", label: "Study Materials", tag: "PDFs", accent: "orange", desc: "Modules and resources shared by mentors.", Icon: FileText, image: "/illustrations/i3d-study-materials.png", imageAlt: "3D PDF folder icon" },
     { to: "/daily-checklist", label: "Daily Checklist", tag: "Habit", accent: "rose", desc: "Track your daily syllabus targets.", Icon: ListChecks, image: "/illustrations/i3d-daily-checklist.png", imageAlt: "3D checklist icon" },
   ];
 
@@ -47,7 +46,7 @@ function StudyEssentialsPage() {
         eyebrow="Study Essentials"
         title="Everything to"
         highlight="revise faster"
-        description="NCERT highlights, short notes, flashcards, labs and materials — all in one place."
+        description="NCERT highlights, short notes, flashcards and labs — all in one place."
         Icon={BookOpen}
         accent="emerald"
         image="/illustrations/hub-books.png"
