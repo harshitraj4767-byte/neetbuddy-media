@@ -209,6 +209,7 @@ function Dashboard() {
               <Flame className="h-4 w-4 text-orange-500" />
               <span className="text-sm font-bold">{streak}</span>
               <span className="text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">Day Streak</span>
+              <span className="ml-1 border-l border-border pl-2 text-[11px] font-semibold text-primary">View leaderboard</span>
             </Link>
           </div>
           <img

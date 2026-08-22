@@ -12,7 +12,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { LoadingScreen } from "@/components/loading-screen";
 import { cn } from "@/lib/utils";
-import heroAsset from "@/assets/analytics-hero.png.asset.json";
 
 type Attempt = { id: string; test_id: string; score: number; correct_count: number; wrong_count: number; unattempted_count: number; submitted_at: string | null; time_taken_sec: number | null };
 type Test = { id: string; title: string; type: string };
@@ -164,7 +163,7 @@ function AnalyticsPage() {
             </p>
           </div>
           <img
-            src={heroAsset.url}
+            src="/illustrations/hub-analyse.png"
             alt="3D analytics illustration with charts and magnifier"
             loading="lazy"
             className="h-28 w-28 shrink-0 object-contain drop-shadow-xl sm:h-40 sm:w-40"
