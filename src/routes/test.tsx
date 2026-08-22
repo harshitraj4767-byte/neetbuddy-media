@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { NavTiles, HubHero, HubQuickLinks, type NavTile } from "@/components/nav-tiles";
 import { Target, BookMarked, CalendarCheck, ClipboardList, BarChart3 } from "lucide-react";
+import { useForceLightMode } from "@/hooks/use-force-light";
 
 export const Route = createFileRoute("/test")({
   head: () => ({
@@ -24,6 +25,8 @@ const TILES: NavTile[] = [
 ];
 
 function TestHub() {
+  // Exam surfaces stay in light mode so question images stay legible.
+  useForceLightMode();
   return (
     <PageShell>
       <HubHero

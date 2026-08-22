@@ -13,6 +13,7 @@ import {
 } from "@/lib/contests.functions";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { LoadingScreen } from "@/components/loading-screen";
+import { useForceLightMode } from "@/hooks/use-force-light";
 
 export const Route = createFileRoute("/contest/$contestId/join")({
   head: () => ({ meta: [{ title: "Join Daily Live Quiz — Neet Buddy" }] }),
@@ -20,6 +21,8 @@ export const Route = createFileRoute("/contest/$contestId/join")({
 });
 
 function JoinPage() {
+  // Exam surfaces stay in light mode so question images stay legible.
+  useForceLightMode();
   const { contestId } = Route.useParams();
   const { user, loading } = useAuth();
   const nav = useNavigate();

@@ -26,6 +26,11 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
+        <img
+          src="/mascot/dr-vanshu.png"
+          alt="Dr Vanshu"
+          className="mx-auto mb-2 h-24 w-24 object-contain"
+        />
         <h1 className="text-7xl font-bold text-gradient-primary">404</h1>
         <h2 className="mt-4 text-xl font-semibold">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -33,10 +38,10 @@ function NotFoundComponent() {
         </p>
         <div className="mt-6">
           <Link
-            to="/"
+            to="/dashboard"
             className="inline-flex items-center justify-center rounded-md bg-gradient-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-elegant transition-opacity hover:opacity-95"
           >
-            Go home
+            Go to dashboard
           </Link>
         </div>
       </div>
@@ -51,9 +56,14 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
+        <img
+          src="/mascot/dr-vanshu.png"
+          alt="Dr Vanshu"
+          className="mx-auto mb-4 h-24 w-24 object-contain"
+        />
         <h1 className="text-xl font-semibold tracking-tight">This page didn't load</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Something went wrong on our end. You can try refreshing or head back to your dashboard.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -63,10 +73,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/"
+            href="/dashboard"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            Go home
+            Go to dashboard
           </a>
         </div>
       </div>

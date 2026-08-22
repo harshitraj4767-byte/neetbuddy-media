@@ -22,6 +22,7 @@ export type BannerRow = {
   id: string;
   title: string | null;
   image_url: string;
+  image_url_dark: string | null;
   link_url: string | null;
   sort_order: number;
   active: boolean;
@@ -31,7 +32,7 @@ export type BannerRow = {
 export const listActiveBanners = createServerFn({ method: "GET" }).handler(async () => {
   const { data } = await (supabaseAdmin as any)
     .from("dashboard_banners")
-    .select("id,title,image_url,link_url,sort_order,active")
+    .select("id,title,image_url,image_url_dark,link_url,sort_order,active")
     .eq("active", true)
     .order("sort_order", { ascending: true })
     .order("created_at", { ascending: false });
@@ -45,7 +46,7 @@ export const adminListBanners = createServerFn({ method: "GET" })
     await assertAdmin(context.userId);
     const { data, error } = await (supabaseAdmin as any)
       .from("dashboard_banners")
-      .select("id,title,image_url,link_url,sort_order,active")
+      .select("id,title,image_url,image_url_dark,link_url,sort_order,active")
       .order("sort_order", { ascending: true })
       .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
@@ -60,6 +61,7 @@ export const adminUpsertBanner = createServerFn({ method: "POST" })
         id: z.string().uuid().optional(),
         title: z.string().max(120).optional().nullable(),
         image_url: z.string().url().max(2000),
+        image_url_dark: z.string().url().max(2000).optional().nullable(),
         link_url: destinationSchema.optional().nullable(),
         sort_order: z.number().int().min(0).max(9999).default(0),
         active: z.boolean().default(true),
@@ -71,6 +73,7 @@ export const adminUpsertBanner = createServerFn({ method: "POST" })
     const payload = {
       title: data.title?.trim() || null,
       image_url: data.image_url.trim(),
+      image_url_dark: data.image_url_dark?.trim() || null,
       link_url: data.link_url?.trim() || null,
       sort_order: data.sort_order,
       active: data.active,

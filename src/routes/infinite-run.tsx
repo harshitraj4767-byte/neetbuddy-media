@@ -12,6 +12,7 @@ import {
 } from "@/lib/infinite-run.functions";
 import { toast } from "sonner";
 import { LoadingScreen } from "@/components/loading-screen";
+import { useForceLightMode } from "@/hooks/use-force-light";
 
 export const Route = createFileRoute("/infinite-run")({
   head: () => ({ meta: [{ title: "Infinite Run — Neet Buddy" }] }),
@@ -26,6 +27,8 @@ const MODE_LABEL: Record<string, string> = {
 };
 
 function InfiniteRunPage() {
+  // Exam surfaces stay in light mode so question images stay legible.
+  useForceLightMode();
   const { user, loading, isAdmin, refresh } = useAuth();
   const nav = useNavigate();
   const get = useServerFn(getInfiniteRunStatus);

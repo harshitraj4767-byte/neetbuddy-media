@@ -15,6 +15,7 @@ import { scheduleBotMatchSubmission, submitBattleAttempt } from "@/lib/battle-bo
 import { avatarForName } from "@/lib/neetiq-avatars";
 import { AntiCheatGate, hasAckedAntiCheat } from "@/components/anti-cheat-gate";
 import { LoadingScreen } from "@/components/loading-screen";
+import { useForceLightMode } from "@/hooks/use-force-light";
 
 
 const supabase = supabaseTyped as unknown as {
@@ -137,6 +138,8 @@ function normalizeBattleQuestion(raw: any): Question | null {
 }
 
 function BattlePlayPage() {
+  // Exam surfaces stay in light mode so question images stay legible.
+  useForceLightMode();
   const { matchId } = Route.useParams();
   const { user, profile, loading: authLoading } = useAuth();
   const nav = useNavigate();

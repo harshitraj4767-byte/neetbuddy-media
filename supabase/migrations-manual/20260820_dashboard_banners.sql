@@ -20,5 +20,7 @@ create policy "Anyone can read active banners"
   on public.dashboard_banners for select
   using (active = true);
 
+alter table public.dashboard_banners add column if not exists image_url_dark text;
+
 create index if not exists dashboard_banners_active_order_idx
   on public.dashboard_banners (active, sort_order);

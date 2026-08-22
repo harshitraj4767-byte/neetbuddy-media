@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
 import { listActiveBanners, type BannerRow } from "@/lib/banners.functions";
+import { useTheme } from "@/hooks/use-theme";
 
 const AUTO_MS = 10_000;
 
@@ -13,6 +14,7 @@ const AUTO_MS = 10_000;
  */
 export function BannerCarousel() {
   const load = useServerFn(listActiveBanners);
+  const { theme } = useTheme();
   const [banners, setBanners] = useState<BannerRow[]>([]);
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
@@ -64,9 +66,12 @@ export function BannerCarousel() {
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {banners.map((b) => {
+            // Admins upload separate light/dark artwork; fall back to the
+            // light image when no dark variant was provided.
+            const src = theme === "dark" ? (b.image_url_dark || b.image_url) : b.image_url;
             const img = (
               <img
-                src={b.image_url}
+                src={src}
                 alt={b.title ?? "Banner"}
                 loading="lazy"
                 className="h-full w-full select-none object-cover"

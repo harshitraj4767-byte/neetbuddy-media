@@ -17,6 +17,7 @@ import { AntiCheatGate, hasAckedAntiCheat } from "@/components/anti-cheat-gate";
 import { ReasonBreakdown } from "@/components/reason-breakdown";
 import { SaveQuestionSheet } from "@/components/save-question-sheet";
 import { LoadingScreen } from "@/components/loading-screen";
+import { useForceLightMode } from "@/hooks/use-force-light";
 
 function getQuizStorageKey(testId: string, mode: string) {
   return `quiz_state_${testId}_${mode}`;
@@ -102,6 +103,8 @@ function diffClass(d: string) {
 }
 
 function QuizPlayer() {
+  // Exam surfaces stay in light mode so question images stay legible.
+  useForceLightMode();
   const { testId } = Route.useParams();
   const { mode } = Route.useSearch();
   const { user, loading: authLoading } = useAuth();

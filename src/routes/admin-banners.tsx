@@ -39,7 +39,7 @@ export const Route = createFileRoute("/admin-banners")({
   component: BannersAdmin,
 });
 
-const EMPTY = { title: "", image_url: "", link_url: "", sort_order: 50, active: true };
+const EMPTY = { title: "", image_url: "", image_url_dark: "", link_url: "", sort_order: 50, active: true };
 const CUSTOM = "__custom__";
 const NONE = "__none__";
 
@@ -48,10 +48,14 @@ function ImageField({
   value,
   onChange,
   idPrefix,
+  label = "Banner image (1200 × 450)",
+  dark = false,
 }: {
   value: string;
   onChange: (url: string) => void;
   idPrefix: string;
+  label?: string;
+  dark?: boolean;
 }) {
   const createUrl = useServerFn(adminCreateBannerUploadUrl);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -78,11 +82,11 @@ function ImageField({
   }
 
   return (
-    <div className="space-y-2 sm:col-span-2">
-      <Label htmlFor={`${idPrefix}-file`}>Banner image (1200 × 450)</Label>
+    <div className={`space-y-2 ${dark ? "" : ""}`}>
+      <Label htmlFor={`${idPrefix}-file`}>{label}</Label>
       {value ? (
         <div className="overflow-hidden rounded-2xl border border-border">
-          <img src={value} alt="Banner preview" className="aspect-[8/3] w-full object-cover" />
+          <img src={value} alt="Banner preview" className={`aspect-[8/3] w-full object-cover ${dark ? "bg-slate-900" : "bg-white"}`} />
         </div>
       ) : (
         <div className="flex aspect-[8/3] w-full items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 text-xs text-muted-foreground">
@@ -210,6 +214,7 @@ function BannersAdmin() {
         data: {
           title: form.title || null,
           image_url: form.image_url.trim(),
+          image_url_dark: form.image_url_dark.trim() || null,
           link_url: form.link_url.trim() || null,
           sort_order: Number(form.sort_order) || 0,
           active: form.active,
@@ -233,6 +238,7 @@ function BannersAdmin() {
           id: row.id,
           title: row.title,
           image_url: row.image_url,
+          image_url_dark: row.image_url_dark || null,
           link_url: row.link_url?.trim() || null,
           sort_order: row.sort_order,
           active: row.active,
@@ -280,7 +286,7 @@ function BannersAdmin() {
           <h1 className="text-2xl font-extrabold tracking-tight">Dashboard Banners</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Banners appear directly below the dashboard hero card and auto-slide every 10 seconds.
-            Upload artwork in an <strong>8:3 ratio (≈2.67:1)</strong> — recommended 1200 × 450 px.
+            Upload artwork in an <strong>8:3 ratio (≈2.67:1)</strong> — recommended 1200 × 450 px. Add a light-mode and a dark-mode version; the dashboard swaps them with the app theme.
           </p>
         </div>
 
@@ -298,8 +304,12 @@ function BannersAdmin() {
                 <Input id="b-order" type="number" value={form.sort_order}
                   onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
-              <ImageField idPrefix="new" value={form.image_url}
+              <ImageField idPrefix="new-light" label="Light mode banner (1200 × 450)"
+                value={form.image_url}
                 onChange={(url) => setForm({ ...form, image_url: url })} />
+              <ImageField idPrefix="new-dark" dark label="Dark mode banner (1200 × 450)"
+                value={form.image_url_dark}
+                onChange={(url) => setForm({ ...form, image_url_dark: url })} />
               <DestinationField idPrefix="new" value={form.link_url}
                 onChange={(v) => setForm({ ...form, link_url: v })} />
             </div>
@@ -337,8 +347,12 @@ function BannersAdmin() {
                     <Input type="number" value={row.sort_order}
                       onChange={(e) => patch(row.id, { sort_order: Number(e.target.value) })} />
                   </div>
-                  <ImageField idPrefix={row.id} value={row.image_url}
+                  <ImageField idPrefix={`${row.id}-light`} label="Light mode banner"
+                    value={row.image_url}
                     onChange={(url) => patch(row.id, { image_url: url })} />
+                  <ImageField idPrefix={`${row.id}-dark`} dark label="Dark mode banner"
+                    value={row.image_url_dark ?? ""}
+                    onChange={(url) => patch(row.id, { image_url_dark: url })} />
                   <DestinationField idPrefix={row.id} value={row.link_url ?? ""}
                     onChange={(v) => patch(row.id, { link_url: v })} />
                 </div>

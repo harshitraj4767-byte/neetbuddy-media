@@ -12,6 +12,7 @@ import { Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PyqRichText } from "@/components/pyq-rich-text";
 import { LoadingScreen } from "@/components/loading-screen";
+import { useForceLightMode } from "@/hooks/use-force-light";
 
 export const Route = createFileRoute("/pyqs")({
   head: () => ({
@@ -84,6 +85,8 @@ type QState = "notVisited" | "notAnswered" | "answered" | "review" | "answeredRe
 // ---------------- Page ----------------
 
 function PyqPage() {
+  // Exam surfaces stay in light mode so question images stay legible.
+  useForceLightMode();
   const [activePaper, setActivePaper] = useState<Paper | null>(null);
 
 

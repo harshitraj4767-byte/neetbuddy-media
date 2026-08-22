@@ -8,7 +8,7 @@ export function renderErrorPage(): string {
     <style>
       body { font: 15px/1.5 system-ui, -apple-system, sans-serif; background: #fafafa; color: #111; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1.5rem; }
       .card { max-width: 28rem; width: 100%; text-align: center; padding: 2rem; }
-      .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+      .mascot { width: 96px; height: 96px; object-fit: contain; margin: 0 auto 0.75rem; display: block; }
       h1 { font-size: 1.25rem; margin: 0 0 0.5rem; }
       p { color: #4b5563; margin: 0 0 1.5rem; }
       .actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
@@ -19,12 +19,12 @@ export function renderErrorPage(): string {
   </head>
   <body>
     <div class="card">
-      <div class="icon">🛠️</div>
+      <img class="mascot" src="/mascot/dr-vanshu.png" alt="Dr Vanshu" />
       <h1>The web is under maintenance</h1>
       <p>It will be back soon. Please try again in a moment.</p>
       <div class="actions">
         <button class="primary" onclick="location.reload()">Try again</button>
-        <a class="secondary" href="/">Go home</a>
+        <a class="secondary" href="/dashboard">Go to dashboard</a>
       </div>
     </div>
   </body>
