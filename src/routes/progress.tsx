@@ -73,6 +73,15 @@ type SubjectAccuracy = {
   color: string;
 };
 
+type DifficultyAccuracy = {
+  difficulty: string;
+  correct: number;
+  total: number;
+  accuracy: number;
+  color: string;
+};
+
+
 function startOfWeek(base: Date = new Date()) {
   const d = new Date(base);
   const day = d.getDay() || 7;
@@ -98,6 +107,7 @@ function ProgressPage() {
     (profile as unknown as { daily_goal?: number } | null)?.daily_goal ?? 20,
   );
   const [subjectAcc, setSubjectAcc] = useState<SubjectAccuracy[] | null>(null);
+  const [difficultyAcc, setDifficultyAcc] = useState<DifficultyAccuracy[] | null>(null);
 
   useEffect(() => {
     if (!loading && !user) nav({ to: "/login" });
@@ -119,71 +129,70 @@ function ProgressPage() {
 
   useEffect(() => {
     if (!user) return;
+    let cancelled = false;
     (async () => {
       const ws = startOfWeek();
       ws.setDate(ws.getDate() + weekOffset * 7);
       const we = new Date(ws);
       we.setDate(we.getDate() + 7);
 
-      const { data: allSubs } = await supabase.from("subjects").select("id,name,color").order("name");
-      type SubRow = { id: string; name: string; color: string | null };
-      const subjectsList = (allSubs ?? []) as SubRow[];
       const palette: Record<string, string> = {
         Physics: "#0ea5e9",
         Chemistry: "#f97316",
         Biology: "#10b981",
       };
-      const baseBuckets = new Map<string, { correct: number; total: number; color: string }>();
+      const diffPalette: Record<string, string> = {
+        Easy: "#10b981",
+        Medium: "#f59e0b",
+        Hard: "#ef4444",
+      };
+
+      const { data: allSubs } = await supabase.from("subjects").select("id,name,color").order("name");
+      type SubRow = { id: string; name: string; color: string | null };
+      const subjectsList = (allSubs ?? []) as SubRow[];
+
+      const subjBuckets = new Map<string, { correct: number; total: number; color: string }>();
       subjectsList.forEach((s) => {
-        baseBuckets.set(s.name, { correct: 0, total: 0, color: s.color ?? palette[s.name] ?? "#6366f1" });
+        subjBuckets.set(s.name, { correct: 0, total: 0, color: s.color ?? palette[s.name] ?? "#6366f1" });
       });
+      const diffBuckets = new Map<string, { correct: number; total: number }>([
+        ["Easy", { correct: 0, total: 0 }],
+        ["Medium", { correct: 0, total: 0 }],
+        ["Hard", { correct: 0, total: 0 }],
+      ]);
 
-      const { data: rows } = await supabase
-        .from("attempts")
-        .select("answers, test_id, tests(question_ids)")
-        .eq("user_id", user.id)
-        .eq("status", "completed")
-        .gte("submitted_at", ws.toISOString())
-        .lt("submitted_at", we.toISOString());
+      // Aggregated in Postgres: a single week can hold thousands of answered
+      // question ids, which is far too many for a client-side `in(...)` filter.
+      type BreakdownRow = { kind: string; label: string; correct: number; total: number };
+      const { data: rows, error } = await (
+        supabase as unknown as {
+          rpc: (
+            fn: string,
+            args: Record<string, string>,
+          ) => Promise<{ data: BreakdownRow[] | null; error: { message: string } | null }>;
+        }
+      ).rpc("weekly_accuracy_breakdown", { _start: ws.toISOString(), _end: we.toISOString() });
 
-      const all = (rows ?? []) as Array<{
-        answers: Record<string, number> | null;
-        tests: { question_ids: string[] | null } | null;
-      }>;
-      const qIds = Array.from(new Set(all.flatMap((r) => Object.keys(r.answers ?? {}))));
+      if (cancelled) return;
+      if (error) {
+        console.error("weekly_accuracy_breakdown", error.message);
+      }
 
-      if (qIds.length > 0) {
-        const { data: qs } = await supabase
-          .from("questions")
-          .select("id, correct_index, subject_id, subjects(name, color)")
-          .in("id", qIds);
-        type Q = {
-          id: string;
-          correct_index: number;
-          subject_id: string | null;
-          subjects: { name: string; color: string | null } | null;
-        };
-        const qmap = new Map<string, Q>(((qs ?? []) as unknown as Q[]).map((q) => [q.id, q]));
-
-        for (const r of all) {
-          const ans = r.answers ?? {};
-          for (const [qid, picked] of Object.entries(ans)) {
-            const q = qmap.get(qid);
-            if (!q || !q.subjects) continue;
-            const name = q.subjects.name;
-            const b = baseBuckets.get(name) ?? {
-              correct: 0,
-              total: 0,
-              color: q.subjects.color ?? palette[name] ?? "#6366f1",
-            };
-            b.total++;
-            if (picked === q.correct_index) b.correct++;
-            baseBuckets.set(name, b);
-          }
+      for (const r of rows ?? []) {
+        if (r.kind === "subject") {
+          const prev = subjBuckets.get(r.label);
+          subjBuckets.set(r.label, {
+            correct: r.correct,
+            total: r.total,
+            color: prev?.color ?? palette[r.label] ?? "#6366f1",
+          });
+        } else if (r.kind === "difficulty") {
+          const key = r.label.charAt(0).toUpperCase() + r.label.slice(1).toLowerCase();
+          diffBuckets.set(key, { correct: r.correct, total: r.total });
         }
       }
 
-      const out: SubjectAccuracy[] = Array.from(baseBuckets.entries()).map(([subject, v]) => ({
+      const out: SubjectAccuracy[] = Array.from(subjBuckets.entries()).map(([subject, v]) => ({
         subject,
         correct: v.correct,
         total: v.total,
@@ -200,7 +209,29 @@ function ProgressPage() {
         return b.total - a.total;
       });
       setSubjectAcc(out);
+
+      const dOrder = ["Easy", "Medium", "Hard"];
+      const dOut: DifficultyAccuracy[] = Array.from(diffBuckets.entries())
+        .map(([difficulty, v]) => ({
+          difficulty,
+          correct: v.correct,
+          total: v.total,
+          accuracy: v.total ? Math.round((v.correct / v.total) * 100) : 0,
+          color: diffPalette[difficulty] ?? "#6366f1",
+        }))
+        .sort((a, b) => {
+          const ai = dOrder.indexOf(a.difficulty);
+          const bi = dOrder.indexOf(b.difficulty);
+          if (ai !== -1 && bi !== -1) return ai - bi;
+          if (ai !== -1) return -1;
+          if (bi !== -1) return 1;
+          return b.total - a.total;
+        });
+      setDifficultyAcc(dOut);
     })();
+    return () => {
+      cancelled = true;
+    };
   }, [user, weekOffset, attempts]);
 
   const goal = (profile as unknown as { daily_goal?: number } | null)?.daily_goal ?? 20;
@@ -620,6 +651,54 @@ function ProgressPage() {
                     </CardContent>
                   </Card>
                 </div>
+
+                {/* Difficulty-wise Accuracy */}
+                <Card className="shadow-soft">
+                  <CardContent className="p-5">
+                    <div className="mb-1 flex items-center gap-2">
+                      <div className="rounded-lg bg-primary/10 p-1.5">
+                        <Flame className="h-4 w-4 text-primary" />
+                      </div>
+                      <div className="text-base font-bold">Difficulty-wise Accuracy</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">How you perform as questions get harder</div>
+                    <div className="mt-4">
+                      {difficultyAcc === null ? (
+                        <div className="flex h-32 items-center justify-center">
+                          <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                        </div>
+                      ) : difficultyAcc.every((d) => d.total === 0) ? (
+                        <div className="flex h-32 flex-col items-center justify-center gap-2 text-center text-xs text-muted-foreground">
+                          <div className="rounded-full bg-secondary p-3">
+                            <Brain className="h-5 w-5" />
+                          </div>
+                          No attempts yet this week.
+                        </div>
+                      ) : (
+                        <div className="flex flex-col gap-3">
+                          {difficultyAcc.map((d) => (
+                            <div key={d.difficulty}>
+                              <div className="mb-1 flex items-center justify-between text-xs">
+                                <span className="font-semibold">{d.difficulty}</span>
+                                <span className="text-muted-foreground">
+                                  {d.correct}/{d.total} · {d.accuracy}%
+                                </span>
+                              </div>
+                              <div className="h-2.5 overflow-hidden rounded-full bg-secondary">
+                                <div
+                                  className="h-full rounded-full transition-all"
+                                  style={{ width: `${d.total ? d.accuracy : 0}%`, background: d.color }}
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+
+
 
                 {/* 8-Week Comparison */}
                 <Card className="shadow-soft">
