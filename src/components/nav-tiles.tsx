@@ -298,27 +298,17 @@ export function HubQuickLinks({
   className?: string;
 }) {
   return (
-    <div className={cn("mb-4 flex flex-wrap gap-2", className)}>
-      {links.map((l) => {
-        const a = ACCENT[l.accent ?? "blue"];
-        return (
-          <Link
-            key={l.label}
-            to={l.to as never}
-            className={cn(
-              "group inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 py-1.5 pl-1.5 pr-3 shadow-soft backdrop-blur transition-all",
-              "hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]",
-              a.glow,
-            )}
-          >
-            <span className={cn("flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br text-white shadow-sm", a.icon)}>
-              <l.Icon className="h-4 w-4" strokeWidth={2.2} />
-            </span>
-            <span className="text-xs font-semibold">{l.label}</span>
-            <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        );
-      })}
+    <div className={cn("mb-4 flex flex-wrap items-center gap-x-5 gap-y-2", className)}>
+      {links.map((l) => (
+        <Link
+          key={l.label}
+          to={l.to as never}
+          className="group inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary transition-colors hover:text-primary/80"
+        >
+          {l.label}
+          <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      ))}
     </div>
   );
 }

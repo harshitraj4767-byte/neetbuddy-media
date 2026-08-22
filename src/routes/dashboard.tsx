@@ -7,7 +7,7 @@ import {
   Loader2, ArrowRight, CalendarDays, Flame, Target as TargetIcon,
   Atom, FlaskConical, Leaf, Brain, Sparkles,
   RefreshCw, Trophy, Gift, MessageSquare, Users,
-  GraduationCap, BarChart3, Bot, CheckCircle2, ListChecks,
+  GraduationCap, BarChart3, Bot, CheckCircle2,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -219,18 +219,6 @@ function Dashboard() {
           />
         </div>
 
-        {/* ── Today's to-do list (compact CTA) ──────────────────────── */}
-        <Link
-          to="/daily-checklist"
-          className="mt-3 inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/80 py-1.5 pl-1.5 pr-3 shadow-soft backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
-        >
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow-sm">
-            <ListChecks className="h-4 w-4" strokeWidth={2.2} />
-          </span>
-          <span className="text-xs font-semibold">Create today&apos;s to-do list</span>
-          <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
-        </Link>
-
         {/* ── Banner plot (admin managed, 8:3 like the hero card) ───── */}
         <BannerCarousel />
 
@@ -238,12 +226,22 @@ function Dashboard() {
         <div className="mt-4 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-5 text-slate-100 shadow-elegant">
           <div className="flex items-center justify-between">
             <div className="text-sm font-bold">Today&apos;s Progress</div>
-            <Link
-              to="/progress"
-              className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-xs font-semibold transition hover:bg-white/20"
-            >
-              View All <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/daily-checklist"
+                className="group inline-flex items-center gap-1.5 text-xs font-semibold text-sky-300 transition-colors hover:text-sky-200"
+              >
+                Prepare to-do list
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                to="/progress"
+                className="group inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 transition-colors hover:text-white"
+              >
+                View All
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </div>
           <div className="mt-4 flex items-center gap-4 sm:gap-8">
             <ProgressRing percent={stats.completion} />

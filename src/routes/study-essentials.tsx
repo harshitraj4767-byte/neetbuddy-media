@@ -37,7 +37,6 @@ function StudyEssentialsPage() {
     { to: "/flashcards", label: "Flashcards", tag: "Recall", accent: "violet", desc: "Quick-recall cards for active revision.", Icon: Layers, image: "/illustrations/i3d-flashcards.png", imageAlt: "3D flashcards icon" },
     { to: "/pyqs", label: "NEET PYQs", tag: "2016–2025", accent: "pink", desc: "Full papers in real CBT mode.", Icon: BookMarked, image: "/illustrations/i3d-neet-pyqs.png", imageAlt: "3D PYQ clipboard icon" },
     { to: "/neetlab", label: "NEET Lab", tag: "3D + Sims", accent: "cyan", desc: "Interactive 3D models, simulations and virtual labs.", Icon: FlaskConical, image: "/illustrations/i3d-neet-lab.png", imageAlt: "3D lab flask icon" },
-    { to: "/daily-checklist", label: "Daily Checklist", tag: "Habit", accent: "rose", desc: "Track your daily syllabus targets.", Icon: ListChecks, image: "/illustrations/i3d-daily-checklist.png", imageAlt: "3D checklist icon" },
   ];
 
   return (
