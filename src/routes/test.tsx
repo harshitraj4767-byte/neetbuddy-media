@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
-import { NavTiles, HubHero, type NavTile } from "@/components/nav-tiles";
-import { Target, BookMarked, CalendarCheck, ClipboardList } from "lucide-react";
+import { NavTiles, HubHero, HubQuickLinks, type NavTile } from "@/components/nav-tiles";
+import { Target, BookMarked, CalendarCheck, ClipboardList, BarChart3 } from "lucide-react";
 
 export const Route = createFileRoute("/test")({
   head: () => ({
@@ -35,6 +35,9 @@ function TestHub() {
         accent="blue"
         image="/illustrations/hub-test.png"
         imageAlt="Mock test checklist with a stopwatch"
+      />
+      <HubQuickLinks
+        links={[{ to: "/analytics", label: "Do test analysis", Icon: BarChart3, accent: "cyan" }]}
       />
       <NavTiles tiles={TILES} />
     </PageShell>

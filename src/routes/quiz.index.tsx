@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
-import { NavTiles, HubHero, type NavTile } from "@/components/nav-tiles";
-import { BookOpenCheck, Sparkles, Swords, Brain } from "lucide-react";
+import { NavTiles, HubHero, HubQuickLinks, type NavTile } from "@/components/nav-tiles";
+import { BookOpenCheck, Sparkles, Swords, Brain, Bookmark, AlertTriangle } from "lucide-react";
 
 export const Route = createFileRoute("/quiz/")({
   head: () => ({
@@ -35,6 +35,12 @@ function QuizHub() {
         accent="violet"
         image="/illustrations/hub-quiz.png"
         imageAlt="Trophy, dartboard and winners podium"
+      />
+      <HubQuickLinks
+        links={[
+          { to: "/bookmarks", label: "Bookmarks", Icon: Bookmark, accent: "amber" },
+          { to: "/mistakes", label: "My mistakes", Icon: AlertTriangle, accent: "rose" },
+        ]}
       />
       <NavTiles tiles={TILES} />
     </PageShell>

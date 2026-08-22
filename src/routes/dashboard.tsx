@@ -7,7 +7,7 @@ import {
   Loader2, ArrowRight, CalendarDays, Flame, Target as TargetIcon,
   Atom, FlaskConical, Leaf, Brain, Sparkles,
   RefreshCw, Trophy, Gift, MessageSquare, Users,
-  GraduationCap, BarChart3, Bot, CheckCircle2,
+  GraduationCap, BarChart3, Bot, CheckCircle2, ListChecks,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -218,6 +218,18 @@ function Dashboard() {
             className="pointer-events-none absolute bottom-0 right-0 z-0 h-[88%] max-h-[220px] w-[46%] max-w-[320px] select-none object-contain object-bottom object-right drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[94%] sm:max-h-[275px]"
           />
         </div>
+
+        {/* ── Today's to-do list (compact CTA) ──────────────────────── */}
+        <Link
+          to="/daily-checklist"
+          className="mt-3 inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/80 py-1.5 pl-1.5 pr-3 shadow-soft backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow-sm">
+            <ListChecks className="h-4 w-4" strokeWidth={2.2} />
+          </span>
+          <span className="text-xs font-semibold">Create today&apos;s to-do list</span>
+          <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
+        </Link>
 
         {/* ── Banner plot (admin managed, 8:3 like the hero card) ───── */}
         <BannerCarousel />
