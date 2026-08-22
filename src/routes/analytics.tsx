@@ -77,15 +77,15 @@ function AnalyticsPage() {
       setTests(tmap);
 
       // Deep breakdown from answered questions
-      const { data: ansRaw } = await supabase.from("attempt_answers")
+      const { data: ansRaw } = await (supabase as any).from("attempt_answers")
         .select("question_id,is_correct,selected_index")
         .in("attempt_id", list.slice(0, 25).map((a) => a.id));
-      const answers = (ansRaw ?? []) as AnswerRow[];
+      const answers = (ansRaw ?? []) as unknown as AnswerRow[];
       if (!answers.length) return;
       const qIds = [...new Set(answers.map((a) => a.question_id))].slice(0, 1500);
       const { data: qsRaw } = await supabase.from("questions")
         .select("id,subject_id,chapter_id,difficulty").in("id", qIds);
-      const qs = (qsRaw ?? []) as QRow[];
+      const qs = (qsRaw ?? []) as unknown as QRow[];
       const qmap: Record<string, QRow> = {};
       qs.forEach((q) => { qmap[q.id] = q; });
 
