@@ -6,6 +6,8 @@ import {
   getBookChapter,
   getBookPyqs,
   runsOf,
+  resolveBookImage,
+  runImageSrc,
   type BookBlock,
   type BookChapter,
   type BookPyq,
@@ -320,7 +322,12 @@ function Reader({ slug, onBack }: { slug: string; onBack: () => void }) {
 
       <div className="mt-6 space-y-4">
         {visible.map((b) => (
-          <Block key={b.id} block={b} onPyq={setPyqIds} />
+          <Block
+            key={b.id}
+            block={b}
+            subject={data?.chapter.subject}
+            onPyq={setPyqIds}
+          />
         ))}
       </div>
 
@@ -351,10 +358,19 @@ function Legend() {
   );
 }
 
-function Block({ block, onPyq }: { block: BookBlock; onPyq: (ids: number[]) => void }) {
+function Block({
+  block,
+  subject,
+  onPyq,
+}: {
+  block: BookBlock;
+  subject?: string;
+  onPyq: (ids: number[]) => void;
+}) {
   const runs = runsOf(block);
   const pyqIds = block.pyq_ids ?? [];
   const hasPyq = pyqIds.length > 0;
+  const open = () => hasPyq && onPyq(pyqIds);
 
   if (block.type === "heading") {
     const level = Math.min(4, Math.max(1, block.level ?? 2));
@@ -370,42 +386,78 @@ function Block({ block, onPyq }: { block: BookBlock; onPyq: (ids: number[]) => v
   }
 
   if (block.type === "image") {
-    return <Figure src={block.image_url ?? ""} caption={block.text ?? undefined} />;
+    return (
+      <Figure
+        src={resolveBookImage(block.image_url, subject)}
+        caption={block.text ?? undefined}
+      />
+    );
   }
 
-  const accent = hasPyq ? "border-l-4 border-orange-400 pl-4" : "";
+  // Images that were captured inline inside a paragraph are pulled out so they
+  // render as real figures instead of stray filenames.
+  const figures = runs.filter((r) => r.t === "img" && runImageSrc(r));
+  const textRuns = runs.filter((r) => r.t !== "img");
+  const hasText = textRuns.some((r) => (r.s ?? "").trim().length > 0);
 
   return (
-    <div className={accent}>
+    <div
+      onClick={open}
+      className={
+        "rounded-r-xl transition " +
+        (hasPyq
+          ? "cursor-pointer border-l-4 border-orange-400 bg-orange-500/[0.04] py-1 pl-4 pr-1 hover:bg-orange-500/[0.09]"
+          : "")
+      }
+    >
       {hasPyq && (
-        <button
-          onClick={() => onPyq(pyqIds)}
-          className="mb-1.5 inline-flex items-center gap-1 rounded-full bg-orange-500/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-600 transition hover:bg-orange-500/20 dark:text-orange-300"
-        >
+        <span className="mb-1.5 inline-flex items-center gap-1 rounded-full bg-orange-500/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-300">
           Related PYQs · {pyqIds.length}
-        </button>
+        </span>
       )}
-      <p className="text-justify text-[15px] leading-[1.9] sm:text-base">
-        {runs.map((r, i) => {
-          if (r.t === "br") return <br key={i} />;
-          if (r.t === "img") return <Figure key={i} src={r.src ?? ""} />;
-          if (r.t === "hl")
-            return (
-              <mark
-                key={i}
-                className={
-                  "rounded-sm px-0.5 text-foreground " +
-                  (hasPyq
-                    ? "bg-orange-300/60 dark:bg-orange-400/30"
-                    : "bg-yellow-300/70 dark:bg-yellow-400/30")
-                }
-              >
-                {r.s}
-              </mark>
-            );
-          return <span key={i}>{r.s}</span>;
-        })}
-      </p>
+      {hasText && (
+        <p className="text-justify text-[15px] leading-[1.9] sm:text-base">
+          {textRuns.map((r, i) => {
+            if (r.t === "br") return <br key={i} />;
+            if (r.t === "hl")
+              return (
+                <mark
+                  key={i}
+                  role={hasPyq ? "button" : undefined}
+                  tabIndex={hasPyq ? 0 : undefined}
+                  onClick={(e) => {
+                    if (!hasPyq) return;
+                    e.stopPropagation();
+                    open();
+                  }}
+                  onKeyDown={(e) => {
+                    if (hasPyq && (e.key === "Enter" || e.key === " ")) {
+                      e.preventDefault();
+                      open();
+                    }
+                  }}
+                  className={
+                    "rounded-sm px-0.5 text-foreground " +
+                    (hasPyq
+                      ? "cursor-pointer bg-orange-300/60 underline decoration-orange-500/50 decoration-dotted underline-offset-4 hover:bg-orange-300/90 dark:bg-orange-400/30"
+                      : "bg-yellow-300/70 dark:bg-yellow-400/30")
+                  }
+                >
+                  {r.s}
+                </mark>
+              );
+            return <span key={i}>{r.s}</span>;
+          })}
+        </p>
+      )}
+      {figures.map((r, i) => (
+        <Figure key={`f${i}`} src={resolveBookImage(runImageSrc(r), subject)} />
+      ))}
+      {hasPyq && (
+        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-orange-500/80">
+          Tap the highlighted line to see the questions asked from it
+        </span>
+      )}
     </div>
   );
 }
@@ -427,7 +479,7 @@ function Figure({ src, caption }: { src: string; caption?: string }) {
         alt={caption ?? "NCERT diagram"}
         loading="lazy"
         onError={() => setFailed(true)}
-        className="block w-full"
+        className="block w-full bg-white"
       />
       {caption && (
         <figcaption className="border-t px-3 py-2 text-center text-xs italic text-muted-foreground">
@@ -516,7 +568,12 @@ function PyqCard({ pyq }: { pyq: BookPyq }) {
       </div>
       <p className="text-sm font-medium leading-relaxed">{pyq.question}</p>
       {pyq.image_url && (
-        <img src={pyq.image_url} alt="" loading="lazy" className="mt-3 w-full rounded-xl border" />
+        <img
+          src={resolveBookImage(pyq.image_url, pyq.subject)}
+          alt=""
+          loading="lazy"
+          className="mt-3 w-full rounded-xl border bg-white"
+        />
       )}
       {options.length > 0 && (
         <ul className="mt-3 space-y-1.5">
