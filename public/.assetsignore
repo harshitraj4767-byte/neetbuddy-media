@@ -1,0 +1,6 @@
+# Wrangler: exclude from Worker static-asset upload (Free plan cap: 20,000 files).
+# Question-bank diagrams (~17k files) are served from VITE_QBANK_IMAGE_BASE in production;
+# they stay in git so local dev and the sync scripts keep working.
+img/data/
+# Split archives that are never served over HTTP.
+ncert/*.zip.*
