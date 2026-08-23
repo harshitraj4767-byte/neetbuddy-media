@@ -1,10 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { callAiGatewayWithRotation } from "@/lib/ai-keys.functions";
 
 async function assertAdmin(userId: string) {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { data: roles } = await supabaseAdmin
     .from("user_roles")
     .select("role")
@@ -24,6 +24,7 @@ export type Flashcard = {
 
 // -------- Public: list decks (subject × chapter with counts) --------
 export const listFlashcardDecks = createServerFn({ method: "GET" }).handler(async () => {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   // Page past Supabase's 1000-row default to get the FULL count, not capped at 1000.
   const rows: Array<{ subject_id: string | null; chapter_id: string | null }> = [];
   const PAGE = 1000;
@@ -77,6 +78,7 @@ export const getFlashcards = createServerFn({ method: "POST" })
     }).parse(d),
   )
   .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     let q = supabaseAdmin
       .from("flashcards" as never)
       .select("id,subject_id,chapter_id,front,back,difficulty,source");
@@ -103,6 +105,7 @@ export const recordFlashcardReview = createServerFn({ method: "POST" })
     }).parse(d),
   )
   .handler(async ({ data, context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.from("flashcard_reviews" as never).insert({
       user_id: context.userId,
       card_id: data.card_id,
@@ -200,6 +203,7 @@ export const adminGenerateFlashcards = createServerFn({ method: "POST" })
     }).parse(d),
   )
   .handler(async ({ data, context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
     const { data: ch, error: chErr } = await supabaseAdmin
       .from("chapters")
@@ -231,6 +235,7 @@ export const adminDeleteFlashcardsByChapter = createServerFn({ method: "POST" })
     z.object({ chapter_id: z.string().uuid() }).parse(d),
   )
   .handler(async ({ data, context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
     const { error, count } = await supabaseAdmin
       .from("flashcards" as never)
@@ -243,6 +248,7 @@ export const adminDeleteFlashcardsByChapter = createServerFn({ method: "POST" })
 export const adminListChaptersForFlashcards = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
     const { data, error } = await supabaseAdmin
       .from("chapters")
@@ -271,6 +277,7 @@ export const adminGenerateFlashcardsBulk = createServerFn({ method: "POST" })
     }).parse(d),
   )
   .handler(async ({ data, context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
     const per = data.per_chapter ?? 15;
     const batch = data.max_chapters ?? 4;

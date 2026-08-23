@@ -5,7 +5,8 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, Layers, RotateCcw, ArrowRight, Sparkles } from "lucide-react";
-import { listFlashcardDecks, getFlashcards, recordFlashcardReview, type Flashcard } from "@/lib/flashcards.functions";
+import { recordFlashcardReview } from "@/lib/flashcards.functions";
+import { listFlashcardDecks, getFlashcards, type Deck, type Flashcard } from "@/lib/flashcards";
 import { accessStudyFeature } from "@/lib/feature-gate.functions";
 import { useAuth } from "@/hooks/use-auth";
 import { RichText } from "@/components/rich-text";
@@ -17,12 +18,8 @@ export const Route = createFileRoute("/flashcards")({
   component: () => (<FeatureLock feature="flashcards"><FlashcardsPage /></FeatureLock>),
 });
 
-type Deck = { subject_id: string | null; subject_name: string; chapter_id: string | null; chapter_name: string; count: number };
-
 function FlashcardsPage() {
   const { user } = useAuth();
-  const loadDecks = useServerFn(listFlashcardDecks);
-  const loadCards = useServerFn(getFlashcards);
   const review = useServerFn(recordFlashcardReview);
   const unlock = useServerFn(accessStudyFeature);
 
@@ -37,8 +34,8 @@ function FlashcardsPage() {
   const [starting, setStarting] = useState(false);
 
   useEffect(() => {
-    loadDecks().then((d) => { setDecks(d.decks as Deck[]); setTotal(d.totalCards); }).catch((e) => toast.error(e?.message ?? "Failed to load"));
-  }, [loadDecks]);
+    listFlashcardDecks().then((d) => { setDecks(d.decks); setTotal(d.totalCards); }).catch((e) => toast.error(e?.message ?? "Failed to load"));
+  }, []);
 
   async function start(d: Deck | null) {
     if (!user) { toast.error("Please log in to study flashcards."); return; }
@@ -55,7 +52,7 @@ function FlashcardsPage() {
     }
     setActive(d); setCards(null); setIdx(0); setFlipped(false); setDone(false);
     try {
-      const r = await loadCards({ data: { chapter_id: d?.chapter_id ?? null, subject_id: d?.subject_id ?? null, limit: 30 } });
+      const r = await getFlashcards({ chapter_id: d?.chapter_id ?? null, subject_id: d?.subject_id ?? null, limit: 30 });
       setCards(r.cards);
       if (r.cards.length === 0) toast.info("No cards in this deck yet.");
     } catch (e: any) { toast.error(e?.message ?? "Failed to load cards"); }
