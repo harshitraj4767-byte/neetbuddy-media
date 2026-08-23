@@ -1,0 +1,10 @@
+{
+  "subject": "biology",
+  "total_questions_in_json": 14437,
+  "total_images_saved": 812,
+  "newly_downloaded": 812,
+  "already_existed": 0,
+  "no_image_available_skipped": 13625,
+  "image_count_per_quiz_type": { "fillup": 2, "match": 203, "mcq": 607, "order": 0 },
+  "last_updated": "2026-08-11 09:01:22"
+}
