@@ -1,0 +1,4449 @@
+{
+  "title": "Morphology Of Flowering Plants",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Unit  2"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "STRUCTURAL ORGANISATION IN PLANTS AND ANIMALS",
+      "id": "h.x6fai0m5gl51"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 5",
+      "id": "h.j53w2qp6omc6"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Morphology of Flowering Plants"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 6",
+      "id": "h.4w45qwhjytqm"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Anatomy of Flowering Plants"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 7",
+      "id": "h.rna50jm77uve"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Structural Organisation in Animals"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The description of the diverse forms of life on earth was made only by observation\r\n            – through naked eyes or later through magnifying lenses and microscopes. This description is mainly of\r\n            gross structural features, both external and internal. In addition, observable and perceivable living\r\n            phenomena were also recorded as part of this description. Before experimental biology or more specifically,\r\n            physiology, was established as a part of biology, naturalists described only biology. Hence, biology\r\n            remained as a natural history for a long time. The description, by itself, was amazing in terms of detail.\r\n            While the initial reaction of a student could be boredom, one should keep in mind that the detailed\r\n            description, was utilised in the later day reductionist biology where living processes drew more attention\r\n            from scientists than the description of life forms and their structure. Hence, this description became\r\n            meaningful and helpful in framing research questions in physiology or evolutionary biology. In the following\r\n            chapters of this unit, the structural organisation of plants and animals, including the structural basis of\r\n            physiologial or behavioural phenomena, is described. For convenience, this description of morphological and\r\n            anatomical features is presented separately for plants and animals."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image33.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Katherine Esau"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1898 – 1997)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Katherine Esau was born in Ukraine in 1898. She studied agriculture in Russia and\r\n            Germany and received her doctorate in 1931 in United States. She reported in her early publications that the\r\n            curly top virus spreads through a plant via the food-conducting or phloem tissue. Dr Esau’s Plant\r\n            Anatomy published in 1954 took a dynamic, developmental approach designed to enhance one’s\r\n            understanding of plant structure and an enormous impact worldwide, literally bringing about a revival of the\r\n            discipline. The Anatomy of Seed Plants by Katherine Esau was published in 1960. It was referred to as\r\n            Webster’s of plant biology – it is encyclopediac. In 1957 she was elected to the National\r\n            Academy of Sciences, becoming the sixth woman to receive that honour. In addition to this prestigious award,\r\n            she received the National Medal of Science from President George Bush in 1989."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When Katherine Esau died in the year 1997, Peter Raven, director of Anatomy and\r\n            Morphology, Missouri Botanical Garden, remembered that she ‘absolutely dominated’ the field of\r\n            plant biology even at the age of 99."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Chapter 5",
+      "id": "h.36y0nr5z1k80"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Morphology of Flowering Plants",
+      "id": "h.m711165029kn"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.1 The Root",
+      "id": "h.zhk50o7hdaoy"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.2 The Stem",
+      "id": "h.hqj3nx734j"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.3 The Leaf",
+      "id": "h.3w14v47ttwo1"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.4 The Inflorescence",
+      "id": "h.dci3x9w3snjs"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5 The Flower",
+      "id": "h.hs0wdjspv96i"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.6 The Fruit",
+      "id": "h.kpgqgjjb02l"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.7 The Seed",
+      "id": "h.3ps47mxyzcn6"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.8 Semi-technical Description of a Typical Flowering\r\n            Plant",
+      "id": "h.9t5dl79b2iry"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.9 Description of Some Important Families",
+      "id": "h.2c0kdxctwwn2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The wide range in the structure of higher plants will never fail to fascinate us.\r\n            Even though the angiosperms show such a large diversity in external structure or morphology, they are all\r\n            characterised by presence of roots, stems, leaves, flowers and fruits."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In chapters 2 and 3, we talked about classification of plants based on\r\n            morphological and other characteristics. For any successful attempt at classification and at understanding\r\n            any higher plant (or for that matter any living organism) we need to know standard technical terms and\r\n            standard definitions. We also need to know about the possible variations in different parts, found as\r\n            adaptations of the plants to their environment, e.g., adaptions to various habitats, for protection,\r\n            climbing, storage, etc."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If you pull out any weed you will see that all of them have roots, stems and\r\n            leaves. They may be bearing flowers and fruits. The underground part of the flowering plant is the root\r\n            system while the portion above the ground forms the shoot system (Figure 5.1)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.1 The Root",
+      "id": "h.vgfcyaxdjzmr"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                roots originate from the base of the stem and constitute the fibrous root system, as seen in the wheat\r\n                plant (Figure 5.2b)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In some plants, like grass, Monstera and the\r\n            banyan tree, roots arise from parts of the plant other than the radicle and are called adventitious roots\r\n            (Figure 5.2c). The main functions of the root system are absorption of water and minerals from the soil,\r\n            providing a proper anchorage to the plant parts, storing reserve food material and synthesis of plant growth\r\n            regulators."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51063
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image46.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Parts of a flowering plant"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image26.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Different types of roots : (a) Tap\r\n             (b) Fibrous  (c) Adventitious"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.1.1 Regions of the Root",
+      "id": "h.hc4a4hif0oex"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The root is covered at the apex by a thimble-like structure called the root cap\r\n            (Figure 5.3). It protects the tender apex of the root as it makes its way through the soil. A few\r\n            millimetres above the root cap is the region of meristematic activity. The cells of this region are very\r\n            small, thin-walled and with dense protoplasm. They divide repeatedly. The cells proximal to this region\r\n            undergo rapid elongation and enlargement and are responsible for the growth of the root in length. This\r\n            region is called the region of elongation. The cells of the elongation zone gradually differentiate and\r\n            mature."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hence,\r\n                this zone, proximal to region of elongation, is called the region of maturation. From this region some\r\n                of the epidermal cells form very fine and delicate, thread-like structures called root\r\n                hairs."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These root hairs absorb water and minerals from the\r\n            soil."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51064
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image25.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                5.3 The regions of the root-tip"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51065
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.1.2 Modifications of Root",
+      "id": "h.fjgw8d5efx4g"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Roots in some plants change their shape and structure and become modified to perform\r\n            functions other than absorption and conduction of water and minerals. They are modified for support, storage\r\n            of food and respiration (Figure 5.4 and 5.5)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Tap\r\n                roots of carrot, turnip and adventitious roots of sweet potato, get swollen and store\r\n                food."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you give some more such examples?\r\n            Have you ever wondered what those hanging structures that support a banyan tree are? These are called prop\r\n            roots. Similarly, the stems of maize and sugarcane have supporting roots coming out of the lower nodes of\r\n            the stem."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51066
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image29.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.4 Modification of root for support: Banyan tree"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are called stilt roots."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                some plants such as Rhizophora growing in swampy areas, many roots come out of the ground and grow\r\n                vertically upwards. Such roots, called pneumatophores, help to get oxygen for respiration (Figure\r\n                5.5b)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51028
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image32.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Asparagus"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Carrot      Sweet\r\n                     potato"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image42.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Modification of root for : (a)\r\n            storage (b) respiration: pneumatophore in Rhizophora"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.2 The Stem",
+      "id": "h.7zaottw8kvug"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What are the features that distinguish a stem from a root? The stem is the ascending\r\n            part of the axis bearing branches, leaves, flowers and fruits. It develops from the plumule of the embryo of\r\n            a germinating seed. The stem bears"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "nodes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "internodes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The region of the stem where leaves are born\r\n            are called nodes while internodes are the portions between two nodes. The stem bears buds, which may be\r\n            terminal or axillary. Stem is generally green when young and later often become woody and dark brown."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The main function of the stem is spreading out branches bearing leaves,\r\n            flowers and fruits. It conducts water, minerals and photosynthates. Some stems perform the function of\r\n            storage of food, support, protection and of vegetative propagation."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.2.1 Modifications of Stem",
+      "id": "h.3vc7pwe7ptut"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The stem may not always be typically like what they are expected to be. They are\r\n            modified to perform different functions (Figure 5.6)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Underground\r\n                stems of potato, ginger, turmeric, zaminkand, Colocasia are modified to store food in them."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They also act as organs of perennation to tide over conditions unfavourable for\r\n            growth. Stem"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tendrils"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which develop from axillary\r\n            buds, are slender and spirally coiled and help plants to climb such as in gourds (cucumber, pumpkins,\r\n            watermelon) and grapevines."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Axillary\r\n                buds of stems may also get modified into woody, straight and pointed"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "thorns"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ".\r\n                Thorns are found in many plants such as Citrus, Bougainvillea."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They\r\n            protect plants from browsing animals."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                plants of arid regions modify their stems into flattened (Opuntia), or fleshy cylindrical (Euphorbia)\r\n                structures."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50902,
+        50923,
+        50951,
+        51054
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image43.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Modifications of stem for :\r\n             (a) storage  (b) support  (c) protection (d) spread and vegetative propagation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                contain chlorophyll and carry out photosynthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Underground stems of\r\n            some plants such as grass and strawberry, etc., spread to new niches and when older parts die new plants are\r\n            formed. In plants like mint and jasmine a slender lateral branch arises from the base of the main axis and\r\n            after growing aerially for some time"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "arch\r\n                downwards to touch the ground. A lateral branch with short internodes and each node bearing a rosette of\r\n                leaves and a tuft of roots is found in aquatic plants like Pistia and Eichhornia."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In banana, pineapple and Chrysanthemum, the lateral branches originate from the basal\r\n            and underground portion of the main stem, grow horizontally beneath the soil and then come out obliquely\r\n            upward giving rise to leafy shoots."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50916,
+        50951
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.3 The Leaf",
+      "id": "h.3826m8uhz817"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The leaf is a lateral, generally flattened structure borne on the stem. It develops\r\n            at the node and bears a bud in its axil. The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "axillary bud"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "later develops into a branch. Leaves originate from shoot apical meristems and are\r\n            arranged in an acropetal order. They are the most important vegetative organs for photosynthesis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A typical leaf consists of three main parts:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "leaf\r\n            base"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", petiole and lamina (Figure 5.7 a). The leaf is attached to the stem by the\r\n            leaf base and may bear two lateral small leaf like structures called stipules. In monocotyledons, the leaf\r\n            base expands into a sheath covering the stem partially or wholly. In some leguminous plants the leafbase may\r\n            become swollen, which is called the pulvinus. The petiole help hold the blade to light. Long thin flexible\r\n            petioles allow leaf blades to flutter in wind, thereby cooling the leaf and bringing fresh air to leaf\r\n            surface. The lamina or the leaf blade is the green expanded part of the leaf with veins and veinlets. There\r\n            is, usually, a middle prominent vein, which is known as the midrib. Veins provide rigidity to the leaf blade\r\n            and act as channels of transport for water, minerals and food materials. The shape, margin, apex, surface\r\n            and extent of incision of lamina varies in different leaves."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image35.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image27.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image18.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Structure of a leaf : (a) Parts of\r\n            a leaf (b) Reticulate venation (c) Parallel venation"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.3.1 Venation",
+      "id": "h.6ylvnjyj1tjd"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The arrangement of veins and the veinlets in the lamina of leaf is termed as\r\n            venation. When the veinlets form a network, the venation is termed as reticulate (Figure 5.7 b). When the\r\n            veins run parallel to each other within a lamina, the venation is termed as parallel (Figure 5.7 c). Leaves\r\n            of dicotyledonous plants generally possess reticulate venation, while parallel venation is the\r\n            characteristic of most monocotyledons."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.3.2 Types of Leaves",
+      "id": "h.rql0d1yv278m"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A leaf is said to be simple, when its lamina is entire or when incised, the\r\n            incisions do not touch the midrib. When the incisions of the lamina reach up to the midrib breaking it into\r\n            a number of leaflets, the leaf is called compound. A bud is present in the axil of petiole in both simple\r\n            and compound leaves, but not in the axil of leaflets of the compound leaf."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image38.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image40.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Compound leaves : (a) pinnately\r\n            compound leaf (b) palmately compound leaf"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The compound leaves may be of two types (Figure 5.8). In a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pinnately compound leaf"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "a number of leaflets are present on a\r\n            common axis, the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rachis"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", which represents the midrib\r\n            of the leaf as in neem."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In palmately compound leaves, the leaflets are attached at a common point, i.e.,\r\n            at the tip of petiole, as in silk cotton."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) China rose"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image28.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Guava"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image24.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Alstonla"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                5.9"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Different\r\n                types of phyllotaxy : (a) Alternate (b) Opposite(c) Whorled"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50929
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.3.3 Phyllotaxy",
+      "id": "h.p1b496clopy4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Phyllotaxy is the pattern of arrangement of leaves on the stem or branch. This is\r\n            usually of three types – alternate, opposite and whorled (Figure 5.9). In alternate type of\r\n            phyllotaxy, a single leaf arises at each node in alternate manner, as in china rose, mustard and sun flower\r\n            plants."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                opposite type, a pair of leaves arise at each node and lie opposite to each other as in Calotropis and\r\n                guava plants"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\r\n                more than two leaves arise at a node and form a whorl, it is called whorled, as in Alstonia."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50929,
+        50944,
+        51067,
+        51068
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.3.4 Modifications of Leaves",
+      "id": "h.y7q6jjwbne5v"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Leaves are often modified to perform functions other than photosynthesis. They are\r\n            converted into tendrils for climbing as in peas or into spines for defence as in cacti (Figure 5.10 a, b).\r\n            The fleshy leaves of onion and garlic store food (Figure 5.10c). In some plants such as Australian acacia,\r\n            the leaves are small and short-lived. The petioles in these plants expand, become green and synthesise food."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Leaves\r\n                of certain insectivorous plants such as pitcher plant, venus-fly trap are also modified\r\n                leaves."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50908
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image41.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Modifications of leaf for : (a)\r\n            support: tendril (b) protection: spines (c) storage: fleshy leaves"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.4 The Inflorescence",
+      "id": "h.1eg2xsx0g6wd"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                flower is a modified shoot wherein the shoot apical meristem changes to floral meristem. Internodes do\r\n                not elongate and the axis gets condensed."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The apex produces\r\n            different kinds of floral appendages laterally at successive nodes instead of leaves. When a shoot tip\r\n            transforms into a flower, it is always solitary. The arrangement of flowers on the floral axis is termed as\r\n            inflorescence. Depending on whether the apex gets developed into a flower or continues to grow, two major\r\n            types of inflorescences are defined – racemose and cymose. In racemose type of inflorescences the main\r\n            axis continues to grow, the flowers are borne laterally in an acropetal succession (Figure 5.11)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51069
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Racemose inflorescence"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                cymose type of inflorescence the main axis terminates in a flower, hence is limited in growth.The\r\n                flowers are borne in a basipetal order (Figure 5.12)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50928
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.12"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cymose inflorescence"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5 The Flower",
+      "id": "h.mfifao9aqlv1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The flower is the reproductive unit in the angiosperms. It is meant for sexual\r\n            reproduction. A typical flower has four different kinds of whorls arranged successively on the swollen end\r\n            of the stalk or pedicel, called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "thalamus or receptacle"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ".\r\n            These are calyx, corolla, androecium and gynoecium. Calyx and corolla are accessory organs, while androecium\r\n            and gynoecium are reproductive organs. In some flowers like lily, the calyx and corolla are not distinct and\r\n            are termed as perianth. When a flower has both androecium and gynoecium, it is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "bisexual"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". A flower having either only stamens or only carpels is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "unisexual"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In symmetry, the flower may be"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "actinomorphic"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(radial symmetry) or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "zygomorphic"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(bilateral symmetry)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                a flower can be divided into two equal radial halves in any radial plane passing through the centre, it\r\n                is said to be"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "actinomorphic"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                e.g., mustard, datura, chilli."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                it can be divided into two similar halves only in one particular vertical plane, it is"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "zygomorphic"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                e.g., pea, gulmohur, bean, Cassia."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A flower is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "asymmetric"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(irregular) if it cannot be divided into two\r\n            similar halves by any vertical plane passing through the centre, as in canna."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50906,
+        50940,
+        51056,
+        51058
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A flower may be trimerous, tetramerous or pentamerous when the floral appendages are\r\n            in multiple of 3, 4 or 5, respectively. Flowers  with bracts-reduced leaf found at the base of the\r\n            pedicel-are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "bracteate"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and those without\r\n            bracts,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ebracteate"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image31.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)                      \r\n                  (b)                        \r\n                   (c)                      \r\n                      (d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.13"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Position of floral parts on thalamus\r\n            : (a) Hypogynous (b) and (c) Perigynous (d) Epigynous"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Based on the position of calyx, corolla and androecium in respect of the ovary on\r\n            thalamus, the flowers are described as hypogynous, perigynous and epigynous (Figure 5.13)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "hypogynous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "flower\r\n                the gynoecium occupies the highest position while the other parts are situated below it. The ovary in\r\n                such flowers is said to be"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "superior"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                e.g., mustard, china rose and brinjal."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\r\n                gynoecium is situated in the centre and other parts of the flower are located on the rim of the thalamus\r\n                almost at the same level, it is called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "perigynous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ".\r\n                The ovary here is said to be half inferior, e.g., plum, rose, peach."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "epigynous"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "flowers, the margin of thalamus grows upward enclosing the ovary completely and getting\r\n            fused with it, the other parts of flower arise above the ovary."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hence,\r\n                the ovary is said to be"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "inferior"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "as\r\n                in flowers of guava and cucumber, and the ray florets of sunflower."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50914,
+        50917,
+        51070,
+        51071,
+        15000433
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5.1 Parts of a Flower",
+      "id": "h.dtvolcch8fu8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each flower normally has four floral whorls, viz., calyx, corolla, androecium and\r\n            gynoecium (Figure 5.14)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5.1.1 Calyx",
+      "id": "h.kyj3jqx2lf0b"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The calyx is the outermost whorl of the flower and the members are called sepals.\r\n            Generally, sepals are green, leaf like and protect the flower in the bud stage. The calyx may be\r\n            gamosepalous (sepals united) or polysepalous (sepals free)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5.1.2 Corolla",
+      "id": "h.fiwcdu8ibx8o"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Corolla is composed of petals. Petals are usually brightly coloured to attract\r\n            insects for pollination. Like calyx, corolla may also be gamopetalous (petals united) or polypetalous\r\n            (petals free). The shape and colour of corolla vary greatly in plants. Corolla may be tubular, bell-shaped,\r\n            funnel-shaped or wheel-shaped."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image44.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.14"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Parts of a flower"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Aestivation: The mode of arrangement of sepals or petals in floral bud with respect\r\n            to the other members of the same whorl is known as aestivation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                main types of aestivation are valvate, twisted, imbricate and vexillary (Figure 5.15)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                sepals or petals in a whorl just touch one another at the margin, without overlapping, as in Calotropis,\r\n                it is said to be valvate."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\r\n                one margin of the appendage overlaps that of the next one and so on as in china rose, lady’s\r\n                finger and cotton, it is called twisted. If the margins of sepals or petals overlap one another but not\r\n                in any particular direction as in Cassia and gulmohur, the aestivation is called\r\n                imbricate."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                pea and bean flowers, there are five petals, the largest (standard) overlaps the two lateral petals\r\n                (wings) which in turn overlap the two smallest anterior petals (keel); this type of aestivation is known\r\n                as vexillary or papilionaceous."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50912,
+        50918,
+        50921,
+        50926,
+        50947,
+        51058
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image21.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)      (b)\r\n                     (c)       (d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                5.15"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Types\r\n                of aestivation in corolla : (a) Valvate (b) Twisted (c) Imbricate (d) Vexillary"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51058
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5.1.3 Androecium",
+      "id": "h.a15mkdgt36ye"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Androecium is composed of stamens. Each stamen which represents the male reproductive\r\n            organ consists of a stalk or a filament and an anther. Each anther is usually bilobed and each lobe has two\r\n            chambers, the pollen-sacs. The pollen grains are produced in pollen-sacs."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                sterile stamen is called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "staminode"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50922
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Stamens of flower may be united with other members such as petals or among\r\n            themselves."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                stamens are attached to the petals, they are"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "epipetalous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "as\r\n                in brinjal, or"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "epiphyllous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "when\r\n                attached to the perianth as in the flowers of lily."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The stamens in a\r\n            flower may either remain free (polyandrous) or may be united in varying degrees."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                stamens may be united into one bunch or one bundle ("
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "monoadelphous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")\r\n                as in china rose, or two bundles ("
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "diadelphous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")\r\n                as in pea, or into more than two bundles ("
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "polyadelphous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")\r\n                as in citrus."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\r\n                may be a variation in the length of filaments within a flower, as in Salvia and mustard."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50904,
+        50922,
+        50949,
+        50952
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Marginal"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Axile"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Parietal"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) Free central"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(e) Basal"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                5.16"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Types\r\n                of placentation :(a) Marginal (b) Axile (c) Parietal (d) Free central (e) Basal"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50938
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.5.1.4 Gynoecium",
+      "id": "h.m8d1vmsj04be"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gynoecium is the female reproductive part of the flower and is made up of one or more\r\n            carpels. A carpel consists of three parts namely stigma, style and ovary."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ovary"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is the enlarged basal part, on which lies the elongated\r\n            tube, the style. The style connects the ovary to the stigma. The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "stigma"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is usually at the tip of the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "style"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and is the receptive surface for pollen grains. Each ovary\r\n            bears one or more ovules attached to a flattened, cushion-like"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "placenta"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". When more than one carpel is present, they may be free (as\r\n            in lotus and rose) and are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "apocarpous"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". They are\r\n            termed"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "syncarpous"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "when carpels are fused, as in\r\n            mustard and tomato. After fertilisation, the ovules develop into seeds and the ovary matures into a\r\n            fruit."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Placentation"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ":"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The arrangement of ovules within the ovary is known as\r\n            placentation. The placentation are of different types namely, marginal, axile, parietal, basal, central and\r\n            free central (Figure 5.16)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "marginal"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "placentation\r\n                the placenta forms a ridge along the ventral suture of the ovary and the ovules are borne on this ridge\r\n                forming two rows, as in pea."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                the placenta is axial and the ovules are attached to it in a multilocular ovary, the placentaion is said\r\n                to be"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "axile"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                as in china rose, tomato and lemon."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "parietal"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "placentation,\r\n                the ovules develop on the inner wall of the ovary or on peripheral part."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ovary\r\n                is one-chambered but it becomes two-chambered due to the formation of the false septum, e.g., mustard\r\n                and argemone. When the ovules are borne on central axis and septa are absent, as in Dianthus and\r\n                Primrose the placentation is called free central."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                basal placentation, the placenta develops at the base of ovary and a single ovule is attached to it, as\r\n                in sunflower, marigold."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50907,
+        50915,
+        50930,
+        50937,
+        50946,
+        51002,
+        51006,
+        51072,
+        15000434
+      ],
+      "pyq_count": 9
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.6 The Fruit",
+      "id": "h.isq5ca92vhjt"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fruit is a characteristic feature of the flowering plants. It is a mature or\r\n            ripened ovary, developed after fertilisation. If a fruit is formed without fertilisation of the ovary, it is\r\n            called a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "parthenocarpic"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fruit."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Generally, the fruit consists of a wall or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pericarp"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and seeds. The pericarp may be dry or fleshy. When\r\n            pericarp is thick and fleshy, it is differentiated into the outer epicarp, the middle"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "mesocarp"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and the inner"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "endocarp"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image39.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.17"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Parts of a fruit : (a) Mango (b)\r\n            Coconut"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                mango and coconut, the fruit is known as a drupe (Figure 5.17)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                develop from monocarpellary superior ovaries and are one seeded."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                mango the pericarp is well differentiated into an outer thin epicarp, a middle fleshy edible mesocarp\r\n                and an inner stony hard endocarp."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                coconut which is also a drupe, the mesocarp is fibrous."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50901,
+        50942,
+        51017,
+        51020,
+        51074
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.7 The Seed",
+      "id": "h.dnn69ct3cooh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ovules after fertilisation, develop into seeds. A seed is made up of a seed\r\n            coat and an embryo. The embryo is made up of a radicle, an embryonal axis and one (as in wheat, maize) or\r\n            two cotyledons (as in gram and pea)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.7.1 Structure of a Dicotyledonous Seed",
+      "id": "h.89th94cflp1c"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The outermost covering of a seed is the seed coat. The seed coat has two layers, the\r\n            outer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "testa"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and the inner"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tegmen"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "hilum"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is\r\n                a scar on the seed coat through which the developing seeds were attached to the fruit."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Above the hilum is a small pore called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "micropyle"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Within the seed coat is the embryo, consisting of an\r\n            embryonal axis and two cotyledons. The cotyledons are often fleshy and full of reserve food materials. At\r\n            the two ends of the embryonal axis are present the radicle and the plumule (Figure 5.18). In some seeds such\r\n            as castor the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "endosperm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "formed as a result of\r\n            double fertilisation, is a food storing tissue and called endospermic seeds. In plants such as bean, gram\r\n            and pea, the endosperm is not present in mature seeds and such seeds are called non-endospermous."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51075
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image22.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.18"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Structure of dicotyledonous\r\n            seed"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.7.2 Structure of Monocotyledonous Seed",
+      "id": "h.21zwdzaia93f"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Generally, monocotyledonous seeds are endospermic but some as in orchids are\r\n            non-endospermic. In the seeds of cereals such as maize the seed coat is membranous and generally fused\r\n            with"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                fruit wall. The endosperm is bulky and stores food. The outer covering of endosperm separates the embryo\r\n                by a proteinous layer called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "aleurone\r\n                layer"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The embryo is small and situated in a groove at one end of the endosperm."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\r\n                consists of one large and shield shaped cotyledon known as"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "scutellum"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                a short axis with a plumule and a radicle."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The plumule and radicle are\r\n            enclosed in sheaths which are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "coleoptile"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "coleorhiza"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "respectively (Figure 5.19)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50910,
+        50913,
+        50922,
+        50950
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image19.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.19"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Structure of a monocotyledonous\r\n            seed"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.8 Semi-Technical Description of a Typical Flowering\r\n            Plant",
+      "id": "h.q4kqs5pj23x3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Various morphological features are used to describe a flowering plant. The\r\n            description has to be brief, in a simple and scientific language and presented in a proper sequence. The\r\n            plant is described beginning with its habit, vegetative characters – roots, stem and leaves and then\r\n            floral characters inflorescence and flower parts. After describing various parts of plant, a floral diagram\r\n            and a floral formula are presented."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "K2+2 C4 A2+4 G(2)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.20"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral diagram with floral\r\n            formula"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The floral formula is represented by some symbols. In\r\n            the floral formula, Br stands for bracteate K stands for calyx , C for corolla, P for perianth, A for\r\n            androecium and G for Gynoecium,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "G"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image30.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for inferior ovary,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for male,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image23.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for female,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image17.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for bisexual plants,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image20.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for actinomorphic and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for zygomorphic nature of flower. Fusion is indicated by enclosing the\r\n            figure within bracket and adhesion by a line drawn above the symbols of the floral parts. A floral diagram\r\n            provides information about the number of parts of a flower, their arrangement and the relation they have\r\n            with one another (Figure 5.20). The position of the mother axis with respect to the flower is represented by\r\n            a dot on the top of the floral diagram. Calyx, corolla, androecium and gynoecium are drawn in successive\r\n            whorls, calyx being the outermost and the gynoecium being in the centre. Floral formula also shows cohesion\r\n            and adhesion within parts of whorls and between whorls."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                floral diagram and floral formula in Figure 5.20 represents the mustard plant (Family:\r\n                Brassicaceae)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50906
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.9 Description of Some Important Families",
+      "id": "h.zi8eq7npsubt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.9.1 Fabaceae",
+      "id": "h.m0ce39banzvr"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This family was earlier called Papilionoideae, a subfamily of family Leguminosae.\r\n            It is distributed all over the world (Figure 5.21)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Vegetative Characters"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Trees, shrubs, herbs; root with root nodules"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Stem"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": erect or climber"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Leaves"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": alternate, pinnately compound or simple; leaf\r\n            base, pulvinate; stipulate; venation reticulate."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image34.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                5.21"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Pisum\r\n                sativum (pea) plant : (a) Flowering twig (b) Flower (c) Petals (d) Reproductive parts (e) L.S.carpel (f)\r\n                Floral diagram"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51055
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral characters"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Inflorescence"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                racemose"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50927
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Flower"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": bisexual, zygomorphic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Calyx"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": sepals five, gamosepalous; valvate/imbricate\r\n            aestivation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Corolla"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                petals five, polypetalous, papilionaceous, consisting of a posterior standard, two lateral wings, two\r\n                anterior ones forming a keel (enclosing stamens and pistil), vexillary aestivation"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50918,
+        50936,
+        51055
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Androecium"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                ten, diadelphous, anther dithecous"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51076
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gynoecium"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": ovary superior, mono carpellary,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "unilocular\r\n                with many ovules"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", style single"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000436
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fruit"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": legume; seed: one to many,\r\n            non-endospermic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral formula"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": %"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "K(5) C1+2+(2) A(9)+1 G1"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Economic importance"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Many\r\n                plants belonging to the family are sources of pulses (gram, arhar, sem, moong, soyabean; edible oil\r\n                (soyabean, groundnut); dye (Indigofera); fibres (sunhemp); fodder (Sesbania, Trifolium), ornamentals\r\n                (lupin, sweet pea); medicine (muliathi)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50918
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.9.2 Solanaceae",
+      "id": "h.hxuym88i8dc7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is a large family, commonly called as the ‘potato family’. It is\r\n            widely distributed in tropics, subtropics and even temperate zones (Figure 5.22)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Vegetative Characters"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plants mostly herbs, shrubs and rarely small trees"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Stem"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": herbaceous rarely woody, aerial; erect,\r\n            cylindrical, branched, solid or hollow, hairy or glabrous, underground stem in potato (Solanum\r\n            tuberosum)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image37.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 5.22"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solanum nigrum (makoi) plant : (a)\r\n            Flowering twig (b) Flower (c) L.S. of flower (d) Stamens (e) Carpel (f) Floral diagram"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Leaves"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": alternate, simple, rarely pinnately compound,\r\n            exstipulate; venation reticulate"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral Characters"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Inflorescence"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Solitary, axillary or cymose as in Solanum"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50928,
+        50931
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Flower"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                bisexual, actinomorphic"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51011
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Calyx"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": sepals five, united, persistent, valvate\r\n            aestivation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Corolla"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": petals five, united; valvate\r\n            aestivation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Androecium"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": stamens five, epipetalous"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gynoecium"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                bicarpellary obligately placed, syncarpous; ovary superior, bilocular, placenta swollen with many\r\n                ovules, axile"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50914,
+        51011,
+        51021
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Fruits"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                berry or capsule"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51011
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Seeds"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": many, endospermous"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral Formula"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ":"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image20.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Economic Importance"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Many\r\n                plants belonging to this family are source of food (tomato, brinjal, potato), spice (chilli); medicine\r\n                (belladonna, ashwagandha); fumigatory (tobacco); ornamentals (petunia)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50914,
+        51021
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image45.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image36.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                5.23"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Allium\r\n                cepa (onion) plant : (a) Plant (b) Inflorescence (c) Flower (d) Floral diagram"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50937
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "5.9.3 Liliaceae",
+      "id": "h.1jn7kyt6whz6"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Commonly called the ‘Lily family’ is a characteristic representative\r\n            of monocotyledonous plants. It is distributed world wide (Figure 5.23)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Vegetative characters"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Perennial herbs with\r\n            underground bulbs/corms/rhizomes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Leaves mostly basal, alternate, linear, exstipulate with parallel venation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral characters"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Inflorescence"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": solitary / cymose; often umbellate\r\n            clusters"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Flower"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": bisexual; actinomorphic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Perianth tepal six (3+3), often united into tube; valvate aestivation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Androecium"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": stamen six, 3+3, epitepalous"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gynoecium"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                tricarpellary, syncarpous, ovary superior, trilocular with many ovules; axile placentation"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50911,
+        50914
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fruit"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": capsule, rarely berry"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Seed"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": endospermous"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Floral Formula"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ":"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Br"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Morphology_Of_Flowering_Plants-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "P(3+3) A3+3 G(3)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Economic Importance"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Many\r\n                plants belonging to this family are good ornamentals (tulip, Gloriosa), source of medicine (Aloe),\r\n                vegetables (Asparagus), and colchicine (Colchicum autumnale)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        50914
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.ks1edehpbwb9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Flowering plants exhibit enormous variation in shape, size, structure, mode of\r\n            nutrition, life span, habit and habitat. They have well developed root and shoot systems. Root system is\r\n            either tap root or fibrous. Generally, dicotyledonous plants have tap roots while monocotyledonous plants\r\n            have fibrous roots. The roots in some plants get modified for storage of food, mechanical support and\r\n            respiration. The shoot system is differentiated into stem, leaves, flowers and fruits. The morphological\r\n            features of stems like the presence of nodes and internodes, multicellular hair and positively phototropic\r\n            nature help to differentiate the stems from roots. Stems also get modified to perform diverse functions such\r\n            as storage of food, vegetative propagation and protection under different conditions. Leaf is a lateral\r\n            outgrowth of stem developed exogeneously at the node. These are green in colour to perform the function of\r\n            photosynthesis. Leaves exhibit marked variations in their shape, size, margin, apex and extent of incisions\r\n            of leaf blade (lamina). Like other parts of plants, the leaves also get modified into other structures such\r\n            as tendrils, spines for climbing and protection respectively."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                flower is a modified shoot, meant for sexual reproduction"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The flowers are arranged in different types of inflorescences. They exhibit enormous\r\n            variation in structure, symmetry, position of ovary in relation to other parts, arrangement of petals,\r\n            sepals, ovules etc. After fertilisation, the ovary is modified into fruits and ovules into seeds. Seeds\r\n            either may be monocotyledonous or dicotyledonous."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                vary in shape, size and period of viability."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The floral characteristics\r\n            form the basis of classification and identification of flowering plants. This can be illustrated through\r\n            semi-technical descriptions of families. Hence, a flowering plant is described in a definite sequence by\r\n            using scientific terms. The floral features are represented in the summarised form as floral diagrams and\r\n            floral formula"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        51069,
+        51077
+      ],
+      "pyq_count": 2
+    }
+  ]
+}

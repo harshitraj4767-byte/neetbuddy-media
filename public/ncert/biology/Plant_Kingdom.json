@@ -1,0 +1,3681 @@
+{
+  "title": "Plant Kingdom",
+  "children": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Plant Kingdom",
+      "id": "h.3au9k0aepnau"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the previous chapter, we looked at the broad classification of living organisms\r\n            under the system proposed by Whittaker (1969) wherein he suggested the Five Kingdom classification viz.\r\n            Monera, Protista, Fungi, Animalia and Plantae. In this chapter, we will deal in detail with further\r\n            classification within Kingdom Plantae popularly known as the ‘plant kingdom’."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.1 Algae",
+      "id": "h.nf57y6scjud9"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.2 Bryophytes",
+      "id": "h.mkksqwomnyg9"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.3 Pteridophytes",
+      "id": "h.dsw91atnlhyj"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.4 Gymnosperms",
+      "id": "h.2tlxx4y1ocmi"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.5 Angiosperms",
+      "id": "h.yrp8n0rux4xn"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.6 Plant Life Cycles and Alternation of Generations",
+      "id": "h.lhae1e65ntzn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We must stress here that our understanding of the plant kingdom has changed over\r\n            time. Fungi, and members of the Monera and Protista having cell walls have now been excluded from Plantae\r\n            though earlier classifications placed them in the same kingdom. So, the cyanobacteria that are also referred\r\n            to as blue green algae are not ‘algae’ any more. In this chapter, we will describe Algae,\r\n            Bryophytes, Pteridophytes, Gymnosperms and Angiosperms under Plantae ."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us also look at classification within angiosperms to understand some of the\r\n            concerns that influenced the classification systems. The earliest systems of classification used only gross\r\n            superficial morphological characters such as habit, colour, number and shape of leaves, etc. They were based\r\n            mainly on vegetative characters or on the androecium structure (system given by Linnaeus). Such systems were\r\n            artificial; they separated the closely related species since they were based on a few characteristics. Also,\r\n            the artificial systems gave equal weightage to vegetative and sexual characteristics; this is not acceptable\r\n            since we know that often the vegetative characters are more easily affected by environment. As against this,\r\n            natural classification systems developed, which were based on natural affinities among the organisms and\r\n            consider, not only the external features, but also internal features, like ultra-structure, anatomy,\r\n            embryology and phytochemistry. Such a classification for flowering plants was given by George Bentham and\r\n            Joseph Dalton Hooker."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "At\r\n                present"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "phylogenetic\r\n                classification systems"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "based\r\n                on evolutionary relationships between the various organisms are acceptable."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This assumes that organisms belonging to the same taxa have a common ancestor. We now use\r\n            information from many other sources too to help resolve difficulties in classification. These become more\r\n            important when there is no supporting fossil evidence."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Numerical\r\n            Taxonomy"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which is now easily carried out using computers is based on all\r\n            observable characteristics. Number and codes are assigned to all the characters and the data are then\r\n            processed. In this way each character is given equal importance and at the same time hundreds of characters\r\n            can be considered."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cytotaxonomy"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "that is based on\r\n            cytological information like chromosome number, structure, behaviour and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "chemotaxonomy"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "that uses the chemical constituents of the plant to\r\n            resolve confusions, are also used by taxonomists these days."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30103,
+        30108
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.1 Algae",
+      "id": "h.op7564l8hkuv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Algae are chlorophyll-bearing, simple, thalloid, autotrophic and largely aquatic\r\n            (both fresh water and marine) organisms. They occur in a variety of other habitats: moist stones, soils and\r\n            wood. Some of them also occur in association with fungi (lichen) and animals (e.g., on sloth bear)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                form and size of algae is highly variable, ranging from colonial forms like Volvox and the filamentous\r\n                forms like Ulothrix and Spirogyra (Figure 3.1)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A few of the marine\r\n            forms such as kelps, form massive plant bodies."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30203
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The algae reproduce by vegetative, asexual and sexual methods. Vegetative\r\n            reproduction is by fragmentation. Each fragment develops into a thallus. Asexual reproduction is by the\r\n            production of different types of spores, the most common being the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "zoospores"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". They are flagellated (motile) and on germination gives rise\r\n            to new plants. Sexual reproduction takes place through fusion of two gametes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                gametes can be flagellated and similar in size (as in Ulothrix) or non-flagellated (non-motile) but\r\n                similar in size (as in Spirogyra)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Such reproduction is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "isogamous"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Fusion of two gametes dissimilar in size, as in species of\r\n            Eudorina is termed as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "anisogamous"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Fusion\r\n                between one large, non-motile (static) female gamete and a smaller, motile male gamete is termed"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "oogamous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                e.g., Volvox, Fucus."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30204,
+        30207,
+        30209,
+        30211
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 3.1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Algae : (a) Green algae (i) Volvox\r\n            (ii) Ulothrix  (b) Brown algae (i) Laminaria (ii) Fucus (iii) Dictyota (c) Red algae (i) Porphyra (ii)\r\n            Polysiphonia"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Algae are useful to man in a variety of ways. At least a half of the total carbon\r\n            dioxide fixation on earth is carried out by algae through photosynthesis. Being photosynthetic they increase\r\n            the level of dissolved oxygen in their immediate environment. They are of paramount importance as primary\r\n            producers of energy-rich compounds which form the basis of the food cycles of all aquatic animals. Many\r\n            species of Porphyra, Laminaria and Sargassum are among the 70 species of marine algae used as\r\n            food"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Certain\r\n                marine brown and red algae produce large amounts of hydrocolloids (water holding substances), e.g.,"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "algin"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(brown\r\n                algae) and carrageen (red algae) which are used commercially."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Agar, one of\r\n            the commercial products obtained from Gelidium and Gracilaria are used to grow microbes and in preparations\r\n            of ice-creams and jellies."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Chlorella\r\n                a unicellular alga rich in proteins is used as food supplement even by space travellers."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "he algae are divided into three main\r\n            classes:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chlorophyceae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ","
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Phaeophyceae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Rhodophyceae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30244,
+        31016,
+        31044
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.1.1 Chlorophyceae",
+      "id": "h.to1f66d0q5yi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The members of chlorophyceae are commonly called green algae. The plant body may be\r\n            unicellular, colonial or filamentous. They are usually grass green due to the dominance of pigments\r\n            chlorophyll a and b. The pigments are localised in definite chloroplasts. The chloroplasts may be discoid,\r\n            plate-like, reticulate, cup-shaped, spiral or ribbon-shaped in different species. Most of the members have\r\n            one or more storage bodies called pyrenoids located in the chloroplasts. Pyrenoids contain protein besides\r\n            starch. Some algae may store food in the form of oil droplets. Green algae usually have a rigid cell wall\r\n            made of an inner layer of cellulose and an outer layer of pectose."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Vegetative reproduction usually takes place by fragmentation or by formation of\r\n            different types of spores. Asexual reproduction is by flagellated zoospores produced in zoosporangia. The\r\n            sexual reproduction shows considerable variation in the type and formation of sex cells and it may be\r\n            isogamous, anisogamous or oogamous."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                commonly found green algae are: Chlamydomonas, Volvox, Ulothrix, Spirogyra and Chara (Figure\r\n                3.1a)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30226
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.1.2 Phaeophyceae",
+      "id": "h.z4nbffajih"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The members of phaeophyceae or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "brown algae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "are found primarily in marine habitats. They show great variation in size and form. They\r\n            range from simple branched, filamentous forms (Ectocarpus) to profusely branched forms as represented by\r\n            kelps, which may reach a height of 100 metres. They possess chlorophyll a, c, carotenoids and xanthophylls.\r\n            They vary in colour from olive green to various shades of brown depending upon the amount of the xanthophyll\r\n            pigment, fucoxanthin present in them."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Food\r\n                is stored as complex carbohydrates, which may be in the form of laminarin or mannitol."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The vegetative cells have a cellulosic wall usually covered on the outside by a gelatinous\r\n            coating of algin. The protoplast contains, in addition to plastids, a centrally located vacuole and nucleus.\r\n            The plant body is usually attached to the substratum by a holdfast, and has a stalk, the stipe and leaf like\r\n            photosynthetic organ – the frond. Vegetative reproduction takes place by fragmentation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Asexual\r\n                reproduction in most brown algae is by biflagellate zoospores that are pear-shaped and have two unequal\r\n                laterally attached flagella."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30229,
+        30235
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sexual reproduction may be isogamous, anisogamous or oogamous. Union of gametes may\r\n            take place in water or within the oogonium (oogamous species). The gametes are pyriform (pear-shaped) and\r\n            bear two laterally attached flagella."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                common forms are Ectocarpus, Dictyota, Laminaria, Sargassum and Fucus (Figure 3.1b)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30230
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.1.3 Rhodophyceae",
+      "id": "h.5wgpod1yy9ho"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                members of rhodophyceae are commonly called red"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "algae"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "because\r\n                of the predominance of the red pigment, r-phycoerythrin in their body."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Majority of the red algae are marine with greater concentrations\r\n            found in the warmer areas. They occur in both well-lighted regions close to the surface of water and also at\r\n            great depths in oceans where relatively little light penetrates."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30241,
+        30242
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The red thalli of most of the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "red algae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "are multicellular. Some of them have complex body organisation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                food is stored as floridean starch which is very similar to amylopectin and glycogen in\r\n                structure."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30243
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "TABLE\r\n                3.1"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Divisions\r\n                of Algae and their Main Characteristics"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30241,
+        30242
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image4.png",
+              "alt": "p3",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                red algae usually reproduce vegetatively by fragmentation. They reproduce asexually by non-motile spores\r\n                and sexually by non-motile gametes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "S"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "exual\r\n            reproduction is oogamous and accompanied by complex post fertilisation developments."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                common members are: Polysiphonia, Porphyra (Figure 3.1c), Gracilaria and Gelidium."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30241,
+        30243,
+        30245
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.2 Bryophytes",
+      "id": "h.x4hnjgag2mq4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Bryophytes include the various mosses and liverworts that are found commonly growing\r\n            in moist shaded areas in the hills (Figure 3.2)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Bryophytes\r\n                are also called amphibians of the plant kingdom because these plants can live in soil but are dependent\r\n                on water for sexual reproduction."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They usually\r\n            occur in damp, humid and shaded localities. They play an important role in plant succession on bare\r\n            rocks/soil."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30303
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                3.2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Bryophytes:\r\n                A liverwort – Marchantia (a) Female thallus (b) Male thallus Mosses – (c) Funaria,\r\n                gametophyte and sporophyte (d) Sphagnum gametophyte"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30339,
+        30340,
+        30341,
+        30348
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The plant body of bryophytes is more differentiated than that of algae. It is\r\n            thallus-like and prostrate or erect, and attached to the substratum by unicellular or multicellular\r\n            rhizoids. They lack true roots, stem or leaves. They may possess root-like, leaf-like or stem-like\r\n            structures."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                main plant body of the bryophyte is haploid. It produces gametes, hence is called a"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "gametophyte"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The sex organs in bryophytes are multicellular. The male sex organ is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "antheridium"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". They produce biflagellate"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "antherozoids"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                female sex organ called archegonium is flask-shaped and produces a single egg. The antherozoids are\r\n                released into water where they come in contact with archegonium."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An\r\n            antherozoid fuses with the egg to produce the zygote. Zygotes do not undergo reduction division immediately.\r\n            They produce a multicellular body called a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sporophyte"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                sporophyte is not free-living but attached to the photosynthetic gametophyte and derives nourishment\r\n                from it."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some cells of the sporophyte undergo reduction division (meiosis)\r\n            to produce haploid spores. These spores germinate to produce gametophyte."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30308,
+        30309,
+        30310,
+        30311,
+        30312
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Bryophytes in general are of little economic importance but some mosses provide food\r\n            for herbaceous mammals, birds and other animals."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Species\r\n                of Sphagnum, a moss, provide peat that have long been used as fuel, and as packing material for\r\n                trans-shipment of living material because of their capacity to hold water"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Mosses\r\n                along with lichens are the first organisms to colonise rocks and hence, are of great ecological\r\n                importance."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They decompose rocks making the substrate suitable for the\r\n            growth of higher plants. Since mosses form dense mats on the soil, they reduce the impact of falling rain\r\n            and prevent soil erosion. The bryophytes are divided into"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "liverworts and\r\n            mosses"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30313,
+        30314,
+        30315,
+        30316,
+        30317
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.2.1 Liverworts",
+      "id": "h.64p5bhxpgvs3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The liverworts grow usually in moist, shady habitats such as banks of streams, marshy\r\n            ground, damp soil, bark of trees and deep in"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "the woods."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                plant body of a liverwort is thalloid, e.g., Marchantia."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The thallus is\r\n            dorsiventral and closely appressed to the substrate. The leafy members have tiny leaf-like appendages in two\r\n            rows on the stem-like structures."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30323
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Asexual\r\n                reproduction in liverworts takes place by fragmentation of thalli, or by the formation of specialised\r\n                structures called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "gemmae"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(sing.\r\n                gemma)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gemmae are green, multicellular, asexual buds, which develop in\r\n            small receptacles called gemma cups located on the thalli. The gemmae become detached from the parent body\r\n            and germinate to form new individuals. During sexual reproduction, male and female sex organs are produced\r\n            either on the same or on different thalli. The sporophyte is differentiated into a foot, seta and capsule.\r\n            After meiosis, spores are produced within the capsule. These spores germinate to form free-living\r\n            gametophytes."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30319
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.2.2 Mosses",
+      "id": "h.7sxtn21epvvd"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The predominant stage of the life cycle of a moss is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                gametophyte which consists of two stages. The first stage is the protonema stage, which develops\r\n                directly from a spore."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is a creeping, green, branched and frequently\r\n            filamentous stage. The second stage is the leafy stage, which develops from the secondary protonema as a\r\n            lateral bud. They consist of upright, slender axes bearing spirally arranged leaves. They are attached to\r\n            the soil through multicellular and branched rhizoids. This stage bears the sex organs."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30326
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Vegetative reproduction in mosses is by fragmentation and budding in the secondary\r\n            protonema. In sexual reproduction, the sex organs antheridia and archegonia are produced at the apex of the\r\n            leafy shoots. After fertilisation, the zygote develops into a sporophyte, consisting of a foot, seta and\r\n            capsule."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                sporophyte in mosses is more elaborate than that in liverworts."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The capsule contains spores."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Spores\r\n                are formed after meiosis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The mosses have an\r\n            elaborate mechanism of spore dispersal."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Common\r\n                examples of mosses are Funaria, Polytrichum and Sphagnum (Figure 3.2)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30324,
+        30329,
+        30331
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.3 Pteridophytes",
+      "id": "h.l3hg073lhp3q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                Pteridophytes include horsetails and ferns."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Pteridophytes are used for\r\n            medicinal purposes and as soil-binders. They are also frequently grown as ornamentals. Evolutionarily, they\r\n            are the first terrestrial plants to possess vascular tissues – xylem and phloem. You shall study more\r\n            about these tissues in Chapter 6. The pteridophytes are found in cool, damp, shady places though some may\r\n            flourish well in sandy-soil conditions."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30401
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You may recall that in bryophytes the dominant phase in the life cycle is the\r\n            gametophytic plant body. However, in pteridophytes, the main plant body is a sporophyte which is\r\n            differentiated into true root, stem and leaves (Figure 3.3). These organs possess well-differentiated\r\n            vascular tissues. The leaves in pteridophyta are small (microphylls) as in Selaginella or large\r\n            (macrophylls) as in ferns. The sporophytes bear sporangia that are subtended by leaf-like appendages called\r\n            sporophylls."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                some cases sporophylls may form distinct compact structures called strobili or cones (Selaginella,\r\n                Equisetum)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                sporangia produce spores by meiosis in spore mother cells. The spores germinate to give rise to\r\n                inconspicuous, small but multicellular, free-living, mostly photosynthetic thalloid gametophytes called\r\n                prothallus."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30410,
+        30411,
+        30413,
+        30414
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                3.3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Pteridophytes :  (a) Selaginella  (b) Equisetum  (c) Fern (d) Salvinia"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30425,
+        30426,
+        30427
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These gametophytes require cool, damp, shady places to grow. Because of this specific\r\n            restricted requirement and the need for water for fertilisation, the spread of living pteridophytes is\r\n            limited and restricted to narrow geographical regions. The gametophytes bear male and female sex organs\r\n            called antheridia and archegonia, respectively."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Water\r\n                is required for transfer of antherozoids – the male gametes released from the antheridia, to the\r\n                mouth of archegonium."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fusion of male gamete\r\n            with the egg present in the archegonium result in the formation of zygote."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Zygote\r\n                thereafter produces a multicellular well-differentiated sporophyte which is the dominant phase of the\r\n                pteridophytes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In majority of the pteridophytes\r\n            all the spores are of similar kinds; such plants are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "homosporous"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Genera\r\n                like Selaginella and Salvinia which produce two kinds of spores, macro (large) and micro (small) spores,\r\n                are known as"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "heterosporous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                megaspores and microspores germinate and give rise to female and male gametophytes, respectively. The\r\n                female gametophytes in these plants are retained on the parent sporophytes for variable periods. The\r\n                development of the zygotes into young embryos take place within the female gametophytes. This event is a\r\n                precursor to the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "seed\r\n                habit"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "considered\r\n                an important step in evolution."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30420,
+        30424,
+        30705,
+        30707,
+        30808
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                pteridophytes are further classified into four classes: Psilopsida (Psilotum); Lycopsida (Selaginella,\r\n                Lycopodium), Sphenopsida (Equisetum) and Pteropsida (Dryopteris, Pteris, Adiantum)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30417,
+        15000427
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.4 Gymnosperms",
+      "id": "h.v721txixjo9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                gymnosperms (gymnos : naked, sperma : seeds) are plants in which the ovules are not enclosed by any\r\n                ovary wall and remain exposed, both before and after fertilisation. The seeds that develop\r\n                post-fertilisation, are not covered, i.e., are naked."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gymnosperms include medium-sized trees or tall trees and shrubs (Figure 3.4)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "One\r\n                of the gymnosperms, the giant redwood tree Sequoia is one of the tallest tree species."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The roots are generally tap roots."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Roots\r\n                in some genera have fungal association in the form of mycorrhiza (Pinus), while in some others (Cycas)\r\n                small specialised roots called coralloid roots are associated with N2- fixing cyanobacteria."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                stems are unbranched (Cycas) or branched (Pinus, Cedrus)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The leaves may be simple or compound."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                Cycas the pinnate leaves persist for a few years."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The leaves in gymnosperms\r\n            are well-adapted to withstand extremes of temperature, humidity and wind."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                conifers, the needle-like leaves reduce the surface area. Their thick cuticle and sunken stomata also\r\n                help to reduce water loss."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30503,
+        30507,
+        30509,
+        30510,
+        30511,
+        30513,
+        15000428
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                3.4 Gymnosperms: (a) Cycas (b) Pinus (c) Ginkgo"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30425,
+        30426,
+        30427
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                gymnosperms are heterosporous; they produce haploid microspores and megaspores. The two kinds of spores\r\n                are produced within sporangia that are borne on sporophylls which are arranged spirally along an axis to\r\n                form lax or compact strobili or cones."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The\r\n            strobili bearing microsporophylls and microsporangia are called microsporangiate or male strobili. The\r\n            microspores develop into a male gametophytic generation which is highly reduced and is confined to only a\r\n            limited number of cells. This reduced gametophyte is called a pollen grain. The development of pollen grains\r\n            take place within the microsporangia. The cones bearing megasporophylls with ovules or megasporangia are\r\n            called macrosporangiate or female strobili."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                male or female cones or strobili may be borne on the same tree (Pinus)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "However, in cycas male cones and megasporophylls are borne on different trees. The megaspore\r\n            mother cell is differentiated from one of the cells of the nucellus. The nucellus is protected by envelopes\r\n            and the composite structure is called an ovule. The ovules are borne on megasporophylls which may be\r\n            clustered to form the female cones. The megaspore mother cell divides meiotically to form four\r\n            megaspores."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "One\r\n                of the megaspores enclosed within the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "megasporangium"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "develops\r\n                into a multicellular female gametophyte that bears two or more"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "archegonia"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "or\r\n                female sex organs."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The multicellular female gametophyte is also retained\r\n            within megasporangium."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30517,
+        30522,
+        30523,
+        30528,
+        30529
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Unlike\r\n                bryophytes and pteridophytes, in gymnosperms the male and the female gametophytes do not have an\r\n                independent free-living existence."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They remain within the sporangia retained\r\n            on the sporophytes. The pollen grain is released from the microsporangium."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are carried in air currents and come in contact with the opening of the ovules borne on megasporophylls."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The pollen tube carrying the male gametes grows towards archegonia in the ovules\r\n            and discharge their contents near the mouth of the archegonia. Following fertilisation, zygote develops into\r\n            an embryo and the ovules into seeds. These seeds are not covered."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30527,
+        30530
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.5 Angiosperms",
+      "id": "h.5mwbalhseknr"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Unlike the gymnosperms where the ovules are naked, in the angiosperms or flowering\r\n            plants, the pollen grains and ovules are developed in specialised structures called flowers."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                angiosperms, the seeds are enclosed in fruits."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The angiosperms are an exceptionally large group of plants occurring in wide range of habitats."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                range in size from the smallest Wolffia to tall trees of Eucalyptus (over 100 metres)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They provide us with food, fodder, fuel, medicines and several other commercially important\r\n            products. They are divided into two classes : the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dicotyledons"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "monocotyledons"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure\r\n            3.5). The dicotyledons are characterised by seeds having two cotyledons, reticulate venations in leaves, and\r\n            tetramerous or pentamerous flowers, i.e., having four or five members in each floral whorls. The\r\n            monocotyledons on the other hand are characterised by single cotyledonous seeds, parallel venation in\r\n            leaves, and trimerous flowers having three members in each floral whorls. The male sex organ in a flower is\r\n            the stamen. Each stamen consists of a slender filament with an anther at the tip. Within the anthers, the\r\n            pollen mother cell divide by meiosis to produce microspores which matures into pollen grains. The female sex\r\n            organ in a flower is the pistil. Pistil consists of a swollen ovary at its base, a long slender style and\r\n            stigma. Inside the ovary, ovules are present. Generally each ovule has a megaspore mother cell that\r\n            undergoes meiosis to form four haploid megaspores. Three of them degenerate and one divide to form the\r\n            embryo sac. Each embryo-sac has a three-celled egg apparatus – one egg cell and two synergids, three\r\n            antipodal cells and two polar nuclei."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30603,
+        30604,
+        30605
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 3.5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Angiosperms : (a) A dicotyledon (b) A\r\n            monocotyledon"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The polar nuclei eventually fuse to produce a diploid secondary nucleus. Pollen\r\n            grain, after dispersal from the anthers, are carried by wind or various other agencies to the stigma of a\r\n            pistil. This is termed as pollination. The pollen grains germinate on the stigma and the resulting pollen\r\n            tubes grow through the tissues of stigma and style and reach the ovule. The pollen tubes enter the\r\n            embryo-sac where two male gametes are discharged. One of the male gametes fuses with the egg cell (syngamy)\r\n            to form a zygote. The other male gamete fuses with the diploid secondary nucleus to produce the triploid\r\n            primary endosperm nucleus (PEN)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Because\r\n                of the occurrence of two fusions i.e., syngamy and triple fusion, this event is termed as double\r\n                fertilisation, an event unique to angiosperms."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The zygote develops into an\r\n            embryo (with one or two cotyledons) and the PEN develops into endosperm which provides nourishment to the\r\n            developing embryo. The synergids and antipodals degenerate after fertilisation. During these events the\r\n            ovules develop into seeds and the ovaries develop into fruit."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                life cycle of an angiosperm is shown in Figure 3.6."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30625,
+        30629
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 3.6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Life cycle of an angiosperm"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "3.6 Plant Life Cycles and Alternation of Generations",
+      "id": "h.9offf2dy06a9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In plants, both haploid and diploid cells can divide by mitosis. This ability leads\r\n            to the formation of different plant bodies - haploid and diploid. The haploid plant body produces gametes by\r\n            mitosis. This plant body represents a gametophyte. Following fertilisation the zygote also divides by\r\n            mitosis to produce a diploid sporophytic plant body. Haploid spores are produced by this plant body by\r\n            meiosis. These in turn, divide by mitosis to form a haploid plant body once again. Thus, during the life\r\n            cycle of any sexually reproducing plant, there is an alternation of generations between gamete producing\r\n            haploid gametophyte and spore producing diploid sporophyte."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "However, different plant groups, as well as individuals representing them, differ in\r\n            the following patterns:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Plant_Kingdom-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 3.7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Life cycle patterns : (a) Haplontic (b)\r\n            Diplontic  (c) Haplo-diplontic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1. Sporophytic generation is represented only by the one-celled zygote. There are no\r\n            free-living sporophytes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Meiosis\r\n                in the zygote results in the formation of haploid spores."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The haploid spores divide mitotically and form the gametophyte. The dominant, photosynthetic\r\n            phase in such plants is the free-living gametophyte. This kind of life cycle is termed as haplontic."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Many\r\n                algae such as Volvox, Spirogyra and some species of Chlamydomonas represent this pattern (Figure 3.7\r\n                a)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30701,
+        30702
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. On the other extreme, is the type wherein the diploid sporophyte is the dominant,\r\n            photosynthetic, independent phase of the plant. The gametophytic phase is represented by the single to\r\n            few-celled haploid gametophyte."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                kind of life cycle is termed as diplontic."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An alga, Fucus sp., represents\r\n            this pattern (Fig. 3.7b)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                addition, all seed bearing plants i.e., gymnosperms and angiosperms, follow this pattern with some\r\n                variations, wherein, the gametophytic phase is few to multi-celled."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30703,
+        30704
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. Bryophytes and pteridophytes, interestingly, exhibit an intermediate condition\r\n            (Haplo-diplontic); both phases are multicellular. However, they differ in their dominant phases."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A dominant, independent, photosynthetic, thalloid or erect phase is represented by a\r\n            haploid gametophyte and it alternates with the short-lived multicelluler sporophyte totally or partially\r\n            dependent on the gametophyte for its anchorage and nutrition. All bryophytes represent this pattern."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The diploid sporophyte is represented by a dominant, independent, photosynthetic,\r\n            vascular plant body. It alternates with multicellular, saprophytic/autotrophic, independent but short-lived\r\n            haploid gametophyte. Such a pattern is known as haplo-diplontic life cycle. All pteridophytes exhibit this\r\n            pattern (Figure 3.7 c)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Interestingly,\r\n                while most algal genera are haplontic, some of them such as Ectocarpus, Polysiphonia, kelps are\r\n                haplo-diplontic. Fucus, an alga is diplontic."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        30708
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.5sgp7g1la4b0"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plant kingdom includes algae, bryophytes, pteridophytes, gymnosperms and angiosperms.\r\n            Algae are chlorophyll-bearing simple, thalloid, autotrophic and largely aquatic organisms. Depending on the\r\n            type of pigment possesed and the type of stored food, algae are classfied into three classes, namely\r\n            Chlorophyceae, Phaeophyceae and Rhodophyceae. Algae usually reproduce vegetatively by fragmentation,\r\n            asexually by formation of different types of spores and sexually by formation of gametes which may show\r\n            isogamy, anisogamy or oogamy."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Bryophytes are plants which can live in soil but are dependent on water for sexual\r\n            reproduction. Their plant body is more differentiated than that of algae. It is thallus-like and prostrate\r\n            or erect and attached to the substratum by rhizoids. They possess root-like, leaf-like and stem-like\r\n            structures."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The bryophytes are divided into liverworts and mosses."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The plant body of liverworts is thalloid and dorsiventral whereas mosses have upright,\r\n            slender axes bearing spirally arranged leaves. The main plant body of a bryophyte is gamete-producing and is\r\n            called a gametophyte. It bears the male sex organs called antheridia and female sex organs called\r\n            archegonia. The male and female gametes produced fuse to form zygote which produces a multicellular body\r\n            called a sporophyte. It produces haploid spores. The spores germinate to form gametophytes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In pteridophytes the main plant is a sporophyte which is differentiated into true\r\n            root, stem and leaves. These organs possess well-differentiated vascular tissues. The sporophytes bear\r\n            sporangia which produce spores. The spores germinate to form gametophytes which require cool, damp places to\r\n            grow. The gametophytes bear male and female sex organs called antheridia and archegonia, respectively. Water\r\n            is required for transfer of male gametes to archegonium where zygote is formed after fertilisation. The\r\n            zygote produces a sporophyte."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The gymnosperms are the plants in which ovules are not enclosed by any ovary wall.\r\n            After fertilisation the seeds remain exposed and therefore these plants are called naked-seeded plants. The\r\n            gymnosperms produce microspores and megaspores which are produced in microsporangia and megasporangia borne\r\n            on the sporophylls. The sporophylls – microsporophylls and megasporophylls – are arranged\r\n            spirally on axis to form male and female cones, respectively. The pollen grain germinates and pollen tube\r\n            releases the male gamete into the ovule, where it fuses with the egg cell in archegonia. Following\r\n            fertilisation, the zygote develops into embryo and the ovules into seeds."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In angiosperms, the male sex organs (stamen) and female sex organs (pistil) are borne\r\n            in a flower. Each stamen consists of a filament and an anther. The anther produces pollen grains (male\r\n            gametophyte) after meiosis. The pistil consists of an ovary enclosing one to many ovules. Within the ovule\r\n            is the female gametophyte or embryo sac which contains the egg cell. The pollen tube enters the embryo-sac\r\n            where two male gametes are discharged. One male gamete fuses with egg cell (syngamy) and other fuses with\r\n            diploid secondary nucleus (triple fusion). This phenomenon of two fusions is called double fertilisation and\r\n            is unique to angiosperms. The angiosperms are divided into two classes – the dicotyledons and the\r\n            monocotyledons."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "During the life cycle of any sexually reproducing plant, there is alternation of\r\n            generations between gamete producing haploid gametophyte and spore producing diploid sporophyte. However,\r\n            different plant groups as well as individuals may show different patterns of life cycles – haplontic,\r\n            diplontic or intermediate."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1. What is the basis of classification of algae?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. When and where does reduction division take place in the life cycle of a\r\n            liverwort, a moss, a fern, a gymnosperm and an angiosperm?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. Name three groups of plants that bear archegonia. Briefly describe the life cycle\r\n            of any one of them."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4. Mention the ploidy of the following: protonemal cell of a moss; primary endosperm\r\n            nucleus in dicot, leaf cell of a moss; prothallus cell of a ferm; gemma cell in Marchantia; meristem cell of\r\n            monocot, ovum of a liverwort, and zygote of a fern."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5. Write a note on economic importance of algae and gymnosperms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6. Both gymnosperms and angiosperms bear seeds, then why are they classified\r\n            separately?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7. What is heterospory? Briefly comment on its significance. Give two\r\n            examples."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8. Explain briefly the following terms with suitable examples:-"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) protonema"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) antheridium"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) archegonium"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv) diplontic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(v) sporophyll"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(vi) isogamy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9. Differentiate between the following:-"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) red algae and brown algae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) liverworts and moss"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) homosporous and heterosporous pteridophyte"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv) syngamy and triple fusion"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10. How would you distinguish monocots from dicots?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11. Match the following (column I with column II)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Column I   Column II"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Chlamydomonas  (i) Moss"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Cycas  (ii) Pteridophyte"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Selaginella  (iii) Algae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) Sphagnum   (iv) Gymnosperm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12. Describe the important characteristics of gymnosperms."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "EXEMPLAR QUESTION",
+      "id": "h.p32nqj3lvpz"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cyanobacteria are classified under"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Protista"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Plantae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Monera"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) Algae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fusion of two motile gametes which are dissimilar in\r\n            size is termed as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) oogamy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) isogamy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) anisogamy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) zoogamy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Holdfast, stipe and frond constitutes the plant body in\r\n            case of"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Rhodophyceae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Chlorophyceae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Phaeophyceae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) All of these"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A plant shows thallus level; of organisation. It shows\r\n            rhizoids and is haploid. It needs water to complete its life cycle because the male gametes are motile.\r\n            Identify the group to which it belongs to"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) gymnosperms"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) monocots"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) bryophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A prothallus is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) a structure in pteridophytes formed before the thallus develops"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) a sporophytic free living structure formedin pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) a gametophyte free living structure formed in pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) a primitive structure formed after fertilisation in pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plants of this group are diploid and well adapted to\r\n            extreme conditions. They grow bearing sporophylls in compact structures called cones. The group in reference\r\n            is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) monocots"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) dicots"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) gymnosperms"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The embryo sac of an angiosperm is made up of"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) 8 cells"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) 7 cells and 8 nuclei"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) 8 nuclei"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) 7 cells and 7 nuclei"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the diploid number of a flowering plant is 36. What\r\n            would be the chromosome number in its endosperm?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) 36"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) 18"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) 54"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) 72"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "EXEMPLAR QUESTION",
+      "id": "h.hgwgb07jz8dq"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Protonema is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) haploid and is found in mosses"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) diploid and is found in liverworts"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) diploid and is found in pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) haploid and is found in pteridophytes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The giant redwood tree ("
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sequoia"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sempervirens"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") is a/an"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) angiosperm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) free fern"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) pteridophyte"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) gymnosperm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Food is stored as floridean starch in Rhodophyceae."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mannitol is the reserve food material of which group of algae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Give an example of plants with"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) haplontic life cycle"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) diplontic life cycle"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) haplo diplontic life cycle"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "13."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The plant body in higher plants is well differentiated\r\n            and well developed. Roots are the organs used for the purpose of absorption. What is the equivalent of roots\r\n            in the less developed lower plants?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Most algal genera show haplontic life style. Name an\r\n            alga which is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Haplo diplontic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Diplontic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "15."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In bryophytes male and female sex organs are called\r\n            ......... and ......... ."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "16."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Why are bryophytes called the amphibians of the plant\r\n            kingdom?"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "EXEMPLAR QUESTION",
+      "id": "h.mnt33vwzkgwm"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "17."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The male and female reproductive organs of several\r\n            pteridophytes and gymnosperms are comparable to floral structures of angiosperms. Make an attempt to compare\r\n            the various reproductive parts of pteridophytes and gymnosperms with reproductive structures of\r\n            angiosperms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "18."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Heterospory, i.e, formation of two types of\r\n            spores— microspores and megasporesis a characteristic feature in the life cycle of a few members of\r\n            pteridophytes and all spermatophytes. Do you think heterospory has some evolutionary significance in plant\r\n            kingdom?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "19."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How far does"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Selaginella"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "one of the few living members of Lycopodiales\r\n            (pteridophytes) fall short of seed habit?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "20."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each plant or group of plants has some phylogenetic\r\n            significance in relation to evolution"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cycas"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", one of the\r\n            few living members of gymnosperms is called as the ‘relic of past’. Can you establish a\r\n            phylogenetic relationship of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cycas"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "with any other\r\n            group of plants that justifies the above statement?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "21."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The heterosporous pteridophyte show certain\r\n            characteristics, which are precursor to the seed habit in gymnosperms. Explain."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "22."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Comment on the life cycle and nature of a fern\r\n            prothallus."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "23."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How are the male and female gametophytes of\r\n            pteridophytes and gymnosperms different from each other?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "24."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In which plant will you look for mycorrhiza and\r\n            corolloid roots? Also explain what these terms mean."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "EXEMPLAR QUESTION",
+      "id": "h.apec81z7hvva"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "25."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gametophyte is a dominant phasein the life cycle of a\r\n            bryophyte. Explain."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "26."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "With the help of a schematic diagram describe the\r\n            haplo diptontic life cycle pattern of a plant group."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "27."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Lichen is usually cited as an example of\r\n            ‘symbiosis’ in plants where an algal and a fungal species live together for their mutual\r\n            benefit. Which of the following will happen if algal and fungal partners are separated from each\r\n            other?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Both will survive and grow normally and independent from each other."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Both will die"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Algal component will survive while the fungal componentwilldie."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) Fungal component will survive while algal partner will die."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Based on your answer how do you justify this association as symbiosis?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "28."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Explain why sexual reproduction in angiosperms is said\r\n            to take place through double fertilisation and triple fusion. Also draw a labelled diagram of embryo sac to\r\n            explain the phenomena."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "29."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Draw labelled diagrams of"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Female and male thallus of a liverwort."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Gametophyte and sporophyte of Funaria."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Alternation of generation in angiosperm."
+        }
+      ]
+    }
+  ]
+}

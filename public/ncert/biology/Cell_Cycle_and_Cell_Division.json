@@ -1,0 +1,1506 @@
+{
+  "title": "Cell Cycle and Cell Division",
+  "children": [
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Chapter 10",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Cell Cycle and Cell Division",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.1 Cell Cycle",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2 M Phase",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.3 Significance of Mitosis",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.4 Meiosis",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.5 Significance of Meiosis",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Are you aware that all organisms, even the largest, start their life from a single\n            cell? You may wonder how a single cell then goes on to form such large organisms. Growth and reproduction\n            are characteristics of cells, indeed of all living organisms. All cells reproduce by dividing into two, with\n            each parental cell giving rise to two daughter cells each time they divide. These newly formed daughter\n            cells can themselves grow and divide, giving rise to a new cell population that is formed by the growth and\n            division of a single parental cell and its progeny. In other words, such cycles of growth and division allow\n            a single cell to form a structure consisting of millions of cells."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.1 Cell Cycle",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cell division is a very important process in all living organisms. During the\n            division of a cell, DNA replication and cell growth also take place. All these processes, i.e., cell\n            division, DNA replication, and cell growth, hence, have to take place in a coordinated way to ensure correct\n            division and formation of progeny cells containing intact genomes. The sequence of events by which a cell\n            duplicates its genome, synthesises the other constituents of the cell and eventually divides into two\n            daughter cells is termed cell cycle. Although cell growth (in terms of cytoplasmic increase) is a continuous\n            process, DNA synthesis occurs only during one specific stage in the cell cycle. The replicated chromosomes\n            (DNA) are then distributed to daughter nuclei by a complex series of events during cell division. These\n            events are themselves under genetic control."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.1.1 Phases of Cell Cycle",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A typical eukaryotic cell cycle is illustrated by human cells in culture. These cells\n            divide once in approximately every 24 hours (Figure 10.1). However, this duration of cell cycle can vary\n            from organism to organism and also from cell type to cell type. Yeast for example, can progress through the\n            cell cycle in only about 90 minutes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_Cycle_and_Cell_Division-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                10.1 A diagrammatic view of cell cycle indicating formation of two cells from one cell"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101003,
+        15000472
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                cell cycle is divided into two basic phases:"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101029
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The M Phase represents the phase when the actual cell division or mitosis occurs and\n            the interphase represents the phase between two successive M phases. It is significant to note that in the\n            24 hour average duration of cell cycle of a human cell, cell division proper lasts for only about an hour.\n            The interphase lasts more than 95% of the duration of cell cycle."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The M Phase starts with the nuclear division, corresponding to the separation of\n            daughter chromosomes (karyokinesis) and usually ends with division of cytoplasm (cytokinesis)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                interphase, though called the resting phase, is the time during which the cell is preparing for division\n                by undergoing both cell growth and DNA replication in an orderly manner"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                interphase is divided into three further phases:"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101029,
+        101114
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "G1\n                phase corresponds to the interval between mitosis and initiation of DNA replication. During G1 phase the\n                cell is metabolically active and continuously grows but does not replicate its DNA."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "S\n                or synthesis phase marks the period during which DNA synthesis or replication takes\n                place."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "During\n                this time the amount of DNA per cell doubles. If the initial amount of DNA is denoted as 2C then it\n                increases to 4C. However, there is no increase in the chromosome number; if the cell had diploid or 2n\n                number of chromosomes at G1, even after S phase the number of chromosomes remains the same, i.e.,\n                2n."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100903,
+        100904,
+        100910,
+        100911,
+        100926,
+        100928,
+        101004,
+        101005,
+        101013,
+        101016,
+        101017,
+        101026,
+        101106
+      ],
+      "pyq_count": 13
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\n                animal cells, during the S phase, DNA replication begins in the nucleus, and the centriole duplicates in\n                the cytoplasm"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "During\n                the G2 phase, proteins are synthesised in preparation for mitosis while cell growth\n                continues."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100911,
+        100926,
+        100927,
+        101011
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some cells in the adult animals do not appear to exhibit division (e.g., heart cells)\n            and many other cells divide only occasionally, as needed to replace cells that have been lost because of\n            injury or cell death."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                cells that do not divide further exit G1 phase to enter an inactive stage called quiescent stage (G0) of\n                the cell cycle."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Cells\n                in this stage remain metabolically active but no longer proliferate unless called on to do so depending\n                on the requirement of the organism."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100926,
+        101027,
+        101028,
+        101046,
+        101048
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How do plants and animals continue to grow all their lives? Do all cells in a plant\n            divide all the time? Do you think all cells continue to divide in all plants and animals? Can you tell the\n            name and the location of tissues having cells that divide all their life in higher plants? Do animals have\n            similar meristematic tissues?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "You\n                have studied mitosis in onion root tip cells"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It has 16 chromosomes in each cell. Can you tell how many chromosomes will the cell have at\n            G1 phase, after S phase, and after M phase? Also, what will be the DNA content of the cells at G1, after S\n            and at G2, if the content after M phase is 2C?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101006,
+        101009
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In animals, mitotic cell division is only seen in the diploid somatic cells. However,\n            there are few exceptions to this where haploid cells divide by mitosis, for example, male honey bees.\n            Against this, the plants can show mitotic divisions in both haploid and diploid cells. From your\n            recollection of examples of alternation of generations in plants (Chapter 3) identify plant species and\n            stages at which mitosis is seen in haploid cells."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2 M Phase",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is the most dramatic period of the cell cycle, involving a major reorganisation\n            of virtually all components of the cell. Since the number of chromosomes in the parent and progeny cells is\n            the same, it is also called as equational division. Though for convenience mitosis has been divided into\n            four stages of nuclear division (karyokinesis), it is very essential to understand that cell division is a\n            progressive process and very clear-cut lines cannot be drawn between various stages. Karyokinesis involves\n            following four stages:"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2.1 Prophase",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Prophase which is the first stage of karyokinesis of mitosis follows the S and G2\n            phases of interphase. In the S and G2 phases the new DNA molecules formed are not distinct but intertwined.\n            Prophase is marked by the initiation of condensation of chromosomal material."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                chromosomal material becomes untangled during the process of chromatin condensation (Figure 10.2 a). The\n                centrosome, which had undergone duplication during S phase of interphase, now begins to move towards\n                opposite poles of the cell."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The completion of prophase can thus be marked by\n            the following characteristic events:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100924
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chromosomal material condenses to form compact mitotic chromosomes. Chromosomes\n            are seen to be composed of two chromatids attached together at the centromere."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Centrosome which had undergone duplication during interphase, begins to move\n            towards opposite poles of the cell."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Each\n                centrosome radiates out microtubules called asters. The two asters together with spindle fibres forms\n                mitotic apparatus."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101012
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cells at the end of prophase, when viewed under the microscope, do not show golgi\n            complexes, endoplasmic reticulum, nucleolus and the nuclear envelope."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2.2 Metaphase",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                complete disintegration of the nuclear envelope marks the start of the second phase of mitosis, hence\n                the chromosomes are spread through the cytoplasm of the cell."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "By this stage,\n            condensation of chromosomes is completed and they can be observed clearly under the microscope."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                then, is the stage at which morphology of chromosomes is most easily studied."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "At\n                this stage, metaphase chromosome is made up of two sister chromatids, which are held together by the\n                centromere (Figure 10.2 b). Small disc-shaped structures at the surface of the centromeres are called\n                kinetochores"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                structures serve as the sites of attachment of spindle fibres (formed by the spindle fibres) to the\n                chromosomes that are moved into position at the centre of the cell"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hence,\n                the metaphase is characterised by all the chromosomes coming to lie at the equator with one chromatid of\n                each chromosome connected by its kinetochore to spindle fibres from one pole and its sister chromatid\n                connected by its kinetochore to spindle fibres from the opposite pole (Figure 10.2 b)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100906,
+        100918,
+        100922,
+        100923,
+        101010,
+        101018,
+        101021,
+        101037,
+        101050
+      ],
+      "pyq_count": 9
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_Cycle_and_Cell_Division-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                10.2 a and b : A diagrammatic view of stages in mitosis"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100916,
+        100919,
+        101001
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The plane of alignment of the chromosomes at metaphase is referred to as the\n            metaphase plate."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                key features of metaphase are:"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101043
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2.3 Anaphase",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At the onset of anaphase, each chromosome arranged at the metaphase plate is split\n            simultaneously and the two daughter chromatids, now referred to as daughter chromosomes of the future\n            daughter nuclei, begin their migration towards the two opposite poles."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\n                each chromosome moves away from the equatorial plate, the centromere of each chromosome remains directed\n                towards the pole and hence at the leading edge, with the arms of the chromosome trailing behind (Figure\n                10.2 c)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, anaphase stage is characterised\n            by the following key events:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101022
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2.4 Telophase",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At the beginning of the final stage of karyokinesis, i.e., telophase, the chromosomes\n            that have reached their respective poles decondense and lose their individuality. The individual chromosomes\n            can no longer be seen and each set of chromatin material tends to collect at each of the two poles (Figure\n            10.2 d). This is the stage which shows the following key events:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_Cycle_and_Cell_Division-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                10.2 c to e : A diagrammatic view of stages in Mitosis"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101039
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.2.5 Cytokinesis",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mitosis accomplishes not only the segregation of duplicated chromosomes into daughter\n            nuclei (karyokinesis), but the cell itself is divided into two daughter cells by the separation of cytoplasm\n            called cytokinesis at the end of which cell division gets completed (Figure 10.2 e). In an animal cell, this\n            is achieved by the appearance of a furrow in the plasma membrane. The furrow gradually deepens and\n            ultimately joins in the centre dividing the cell cytoplasm into two. Plant cells however, are enclosed by a\n            relatively inextensible cell wall, thererfore they undergo cytokinesis by a different mechanism. In plant\n            cells, wall formation starts in the centre of the cell and grows outward to meet the existing lateral walls.\n            The formation of the new cell wall begins with the formation of a simple precursor, called the cell-plate\n            that represents the middle lamella between the walls of two adjacent cells."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "At\n                the time of cytoplasmic division, organelles like mitochondria and plastids get distributed between the\n                two daughter cells. In some organisms karyokinesis is not followed by cytokinesis as a result of which\n                multinucleate condition arises leading to the formation of syncytium (e.g., liquid endosperm in\n                coconut)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101107
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.3 Significance of Mitosis",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Mitosis\n                or the equational division is usually restricted to the diploid cells only."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "However, in some lower plants and in some social insects haploid\n            cells also divide by mitosis. It is very essential to understand the significance of this division in the\n            life of an organism. Are you aware of some examples where you have studied about haploid and diploid\n            insects?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101052,
+        101113
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mitosis usually results in the production of diploid daughter cells with identical\n            genetic complement."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                growth of multicellular organisms is due to mitosis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cell growth\n            results in disturbing the ratio between the nucleus and the cytoplasm. It therefore becomes essential for\n            the cell to divide to restore the nucleo-cytoplasmic ratio. A very significant contribution of mitosis is\n            cell repair. The cells of the upper layer of the epidermis, cells of the lining of the gut, and blood cells\n            are being constantly replaced. Mitotic divisions in the meristematic tissues – the apical and the\n            lateral cambium, result in a continuous growth of plants throughout their life."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101053
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.4 Meiosis",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The production of offspring by sexual reproduction includes the fusion of two\n            gametes, each with a complete haploid set of chromosomes. Gametes are formed from specialised diploid cells.\n            This specialised kind of cell division that reduces the chromosome number by half results in the production\n            of haploid daughter cells."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                kind of division is called meiosis. Meiosis ensures the production of haploid phase in the life cycle of\n                sexually reproducing organisms whereas fertilisation restores the diploid phase. We come across meiosis\n                during gametogenesis in plants and animals."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This leads to the formation\n            of haploid gametes. The key features of meiosis are as follows:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101035,
+        101112
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Meiosis involves two sequential cycles of nuclear and cell division called\n            meiosis I and meiosis II but only a single cycle of DNA replication."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Meiosis I is initiated after the parental chromosomes have replicated to\n            produce identical sister chromatids at the S phase."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Meiosis\n                involves pairing of homologous chromosomes and recombination between non-sister chromatids of homologous\n                chromosomes."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101019
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Four haploid cells are formed at the end of meiosis II."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Meiotic events can be grouped under the following phases:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_Cycle_and_Cell_Division-image5.png",
+              "alt": "9.3",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.4.1 Meiosis I",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Prophase I:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Prophase\n                of the first meiotic division is typically longer and more complex when compared to prophase of mitosis.\n                It has been further subdivided into the following five phases based on chromosomal behaviour, i.e.,\n                Leptotene, Zygotene, Pachytene, Diplotene and Diakinesis."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101045
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "During leptotene stage the chromosomes become gradually visible under the light\n            microscope. The compaction of chromosomes continues throughout leptotene. This is followed by the second\n            stage of prophase I called zygotene."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "During\n                this stage chromosomes start pairing together and this process of association is called synapsis. Such\n                paired chromosomes are called homologous chromosomes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Electron micrographs of this stage indicate that chromosome synapsis is accompanied by the\n            formation of complex structure called synaptonemal complex."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                complex formed by a pair of synapsed homologous chromosomes is called a bivalent or a\n                tetrad."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "However, these are more clearly visible at the next\n            stage."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                first two stages of prophase I are relatively short-lived compared to the next stage that is\n                pachytene."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "During\n                this stage, the four chromatids of each bivalent chromosomes becomes distinct and clearly appears as\n                tetrads."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                stage is characterised by the appearance of recombination nodules, the sites at which crossing over\n                occurs between non-sister chromatids of the homologous chromosomes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Crossing\n                over is the exchange of genetic material between two homologous chromosomes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Crossing\n                over is also an enzyme-mediated process and the enzyme involved is called recombinase"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Crossing\n                over leads to recombination of genetic material on the two chromosomes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Recombination\n                between homologous chromosomes is completed by the end of pachytene, leaving the chromosomes linked at\n                the sites of crossing over."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100905,
+        100907,
+        100908,
+        100911,
+        100914,
+        100915,
+        100917,
+        100920,
+        101002,
+        101015,
+        101023,
+        101031,
+        101032,
+        101040,
+        101042,
+        101049,
+        101051,
+        101104,
+        101106,
+        101109,
+        101115,
+        15000446,
+        15000464
+      ],
+      "pyq_count": 23
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                beginning of diplotene is recognised by the dissolution of the synaptonemal complex and the tendency of\n                the recombined homologous chromosomes of the bivalents to separate from each other except at the sites\n                of crossovers. These X-shaped structures, are called chiasmata."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\n                oocytes of some vertebrates, diplotene can last for months or years"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101030,
+        101031,
+        101033,
+        101041,
+        101043,
+        101117
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                final stage of meiotic prophase I is diakinesis. This is marked by terminalisation of chiasmata."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "During this phase the chromosomes are fully condensed and the meiotic spindle is\n            assembled to prepare the homologous chromosomes for separation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "By\n                the end of diakinesis, the nucleolus disappears and the nuclear envelope also breaks\n                down."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Diakinesis represents transition to metaphase."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100905,
+        100909,
+        101031,
+        101034
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Metaphase\n                I: The bivalent chromosomes align on the equatorial plate (Figure 10.3)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The microtubules from the opposite poles of the spindle attach to the kinetochore of\n            homologous chromosomes."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100905
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_Cycle_and_Cell_Division-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 10.3 Stages of Meiosis I"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Anaphase\n                I: The homologous chromosomes separate, while sister chromatids remain associated at their centromeres\n                (Figure 10.3)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100911,
+        100921,
+        101049
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Telophase I: The nuclear membrane and nucleolus reappear, cytokinesis follows and\n            this is called as dyad of cells (Figure 10.3). Although in many cases the chromosomes do undergo some\n            dispersion, they do not reach the extremely extended state of the interphase nucleus."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                stage between the two meiotic divisions is called interkinesis and is generally short lived. There is no\n                replication of DNA during interkinesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Interkinesis is followed by prophase II, a much simpler prophase than prophase I."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101116
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.4.2 Meiosis II",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Prophase II: Meiosis II is initiated immediately after cytokinesis, usually before\n            the chromosomes have fully elongated. In contrast to meiosis I, meiosis II resembles a normal mitosis. The\n            nuclear membrane disappears by the end of prophase II (Figure 10.4)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                chromosomes again become compact."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        101025
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Metaphase II: At this stage the chromosomes align at the equator and the microtubules\n            from opposite poles of the spindle get attached to the kinetochores (Figure 10.4) of sister\n            chromatids."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Anaphase\n                II: It begins with the simultaneous splitting of the centromere of each chromosome (which was holding\n                the sister chromatids together), allowing them to move toward opposite poles of the cell (Figure 10.4)\n                by shortening of microtubules attached to kinetochores."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100925,
+        101047,
+        101108
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_Cycle_and_Cell_Division-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 10.4 Stages of Meiosis II"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Telophase II: Meiosis ends with telophase II, in which the two groups of chromosomes\n            once again get enclosed by a nuclear envelope; cytokinesis follows resulting in the formation of tetrad of\n            cells i.e., four haploid daughter cells (Figure 10.4)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "10.5 Significance of Meiosis",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Meiosis is the mechanism by which conservation of specific chromosome number of each\n            species is achieved across generations in sexually reproducing organisms, even though the process, per se,\n            paradoxically, results in reduction of chromosome number by half. It also increases the genetic variability\n            in the population of organisms from one generation to the next. Variations are very important for the\n            process of evolution."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "According to the cell theory, cells arise from preexisting cells. The process by\n            which this occurs is called cell division. Any sexually reproducing organism starts its life cycle from a\n            single-celled zygote. Cell division does not stop with the formation of the mature organism but continues\n            throughout its life cycle. The stages through which a cell passes from one division to the next is called\n            the cell cycle. Cell cycle is divided into two phases called (i) Interphase – a period of preparation\n            for cell division, and (ii) Mitosis (M phase) – the actual period of cell division. Interphase is\n            further subdivided into G1, S and G2."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "G1\n                phase is the period when the cell grows and carries out normal metabolism. Most of the organelle\n                duplication also occurs during this phase. S phase marks the phase of DNA replication and chromosome\n                duplication. G2 phase is the period of cytoplasmic growth."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mitosis is also divided into four stages namely prophase,\n            metaphase, anaphase and telophase."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Chromosome\n                condensation occurs during prophase."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Simultaneously, the centrioles\n            move to the opposite poles."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                nuclear envelope and the nucleolus disappear and the spindle fibres start appearing. Metaphase is marked\n                by the alignment of chromosomes at the equatorial plate. During anaphase the centromeres divide and the\n                chromatids start moving towards the two opposite poles. Once the chromatids reach the two poles, the\n                chromosomal elongation starts, nucleolus and the nuclear membrane reappear. This stage is called the\n                telophase."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nuclear division is then followed by\n            the cytoplasmic division and is called cytokinesis. Mitosis thus, is the equational division in which the\n            chromosome number of the parent is conserved in the daughter cell."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100901,
+        100907,
+        101014,
+        101050,
+        101054
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In contrast to mitosis, meiosis occurs in the diploid cells, which are destined to\n            form gametes. It is called the reduction division since it reduces the chromosome number by half while\n            making the gametes. In sexual reproduction when the two gametes fuse the chromosome number is restored to\n            the value in the parent. Meiosis is divided into two phases – meiosis I and meiosis II. In the first\n            meiotic division the homologous chromosomes pair to form bivalents, and undergo crossing over. Meiosis I has\n            a long prophase, which is divided further into five phases. These are leptotene, zygotene, pachytene,\n            diplotene and diakinesis. During metaphase I the bivalents arrange on the equatorial plate. This is followed\n            by anaphase I in which homologous chromosomes move to the opposite poles with both their chromatids. Each\n            pole receives half the chromosome number of the parent cell. In telophase I, the nuclear membrane and\n            nucleolus reappear."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Meiosis\n                II is similar to mitosis. During anaphase II the sister chromatids separate."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus at the end of meiosis four haploid cells are formed."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        100902,
+        101020
+      ],
+      "pyq_count": 2
+    }
+  ]
+}

@@ -1,0 +1,3349 @@
+{
+  "title": "Human Health And Disease",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Unit VIII"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Biology in Human Welfare",
+      "id": "h.pdoj5vhrputt"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 8"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Human Health and Disease"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 9"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Strategies for Enhancement in"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Food Production"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 10"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Microbes in Human Welfare"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biology is the youngest of the formalised disciplines of natural science. Progress in\r\n            physics and chemistry proceeded much faster than in Biology. Applications of physics and chemistry in our\r\n            daily life also have a higher visibility than those of biology. However, twentieth century and certainly\r\n            twenty-first century has demonstrated the utility of biological knowledge in furthering human welfare, be it\r\n            in health sector or agriculture. The discovery of antibiotics, and synthetic plant-derived drugs,\r\n            anaesthetics have changed medical practice on one hand and human health on the other hand. Life expectancy\r\n            of human beings have dramatically changed over the years. Agricultural practices, food processing and\r\n            diagnostics have brought socio-cultural changes in human communities. These are briefly described in the\r\n            following three chapters of this unit."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Born in August 1925 in Kumbakonam in Tamil Nadu, Monkambu Sambasivan Swaminathan did\r\n            his graduation and post-graduation in Botany from Madras University. He worked in different capacities in\r\n            large number of institutions in India and abroad and developed his expertise in genetics and plant\r\n            breeding."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "M.S. Swaminathan"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1925)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The School of Cytogenetics and Radiation Research established at the Indian\r\n            Agricultural Research Institute (IARI) enabled Swaminathan and his team to develop short-duration\r\n            high-yielding varieties of rice including scented Basmati. He is also known for the development of the\r\n            concept of crop cafeteria, crop scheduling and genetically improving the yield and quality."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Swaminathan initiated collaboration with Norman Borlaug, which culminated in the\r\n            ‘Green Revolution’ through introduction of Mexican varieties of wheat in India. This was highly\r\n            recognised and appreciated. He is also the initiator of ‘Lab-to-Land’, food security and several\r\n            other environmental programmes. He has been honoured with Padma Bhushan and several other prestigious\r\n            awards, medals and fellowships by institutions of excellence."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 8",
+      "id": "h.3njynp58i5og"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "HUMAN HEALTH AND DISEASE",
+      "id": "h.vcmwjly91y02"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.1 Common Diseases in Humans"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.2 Immunity"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.3 AIDS"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.4 Cancer"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.5 Drugs and Alcohol Abuse"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Health, for a long time, was considered as a state of body and mind where there was a\r\n            balance of certain ‘humors’. This is what early Greeks like Hippocrates as well as Indian\r\n            Ayurveda system of medicine asserted. It was thought that persons with ‘blackbile’ belonged to\r\n            hot personality and would have fevers. This idea was arrived at by pure reflective thought. The discovery of\r\n            blood circulation by William Harvey using experimental method and the demonstration of normal body\r\n            temperature in persons with blackbile using thermometer disproved the ‘good humor’ hypothesis of\r\n            health. In later years, biology stated that mind influences, through neural system and endocrine system, our\r\n            immune system and that our immune system maintains our health. Hence, mind and mental state can affect our\r\n            health. Of course, health is affected by –"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) genetic disorders – deficiencies with which a child is born and\r\n            deficiencies/defects which the child inherits from parents from birth;"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) infections and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) life style including food and water we take, rest and exercise we give to our\r\n            bodies, habits that we have or lack etc."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The term"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "health"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is very\r\n            frequently used by everybody. How do we define it? Health does not simply mean ‘absence of\r\n            disease’ or ‘physical fitness’. It could be defined as a state of complete physical,\r\n            mental and social well-being. When people are healthy, they are more efficient at work. This increases\r\n            productivity and brings economic prosperity. Health also increases longevity of people and reduces infant\r\n            and maternal mortality."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Balanced diet, personal hygiene and regular exercise are very important to maintain\r\n            good health. Yoga has been practised since time immemorial to achieve physical and mental health. Awareness\r\n            about diseases and their effect on different bodily functions, vaccination (immunisation) against infectious\r\n            diseases, proper disposal of wastes, control of vectors and maintenance of hygiene in food and water\r\n            resources are necessary for achieving good health."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When the functioning of one or more organs or systems of the body is adversely\r\n            affected, characterised by appearance of various signs and symptoms, we say that we are not healthy, i.e.,\r\n            we have a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "disease"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Diseases can be broadly grouped into"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "infectious"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "non-infectious"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Diseases which are easily transmitted from one person to\r\n            another, are called infectious diseases. Infectious diseases are very common and every one of us suffers\r\n            from these at sometime or other. Some of the infectious diseases like AIDS are fatal. Among non-infectious\r\n            diseases, cancer is the major cause of death. Drug and alcohol abuse also affect our health\r\n            adversely."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8.1 Common Diseases in Humans",
+      "id": "h.mzewnr1d7dp1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A wide range of organisms belonging to bacteria, viruses, fungi, protozoans,\r\n            helminths, etc., could cause diseases in man. Such disease-causing organisms are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pathogens"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Most parasites are therefore pathogens as they cause harm to\r\n            the host by living in (or on) them. The pathogens can enter our body by various means, multiply and\r\n            interfere with normal vital activities, resulting in morphological and functional damage. Pathogens have to\r\n            adapt to life within the environment of the host. For example, the pathogens that enter the gut must know a\r\n            way of surviving in the stomach at low pH and resisting the various digestive enzymes. A few representative\r\n            members from different groups of pathogenic organisms are discussed here alongwith the diseases caused by\r\n            them. Preventive and control measures against these diseases in general, are also briefly described."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Salmonella\r\n                typhi is a pathogenic bacterium which causes"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "typhoid"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "fever\r\n                in human beings."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These pathogens generally\r\n            enter the small intestine through food and water contaminated with them and migrate to other organs through\r\n            blood. Sustained high fever (39° to 40°C), weakness, stomach pain, constipation, headache and loss\r\n            of appetite are some of the common symptoms of this disease. Intestinal perforation and death may occur in\r\n            severe cases."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Typhoid\r\n                fever could be confirmed by"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Widal\r\n                test."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A classic case in medicine, that of\r\n            Mary Mallon nicknamed Typhoid Mary, is worth mentioning here. She was a cook by profession and was a typhoid\r\n            carrier who continued to spread typhoid for several years through the food she prepared."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301721,
+        301722,
+        301735,
+        301736,
+        301738,
+        301739,
+        15000310
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Bacteria\r\n                like Streptococcus pneumoniae and Haemophilus influenzae are responsible for the disease pneumonia in\r\n                humans which infects the alveoli (air filled sacs) of the lungs."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As a\r\n            result of the infection, the alveoli get filled with fluid leading to severe problems in respiration. The\r\n            symptoms of pneumonia include fever, chills, cough and headache. In severe cases, the lips and finger nails\r\n            may turn gray to bluish in colour. A healthy person acquires the infection by inhaling the droplets/aerosols\r\n            released by an infected person  or even by sharing glasses and utensils with an infected person.\r\n            Dysentery,  plague , diphtheria,  etc., are some of the other bacterial diseases in man."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301721,
+        301730,
+        301734,
+        301741,
+        301742
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Many viruses also cause diseases in human beings."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Rhino\r\n                viruses represent one such group of viruses which cause one of the most infectious human ailments\r\n                – the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "common\r\n                cold"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                infect the nose and respiratory passage but not the lungs."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The common\r\n            cold is characterised by nasal congestion and discharge, sore throat, hoarseness, cough, headache,\r\n            tiredness, etc., which usually last for 3-7 days. Droplets resulting from cough or sneezes of an infected\r\n            person are either inhaled directly or transmitted through contaminated objects such as pens, books, cups,\r\n            doorknobs, computer keyboard or mouse, etc., and cause infection in a healthy person."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301743
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some of the human diseases are caused by protozoans too. You might have heard about"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "malaria"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", a disease man has been fighting since many years."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plasmodium, a tiny protozoan is responsible for this disease."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Different\r\n                species of Plasmodium (P. vivax, P. malaria and P. falciparum) are responsible for different types of\r\n                malaria."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Of\r\n                these, malignant malaria caused by Plasmodium falciparum is the most serious one and can even be\r\n                fatal."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301721,
+        301734,
+        301741,
+        301745
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us take a glance at the life cycle of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plasmodium (Figure\r\n            8.1)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Plasmodium\r\n                enters the human body as sporozoites (infectious form) through the bite of infected female Anopheles\r\n                mosquito."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                parasites initially multiply within the liver cells and then attack the red blood cells (RBCs) resulting\r\n                in their rupture."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                rupture of RBCs is associated with release of a toxic substance, haemozoin, which is responsible for the\r\n                chill and high fever recurring every three to four days"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When a female Anopheles\r\n            mosquito bites an infected person, these parasites enter the mosquito’s body and undergo further\r\n            development. The parasites multiply within them to form sporozoites that are stored in their salivary\r\n            glands."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                these mosquitoes bite a human, the sporozoites are introduced into his/her body, thereby initiating the\r\n                events mentioned above."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is interesting to note that the malarial\r\n            parasite requires two hosts – human and mosquitoes – to complete its life cycle (Figure 8.1);\r\n            the female Anopheles mosquito is the vector (transmitting agent) too."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301720,
+        301745,
+        301746,
+        15000311
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                8.1 Stages in the life cycle of Plasmodium"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301747,
+        301748
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Entamoeba\r\n                histolytica"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is\r\n                a protozoan parasite in the large intestine of human which causes"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "amoebiasis\r\n                (amoebic dysentery)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Symptoms of this disease include constipation, abdominal pain and cramps, stools with\r\n            excess mucous and blood clots. Houseflies act as mechanical carriers and serve to transmit the parasite from\r\n            faeces of infected person to food and food products, thereby contaminating them. Drinking water and food\r\n            contaminated by the faecal matter are the main source of infection."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301713,
+        301730
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.2 Diagram showing inflammation in one of the lower limbs due to\r\n            elephantiasis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.3 Diagram showing ringworm affected area of the skin"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ascaris"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", the common round worm and Wuchereria, the filarial\r\n            worm, are some of the helminths which are known to be pathogenic to man."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ascaris,\r\n                an intestinal parasite causes"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "ascariasis"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Symptoms of these disease include internal bleeding, muscular pain, fever, anemia and\r\n            blockage of the intestinal passage."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                eggs of the parasite are excreted along with the faeces of infected persons which contaminate soil,\r\n                water, plants, etc. A healthy person acquires this infection through contaminated water, vegetables,\r\n                fruits, etc."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301716
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Wuchereria\r\n                (W. bancrofti and W. malayi)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                the filarial worms cause a slowly developing chronic inflammation of the organs in which they live for\r\n                many years, usually the lymphatic vessels of the lower limbs and the disease is called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "elephantiasis"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "or"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "filariasis"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "("
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.2)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The genital organs are also often affected, resulting\r\n            in gross deformities."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                pathogens are transmitted to a healthy person through the bite by the female mosquito vectors."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301718,
+        301721,
+        301723,
+        301730,
+        301734,
+        301741,
+        301742
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Many\r\n                fungi belonging to the genera Microsporum, Trichophyton and Epidermophyton are responsible for"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "ringworms"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "which\r\n                is one of the most common infectious diseases in man  Appearance of dry, scaly lesions on various\r\n                parts of the body such as skin, nails and scalp (Figure 8.3) are the main symptoms of the\r\n                disease."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These lesions are accompanied by intense itching. Heat and\r\n            moisture help these fungi to grow, which makes them thrive in skin folds such as those in the groin or\r\n            between the toes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ringworms\r\n                are generally acquired from soil or by using towels, clothes or even the comb of infected\r\n                individuals."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301730,
+        301734,
+        301735,
+        301749,
+        301750,
+        15000297
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Maintenance of personal and public hygiene is very important for prevention and\r\n            control of many infectious diseases. Measures for personal hygiene include keeping the body clean;\r\n            consumption of clean drinking water, food, vegetables, fruits, etc. Public hygiene includes proper disposal\r\n            of waste and excreta; periodic cleaning and disinfection of water reservoirs, pools, cesspools and tanks and\r\n            observing standard practices of hygiene in public catering. These measures are particularly essential where\r\n            the infectious agents are transmitted through food and water such as typhoid, amoebiasis and ascariasis."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                cases of air-borne diseases such as pneumonia and common cold, in addition to the above measures, close\r\n                contact with the infected persons or their belongings should be avoided."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For diseases such as malaria and filariasis that are transmitted through insect vectors,\r\n            the most important measure is to control or eliminate the vectors and their breeding places."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                can be achieved by avoiding stagnation of water in and around residential areas, regular cleaning of\r\n                household coolers, use of mosquito nets, introducing fishes like Gambusia in ponds that feed on mosquito\r\n                larvae, spraying of insecticides in ditches, drainage areas and swamps, etc ."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In addition, doors and windows should be provided with wire mesh to prevent the entry of\r\n            mosquitoes. Such precautions have become more important especially in the light of recent widespread\r\n            incidences of the vector-borne (Aedes mosquitoes) diseases like dengue and chikungunya in many parts of\r\n            India."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301721,
+        301751
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The advancements made in biological science have armed us to effectively deal with\r\n            many infectious diseases. The use of vaccines and immunisation programmes have enabled us to completely\r\n            eradicate a deadly disease like smallpox ."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                large number of other infectious diseases like polio, diphtheria, pneumonia and tetanus have been\r\n                controlled to a large extent by the use of vaccines ."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology\r\n            (about which you will read more in Chapter 12) is at the verge of making available newer and safer vaccines\r\n            . Discovery of antibiotics and various other drugs has also enabled us to effectively treat infectious\r\n            diseases."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301705
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8.2 Immunity",
+      "id": "h.b9pbe5rr63lx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Everyday we are exposed to large number of infectious agents. However, only a few of\r\n            these exposures result in disease. Why? This is due to the fact that the body is able to defend itself from\r\n            most of these foreign agents. This overall ability of the host to fight the disease-causing organisms,\r\n            conferred by the immune system is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "immunity."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Immunity is of two types: (i) Innate immunity and (ii) Acquired immunity."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.1 Innate Immunity",
+      "id": "h.q22eikcfklq2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Innate\r\n                immunity is non-specific type of defence, that is present at the time of birth."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is accomplished by providing different types of barriers to the entry of the foreign\r\n            agents into our body . Innate immunity consist of four types of barriers. These are —"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301731
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) Physical barriers"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Skin on our body is the main\r\n            barrier which prevents entry of the micro-organisms. Mucus coating of the epithelium lining the respiratory,\r\n            gastrointestinal and urogenital tracts also help in trapping microbes entering our body."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(ii)\r\n                Physiological barriers"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Acid in the stomach, saliva in the mouth, tears from eyes–all prevent microbial growth."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301752,
+        301753
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(iii)\r\n                Cellular barriers"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Certain types of leukocytes (WBC) of our body like polymorpho-nuclear leukocytes (PMNL-neutrophils)"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301754,
+        301755
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                monocytes and natural killer (type of lymphocytes) in the blood as well as macrophages in tissues can\r\n                phagocytose and destroy microbes ."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301754,
+        301755
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(iv)\r\n                Cytokine barriers"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Virus-infected cells secrete proteins called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "interferons"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "which\r\n                protect non-infected cells from further viral infection ."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301753,
+        301756,
+        301757
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.2 Acquired Immunity",
+      "id": "h.6dio8nnxmeuo"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Acquired immunity, on the other hand is pathogen specific. It is characterised by\r\n            memory. This means when our body encounters a pathogen for the first time it produces a response called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "primary response"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which is of low intensity. Subsequent\r\n            encounter with the same pathogen elicits a highly intensified secondary or anamnestic response . This is\r\n            ascribed to the fact that our body appears to have memory of the first encounter."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.4 Structure of an antibody molecule"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The primary and secondary immune responses are carried out with the help of two\r\n            special types of lymphocytes present in our blood, i.e.,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-lymphocytes and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-lymphocytes. The\r\n            B-lymphocytes produce an army of proteins in response to pathogens into our blood to fight with them. These\r\n            proteins are called antibodies . The T-cells themselves do not secrete antibodies but help B cells to\r\n            produce them. Each antibody molecule has four peptide chains, two small called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "light\r\n            chains"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and two longer called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "heavy chains"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Hence, an antibody is represented as H2L2. Different types of antibodies are produced in our\r\n            body. IgA, IgM, IgE, IgG are some of them . A cartoon of an antibody is given in Figure 8.4. Because these\r\n            antibodies are found in the blood, the response is also called as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "humoral immune\r\n            response"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". This is one of the two types of our acquired immune response –\r\n            antibody mediated."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                second type is called cell-mediated immune response or"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cell-mediated\r\n                immunity"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(CMI)\r\n                . The T-lymphocytes mediate CMI."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Very often, when some human organs\r\n            like heart, eye, liver, kidney fail to function satisfactorily, transplantation is the only remedy to enable\r\n            the patient to live a normal life. Then a search begins – to find a suitable donor."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Why is it that the organs cannot be taken from just anybody? What is it that the doctors\r\n            check?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Grafts from just any source – an animal, another primate, or any\r\n            human beings cannot be made since the grafts would be rejected sooner or later."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Tissue\r\n                matching, blood group matching are essential before undertaking any graft/transplant and even after this\r\n                the patient has to take immuno–suppresants all his/her life"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                body is able to differentiate ‘self’ and ‘nonself’ and the cell-mediated immune\r\n                response is responsible for the graft rejection."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301701,
+        301711,
+        301725,
+        301758,
+        301759,
+        301760,
+        15000505
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.3 Active and Passive Immunity",
+      "id": "h.udwnjuwq08vt"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When a host is exposed to antigens, which may be in the form of living or dead\r\n            microbes or other proteins, antibodies are produced in the host body. This type of immunity is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "active immunity"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Active\r\n                immunity is slow and takes time to give its full effective response."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Injecting the microbes deliberately during immunisation  or infectious organisms\r\n            gaining access into body during natural infection induce active immunity. When ready-made antibodies are\r\n            directly given to protect the body against foreign agents, it is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "passive\r\n            immunity"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Do you know why mother’s milk is considered very essential for"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                new-born infant? The yellowish fluid"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "colostrum"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "secreted\r\n                by mother during the initial days of lactation has abundant antibodies (IgA) to protect the\r\n                infant."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                foetus also receives some antibodies from their mother, through the placenta during pregnancy. These are\r\n                some examples of passive immunity."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301709,
+        301724,
+        301726,
+        301761,
+        301762,
+        301763
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.4 Vaccination and Immunisation",
+      "id": "h.mowwmluz4nds"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The principle of immunisation or vaccination is based on the property of\r\n            ‘memory’ of the immune system."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                vaccination, a preparation of antigenic proteins of pathogen or inactivated/weakened pathogen (vaccine)\r\n                are introduced into the body."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The\r\n            antibodies produced in the body against these antigens would neutralise the pathogenic agents during actual\r\n            infection."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                vaccines also generate memory – B and T-cells that recognise the pathogen quickly on subsequent\r\n                exposure and overwhelm the invaders with a massive production of antibodies."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\r\n                a person is infected with some deadly microbes to which quick immune response is required as in tetanus,\r\n                we need to directly inject the preformed antibodies, or antitoxin (a preparation containing antibodies\r\n                to the toxin)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Even\r\n                in cases of snakebites, the injection which is given to the patients, contain preformed antibodies\r\n                against the snake venom"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301705,
+        301764,
+        301765,
+        301766,
+        301767
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This type of immunisation is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "passive immunisation."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Recombinant DNA technology has allowed the production of antigenic polypeptides of\r\n            pathogen in bacteria or yeast. Vaccines produced using this approach allow large scale production and hence\r\n            greater availability for immunisation, e.g., hepatitis B vaccine produced from yeast."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.5 Allergies",
+      "id": "h.p9gn4slecn1z"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When you have gone to a new place and suddenly you started sneezing, wheezing for no\r\n            explained reason, and when you went away, your symptoms dissappeared. Did this happen to you? Some of us are\r\n            sensitive to some particles in the environment. The above-mentioned reaction could be because of allergy to\r\n            pollen, mites, etc., which are different in different places."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The exaggerated response of the immune system to certain antigens present in the\r\n            environment is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "allergy"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The substances to which such\r\n            an immune response is produced are called allergens. The antibodies produced to these are of IgE type.\r\n            Common examples of allergens are mites in dust, pollens, animal dander, etc. Symptoms of allergic reactions\r\n            include sneezing, watery eyes, running nose and difficulty in breathing."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Allergy\r\n                is due to the release of chemicals like histamine and serotonin from the mast cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For determining the cause of allergy, the patient is exposed to\r\n            or injected with very small doses of possible allergens, and the reactions studied."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                use of drugs like anti-histamine, adrenalin and steroids quickly reduce the symptoms of allergy\r\n                ."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Somehow,\r\n                modern-day life style has resulted in lowering of immunity and more sensitivity to allergens –\r\n                more and more children in metro cities of India suffer from allergies and asthma due to sensitivity to\r\n                the environment"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This could be because of the protected environment provided early in life."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301472,
+        301768,
+        301769,
+        301770,
+        301771
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.6 Auto Immunity",
+      "id": "h.g8sse9kgnei4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Memory-based acquired immunity evolved in higher vertebrates based on the ability to\r\n            differentiate foreign organisms (e.g., pathogens) from self-cells. While we still do not understand the\r\n            basis of this, two corollaries of this ability have to be understood. One, higher vertebrates can\r\n            distinguish foreign molecules as well as foreign organisms. Most of the experimental immunology deals with\r\n            this aspect."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Two,\r\n                sometimes, due to genetic and other unknown reasons, the body attacks self-cells. This results in damage\r\n                to the body and is called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "auto-immune"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "disease."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Rheumatoid\r\n                arthritis which affects many people in our society is an auto-immune disease."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301707,
+        301730
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2.7 Immune System in the Body",
+      "id": "h.5ne79nbmvarg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The human immune system consists of lymphoid organs, tissues, cells and soluble\r\n            molecules like antibodies. As you have read, immune system is unique in the sense that it recognises foreign\r\n            antigens, responds to these and remembers them. The immune system also plays an important role in allergic\r\n            reactions, auto-immune diseases and organ transplantation."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Lymphoid organs:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                are the organs where origin and/or maturation and proliferation of lymphocytes occur. The primary\r\n                lymphoid organs are"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "bone"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "marrow"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "thymus"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "where\r\n                immature lymphocytes differentiate into antigen-sensitive lymphocytes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "After maturation the lymphocytes migrate to secondary lymphoid organs like spleen, lymph\r\n            nodes, tonsils, Peyer’s patches of small intestine and appendix. The secondary lymphoid organs provide\r\n            the sites for interaction of lymphocytes with the antigen, which then proliferate to become effector cells.\r\n            The location of various lymphoid organs in the human body is shown in Figure 8.5."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301473
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.5 Diagrammatic"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "representation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "of Lymph nodes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The bone marrow is the main lymphoid organ where all blood cells including\r\n            lymphocytes are produced. The thymus is a lobed organ located near the heart and beneath the breastbone. The\r\n            thymus is quite large at the time of birth but keeps reducing in size with age and by the time puberty is\r\n            attained it reduces to a very small size."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Both\r\n                bone-marrow and thymus provide micro-environments for the development and maturation of\r\n                T-lymphocytes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The spleen is a large bean-shaped organ. It mainly\r\n            contains lymphocytes and phagocytes. It acts as a filter of the blood by trapping blood-borne\r\n            micro-organisms. Spleen also has a large reservoir of erythrocytes . The lymph nodes are small solid\r\n            structures located at different points along the lymphatic system. Lymph nodes serve to trap the\r\n            micro-organisms or other antigens, which happen to get into the lymph and tissue fluid. Antigens trapped in\r\n            the lymph nodes are responsible for the activation of lymphocytes present there and cause the immune\r\n            response."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301474,
+        15000255
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\r\n                is lymphoid tissue also located within the lining of the major tracts (respiratory, digestive and\r\n                urogenital tracts) called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "mucosa-associated\r\n                lymphoid tissue"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(MALT).\r\n                It constitutes about 50 per cent of the lymphoid tissue in human body."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301702,
+        15000481
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8.3 AIDS",
+      "id": "h.qg752jv3sxcc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The word AIDS stands for"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Acquired Immuno Deficiency\r\n            Syndrome"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". This means deficiency of immune system, acquired during the lifetime of an\r\n            individual indicating that it is not a congenital disease. ‘Syndrome’ means a group of symptoms.\r\n            AIDS was first reported in 1981 and in the last twenty-five years or so, it has spread all over the world\r\n            killing more than 25 million persons."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "AIDS\r\n                is caused by the Human Immuno deficiency Virus (HIV), a member of a group of viruses called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "retrovirus"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                which have an envelope enclosing the RNA genome (Figure 8.6)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Transmission of HIV-infection generally occurs by (a) sexual contact with infected person,\r\n            (b) by transfusion of contaminated blood and blood products, (c) by sharing infected needles as in the case\r\n            of intravenous drug abusers and (d) from infected mother to her child through placenta. So, people who are\r\n            at high risk of getting this infection includes - individuals who have multiple sexual partners, drug\r\n            addicts who take drugs intravenously, individuals who require repeated blood transfusions and children born\r\n            to an HIV infected mother. Do you know–when do people need repeated blood transfusion?  Find out\r\n            and make a list of such conditions. It is important to note that HIV/AIDS is not spread by mere touch or\r\n            physical contact; it spreads only through body fluids. It is, hence, imperative, for the physical and\r\n            psychological well-being, that the HIV/AIDS infected persons are not isolated from family and society. There\r\n            is always a time-lag between the infection and appearance of AIDS symptoms. This period may vary from a few\r\n            months to many years (usually 5-10 years)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301704,
+        301744
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                8.6 Replication of retrovirus"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301475
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "After getting into the body of the person, the virus enters into macrophages where\r\n            RNA genome of the virus replicates to form viral DNA with the help of the enzyme reverse transcriptase. This\r\n            viral DNA gets incorporated into host cell’s DNA and directs the infected cells to produce virus\r\n            particles (Figure 8.6). The macrophages continue to produce virus and in this way acts like a HIV factory."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Simultaneously,\r\n                HIV enters into helper T-lymphocytes (TH), replicates and produce progeny viruses."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                progeny viruses released in the blood attack other helper T-lymphocytes"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                is repeated leading to a progressive decrease in the number of helper T-lymphocytes in the body of the\r\n                infected person."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "During\r\n                this period, the person suffers from bouts of fever, diarrhoea and weight loss."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Due to decrease in the number of helper T lymphocytes, the person starts suffering from\r\n            infections that could have been otherwise overcome such as those due to bacteria especially Mycobacterium,\r\n            viruses, fungi and even parasites like Toxoplasma . The patient becomes so immuno-deficient that he/she is\r\n            unable to protect himself/herself against these infections."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                widely used diagnostic test for AIDS is"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "enzyme\r\n                linked immuno-sorbent assay (ELISA)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Treatment of AIDS with anti-retroviral drugs is only partially effective . They can only\r\n            prolong the life of the patient but cannot prevent death, which is inevitable."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301476,
+        301704,
+        301714,
+        301715,
+        301732
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Prevention of AIDS"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": As AIDS has no cure, prevention is the\r\n            best option. Moreover, HIV infection, more often, spreads due to conscious behaviour patterns and is not\r\n            something that happens inadvertently, like pneumonia or typhoid. Of course, infection in blood transfusion\r\n            patients, new-borns (from mother) etc., may take place due to poor monitoring. The only excuse may be\r\n            ignorance and it has been rightly said – “don’t die of ignorance”. In our country\r\n            the National AIDS Control Organisation (NACO) and other non-governmental organisation (NGOs) are doing a lot\r\n            to educate people about AIDS. WHO has started a number of programmes to prevent the spreading of HIV\r\n            infection. Making blood (from blood banks) safe from HIV, ensuring the use of only disposable needles and\r\n            syringes in public and private hospitals and clinics, free distribution of condoms, controlling drug abuse,\r\n            advocating safe sex and promoting regular check-ups for HIV in susceptible populations, are some such steps\r\n            taken up."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Infection with HIV or having AIDS is something that should not be hidden –\r\n            since then, the infection may spread to many more people. HIV/AIDS-infected people need help and sympathy\r\n            instead of being shunned by society. Unless society recognises it as a problem to be dealt with in a\r\n            collective manner – the chances of wider spread of the disease increase manifold. It is a malady that\r\n            can only be tackled, by the society and medical fraternity acting together, to prevent the spread of the\r\n            disease."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8.4 Cancer",
+      "id": "h.5buluon3wb7q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cancer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is one of the most dreaded diseases of human\r\n            beings and is a major cause of death all over the globe. More than a million Indians suffer from cancer and\r\n            a large number of them die from it annually . The mechanisms that underlie development of cancer or\r\n            oncogenic transformation of cells, its treatment and control have been some of the most intense areas of\r\n            research in biology and medicine."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In our body, cell growth and differentiation is highly controlled and regulated. In\r\n            cancer cells, there is breakdown of these regulatory mechanisms."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Normal\r\n                cells show a property called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "contact\r\n                inhibition"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "by\r\n                virtue of which contact with other cells inhibits their uncontrolled growth. Cancer cells appears to\r\n                have lost this property."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As a result of this, cancerous cells just\r\n            continue to divide giving rise to masses of cells called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tumors"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Tumors are of two types: benign and malignant."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Benign"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tumors"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "normally remain confined to\r\n            their original location and do not spread to other parts of the body and cause little damage. The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "malignant"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tumors"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", on the other hand are a mass of proliferating cells called neoplastic or tumor cells. These\r\n            cells grow very rapidly, invading and damaging the surrounding normal tissues. As these cells actively\r\n            divide and grow they also starve the normal cells by competing for vital nutrients. Cells sloughed from such\r\n            tumors reach distant sites through blood, and wherever they get lodged in the body, they start a new tumor\r\n            there."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                property called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "metastasis"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is\r\n                the most feared property of malignant tumors ."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301477,
+        301478
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Causes of cancer :"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Transformation of normal cells into\r\n            cancerous neoplastic cells may be induced by physical, chemical or biological agents. These agents are\r\n            called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "carcinogens"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Ionising radiations like X-rays and\r\n            gamma rays and non-ionizing radiations like UV cause DNA damage leading to neoplastic transformation . The\r\n            chemical carcinogens present in tobacco smoke have been identified as a major cause of lung cancer. Cancer\r\n            causing viruses called oncogenic viruses have genes called viral oncogenes . Furthermore, several genes\r\n            called cellular oncogenes (c-onc) or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "proto oncogenes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "have been identified in normal cells which, when activated under certain conditions, could\r\n            lead to oncogenic transformation of the cells ."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cancer detection and diagnosis"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Early detection of\r\n            cancers is essential as it allows the disease to be treated successfully in many cases. Cancer detection is\r\n            based on biopsy and histopathological studies of the tissue and blood and bone marrow tests for increased\r\n            cell counts in the case of leukemias. In biopsy, a piece of the suspected tissue cut into thin sections is\r\n            stained and examined under microscope (histopathological studies) by a pathologist. Techniques like\r\n            radiography (use of X-rays), CT (computed tomography) and MRI (magnetic resonance imaging) are very useful\r\n            to detect cancers of the internal organs. Computed tomography uses X-rays to generate a three-dimensional\r\n            image of the internals of an object. MRI uses strong magnetic fields and non-ionising radiations to\r\n            accurately detect pathological and physiological changes in the living tissue."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Antibodies against cancer-specific antigens are also used for detection of certain\r\n            cancers . Techniques of molecular biology can be applied to detect genes in individuals with inherited\r\n            susceptibility to certain cancers. Identification of such genes, which predispose an individual to certain\r\n            cancers, may be very helpful in prevention of cancers . Such individuals may be advised to avoid exposure to\r\n            particular carcinogens to which they are susceptible (e.g., tobacco smoke in case of lung cancer)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Treatment of cancer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": The common approaches for\r\n            treatment of cancer are surgery, radiation therapy and immunotherapy. In radiotherapy, tumor cells are\r\n            irradiated lethally, taking proper care of the normal tissues surrounding the tumor mass"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Several chemotherapeutic drugs are used to kill cancerous cells. Some of these are\r\n            specific for particular tumors. Majority of drugs have side effects like hair loss, anemia , etc. Most\r\n            cancers are treated by combination of surgery, radiotherapy and chemotherapy. Tumor cells have been shown to\r\n            avoid detection and destruction by immune system. Therefore, the patients are given substances called\r\n            biological response modifiers such as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "α-interferon"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which activates their immune system and helps in destroying the tumor ."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8.5 Drugs and Alcohol Abuse",
+      "id": "h.hhrlpktovhdh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Surveys and statistics show that use of drugs and alcohol has been on the rise\r\n            especially among the youth. This is really a cause of concern as it could result in many harmful effects.\r\n            Proper education and guidance would enable youth to safeguard themselves against these dangerous behaviour\r\n            patterns and follow healthy lifestyles."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.7 Chemical structure of Morphine"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The drugs, which are commonly abused are opioids, cannabinoids and coca alkaloids.\r\n            Majority of these are obtained from flowering plants. Some are obtained from fungi."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                8.8 Opium poppy"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301479
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Opioids"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "are\r\n                the drugs, which bind to specific opioid receptors present in our central nervous system and\r\n                gastrointestinal tract. Heroin (Figure 8.7), commonly called smack is chemically diacetylmorphine which\r\n                is a white, odourless, bitter crystalline compound."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                is obtained by acetylation of morphine (Figure 8.7), which is extracted from the latex of poppy plant\r\n                Papaver somniferum (Figure 8.8)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Generally taken by snorting and\r\n            injection, heroin is a depressant and slows down body functions ."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301728,
+        301729,
+        301733
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cannabinoids"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "are a group of chemicals (Figure 8.9),\r\n            which interact with cannabinoid receptors present principally in the brain. Natural cannabinoids are\r\n            obtained from the inflorescences of the plant Cannabis sativa (Figure 8.10)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                flower tops, leaves and the resin of cannabis plant are used in various combinations to produce\r\n                marijuana, hashish, charas and ganja."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Generally taken by inhalation and\r\n            oral ingestion, these are known for their effects on cardiovascular system of the body ."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301733
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.9 Skeletal structure of cannabinoid molecule"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.10 Leaves of Cannabis sativa"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Human_Health_And_Disease-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.11 Flowering branch of Datura"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Coca\r\n                alkaloid or"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cocaine"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is\r\n                obtained from coca plant Erythroxylum coca, native to South America."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It interferes with the transport of the neuro-transmitter dopamine."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Cocaine,\r\n                commonly called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "coke"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "or"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "crack"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is\r\n                usually snorted."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It has a potent stimulating action on central nervous\r\n            system, producing a sense of euphoria and increased energy. Excessive dosage of cocaine causes\r\n            hallucinations."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Other well-known plants with hallucinogenic properties are Atropa\r\n            belladona and Datura  (Figure 8.11)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These days cannabinoids are also\r\n            being abused by some sportspersons."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301480,
+        301733
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Drugs like barbiturates, amphetamines, benzodiazepines, and other similar drugs,\r\n            that are normally used as medicines to help patients cope with mental illnesses like depression and\r\n            insomnia, are often abused ."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Morphine\r\n                is a very effective sedative and painkiller, and is very useful in patients who have undergone\r\n                surgery."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Several\r\n                plants, fruits and seeds having hallucinogenic properties have been used for hundreds of years in\r\n                folk-medicine, religious ceremonies and rituals all over the globe."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When these are taken for a purpose other than medicinal use or in amounts/frequency that\r\n            impairs one’s physical, physiological or psychological functions, it constitutes drug abuse."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301481,
+        301719,
+        15000305
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Smoking also paves the way to hard drugs. Tobacco has been used by human beings for\r\n            more than 400 years. It is smoked, chewed or used as a snuff. Tobacco contains a large number of chemical\r\n            substances including nicotine, an alkaloid. Nicotine stimulates adrenal gland to release adrenaline and\r\n            nor-adrenaline into blood circulation, both of which raise blood pressure and increase heart rate. Smoking\r\n            is associated with increased incidence of cancers of lung, urinary bladder and throat, bronchitis,\r\n            emphysema, coronary heart disease, gastric ulcer, etc. Tobacco chewing is associated with increased risk of\r\n            cancer of the oral cavity. Smoking increases carbon monoxide (CO) content in blood and reduces the\r\n            concentration of haembound oxygen. This causes oxygen deficiency in the body."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When one buys packets of cigarettes one cannot miss the statutory warning that is\r\n            present on the packing which warns against smoking and says how it is injurious to health. Yet, smoking is\r\n            very prevalent in society, both among young and old. Knowing the dangers of smoking and chewing tobacco, and\r\n            its addictive nature, the youth and old need to avoid these habits. Any addict requires counselling and\r\n            medical help to get rid of the habit."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.5.1 Adolescence and Drug/Alcohol Abuse",
+      "id": "h.5m7we0whiyp7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Adolescence means both ‘a period’ and ‘a process’ during\r\n            which a child becomes mature in terms of his/her attitudes and beliefs for effective participation in\r\n            society. The period between 12-18 years of age may be thought of as adolescence period. In other words,\r\n            adolescence is a bridge linking childhood and adulthood. Adolescence is accompanied by several biological\r\n            and behavioural changes. Adolescence, thus is a very vulnerable phase of mental and psychological\r\n            development of an individual."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Curiosity, need for adventure and excitement, and experimentation, constitute common\r\n            causes, which motivate youngsters towards drug and alcohol use. A child’s natural curiosity motivates\r\n            him/her to experiment. This is complicated further by effects that might be perceived as benefits, of\r\n            alcohol or drug use. Thus, the first use of drugs or alcohol may be out of curiosity or experimentation, but\r\n            later the child starts using these to escape facing problems. Of late, stress, from pressures to excel in\r\n            academics or examinations, has played a significant role in persuading the youngsters to try alcohol and\r\n            drugs. The perception among youth that it is ‘cool’ or progressive to smoke, use drugs or\r\n            alcohol, is also in a way a major cause for youth to start these habits. Television, movies, newspapers,\r\n            internet also help to promote this perception. Other factors that have been seen to be associated with drug\r\n            and alcohol abuse among adolescents are unstable or unsupportive family structures and peer pressure."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.5.2 Addiction and Dependence",
+      "id": "h.l126fbfsq3eo"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Because of the perceived benefits, drugs are frequently used repeatedly. The most\r\n            important thing, which one fails to realise, is the inherent addictive nature of alcohol and drugs.\r\n            Addiction is a psychological attachment to certain effects –such as euphoria and a temporary feeling\r\n            of well-being–associated with drugs and alcohol. These drive people to take them even when these are\r\n            not needed, or even when their use becomes self-destructive. With repeated use of drugs, the tolerance level\r\n            of the receptors present in our body increases. Consequently the receptors respond only to higher doses of\r\n            drugs or alcohol leading to greater intake and addiction. However, it should be clearly borne in mind that\r\n            use of these drugs even once, can be a fore-runner to addiction. Thus, the addictive potential of drugs and\r\n            alcohol, pull the user into a vicious circle leading to their regular use (abuse) from which he/she may not\r\n            be able to get out. In the absence of any guidance or counselling, the person gets addicted and becomes\r\n            dependent on their use."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Dependence is the tendency of the body to manifest a characteristic and unpleasant"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "withdrawal"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "syndrome"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "if regular dose of drugs/alcohol is abruptly discontinued. This is characterised by\r\n            anxiety, shakiness, nausea and sweating, which may be relieved when use is resumed again. In some cases,\r\n            withdrawal symptoms can be severe and even life threatening and the person may need medical supervision"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Dependence leads the patient to ignore all social norms in order to get sufficient\r\n            funds to satiate his/her needs. These result in many social adjustment problems"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.5.3 Effects of Drug/Alcohol Abuse",
+      "id": "h.3fnxjcf6kdze"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The immediate adverse effects of drugs and alcohol abuse are manifested in the form\r\n            of reckless behaviour, vandalism and violence. Excessive doses of drugs may lead to coma and death due to\r\n            respiratory failure, heart failure or cerebral hemorrhage. A combination of drugs or their intake along with\r\n            alcohol generally results in overdosing and even deaths. The most common warning signs of drug and alcohol\r\n            abuse among youth include drop in academic performance, unexplained absence from school/college, lack of\r\n            interest in personal hygiene, withdrawal, isolation, depression, fatigue, aggressive and rebellious\r\n            behaviour, deteriorating relationships with family and friends, loss of interest in hobbies, change in\r\n            sleeping and eating habits, fluctuations in weight, appetite, etc."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There may even be some far-reaching implications of drug/alcohol abuse. If an abuser\r\n            is unable to get money to buy drugs/alcohol he/she may turn to stealing. The adverse effects are just not\r\n            restricted to the person who is using drugs or alcohol. At times, a drug/alcohol addict becomes the cause of\r\n            mental and financial distress to his/her entire family and friends."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Those who take drugs intravenously (direct injection into the vein using a needle and\r\n            syringe), are much more likely to acquire serious infections like AIDS and Hepatitis B. The viruses, which\r\n            are responsible for these diseases, are transferred from one person to another by sharing of infected\r\n            needles and syringes. Both AIDS and Hepatitis B infections are chronic infections and ultimately fatal. Both\r\n            can be transmitted through sexual contact or infected blood."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The use of alcohol during adolescence may also have long-term effects. It could lead\r\n            to heavy drinking in adulthood."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                chronic use of drugs and alcohol damages nervous system and liver ("
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cirrhosis"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The use of drugs and alcohol during pregnancy is\r\n            also known to adversely affect the foetus."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        301740
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Another misuse of drugs is what certain sportspersons do to enhance their\r\n            performance. They (mis)use narcotic analgesics, anabolic steroids, diuretics and certain hormones in sports\r\n            to increase muscle strength and bulk and to promote aggressiveness and as a result increase athletic\r\n            performance. The side-effects of the use of anabolic steroids in females include masculinisation (features\r\n            like males), increased aggressiveness, mood swings, depression, abnormal menstrual cycles, excessive hair\r\n            growth on the face and body, enlargement of clitoris, deepening of voice. In males it includes acne,\r\n            increased aggressiveness, mood swings, depression, reduction of size of the testicles, decreased sperm\r\n            production, potential for kidney and liver dysfunction, breast enlargement, premature baldness, enlargement\r\n            of the prostate gland. These effects may be permanent with prolonged use. In the adolescent male or female,\r\n            severe facial and body acne, and premature closure of the growth centres of the long bones may result in\r\n            stunted growth."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.5.4 Prevention and Control",
+      "id": "h.9tiglom0zqk"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The age-old adage of ‘prevention is better than cure’ holds true here\r\n            also. It is also true that habits such as smoking, taking drug or alcohol are more likely to be taken up at\r\n            a young age, more during adolescence. Hence, it is best to identify the situations that may push an\r\n            adolescent towards use of drugs or alcohol, and to take remedial measures well in time. In this regard, the\r\n            parents and the teachers have a special responsibility. Parenting that combines with high levels of\r\n            nurturance and consistent discipline, has been associated with lowered risk of substance\r\n            (alcohol/drugs/tobacco) abuse. Some of the measures mentioned here would be particularly useful for\r\n            prevention and control of alcohol and drugs abuse among adolescents"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Avoid undue peer pressure"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-\r\n            Every child has his/her own choice and personality, which should be respected and nurtured. A child should\r\n            not be pushed unduly to perform beyond his/her threshold limits; be it studies, sports or other\r\n            activities."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Education and counselling"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "- Educating and counselling him/her to face problems and stresses, and to accept\r\n            disappointments and failures as a part of life. It would also be worthwhile to channelise the child’s\r\n            energy into healthy pursuits like sports, reading, music, yoga and other extracurricular activities."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Seeking help from parents and peers"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "- Help from parents and peers should be sought immediately so that they can guide\r\n            appropriately. Help may even be sought from close and trusted friends. Besides getting proper advise to sort\r\n            out their problems, this would help young to vent their feelings of anxiety and guilt."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Looking for danger signs"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-\r\n            Alert parents and teachers need to look for and identify the danger signs discussed above. Even friends, if\r\n            they find someone using drugs or alcohol, should not hesitate to bring this to the notice of parents or\r\n            teacher in the best interests of the person concerned. Appropriate measures would then be required to\r\n            diagnose the malady and the underlying causes. This would help in initiating proper remedial steps or\r\n            treatment."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(v)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Seeking professional and medical help"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "- A lot of help is available in the form of highly qualified psychologists, psychiatrists,\r\n            and de-addiction and rehabilitation programmes to help individuals who have unfortunately got in the\r\n            quagmire of drug/alcohol abuse. With such help, the affected individual with sufficient efforts and will\r\n            power, can get rid of the problem completely and lead a perfectly normal and healthy life."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "SUMMARY",
+      "id": "h.ti20w8cfihq6"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Health is not just the absence of disease. It is a state of complete physical,\r\n            mental, social and psychological well-being. Diseases like typhoid, cholera, pneumonia, fungal infections of\r\n            skin, malaria and many others are a major cause of distress to human beings. Vector-borne diseases like\r\n            malaria especially one caused by Plasmodium falciparum, if not treated, may prove fatal. Besides personal\r\n            cleanliness and hygiene, public health measures like proper disposal of waste, decontamination of drinking\r\n            water, control of vectors like mosquitoes and immunisation are very helpful in preventing these diseases.\r\n            Our immune system plays the major role in preventing these diseases when we are exposed to disease-causing\r\n            agents. The innate defences of our body like skin, mucous membranes, antimicrobial substances present in our\r\n            tears, saliva and the phagocytic cells help to block the entry of pathogens into our body. If the pathogens\r\n            succeed in gaining entry to our body, specific antibodies (humoral immune response) and cells (cell mediated\r\n            immune response) serve to kill these pathogens. Immune system has memory. On subsequent exposure to same\r\n            pathogen, the immune response is rapid and more intense. This forms the basis of protection afforded by\r\n            vaccination and immunisation. Among other diseases, AIDS and cancer kill a large number of individuals\r\n            worldwide. AIDS caused by the human immuno-deficiency virus (HIV) is fatal but can be prevented if certain\r\n            precautions are taken. Many cancers are curable if detected early and appropriate therapeutic measures are\r\n            taken. Of late, drug and alcohol abuse among youth and adolescents is becoming another cause of concern.\r\n            Because of the addictive nature of alcohol and drugs, and their perceived benefits like relief from stress,\r\n            a person may try taking these in the face of peer pressure, examinations-related and competition-related\r\n            stresses. In doing so, he/she may get addicted to them. Education about their harmful effects, counselling\r\n            and seeking immediate professional and medical help would totally relieve the individual from these\r\n            evils."
+        }
+      ]
+    }
+  ]
+}

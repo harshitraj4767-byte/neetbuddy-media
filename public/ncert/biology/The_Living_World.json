@@ -1,0 +1,1376 @@
+{
+  "title": "The Living World",
+  "children": [
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 1",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The Living World"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 2",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biological Classification"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 3",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plant Kingdom"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 4",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Animal Kingdom"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biology is the science of life forms and living processes. The living world\n            comprises an amazing diversity of living organisms. Early man could easily perceive the difference between\n            inanimate matter and living organisms. Early man deified some of the inanimate matter (wind, sea, fire etc.)\n            and some among the animals and plants. A common feature of all such forms of inanimate and animate objects\n            was the sense of awe or fear that they evoked. The description of living organisms including human beings\n            began much later in human history. Societies which indulged in anthropocentric view of biology could\n            register limited progress in biological knowledge. Systematic and monumental description of life forms\n            brought in, out of necessity, detailed systems of identification, nomenclature and classification. The\n            biggest spin off of such studies was the recognition of the sharing of similarities among living organisms\n            both horizontally and vertically. That all present day living organisms are related to each other and also\n            to all organisms that ever lived on this earth, was a revelation which humbled man and led to cultural\n            movements for conservation of biodiversity. In the following chapters of this unit, you will get a\n            description, including classification, of animals and plants from a taxonomist’s perspectives."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image4.jpg",
+              "alt": "Mayr.jpg",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ernst Mayr"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1904 – 2004)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Born on 5 July 1904, in Kempten, Germany, Ernst Mayr, the Harvard University\n            evolutionary biologist who has been called ‘The Darwin of the 20th century’, was one of the 100\n            greatest scientists of all time. Mayr joined Harvard’s Faculty of Arts and Sciences in 1953 and\n            retired in 1975, assuming the title Alexander Agassiz Professor of Zoology Emeritus. Throughout his nearly\n            80-year career, his research spanned ornithology, taxonomy, zoogeography, evolution, systematics, and the\n            history and philosophy of biology. He almost single-handedly made the origin of species diversity the\n            central question of evolutionary biology that it is today"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "He\n                also pioneered the currently accepted definition of a biological species."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mayr was awarded the three prizes widely regarded as the triple\n            crown of biology: the Balzan Prize in 1983, the International Prize for Biology in 1994, and the Crafoord\n            Prize in 1999. Mayr died at the age of 100 in the year 2004."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10528
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Chapter 1",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "The Living World",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.1 What is ‘Living’?",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.2 Diversity in the Living World",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3 Taxonomic Categories",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4 Taxonomical Aids",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How wonderful is the living world ! The wide range of living types is amazing. The\n            extraordinary habitats in which we find living organisms, be it cold mountains, deciduous forests, oceans,\n            fresh water lakes, deserts or hot springs, leave us speechless. The beauty of a galloping horse, of the\n            migrating birds, the valley of flowers or the attacking shark evokes awe and a deep sense of wonder. The\n            ecological conflict and cooperation among members of a population and among populations of a community or\n            even the molecular traffic inside a cell make us deeply reflect on – what indeed is life? This\n            question has two implicit questions within it. The first is a technical one and seeks answer to what living\n            is as opposed to the non-living, and the second is a philosophical one, and seeks answer to what the purpose\n            of life is. As scientists, we shall not attempt answering the second question. We will try to reflect on\n            – what is living?"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.1 What is ‘Living’?",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When we try to define ‘living’, we conventionally look for distinctive\n            characteristics exhibited by living organisms. Growth, reproduction, ability to sense environment and mount\n            a suitable response come to our mind immediately as unique features of living organisms. One can add a few\n            more features like metabolism, ability to self-replicate, self-organise, interact and emergence to this\n            list. Let us try to understand each of these."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All living organisms grow"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Increase in mass and\n            increase in number of individuals are twin characteristics of growth. A multicellular organism grows by cell\n            division. In plants, this growth by cell division occurs continuously throughout their life span. In\n            animals, this growth is seen only up to a certain age. However, cell division occurs in certain tissues to\n            replace lost cells. Unicellular organisms grow by cell division. One can easily observe this in in vitro\n            cultures by simply counting the number of cells under the microscope. In majority of higher animals and\n            plants, growth and reproduction are mutually exclusive events. One must remember that increase in body mass\n            is considered as growth. Non-living objects also grow if we take increase in body mass as a criterion for\n            growth. Mountains, boulders and sand mounds do grow. However, this kind of growth exhibited by non-living\n            objects is by accumulation of material on the surface. In living organisms, growth is from inside. Growth,\n            therefore, cannot be taken as a defining property of living organisms. Conditions under which it can be\n            observed in all living organisms have to be explained and then we understand that it is a characteristic of\n            living systems. A dead organism does not grow."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Reproduction, likewise, is a characteristic of living organisms"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". In multicellular organisms, reproduction refers to the production of progeny possessing\n            features more or less similar to those of parents. Invariably and implicitly we refer to sexual\n            reproduction. Organisms reproduce by asexual means also. Fungi multiply and spread easily due to the\n            millions of asexual spores they produce. In lower organisms like yeast and hydra, we observe budding. In\n            Planaria (flat worms), we observe true regeneration, i.e., a fragmented organism regenerates the lost part\n            of its body and becomes, a new organism."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                fungi, the filamentous algae, the protonema of mosses, all easily multiply by fragmentation. When it\n                comes to unicellular organisms like bacteria, unicellular algae or Amoeba, reproduction is synonymous\n                with growth, i.e., increase in number of cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We have already\n            defined growth as equivalent to increase in cell number or mass. Hence, we notice that in single-celled\n            organisms, we are not very clear about the usage of these two terms – growth and reproduction.\n            Further, there are many organisms which do not reproduce (mules, sterile worker bees, infertile human\n            couples, etc). Hence, reproduction also cannot be an all-inclusive defining characteristic of living\n            organisms. Of course, no non-living object is capable of reproducing or replicating by itself."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10503
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Another characteristic of life is metabolism. All living organisms are made of\n            chemicals. These chemicals, small and big, belonging to various classes, sizes, functions, etc., are\n            constantly being made and changed into some other biomolecules. These conversions are chemical reactions or\n            metabolic reactions. There are thousands of metabolic reactions occurring simultaneously inside all living\n            organisms, be they unicellular or multicellular. All plants, animals, fungi and microbes exhibit metabolism.\n            The sum total of all the chemical reactions occurring in our body is metabolism. No non­-living object\n            exhibits metabolism. Metabolic reactions can be demonstrated outside the body in cell-free systems. An\n            isolated metabolic reaction(s) outside the body of an organism, performed in a test tube is neither living\n            nor non-living. Hence, while metabolism is a defining feature of all living organisms without exception,\n            isolated metabolic reactions in vitro are not living things but surely living reactions."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, cellular organisation of the body is the defining feature of life forms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Perhaps, the most obvious and technically complicated feature of all living organisms\n            is this ability to sense their surroundings or environment and respond to these environmental stimuli which\n            could be physical, chemical or biological. We sense our environment through our sense organs. Plants respond\n            to external factors like light, water, temperature, other organisms, pollutants, etc. All organisms, from\n            the prokaryotes to the most complex eukaryotes can sense and respond to environmental cues. Photoperiod\n            affects reproduction in seasonal breeders, both plants and animals. All organisms handle chemicals entering\n            their bodies. All organisms therefore, are ‘aware’ of their surroundings. Human being is the\n            only organism who is aware of himself, i.e., has self-consciousness."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Consciousness\n                therefore, becomes the defining property of living organisms."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10508
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When it comes to human beings, it is all the more difficult to define the living\n            state. We observe patients lying in coma in hospitals virtually supported by machines which replace heart\n            and lungs. The patient is otherwise brain-dead. The patient has no self-­consciousness. Are such\n            patients who never come back to normal life, living or non-living?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In higher classes, you will come to know that all living phenomena are due to\n            underlying interactions. Properties of tissues are not present in the constituent cells but arise as a\n            result of interactions among the constituent cells. Similarly, properties of cellular organelles are not\n            present in the molecular constituents of the organelle but arise as a result of interactions among the\n            molecular components comprising the organelle. These interactions result in emergent properties at a higher\n            level of organisation. This phenomenon is true in the hierarchy of organisational complexity at all levels.\n            Therefore, we can say that living organisms are self-replicating, evolving and self-regulating interactive\n            systems capable of responding to external stimuli. Biology is the story of life on earth. Biology is the\n            story of evolution of living organisms on earth. All living organisms – present, past and future, are\n            linked to one another by the sharing of the common genetic material, but to varying degrees."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.2 Diversity in the Living World",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If you look around you will see a large variety of living organisms, be it potted\n            plants, insects, birds, your pets or other animals and plants. There are also several organisms that you\n            cannot see with your naked eye but they are all around you. If you were to increase the area that you make\n            observations in, the range and variety of organisms that you see would increase. Obviously, if you were to\n            visit a dense forest, you would probably see a much greater number and kinds of living organisms in it. Each\n            different kind of plant, animal or organism that you see, represents a species. The number of species that\n            are known and described range between 1.7-1.8 million. This refers to"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "biodiversity"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or the number and types of organisms present on\n            earth. We should remember here that as we explore new areas, and even old ones, new organisms are\n            continuously being identified."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As stated earlier, there are millions of plants and animals in the world; we know\n            the plants and animals in our own area by their local names. These local names would vary from place to\n            place, even within a country. Probably you would recognise the confusion that would be created if we did not\n            find ways and means to talk to each other, to refer to organisms we are talking about."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, there is a need to standardise the naming of living organisms such that a\n            particular organism is known by the same name all over the world. This process is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "nomenclature"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Obviously, nomenclature or naming is only possible when\n            the organism is described correctly and we know to what organism the name is attached to. This is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "identification"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In order to facilitate the study, number of scientists have established procedures to\n            assign a scientific name to each known organism. This is acceptable to biologists all over the world."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\n                plants, scientific names are based on agreed principles and criteria, which are provided in\n                International Code for Botanical Nomenclature (ICBN)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You may ask,\n            how are animals named? Animal taxonomists have evolved International Code of Zoological Nomenclature (ICZN).\n            The scientific names ensure that each organism has only one name. Description of any organism should enable\n            the people (in any part of the world) to arrive at the same name. They also ensure that such a name has not\n            been used for any other known organism."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10509
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biologists follow universally accepted principles to provide scientific names to\n            known organisms. Each name has two components – the Generic name and the specific epithet. This system\n            of providing a name with two components is called Binomial nomenclature. This naming system given by Carolus\n            Linnaeus is being practised by biologists all over the world. This naming system using a two word format was\n            found convenient. Let us take the example of mango to understand the way of providing scientific names\n            better. The scientific name of mango is written as Mangifera indica. Let us see how it is a binomial name.\n            In this name Mangifera represents the genus while indica, is a particular species, or a specific epithet.\n            Other universal rules of nomenclature are as follows:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Biological\n                names are generally in Latin and written in italics."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They are\n            Latinised or derived from Latin irrespective of their origin."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10504
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. The first word in a biological name represents the genus while the second\n            component denotes the specific epithet."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. Both the words in a biological name, when handwritten, are separately\n            underlined, or printed in italics to indicate their Latin origin."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                first word denoting the genus starts with a capital letter while the specific epithet starts with a\n                small letter."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It can be illustrated with the example of Mangifera\n            indica."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10530
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Name\n                of the author appears after the specific epithet, i.e., at the end of the biological name and is written\n                in an abbreviated form, e.g., Mangifera indica Linn. It indicates that this species was first described\n                by Linnaeus."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10520
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since it is nearly impossible to study all the living organisms, it is necessary to\n            devise some means to make this possible."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This process is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "classification"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Classification is the process by which anything is\n            grouped into convenient categories based on some easily observable characters."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For\n            example, we easily recognise groups such as plants or animals or dogs, cats or insects. The moment we use\n            any of these terms, we associate certain characters with the organism in that group. What image do you see\n            when you think of a dog ? Obviously, each one of us will see ‘dogs’ and not ‘cats’.\n            Now, if we were to think of ‘Alsatians’ we know what we are talking about. Similarly, suppose we\n            were to say ‘mammals’, you would, of course, think of animals with external ears and body hair.\n            Likewise, in plants, if we try to talk of ‘Wheat’, the picture in each of our minds will be of\n            wheat plants, not of rice or any other plant. Hence, all these - ‘Dogs’, ‘Cats’,\n            ‘Mammals’, ‘Wheat’, ‘Rice’, ‘Plants’, ‘Animals’,\n            etc., are convenient categories we use to study organisms. The scientific term for these categories is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "taxa"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Here you must recognise that taxa can indicate\n            categories at very different levels. ‘Plants’ – also form a taxa. ‘Wheat’ is\n            also a taxa. Similarly, ‘animals’, ‘mammals’, ‘dogs’ are all taxa\n            – but you know that a dog is a mammal and mammals are animals. Therefore, ‘animals’,\n            ‘mammals’ and ‘dogs’ represent taxa at different levels."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, based on characteristics, all living organisms can be classified into\n            different taxa. This process of classification is taxonomy. External and internal structure, along with the\n            structure of cell, development process and ecological information of organisms are essential and form the\n            basis of modern taxonomic studies."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, characterisation, identification, classification and nomenclature are the\n            processes that are basic to taxonomy."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Taxonomy is not something new. Human beings have always been interested in knowing\n            more and more about the various kinds of organisms, particularly with reference to their own use. In early\n            days, human beings needed to find sources for their basic needs of food, clothing and shelter. Hence, the\n            earliest classifications were based on the ‘uses’ of various organisms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Human\n                beings were, since long, not only interested in knowing more about different kinds of organisms and\n                their diversities, but also the relationships among them. This branch of study was referred to as\n                systematics."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The word systematics is derived\n            from the Latin word ‘systema’ which means systematic arrangement of organisms. Linnaeus used\n            Systema Naturae as the title of his publication. The scope of systematics was later enlarged to include\n            identification, nomenclature and classification."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Systematics\n                takes into account evolutionary relationships between organisms."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10524
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3 Taxonomic Categories",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Classification is not a single step process but involves hierarchy of steps in which\n            each step represents a rank or category. Since the category is a part of overall taxonomic arrangement, it\n            is called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "taxonomic category"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and all categories\n            together constitute the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "taxonomic hierarchy"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Each\n            category, referred to as a unit of classification, in fact, represents a rank and is commonly termed as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "taxon"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(pl.: taxa)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Taxonomic categories and hierarchy can be illustrated by an example. Insects\n            represent a group of organisms sharing common features like three pairs of jointed legs. It means insects\n            are recognisable concrete objects which can be classified, and thus were given a rank or category. Can you\n            name other such groups of organisms? Remember, groups represent category. Category further denotes rank.\n            Each rank or taxon, in fact, represents a unit of classification. These taxonomic groups/categories are\n            distinct biological entities and not merely morphological aggregates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Taxonomical studies of all known organisms have led to the development of common\n            categories such as kingdom, phylum or division (for plants), class, order, family, genus and species. All\n            organisms, including those in the plant and animal kingdoms have species as the lowest category. Now the\n            question you may ask is, how to place an organism in various categories? The basic requirement is the\n            knowledge of characters of an individual or group of organisms. This helps in identifying similarities and\n            dissimilarities among the individuals of the same kind of organisms as well as of other kinds of\n            organisms."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.1 Species",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Taxonomic\n                studies consider a group of individual organisms with fundamental similarities as a\n                species."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "One should be able to distinguish one\n            species from the other closely related species based on the distinct morphological differences. Let us\n            consider Mangifera indica, Solanum tuberosum (potato) and Panthera leo (lion). All the three names, indica,\n            tuberosum and leo, represent the specific epithets, while the first words Mangifera, Solanum and Panthera\n            are genera and represents another higher level of taxon or category. Each genus may have one or more than\n            one specific epithets representing different organisms, but having morphological similarities."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\n                example, Panthera has another specific epithet called tigris and Solanum includes species like nigrum\n                and melongena."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Human beings belong to the species sapiens which is\n            grouped in the genus Homo. The scientific name thus, for human being, is written as Homo sapiens."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10507,
+        10526
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.2 Genus",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Genus comprises a group of related species which has more characters in common in\n            comparison to species of other genera. We can say that genera are aggregates of closely related species. For\n            example, potato and brinjal are two different species but both belong to the genus Solanum."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Lion\n                (Panthera leo), leopard (P. pardus) and tiger (P. tigris) with several common features, are all species\n                of the genus Panthera."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This genus differs from another genus Felis\n            which includes cats."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10507
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.3 Family",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                next category, Family, has a group of related genera with still less number of similarities as compared\n                to genus and species."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Families are characterised on the basis of\n            both vegetative and reproductive features of plant species. Among plants for example, three different genera\n            Solanum, Petunia and Datura are placed in the family Solanaceae. Among animals for example, genus Panthera,\n            comprising lion, tiger, leopard is put along with genus, Felis (cats) in the family Felidae. Similarly, if\n            you observe the features of a cat and a dog, you will find some similarities and some differences as well.\n            They are separated into two different families – Felidae and Canidae, respectively."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10506
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.4 Order",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have seen earlier that categories like species, genus and families are based\n            on a number of similar characters. Generally, order and other higher taxonomic categories are identified\n            based on the aggregates of characters. Order being a higher category, is the assemblage of families which\n            exhibit a few similar characters. The similar characters are less in number as compared to different genera\n            included in a family. Plant families like Convolvulaceae, Solanaceae are included in the order Polymoniales\n            mainly based on the floral characters. The animal order, Carnivora, includes families like Felidae and\n            Canidae"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image6.png",
+              "alt": "962.png",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                1.1"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Taxonomic\n                categories showing hierarchial arrangement in ascending order"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10518
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.5 Class",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This category includes related orders. For example, order Primata comprising\n            monkey, gorilla and gibbon is placed in class Mammalia along with order Carnivora that includes animals like\n            tiger, cat and dog. Class Mammalia has other orders also."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.6 Phylum",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Classes comprising animals like fishes, amphibians, reptiles, birds along with\n            mammals constitute the next higher category called Phylum. All these, based on the common features like\n            presence of notochord and dorsal hollow neural system, are included in phylum Chordata. In case of plants,\n            classes with a few similar characters are assigned to a higher category called Division."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.3.7 Kingdom",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All animals belonging to various phyla are assigned to the highest category called\n            Kingdom Animalia in the classification system of animals. The Kingdom Plantae, on the other hand, is\n            distinct, and comprises all plants from various divisions. Henceforth, we will refer to these two groups as\n            animal and plant kingdoms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                taxonomic categories from species to kingdom have been shown in ascending order starting with species in\n                Figure 1.1."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are broad categories. However, taxonomists have\n            also developed sub-categories in this hierarchy to facilitate more sound and scientific placement of various\n            taxa."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10518
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Look at the hierarchy in Figure 1.1. Can you recall the basis of arrangement? Say,\n            for example, as we go higher from species to kingdom, the number of common characteristics goes on\n            decreasing."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Lower\n                the taxa, more are the characteristics that the members within the taxon share. Higher the category,\n                greater is the difficulty of determining the relationship to other taxa at the same level."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, the problem of classification becomes more complex."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10511
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 1.1 indicates the taxonomic categories to which some common organisms like\n            housefly, man, mango and wheat belong."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "TABLE\n                1.1  Organisms with their Taxonomic Categories"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10532
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image5.png",
+              "alt": "p1",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4 Taxonomical Aids",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Taxonomic studies of various species of plants, animals and other organisms are\n            useful in agriculture, forestry, industry and in general in knowing our bio-resources and their diversity.\n            These studies would require correct classification and identification of organisms. Identification of\n            organisms requires intensive laboratory and field studies. The collection of actual specimens of plant and\n            animal species is essential and is the prime source of taxonomic studies. These are also fundamental to\n            studies and essential for training in systematics. It is used for classification of an organism, and the\n            information gathered is also stored along with the specimens. In some cases the specimen is preserved for\n            future studies."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biologists have established certain procedures and techniques to store and\n            preserve the information as well as the specimens. Some of these are explained to help you understand the\n            usage of these aids."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4.1 Herbarium",
+      "id": "h.4i7ojhp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Herbarium\n                is a store house of collected plant specimens that are dried, pressed and preserved on\n                sheets"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Further, these sheets are arranged\n            according to a universally accepted system of classification."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                specimens, along with their descriptions on herbarium sheets, become a store house or repository for\n                future use (Figure 1.2)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The herbarium sheets also carry a label\n            providing information about date and place of collection, English, local and botanical names, family,\n            collector’s name, etc. Herbaria also serve as quick referral systems in taxonomical studies."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10501,
+        10529
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image8.png",
+              "alt": "1032.png",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 1.2 Herbarium showing stored specimens"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4.2 Botanical Gardens",
+      "id": "h.2xcytpi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These specialised gardens have collections of living plants for reference. Plant\n            species in these gardens are grown for identification purposes and each plant is labelled indicating its\n            botanical/scientific name and its family. The famous botanical gardens are at Kew (England), Indian\n            Botanical Garden, Howrah (India) and at National Botanical Research Institute, Lucknow (India)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4.3 Museum",
+      "id": "h.1ci93xb"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biological museums are generally set up in educational institutes such as schools and\n            colleges"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Museums\n                have collections of preserved plant and animal specimens for study and reference."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Specimens are preserved in the containers or jars in preservative solutions. Plant and\n            animal specimens may also be preserved as dry specimens. Insects are preserved in insect boxes after\n            collecting, killing and pinning. Larger animals like birds and mammals are usually stuffed and preserved.\n            Museums often have collections of skeletons of animals too."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10505
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4.4 Zoological Parks",
+      "id": "h.3whwml4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are the places where wild animals are kept in protected environments under\n            human care and which enable us to learn about their food habits and behaviour. All animals in a zoo are\n            provided, as far as possible, the conditions similar to their natural habitats. Children love visiting these\n            parks, commonly called Zoos (Figure 1.3)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image7.jpg",
+              "alt": "Fig_1-4.tif",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image2.jpg",
+              "alt": "Fig_1-3.tif",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image1.jpg",
+              "alt": "Fig_1-1.tif",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/The_Living_World-image3.jpg",
+              "alt": "Fig_1-2.tif",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 1.3 Pictures showing animals in different zoological parks of India"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "1.4.5 Key",
+      "id": "h.2bn6wsx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Key\n                is another taxonomical aid used for identification of plants and animals based on the similarities and\n                dissimilarities. The keys are based on the contrasting characters generally in a pair called\n                couplet."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It represents the choice made\n            between two opposite options. This results in acceptance of only one and rejection of the other. Each\n            statement in the key is called a lead. Separate taxonomic keys are required for each taxonomic category such\n            as family, genus and species for identification purposes. Keys are generally analytical in nature."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10529,
+        10534
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Flora,\n                manuals, monographs and catalogues are some other means of recording descriptions. They also help in\n                correct identification."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Flora contains the actual account of habitat\n            and distribution of plants of a given area. These provide the index to the plant species found in a\n            particular area. Manuals are useful in providing information for identification of names of species found in\n            an area. Monographs contain information on any one taxon."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10529
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.qsh70q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The living world is rich in variety. Millions of plants and animals have been\n            identified and described but a large number still remains unknown. The very range of organisms in terms of\n            size, colour, habitat, physiological and morphological features make us seek the defining characteristics of\n            living organisms. In order to facilitate the study of kinds and diversity of organisms, biologists have\n            evolved certain rules and principles for identification, nomenclature and classification of organisms. The\n            branch of knowledge dealing with these aspects is referred to as taxonomy. The taxonomic studies of various\n            species of plants and animals are useful in agriculture, forestry, industry and in general for knowing our\n            bio-resources and their diversity. The basics of taxonomy like identification, naming and classification of\n            organisms are universally evolved under international codes. Based on the resemblances and distinct\n            differences, each organism is identified and assigned a correct scientific/biological name comprising two\n            words as per the binomial system of nomenclature. An organism represents/occupies a place or position in the\n            system of classification. There are many categories/ranks and are generally referred to as taxonomic\n            categories or taxa. All the categories constitute a taxonomic hierarchy."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Taxonomists\n                have developed a variety of taxonomic aids to facilitate identification, naming and classification of\n                organisms."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These studies are carried out from the actual specimens\n            which are collected from the field and preserved as referrals in the form of herbaria, museums and in\n            botanical gardens and zoological parks. It requires special techniques for collection and preservation of\n            specimens in herbaria and museums. Live specimens, on the other hand, of plants and animals, are found in\n            botanical gardens or in zoological parks. Taxonomists also prepare and disseminate information through\n            manuals and monographs for further taxonomic studies. Taxonomic keys are tools that help in identification\n            based on characteristics."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        10529
+      ],
+      "pyq_count": 1
+    }
+  ]
+}

@@ -1,0 +1,3164 @@
+{
+  "title": "Cell: The Unit Of Life",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "L"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Unit 3"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Cell: Structure and Functions",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 8",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cell: The Unit of Life"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 9",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biomolecules"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 10",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cell Cycle and Cell Division"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biology is the study of living organisms. The detailed description of their form and\r\n            appearance only brought out their diversity. It is the cell theory that emphasised the unity underlying this\r\n            diversity of forms, i.e., the cellular organisation of all life forms. A description of cell structure and\r\n            cell growth by division is given in the chapters comprising this unit. Cell theory also created a sense of\r\n            mystery around living phenomena, i.e., physiological and behavioural processes. This mystery was the\r\n            requirement of integrity of cellular organisation for living phenomena to be demonstrated or observed. In\r\n            studying and understanding the physiological and behavioural processes, one can take a physico-chemical\r\n            approach and use cell-free systems to investigate. This approach enables us to describe the various\r\n            processes in molecular terms. The approach is established by analysis of living tissues for elements and\r\n            compounds. It will tell us what types of organic compounds are present in living organisms. In the next\r\n            stage, one can ask the question: What are these compounds doing inside a cell? And, in what way they carry\r\n            out gross physiological processes like digestion, excretion, memory, defense, recognition, etc. In other\r\n            words we answer the question, what is the molecular basis of all physiological processes? It can also\r\n            explain the abnormal processes that occur during any diseased condition. This physico-chemical approach to\r\n            study and understand living organisms is called ‘Reductionist Biology’. The concepts and\r\n            techniques of physics and chemistry are applied to understand biology. In Chapter 9 of this unit, a brief\r\n            description of biomolecules is provided."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "G.N. Ramachandran"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1922 – 2001)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "G.N. Ramachandran, an outstanding figure in the field of protein structure, was the\r\n            founder of the ‘Madras school’ of conformational analysis of biopolymers. His discovery of the\r\n            triple helical structure of collagen published in Nature in 1954 and his analysis of the allowed\r\n            conformations of proteins through the use of the ‘Ramachandran plot’ rank among the most\r\n            outstanding contributions in structural biology. He was born on October 8, 1922, in a small town, not far\r\n            from Cochin on the southwestern coast of India. His father was a professor of mathematics at a local college\r\n            and thus had considerable influence in shaping Ramachandran’s interest in mathematics. After\r\n            completing his school years, Ramachandran graduated in 1942 as the top-ranking student in the B.Sc. (Honors)\r\n            Physics course of the University of Madras. He received a Ph.D. from Cambridge University in 1949. While at\r\n            Cambridge, Ramachandran met Linus Pauling and was deeply influenced by his publications on models of the\r\n            α-helix and β-sheet structures that directed his attention to solving the structure of collagen.\r\n            He passed away at the age of 78, on April 7, 2001."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Chapter 8",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Cell: The Unit of Life",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.1 What is a Cell?",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.2 Cell Theory",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.3 An Overview of Cell",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4 Prokaryotic Cells",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5 Eukaryotic Cells",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When you look around, you see both living and non-living things. You must have\r\n            wondered and asked yourself – ‘what is it that makes an organism living, or what is it that an\r\n            inanimate thing does not have which a living thing has’ ? The answer to this is the presence of the\r\n            basic unit of life – the cell in all living organisms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All organisms are composed of cells. Some are composed of a single cell and are\r\n            called unicellular organisms while others, like us, composed of many cells, are called multicellular\r\n            organisms."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.1 What is a Cell?",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Unicellular organisms are capable of (i) independent existence and (ii) performing\r\n            the essential functions of life. Anything less than a complete structure of a cell does not ensure\r\n            independent living. Hence, cell is the fundamental structural and functional unit of all living\r\n            organisms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Anton Von Leeuwenhoek first saw and described a live cell. Robert Brown later\r\n            discovered the nucleus. The invention of the microscope and its improvement leading to the electron\r\n            microscope revealed all the structural details of the cell."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.2 Cell Theory",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In 1838, Matthias Schleiden, a German botanist, examined a large number of plants and\r\n            observed that all plants are composed of different kinds of cells which form the tissues of the plant. At\r\n            about the same time, Theodore Schwann (1839), a British Zoologist, studied different types of animal cells\r\n            and reported that cells had a thin outer layer which is today known as the ‘plasma membrane’. He\r\n            also concluded, based on his studies on plant tissues, that the presence of cell wall is a unique character\r\n            of the plant cells. On the basis of this, Schwann proposed the hypothesis that the bodies of animals and\r\n            plants are composed of cells and products of cells."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Schleiden\r\n                and Schwann together formulated the cell theory."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This theory however,\r\n            did not explain as to how new cells were formed."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Rudolf\r\n                Virchow (1855) first explained that cells divided and new cells are formed from pre-existing cells\r\n                (Omnis cellula-e cellula)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "He modified the hypothesis of Schleiden and\r\n            Schwann to give the cell theory a final shape. Cell theory as understood today is:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80933,
+        81067
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) all living organisms are composed of cells and products of cells."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) all cells arise from pre-existing cells."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.3 An Overview of Cell",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have earlier observed cells in an onion peel and/or human cheek cells under the\r\n            microscope. Let us recollect their structure. The onion cell which is a typical plant cell, has a distinct\r\n            cell wall as its outer boundary and just within it is the cell membrane. The cells of the human cheek have\r\n            an outer membrane as the delimiting structure of the cell. Inside each cell is a dense membrane bound\r\n            structure called nucleus."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                nucleus contains the chromosomes which in turn contain the genetic material, DNA. Cells that have\r\n                membrane bound nuclei are called eukaryotic whereas cells that lack a membrane bound nucleus are\r\n                prokaryotic"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In both prokaryotic and\r\n            eukaryotic cells, a semi-fluid matrix called cytoplasm occupies the volume of the cell."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cytoplasm is the main arena of cellular activities in both the plant and animal cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Various chemical reactions occur in it to keep the cell in the ‘living\r\n            state’."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80808,
+        80833
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Besides\r\n                the nucleus, the eukaryotic cells have other membrane bound distinct structures called organelles like\r\n                the endoplasmic reticulum (ER), the golgi complex, lysosomes, mitochondria, microbodies and\r\n                vacuoles."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The prokaryotic cells lack such\r\n            membrane bound organelles"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        81066
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ribosomes\r\n                are non-membrane bound organelles found in all cells – both eukaryotic as well as\r\n                prokaryotic."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Within the cell, ribosomes are found not only in the\r\n            cytoplasm but also within the two organelles – chloroplasts (in plants) and mitochondria and on rough\r\n            ER."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80810
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Animal cells contain another non-membrane bound organelle called centrosome which\r\n            helps in cell division."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cells differ greatly in size, shape and activities (Figure 8.1)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                example, Mycoplasmas, the smallest cells, are only 0.3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "µ"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "m\r\n                in length while bacteria could be 3 to 5"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "µ"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "m."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The largest isolated single cell is the egg of an ostrich. Among multicellular organisms,\r\n            human red blood cells are about 7.0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m in diameter.\r\n            Nerve cells are some of the longest cells. Cells also vary greatly in their shape. They may be disc-like,\r\n            polygonal, columnar, cuboid, thread like, or even irregular. The shape of the cell may vary with the\r\n            function they perform."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        20803,
+        21010
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.1 Diagram showing different shapes of the cells"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4 Prokaryotic Cells",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The prokaryotic cells are represented by bacteria, blue-green algae, mycoplasma and\r\n            PPLO (Pleuro Pneumonia Like Organisms). They are generally smaller and multiply more rapidly than the\r\n            eukaryotic cells (Figure 8.2). They may vary greatly in shape and size. The four basic shapes of bacteria\r\n            are bacillus (rod like), coccus (spherical), vibrio (comma shaped) and spirillum (spiral)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The organisation of the prokaryotic cell is fundamentally similar even though\r\n            prokaryotes exhibit a wide variety of shapes and functions"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "All\r\n                prokaryotes have a cell wall surrounding the cell membrane except in mycoplasma."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fluid matrix filling the cell is the cytoplasm. There is no well-defined nucleus."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                genetic material is basically naked, not enveloped by a nuclear membrane."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                addition to the genomic DNA (the single chromosome/circular DNA), many bacteria have small circular DNA\r\n                outside the genomic DNA."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These smaller DNA are called plasmids. The\r\n            plasmid DNA confers certain unique phenotypic characters to such bacteria. One such character is resistance\r\n            to antibiotics. In higher classes you will learn that this plasmid DNA is used to monitor bacterial\r\n            transformation with foreign DNA. Nuclear membrane is found in eukaryotes. No organelles, like the ones in\r\n            eukaryotes, are found in prokaryotic cells except for ribosomes. Prokaryotes have something unique in the\r\n            form of inclusions. A specialised differentiated form of cell membrane called mesosome is the characteristic\r\n            of prokaryotes. They are essentially infoldings of cell membrane."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        20803,
+        21010,
+        80168,
+        80808
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                8.2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Diagram\r\n                showing comparison of eukaryotic cell with other organisms"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80169
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.1 Cell Envelope and its Modifications",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Most prokaryotic cells, particularly the bacterial cells, have a chemically complex\r\n            cell envelope."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cell envelope consists of a tightly bound three layered structure i.e., the outermost glycocalyx\r\n                followed by the cell wall and then the plasma membrane."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Although each\r\n            layer of the envelope performs distinct function, they act together as a single protective unit."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Bacteria\r\n                can be classified into two groups on the basis of the differences in the cell envelopes and the manner\r\n                in which they respond to the staining procedure developed by Gram viz., those that take up the gram\r\n                stain are"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gram\r\n                positive"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                the others that do not are called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gram\r\n                negative"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "bacteria."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80170,
+        80821
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Glycocalyx\r\n                differs in composition and thickness among different bacteria. It could be a loose sheath called the\r\n                slime layer in some, while in others it may be thick and tough, called the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "capsule"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cell\r\n            wall"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "determines the shape of the cell and provides a strong structural support\r\n            to prevent the bacterium from bursting or collapsing."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80821
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The plasma membrane is selectively permeable in nature and interacts with the outside\r\n            world. This membrane is similar structurally to that of the eukaryotes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                special membranous structure is the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "mesosome"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "which\r\n                is formed by the extensions of plasma membrane into the cell. These extensions are in the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "form\r\n                of vesicles, tubules and lamellae"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ".\r\n                They help in cell wall formation, DNA replication and distribution to daughter cells. They also help in\r\n                respiration, secretion processes, to increase the surface area of the plasma membrane and enzymatic\r\n                content."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In some prokaryotes like cyanobacteria, there are other\r\n            membranous extensions into the cytoplasm called chromatophores which contain pigments."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        81064,
+        15000438
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Bacterial cells may be motile or non-motile. If motile, they have thin filamentous\r\n            extensions from their cell wall called flagella. Bacteria show a range in the number and arrangement of\r\n            flagella. Bacterial flagellum is composed of three parts – filament, hook and basal body. The filament\r\n            is the longest portion and extends from the cell surface to the outside."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Besides\r\n                flagella, Pili and Fimbriae are also surface structures of the bacteria but do not play a role in\r\n                motility."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The pili are elongated tubular structures made of a special\r\n            protein. The fimbriae are small bristle like fibres sprouting out of the cell. In some bacteria, they are\r\n            known to help attach the bacteria to rocks in streams and also to the host tissues."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80803
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.2 Ribosomes and Inclusion Bodies",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In prokaryotes, ribosomes are associated with the plasma membrane of the cell. They\r\n            are about 15 nm by 20 nm in size and are made of two subunits - 50S and 30S units which when present\r\n            together form 70S prokaryotic ribosomes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ribosomes\r\n                are the site of protein synthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Several\r\n                ribosomes may attach to a single mRNA and form a chain called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "polyribosomes\r\n                or polysome"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ribosomes of a polysome translate the mRNA into proteins."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80829,
+        80907,
+        80911,
+        80914,
+        80941,
+        80954
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Inclusion\r\n                bodies"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Reserve material in prokaryotic cells are stored in the cytoplasm in the form of inclusion\r\n                bodies."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                are not bound by any membrane system and lie free in the cytoplasm, e.g., phosphate granules,\r\n                cyanophycean granules and glycogen granules."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gas\r\n                vacuoles are found in blue green and purple and green photosynthetic bacteria."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80171,
+        80172,
+        80173
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5 Eukaryotic Cells",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The eukaryotes include all the protists, plants, animals and fungi. In eukaryotic\r\n            cells there is an extensive compartmentalisation of cytoplasm through the presence of membrane bound\r\n            organelles. Eukaryotic cells possess an organised nucleus with a nuclear envelope. In addition, eukaryotic\r\n            cells have a variety of complex locomotory and cytoskeletal structures. Their genetic material is organised\r\n            into chromosomes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All eukaryotic cells are not identical."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Plant\r\n                and animal cells are different as the former possess cell walls, plastids and a large central vacuole\r\n                which are absent in animal cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "On the other hand, animal cells have\r\n            centrioles which are absent in almost all plant cells (Figure 8.3)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80802
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.3 Diagram showing : (a) Plant cell (b) Animal cell"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now look at individual cell organelles to understand their structure and\r\n            functions."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.1 Cell Membrane",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The detailed structure of the membrane was studied only after the advent of the\r\n            electron microscope in the 1950s. Meanwhile, chemical studies on the cell membrane, especially in human red\r\n            blood cells (RBCs), enabled the scientists to deduce the possible structure of plasma membrane."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                studies showed that the cell membrane is mainly composed of lipids and proteins."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                major lipids are phospholipids that are arranged in a bilayer."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Also,\r\n                the lipids are arranged within the membrane with the polar head towards the outer sides and the\r\n                hydrophobic tails towards the inner part."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This ensures that the\r\n            nonpolar tail of saturated hydrocarbons is protected from the aqueous environment (Figure 8.4)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                addition to phospholipids membrane also contains cholesterol."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80832,
+        80844,
+        80902,
+        80955
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Later,\r\n                biochemical investigation clearly revealed that the cell membranes also possess protein and\r\n                carbohydrate"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The ratio of protein and lipid varies considerably in\r\n            different cell types. In human beings, the membrane of the erythrocyte has approximately 52 per cent protein\r\n            and 40 per cent lipids."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80955,
+        80960
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Depending\r\n                on the ease of extraction, membrane proteins can be classified as integral and peripheral. Peripheral\r\n                proteins lie on the surface of membrane while the integral proteins are partially or totally buried in\r\n                the membrane."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80832,
+        80958
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "An\r\n                improved model of the structure of cell membrane was proposed by Singer and Nicolson (1972) widely\r\n                accepted as fluid mosaic model (Figure 8.4)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "According\r\n                to this, the quasi-fluid nature of lipid enables lateral movement of proteins within the overall\r\n                bilayer."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This ability to move within the membrane is measured as its\r\n            fluidity."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80824,
+        80843,
+        80852,
+        80947,
+        80950
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fluid nature of the membrane is also important from the point of view of\r\n            functions like cell growth, formation of intercellular junctions, secretion, endocytosis, cell division\r\n            etc."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "One of the most important functions of the plasma membrane is the transport of the\r\n            molecules across it. The membrane is selectively permeable to some molecules present on either side of it.\r\n            Many molecules can move briefly across the membrane without any requirement of energy and this is called the\r\n            passive transport. Neutral solutes may move across the membrane by the process of simple diffusion along the\r\n            concentration gradient, i.e., from higher concentration to the lower. Water may also move across this\r\n            membrane from higher to lower concentration. Movement of water by diffusion is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "osmosis"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\r\n                the polar molecules cannot pass through the nonpolar lipid bilayer, they require a carrier protein of\r\n                the membrane to facilitate their transport across the membrane."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A few\r\n            ions or molecules are transported across the membrane against their concentration gradient, i.e., from lower\r\n            to the higher concentration. Such a transport is an energy dependent process, in which ATP is utilised and\r\n            is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "active transport"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", e.g., Na+/K+ Pump."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80174
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.2 Cell Wall",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As you may recall, a non-living rigid structure called the cell wall forms an outer\r\n            covering for the plasma membrane of fungi and plants. Cell wall not only gives shape to the cell and\r\n            protects the cell from mechanical damage and infection, it also helps in cell-to-cell interaction and\r\n            provides barrier to undesirable macromolecules."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Algae\r\n                have cell wall, made of cellulose, galactans, mannans and minerals like calcium carbonate, while in\r\n                other plants it consists of cellulose, hemicellulose, pectins and proteins."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The cell wall of a young plant cell, the primary wall is capable of growth, which gradually\r\n            diminishes as the cell matures and the secondary wall is formed on the inner (towards membrane) side of the\r\n            cell."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80175
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                middle lamella is a layer mainly of calcium pectate which holds or glues the different neighbouring\r\n                cells together."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cell wall and middle lamellae may be traversed by plasmodesmata which connect the cytoplasm of\r\n                neighbouring cells."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80835,
+        80837,
+        80839,
+        80903
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.3 Endomembrane System",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "While\r\n                each of the membranous organelles is distinct in terms of its structure and function, many of these are\r\n                considered together as an endomembrane system because their functions are coordinated."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                endomembrane system include endoplasmic reticulum (ER), golgi complex, lysosomes and\r\n                vacuoles."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Since\r\n                the functions of the mitochondria, chloroplast and peroxisomes are not coordinated with the above\r\n                components, these are not considered as part of the endomembrane system."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80831,
+        80961,
+        81066
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.5 Endoplasmic reticulum"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.3.1 The Endoplasmic Reticulum (ER)",
+      "id": "h.4i7ojhp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Electron microscopic studies of eukaryotic cells reveal the presence of a network or\r\n            reticulum of tiny tubular structures scattered in the cytoplasm that is called the endoplasmic reticulum\r\n            (ER) (Figure 8.5). Hence, ER divides the intracellular space into two distinct compartments, i.e., luminal\r\n            (inside ER) and extra luminal (cytoplasm) compartments."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ER often shows ribosomes attached to their outer surface. The endoplasmic\r\n            reticulun bearing ribosomes on their surface is called rough endoplasmic reticulum (RER). In the absence of\r\n            ribosomes they appear smooth and are called smooth endoplasmic reticulum (SER)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "RER\r\n                is frequently observed in the cells actively involved in protein synthesis and secretion. They are\r\n                extensive and continuous with the outer membrane of the nucleus."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80855,
+        81062
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                smooth endoplasmic reticulum is the major site for synthesis of lipid."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In animal cells lipid-like steroidal hormones are synthesised in SER."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80855,
+        81062
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.3.2 Golgi apparatus",
+      "id": "h.2xcytpi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Camillo\r\n                Golgi (1898) first observed densely stained reticular structures near the nucleus."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These were later named Golgi bodies after him."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                consist of many flat, disc-shaped sacs or cisternae of 0.5"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "µ"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "m\r\n                to 1.0"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "µ"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "m\r\n                diameter (Figure 8.6)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are stacked parallel to each\r\n            other."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Varied\r\n                number of cisternae are present in a Golgi complex."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                Golgi cisternae are concentrically arranged near the nucleus with distinct convex cis or the forming\r\n                face and concave trans or the maturing face."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80922,
+        80959,
+        15000422,
+        15000475,
+        15000498
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                golgi apparatus principally performs the function of packaging materials, to be delivered either to the\r\n                intra-cellular targets or secreted outside the cell."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Materials\r\n                to be packaged in the form of vesicles from the ER fuse with the cis face of the golgi apparatus and\r\n                move towards the maturing face."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This explains, why the golgi apparatus\r\n            remains in close association with the endoplasmic reticulum."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                number of proteins synthesised by ribosomes on the endoplasmic reticulum are modified in the cisternae\r\n                of the golgi apparatus before they are released from its trans face."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Golgi\r\n                apparatus is the important site of formation of glycoproteins and glycolipids."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80176,
+        80177,
+        80819,
+        80830,
+        80959,
+        81063
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.3.3 Lysosomes",
+      "id": "h.1ci93xb"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                are membrane bound vesicular structures formed by the process of packaging in the golgi apparatus. The\r\n                isolated lysosomal vesicles have been found to be very rich in almost all types of hydrolytic enzymes\r\n                (hydrolases – lipases, proteases, carbohydrases) optimally active at the acidic pH.These enzymes\r\n                are capable of digesting carbohydrates, proteins, lipids and nucleic acids."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80804,
+        80807,
+        80906,
+        80915,
+        80919,
+        80924,
+        80928
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.3.4 Vacuoles",
+      "id": "h.3whwml4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                vacuole is the membrane-bound space found in the cytoplasm."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\r\n                contains water, sap, excretory product and other materials not useful for the cell."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The vacuole is bound by a single membrane called tonoplast. In plant cells the vacuoles can\r\n            occupy up to 90 per cent of the volume of the cell."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80841
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                plants, the tonoplast facilitates the transport of a number of ions and other materials against\r\n                concentration gradients into the vacuole, hence their concentration is significantly higher in the\r\n                vacuole than in the cytoplasm."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80818
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                Amoeba the contractile vacuole is important for osmoregulation and excretion."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In many cells, as in protists, food vacuoles are formed by engulfing the food\r\n            particles."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80818
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.4 Mitochondria",
+      "id": "h.2bn6wsx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mitochondria (sing.: mitochondrion), unless specifically stained, are not easily\r\n            visible under the microscope. The number of mitochondria per cell is variable depending on the physiological\r\n            activity of the cells. In terms of shape and size also, considerable degree of variability is observed.\r\n            Typically it is sausage-shaped or cylindrical having a diameter of 0.2-1.0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m (average 0.5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m) and length 1.0-4.1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Each\r\n                mitochondrion is a double membrane-bound structure with the outer membrane and the inner membrane\r\n                dividing its lumen distinctly into two aqueous compartments, i.e., the outer compartment and the inner\r\n                compartment."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                inner compartment is filled with a dense homogeneous substance called the matrix."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                outer membrane forms the continuous limiting boundary of the organelle. The inner membrane forms a\r\n                number of infoldings called the cristae (sing.: crista) towards the matrix (Figure 8.7)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cristae increase the surface area. The two membranes have their own specific enzymes associated with the\r\n                mitochondrial function."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Mitochondria\r\n                are the sites of aerobic respiration. They produce cellular energy in the form of ATP, hence they are\r\n                called ‘power houses’ of the cell. The matrix also possesses single circular DNA molecule, a\r\n                few RNA molecules, ribosomes (70S) and the components required for the synthesis of proteins.The\r\n                mitochondria divide by fission."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80801,
+        80805,
+        80807,
+        80834,
+        80845,
+        80847,
+        80923,
+        80959
+      ],
+      "pyq_count": 8
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.7 Structure of mitochondrion (Longitudinal section)"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.5 Plastids",
+      "id": "h.qsh70q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plastids are found in all plant cells and in euglenoides. These are easily observed\r\n            under the microscope as they are large. They bear some specific pigments, thus imparting specific colours to\r\n            the plants."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Based\r\n                on the type of pigments plastids can be classified into"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "chloroplasts"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "chromoplasts"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                leucoplasts."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80178
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                chloroplasts contain"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "chlorophyll"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                carotenoid pigments which are responsible for trapping light energy essential for\r\n                photosynthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                the chromoplasts fat soluble"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "carotenoid"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "pigments\r\n                like carotene, xanthophylls and others are present. This gives the part of the plant a yellow, orange or\r\n                red colour."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                leucoplasts are the colourless plastids of varied shapes and sizes with stored nutrients:"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Amyloplasts"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "store\r\n                carbohydrates (starch), e.g., potato;"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "elaioplasts"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "store\r\n                oils and fats whereas the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "aleuroplasts"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "store\r\n                proteins."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80178,
+        80822
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Majority of the chloroplasts of the green plants are found in the mesophyll cells of\r\n            the leaves. These are lens-shaped, oval, spherical, discoid or even ribbon-like organelles having variable\r\n            length (5-10µm) and width (2-4µm). Their number varies from 1 per cell of the Chlamydomonas, a\r\n            green alga to 20-40 per cell in the mesophyll."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.8 Sectional view of chloroplast"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Like\r\n                mitochondria, the chloroplasts are also double membrane bound"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Of the two, the inner chloroplast membrane is relatively less permeable."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                space limited by the inner membrane of the chloroplast is called the stroma"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                number of organised flattened membranous sacs called the thylakoids, are present in the stroma (Figure\r\n                8.8)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Thylakoids\r\n                are arranged in stacks like the piles of coins called grana (singular: granum) or the intergranal\r\n                thylakoids."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In addition, there are flat membranous tubules called the\r\n            stroma lamellae connecting the thylakoids of the different grana. The membrane of the thylakoids enclose a\r\n            space called a lumen."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                stroma of the chloroplast contains enzymes required for the synthesis of carbohydrates and proteins. It\r\n                also contains small, double-stranded circular DNA molecules and ribosomes. Chlorophyll pigments are\r\n                present in the thylakoids. The ribosomes of the chloroplasts are smaller (70S) than the cytoplasmic\r\n                ribosomes (80S)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80805,
+        80807,
+        80813,
+        80827,
+        80845,
+        80850,
+        80857
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.6 Ribosomes",
+      "id": "h.3as4poj"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ribosomes\r\n                are the granular structures first observed under the electron microscope as dense particles by George\r\n                Palade (1953)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are composed of ribonucleic acid (RNA) and proteins and are not surrounded by any membrane."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80811,
+        80825,
+        80946
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ribosome"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                eukaryotic ribosomes are 80S while the prokaryotic ribosomes are 70S."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each ribosome has two subunits, larger and smaller subunits (Fig 8.9). The two subunits of\r\n            80S ribosomes are 60S and 40S while that of 70S ribosomes are 50S and 30S. Here ‘S’\r\n            (Svedberg’s Unit) stands for the sedimentation coefficient; it is indirectly a measure of density and\r\n            size. Both 70S and 80S ribosomes are composed of two subunits."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80168
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.7 Cytoskeleton",
+      "id": "h.1pxezwc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "An\r\n                elaborate network of filamentous proteinaceous structures consisting of microtubules, microfilaments and\r\n                intermediate filaments present in the cytoplasm is collectively referred to as the\r\n                cytoskeleton."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cytoskeleton in a cell are involved in many functions such as mechanical support, motility, maintenance\r\n                of the shape of the cell."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80836,
+        80838,
+        81065
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Section of cilia/flagella showing\r\n            different parts : (a) Electron micrograph (b) Diagrammatic representation of internal structure"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.8 Cilia and Flagella",
+      "id": "h.49x2ik5"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cilia (sing.: cilium) and flagella (sing.: flagellum) are hair-like outgrowths of the\r\n            cell membrane. Cilia are small structures which work like oars, causing the movement of either the cell or\r\n            the surrounding fluid. Flagella are comparatively longer and responsible for cell movement."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                prokaryotic bacteria also possess flagella but these are structurally different from that of the\r\n                eukaryotic flagella."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80179
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                electron microscopic study of a cilium or the flagellum show that they are covered with plasma\r\n                membrane."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Their\r\n                core called the axoneme, possesses a number of microtubules running parallel to the long\r\n                axis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                axoneme usually has nine doublets of radially arranged peripheral microtubules, and a pair of centrally\r\n                located microtubules. Such an arrangement of axonemal microtubules is referred to as the 9+2 array\r\n                (Figure 8.10)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                central tubules are connected by bridges and is also enclosed by a central sheath, which is connected to\r\n                one of the tubules of each peripheral doublets by a radial spoke. Thus, there are nine radial\r\n                spokes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The peripheral doublets are also\r\n            interconnected by linkers."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Both\r\n                the cilium and flagellum emerge from centriole-like structure called the basal bodies."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80806,
+        80848,
+        80904
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.9 Centrosome and Centrioles",
+      "id": "h.2p2csry"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Centrosome is an organelle usually containing two cylindrical structures called\r\n            centrioles. They are surrounded by amorphous pericentriolar materials. Both the centrioles in a centrosome\r\n            lie perpendicular to each other in which each has an organisation like the cartwheel."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are made up of nine evenly spaced peripheral fibrils of tubulin protein."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each of the peripheral fibril is a triplet.The adjacent triplets are also linked."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                central part of the proximal region of the centriole is also proteinaceous and called the hub, which is\r\n                connected with tubules of the peripheral triplets by radial spokes made of protein. The centrioles form\r\n                the basal body of cilia or flagella, and spindle fibres that give rise to spindle apparatus during cell\r\n                division in animal cells."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80180,
+        80806,
+        80853,
+        80904
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.10 Nucleus",
+      "id": "h.147n2zr"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nucleus as a cell organelle was first described by Robert Brown as early as 1831.\r\n            Later the material of the nucleus stained by the basic dyes was given the name chromatin by Flemming."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The interphase nucleus (nucleus of a cell when it is not dividing) has highly\r\n            extended and elaborate nucleoprotein fibres called chromatin, nuclear matrix and one or more spherical\r\n            bodies called nucleoli (sing.: nucleolus) (Figure 8.11)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Structure of nucleus"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Electron\r\n                microscopy has revealed that the nuclear envelope, which consists of two parallel membranes with a space\r\n                between (10 to 50 nm) called the perinuclear space, forms a barrier between the materials present inside\r\n                the nucleus and that of the cytoplasm."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The outer membrane usually remains\r\n            continuous with the endoplasmic reticulum and also bears ribosomes on it. At a number of places the nuclear\r\n            envelope is interrupted by minute pores, which are formed by the fusion of its two membranes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                nuclear pores are the passages through which movement of RNA and protein molecules takes place in both\r\n                directions between the nucleus and the cytoplasm."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Normally, there is\r\n            only one nucleus per cell, variations in the number of nuclei are also frequently observed. Can you\r\n            recollect names of organisms that have more than one nucleus per cell?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                mature cells even lack nucleus, e.g., erythrocytes of many mammals and sieve tube cells of vascular\r\n                plants."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Would you consider these cells as ‘living’?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        60838,
+        80807
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The nuclear matrix or the nucleoplasm contains nucleolus and chromatin. The nucleoli\r\n            are spherical structures present in the nucleoplasm."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                content of nucleolus is continuous with the rest of the nucleoplasm as it is not a membrane bound\r\n                structure"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\r\n                is a site for active ribosomal RNA synthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Larger and more numerous\r\n            nucleoli are present in cells actively carrying out protein synthesis."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80901,
+        80938
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "You\r\n                may recall that the interphase nucleus has a loose and indistinct network of nucleoprotein fibres called\r\n                chromatin."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "But during different stages of cell division"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", cells show structured"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "chromosomes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "in\r\n            place of the nucleus. Chromatin contains DNA and some basic proteins called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "histones"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", some non-histone proteins and also RNA. A single human cell\r\n            has approximately two metre long thread of DNA distributed among its forty six (twenty three pairs)\r\n            chromosomes. You will study the details of DNA packaging in the form of a chromosome in class XII."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80959
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Every\r\n                chromosome (visible only in dividing cells) essentially has a primary constriction or the centromere on\r\n                the sides of which disc shaped structures called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "kinetochores"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "are\r\n                present (Figure 8.12)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Centromere"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "holds\r\n            two chromatids of a chromosome. Based on the position of the centromere, the chromosomes can be classified\r\n            into four types (Figure 8.13)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80959
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.12"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chromosome with kinetochore"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                metacentric chromosome has middle centromere forming two equal arms of the chromosome. The\r\n                sub-"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "metacentric"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "chromosome\r\n                has centromere slightly away from the middle of the chromosome resulting into one shorter arm and one\r\n                longer arm. In case of acrocentric chromosome the centromere is situated close to its end forming one\r\n                extremely short and one very long arm, whereas the telocentric chromosome has a terminal\r\n                centromere."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        80181,
+        80182,
+        81060,
+        15000414
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Cell_The_Unit_Of_Life-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.13"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Types of chromosomes based on the\r\n            position of centromere"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sometimes a few chromosomes have non-staining secondary constrictions at a constant\r\n            location. This gives the appearance of a small fragment called the satellite."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.5.11 Microbodies",
+      "id": "h.3o7alnk"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Many\r\n                membrane bound minute vesicles called microbodies that contain various enzymes, are present in both\r\n                plant and animal cells."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        60838
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.23ckvvd"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All organisms are made of cells or aggregates of cells. Cells vary in their shape,\r\n            size and activities/functions. Based on the presence or absence of a membrane bound nucleus and other\r\n            organelles, cells and hence organisms can be named as eukaryotic or prokaryotic."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A typical eukaryotic cell consists of a cell membrane, nucleus and cytoplasm. Plant\r\n            cells have a cell wall outside the cell membrane. The plasma membrane is selectively permeable and\r\n            facilitates transport of several molecules. The endomembrane system includes ER, golgi complex, lysosomes\r\n            and vacuoles. All the cell organelles perform different but specific functions. Centrosome and centriole\r\n            form the basal body of cilia and flagella that facilitate locomotion. In animal cells, centrioles also form\r\n            spindle apparatus during cell division. Nucleus contains nucleoli and chromatin network. It not only\r\n            controls the activities of organelles but also plays a major role in heredity."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Endoplasmic reticulum contains tubules or cisternae. They are of two types: rough and\r\n            smooth. ER helps in the transport of substances, synthesis of proteins, lipoproteins and glycogen. The golgi\r\n            body is a membranous organelle composed of flattened sacs. The secretions of cells are packed in them and\r\n            transported from the cell. Lysosomes are single membrane structures containing enzymes for digestion of all\r\n            types of macromolecules."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ribosomes are involved in protein synthesis. These occur\r\n            freely in the cytoplasm or are associated with ER."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mitochondria help in\r\n            oxidative phosphorylation and generation of adenosine triphosphate. They are bound by double membrane; the\r\n            outer membrane is smooth and inner one folds into several cristae. Plastids are pigment containing\r\n            organelles found in plant cells only. In plant cells, chloroplasts are responsible for trapping light energy\r\n            essential for photosynthesis. The grana, in the plastid, is the site of light reactions and the stroma of\r\n            dark reactions. The green coloured plastids are chloroplasts, which contain chlorophyll, whereas the other\r\n            coloured plastids are chromoplasts, which may contain pigments like carotene and xanthophyll. The nucleus is\r\n            enclosed by nuclear envelope, a double membrane structure with nuclear pores. The inner membrane encloses\r\n            the nucleoplasm and the chromatin material. Thus, cell is the structural and functional unit of life."
+        }
+      ]
+    }
+  ]
+}

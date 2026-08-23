@@ -1,0 +1,4312 @@
+{
+  "title": "Photosynthesis in Higher Plants",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "L"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Photosynthesis in Higher Plants",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.1 What do we Know?",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.2 Early Experiments",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.3 Where does Photosynthesis take place?",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.4 How many Pigments are involved in Photosynthesis?",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.5 What is Light Reaction?",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.6 The Electron Transport",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.7 Where are the Atp and Nadph Used?",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.8 The C4 Pathway",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.9 Photorespiration",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.10 Factors affecting Photosynthesis",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All animals including human beings depend on plants for their food. Have you ever\r\n            wondered from where plants get their food? Green plants, in fact, have to make or rather synthesise the food\r\n            they need and all other organisms depend on them for their needs. The green plants make or rather synthesise\r\n            the food they need through photosynthesis and are therefore called autotrophs. You have already learnt that\r\n            the autotrophic nutrition is found only in plants and all other organisms that depend on the green plants\r\n            for food are heterotrophs. Green plants carry out ‘photosynthesis’, a physico-chemical process\r\n            by which they use light energy to drive the synthesis of organic compounds. Ultimately, all living forms on\r\n            earth depend on sunlight for energy. The use of energy from sunlight by plants doing photosynthesis is the\r\n            basis of life on earth. Photosynthesis is important due to two reasons: it is the primary source of all food\r\n            on earth. It is also responsible for the release of oxygen into the atmosphere by green plants. Have you\r\n            ever thought what would happen if there were no oxygen to breath? This chapter focusses on the structure of\r\n            the photosynthetic machinery and the various reactions that transform light energy into chemical\r\n            energy."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.1 What do we Know?",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us try to find out what we already know about photosynthesis. Some simple\r\n            experiments you may have done in the earlier classes have shown that chlorophyll (green pigment of the\r\n            leaf), light and CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "are required for\r\n            photosynthesis to occur."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You may have carried out the experiment to look for starch formation in two leaves\r\n            – a variegated leaf or a leaf that was partially covered with black paper, and exposed to light. On\r\n            testing these leaves for the presence of starch it was clear that photosynthesis occurred only in the green\r\n            parts of the leaves in the presence of light."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Priestley’s experiment"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Another experiment you may have carried out where a part of a leaf is enclosed in a\r\n            test tube containing some KOH soaked cotton (which absorbs CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "), while the other half is exposed to air. The setup is then placed in light for some time. On\r\n            testing for the presence of starch later in the two parts of the leaf, you must have found that the exposed\r\n            part of the leaf tested positive for starch while the portion that was in the tube, tested negative. This\r\n            showed that CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "was required for photosynthesis. Can\r\n            you explain how this conclusion could be drawn?"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.2 Early Experiments",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is interesting to learn about those simple experiments that led to a gradual\r\n            development in our understanding of photosynthesis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Joseph Priestley (1733-1804) in 1770 performed a series of experiments that\r\n            revealed the essential role of air in the growth of green plants. Priestley, you may recall, discovered\r\n            oxygen in 1774. Priestley observed that a candle burning in a closed space – a bell jar, soon gets\r\n            extinguished (Figure 13.1 a, b, c, d). Similarly, a mouse would soon suffocate in a closed space. He\r\n            concluded that a burning candle or an animal that breathe the air, both somehow, damage the air. But when he\r\n            placed a mint plant in the same bell jar, he found that the mouse stayed alive and the candle continued to\r\n            burn. Priestley hypothesised as follows: Plants restore to the air whatever breathing animals and burning\r\n            candles remove."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you imagine how Priestley would have conducted the experiment using a candle\r\n            and a plant? Remember, he would need to rekindle the candle to test whether it burns after a few days. How\r\n            many different ways can you think of to light the candle without disturbing the set-up?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Using a similar setup as the one used by Priestley, but by placing it once in the\r\n            dark and once in the sunlight, Jan Ingenhousz (1730-1799) showed that sunlight is essential to the plant\r\n            process that somehow purifies the air fouled by burning candles or breathing animals. Ingenhousz in an\r\n            elegant experiment with an aquatic plant showed that in bright sunlight, small bubbles were formed around\r\n            the green parts while in the dark they did not. Later he identified these bubbles to be of oxygen. Hence he\r\n            showed that it is only the green part of the plants that could release oxygen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It was not until about 1854 that Julius von Sachs provided evidence for production\r\n            of glucose when plants grow. Glucose is usually stored as starch. His later studies showed that the green\r\n            substance in plants (chlorophyll as we know it now) is located in special bodies (later called chloroplasts)\r\n            within plant cells. He found that the green parts in plants is where glucose is made, and that the glucose\r\n            is usually stored as starch."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now consider the interesting experiments done by T.W Engelmann (1843 – 1909).\r\n            Using a prism he split light into its spectral components and then illuminated a green alga, Cladophora,\r\n            placed in a suspension of aerobic bacteria. The bacteria were used to detect the sites of O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "evolution."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "He\r\n                observed that the bacteria accumulated mainly in the region of blue and red light of the split\r\n                spectrum."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A first action spectrum of photosynthesis was thus\r\n            described. It resembles roughly the absorption spectra of chlorophyll a and b (discussed in section\r\n            13.4)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131201
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "By the middle of the nineteenth century the key features of plant photosynthesis were\r\n            known, namely, that plants could use light energy to make carbohydrates from CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and water. The empirical equation representing the total\r\n            process of photosynthesis for oxygen evolving organisms was then understood as:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where [CH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O] represented a\r\n            carbohydrate (e.g., glucose, a six-carbon sugar)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A milestone contribution to the understanding of photosynthesis was that made by a\r\n            microbiologist, Cornelius van Niel (1897-1985), who, based on his studies of purple and green bacteria,\r\n            demonstrated that photosynthesis is essentially a light-dependent reaction in which hydrogen from a suitable\r\n            oxidisable compound reduces carbon dioxide to carbohydrates. This can be expressed by:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In green plants H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O is the hydrogen\r\n            donor and is oxidised to O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Some organisms do not release\r\n            O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "during photosynthesis."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When\r\n            H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "S, instead is the hydrogen donor for purple and green\r\n            sulphur bacteria, the ‘oxidation’ product is sulphur or sulphate depending on the organism and\r\n            not O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, he inferred that\r\n            the O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "evolved by the green plant comes from\r\n            H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O, not from carbon dioxide. This was later proved by\r\n            using radioisotopic techniques. The correct equation, that would represent the overall process of\r\n            photosynthesis is therefore:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "represents glucose. The O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "released\r\n            is from water; this was proved using radio isotope techniques. Note that this is not a single reaction but\r\n            description of a multistep process called photosynthesis. Can you explain why twelve molecules of water as\r\n            substrate are used in the equation given above?"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.3 Where does Photosynthesis take Place?",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You would of course answer: in ‘the green leaf’ or ‘in the\r\n            chloroplasts’, based on what you earlier read in Chapter 8. You are definitely right. Photosynthesis\r\n            does take place in the green leaves of plants but it does so also in other green parts of the plants. Can\r\n            you name some other parts where you think photosynthesis may occur?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You would recollect from previous unit that the mesophyll cells in the leaves,\r\n            have a large number of chloroplasts. Usually the chloroplasts align themselves along the walls of the\r\n            mesophyll cells, such that they get the optimum quantity of the incident light. When do you think the\r\n            chloroplasts will be aligned with their flat surfaces parallel to the walls? When would they be\r\n            perpendicular to the incident light?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Diagrammatic representation of an\r\n            electron micrograph of a section of"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "chloroplast"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have studied the structure of chloroplast in Chapter 8. Within the chloroplast\r\n            there is membranous system consisting of grana, the stroma lamellae, and the matrix stroma (Figure 13.2)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\r\n                is a clear division of labour within the chloroplast. The membrane system is responsible for trapping\r\n                the light energy and also for the synthesis of ATP and NADPH."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                stroma, enzymatic reactions synthesise sugar, which in turn forms starch. The former set of reactions,\r\n                since they are directly light driven are called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "light\r\n                reactions"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(photochemical\r\n                reactions). The latter are not directly light driven but are dependent on the products of light\r\n                reactions (ATP and NADPH). Hence, to distinguish the latter they are called, by convention, as"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "dark\r\n                reactions"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(carbon\r\n                reactions). However, this should not be construed to mean that they occur in darkness or that they are\r\n                not light-dependent."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131202,
+        131212,
+        131215,
+        131228,
+        15000419,
+        15000420
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.4 How many Types of Pigments are Involved in\r\n            Photosynthesis?",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Looking at plants have you ever wondered why and how there are so many shades of\r\n            green in their leaves – even in the same plant? We can look for an answer to this question by trying\r\n            to separate the leaf pigments of any green plant through paper chromatography. A chromatographic separation\r\n            of the leaf pigments shows that the colour that we see in leaves is not due to a single pigment but due to\r\n            four pigments: Chlorophyll a (bright or blue green in the chromatogram), chlorophyll b (yellow green),\r\n            xanthophylls (yellow) and carotenoids (yellow to yellow-orange). Let us now see what roles various pigments\r\n            play in photosynthesis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Pigments are substances that have an ability to absorb light, at specific\r\n            wavelengths. Can you guess which is the most abundant plant pigment in the world? Let us study the graph\r\n            showing the ability of chlorophyll a pigment to absorb lights of different wavelengths (Figure 13.3 a). Of\r\n            course, you are familiar with the wavelength of the visible spectrum of light as well as the VIBGYOR."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Figure 13.3a can you determine the wavelength (colour of light) at which\r\n            chlorophyll a shows the maximum absorption? Does it show another absorption peak at any other wavelengths\r\n            too? If yes, which one?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.3a Graph showing the absorption spectrum of chlorophyll a, b and the\r\n            carotenoids"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.3b Graph showing action spectrum of photosynthesis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                13.3c Graph showing action spectrum of photosynthesis superimposed on absorption spectrum of chlorophyll\r\n                a"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131207
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now look at Figure 13.3b showing the wavelengths at which maximum photosynthesis\r\n            occurs in a plant. Can you see that"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                wavelengths at which there is maximum absorption by chlorophyll a, i.e., in the blue and the red\r\n                regions, also shows higher rate of photosynthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hence, we can\r\n            conclude that chlorophyll a is the chief pigment associated with photosynthesis. But by looking at Figure\r\n            13.3c can you say that there is a complete one-to-one overlap between the absorption spectrum of chlorophyll\r\n            a and the action spectrum of photosynthesis?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131328
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These graphs, together, show that most of the photosynthesis takes place in the blue\r\n            and red regions of the spectrum; some photosynthesis does take place at the other wavelengths of the visible\r\n            spectrum. Let us see how this happens."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Though\r\n                chlorophyll is the major pigment responsible for trapping light, other thylakoid pigments like\r\n                chlorophyll b, xanthophylls and carotenoids, which are called accessory pigments, also absorb light and\r\n                transfer the energy to chlorophyll a."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Indeed, they not only enable a\r\n            wider range of wavelength of incoming light to be utilised for photosyntesis but also protect chlorophyll a\r\n            from photo-oxidation."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131204
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.5 What is Light Reaction?",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Light\r\n                reactions or the ‘Photochemical’ phase include light absorption, water splitting, oxygen\r\n                release, and the formation of high-energy chemical intermediates, ATP and NADPH."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Several protein complexes are involved in the process. The pigments are organised into two\r\n            discrete photochemical light"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "harvesting complexes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(LHC) within the Photosystem I (PS I) and Photosystem II (PS\r\n            II)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are named in the sequence of their discovery, and not in the\r\n            sequence in which they function during the light reaction. The LHC are made up of hundreds of pigment\r\n            molecules bound to proteins. Each photosystem has all the pigments (except one molecule of chlorophyll a)\r\n            forming a light harvesting system also called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "antennae"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 13.4). These pigments help to make photosynthesis more efficient by absorbing\r\n            different wavelengths of light. The single chlorophyll a molecule forms the reaction centre."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The reaction centre is different in both the photosystems."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                PS I the reaction centre chlorophyll a has an absorption peak at 700 nm, hence is called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "P700"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "while in PS II it has absorption maxima at 680 nm, and is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "P680"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131203,
+        131207,
+        131330
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The light harvesting complex"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.6 The Electron Transport",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                photosystem II the reaction centre chlorophyll a absorbs 680 nm wavelength of red light causing\r\n                electrons to become excited and jump into an orbit farther from the atomic nucleus."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These electrons are picked up by an electron acceptor which passes them to an electrons\r\n            transport system consisting of cytochromes (Figure 13.5). This movement of electrons is downhill, in terms\r\n            of an oxidation-reduction or redox potential scale. The electrons are not used up as they pass through the\r\n            electron transport chain, but are passed on to the pigments of photosystem PS I. Simultaneously, electrons\r\n            in the reaction centre of PS I are also excited when they receive red light of wavelength 700 nm and are\r\n            transferred to another accepter molecule that has a greater redox potential. These electrons then are moved\r\n            downhill again, this time to a molecule of energy-rich NADP"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131205
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                13.5 Z scheme of light reaction"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131206,
+        131209
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The addition of these electrons reduces NADP"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "to NADPH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". This whole scheme of transfer of electrons, starting from the PS II,\r\n            uphill to the acceptor, down the electron transport chain to PS I, excitation of electrons, transfer to\r\n            another acceptor, and finally down hill to NADP"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "reducing it to NADPH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is called the Z scheme, due to its characterstic shape (Figure\r\n            13.5). This shape is formed when all the carriers are placed in a sequence on a redox potential\r\n            scale."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.6.1 Splitting of Water",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You would then ask, How does PS II supply electrons continuously?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The electrons that were moved from photosystem II must be replaced. This is achieved by\r\n            electrons available due to splitting of water."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The splitting of water is associated\r\n            with the PS II; water is split into 2H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", [O] and\r\n            electrons. This creates oxygen, one of the net products of photosynthesis. The electrons needed to replace\r\n            those removed from photosystem I are provided by photosystem II."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We need to emphasise here that the water splitting complex is associated with the PS\r\n            II, which itself is physically located on the inner side of the membrane of the thylakoid. Then, where are\r\n            the protons and O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "formed likely to be released\r\n            – in the lumen? or on the outer side of the membrane?"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.6.2 Cyclic and Non-cyclic Photo-phosphorylation",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Living organisms have the capability of extracting energy from oxidisable substances\r\n            and store this in the form of bond energy. Special substances like ATP, carry this energy in their chemical\r\n            bonds. The process through which ATP is synthesised by cells (in mitochondria and chloroplasts) is named\r\n            phosphorylation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Photo-phosphorylation is the synthesis of ATP from ADP and\r\n            inorganic phosphate in the presence of light."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When the two photosystems work in\r\n            a series, first PS II and then the PS I, a process called non-cyclic photo-phosphorylation occurs. The two\r\n            photosystems are connected through an electron transport chain, as seen earlier – in the Z scheme."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Both\r\n                ATP and NADPH"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "H"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "are\r\n                synthesised by this kind of electron flow (Figure 13.5)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131213,
+        131214,
+        131334
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image19.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                13.6"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Cyclic\r\n                photophosphorylation"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131340
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When only PS I is functional, the electron is circulated within the photosystem\r\n            and the phosphorylation occurs due to cyclic flow of electrons (Figure 13.6)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A possible location where this could be happening is in the stroma lamellae."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "While\r\n                the membrane or lamellae of the grana have both PS I and PS II the stroma lamellae membranes lack PS II\r\n                as well as NADP reductase enzyme."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The excited electron does not pass\r\n            on to NADP"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "but is cycled back to the PS I complex through\r\n            the electron transport chain (Figure 13.6)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cyclic flow hence, results only in the synthesis of ATP, but not of NADPH"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "H"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cyclic photophosphorylation also occurs when only light of wavelengths beyond 680 nm\r\n            are available for excitation."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131209,
+        131213,
+        131334
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.6.3 Chemiosmotic Hypothesis",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now try and understand how actually ATP is synthesised in the chloroplast."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                chemiosmotic hypothesis has been put forward to explain the mechanism. Like in respiration, in\r\n                photosynthesis too, ATP synthesis is linked to development of a proton gradient across a\r\n                membrane"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This time these are the membranes\r\n            of thylakoid. There is one difference though, here the proton accumulation is towards the inside of the\r\n            membrane, i.e., in the lumen. In respiration, protons accumulate in the intermembrane space of the\r\n            mitochondria when electrons move through the ETS (Chapter 14)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131218,
+        131223
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us understand what causes the proton gradient across the membrane. We need to\r\n            consider again the processes that take place during the activation of electrons and their transport to\r\n            determine the steps that cause a proton gradient to develop (Figure 13.7)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ATP synthesis through chemiosmosis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(a)\r\n                Since splitting of the water molecule takes place on the inner side of the membrane, the protons or\r\n                hydrogen ions that are produced by the splitting of water accumulate within the lumen of the\r\n                thylakoids."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131217,
+        131218
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) As electrons move through the photosystems, protons are transported across the\r\n            membrane. This happens because the primary accepter of electron which is located towards the outer side of\r\n            the membrane transfers its electron not to an electron carrier but to an H carrier. Hence, this molecule\r\n            removes a proton from the stroma while transporting an electron."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When this molecule\r\n            passes on its electron to the electron carrier on the inner side of the membrane, the proton is released\r\n            into the inner side or the lumen side of the membrane"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) The NADP reductase enzyme is located on the stroma side of the membrane."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Along with electrons that come from the acceptor of electrons of PS I, protons are\r\n            necessary for the reduction of NADP"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "to NADPH+\r\n            H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". These protons are also removed from the stroma.\r\n            Hence, within the chloroplast, protons in the stroma decrease in number, while in the lumen there is\r\n            accumulation of protons. T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "his creates a proton gradient across the thylakoid\r\n            membrane as well as a measurable decrease in pH in the lumen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Why\r\n                are we so interested in the proton gradient? This gradient is important because it is the breakdown of\r\n                this gradient that leads to the synthesis of ATP."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The gradient is\r\n            broken down due to the movement of protons across the membrane to the stroma through the transmembrane\r\n            channel of the CF"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "of the ATP synthase. The ATP\r\n            synthase enzyme consists of two parts: one called the CF"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is embedded in the thylakoid membrane and forms a transmembrane channel that carries out\r\n            facilitated diffusion of protons across the membrane. The other portion is called CF"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and protrudes on the outer surface of the thylakoid membrane on\r\n            the side that faces the stroma. The break down of the gradient provides enough energy to cause a\r\n            conformational change in the CF"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "particle of the ATP\r\n            synthase, which makes the enzyme synthesise several molecules of energy-packed ATP."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131336
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chemiosmosis requires a membrane, a proton pump, a proton gradient and ATP\r\n            synthase."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Energy is used to pump protons across a membrane, to create a\r\n            gradient or a high concentration of protons within the thylakoid lumen. ATP synthase has a channel that\r\n            allows diffusion of protons back across the membrane; this releases enough energy to activate ATP synthase\r\n            enzyme that catalyses the formation of ATP."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Along with the NADPH produced by the movement of electrons, the ATP will be used\r\n            immediately in the biosynthetic reaction taking place in the stroma, responsible for fixing CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", and synthesis of sugars."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.7 Where are the ATP and NADPH Used?",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We learnt that the products of light reaction are ATP, NADPH and O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Of these O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "diffuses out of the chloroplast while ATP and NADPH are used to drive the processes\r\n            leading to the synthesis of food, more accurately, sugars"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "biosynthetic phase"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "of\r\n            photosynthesis. This process does not directly depend on the presence of light but is dependent on the\r\n            products of the light reaction, i.e., ATP and NADPH, besides CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O. You may wonder how this could\r\n            be verified; it is simple: immediately after light becomes unavailable, the biosynthetic process continues\r\n            for some time, and then stops. If then, light is made available, the synthesis starts again."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can we, hence, say that calling the biosynthetic phase as the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dark reaction"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is a misnomer? Discuss this amongst\r\n            yourselves."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now see how the ATP and NADPH are used in the biosynthetic phase. We saw\r\n            earlier that CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is combined with H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O to produce (CH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "n"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or sugars. It was of interest to\r\n            scientists to find out how this reaction proceeded, or rather what was the first product formed when\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is taken into a reaction or fixed. Just after world\r\n            war II, among the several efforts to put radioisotopes to beneficial use, the work of Melvin Calvin is\r\n            exemplary."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                use of radioactive"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "C\r\n                by him in algal photosynthesis studies led to the discovery that the first CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "fixation\r\n                product was a 3-carbon organic acid. He also contributed to working out the complete biosynthetic\r\n                pathway; hence it was called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Calvin\r\n                cycle"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "after\r\n                him."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                first product identified was"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3-phosphoglyceric"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "acid\r\n                or in short"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "PGA"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How many carbon atoms does it have?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131216,
+        131219,
+        131227
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Scientists also tried to know whether all plants have PGA as the first product of\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation, or whether any other product was formed\r\n            in other plants. Experiments conducted over a wide range of plants led to the discovery of another group of\r\n            plants, where the first stable product of CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation\r\n            was again an organic acid, but one which had 4 carbon atoms in it. This acid was identified to be"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "oxaloacetic acid"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or OAA. Since then CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "assimilation during photosynthesis was said to be of two main\r\n            types: those plants in which the first product of CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation is a C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "acid (PGA), i.e., the\r\n            C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pathway"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", and those in which the first product was a C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "acid (OAA), i.e., the C4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pathway"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ".\r\n            These two groups of plants showed other associated characteristics that we will discuss later."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.7.1 The Primary Acceptor of CO2",
+      "id": "h.4i7ojhp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now ask ourselves a question that was asked by the scientists who were\r\n            struggling to understand the ‘dark reaction’. How many carbon atoms would a molecule have which\r\n            after accepting (fixing) CO2, would have 3 carbons (of PGA)?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The studies very unexpectedly showed that the acceptor molecule was a 5-carbon ketose\r\n            sugar – ribulose bisphosphate (RuBP). Did any of you think of this possibility? Do not worry; the\r\n            scientists also took a long time and conducted many experiments to reach this conclusion. They also believed\r\n            that since the first product was a C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "acid, the\r\n            primary acceptor would be a 2-carbon compound; they spent many years trying to identify a 2-carbon compound\r\n            before they discovered the 5-carbon RuBP."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.7.2 The Calvin Cycle",
+      "id": "h.2xcytpi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Calvin and his co-workers then worked out the whole pathway and showed that the\r\n            pathway operated in a cyclic manner; the RuBP was regenerated. Let us now see how the Calvin pathway\r\n            operates and where the sugar is synthesised. Let us at the outset understand very clearly that the Calvin\r\n            pathway occurs in all"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "photosynthetic plants"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "; it does not\r\n            matter whether they have C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(or any other) pathways (Figure 13.8)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For ease of understanding, the Calvin cycle can be described under three stages:\r\n            carboxylation, reduction and regeneration."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Carboxylation"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–\r\n            Carboxylation is the fixation of CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "into a stable\r\n            organic intermediate. Carboxylation is the most crucial step of the Calvin cycle where CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is utilised for the carboxylation of RuBP. This reaction is\r\n            catalysed by the enzyme RuBP carboxylase which results in the formation of two molecules of 3-PGA. Since\r\n            this enzyme also has an oxygenation activity it would be more correct to call it RuBP carboxylase-oxygenase\r\n            or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "RuBisCO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                13.8"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                Calvin cycle proceeds in three stages : (1) carboxylation, during which CO2 combines with\r\n                ribulose-1,5-bisphosphate; (2) reduction, during which carbohydrate is formed at the expense of the\r\n                photochemically made ATP and NADPH; and (3) regeneration during which the CO2 acceptor\r\n                ribulose-1,5-bisphosphate is formed again so that the cycle continues"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000421
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Reduction"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "– These\r\n            are a series of reactions that lead to the formation of glucose."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                steps involve utilisation of 2 molecules of ATP for phosphorylation and two of NADPH for reduction per\r\n                CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "molecule\r\n                fixed."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                fixation of six molecules of CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                6 turns of the cycle are required for the formation of one molecule of glucose from the\r\n                pathway."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131221,
+        131224,
+        131338
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Regeneration"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Regeneration\r\n                of the CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "acceptor\r\n                molecule RuBP is crucial if the cycle is to continue uninterrupted."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The regeneration steps require one ATP for phosphorylation to form RuBP."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131222,
+        131225,
+        131226
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hence\r\n                for every CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "moleculei\r\n                entering the Calvin cycle, 3 molecules of ATP and 2 of NADPH are required."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is probably to meet this difference in number of ATP and\r\n            NADPH used in the dark reaction that the cyclic phosphorylation takes place."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131220
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "To make one molecule of glucose 6 turns of the cycle are required."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Work out how many ATP and NADPH molecules will be required to make one molecule of glucose\r\n            through the Calvin pathway."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It might help you to understand all of this if we look at what goes in and what\r\n            comes out of the Calvin cycle."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.8 The C4 Pathway",
+      "id": "h.1ci93xb"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plants that are adapted to dry tropical regions have the C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pathway mentioned earlier. Though these plants have the\r\n            C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "oxaloacetic acid as the first CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation product they use the C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pathway or the Calvin cycle as the main biosynthetic pathway.\r\n            Then, in what way are they different from C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants?\r\n            This is a question that you may reasonably ask."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants are special: They\r\n            have a special type of leaf anatomy, they tolerate higher temperatures, they show a response to high light\r\n            intensities, they lack a process called photorespiration and have greater productivity of\r\n            biomass."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us understand these one by one."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Study vertical sections of leaves, one of a C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plant and the other of a C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plant.\r\n            Do you notice the differences? Do both have the same types of mesophylls? Do they have similar cells around\r\n            the vascular bundle sheath?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                particularly large cells around the vascular bundles of the C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                are called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "bundle\r\n                sheath cells"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                and the leaves which have such anatomy are said to have ‘"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Kranz’\r\n                anatomy"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "‘Kranz’ means ‘wreath’ and is a reflection of the arrangement of\r\n            cells."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                bundle sheath cells may form"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "several\r\n                layers"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "around\r\n                the vascular bundles; they are characterised by having a large number of chloroplasts, thick walls\r\n                impervious to gaseous exchange and no intercellular spaces. You may like to cut a section of the leaves\r\n                of C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                – maize or sorghum – to observe the Kranz anatomy and the distribution of mesophyll\r\n                cells."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131233,
+        131308,
+        131313,
+        131316,
+        131337
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It would be interesting for you to collect leaves of diverse species of plants around\r\n            you and cut vertical sections of the leaves. Observe under the microscope – look for the bundle sheath\r\n            around the vascular bundles. The presence of the bundle sheath would help you identify the C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now study the pathway shown in Figure 13.9. This pathway that has been named the\r\n            Hatch and Slack Pathway, is again a cyclic process. Let us study the pathway by listing the steps."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                primary CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "acceptor\r\n                is a 3-carbon molecule"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "phosphoenol\r\n                pyruvate (PEP)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\r\n                is present in the mesophyll cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                enzyme responsible for this fixation is"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "PEP\r\n                carboxylase"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "or\r\n                PEPcase."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\r\n                is important to register that the mesophyll cells lack RuBisCO enzyme."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "acid\r\n                OAA is formed in the mesophyll cells."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131230,
+        131305,
+        131309,
+        131311,
+        131312,
+        131314,
+        131315,
+        131333,
+        131335
+      ],
+      "pyq_count": 9
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It then forms other 4-carbon compounds like malic acid or aspartic acid in the\r\n            mesophyll cells itself, which are transported to the bundle sheath cells."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the bundle sheath cells these C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "­4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "acids are broken down to release CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "­­­2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and a 3-carbon molecule."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The 3-carbon molecule is transported back to the mesophyll where it is converted\r\n            to PEP again, thus, completing the cycle."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "released\r\n                in the bundle sheath cells enters the C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "or\r\n                the Calvin pathway, a pathway common to all plants."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                bundle sheath cells are rich in an enzyme Ribulose bisphosphate carboxylase-oxygenase (RuBisCO), but\r\n                lack PEPcase."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                basic pathway that results in the formation of the sugars, the Calvin pathway,"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "common to the C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131232,
+        131317,
+        131337
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                13.9"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Diagrammatic\r\n                representation of the Hatch and Slack Pathway"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131234
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Did you note that the Calvin pathway occurs in all the mesophyll cells of the\r\n            C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants? In the C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants it does not take place in the mesophyll cells but does\r\n            so only in the bundle sheath cells."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.9 Photorespiration",
+      "id": "h.3whwml4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us try and understand one more process that creates an important difference\r\n            between C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants – Photorespiration."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "To\r\n            understand photorespiration we have to know a little bit more about the first step of the Calvin pathway\r\n            – the first CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation step."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                is the reaction where RuBP combines with CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "to\r\n                form 2 molecules of 3PGA, that is catalysed by RuBisCO."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131318
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "RuBisCO that is the most abundant enzyme in the world (Do you wonder why?) is\r\n            characterised by the fact that its active site can bind to both CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "– hence the name. Can you\r\n            think how this could be possible? RuBisCO has a much greater affinity for CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "when the CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ":\r\n            O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is nearly equal. Imagine what would happen if this\r\n            were not so! This binding is competitive. It is the relative concentration of O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "that determines which of the two will bind to the enzyme."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                some O"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "does\r\n                bind to RuBisCO, and hence CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "fixation\r\n                is decreased. Here the RuBP instead of being converted to 2 molecules of PGA binds with\r\n                O"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "to\r\n                form one molecule of phosphoglycerate and phosphoglycolate (2 Carbon) in a pathway called\r\n                photorespiration."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the photorespiratory\r\n            pathway, there is neither synthesis of sugars, nor of ATP. Rather it results in the release of\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "with the utilisation of ATP. In the\r\n            photorespiratory pathway there is no synthesis of ATP or NADPH. The biological function of photorespiration\r\n            is not known yet."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131332
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                photorespiration does not occur. This is because they have a mechanism that increases the concentration\r\n                of CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "at\r\n                the enzyme site. This takes place when the C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "acid\r\n                from the mesophyll is broken down in the bundle sheath cells to release CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "–\r\n                this results in increasing the intracellular concentration of CO"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In turn, this ensures that the RuBisCO functions as a carboxylase minimising the\r\n            oxygenase activity."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131320
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Now\r\n                that you know that the C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                lack photorespiration, you probably can understand why productivity and yields are better in these\r\n                plants. In addition these plants show tolerance to higher temperatures."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131319,
+        131322,
+        131323
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Based on the above discussion can you compare plants showing the C3 and the C4\r\n            pathway? Use the table format given and fill in the information."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                13.1 Fill in the Columns 2 and 3 in this table to highlight the differences between C3 and C4\r\n                Plants"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131301,
+        131302
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image17.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.10 Factors affecting Photosynthesis",
+      "id": "h.2bn6wsx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An understanding of the factors that affect photosynthesis is necessary. The rate of\r\n            photosynthesis is very important in determining the yield of plants including crop plants. Photosynthesis is\r\n            under the influence of several factors, both internal (plant) and external. The plant factors include the\r\n            number, size, age and orientation of leaves, mesophyll cells and chloroplasts, internal CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "concentration and the amount of chlorophyll. The plant or\r\n            internal factors are dependent on the genetic predisposition and the growth of the plant."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image18.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The external factors would include the availability of sunlight, temperature,\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "concentration and water. As a plant\r\n            photosynthesises, all these factors will simultaneously affect its rate. Hence, though several factors\r\n            interact and simultaneously affect photosynthesis or CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation, usually one factor is the major cause or is the one that limits the rate.\r\n            Hence, at any point the rate will be determined by the factor available at sub-optimal levels."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When several factors affect any [bio] chemical process,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Blackman’s\r\n                (1905) Law of Limiting Factors comes into effect."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This states the\r\n            following:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131329
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If a chemical process is affected by more than one factor, then its rate will be\r\n            determined by the factor which is nearest to its minimal value: it is the factor which directly affects the\r\n            process if its quantity is changed."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For example, despite the presence of a green leaf and optimal light and\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "conditions, the plant may not photosynthesise if\r\n            the temperature is very low. This leaf, if given the optimal temperature, will start\r\n            photosynthesising."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.10.1 Light",
+      "id": "h.qsh70q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We need to distinguish between light quality, light intensity and the duration of\r\n            exposure to light, while discussing light as a factor that affects photosynthesis. There is a linear\r\n            relationship between incident light and CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation\r\n            rates at low light intensities. At higher light intensities, gradually the rate does not show further\r\n            increase as other factors become limiting (Figure 13.10). What is interesting to note is that light\r\n            saturation occurs at 10 per cent of the full sunlight. Hence, except for plants in shade or in dense\r\n            forests, light is rarely a limiting factor in nature. Increase in incident light beyond a point causes the\r\n            breakdown of chlorophyll and a decrease in photosynthesis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Photosynthesis_in_Higher_Plants-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Graph of light intensity on the rate\r\n            of photosynthesis"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.10.2 Carbon dioxide Concentration",
+      "id": "h.3as4poj"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Carbon dioxide is the major limiting factor for photosynthesis. The concentration of\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is very low in the atmosphere (between 0.03 and\r\n            0.04 per cent). Increase in concentration upto 0.05 per cent can cause an increase in CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation rates; beyond this the levels can become damaging over\r\n            longer periods."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants respond differently to CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "concentrations. At low light conditions neither group responds to\r\n            high CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "conditions. At high light intensities, both\r\n            C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants show increase in the rates of photosynthesis. What is important to note is that the\r\n            C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants show saturation at about 360\r\n            µlL"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "­"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "­­­­­"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "while C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "responds to increased CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "concentration and saturation is seen only beyond 450 µlL"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "­"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "­­­­­"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Thus, current availability of CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "levels\r\n            is limiting to the C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fact that C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants respond\r\n            to higher CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "concentration by showing increased\r\n            rates of photosynthesis leading to higher productivity has been used for some greenhouse crops such as\r\n            tomatoes and bell pepper. They are allowed to grow in carbon dioxide enriched atmosphere that leads to\r\n            higher yields."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.10.3 Temperature",
+      "id": "h.1pxezwc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The dark reactions being enzymatic are temperature controlled. Though the light\r\n            reactions are also temperature sensitive they are affected to a much lesser extent."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                respond to higher temperatures and show higher rate of photosynthesis while C"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plants\r\n                have a much lower temperature optimum."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        131231,
+        131326
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The temperature optimum for photosynthesis of different plants also depends on the\r\n            habitat that they are adapted to. Tropical plants have a higher temperature optimum than the plants adapted\r\n            to temperate climates."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "13.10.4 Water",
+      "id": "h.49x2ik5"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Even though water is one of the reactants in the light reaction, the effect of water\r\n            as a factor is more through its effect on the plant, rather than directly on photosynthesis. Water stress\r\n            causes the stomata to close hence reducing the CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "availability. Besides, water stress also makes leaves wilt, thus, reducing the surface\r\n            area of the leaves and their metabolic activity as well."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Summary",
+      "id": "h.2p2csry"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Green plants make their own food by photosynthesis. During this process carbon\r\n            dioxide from the atmosphere is taken in by leaves through stomata and used for making carbohydrates,\r\n            principally glucose and starch. Photosynthesis takes place only in the green parts of the plants, mainly the\r\n            leaves. Within the leaves, the mesophyll cells have a large number of chloroplasts that are responsible for\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation. Within the chloroplasts, the membranes\r\n            are sites for the light reaction, while the chemosynthetic pathway occurs in the stroma. Photosynthesis has\r\n            two stages: the light reaction and the carbon fixing reactions. In the light reaction the light energy is\r\n            absorbed by the pigments present in the antenna, and funnelled to special chlorophyll a molecules called\r\n            reaction centre chlorophylls. There are two photosystems, PS I and PS II. PS I has a 700 nm absorbing\r\n            chlorophyll a P700 molecule at its reaction centre, while PS II has a P680 reaction centre that absorbs red\r\n            light at 680 nm. After absorbing light, electrons are excited and transferred through PS II and PS I and\r\n            finally to NAD forming NADH. During this process a proton gradient is created across the membrane of the\r\n            thylakoid. The breakdown of the protons gradient due to movement through the F0 part of the ATPase enzyme\r\n            releases enough energy for synthesis of ATP. Splitting of water molecules is associated with PS II resulting\r\n            in the release of O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", protons and transfer of electrons\r\n            to PS II."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the carbon fixation cycle, CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is added by the enzyme, RuBisCO, to a 5-carbon compound RuBP that is converted to 2\r\n            molecules of 3-carbon PGA. This is then converted to sugar by the Calvin cycle, and the RuBP is regenerated.\r\n            During this process ATP and NADPH synthesised in the light reaction are utilised. RuBisCO also catalyses a\r\n            wasteful oxygenation reaction in C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plants:\r\n            photorespiration."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some tropical plants show a special type of photosynthesis called C4 pathway. In\r\n            these plants the first product of CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fixation that\r\n            takes place in the mesophyll, is a 4-carbon compound. In the bundle sheath cells the Calvin pathway is\r\n            carried out for the synthesis of carbohydrates"
+        }
+      ]
+    }
+  ]
+}

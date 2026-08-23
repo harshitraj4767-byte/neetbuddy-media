@@ -1,0 +1,2623 @@
+{
+  "title": "Organisms and Population",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Unit X"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "ECOLOGY",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 13"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Organisms and Populations"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 14"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ecosystem"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 15"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biodiversity and Conservation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 16"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Environmental Issues"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Diversity is not only a characteristic of living organisms but also of content in\r\n            biology textbooks. Biology is presented either as botany, zoology and microbiology or as classical and\r\n            modern. The latter is a euphemism for molecular aspects of biology. Luckily we have many threads which weave\r\n            the different areas of biological information into a unifying principle. Ecology is one such thread which\r\n            gives us a holistic perspective to biology. The essence of biological understanding is to know how\r\n            organisms, while remaining an individual, interact with other organisms and physical habitats as a group and\r\n            hence behave like organised wholes, i.e., population, community, ecosystem or even as the whole biosphere.\r\n            Ecology explains to us all this. A particular aspect of this is the study of anthropogenic environmental\r\n            degradation and the socio-political issues it has raised. This unit describes as well as takes a critical\r\n            view of the above aspects."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ramdeo Misra"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1908-1998)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ramdeo Misra is revered as the Father of Ecology in India. Born on 26 August 1908,\r\n            Ramdeo Misra obtained Ph.D in Ecology (1937) under Prof. W. H. Pearsall, FRS, from Leeds University in UK.\r\n            He established teaching and research in ecology at the Department of Botany of the Banaras Hindu University,\r\n            Varanasi. His research laid the foundations for understanding of tropical communities and their succession,\r\n            environmental responses of plant populations and productivity and nutrient cycling in tropical forest and\r\n            grassland ecosystems. Misra formulated the first postgraduate course in ecology in India. Over 50 scholars\r\n            obtained Ph. D degree under his supervision and moved on to other universities and research institutes to\r\n            initiate ecology teaching and research across the country."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "He was honoured with the Fellowships of the Indian National Science Academy and World\r\n            Academy of Arts and Science, and the prestigious Sanjay Gandhi Award in Environment and Ecology. Due to his\r\n            efforts, the Government of India established the National Committee for Environmental Planning and\r\n            Coordination (1972) which, in later years, paved the way for the establishment of the Ministry of\r\n            Environment and Forests (1984)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 13",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Organisms and Populations",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "13.1 Organism and Its Environment"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "13.2 Populations"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Our living world is fascinatingly diverse and amazingly complex. We can try to\r\n            understand its complexity by investigating processes at various levels of biological\r\n            organisation–macromolecules, cells, tissues, organs, individual organisms, population, communities,\r\n            ecosystems and biomes. At any level of biological organisation we can ask two types of questions – for\r\n            example, when we hear the bulbul singing early morning in the garden, we may ask – ‘How does the\r\n            bird sing?’ Or, ‘Why does the bird sing ?’ The ‘how-type’ questions seek the\r\n            mechanism behind the process while the ‘why-type’ questions seek the significance of the\r\n            process. For the first question in our example, the answer might be in terms of the operation of the voice\r\n            box and the vibrating bone in the bird, whereas for the second question the answer may lie in the\r\n            bird’s need to communicate with its mate during breeding season. When you observe nature around you\r\n            with a scientific frame of mind you will certainly come up with many interesting questions of both types -\r\n            Why are night-blooming flowers generally white? How does the bee know which flower has nectar? Why does\r\n            cactus have so many thorns? How does the chick spures recognise her own mother?, and so on."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have already learnt in previous classes that Ecology is a subject which studies\r\n            the interactions among organisms and between the organism and its physical (abiotic) environment."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ecology is basically concerned with four levels of biological organisation –\r\n            organisms, populations, communities and biomes. In this chapter we explore ecology at organismic and\r\n            population levels."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "13.1 Organism and Its Environment",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ecology at the organismic level is essentially physiological ecology which tries to\r\n            understand how different organisms are adapted to their environments in terms of not only survival but also\r\n            reproduction. You may have learnt in earlier classes how the rotation of our planet around the Sun and the\r\n            tilt of its axis cause annual variations in the intensity and duration of temperature, resulting in distinct\r\n            seasons. These variations together with annual variation in precipitation (remember precipitation includes\r\n            both rain and snow) account for the formation of major biomes such as desert, rain forest and tundra (Figure\r\n            13.1)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.1 Biome distribution with respect to annual temperature and\r\n            precipitation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Regional and local variations within each biome lead to the formation of a wide\r\n            variety of habitats. Major biomes of India are shown in Figure 13.2. On planet Earth, life exists not just\r\n            in a few favourable habitats but even in extreme and harsh habitats – scorching Rajasthan desert,\r\n            rain-soaked Meghalaya forests, deep ocean trenches, torrential streams, permafrost (snow laden) polar\r\n            regions, high mountain tops, thermal springs, and stinking compost pits, to name a few. Even our intestine\r\n            is a unique habitat for hundreds of species of microbes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.2 Major biomes of India : (a) Tropical rain forest; (b) Deciduous forest;\r\n            (c) Desert; (d) Sea coast"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What are the key elements that lead to so much variation in the physical and chemical\r\n            conditions of different habitats? The most important ones are temperature, water, light and soil. We must\r\n            remember that the physico-chemical (abiotic) components alone do not characterise the habitat of an organism\r\n            completely; the habitat includes biotic components also – pathogens, parasites, predators and\r\n            competitors – of the organism with which they interact constantly. We assume that over a period of\r\n            time, the organism had through natural selection, evolved adaptations to optimise its survival and\r\n            reproduction in its habitat."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Each\r\n                organism has an invariably defined range of conditions that it can tolerate, diversity in the resources\r\n                it utilises and a distinct functional role in the ecological system, all these together comprise its"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "niche"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352001
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "13.1.1 Major Abiotic Factors",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Temperature"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Temperature is the most important\r\n            ecologically relevant environmental factor. You are aware that the average temperature on land varies\r\n            seasonally, decreases progressively from the equator towards the poles and from plains to the mountain tops.\r\n            It ranges from subzero levels in polar areas and high altitudes to >500C in tropical deserts in summer.\r\n            There are, however, unique habitats such as thermal springs and deep-sea hydrothermal vents where average\r\n            temperatures exceed 1000 C. It is general knowledge that mango trees do not and cannot grow in temperate\r\n            countries like Canada and Germany, snow leopards are not found in Kerala forests and tuna fish are rarely\r\n            caught beyond tropical latitudes in the ocean. You can appreciate the significance of temperature to living\r\n            organisms when you realise that it affects the kinetics of enzymes and through it the metabolic activity and\r\n            other physiological functions of the organism. A few organisms can tolerate and thrive in a wide range of\r\n            temperatures (they are called eurythermal), but, a vast majority of them are restricted to a narrow range of\r\n            temperatures (such organisms are called stenothermal). The levels of thermal tolerance of different species\r\n            determine to a large extent their geographical distribution. Can you think of a few eurythermal and\r\n            stenothermal animals and plants?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In recent years, there has been a growing concern about the gradually increasing\r\n            average global temperatures (Chapter 16). If this trend continues, would you expect the distributional range\r\n            of some species to be affected?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Water"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Water is another the most important factor\r\n            influencing the life of organisms. In fact, life on earth originated in water and is unsustainable without\r\n            water. Its availability is so limited in deserts that only special adaptations make it possible for\r\n            organisms to live there. The productivity and distribution of plants is also heavily dependent on water. You\r\n            might think that organisms living in oceans, lakes and rivers should not face any water-related problems,\r\n            but it is not true. For aquatic organisms the quality (chemical composition, pH) of water becomes important.\r\n            The salt concentration (measured as salinity in parts per thousand), is less than 5 in inland waters, 30-35\r\n            in the sea and > 100 in some hypersaline lagoons. Some organisms are tolerant of a wide range of\r\n            salinities (euryhaline) but others are restricted to a narrow range (stenohaline). Many freshwater animals\r\n            cannot live for long in sea water and vice versa because of the osmotic problems, they would face."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Light"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Since plants produce food through photosynthesis,\r\n            a process which is only possible when sunlight is available as a source of energy, we can quickly understand\r\n            the importance of light for living organisms, particularly autotrophs. Many species of small plants (herbs\r\n            and shrubs) growing in forests are adapted to photosynthesise optimally under very low light conditions\r\n            because they are constantly overshadowed by tall, canopied trees. Many plants are also dependent on sunlight\r\n            to meet their photoperiodic requirement for flowering. For many animals too, light is important in that they\r\n            use the diurnal and seasonal variations in light intensity and duration (photoperiod) as cues for timing\r\n            their foraging, reproductive and migratory activities. The availability of light on land is closely linked\r\n            with that of temperature since the sun is the source for both. But, deep (>500m) in the oceans, the\r\n            environment is dark and its inhabitants are not aware of the existence of a celestial source of energy\r\n            called Sun. What, then is their source of energy?. The spectral quality of solar radiation is also important\r\n            for life. The UV component of the spectrum is harmful to many organisms while not all the colour components\r\n            of the visible spectrum are available for marine plants living at different depths of the ocean. Among the\r\n            red, green and brown algae that inhabit the sea, which is likely to be found in the deepest waters?\r\n            Why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Soil"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": The nature and properties of soil in different\r\n            places vary; it is dependent on the climate, the weathering process, whether soil is transported or\r\n            sedimentary and how soil development occurred. Various characteristics of the soil such as soil composition,\r\n            grain size and aggregation determine the percolation and water holding capacity of the soils. These\r\n            characteristics along with parameters such as pH, mineral composition and topography determine to a large\r\n            extent the vegetation in any area. This in turn dictates the type of animals that can be supported."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Similarly, in the aquatic environment, the sediment-characteristics often determine\r\n            the type of benthic animals that can thrive there."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "13.1.2 Responses to Abiotic Factors"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Having realised that the abiotic conditions of many habitats may vary drastically in\r\n            time, we now ask–how do the organisms living in such habitats cope or manage with stressful\r\n            conditions? But before attempting to answer this question, we should perhaps ask first why a highly variable\r\n            external environment should bother organisms after all. One would expect that during the course of millions\r\n            of years of their existence, many species would have evolved a relatively constant internal (within the\r\n            body) environment that permits all biochemical reactions and physiological functions to proceed with maximal\r\n            efficiency and thus, enhance the overall ‘fitness’ of the species."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.3 Diagrammatic representation of organismic responses"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This constancy, for example, could be in terms of optimal temperature and\r\n            osmotic concentration of body fluids. Ideally then, the organism should try to maintain the constancy of its\r\n            internal environment (a process called homeostasis) despite varying external environmental conditions that\r\n            tend to upset its homeostasis. Let us take an analogy to clarify this important concept. Suppose a person is\r\n            able to perform his/her best when the temperature is 250C and wishes to maintain it so, even when it is\r\n            scorchingly hot or freezingly cold outside. It could be achieved at home, in the car while travelling, and\r\n            at workplace by using an air conditioner in summer and heater in winter. Then his/her performance would be\r\n            always maximal regardless of the weather around him/her. Here the person’s homeostasis is\r\n            accomplished, not through physiological, but artificial means. How do other living organisms cope with the\r\n            situation? Let us look at various possibilities (Figure 13.3)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Regulate"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Some organisms are\r\n            able to maintain homeostasis by physiological (sometimes behavioural also) means which ensures constant body\r\n            temperature, constant osmotic concentration, etc. All birds and mammals, and a very few lower vertebrate and\r\n            invertebrate species are indeed capable of such regulation (thermoregulation and osmoregulation).\r\n            Evolutionary biologists believe that the ‘success’ of mammals is largely due to their ability to\r\n            maintain a constant body temperature and thrive whether they live in Antarctica or in the Sahara\r\n            desert."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The mechanisms used by most mammals to regulate their body temperature are similar to\r\n            the ones that we humans use. We maintain a constant body temperature of 370C. In summer, when outside\r\n            temperature is more than our body temperature, we sweat profusely. The resulting evaporative cooling,\r\n            similar to what happens with a desert cooler in operation, brings down the body temperature. In winter when\r\n            the temperature is much lower than 370C, we start to shiver, a kind of exercise which produces heat and\r\n            raises the body temperature. Plants, on the other hand, do not have such mechanisms to maintain internal\r\n            temperatures."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Conform"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": An overwhelming\r\n            majority (99 per cent) of animals and nearly all plants cannot maintain a constant internal environment.\r\n            Their body temperature changes with the ambient temperature. In aquatic animals, the osmotic concentration\r\n            of the body fluids change with that of the ambient air, water osmotic concentration. These animals and\r\n            plants are simply conformers. Considering the benefits of a constant internal environment to the organism,\r\n            we must ask why these conformers had not evolved to become regulators. Recall the human analogy we used\r\n            above; much as they like, how many people can really afford an air conditioner? Many simply ‘sweat it\r\n            out’ and resign themselves to suboptimal performance in hot summer months. Thermoregulation is\r\n            energetically expensive for many organisms. This is particularly true for small animals like shrews and\r\n            humming birds. Heat loss or heat gain is a function of surface area. Since small animals have a larger\r\n            surface area relative to their volume, they tend to lose body heat very fast when it is cold outside; then\r\n            they have to expend much energy to generate body heat through metabolism. This is the main reason why very\r\n            small animals are rarely found in polar regions. During the course of evolution, the costs and benefits of\r\n            maintaining a constant internal environment are taken into consideration. Some species have evolved the\r\n            ability to regulate, but only over a limited range of environmental conditions, beyond which they simply\r\n            conform."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the stressful external conditions are localised or remain only for a short\r\n            duration, the organism has two other alternatives for survival."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Migrate"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": The organism can\r\n            move away temporarily from the stressful habitat to a more hospitable area and return when stressful period\r\n            is over. In human analogy, this strategy is like a person moving from Delhi to Shimla for the duration of\r\n            summer. Many animals, particularly birds, during winter undertake long-distance migrations to more\r\n            hospitable areas."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Every\r\n                winter the famous Keolado National Park (Bharatpur) in Rajasthan host thousands of migratory birds\r\n                coming from Siberia and other extremely cold northern regions."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352008
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Suspend"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": In bacteria, fungi\r\n            and lower plants, various kinds of thick-walled spores are formed which help them to survive unfavourable\r\n            conditions – these germinate on availability of suitable environment. In higher plants, seeds and some\r\n            other vegetative reproductive structures serve as means to tide over periods of stress besides helping in\r\n            dispersal – they germinate to form new plants under favourable moisture and temperature conditions.\r\n            They do so by reducing their metabolic activity and going into a state of ‘dormancy’."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In animals, the organism, if unable to migrate, might avoid"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "the stress by escaping in time. The familiar case of bears going into hibernation during\r\n            winter is an example of escape in time"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some snails\r\n            and fish go into aestivation to avoid summer–related problems-heat and dessication. Under unfavourable\r\n            conditions many zooplankton species in lakes and ponds are known to enter diapause, a stage of suspended\r\n            development."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "13.1.3 Adaptations",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "While considering the various alternatives available to organisms for coping with\r\n            extremes in their environment, we have seen that some are able to respond through certain physiological\r\n            adjustments while others do so behaviourally (migrating temporarily to a less stressful habitat). These\r\n            responses are also actually, their adaptations. So, we can say that adaptation is any attribute of the\r\n            organism (morphological, physiological, behavioural) that enables the organism to survive and reproduce in\r\n            its habitat. Many adaptations have evolved over a long evolutionary time and are genetically\r\n            fixed."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                the absence of an external source of water, the kangaroo rat in North American deserts is capable of\r\n                meeting all its water requirements through its internal fat oxidation (in which water is a by\r\n                product)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It also has the ability to concentrate its urine so that\r\n            minimal volume of water is used to remove excretory products."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352118
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Many desert plants have a thick cuticle on their leaf surfaces and have their stomata\r\n            arranged in deep pits (sunken) to minimise water loss through transpiration. They also have a special\r\n            photosynthetic pathway (CAM) that enables their stomata to remain closed during day time. Some desert plants\r\n            like Opuntia, have no leaves – they are reduced to spines–and the photosynthetic function is\r\n            taken over by the flattened stems."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Mammals\r\n                from colder climates generally have shorter ears and limbs to minimise heat loss. (This is called the\r\n                Allen’s Rule.) In the polar seas aquatic mammals like seals have a thick layer of fat (blubber)\r\n                below their skin that acts as an insulator and reduces loss of body heat."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352118
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some organisms possess adaptations that are physiological which allow them to respond\r\n            quickly to a stressful situation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\r\n                you had ever been to any high altitude place (>"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352119
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3,500m\r\n                Rohtang Pass near Manali and Leh you must have experienced what is called altitude sickness. Its\r\n                symptoms include nausea, fatigue and heart palpitations. This is because in the low atmospheric pressure\r\n                of high altitudes, the body does not get enough oxygen."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "But, gradually\r\n            you get acclimatised and stop experiencing altitude sickness. How did your body solve this problem? The body\r\n            compensates low oxygen availability by increasing red blood cell production, decreasing the binding affinity\r\n            of hemoglobin and by increasing breathing rate. Many tribes live in the high altitude of Himalayas. Find out\r\n            if they normally have a higher red blood cell count (or total hemoglobin) than people living in the\r\n            plains."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352119,
+        352123
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In most animals, the metabolic reactions and hence all the physiological functions\r\n            proceed optimally in a narrow temperature range (in humans, it is 370C). But there are microbes\r\n            (archaebacteria) that flourish in hot springs and deep sea hydrothermal vents where temperatures far exceed\r\n            1000C. How is this possible?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Many fish thrive in Antarctic waters where the temperature is always below zero. How\r\n            do they manage to prevent their body fluids from freezing?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A large variety of marine invertebrates and fish live at great depths in the\r\n            ocean where the pressure could be >100 times the normal atmospheric pressure that we experience. How do\r\n            they live under such high pressures and do they have any special enzymes? Organisms living in such extreme\r\n            environments show a fascinating array of biochemical adaptations."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some organisms show behavioural responses to cope up with variations in their\r\n            environment."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Desert lizards lack the physiological ability that mammals have to deal\r\n            with the high temperatures of their habitat, but manage to keep their body temperature fairly constant by\r\n            behavioural means.They bask in the sun and absorb heat when their body temperature drops below the comfort\r\n            zone, but move into shade when the ambient temperature starts increasing."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some\r\n            species are capable of burrowing into the soil to hide and escape from the above-ground heat."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "13.2 Populations",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "13.2.1 Population Attributes",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In nature, we rarely find isolated, single individuals of any species; majority of\r\n            them live in groups in a well defined geographical area, share or compete for similar resources, potentially\r\n            interbreed and thus constitute a population. Although the term interbreeding implies sexual reproduction, a\r\n            group of individuals resulting from even asexual reproduction is also generally considered a population for\r\n            the purpose of ecological studies. All the cormorants in a wetland, rats in an abandoned dwelling, teakwood\r\n            trees in a forest tract, bacteria in a culture plate and lotus plants in a pond, are some examples of a\r\n            population. In earlier chapters you have learnt that although an individual organism is the one that has to\r\n            cope with a changed environment, it is at the population level that natural selection operates to evolve the\r\n            desired traits. Population ecology is, therefore, an important area because it links ecology to population\r\n            genetics and evolution."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A population has certain attributes whereas, an individual organism does\r\n            not."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "An\r\n                individual may have births and deaths, but a population has birth rates and death rates. In a population\r\n                these rates refer to per capita births and deaths. The rates, hence, expressed are change in numbers\r\n                (increase or decrease) with respect to members of the population. Here is an example. If in a pond there\r\n                were 20 lotus plants last year and through reproduction 8 new plants are added, taking the current\r\n                population to 28, we calculate the birth rate as 8/20 = 0.4 offspring per lotus per\r\n                year."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If 4 individuals in a laboratory\r\n            population of 40 fruitflies died during a specified time interval, say a week, the death rate in the\r\n            population during that period is 4/40 = 0.1 individuals per fruitfly per week."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352114,
+        352124
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Another\r\n                attribute characteristic of a population is sex ratio."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An individual is\r\n            either a male or a female but a population has a sex ratio (e.g., 60 per cent of the population are females\r\n            and 40 per cent males)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352009
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A population at any given time is composed of individuals of different ages."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the age distribution (per cent individuals of a given age or age group) is plotted\r\n            for the population, the resulting structure is called an age pyramid (Figure 13.4)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For human population, the age pyramids generally show age distribution of males and females\r\n            in a diagram."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                shape of the pyramids reflects the growth status of the population - (a) whether it is growing, (b)\r\n                stable or (c) declining."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352014
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                13.4 Representation of age pyramids for human population"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352014,
+        352115
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The size of the population tells us a lot about its status in the habitat. Whatever\r\n            ecological processes we wish to investigate in a population, be it the outcome of competition with another\r\n            species, the impact of a predator or the effect of a pesticide application, we always evaluate them in terms\r\n            of any change in the population size. The size, in nature, could be as low as <10 (Siberian cranes at\r\n            Bharatpur wetlands in any year) or go into millions (Chlamydomonas in a pond). Population size, technically\r\n            called population density (designated as N), need not necessarily be measured in numbers only. Although\r\n            total number is generally the most appropriate measure of population density, it is in some cases either\r\n            meaningless or difficult to determine. In an area, if there are 200 carrot grass (Parthenium hysterophorus)\r\n            plants but only a single huge banyan tree with a large canopy, stating that the population density of banyan\r\n            is low relative to that of carrot grass amounts to underestimating the enormous role of the Banyan in that\r\n            community. In such cases, the per cent cover or biomass is a more meaningful measure of the population size.\r\n            Total number is again not an easily adoptable measure if the population is huge and counting is impossible\r\n            or very time-consuming. If you have a dense laboratory culture of bacteria in a petri dish what is the best\r\n            measure to report its density? Sometimes, for certain ecological investigations, there is no need to know\r\n            the absolute population densities; relative densities serve the purpose equally well. For instance, the\r\n            number of fish caught per trap is good enough measure of its total population density in the lake. We are\r\n            mostly obliged to estimate population sizes indirectly, without actually counting them or seeing them. The\r\n            tiger census in our national parks and tiger reserves is often based on pug marks and fecal pellets."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "13.2.2 Population Growth",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The size of a population for any species is not a static parameter. It keeps changing\r\n            with time, depending on various factors including food availability, predation pressure and adverse weather.\r\n            In fact, it is these changes in population density that give us some idea of what is happening to the\r\n            population – whether it is flourishing or declining."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Whatever\r\n                might be the ultimate reasons, the density of a population in a given habitat during a given period,\r\n                fluctuates due to changes in four basic processes, two of which (natality and immigration) contribute to\r\n                an increase in population density and two (mortality and emigration) to a decrease."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352009,
+        15000453
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(i)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Natality"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "refers\r\n                to the number of births during a given period in the population that are added to the initial\r\n                density."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352012
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mortality"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is the number\r\n            of deaths in the population during a given period."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Immigration"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is the\r\n            number of individuals of the same species that have come into the habitat from elsewhere during the time\r\n            period under consideration."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Emigration"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is the\r\n            number of individuals of the population who left the habitat and gone elsewhere during the time period under\r\n            consideration."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.5"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "So, if N is the population density at time t, then its density at time t +1\r\n            is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nt+1 = Nt + [(B + I) – (D + E)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You can see from the above equation (Fig. 13.5) that population density will increase\r\n            if the number of births plus the number of immigrants (B + I) is more than the number of deaths plus the\r\n            number of emigrants (D + E). Under normal conditions, births and deaths are the most important factors\r\n            influencing population density, the other two factors assuming importance only under special conditions. For\r\n            instance, if a new habitat is just being colonised, immigration may contribute more significantly to\r\n            population growth than birth rates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Growth Models :"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Does the growth of a population with\r\n            time show any specific and predictable pattern? We have been concerned about unbridled human population\r\n            growth and problems created by it in our country and it is therefore natural for us to be curious if\r\n            different animal populations in nature behave the same way or show some restraints on growth. Perhaps we can\r\n            learn a lesson or two from nature on how to control population growth."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "ang=\"en-GB\">when\r\n                responses are not limiting the growth, plot is exponential,"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352131
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "b when responses are limiting the growth, plot is logistic,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "K is carrying capacity"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) Exponential growth:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Resource (food and space)\r\n            availability is obviously essential for the unimpeded growth of a population. Ideally, when resources in the\r\n            habitat are unlimited, each species has the ability to realise fully its innate potential to grow in number,\r\n            as Darwin observed while developing his theory of natural selection. Then the population grows in an\r\n            exponential or geometric fashion. If in a population of size N, the birth rates (not total number but per\r\n            capita births) are represented as b and death rates (again, per capita death rates) as d, then the increase\r\n            or decrease in N during a unit time period t (dN/dt) will be"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dN/dt = (b – d) × N"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let (b–d) = r, then"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dN/dt = rN"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The r in this equation is called the ‘intrinsic rate of natural increase’\r\n            and is a very important parameter chosen for assessing impacts of any biotic or abiotic factor on population\r\n            growth."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "To give you some idea about the magnitude of r values, for the Norway rat the r is\r\n            0.015, and for the flour beetle it is 0.12. In 1981, the r value for human population in India was 0.0205.\r\n            Find out what the current r value is. For calculating it, you need to know the birth rates and death\r\n            rates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.6 Population growth curve"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "a"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "when\r\n                responses are not"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352125,
+        15000502
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "limiting\r\n                the growth, plot is"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352125,
+        15000502
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "exponential,"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352125,
+        15000502
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "b"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "when\r\n                responses are limiting"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352125,
+        15000502
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                growth, plot is logistic,"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352125,
+        15000502
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "K"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is carrying capacity"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The above equation describes the exponential or geometric growth pattern of a\r\n            population (Figure 13.6) and results in a J-shaped curve when we plot N in relation to time"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". If you are familiar with basic calculus, you can derive the integral form of the\r\n            exponential growth equation as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= N"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ert"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= Population density after\r\n            time t"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= Population density at time\r\n            zero"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "r = intrinsic rate of natural increase"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "e = the base of natural logarithms"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(2.71828)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Any species growing exponentially under unlimited resource conditions can reach\r\n            enormous population densities in a short time. Darwin showed how even a slow growing animal like elephant\r\n            could reach enormous numbers in the absence of checks. The following is an anecdote popularly narrated to\r\n            demonstrate dramatically how fast a huge population could build up when growing exponentially."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The king and the minister sat for a chess game. The king, confident of winning the\r\n            game, was ready to accept any bet proposed by the minister. The minister humbly said that if he won, he\r\n            wanted only some wheat grains, the quantity of which is to be calculated by placing on the chess board one\r\n            grain in Square 1, then two in Square 2, then four in Square 3, and eight in Square 4, and so on, doubling\r\n            each time the previous quantity of wheat on the next square until all the 64 squares were filled. The king\r\n            accepted the seemingly silly bet and started the game, but unluckily for him, the minister won. The king\r\n            felt that fulfilling the minister’s bet was so easy. He started with a single grain on the first\r\n            square and proceeded to fill the other squares following minister’s suggested procedure, but by the\r\n            time he covered half the chess board, the king realised to his dismay that all the wheat produced in his\r\n            entire kingdom pooled together would still be inadequate to cover all the 64 squares. Now think of a tiny\r\n            Paramecium starting with just one individual and through binary fission, doubling in numbers every day, and\r\n            imagine what a mind-boggling population size it would reach in 64 days. (provided food and space remain\r\n            unlimited)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) Logistic growth"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": No population of any species in\r\n            nature has at its disposal unlimited resources to permit exponential growth. This leads to competition\r\n            between individuals for limited resources. Eventually, the ‘fittest’ individual will survive and\r\n            reproduce. The governments of many countries have also realised this fact and introduced various restraints\r\n            with a view to limit human population growth. In nature, a given habitat has enough resources to support a\r\n            maximum possible number, beyond which no further growth is possible. Let us call this limit as\r\n            nature’s carrying capacity (K) for that species in that habitat."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                population growing in a habitat with limited resources show initially a lag phase, followed by phases of\r\n                acceleration and deceleration and finally an asymptote, when the population density reaches the carrying\r\n                capacity.A plot of N in relation to time (t) results in a sigmoid curve. This type of population growth\r\n                is called Verhulst-Pearl Logistic Growth (Figure 13.6) and is described by the following\r\n                equation:"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352102,
+        352107
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "dN/dt\r\n                = rN"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "[("
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "K−N)/K"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "]"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352102,
+        352107,
+        15000211
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Where N = Population density at time t"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "r = Intrinsic rate of natural increase"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "K = Carrying capacity"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since resources for growth for most animal populations are finite and become\r\n            limiting sooner or later, the logistic growth model is considered a more realistic one."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gather from Government Census data the population figures for India for the last 100\r\n            years, plot them and check which growth pattern is evident."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "13.2.3 Life History Variation",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Populations evolve to maximise their reproductive fitness, also called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Darwinian\r\n                fitness (high r value), in the habitat in which they live. Under a particular set of selection\r\n                pressures, organisms evolve towards the most efficient reproductive strategy. Some organisms breed only\r\n                once in their lifetime (Pacific salmon fish, bamboo) while others breed many times during their lifetime\r\n                (most birds and mammals). Some produce a large number of small-sized offspring (Oysters, pelagic fishes)\r\n                while others produce a small number of large-sized offspring (birds, mammals). So, which is desirable\r\n                for maximising fitness?"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ecologists suggest that life history traits of\r\n            organisms have evolved in relation to the constraints imposed by the abiotic and biotic components of the\r\n            habitat in which they live. Evolution of life history traits in different species is currently an important\r\n            area of research being conducted by ecologists."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352104
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "13.2.4 Population Interactions",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you think of any natural habitat on earth that is inhabited just by a single\r\n            species? There is no such habitat and such a situation is even inconceivable. For any species, the minimal\r\n            requirement is one more species on which it can feed. Even a plant species, which makes its own food, cannot\r\n            survive alone; it needs soil microbes to break down the organic matter in soil and return the inorganic\r\n            nutrients for absorption. And then, how will the plant manage pollination without an animal\r\n            agent?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is obvious that in nature, animals, plants and microbes do not and\r\n            cannot live in isolation but interact in various ways to form a biological community."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Even in minimal communities, many interactive linkages exist, although all may not be\r\n            readily apparent."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                13.1 : Population Interactions"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352105,
+        352120,
+        352121
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Interspecific interactions arise from the interaction of populations of two different\r\n            species. They could be beneficial, detrimental or neutral (neither harm nor benefit) to one of the species\r\n            or both. Assigning a ‘+’ sign for beneficial interaction, ‘-’ sign for detrimental\r\n            and 0 for neutral interaction, let us look at all the possible outcomes of interspecific interactions\r\n            (Table13.1)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Both\r\n                the species benefit in mutualism and both lose in competition in their interactions with each\r\n                other."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In both parasitism and predation only one species benefits\r\n            (parasite and predator, respectively) and the interaction is detrimental to the other species (host and\r\n            prey, respectively). The interaction where one species is benefitted and the other is neither benefitted nor\r\n            harmed is called commensalism."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                amensalism on the other hand one species is harmed whereas the other is unaffected."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Predation, parasitism and commensalism share a common characteristic– the interacting\r\n            species live closely together."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352101,
+        352109,
+        352117
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Predation"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": What would happen\r\n            to all the energy fixed by autotrophic organisms if the community has no animals to eat the plants? You can\r\n            think of predation as nature’s way of transferring to higher trophic levels the energy fixed by\r\n            plants."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When we think of predator and prey, most probably it is the tiger and the\r\n            deer that readily come to our mind, but a sparrow eating any seed is no less a predator."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Although animals eating plants are categorised separately as herbivores, they are, in a\r\n            broad ecological context, not very different from predators."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Besides acting as ‘conduits’ for energy transfer across trophic levels,\r\n            predators play other important roles. They keep prey populations under control. But for predators, prey\r\n            species could achieve very high population densities and cause ecosystem instability. When certain exotic\r\n            species are introduced into a geographical area, they become invasive and start spreading fast because the\r\n            invaded land does not have its natural predators. The prickly pear cactus introduced into Australia in the\r\n            early 1920’s caused havoc by spreading rapidly into millions of hectares of rangeland. Finally, the\r\n            invasive cactus was brought under control only after a cactus-feeding predator (a moth) from its natural\r\n            habitat was introduced into the country. Biological control methods adopted in agricultural pest control are\r\n            based on the ability of the predator to regulate prey population. Predators also help"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "in maintaining species diversity in a community, by reducing the intensity of\r\n            competition among competing prey species. In the rocky intertidal communities of the American Pacific Coast\r\n            the starfish Pisaster is an important predator. In a field experiment, when all the starfish were removed\r\n            from an enclosed intertidal area, more than 10 species of invertebrates became extinct within a year,\r\n            because of inter-specific competition."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If a predator is too efficient and overexploits its prey, then the prey might become\r\n            extinct and following it, the predator will also become extinct for lack of food. This is the reason why\r\n            predators in nature are ‘prudent’."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Prey species have evolved\r\n            various defenses to lessen the impact of predation. Some species of insects and frogs are\r\n            cryptically-coloured (camouflaged) to avoid being detected easily by the predator. Some are poisonous and\r\n            therefore avoided by the predators. The Monarch butterfly is highly distasteful to its predator (bird)\r\n            because of a special chemical present in its body. Interestingly, the butterfly acquires this chemical\r\n            during its caterpillar stage by feeding on a poisonous weed."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For plants, herbivores are the predators. Nearly 25 per cent of all insects are known\r\n            to be phytophagous (feeding on plant sap and other parts of plants). The problem is particularly severe for\r\n            plants because, unlike animals, they cannot run away from their predators."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plants therefore have evolved an astonishing variety of morphological and chemical defences\r\n            against herbivores. Thorns (Acacia, Cactus) are the most common morphological means of defence. Many plants\r\n            produce and store chemicals that make the herbivore sick when they are eaten, inhibit feeding or digestion,\r\n            disrupt its reproduction or even kill it. You must have seen the weed Calotropis growing in abandoned\r\n            fields. The plant produces highly poisonous cardiac glycosides and that is why you never see any cattle or\r\n            goats browsing on this plant."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A wide variety of chemical substances that we\r\n            extract from plants on a commercial scale (nicotine, caffeine, quinine, strychnine, opium, etc.,) are\r\n            produced by them actually as defences against grazers and browsers."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Competition"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ":"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                Darwin spoke of the struggle for existence and survival of the fittest in nature, he was convinced that\r\n                interspecific competition is a potent force in organic evolution."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is\r\n            generally believed that competition occurs when closely related species compete for the same resources that\r\n            are limiting, but this is not entirely true. Firstly, totally unrelated species could also compete for the\r\n            same resource. For instance, in some shallow South American lakes, visiting flamingoes and resident fishes\r\n            compete for their common food, the zooplankton in the lake. Secondly, resources need not be limiting for\r\n            competition to occur; in interference competition, the feeding efficiency of one species might be reduced\r\n            due to the interfering and inhibitory presence of the other species, even if resources (food and space) are\r\n            abundant. Therefore, competition is best defined as a process in which the fitness of one species (measured\r\n            in terms of its ‘r’ the intrinsic rate of increase) is significantly lower in the presence of\r\n            another species."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is relatively easy to demonstrate in laboratory experiments, as\r\n            Gause and other experimental ecologists did, when resources are limited the competitively superior species\r\n            will eventually eliminate the other species, but evidence for such competitive exclusion occurring in nature\r\n            is not always conclusive."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Strong and persuasive circumstantial evidence does\r\n            exist however in some cases. The Abingdon tortoise in Galapagos Islands became extinct within a decade after\r\n            goats were introduced on the island, apparently due to the greater browsing efficiency of the goats. Another\r\n            evidence for the occurrence of competition in nature comes from what is called ‘competitive\r\n            release’. A species whose distribution is restricted to a small geographical area because of the\r\n            presence of a competitively superior species, is found to expand its distributional range dramatically when\r\n            the competing species is experimentally removed."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Connell’s\r\n                elegant field experiments showed that on the rocky sea coasts of Scotland, the larger and competitively\r\n                superior barnacle Balanus dominates the intertidal area, and excludes the smaller barnacle Chathamalus\r\n                from that zone. In general, herbivores and plants appear to be more adversely affected by competition\r\n                than carnivores."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352111,
+        15000473
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gause’s\r\n                ‘Competitive exclusion principle’ states that two closely related species competing for the\r\n                same resources cannot co-exist indefinitely and the competitively inferior one will be eliminated\r\n                eventually."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This may be true if resources are limiting, but not\r\n            otherwise. More recent studies do not support such gross generalisations about competition."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "While\r\n                they do not rule out the occurrence of interspecific competition in nature, they point out that species\r\n                facing competition might evolve mechanisms that promote co-existence rather than exclusion. One such\r\n                mechanism is ‘resource partitioning’."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If two species compete for the same resource, they could avoid competition by choosing, for\r\n            instance, different times for feeding or different foraging patterns. MacArthur showed that five closely\r\n            related species of warblers living on the same tree were able to avoid competition and co-exist due to\r\n            behavioural differences in their foraging activities."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352010,
+        352106,
+        352108,
+        352116,
+        15000258
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Parasitism"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Considering\r\n            that the parasitic mode of life ensures free lodging and meals, it is not surprising that parasitism has\r\n            evolved in so many taxonomic groups from plants to higher vertebrates. Many parasites have evolved to be\r\n            host-specific (they can parasitise only a single species of host) in such a way that both host and the\r\n            parasite tend to co-evolve; that is, if the host evolves special mechanisms for rejecting or resisting the\r\n            parasite, the parasite has to evolve mechanisms to counteract and neutralise them, in order to be successful\r\n            with the same host species."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In accordance with their life styles, parasites evolved\r\n            special adaptations such as the loss of unnecessary sense organs, presence of adhesive organs or suckers to\r\n            cling on to the host, loss of digestive system and high reproductive capacity."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The life cycles of parasites are often complex, involving one or two intermediate hosts or\r\n            vectors to facilitate parasitisation of its primary host. The human liver fluke (a trematode parasite)\r\n            depends on two intermediate hosts (a snail and a fish) to complete its life cycle. The malarial parasite\r\n            needs a vector (mosquito) to spread to other hosts. Majority of the parasites harm the host; they may reduce\r\n            the survival, growth and reproduction of the host and reduce its population density. They might render the\r\n            host more vulnerable to predation by making it physically weak. Do you believe that an ideal parasite should\r\n            be able to thrive within the host without harming it? Then why didn’t natural selection lead to the\r\n            evolution of such totally harmless parasites?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Parasites that feed on the external surface of the host organism are called\r\n            ectoparasites. The most familiar examples of this group are the lice on humans and ticks on\r\n            dogs."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Many marine fish are infested with ectoparasitic copepods."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cuscuta, a parasitic plant that is commonly found growing on hedge plants, has lost its\r\n            chlorophyll and leaves in the course of evolution."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It derives its nutrition\r\n            from the host plant which it parasitises."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The female mosquito is not considered a\r\n            parasite, although it needs our blood for reproduction."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you explain why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In contrast, endoparasites are those that live inside the host body at different\r\n            sites (liver, kidney, lungs, red blood cells, etc.). The life cycles of endoparasites are more complex\r\n            because of their extreme specialisation. Their morphological and anatomical features are greatly simplified\r\n            while emphasising their reproductive potential."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Brood parasitism in birds is a fascinating example of parasitism in which the\r\n            parasitic bird lays its eggs in the nest of its host and lets the host incubate them. During the course of\r\n            evolution, the eggs of the parasitic bird have evolved to resemble the host’s egg in size and colour\r\n            to reduce the chances of the host bird detecting the foreign eggs and ejecting them from the nest."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Try to follow the movements of the cuckoo (koel) and the crow in your neighborhood park\r\n            during the breeding season (spring to summer) and watch brood parasitism in action."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Commensalism"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": This is the\r\n            interaction in which one species benefits and the other is neither harmed nor benefited."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "An\r\n                orchid growing as an epiphyte on a mango branch, and barnacles growing on the back of a whale benefit\r\n                while neither the mango tree nor the whale derives any apparent benefit. The cattle egret and grazing\r\n                cattle in close association, a sight you are most likely to catch if you live in farmed rural areas, is\r\n                a classic example of commensalism."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The egrets always forage close to\r\n            where the cattle are grazing because the cattle, as they move, stir up and flush out insects from the\r\n            vegetation that otherwise might be difficult for the egrets to find and catch."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Another\r\n                example of commensalism is the interaction between sea anemone that has stinging tentacles and the clown\r\n                fish that lives among them."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fish gets protection from predators\r\n            which stay away from the stinging tentacles. The anemone does not appear to derive any benefit by hosting\r\n            the clown fish."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352011,
+        352113
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.7 Mutual relationship between fig tree and wasp: (a) Fig flower is\r\n            pollinated by wasp; (b) Wasp laying eggs in a fig fruit"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(v)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mutualism"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": This interaction\r\n            confers benefits on both the interacting species."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Lichens represent an intimate\r\n            mutualistic relationship between a fungus and photosynthesising algae or cyanobacteria."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Similarly,\r\n                the mycorrhizae are associations between fungi and the roots of higher plants."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fungi help the plant in the absorption of essential nutrients from the soil while the plant\r\n            in turn provides the fungi with energy-yielding carbohydrates."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352103
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The most spectacular and evolutionarily fascinating examples of mutualism are found\r\n            in plant-animal relationships. Plants need the help of animals for pollinating their flowers and dispersing\r\n            their seeds. Animals obviously have to be paid ‘fees’ for the services that plants expect from\r\n            them."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Plants\r\n                offer rewards or fees in the form of pollen and nectar for pollinators and juicy and nutritious fruits\r\n                for seed dispersers. But the mutually beneficial system should also be safeguarded against\r\n                ‘cheaters’, for example, animals that try to steal nectar without aiding in\r\n                pollination."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now you can see why plant-animal interactions often\r\n            involve co-evolution of the mutualists, that is, the evolutions of the flower and its pollinator species are\r\n            tightly linked with one another. In many species of fig trees, there is a tight one-to-one relationship with\r\n            the pollinator species of wasp (Figure 13.7). It means that a given fig species can be pollinated only by\r\n            its ‘partner’ wasp species and no other species."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                female wasp uses the fruit not only as an oviposition (egg-laying) site but uses the developing seeds\r\n                within the fruit for nourishing its larvae. The wasp pollinates the fig inflorescence while searching\r\n                for suitable egg-laying sites. In return for the favour of pollination the fig offers the wasp some of\r\n                its developing seeds, as food for the developing wasp larvae."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        352122,
+        15000457
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Organisms_and_Population-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 13.8 Showing bee-a pollinator on orchid flower"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Orchids show a bewildering diversity of floral patterns many of which have evolved to\r\n            attract the right pollinator insect (bees and bumblebees) and ensure guaranteed pollination by it (Figure\r\n            13.8). Not all orchids offer rewards. The Mediterranean orchid Ophrys employs ‘sexual deceit’ to\r\n            get pollination done by a species of bee. One petal of its flower bears an uncanny resemblance to the female\r\n            of the bee in size, colour and markings."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The male bee is attracted to what it\r\n            perceives as a female, ‘pseudocopulates’ with the flower, and during that process is dusted with\r\n            pollen from the flower."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When this same bee ‘pseudocopulates’ with\r\n            another flower, it transfers pollen to it and thus, pollinates the flower. Here you can see how co-evolution\r\n            operates. If the female bee’s colour patterns change even slightly for any reason during evolution,\r\n            pollination success will be reduced unless the orchid flower co-evolves to maintain the resemblance of its\r\n            petal to the female bee."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Summary"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As a branch of biology, Ecology is the study of the relationships of living organisms\r\n            with the abiotic (physico-chemical factors) and biotic components (other species) of their environment. It\r\n            is concerned with four levels of biological organisation-organisms, populations, communities and\r\n            biomes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Temperature, light, water and soil are the most important physical factors of the\r\n            environment to which the organisms are adapted in various ways. Maintenance of a constant internal\r\n            environment (homeostasis) by the organisms contributes to optimal performance, but only some organisms\r\n            (regulators) are capable of homeostasis in the face of changing external environment. Others either\r\n            partially regulate their internal environment or simply conform. A few other species have evolved\r\n            adaptations to avoid unfavourable conditions in space (migration) or in time (aestivation, hibernation, and\r\n            diapause)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Evolutionary changes through natural selection take place at the population level and\r\n            hence, population ecology is an important area of ecology. A population is a group of individuals of a given\r\n            species sharing or competing for similar resources in a defined geographical area. Populations have\r\n            attributes that individual organisms do not- birth rates and death rates, sex ratio and age distribution.\r\n            The proportion of different age groups of males and females in a population is often presented graphically\r\n            as age pyramid; its shape indicates whether a population is stationary, growing or declining."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ecological effects of any factors on a population are generally reflected in its size\r\n            (population density), which may be expressed in different ways (numbers, biomass, per cent cover, etc.,)\r\n            depending on the species."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Populations grow through births and immigration and decline through deaths and\r\n            emigration."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When resources are unlimited, the growth is usually exponential but when\r\n            resources become progressively limiting, the growth pattern turns logistic."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In\r\n            either case, growth is ultimately limited by the carrying capacity of the environment. The intrinsic rate of\r\n            natural increase (r) is a measure of the inherent potential of a population to grow."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In nature populations of different species in a habitat do not live in isolation but\r\n            interact in many ways. Depending on the outcome, these interactions between two species are classified as\r\n            competition (both species suffer), predation and parasitism (one benefits and the other suffers),\r\n            commensalism (one benefits and the other is unaffected), amensalism (one is harmed, other unaffected) and\r\n            mutualism (both species benefit). Predation is a very important process through which trophic energy\r\n            transfer is facilitated and some predators help in controlling their prey populations. Plants have evolved\r\n            diverse morphological and chemical defenses against herbivory. In competition, it is presumed that the\r\n            superior competitor eliminates the inferior one (the Competitive Exclusion Principle), but many closely\r\n            related species have evolved various mechanisms which facilitate their co-existence. Some of the most\r\n            fascinating cases of mutualism in nature are seen in plant-pollinator interactions"
+        }
+      ]
+    }
+  ]
+}

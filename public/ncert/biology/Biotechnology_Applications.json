@@ -1,0 +1,1571 @@
+{
+  "title": "Biotechnology Applications",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 12"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Biotechnology and its Applications",
+      "id": "h.6fqf57lz9uz4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12.1 Biotechnological Applications in Agriculture"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12.2 Biotechnological Applications in Medicine"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12.3 Transgenic Animals"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12.4 Ethical Issues"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology, as you would have learnt from the previous chapter, essentially deals\n            with industrial scale production of biopharmaceuticals and biologicals using genetically modified microbes,\n            fungi, plants and animals. The applications of biotechnology include therapeutics, diagnostics, genetically\n            modified crops for agriculture, processed food, bioremediation, waste treatment, and energy production.\n            Three critical research areas ofwbiotechnology are:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) Providing the best catalyst in the form of improved organism usually a microbe or\n            pure enzyme."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) Creating optimal conditions through engineering for a catalyst to act,\n            and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) Downstream processing technologies to purify the protein/organic\n            compound."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now learn how human beings have used biotechnology to improve the quality of\n            human life, especially in the field of food production and health."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "12.1 Biotechnological Applications in Agriculture",
+      "id": "h.3lr1r1rznn8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us take a look at the three options that can be thought for increasing food\n            production"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) agro-chemical based agriculture;"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) organic agriculture; and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) genetically engineered crop-based agriculture."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Green Revolution"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "succeeded\n            in tripling the food supply but yet it was not enough to feed the growing human population. Increased yields\n            have partly been due to the use of improved crop varieties, but mainly due to the use of better management\n            practices and use of agrochemicals (fertilisers and pesticides). However, for farmers in the developing\n            world, agrochemicals are often too expensive, and further increases in yield with existing varieties are not\n            possible using conventional breeding. Is there any alternative path that our understanding of genetics can\n            show so that farmers may obtain maximum yield from their fields? Is there a way to minimise the use of\n            fertilisers and chemicals so that their harmful effects on the environment are reduced? Use of genetically\n            modified crops is a possible solution."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Plants,\n                bacteria, fungi and animals whose genes have been altered by manipulation are called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Genetically\n                Modified Organisms (GMO)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "GM plants have been useful in many ways. Genetic modification has:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341017
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) made crops more tolerant to abiotic stresses (cold, drought, salt, heat)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) reduced reliance on chemical pesticides (pest-resistant crops)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) helped to reduce post harvest losses."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv) increased efficiency of mineral usage by plants (this prevents early exhaustion\n            of fertility of soil)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(v)\n                enhanced nutritional value of food, e.g., golden rice, i.e., Vitamin ‘A’ enriched\n                rice."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340803,
+        340806,
+        340816,
+        341006,
+        341009,
+        341010
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In addition to these uses, GM has been used to create tailor-made plants to supply\n            alternative resources to industries, in the form of starches, fuels and pharmaceuticals."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\n                of the applications of biotechnology in agriculture that you will study in detail are the production of\n                pest resistant plants, which could decrease the amount of pesticide used."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Bt\n                toxin is produced by a bacterium called Bacillus thuringiensis (Bt for short). Bt toxin gene has been\n                cloned from the bacteria and been expressed in plants to provide resistance to insects without the need\n                for insecticides; in effect created a bio-pesticide."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Examples are Bt\n            cotton, Bt corn, rice, tomato, potato and soyabean etc."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340801,
+        340809,
+        340814,
+        341018
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Bt Cotton:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some strains of Bacillus thuringiensis\n            produce proteins that kill certain insects such as lepidopterans (tobacco budworm, armyworm), coleopterans\n            (beetles) and dipterans (flies, mosquitoes). B. thuringiensis forms protein crystals during a particular\n            phase of their growth."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                crystals contain a toxic insecticidal protein."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Why does this toxin not\n            kill the Bacillus?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Actually,\n                the Bt toxin protein exist as inactive protoxins but once an insect ingest the inactive toxin, it is\n                converted into an active form of toxin due to the alkaline pH of the gut which solubilise the\n                crystals."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                activated toxin binds to the surface of midgut epithelial cells and create pores that cause cell\n                swelling and lysis and eventually cause death of the insect."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340801,
+        340802,
+        340807,
+        340815,
+        341015,
+        341033,
+        15000451,
+        15000459
+      ],
+      "pyq_count": 8
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Specific\n                Bt toxin genes were isolated from Bacillus thuringiensis and incorporated into the several crop plants\n                such as cotton (Figure 12.1)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                choice of genes depends upon the crop and the targeted pest, as most Bt toxins are insect-group\n                specific."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                toxin is coded by a gene cryIAc named cry."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\n                are a number of them, for example, the proteins encoded by the genes cryIAc and cryIIAb control the\n                cotton bollworms, that of cryIAb controls corn borer."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340809,
+        341012,
+        341025,
+        341034,
+        341035,
+        15000222,
+        15000303
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Applications-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 12.1 Cotton boll: (a) destroyed by bollworms; (b) a fully mature cotton\n            boll"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Pest\n                Resistant Plants:"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Several\n                nematodes parasitise a wide variety of plants and animals including human beings. A nematode Meloidegyne\n                incognitia infects the roots of tobacco plants and causes a great reduction in yield."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\n                novel strategy was adopted to prevent this infestation which was based on the process of"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "RNA\n                interference"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(RNAi)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "RNAi\n                takes place in all eukaryotic organisms as a method of cellular defense."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                method involves silencing of a specific mRNA due to a complementary dsRNA molecule that binds to and\n                prevents translation of the mRNA (silencing)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                source of this complementary RNA could be from an infection by viruses having RNA genomes or mobile\n                genetic elements (transposons) that replicate via an RNA intermediate."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340804,
+        340805,
+        340810,
+        340817,
+        340828,
+        341021,
+        341027,
+        341031,
+        15000494
+      ],
+      "pyq_count": 9
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Using\n                Agrobacterium vectors, nematode-specific genes were introduced into the host plant (Figure 12.2). The\n                introduction of DNA was such that it produced both sense and anti-sense RNA in the host\n                cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                two RNA’s being complementary to each other formed a double stranded (dsRNA) that initiated RNAi\n                and thus, silenced the specific mRNA of the nematode. The consequence was that the parasite could not\n                survive in a transgenic host expressing specific interfering RNA. The transgenic plant therefore got\n                itself protected from the parasite (Figure 12.2)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340804,
+        341014,
+        341017,
+        341022,
+        341034
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Applications-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)                      \n                     (b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 12.2 Host plant-generated dsRNA triggers protection against nematode\n            infestation:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Roots of a typical control plants; (b) transgenic plant roots 5 days after\n            deliberate infection of nematode but protected through novel mechanism."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "12.2 Biotechnological Applications in Medicine",
+      "id": "h.5lwzj0kzr3l4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The recombinant DNA technological processes have made immense impact in the area of\n            healthcare by enabling mass production of safe and more effective therapeutic drugs. Further, the\n            recombinant therapeutics do not induce unwanted immunological responses as is common in case of similar\n            products isolated from non-human sources. At present, about 30 recombinant therapeutics have been approved\n            for human-use the world over. In India, 12 of these are presently being marketed."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "12.2.1 Genetically Engineered Insulin",
+      "id": "h.il2a3fippsu0"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Management of adult-onset diabetes is possible by taking insulin at regular time\n            intervals."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "What\n                would a diabetic patient do if enough human-insulin was not available"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "? If\n            you discuss this, you would soon realise that one would have to isolate and use insulin from other animals.\n            Would the insulin isolated from other animals be just as effective as that secreted by the human body itself\n            and would it not elicit an immune response in the human body? Now, imagine if bacterium were available that\n            could make human insulin. Suddenly the whole process becomes so simple. You can easily grow a large quantity\n            of the bacteria and make as much insulin as you need."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341036
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Think about whether insulin can be orally administered to diabetic people or not.\n            Why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Applications-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 12.3 Maturation of"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pro-insulin into insulin (simplified)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Insulin used for diabetes was earlier extracted from pancreas of slaughtered cattle\n            and pigs. Insulin from an animal source, though caused some patients to develop allergy or other types of\n            reactions to the foreign protein."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Insulin\n                consists of two short polypeptide chains: chain A and chain B, that are linked together by disulphide\n                bridges (Figure 12.3). In mammals, including humans, insulin is synthesised as a pro-hormone (like a\n                pro-enzyme, the pro-hormone also needs to be processed before it becomes a fully mature and functional\n                hormone) which contains an extra stretch called the C peptide.This C peptide is not present in the\n                mature insulin and is removed during maturation into insulin."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The main\n            challenge for production of insulin using rDNA techniques was getting insulin assembled into a mature form."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\n                1983, Eli Lilly an American company prepared two DNA sequences corresponding to A and B, chains of human\n                insulin and introduced them in plasmids of E. coli to produce insulin chains."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Chains\n                A and B were produced separately, extracted and combined by creating disulfide bonds to form human\n                insulin."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340818,
+        340823,
+        340827,
+        341013,
+        341026,
+        341028,
+        341030
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "12.2.2 Gene Therapy",
+      "id": "h.b4h1inhd019k"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If a person is born with a hereditary disease, can a corrective therapy be taken for\n            such a disease? Gene therapy is an attempt to do this."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gene\n                therapy is a collection of methods that allows correction of a gene defect that has been diagnosed in a\n                child/embryo."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Here genes are inserted into a person’s cells and\n            tissues to treat a disease. Correction of a genetic defect involves delivery of a normal gene into the\n            individual or embryo to take over the function of and compensate for the non-functional gene."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341031
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                first clinical gene therapy was given in 1990 to a 4-year old girl with adenosine deaminase (ADA)\n                deficiency."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                enzyme is crucial for the immune system to function. The disorder is caused due to the deletion of the\n                gene for adenosine deaminase."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In some children ADA deficiency can be\n            cured by bone marrow transplantation; in others it can be treated by enzyme replacement therapy, in which\n            functional ADA is given to the patient by injection. But the problem with both of these approaches that they\n            are not completely curative. As a first step towards gene therapy, lymphocytes from the blood of the patient\n            are grown in a culture outside the body."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340817,
+        340824,
+        341003,
+        341023,
+        341029,
+        15000426
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                functional ADA cDNA (using a retroviral vector) is then introduced into these lymphocytes, which are\n                subsequently returned to the patient. However, as these cells are not immortal, the patient requires\n                periodic infusion of such genetically engineered lymphocytes. However, if the gene isolate from marrow\n                cells producing ADA is introduced into cells at early embryonic stages, it could be a permanent\n                cure."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340826,
+        341016
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "12.2.3 Molecular Diagnosis",
+      "id": "h.q7xmzcfclhsq"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "You\n                know that for effective treatment of a disease, early diagnosis and understanding its pathophysiology is\n                very important."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Using conventional methods of diagnosis (serum and\n            urine analysis, etc.) early detection is not possible."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Recombinant\n                DNA technology, Polymerase Chain Reaction (PCR) and Enzyme Linked Immuno-sorbent Assay (ELISA) are some\n                of the techniques that serve the purpose of early diagnosis."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331353,
+        340825
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Presence of a pathogen (bacteria, viruses, etc.) is normally suspected only when the\n            pathogen has produced a disease symptom. By this time the concentration of pathogen is already very high in\n            the body."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "However,\n                very low concentration of a bacteria or virus (at a time when the symptoms of the disease are not yet\n                visible) can be detected by amplification of their nucleic acid by PCR."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you explain how PCR can detect very low amounts of DNA?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "PCR\n                is now routinely used to detect HIV in suspected AIDS patients."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\n                is being used to detect mutations in genes in suspected cancer patients too."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is a powerful techqnique to identify many other genetic disorders."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331327,
+        340817,
+        341029
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A single stranded DNA or RNA, tagged with a radioactive molecule (probe) is allowed\n            to hybridise to its complementary DNA in a clone of cells followed by detection using autoradiography."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                clone having the mutated gene will hence not appear on the photographic film, because the probe will not\n                have complementarity with the mutated gene."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340822,
+        341037
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ELISA is based on the principle of antigen-antibody interaction. Infection by\n            pathogen can be detected by the presence of antigens (proteins, glycoproteins, etc.) or by detecting the\n            antibodies synthesised against the pathogen."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "12.3 Transgenic Animals",
+      "id": "h.olosp9dftvby"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Animals that have had their DNA manipulated to possess and express an extra (foreign)\n            gene are known as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "transgenic"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "animals"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Transgenic\n                rats, rabbits, pigs, sheep, cows and fish have been produced, although over 95 per cent of all existing\n                transgenic animals are mice."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Why are these animals being produced? How\n            can man benefit from such modifications? Let us try and explore some of the common reasons:"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341017,
+        341038
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Normal physiology and development:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Transgenic animals can be specifically designed to allow the study of how genes are\n            regulated, and how they affect the normal functions of the body and its development, e.g., study of complex\n            factors involved in growth such as insulin-like growth factor. By introducing genes from other species that\n            alter the formation of this factor and studying the biological effects that result, information is obtained\n            about the biological role of the factor in the body."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Study of disease"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Many\n            transgenic animals are designed to increase our understanding of how genes contribute to the development of\n            disease. These are specially made to serve as models for human diseases so that investigation of new\n            treatments for diseases is made possible. Today transgenic models exist for many human diseases such as\n            cancer, cystic fibrosis, rheumatoid arthritis and Alzheimer’s."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biological products"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Medicines\n            required to treat certain human diseases can contain biological products, but such products are often\n            expensive to make. Transgenic animals that produce useful biological products can be created by the\n            introduction of the portion of DNA (or genes) which codes for a particular product such as human protein"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(α-1-antitrypsin)\n                used to treat emphysema."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Similar attempts are being made for treatment\n            of phenylketonuria (PKU) and cystic fibrosis."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\n                1997, the first transgenic cow, Rosie, produced human protein-enriched milk (2.4 grams per\n                litre)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The milk contained the human\n            alpha-lactalbumin and was nutritionally a more balanced product for human babies than natural\n            cow-milk."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341005,
+        341039,
+        15000303
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Vaccine safety"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Transgenic mice\n            are being developed for use in testing the safety of vaccines before they are used on humans."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Transgenic\n                mice are being used to test the safety of the polio vaccine."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "f successful and found to be reliable,\n            they could replace the use of monkeys to test the safety of batches of the vaccine."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341040
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(v)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chemical safety testing:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is known as toxicity/safety testing. The procedure is the same as that used for\n            testing toxicity of drugs. Transgenic animals are made that carry genes which make them more sensitive to\n            toxic substances than non-transgenic animals. They are then exposed to the toxic substances and the effects\n            studied. Toxicity testing in such animals will allow us to obtain results in less time."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "12.4 Ethical Issues",
+      "id": "h.iroilriayzrw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The manipulation of living organisms by the human race cannot go on any further,\n            without regulation. Some ethical standards are required to evaluate the morality of all human activities\n            that might help or harm living organisms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Going beyond the morality of such issues, the biological significance of such things\n            is also important. Genetic modification of organisms can have unpredicatable results when such organisms are\n            introduced into the ecosystem."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Therefore,\n                the Indian Government has set up organisations such as GEAC (Genetic Engineering Approval Committee),\n                which will make decisions regarding the validity of GM research and the safety of introducing\n                GM-organisms for public services."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340812,
+        340820,
+        15000425
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The modification/usage of living organisms for public services (as food and medicine\n            sources, for example) has also created problems with patents granted for the same."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\n                is growing public anger that certain companies are being granted patents for products and technologies\n                that make use of the genetic materials, plants and other biological resources that have long been\n                identified, developed and used by farmers and indigenous people of a specific region/country."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341029
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Rice is an important food grain, the presence of which goes back thousands of years\n            in Asia’s agricultural history. There are an estimated 200,000 varieties of rice in India alone. The\n            diversity of rice in India is one of the richest in the world. Basmati rice is distinct for its unique aroma\n            and flavour and 27 documented varieties of Basmati are grown in India. There is reference to Basmati in\n            ancient texts, folklore and poetry, as it has been grown for centuries."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\n                1997, an American company got patent rights on Basmati rice through the US Patent and Trademark\n                Office"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This allowed the company to sell a\n            ‘new’ variety of Basmati, in the US and abroad."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                ‘new’ variety of Basmati had actually been derived from Indian farmer’s\n                varieties."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Indian Basmati was crossed with semi-dwarf varieties and\n            claimed as an invention or a novelty. The patent extends to functional equivalents, implying that other\n            people selling Basmati rice could be restricted by the patent. Several attempts have also been made to\n            patent uses, products and processes based on Indian traditional herbal medicines, e.g., turmeric neem. If we\n            are not vigilant and we do not immediately counter these patent applications, other countries/individuals\n            may encash on our rich legacy and we may not be able to do anything about it."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340811,
+        340819
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Biopiracy"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is\n                the term used to refer to the use of bio-resources by multinational companies and other organisations\n                without proper authorisation from the countries and people concerned without compensatory\n                payment."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340813,
+        341029
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Most of the industrialised nations are rich financially but poor in biodiversity and\n            traditional knowledge. In contrast the developing and the underdeveloped world is rich in biodiversity and\n            traditional knowledge related to bio-resources. Traditional knowledge related to bio-resources can be\n            exploited to develop modern applications and can also be used to save time, effort and expenditure during\n            their commercialisation."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There has been growing realisation of the injustice, inadequate compensation and\n            benefit sharing between developed and developing countries."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Therefore,\n                some nations are developing laws to prevent such unauthorised exploitation of their bio-resources and\n                traditional knowledge."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341041
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                Indian Parliament has recently cleared the second amendment of the Indian Patents Bill, that takes such\n                issues into consideration, including patent terms emergency provisions and research and development\n                initiative."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341041
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "SUMMARY",
+      "id": "h.4lcma458jeeb"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology has given to humans several useful products by using microbes, plant,\n            animals and their metabolic machinery. Recombinant DNA technology has made it possible to engineer microbes,\n            plants and animals such that they have novel capabilities. Genetically Modified Organisms have been created\n            by using methods other than natural methods to transfer one or more genes from one organism to another,\n            generally using techniques such as recombinant DNA technology."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "GM plants have been useful in increasing crop yields, reduce post-harvest losses and\n            make crops more tolerant of stresses."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\n                are several GM crop plants with improved nutritional value of foods and reduced the reliance on chemical\n                pesticides (pest-resistant crops)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        341042
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Recombinant DNA technological processes have made immense impact in the area of\n            healthcare by enabling mass production of safe and more effective therapeutics. Since the recombinant\n            therapeutics are identical to human proteins, they do not induce unwanted immunological responses and are\n            free from risk of infection as was observed in case of similar products isolated from non-human sources.\n            Human insulin is made in bacteria yet its structure is absolutely identical to that of the natural\n            molecule."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Transgenic animals are also used to understand how genes contribute to the\n            development of a disease by serving as models for human diseases, such as cancer, cystic fibrosis,\n            rheumatoid arthritis and Alzheimer’s."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gene\n                therapy is the insertion of genes into an individual’s cells and tissues to treat diseases\n                especially hereditary diseases. It does so by replacing a defective mutant allele with a functional one\n                or gene targeting which involves gene amplification."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Viruses that\n            attack their hosts and introduce their genetic material into the host cell as part of their replication\n            cycle are used as vectors to transfer healthy genes or more recently portions of genes."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        340821
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The current interest in the manipulation of microbes, plants, and animals has raised\n            serious ethical questions."
+        }
+      ]
+    }
+  ]
+}

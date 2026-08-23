@@ -1,0 +1,2328 @@
+{
+  "title": "Biotechnology Principles and Processes",
+  "children": [
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Unit IX",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Biotechnology",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 11"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology : Principles and Processes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Chapter 12"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology and Its Applications"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ever since the days of Rene Descartes, the French philosopher, mathematician and\r\n            biologist of seventeenth century, all human knowledge especially natural sciences were directed to develop\r\n            technologies which add to the creature comforts of human lives, as also value to human life. The whole\r\n            approach to understanding natural phenomena became anthropocentric. Physics and chemistry gave rise to\r\n            engineering, technologies and industries which all worked for human comfort and welfare. The major utility\r\n            of the biological world is as a source of food. Biotechnology, the twentieth century off-shoot of modern\r\n            biology, changed our daily life as its products brought qualitative improvement in health and food\r\n            production. The basic principles underlying biotechnological processes and some applications are highlighted\r\n            and discussed in this unit."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Herbert Boyer was born in 1936 and brought up in a corner of western Pennsylvania\r\n            where railroads and mines were the destiny of most young men. He completed graduate work at the University\r\n            of Pittsburgh, in 1963, followed by three years of post-graduate studies at Yale."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image6.png",
+              "alt": "pic_11",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Herbert Boyer"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1936 )"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In 1966, Boyer took over assistant professorship at the University of California at\r\n            San Francisco. By 1969, he performed studies on a couple of restriction enzymes of the E. coli bacterium\r\n            with especially useful properties. Boyer observed that these enzymes have the capability of cutting DNA\r\n            strands in a particular fashion, which left what has became known as ‘sticky ends’ on the\r\n            strands. These clipped ends made pasting together pieces of DNA a precise exercise."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This discovery, in turn, led to a rich and rewarding conversation in Hawaii with a\r\n            Stanford scientist named Stanley Cohen. Cohen had been studying small ringlets of DNA called plasmids and\r\n            which float about freely in the cytoplasm of certain bacterial cells and replicate independently from the\r\n            coding strand of DNA. Cohen had developed a method of removing these plasmids from the cell and then\r\n            reinserting them in other cells. Combining this process with that of DNA splicing enabled Boyer and Cohen to\r\n            recombine segments of DNA in desired configurations and insert the DNA in bacterial cells, which could then\r\n            act as manufacturing plants for specific proteins. This breakthrough was the basis upon which the discipline\r\n            of biotechnology was founded."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 11",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology : Principles and Processe"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11.1 Principles of Biotechnology"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11.2 Tools of Recombinant DNA Technology"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11.3 Processes of Recombinant DNA Technology"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology deals with techniques of using live organisms or enzymes from organisms\r\n            to produce products and processes useful to humans. In this sense, making curd, bread or wine, which are all\r\n            microbe-mediated processes, could also be thought as a form of biotechnology. However, it is used in a\r\n            restricted sense today, to refer to such of those processes which use genetically modified organisms to\r\n            achieve the same on a larger scale. Further, many other processes/techniques are also included under\r\n            biotechnology. For example, in vitro fertilisation leading to a ‘test-tube’ baby, synthesising a\r\n            gene and using it, developing a DNA vaccine or correcting a defective gene, are all part of\r\n            biotechnology."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The European Federation of Biotechnology (EFB) has given a definition of\r\n            biotechnology that encompasses both traditional view and modern molecular biotechnology. The definition\r\n            given by EFB is as follows:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "‘The integration of natural science and organisms, cells, parts thereof, and\r\n            molecular analogues for products and services’."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.1 Principles of Biotechnology",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Among many, the two core techniques that enabled birth of modern biotechnology are\r\n            :"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(i)\r\n                Genetic engineering : Techniques to alter the chemistry of genetic material (DNA and RNA), to introduce\r\n                these into host organisms and thus change the phenotype of the host organism."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331357
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) Bioprocess engineering: Maintenance of sterile (microbial contamination-free)\r\n            ambience in chemical engineering processes to enable growth of only the desired microbe/eukaryotic cell in\r\n            large quantities for the manufacture of biotechnological products like antibiotics, vaccines, enzymes,\r\n            etc."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now understand the conceptual development of the principles of genetic\r\n            engineering."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You probably appreciate the advantages of sexual reproduction over asexual\r\n            reproduction. The former provides opportunities for variations and formulation of unique combinations of\r\n            genetic setup, some of which may be beneficial to the organism as well as the population. Asexual\r\n            reproduction preserves the genetic information, while sexual reproduction permits variation. Traditional\r\n            hybridisation procedures used in plant and animal breeding, very often lead to inclusion and multiplication\r\n            of undesirable genes along with the desired genes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                techniques of genetic engineering which include creation of"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "recombinant"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "DNA"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                use of"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "gene"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cloning"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "gene"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "transfer"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\r\n                overcome this limitation and allows us to isolate and introduce only one or a set of desirable genes\r\n                without introducing undesirable genes into the target organism."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331358
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Do\r\n                you know the likely fate of a piece of DNA, which is somehow transferred into an alien\r\n                organism?"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Most likely, this piece of DNA would\r\n            not be able to multiply itself in the progeny cells of the organism. But, when it gets integrated into the\r\n            genome of the recipient, it may multiply and be inherited along with the host DNA. This is because the alien\r\n            piece of DNA has become part of a chromosome, which has the ability to replicate. In a chromosome there is a\r\n            specific DNA sequence called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "origin of replication"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ",\r\n            which is responsible for initiating replication. Therefore, for the multiplication of any alien piece of DNA\r\n            in an organism it needs to be a part of a chromosome(s) which has a specific sequence known as ‘origin\r\n            of replication’. Thus, an alien DNA is linked with the origin of replication, so that, this alien\r\n            piece of DNA can replicate and multiply itself in the host organism. This can also be called as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cloning"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or making multiple identical copies of any template\r\n            DNA."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000217
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us now focus on"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                first instance of the construction of an artificial recombinant DNA molecule. The construction of the\r\n                first recombinant DNA emerged from the possibility of linking a gene encoding antibiotic resistance with\r\n                a native"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "plasmid"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(autonomously\r\n                replicating circular extra-chromosomal DNA) of Salmonella typhimurium"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Stanley Cohen and Herbert Boyer accomplished this in 1972 by isolating the antibiotic\r\n            resistance gene by cutting out a piece of DNA from a plasmid which was responsible for conferring antibiotic\r\n            resistance."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                cutting of DNA at specific locations became possible with the discovery of the so-called\r\n                ‘molecular scissors’– restriction enzymes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The cut\r\n            piece of DNA was then linked with the plasmid DNA."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                plasmid DNA act as vectors to transfer the piece of DNA attached to it"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You probably know that mosquito acts as an insect vector to\r\n            transfer the malarial parasite into human body. In the same way, a plasmid can be used as vector to deliver\r\n            an alien piece of DNA into the host organism."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                linking of antibiotic resistance gene with the plasmid vector became possible with the enzyme DNA\r\n                ligase, which acts on cut DNA molecules and joins their ends."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This makes a new combination of circular autonomously replicating\r\n            DNA created in vitro and is known as recombinant DNA. When this DNA is transferred into Escherichia coli, a\r\n            bacterium closely related to Salmonella, it could replicate using the new host’s DNA polymerase enzyme\r\n            and make multiple copies."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                ability to multiply copies of antibiotic resistance gene in E. coli was called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cloning"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "of\r\n                antibiotic resistance gene in E. coli."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331201,
+        331202,
+        331216,
+        331218,
+        331301,
+        331314,
+        331351,
+        331357,
+        331358,
+        331359
+      ],
+      "pyq_count": 10
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You can hence infer that there are three basic steps in genetically modifying an\r\n            organism —"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) identification of DNA with desirable genes;"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) introduction of the identified DNA into the host;"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) maintenance of introduced DNA in the host and transfer of the DNA to its\r\n            progeny."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "11.2 Tools of Recombinant DNA Technology",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now we know from the foregoing discussion that genetic engineering or recombinant DNA\r\n            technology can be accomplished only if we have the key tools, i.e., restriction enzymes, polymerase enzymes,\r\n            ligases, vectors and the host organism. Let us try to understand some of these in detail."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.2.1 Restriction Enzymes",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                the year 1963, the two enzymes responsible for restricting the growth of bacteriophage in Escherichia\r\n                coli were isolated. One of these added methyl groups to DNA, while the other cut DNA. The later was\r\n                called restriction endonuclease."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331360
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                first restriction endonuclease–Hind II, whose functioning depended on a specific DNA nucleotide\r\n                sequence was isolated and characterised five years later."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\r\n                was found that Hind II always cut DNA molecules at a particular point by recognising a specific sequence\r\n                of  six base pairs."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This specific base sequence is known as the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "recognition sequence"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for Hind II. Besides Hind II,\r\n            today we know more than 900 restriction enzymes that have been isolated from over 230 strains of bacteria\r\n            each of which recognise different recognition sequences."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331219,
+        331361,
+        15000205
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                convention for naming these enzymes is the first letter of the name comes from the genus and the second\r\n                two letters come from the species of the prokaryotic cell from which they were isolated, e.g., EcoRI\r\n                comes from Escherichia coli RY 13."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In EcoRI,\r\n            the letter ‘R’ is derived from the name of strain. Roman numbers following the names indicate\r\n            the order in which the enzymes were isolated from that strain of bacteria."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331362
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Restriction enzymes belong to a larger class of enzymes called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "nucleases"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                are of two kinds;"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "exonucleases"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "endonucleases"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Exonucleases\r\n                remove nucleotides from the ends of the DNA whereas, endonucleases make cuts at specific positions\r\n                within the DNA."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331208,
+        331314,
+        331341,
+        331379,
+        331380
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each restriction endonuclease functions by ‘inspecting’ the length of a\r\n            DNA sequence."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Once\r\n                it finds its specific recognition sequence, it  will bind to the DNA and cut each of the two\r\n                strands of the double  helix at specific points in their sugar-phosphate backbones"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331208,
+        331360,
+        331378
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 11.1)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Each\r\n                restriction endonuclease recognises a specific"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "palindromic\r\n                nucleotide sequences"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "in\r\n                the DNA."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331326,
+        331380,
+        331381
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                11.1 Steps in formation of recombinant DNA by action of restriction endonuclease"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331205,
+        331315
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "enzyme\r\n                - EcoRI"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331205,
+        15000479
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Do you know what palindromes are? These are groups of letters that form the same\r\n            words when read both forward and backward, e.g., “MALAYALAM”."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\r\n                against a word-palindrome where the same word is read in both directions, the palindrome in DNA is a\r\n                sequence of base pairs that reads same on the two strands when orientation of reading is kept the\r\n                same."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                example, the following sequences reads the same on the two strands in 5’  3’ direction.\r\n                This is also true if read in the 3’  5’ direction."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331226
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "5’\r\n                —— GAATTC —— 3’"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331226
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "3’\r\n                —— CTTAAG —— 5’"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331226
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Restriction\r\n                enzymes cut the strand of DNA a little away from the centre of the palindrome sites, but between the\r\n                same two bases on the opposite strands."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                leaves single stranded portions at the ends. There are overhanging stretches called sticky ends on each\r\n                strand (Figure 11.1)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are named so\r\n            because they form hydrogen bonds with their complementary cut counterparts. This stickiness of the ends\r\n            facilitates the action of the enzyme DNA ligase."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331330,
+        331339,
+        331341,
+        331347
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Restriction endonucleases are used in genetic engineering to form\r\n            ‘recombinant’ molecules of DNA, which are composed of DNA from different sources/genomes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                cut by the same restriction enzyme, the resultant DNA fragments have the same kind of\r\n                ‘sticky-ends’ and, these can be joined together (end-to-end) using DNA ligases (Figure\r\n                11.2)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331203,
+        331204,
+        331216
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image9.png",
+              "alt": "fig_11.2",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 11.2 Diagrammatic representation of recombinant DNA technology"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "You\r\n                may have realised that normally, unless one cuts the vector and the source DNA with the same restriction\r\n                enzyme, the recombinant vector molecule cannot be created."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331364
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Separation and isolation of DNA fragments : The cutting of DNA by restriction\r\n            endonucleases results in the fragments of DNA."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                fragments can be separated by a technique known as"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "gel\r\n                electrophoresis"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Since\r\n                DNA fragments are negatively charged molecules they can be separated by forcing them to move towards the\r\n                anode under an electric field through a medium/matrix. Nowadays the most commonly used matrix is agarose\r\n                which is a natural polymer extracted from sea weeds. The DNA fragments separate (resolve) according to\r\n                their size through sieving effect provided by the agarose gel. Hence, the smaller the fragment size, the\r\n                farther it moves."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Look at the Figure 11.3 and guess at which end of the\r\n            gel the sample was loaded."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331210,
+        331213,
+        331215,
+        331224,
+        331348,
+        331382,
+        331383
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 11.3 A typical agarose gel electrophoresis showing migration of undigested\r\n            (lane 1) and digested set of DNA fragments (lane 2 to 4)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                separated DNA fragments can be visualised only after staining the DNA with a compound known as ethidium\r\n                bromide followed by exposure to UV radiation (you cannot see pure DNA fragments in the visible light and\r\n                without staining)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "You\r\n                can see bright orange coloured bands of DNA in a ethidium bromide stained gel exposed to UV light\r\n                (Figure 11.3)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                separated bands of DNA are cut out from the agarose gel and extracted from the gel\r\n                piece."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This step is known as elution. The DNA fragments purified in\r\n            this way are used in constructing recombinant DNA by joining them with cloning vectors."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331207,
+        331210,
+        331212,
+        331323,
+        331335,
+        331355,
+        15000447
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.2.2 Cloning Vectors",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You know that plasmids and bacteriophages have the ability to replicate within\r\n            bacterial cells independent of the control of chromosomal DNA. Bacteriophages because of their high number\r\n            per cell, have very high copy numbers of their genome within the bacterial cells. Some plasmids may have\r\n            only one or two copies per cell whereas others may have 15-100 copies per cell. Their numbers can go even\r\n            higher."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\r\n                we are able to link an alien piece of DNA with bacteriophage or plasmid DNA, we can multiply its numbers\r\n                equal to the copy number of the plasmid or bacteriophage."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Vectors\r\n                used at present, are engineered in such a way that they help easy linking of foreign DNA and selection\r\n                of recombinants from non-recombinants."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331201
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                following are the features that are required to facilitate cloning into a vector."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331346
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(i)\r\n                Origin of replication (ori) : This is a sequence from where replication starts and any piece of DNA when\r\n                linked to this sequence can be made to replicate within the host cells. This sequence is also\r\n                responsible for controlling the copy number of the linked DNA."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "So, if\r\n            one wants to recover many copies of the target DNA it should be cloned in a vector whose origin support high\r\n            copy number."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331206,
+        15000410
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(ii)\r\n                Selectable marker : In addition to ‘ori’, the vector requires a selectable marker, which\r\n                helps in identifying and eliminating non-transformants and selectively permitting the growth of the\r\n                transformants."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Transformation is a procedure through which a piece of\r\n            DNA is introduced in a host bacterium (you will study the process in subsequent section)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Normally,\r\n                the genes encoding resistance to antibiotics such as ampicillin, chloramphenicol, tetracycline or\r\n                kanamycin, etc., are considered useful selectable markers for E. coli."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The normal E. coli cells do not carry resistance against any of these antibiotics."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331209,
+        331214,
+        331366
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                11.4 E. coli cloning vector pBR322 showing restriction sites"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331368,
+        15000304,
+        15000448,
+        15000468
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Hind III, EcoR I, BamH I, Sal I, Pvu II, Pst I, Cla I), ori and antibiotic\r\n            resistance genes (ampR and tetR). rop codes for the proteins involved in the replication of the\r\n            plasmid."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(iii)\r\n                Cloning sites: In order to link the alien DNA, the vector needs to have very few, preferably single,\r\n                recognition sites for the commonly used restriction enzymes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Presence\r\n                of more than one recognition sites within the vector will generate several fragments, which will\r\n                complicate the gene cloning (Figure 11.4). The ligation of alien DNA is carried out at a restriction\r\n                site present in one of the two antibiotic resistance genes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For example, you\r\n            can ligate a foreign DNA at the BamH I site of tetracycline resistance gene in the vector pBR322."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                recombinant plasmids will lose tetracycline resistance due to insertion of foreign DNA but can still be\r\n                selected out from non-recombinant ones by plating the transformants on tetracycline containing\r\n                medium."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The transformants growing on ampicillin containing medium are\r\n            then transferred on a medium containing tetracycline."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                recombinants will grow in ampicillin containing medium but not on that containing tetracycline."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "But, non- recombinants will grow on the medium containing both the antibiotics.\r\n            In this case, one antibiotic resistance gene helps in selecting the transformants, whereas the other\r\n            antibiotic resistance gene gets ‘inactivated due to insertion’ of alien DNA, and helps in\r\n            selection of recombinants."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331346,
+        331349,
+        331369,
+        331370
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Selection of recombinants due to inactivation of antibiotics is a cumbersome\r\n            procedure because it requires simultaneous plating on two plates having different antibiotics. Therefore,\r\n            alternative selectable markers have been developed which differentiate recombinants from non-recombinants on\r\n            the basis of their ability to produce colour in the presence of a chromogenic substrate. In this, a\r\n            recombinant DNA is inserted within the coding sequence of an enzyme, β-galactosidase."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                results into inactivation of the gene for synthesis of this enzyme, which is referred to as insertional\r\n                inactivation. The presence of a chromogenic substrate gives blue coloured colonies if the plasmid in the\r\n                bacteria does not have an insert."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Presence\r\n                of insert results into insertional inactivation of the β-galactosidase gene and the colonies do not\r\n                produce any colour, these are identified as recombinant colonies."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331223,
+        331335,
+        331406
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv) Vectors for cloning genes in plants and animals : You may be surprised to know\r\n            that we have learnt the lesson of transferring genes into plants and animals from bacteria and viruses which\r\n            have known this for ages – how to deliver genes to transform eukaryotic cells and force them to do\r\n            what the bacteria or viruses want."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                example, Agrobacterium tumifaciens, a pathogen of several dicot plants is able to deliver a piece of DNA\r\n                known as ‘T-DNA’ to transform normal plant cells into a tumor and direct these tumor cells\r\n                to produce the chemicals required by the pathogen"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Similarly, retroviruses in animals have the ability to transform normal cells into cancerous\r\n            cells. A better understanding of the art of delivering genes by pathogens in their eukaryotic hosts has\r\n            generated knowledge to transform these tools of pathogens into useful vectors for delivering genes of\r\n            interest to humans."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                tumor inducing (Ti) plasmid of Agrobacterium tumifaciens has now been modified into a cloning vector\r\n                which is no more pathogenic to the plants but is still able to use the mechanisms to deliver genes of\r\n                our interest into a variety of plants."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Similarly,\r\n                retroviruses have also been disarmed and are now used to deliver desirable genes into animal cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "So, once a gene or a DNA fragment has been ligated into a suitable vector it is\r\n            transferred into a bacterial, plant or animal host (where it multiplies)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331211,
+        331220,
+        331301,
+        331352,
+        331359,
+        331385,
+        331386
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.2.3 Competent Host (For Transformation with Recombinant\r\n            DNA)",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since DNA is a hydrophilic molecule, it cannot pass through cell membranes. Why? In\r\n            order to force bacteria to take up the plasmid, the bacterial cells must first be made\r\n            ‘competent’ to take up DNA. This is done by treating them with a specific concentration of a\r\n            divalent cation, such as calcium, which increases the efficiency with which DNA enters the bacterium through\r\n            pores in its cell wall. Recombinant DNA can then be forced into such cells by incubating the cells with\r\n            recombinant DNA on ice, followed by placing them briefly at 420C (heat shock), and then putting them back on\r\n            ice. This enables the bacteria to take up the recombinant DNA."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                11.5 DNA that"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331371
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "separates\r\n                out can be"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331371
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "removed\r\n                by spooling"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331371
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is not the only way to introduce alien DNA into host cells. In a method known as\r\n            micro-injection, recombinant DNA is directly injected into the nucleus of an animal cell."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                another method, suitable for plants, cells are bombarded with high velocity micro-particles of gold or\r\n                tungsten coated with DNA in a method known as biolistics or gene gun."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "And the last method uses ‘disarmed pathogen’ vectors,\r\n            which when allowed to infect the cell, transfer the recombinant DNA into the host."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331372,
+        331373
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now that we have learnt about the tools for constructing recombinant DNA, let us\r\n            discuss the processes facilitating recombinant DNA technology."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "11.3 Processes of Recombinant DNA Technology",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Recombinant\r\n                DNA technology involves several steps in specific sequence such as isolation of DNA, fragmentation of\r\n                DNA by restriction endonucleases, isolation of a desired DNA fragment, ligation of the DNA fragment into\r\n                a vector, transferring the recombinant DNA into the host, culturing the host cells in a medium at large\r\n                scale and extraction of the desired product."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Let us examine each of these steps in some details."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331375
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.3.1 Isolation of the Genetic Material (DNA)",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Recall that nucleic acid is the genetic material of all organisms without exception.\r\n            In majority of organisms this is deoxyribonucleic acid or DNA. In order to cut the DNA with restriction\r\n            enzymes, it needs to be in pure form, free from other macro-molecules. Since the DNA is enclosed within the\r\n            membranes, we have to break the cell open to release DNA along with other macromolecules such as RNA,\r\n            proteins, polysaccharides and also lipids."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                can be achieved by treating the bacterial cells/plant or animal tissue with enzymes such as lysozyme\r\n                (bacteria), cellulase (plant cells), chitinase (fungus)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You know that genes are located on long molecules of DNA interwined with proteins such as\r\n            histones. The RNA can be removed by treatment with ribonuclease whereas proteins can be removed by treatment\r\n            with protease."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Other\r\n                molecules can be removed by appropriate treatments and purified DNA ultimately precipitates out after\r\n                the addition of chilled ethanol."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This can be\r\n            seen as collection of fine threads in the suspension (Figure 11.5)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331302,
+        331311,
+        331312,
+        331325,
+        331387
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.3.2 Cutting of DNA at Specific Locations",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Restriction\r\n                enzyme digestions are performed by incubating purified DNA molecules with the restriction enzyme, at the\r\n                optimal conditions for that specific enzyme."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Agarose gel\r\n            electrophoresis is employed to check the progression of a restriction enzyme digestion."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "DNA\r\n                is a negatively charged molecule, hence it moves towards the positive electrode (anode)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 11.3). The process is repeated with the vector DNA\r\n            also."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331210,
+        331376
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The joining of DNA involves several processes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "After\r\n                having cut the source DNA as well as the vector DNA with a specific restriction enzyme, the cut out\r\n                ‘gene of interest’ from the source DNA and the cut vector with space are mixed and ligase is\r\n                added."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This results in the preparation of recombinant DNA."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331388
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.3.3 Amplification of Gene of Interest using PCR",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "PCR stands for Polymerase Chain Reaction. In this reaction, multiple copies of the\r\n            gene (or DNA) of interest is synthesised in vitro using two sets of primers (small chemically synthesised\r\n            oligonucleotides that are complementary to the regions of DNA) and the enzyme DNA polymerase. The enzyme\r\n            extends the primers using the nucleotides provided in the reaction and the genomic DNA as template. If the\r\n            process of replication of DNA is repeated many times, the segment of DNA can be amplified to approximately\r\n            billion times, i.e., 1 billion copies are made."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Such\r\n                repeated amplification is achieved by the use of a thermostable DNA polymerase (isolated from a\r\n                bacterium, Thermus aquaticus), which remain active during the high temperature induced denaturation of\r\n                double stranded DNA."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The amplified fragment if desired can now be used\r\n            to ligate with a vector for further cloning (Figure11.6)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331301,
+        331308,
+        331312,
+        331329,
+        331333,
+        331350
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                11.6 Polymerase chain reaction (PCR) : Each cycle has three steps: (i) Denaturation;"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331225,
+        331304,
+        15000496
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(ii)\r\n                Primer annealing; and (iii) Extension of primers"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331225
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.3.4 Insertion of Recombinant DNA into the Host",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Cell/Organism",
+      "id": ""
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There are several methods of introducing the ligated DNA into recipient cells.\r\n            Recipient cells after making them ‘competent’ to receive, take up DNA present in its\r\n            surrounding."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "So,\r\n                if a recombinant DNA bearing gene for resistance to an antibiotic (e.g., ampicillin) is transferred into\r\n                E. coli cells, the host cells become transformed into ampicillin-resistant cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If we spread the transformed cells on agar plates containing ampicillin, only transformants will\r\n            grow, untransformed recipient cells will die."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Since,\r\n                due to ampicillin resistance gene, one is able to select a transformed cell in the presence of\r\n                ampicillin. The ampicillin resistance gene in this case is called a selectable marker."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331333,
+        331377
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.3.5 Obtaining the Foreign Gene Product",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                you insert a piece of alien DNA into a cloning vector and transfer it into a bacterial, plant or animal\r\n                cell, the alien DNA gets multiplied."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In almost all recombinant\r\n            technologies, the ultimate aim is to produce a desirable protein. Hence, there is a need for the recombinant\r\n            DNA to be expressed. The foreign gene gets expressed under appropriate conditions. The expression of foreign\r\n            exchange genes in host cells involve understanding many technical details."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331389
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "After having cloned the gene of interest and having optimised the conditions to\r\n            induce the expression of the target protein, one has to consider producing it on a large scale. Can you\r\n            think of any reason why there is a need for large-scale production? If any protein encoding gene is\r\n            expressed in a heterologous host, it is called a recombinant protein. The cells harbouring cloned genes of\r\n            interest may be grown on a small scale in the laboratory. The cultures may be used for extracting the\r\n            desired protein and then purifying it by using different separation techniques."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The cells can also be multiplied in a continuous culture system wherein the used\r\n            medium is drained out from one side while fresh medium is added from the other to maintain the cells in\r\n            their physiologically most active log/exponential phase. This type of culturing method produces a larger\r\n            biomass leading to higher yields of desired protein."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Small volume cultures cannot yield appreciable quantities of products."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "To\r\n                produce in large quantities, the development of bioreactors, where large volumes (100-1000 litres) of\r\n                culture can be processed, was required. Thus, bioreactors can be thought of as vessels in which raw\r\n                materials are biologically converted into specific products, individual enzymes, etc., using microbial\r\n                plant, animal or human cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A bioreactor provides the optimal\r\n            conditions for achieving the desired product by providing optimum growth conditions (temperature, pH,\r\n            substrate, salts, vitamins, oxygen)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331303,
+        15000249
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The most commonly used bioreactors are of stirring type, which are shown in Figure\r\n            11.7."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biotechnology_Principles_and_Processes-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 11.7 (a) Simple stirred-tank bioreactor; (b) Sparged stirred-tank bioreactor\r\n            through which sterile air bubbles are sparged"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                stirred-tank reactor is usually cylindrical or with a curved base to facilitate the mixing of the\r\n                reactor contents. The stirrer facilitates even mixing and oxygen availability throughout the\r\n                bioreactor."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Alternatively air can be bubbled through the reactor. If\r\n            you look at the figure closely you will see that the bioreactor has an agitator system, an oxygen delivery\r\n            system and a foam control system, a temperature control system, pH control system and sampling ports so that\r\n            small volumes of the culture can be withdrawn periodically."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331306,
+        331390
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "11.3.6 Downstream Processing",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "After completion of the biosynthetic stage, the product has to be subjected through a\r\n            series of processes before it is ready for marketing as a finished product."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                processes include separation and purification, which are collectively referred to as downstream\r\n                processing."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The product has to be formulated with suitable\r\n            preservatives. Such formulation has to undergo thorough clinical trials as in case of drugs. Strict quality\r\n            control testing for each product is also required. The downstream processing and quality control testing\r\n            vary from product to product."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        331305,
+        331307
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Summary",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Biotechnology deals with large scale production and marketing of products and\r\n            processes using live organisms, cells or enzymes. Modern biotechnology using genetically modified organisms\r\n            was made possible only when man learnt to alter the chemistry of DNA and construct recombinant DNA. This key\r\n            process is called recombinant DNA technology or genetic engineering. This process involves the use of\r\n            restriction endonucleases, DNA ligase, appropriate plasmid or viral vectors to isolate and ferry the foreign\r\n            DNA into host organisms, expression of the foreign gene, purification of the gene product, i.e., the\r\n            functional protein and finally making a suitable formulation for marketing. Large scale production involves\r\n            use of bioreactors."
+        }
+      ]
+    }
+  ]
+}

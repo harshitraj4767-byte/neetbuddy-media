@@ -1,0 +1,2737 @@
+{
+  "title": "Neural Control and Coordination",
+  "children": [
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Chapter 21",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Neural Control and Coordination",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As you know, the functions of the organs/organ systems in our body must be\n            coordinated to maintain homeostasis."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Coordination"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is\n            the process through which two or more organs interact and complement the functions of one another. For\n            example, when we do physical exercises, the energy demand is increased for maintaining an increased muscular\n            activity. The supply of oxygen is also increased. The increased supply of oxygen necessitates an increase in\n            the rate of respiration, heart beat and increased blood flow via blood vessels. When physical exercise is\n            stopped, the activities of nerves, lungs, heart and kidney gradually return to their normal conditions.\n            Thus, the functions of muscles, lungs, heart, blood vessels, kidney and other organs are coordinated while\n            performing physical exercises. In our body the neural system and the endocrine system jointly coordinate and\n            integrate all the activities of the organs so that they function in a synchronised fashion."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.1 Neural System",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.2 Human Neural System",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.3 Neuron as Structural and Functional Unit of Neural System",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.4 Central Neural System",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.5 Reflex Action and Reflex Arc",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.6 Sensory Reception and Processing",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The neural system provides an organised network of point-to-point connections for\n            a quick coordination. The endocrine system provides chemical integration through hormones. In this chapter,\n            you will learn about the neural system of human, mechanisms of neural coordination like transmission of\n            nerve impulse, impulse conduction across a synapse and the physiology of reflex action."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.1 Neural System",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The neural system of all animals is composed of highly specialised cells called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "neurons"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which can detect, receive and transmit different\n            kinds of stimuli."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The neural organisation is very simple in lower invertebrates. For example, in\n            Hydra it is composed of a network of neurons. The neural system is better organised in insects, where a\n            brain is present along with a number of ganglia and neural tissues. The vertebrates have a more developed\n            neural system."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.2 Human Neural System",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The human neural system is divided into two parts :"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "central neural system"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(CNS)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "peripheral neural system"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(PNS)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The CNS includes the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "brain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and\n            the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "spinal cord"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and is the site of information\n            processing and control. The PNS comprises of all the nerves of the body associated with the CNS (brain and\n            spinal cord). The nerve fibres of the PNS are of two types :"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "afferent fibres"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "efferent fibres"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The afferent nerve fibres transmit impulses from tissues/organs to the CNS and the\n            efferent fibres transmit regulatory impulses from the CNS to the concerned peripheral tissues/organs."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The PNS is divided into two divisions called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "somatic neural\n            system"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "autonomic neural system"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The somatic neural system relays impulses from the CNS to skeletal muscles while the autonomic\n            neural system transmits impulses from the CNS to the involuntary organs and smooth muscles of the body. The\n            autonomic neural system is further classified into"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sympathetic neural\n            system"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "parasympathetic neural system"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Visceral nervous system is the part of the peripheral nervous system that\n            comprises the whole complex of nerves, fibres, ganglia, and plexuses by which impulses travel from the\n            central nervous system to the viscera and from the viscera to the central nervous system."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.3 Neuron as Structural and Functional Unit of Neural System",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A neuron is a microscopic structure composed of three major parts, namely,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cell body"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ","
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dendrites"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "axon"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 21.1). The cell body\n            contains cytoplasm with typical cell organelles and certain granular bodies called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nissl’s granules"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Short fibres which branch repeatedly and project\n            out of the cell body also contain Nissl’s granules and are called dendrites. These fibres transmit\n            impulses towards the cell body. The axon is a long fibre, the distal end of which is branched. Each branch\n            terminates as a bulb-like structure called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "synaptic knob"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which possess synaptic vesicles containing chemicals called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "neurotransmitters"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The axons transmit nerve impulses away from the cell\n            body to a synapse or to a neuro-muscular junction. Based on the number of axon and dendrites, the neurons\n            are divided into three types, i.e.,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "multipolar"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(with\n            one axon and two or more dendrites; found in the cerebral cortex),"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "bipolar"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(with one axon and one dendrite, found in the retina of eye)\n            and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "unipolar"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(cell body with one axon only; found\n            usually in the embryonic stage). There are two types of axons, namely,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "myelinated"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "non-myelinated"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                myelinated nerve fibres are enveloped with"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Schwann\n                cells,"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "which\n                form a myelin sheath around the axon"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                gaps between two adjacent myelin sheaths are called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "nodes\n                of Ranvier"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Myelinated nerve fibres are found in spinal and cranial nerves. Unmyelinated\n            nerve fibre is enclosed by a Schwann cell that does not form a myelin sheath around the axon, and is\n            commonly found in autonomous and the somatic neural systems."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210317,
+        15000487
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 21.1 Structure of a neuron"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.3.1 Generation and Conduction of Nerve Impulse",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Neurons are excitable cells because their membranes are in a polarised state. Do you\n            know why the membrane of a neuron is polarised? Different types of ion channels are present on the neural\n            membrane. These ion channels are selectively permeable to different ions."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\n                a neuron is not conducting any impulse, i.e., resting, the axonal membrane is comparatively more\n                permeable to potassium ions (K"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")\n                and nearly impermeable to sodium ions (Na"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Similarly, the membrane is impermeable to negatively charged proteins present in\n            the axoplasm. Consequently, the axoplasm inside the axon contains high concentration of K"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and negatively charged proteins and low concentration of\n            Na"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". In contrast, the fluid outside the axon contains a low\n            concentration of K"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", a high concentration of Na"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and thus form a concentration gradient. These ionic gradients\n            across the resting membrane are maintained by the active transport of ions by the sodium-potassium pump\n            which transports 3 Na"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "outwards for 2 K"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "into the cell."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\n                a result, the outer surface of the axonal membrane possesses a positive charge while its inner surface\n                becomes negatively charged and therefore is polarised."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The electrical\n            potential difference across the resting plasma membrane is called as the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "resting\n            potential"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210402,
+        210403,
+        210404,
+        210412,
+        210413
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You might be curious to know about the mechanisms of generation of nerve impulse and\n            its conduction along an axon."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\n                a stimulus is applied at a site (Figure 21.2 e.g., point A) on the polarised membrane, the membrane at\n                the site A becomes freely permeable to Na"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                leads to a rapid influx of Na"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "followed\n                by the reversal of the polarity at that site, i.e., the outer surface of the membrane becomes negatively\n                charged and the inner side becomes positively charged. The polarity of the membrane at the site A is\n                thus reversed and hence depolarised. The electrical potential difference across the plasma membrane at\n                the site A is called the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "action\n                potential"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\n                which is in fact termed as a"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "nerve\n                impulse"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At sites immediately ahead, the axon (e.g., site B) membrane has a positive\n            charge on the outer surface and a negative charge on its inner surface. As a result, a current flows on the\n            inner surface from site A to site B. On the outer surface current flows from site B to site A (Figure 21.2)\n            to complete the circuit of current flow. Hence, the polarity at the site is reversed, and an action\n            potential is generated at site B."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210415,
+        210416,
+        210417,
+        210418,
+        210419
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 21.2 Diagrammatic representation of impulse conduction through an axon (at\n            points A and B)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, the impulse (action potential) generated at site A arrives at site B. The\n            sequence is repeated along the length of the axon and consequently the impulse is conducted. The rise in the\n            stimulus-induced permeability to Na+ is extremely short-lived. It is quickly followed by a rise in\n            permeability to K+."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Within\n                a fraction of a second, K+ diffuses outside the membrane and restores the resting potential of the\n                membrane at the site of excitation and the fibre becomes once more responsive to further\n                stimulation."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210421,
+        210422
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.3.2 Transmission of Impulses",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A nerve impulse is transmitted from one neuron to another through junctions called\n            synapses. A"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "synapse"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is formed by the membranes of a\n            pre-synaptic neuron and a post-synaptic neuron, which may or may not be separated by a gap called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "synaptic cleft"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". There are two types of synapses, namely,\n            electrical synapses and chemical synapses. At electrical synapses, the membranes of pre- and post-synaptic\n            neurons are in very close proximity. Electrical current can flow directly from one neuron into the other\n            across these synapses. Transmission of an impulse across electrical synapses is very similar to impulse\n            conduction along a single axon."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Impulse\n                transmission across an electrical synapse is always faster than that across a chemical synapse."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Electrical synapses are rare in our system."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210501,
+        210502
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                21.3 Diagram showing axon terminal and synapse"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210513,
+        210514,
+        210515
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At a chemical synapse, the membranes of the pre- and post-synaptic neurons are\n            separated by a fluid-filled space called synaptic cleft (Figure 21.3). Do you know how the pre-synaptic\n            neuron transmits an impulse (action potential) across the synaptic cleft to the post-synaptic neuron?\n            Chemicals called neurotransmitters are involved in the transmission of impulses at these synapses. The axon\n            terminals contain vesicles filled with these neurotransmitters. When an impulse (action potential) arrives\n            at the axon terminal, it stimulates the movement of the synaptic vesicles towards the membrane where they\n            fuse with the plasma membrane and release their neurotransmitters in the synaptic cleft."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                released neurotransmitters bind to their specific"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "receptors"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\n                present on the post-synaptic membrane."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This binding opens ion channels\n            allowing the entry of ions which can generate a new potential in the post-synaptic neuron. The new potential\n            developed may be either excitatory or inhibitory."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210511
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.4 Central Neural System",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The brain is the central information processing organ of our body, and acts as the\n            ‘command and control system’. It controls the voluntary movements, balance of the body,\n            functioning of vital involuntary organs (e.g., lungs, heart, kidneys, etc.), thermoregulation, hunger and\n            thirst, circadian (24-hour) rhythms of our body, activities of several endocrine glands and human behaviour.\n            It is also the site for processing of vision, hearing, speech, memory, intelligence, emotions and\n            thoughts."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The human brain is well protected by the skull. Inside the skull, the brain is\n            covered by"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cranial meninges"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "consisting of an outer\n            layer called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dura mater"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", a very thin middle layer called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "arachnoid"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and an inner layer (which is in contact with the\n            brain tissue) called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pia mater"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The brain can be divided\n            into three major parts: (i)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "forebrain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", (ii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "midbrain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", and (iii)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "hindbrain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 21.4)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 21.4 Diagram showing sagital section of the human brain"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.4.1 Forebrain",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                forebrain consists of cerebrum, thalamus and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "hypothalamus"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(Figure\n                21.4)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cerebrum forms the major part of the human brain. A deep cleft\n            divides the cerebrum longitudinally into two halves, which are termed as the left and right"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cerebral hemispheres"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                hemispheres are connected by a tract of nerve fibres called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "corpus\n                callosum"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The layer of cells which covers the\n            cerebral hemisphere is called cerebral cortex and is thrown into prominent folds. The cerebral cortex is\n            referred to as the grey matter due to its greyish appearance. The neuron cell bodies are concentrated here\n            giving the colour. The cerebral cortex contains motor areas, sensory areas and large regions that are\n            neither clearly sensory nor motor in function. These regions called as the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "association areas"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "are responsible for complex functions like intersensory\n            associations, memory and communication. Fibres of the tracts are covered with the myelin sheath, which\n            constitute the inner part of cerebral hemisphere. They give an opaque white appearance to the layer and,\n            hence, is called the white matter. The cerebrum wraps around a structure called thalamus, which is a major\n            coordinating centre for sensory and motor signaling. Another very important part of the brain called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "hypothalamus"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "lies at the base of the thalamus."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                hypothalamus contains a number of centres which control body temperature, urge for eating and drinking."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It also contains several groups of neurosecretory cells, which secrete hormones\n            called hypothalamic hormones."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                inner parts of cerebral hemispheres and a group of associated deep structures like amygdala,\n                hippocampus, etc., form a complex structure called the limbic lobe or limbic system. Along with the\n                hypothalamus, it is involved in the regulation of sexual behaviour, expression of emotional reactions\n                (e.g., excitement, pleasure, rage and fear), and motivation."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210617,
+        210618,
+        210709,
+        210732,
+        211517,
+        15000254
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.4.2 Midbrain",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The midbrain is located between the thalamus/hypothalamus of the forebrain and pons\n            of the hindbrain. A canal called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cerebral aqueduct"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "passess through the midbrain. The dorsal portion of the midbrain consists mainly of four\n            round swellings (lobes) called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "corpora quadrigemina"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.4.3 Hindbrain",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                hindbrain comprises"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "pons"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cerebellum"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "medulla"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(also\n                called the medulla oblongata)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Pons\n                consists of fibre tracts that interconnect different regions of the brain."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cerebellum has very convoluted surface in order to provide the additional space for many\n            more neurons. The medulla of the brain is connected to the spinal cord. The medulla contains centres which\n            control respiration, cardiovascular reflexes and gastric secretions."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210701,
+        15000299
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Three major regions make up the brain stem; mid brain, pons and medulla oblongata.\n            Brain stem forms the connections between the brain and spinal cord."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.5 Reflex Action and Reflex Arc",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You must have experienced a sudden withdrawal of a body part which comes in contact\n            with objects that are extremely hot, cold pointed or animals that are scary or poisonous. The entire process\n            of response to a peripheral nervous stimulation, that occurs involuntarily, i.e., without conscious effort\n            or thought and requires the involvment of a part of the central nervous system is called a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "reflex action"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The reflex pathway comprises at least one afferent\n            neuron (receptor) and one efferent (effector or excitor) neuron appropriately arranged in a series (Figure\n            21.5). The afferent neuron receives signal from a sensory organ and transmits the impulse via a dorsal nerve\n            root into the CNS (at the level of spinal cord). The efferent nueuron then carries signals from CNS to the\n            effector. The stimulus and response thus forms a reflex arc as shown below in the knee jerk reflex. You\n            should carefully study Figure 21.5 to understand the mechanism of a knee jerk reflex."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 21.5 Diagrammatic presentation of reflex action (showing knee jerk\n            reflex)"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.6 Sensory Reception and Processing",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Have you ever thought how do you feel the climatic changes in the environment? How\n            do you see an object and its colour? How do you hear a sound? The sensory organs detect all types of changes\n            in the environment and send appropriate signals to the CNS, where all the inputs are processed and analysed.\n            Signals are then sent to different parts/centres of the brain. This is how you can sense changes in the\n            environment."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sense Organs"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We smell things by our nose, taste by tongue, hear by ear and see objects by\n            eyes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The nose contains mucus-coated receptors which are specialised for receiving the\n            sense of smell and called olfactory receptors."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                are made up of olfactory epithelium that consists of three kinds of cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The neurons of the olfactory epithelium extend from the outside\n            environment directly into a pair of broad bean-sized organs, called olfactory bulb, which are extensions of\n            the brain’s limbic system."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210902
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Both nose and tongue detect dissolved chemicals. The chemical senses of gustation\n            (taste) and olfactory (smell) are functionally similar and interrelated."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                tongue detects tastes through taste buds, containing gustatory receptors."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "With each taste of food or sip of drink, the brain integrates\n            the differential input from the taste buds and a complex flavour is perceived."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210905,
+        211619,
+        211704
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the following sections, you will be introduced to the structure and\n            functioning of the eye (sensory organ for vision) and the ear (sensory organ for hearing)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.6.1 Eye",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Our paired eyes are located in sockets of the skull called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "orbits"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". A brief account of structure and functions of the human eye is\n            given in the following sections."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "21.6.1.1 Parts of an eye"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The adult human eye ball is nearly a spherical structure. The wall of the eye ball is\n            composed of three layers (Figure 21.6). The external layer is composed of a dense connective tissue and is\n            called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sclera"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                21.6 Diagram showing parts of an eye"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211123
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The anterior portion of this layer is called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cornea"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The middle layer,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "choroid"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", contains many blood vessels and looks bluish in colour. The choroid layer is thin over the\n            posterior two-thirds of the eye ball, but it becomes thick in the anterior part to form the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ciliary body"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                ciliary body itself continues forward to form a pigmented and opaque structure called the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "iris"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "which\n                is the visible coloured portion of the eye. The eye ball contains a transparent crystalline"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "lens"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "which\n                is held in place by ligaments attached to the ciliary body."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In front of the\n            lens, the aperture surrounded by the iris is called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pupil"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The diameter of the pupil is regulated by the muscle fibres of iris."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211006,
+        211007,
+        211518
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                inner layer is the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "retina"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\n                it contains three layers of neural cells – from inside to outside – ganglion cells, bipolar\n                cells and photoreceptor cells. There are two types of photoreceptor cells, namely,"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "rods"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cones"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "hese cells contain the light-sensitive proteins called\n            the photopigments. The daylight (photopic) vision and colour vision are functions of cones and the twilight\n            (scotopic) vision is the function of the rods."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                rods contain a purplish-red protein called the rhodopsin or visual purple, which contains a derivative\n                of Vitamin A."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the human eye, there are three types of cones which\n            possess their own characteristic photopigments that respond to red, green and blue lights. The sensations of\n            different colours are produced by various combinations of these cones and their photopigments. When these\n            cones are stimulated equally, a sensation of white light is produced."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211014,
+        211020,
+        211021,
+        211026,
+        211027
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "optic nerves"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "leave the eye\n            and the retinal blood vessels enter it at a point medial to and slightly above the posterior pole of the eye\n            ball."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Photoreceptor\n                cells are not present in that region and hence it is called the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "blind\n                spot"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At the posterior pole of the eye lateral to\n            the blind spot, there is a yellowish pigmented spot called macula lutea with a central pit called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "fovea"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                fovea is a thinned-out portion of the retina where only the cones are densely packed."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t is the point where the visual acuity (resolution) is the\n            greatest."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211105,
+        211518
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The space between the cornea and the lens is called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "aqueous chamber"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and contains a thin watery fluid called aqueous\n            humor. The space between the lens and the retina is called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "vitreous\n            chamber"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and is filled with a transparent gel called vitreous humor."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "21.6.1.2 Mechanism of Vision"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The light rays in visible wavelength focussed on the retina through the cornea and\n            lens generate potentials (impulses) in rods and cones."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\n                mentioned earlier, the photosensitive compounds (photopigments) in the human eyes is composed of"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "opsin"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(a\n                protein) and"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "retinal"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(an\n                aldehyde of vitamin A). Light induces dissociation of the retinal from opsin resulting in changes in the\n                structure of the opsin."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This causes membrane permeability\n            changes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\n                a result, potential differences are generated in the photoreceptor cells."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This produces a signal that generates action potentials in the ganglion cells through the bipolar\n            cells. These action potentials (impulses) are transmitted by the optic nerves to the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "visual cortex"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "area of the brain, where the neural impulses are\n            analysed and the image formed on the retina is recognised based on earlier memory and experience."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        21118,
+        211117,
+        211734
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "21.6.2 The Ear",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ears perform two sensory functions, hearing and maintenance of body balance.\n            Anatomically, the ear can be divided into three major sections called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "outer\n            ear"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "middle ear"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "inner ear"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 21.7). The outer ear consists of the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "pinna"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "external auditory meatus"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(canal). The pinna collects the vibrations in the air which produce sound. The external\n            auditory meatus leads inwards and extends up to the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tympanic membrane"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ear drum"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "There\n                are very fine hairs and wax-secreting glands in the skin of the pinna and the meatus. T"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "he tympanic membrane is composed of connective tissues covered with skin outside and with mucus\n            membrane inside. The middle ear contains three ossicles called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "malleus"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ","
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "incus"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "stapes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which are attached to one another in a chain-like fashion."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                malleus is attached to the tympanic membrane and the stapes is attached to the"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "oval\n                window"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "of\n                the cochlea."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ear ossicles increase the efficiency of transmission of\n            sound waves to the inner ear."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "An"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Eustachian\n                tube"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "connects\n                the middle ear cavity with the pharynx."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The Eustachian tube helps in\n            equalising the pressures on either sides of the ear drum."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211203,
+        211204,
+        211208,
+        211209,
+        211716,
+        211717
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 21.7 Diagrammatic view of ear"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fluid-filled inner ear called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "labyrinth"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "consists of two parts, the bony and the membranous labyrinths. The bony labyrinth is a\n            series of channels. Inside these channels lies the membranous labyrinth, which is surrounded by a fluid\n            called perilymph. The membranous labyrinth is filled with a fluid called endolymph."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                coiled portion of the labyrinth is called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "cochlea"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ".\n                The membranes constituting cochlea, the reissner’s and basilar, divide the surounding perilymph\n                filled bony labyrinth into an upper scala vestibuli and a lower scala tympani (Figure\n                21.8)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The space within cochlea called scala media is filled with\n            endolymph. At the base of the cochlea, the scala vestibuli ends at the oval window, while the scala tympani\n            terminates at the round window which opens to the middle ear."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211322
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "organ of corti"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is a\n            structure located on the basilar membrane which contains"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "hair cells"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "that act as auditory receptors. The hair cells are present in rows on the internal side of\n            the organ of corti. The basal end of the hair cell is in close contact with the afferent nerve fibres. A\n            large number of processes called stereo cilia are projected from the apical part of each hair cell. Above\n            the rows of the hair cells is a thin elastic membrane called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tectorial\n            membrane"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                inner ear also contains a complex system called"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "vestibular\n                apparatus"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ",\n                located above the cochlea."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "he vestibular apparatus\n            is composed of three"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "semi-circular canals"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "otolith"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(macula is the sensory part of saccule and utricle).\n            Each semi-circular canal lies in a different plane at right angles to each other. The membranous canals are\n            suspended in the perilymph of the bony canals. The base of canals is swollen and is called ampulla, which\n            contains a projecting ridge called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "crista ampullaris"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which has hair cells. The saccule and utricle contain a projecting ridge called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "macula"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                crista and macula are the specific receptors of the vestibular apparatus responsible for maintenance of\n                balance of the body and posture."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        210725,
+        211302,
+        211722
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Neural_Control_and_Coordination-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 21.8 Diagrammatic representation of the sectional view of cochlea"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "20.6.2.1 Mechanism of Hearing",
+      "id": "h.4i7ojhp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How does ear convert sound waves into neural impulses, which are sensed and\n            processed by the brain enabling us to recognise a sound ? The external ear receives sound waves and directs\n            them to the ear drum. The ear drum vibrates in response to the sound waves and these vibrations are\n            transmitted through the ear ossicles (malleus, incus and stapes) to the oval window. The vibrations are\n            passed through the oval window on to the fluid of the cochlea, where they generate waves in the lymphs. The\n            waves in the lymphs induce a ripple in the basilar membrane. These movements of the basilar membrane bend\n            the hair cells, pressing them against the tectorial membrane. As a result, nerve impulses are generated in\n            the associated afferent neurons. These impulses are transmitted by the afferent fibres via auditory nerves\n            to the auditory cortex of the brain, where the impulses are analysed and the sound is recognised."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.2xcytpi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The neural system coordinates and integrates functions as well as metabolic and\n            homeostatic activities of all the organs. Neurons, the functional units of neural system are excitable cells\n            due to a differential concentration gradient of ions across the membrane. The electrical potential\n            difference across the resting neural membrane is called the ‘resting potential’. The nerve\n            impulse is conducted along the axon membrane in the form of a wave of depolarisation and repolarisation. A\n            synapse is formed by the membranes of a pre-synaptic neuron and a post-synaptic neuron which may or may not\n            be separated by a gap called synaptic cleft. Chemicals involved in the transmission of impulses at chemical\n            synapses are called neurotransmitters."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Human neural system consists of two parts : (i) central neural system (CNS) and (ii)\n            the peripheral neural system. The CNS consists of the brain and spiral cord. The brain can be divided into\n            three major parts : (i) forebrain, (ii) midbrain and (iii) hindbrain. The forebrain consists of cerebrum,\n            thalamus and hypothalamus. The cerebrum is longitudinally divided into two halves that are connected by the\n            corpus callosum. A very important part of the forebrain called hypothalamus controls the body temperature,\n            eating and drinking. Inner parts of cerebral hemispheres and a group of associated deep structures form a\n            complex structure called limbic system which is concerned with olfaction, autonomic responses, regulation of\n            sexual behaviour, expression of emotional reactions, and motivation. The midbrain receives and integrates\n            visual, tactile and auditory inputs. The hindbrain comprises pons, cerebellum and medulla."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                cerebellum integrates information received from the semicircular canals of the ear and the auditory\n                system."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The medulla contains centres, which control respiration,\n            cardiovascular reflexes, and gastric secretions. Pons consist of fibre tracts that interconnect different\n            regions of the brain. The entire process of involuntary response to a peripheral nervous stimulation is\n            called reflex action."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211510
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Information regarding changes in the environment is received by the CNS through the\n            sensory organs which are processed and analysed. Signals are then sent for necessary adjustments. The wall\n            of the human eye ball is composed of three layers."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                external layer is composed of cornea and sclera."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Inside sclera is the middle\n            layer, which is called the choroid. Retina, the innermost layer, contains two types of photoreceptor cells,\n            namely rods and cones."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                daylight (photopic) vision and colour vision are functions of cones and twilight (scotopic) vision is\n                the function of the rods."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The light enters through cornea, the lens and\n            the images of objects are formed on the retina."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211705,
+        211732
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ear can be divided into the outer ear, the middle ear and the inner ear. The\n            middle ear contains three ossicles called malleus, incus and stapes. The fluid filled inner ear is called\n            the labyrinth, and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\n                coiled portion of the labyrinth is called cochlea. The organ of corti is a structure which contains hair\n                cells that act as auditory receptors and is located on the basilar membrane."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The vibrations produced in the ear drum are transmitted through\n            the ear ossicles and oval window to the fluid-filled inner ear. Nerve impulses are generated and transmitted\n            by the afferent fibres to the auditory cortex of the brain. The inner ear also contains a complex system\n            located above the cochlea called vestibular apparatus. It is influenced by gravity and movements, and helps\n            us in maintaining balance of the body and posture."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        211737
+      ],
+      "pyq_count": 1
+    }
+  ]
+}

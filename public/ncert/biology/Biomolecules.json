@@ -1,0 +1,2845 @@
+{
+  "title": "Biomolecules",
+  "children": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "BIOMOLECULES"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There is a wide diversity in living organisms in our biosphere. Now a question\r\n            that arises in our minds is: Are all living organisms made of the same chemicals, i.e., elements and\r\n            compounds? You have learnt in chemistry how elemental analysis is performed. If we perform such an analysis\r\n            on a plant tissue, animal tissue or a microbial paste, we obtain a list of elements like carbon, hydrogen,\r\n            oxygen and several others and their respective content per unit mass of a living tissue. If the same\r\n            analysis is performed on a piece of earth’s crust as an example of non-living matter, we obtain a\r\n            similar list. What are the differences between the two lists? In absolute terms, no such differences could\r\n            be made out. All the elements present in a sample of earth’s crust are also present in a sample of\r\n            living tissue. However, a closer examination reveals that the relative abundance of carbon and hydrogen with\r\n            respect to other elements is higher in any living organism than in earth’s crust (Table 9.1)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.1 How to Analyse Chemical Composition?",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.2 Primary and Secondary Metabolites",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.3 Biomacromolecules",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.4 Proteins",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.5 Polysaccharides",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6 Nucleic Acids",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.7 Structure of Proteins",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.8 Nature of Bond Linking Monomers in a Polymer",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.9 Dynamic State of Body Constituents - Concept of\r\n            Metabolism",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.10 Metabolic Basis for Living",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.11 The Living State",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12 Enzymes",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.1 How to Analyse Chemical Composition?",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We can continue asking in the same way, what type of organic compounds are found\r\n            in living organisms? How does one go about finding the answer? To get an answer, one has to perform a\r\n            chemical analysis. We can take any living tissue (a vegetable or a piece of liver, etc.) and grind it in\r\n            trichloroacetic acid (Cl"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "CCOOH) using a mortar and a\r\n            pestle. We obtain a thick slurry. If we were to strain this through a cheesecloth or cotton we would obtain\r\n            two fractions. One is called the filtrate or more technically, the acid-soluble pool, and the second, the\r\n            retentate or the acid-insoluble fraction. Scientists have found thousands of organic compounds in the\r\n            acid-soluble pool."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "TABLE\r\n                9.1"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                Comparison of Elements Present in Non-living and Living Matter*"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91321
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In higher classes you will learn about how to analyse a living tissue sample and\r\n            identify a particular organic compound. It will suffice to say here that one extracts the compounds, then\r\n            subjects the extract to various separation techniques till one has separated a compound from all other\r\n            compounds. In other words, one isolates and purifies a compound. Analytical techniques, when applied to the\r\n            compound give us an idea of the molecular formula and the probable structure of the compound. All the carbon\r\n            compounds that we get from living tissues can be called ‘biomolecules’. However, living\r\n            organisms have also got inorganic elements and compounds in them. How do we know this? A slightly different\r\n            but destructive experiment has to be done. One weighs a small amount of a living tissue (say a leaf or liver\r\n            and this is called wet weight) and dry it. All the water, evaporates."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                remaining material gives dry weight."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now if the tissue is fully burnt,\r\n            all the carbon compounds are oxidised to gaseous form (CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ",\r\n            water vapour) and are removed. What is remaining is called ‘ash’. This ash contains inorganic\r\n            elements (like calcium, magnesium etc). Inorganic compounds like sulphate, phosphate, etc., are also seen in\r\n            the acid-soluble fraction. Therefore elemental analysis gives elemental composition of living tissues in the\r\n            form of hydrogen, oxygen, chlorine, carbon etc. while analysis for compounds gives an idea of the kind of\r\n            organic (Figure 9.1) and inorganic constituents (Table 9.2) present in living tissues. From a chemistry\r\n            point of view, one can identify functional groups like aldehydes, ketones, aromatic compounds, etc. But from\r\n            a biological point of view, we shall classify them into amino acids, nucleotide bases, fatty acids\r\n            etc."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91348
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 9.2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A List of Representative Inorganic\r\n            Constituents of Living Tissues"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image18.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Amino acids are organic compounds containing an amino group and an acidic group\r\n            as substituents on the same carbon i.e., the α-carbon. Hence, they are called α-amino acids.\r\n            They are substituted methanes. There are four substituent groups occupying the four valency positions. These\r\n            are hydrogen, carboxyl group, amino group and a variable group designated as R group. Based on the nature of\r\n            R group there are many amino acids. However, those which occur in proteins are only of twenty types."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                R group in these proteinaceous amino acids could be a hydrogen (the amino acid is called glycine), a\r\n                methyl group (alanine), hydroxy methyl (serine), etc."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Three of the\r\n            twenty are shown in Figure 9.1."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91206,
+        91230,
+        91349,
+        91350
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The chemical and physical properties of amino acids are essentially of the amino,\r\n            carboxyl and the R functional groups."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Based\r\n                on number of amino and carboxyl groups, there are acidic (e.g., glutamic acid), basic (lysine) and\r\n                neutral (valine) amino acids. Similarly, there are aromatic amino acids (tyrosine, phenylalanine,\r\n                tryptophan)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A particular property of amino acids is the ionizable\r\n            nature of –NH2 and –COOH groups. Hence in solutions of different pH, the structure of amino\r\n            acids changes."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91351,
+        91352
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B is called zwitterionic form."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Lipids are generally water insoluble. They could be simple fatty acids. A fatty\r\n            acid has a carboxyl group attached to an R group. The R group could be a methyl (–CH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "), or ethyl (–C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") or higher number of –CH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "groups (1 carbon to 19 carbons)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                example, palmitic acid has 16 carbons including carboxyl carbon."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Arachidonic acid has 20 carbon atoms including the carboxyl carbon."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Fatty\r\n                acids could be saturated (without double bond) or unsaturated (with one or more C=C double bonds).\r\n                Another simple lipid is glycerol which is trihydroxy propane. Many lipids have both glycerol and fatty\r\n                acids. Here the fatty acids are found esterified with glycerol. They can be then monoglycerides,\r\n                diglycerides and triglycerides. These are also called fats and oils based on melting point. Oils have\r\n                lower melting point (e.g., gingelly oil) and hence remain as oil in winters."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you identify a fat from the market?"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                lipids have phosphorous and a phosphorylated organic compound in them. These are phospholipids.They are\r\n                found in cell membrane. Lecithin is one example.Some tissues especially the neural tissues have lipids\r\n                with more complex structures."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91212,
+        91219,
+        91220,
+        91232,
+        91339,
+        91353,
+        15000431
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Living organisms have a number of carbon compounds in which heterocyclic rings\r\n            can be found. Some of these are nitrogen bases – adenine, guanine, cytosine, uracil, and thymine."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                found attached to a sugar, they are called nucleosides."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If a phosphate\r\n            group is also found esterified to the sugar they are called nucleotides."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Adenosine,\r\n                guanosine, thymidine, uridine and cytidine are nucleosides"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Adenylic\r\n                acid, thymidylic acid, guanylic acid, uridylic acid and cytidylic acid are nucleotides."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nucleic acids like DNA and RNA consist of nucleotides only. DNA and RNA function as genetic\r\n            material."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91217,
+        91301,
+        15000429
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image9.png",
+              "alt": "9.1",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image8.png",
+              "alt": "9.2",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                9.1"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Diagrammatic\r\n                representation of small molecular weight organic compounds in living tissues"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91324,
+        91335,
+        91350,
+        91354,
+        91355
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.2 Primary and Secondary Metabolites",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The most exciting aspect of chemistry deals with isolating thousands of compounds,\r\n            small and big, from living organisms, determining their structure and if possible synthesising them."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                9.3"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                Secondary Metabolites"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91337,
+        91338,
+        91343,
+        91346
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image12.png",
+              "alt": "t3",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If one were to make a list of biomolecules, such a list would have thousands of\r\n            organic compounds including amino acids, sugars, etc. For reasons that are given in section 9.10, we can\r\n            call these biomolecules as ‘metabolites’. In animal tissues, one notices the presence of all\r\n            such categories of compounds shown in Figure 9.1. These are called primary metabolites."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "However,\r\n                when one analyses plant, fungal and microbial cells, one would see thousands of compounds other than\r\n                these called primary metabolites, e.g. alkaloids, flavonoids, rubber, essential oils, antibiotics,\r\n                coloured pigments, scents, gums, spices. These are called secondary metabolites (Table\r\n                9.3)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "While primary metabolites have identifiable functions and play\r\n            known roles in normal physiologial processes, we do not at the moment, understand the role or functions of\r\n            all the ‘secondary metabolites’ in host organisms. However, many of them are useful to\r\n            ‘human welfare’ (e.g., rubber, drugs, spices, scents and pigments). Some secondary metabolites\r\n            have ecological importance. In the later chapters and years you will learn more about this."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91337,
+        91356
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.3 Biomacromolecules",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There is one feature common to all those compounds found in the acid soluble pool.\r\n            They have molecular weights ranging from 18 to around 800 daltons (Da) approximately."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The acid insoluble fraction, has only four types of organic compounds i.e.,\r\n            proteins, nucleic acids, polysaccharides and lipids. These classes of compounds with the exception of\r\n            lipids, have molecular weights in the range of ten thousand daltons and above. For this very reason,\r\n            biomolecules, i.e., chemical compounds found in living organisms are of two types. One, those which have\r\n            molecular weights less than one thousand dalton and are usually referred to as micromolecules or simply\r\n            biomolecules while those which are found in the acid insoluble fraction are called macromolecules or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "biomacromolecules"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                molecules in the insoluble fraction with the exception of lipids are polymeric\r\n                substances."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Then why do lipids, whose molecular weights do not exceed\r\n            800 Da, come under acid insoluble fraction, i.e., macromolecular fraction? Lipids are indeed small molecular\r\n            weight compounds and are present not only as such but also arranged into structures like cell membrane and\r\n            other membranes. When we grind a tissue, we are disrupting the cell structure. Cell membrane and other\r\n            membranes are broken into pieces, and form vesicles which are not water soluble. Therefore, these membrane\r\n            fragments in the form of vesicles get separated along with the acid insoluble pool and hence in the\r\n            macromolecular fraction. Lipids are not strictly macromolecules."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91202,
+        91305
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The acid soluble pool represents roughly the cytoplasmic composition. The\r\n            macromolecules from cytoplasm and organelles become the acid insoluble fraction. Together they represent the\r\n            entire chemical composition of living tissues or organisms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                9.4"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Average\r\n                Composition of Cells"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91327
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image15.png",
+              "alt": "t4",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In summary if we represent the chemical composition of living tissue from\r\n            abundance point of view and arrange them class-wise, we observe that water is the most abundant chemical in\r\n            living organisms (Table 9.4)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.4 Proteins",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Proteins are polypeptides. They are linear chains of amino acids linked by peptide\r\n            bonds as shown in Figure 9.3."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                9.5"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                Proteins and their Functions"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91357,
+        91358
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image13.png",
+              "alt": "t5",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each protein is a polymer of amino acids. As there are 20 types of amino acids\r\n            (e.g., alanine, cysteine, proline, tryptophan, lysine, etc.), a protein is a heteropolymer and not a\r\n            homopolymer. A homopolymer has only one type of monomer repeating ‘n’ number of times. This\r\n            information about the amino acid content is important as later in your nutrition lessons, you will learn\r\n            that certain amino acids are essential for our health and they have to be supplied through our diet. Hence,\r\n            dietary proteins are the source of essential amino acids. Therefore, amino acids can be essential or\r\n            non-essential. The latter are those which our body can make, while we get essential amino acids through our\r\n            diet/food. Proteins carry out many functions in living organisms, some transport nutrients across cell\r\n            membrane, some fight infectious organisms, some are hormones, some are enzymes, etc. (Table 9.5)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Collagen\r\n                is the most abundant protein in animal world and Ribulose bisphosphate Carboxylase-Oxygenase (RuBisCO)\r\n                is the most abundant protein in the whole of the biosphere."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91218,
+        91341,
+        91359,
+        91360
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.5 Polysaccharides",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                acid insoluble pellet also has polysaccharides (carbohydrates) as another class of\r\n                macromolecules."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Polysaccharides are long chains of sugars. They are\r\n            threads (literally a cotton thread) containing different"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "monosaccharides as\r\n            building blocks."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                example, cellulose is a polymeric polysaccharide consisting of only one type of monosaccharide i.e.,\r\n                glucose."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Cellulose\r\n                is a homopolymer. Starch is a variant of this but present as a store house of energy in plant tissues.\r\n                Animals have another variant called glycogen."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Inulin\r\n                is a polymer of fructose."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In a polysaccharide chain (say glycogen), the\r\n            right end is called the reducing end and the left end is called the non-reducing end. It has branches as\r\n            shown in the form of a cartoon (Figure 9.2)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Starch\r\n                forms helical secondary structures."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In fact, starch can hold\r\n            I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "molecules in the helical portion. The\r\n            starch-I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is blue in colour. Cellulose does not\r\n            contain complex helices and hence cannot hold I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91207,
+        91317,
+        91323,
+        91342,
+        91361,
+        91362
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 9.2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Diagrammatic representation of a\r\n            portion of glycogen"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Plant cell walls are made of cellulose. Paper made from plant pulp and cotton\r\n            fibre is cellulosic. There are more complex polysaccharides in nature."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                have as building blocks, amino-sugars and chemically modified sugars (e.g., glucosamine, N-acetyl\r\n                galactosamine, etc.). Exoskeletons of arthropods, for example, have a complex polysaccharide called\r\n                chitin."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These complex polysaccharides are mostly homopolymers."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91207,
+        91213
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6 Nucleic Acids",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The other type of macromolecule that one would find in the acid insoluble\r\n            fraction of any living tissue is the nucleic acid. These are polynucleotides. Together with polysaccharides\r\n            and polypeptides these comprise the true macromolecular fraction of any living tissue or cell."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                nucleic acids, the building block is a nucleotide."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A nucleotide has\r\n            three chemically distinct components. One is a heterocyclic compound, the second is a monosaccharide and the\r\n            third a phosphoric acid or phosphate."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91332
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As you notice in Figure 9.1, the heterocyclic compounds in nucleic acids are the\r\n            nitrogenous bases named adenine, guanine, uracil, cytosine, and thymine."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Adenine\r\n                and Guanine are substituted purines while the rest are substituted pyrimidines."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                skeletal heterocyclic ring is called as purine and pyrimidine respectively."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The sugar found in polynucleotides is either ribose (a monosaccharide pentose) or 2’\r\n            deoxyribose."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                nucleic acid containing deoxyribose is called deoxyribonucleic acid (DNA) while that which contains\r\n                ribose is called ribonucleic acid (RNA)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91319,
+        91320,
+        91328,
+        91331,
+        91356
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.7 Structure of Proteins",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Proteins, as mentioned earlier, are heteropolymers containing strings of amino\r\n            acids. Structure of molecules means different things in different contexts. In inorganic chemistry, the\r\n            structure invariably refers to the molecular formulae (e.g., NaCl, MgCl"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", etc.). Organic chemists always write a two dimensional view of the\r\n            molecules while representing the structure of the molecules (e.g., benzene, naphthalene, etc.). Physicists\r\n            conjure up the three dimensional views of molecular structures while biologists describe"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "the\r\n                protein structure at four levels. The sequence of amino acids i.e., the positional information in a\r\n                protein – which is the first amino acid, which is second, and so on – is called the primary\r\n                structure (Figure 9.3) of a protein. A protein is imagined as a line, the left end represented by the\r\n                first amino acid and the right end represented by the last amino acid. The first amino acid is also\r\n                called as N-terminal amino acid. The last amino acid is called the C-terminal amino acid"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A protein thread does not exist throughout as an extended rigid\r\n            rod. The thread is folded in the form of a helix (similar to a revolving staircase). Of course, only some\r\n            portions of the protein thread are arranged in the form of a helix. In proteins, only right handed helices\r\n            are observed. Other regions of the protein thread are folded into other forms in what is called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "secondary structure"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". In addition, the long protein chain\r\n            is also folded upon itself like a hollow woolen ball, giving rise to the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tertiary structure"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 9.4 a, b). This gives us a\r\n            3-dimensional view of a protein. Tertiary structure is absolutely necessary for the many biological\r\n            activities of proteins."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91344,
+        15000465
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image17.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 9.3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Various levels of Protein\r\n            Structure"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 9.4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cartoon showing : (a) A secondary\r\n            structure and (b) A tertiary structure of proteins"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some proteins are an assembly of more than one polypeptide or subunits. The\r\n            manner in which these individual folded polypeptides or subunits are arranged with respect to each other\r\n            (e.g. linear string of spheres, spheres arranged one upon each other in the form of a cube or plate etc.) is\r\n            the architecture of a protein otherwise called the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "quaternary\r\n            structure"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "of a protein."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Adult\r\n                human haemoglobin consists of 4 subunits. Two of these are identical to each other. Hence, two subunits\r\n                of α type and two subunits of β type together constitute the human haemoglobin\r\n                (Hb)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91344
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.8 Nature of Bond Linking Monomers in a Polymer",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                a polypeptide or a protein, amino acids are linked by a peptide bond which is formed when the carboxyl\r\n                (-COOH) group of one amino acid reacts with the amino (-NH"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ")\r\n                group of the next amino acid with the elimination of a water moiety (the process is called dehydration).\r\n                In a polysaccharide the individual monosaccharides are linked by a glycosidic bond. This bond is also\r\n                formed by dehydration. This bond is formed between two carbon atoms of two adjacent monosaccharides.\r\n                In"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "a nucleic acid a phosphate moiety links the 3’-carbon of one\r\n            sugar of one nucleotide to the 5’-carbon of the sugar of the succeeding nucleotide. The bond between\r\n            the phosphate and hydroxyl group of sugar is an ester bond."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "As\r\n                there is one such ester bond on either side, it is called phosphodiester bond (Figure 9.5)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91208,
+        91231,
+        91347
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image19.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 9.5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Diagram indicating secondary\r\n            structure of DNA"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nucleic acids exhibit a wide variety of secondary structures. For example, one of\r\n            the secondary structures exhibited by DNA is the famous Watson-Crick model. This model says that DNA exists\r\n            as a double helix."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                two strands of polynucleotides are antiparallel i.e., run in the opposite direction."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                backbone is formed by the sugar-phosphate-sugar chain."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The nitrogen\r\n            bases are projected more or less perpendicular to this backbone but face inside."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                and G of one strand compulsorily base pairs with T and C, respectively, on the other\r\n                strand."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There are two hydrogen bonds between A and T and three\r\n            hydrogen bonds between G and C. Each strand appears like a helical staircase. Each step of ascent is\r\n            represented by a pair of bases."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "At\r\n                each step of ascent, the strand turns 36°. One full turn of the helical strand would involve ten\r\n                steps or ten base pairs."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Attempt drawing a line diagram. The pitch\r\n            would be 34Å. The rise per base pair would be 3.4Å. This form of DNA with the above mentioned\r\n            salient features is called B-DNA. In higher classes, you will be told that there are more than a dozen forms\r\n            of DNA named after English alphabets with unique structural features."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91301,
+        91311,
+        91322,
+        91330,
+        91363
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.9 Dynamic State of Body Constituents – Concept of\r\n            Metabolism",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What we have learnt till now is that living organisms, be it a simple bacterial\r\n            cell, a protozoan, a plant or an animal, contain thousands of organic compounds. These compounds or\r\n            biomolecules are present in certain concentrations (expressed as mols/cell or mols/litre etc.). One of the\r\n            greatest discoveries ever made was the observation that all these biomolecules have a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "turn over"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". This means that they are constantly being changed into\r\n            some other biomolecules and also made from some other biomolecules. This breaking and making is through\r\n            chemical reactions constantly occuring in living organisms. Together all these chemical reactions are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "metabolism"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Each of the metabolic reactions results in the\r\n            transformation of biomolecules. A few examples for such metabolic transformations are: removal of\r\n            CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "from amino acids making an amino acid into an\r\n            amine, removal of amino group in a nucleotide base; hydrolysis of a glycosidic bond in a disaccharide, etc.\r\n            We can list tens and thousands of such examples. Majority of these metabolic reactions do not occur in\r\n            isolation but are always linked to some other reactions. In other words, metabolites are converted into each\r\n            other in a series of linked reactions called metabolic pathways. These metabolic pathways are similar to the\r\n            automobile traffic in a city. These pathways are either linear or circular. These pathways criss-cross each\r\n            other, i.e., there are traffic junctions. Flow of metabolites through metabolic pathway has a definite rate\r\n            and direction like automobile traffic. This metabolite flow is called the dynamic state of body\r\n            constituents. What is most important is that this interlinked metabolic traffic is very smooth and without a\r\n            single reported mishap for healthy conditions. Another feature of these metabolic reactions is that every\r\n            chemical reaction is a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "catalysed reaction"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". There is no\r\n            uncatalysed metabolic conversion in living systems. Even CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dissolving in water, a physical process, is a catalysed reaction in living systems. The\r\n            catalysts which hasten the rate of a given metabolic conversation are also proteins. These proteins with\r\n            catalytic power are named"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "enzymes"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.10 Metabolic Basis for Living",
+      "id": "h.4i7ojhp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Metabolic pathways can lead to a more complex structure from a simpler structure\r\n            (for example, acetic acid becomes cholesterol) or lead to a simpler structure from a complex structure (for\r\n            example, glucose becomes lactic acid in our skeletal muscle). The former cases are called biosynthetic\r\n            pathways or anabolic pathways. The latter constitute degradation and hence are called catabolic pathways.\r\n            Anabolic pathways, as expected, consume energy. Assembly of a protein from amino acids requires energy\r\n            input. On the other hand, catabolic pathways lead to the release of energy. For example, when glucose is\r\n            degraded to lactic acid in our skeletal muscle, energy is liberated. This metabolic pathway from glucose to\r\n            lactic acid which occurs in 10 metabolic steps is called glycolysis. Living organisms have learnt to trap\r\n            this energy liberated during degradation and store it in the form of chemical bonds. As and when needed,\r\n            this bond energy is utilised for biosynthetic, osmotic and mechanical work that we perform."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                most important form of energy currency in living systems is the bond energy in a chemical called\r\n                adenosine triphosphate (ATP)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91311
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How do living organisms derive their energy? What strategies have they evolved?\r\n            How do they store this energy and in what form? How do they convert this energy into work? You will study\r\n            and understand all this under a sub-discipline called ‘Bioenergetics’ later in your higher\r\n            classes."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.11 The Living State",
+      "id": "h.2xcytpi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At this level, you must understand that the tens and thousands of chemical\r\n            compounds in a living organism, otherwise called metabolites, or biomolecules, are present at concentrations\r\n            characteristic of each of them. For example, the blood concentration of glucose in a normal healthy\r\n            individual is 4.2 mmol/L–6.1 mmol/L, while that of hormones would be nanograms/mL. The most important\r\n            fact of biological systems is that all living organisms exist in a steady-state characterised by\r\n            concentrations of each of these biomolecules. These biomolecules are in a metabolic flux. Any chemical or\r\n            physical process moves spontaneously to equilibrium. The steady state is a non-equilibrium state. One should\r\n            remember from physics that systems at equilibrium cannot perform work. As living organisms work\r\n            continuously, they cannot afford to reach equilibrium. Hence the living state is a non-equilibrium\r\n            steady-state to be able to perform work; living process is a constant effort to prevent falling into\r\n            equilibrium. This is achieved by energy input. Metabolism provides a mechanism for the production of energy.\r\n            Hence the living state and metabolism are synonymous. Without metabolism there cannot be a living\r\n            state."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12 Enzymes",
+      "id": "h.1ci93xb"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Almost\r\n                all enzymes are proteins. There are some nucleic acids that behave like enzymes. These are called\r\n                ribozymes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "One can depict an enzyme by a line diagram. An enzyme like\r\n            any protein has a primary structure, i.e., amino acid sequence of the protein. An enzyme like any protein\r\n            has the secondary and the tertiary structure. When you look at a tertiary structure (Figure 9.4 b) you will\r\n            notice that the backbone of the protein chain folds upon itself, the chain criss-crosses itself and hence,\r\n            many crevices or pockets are made. One such pocket is the ‘active site’. An active site of an\r\n            enzyme is a crevice or pocket into which the substrate fits. Thus enzymes, through their active site,\r\n            catalyse reactions at a high rate. Enzyme catalysts differ from inorganic catalysts in many ways, but one\r\n            major difference needs mention. Inorganic catalysts work efficiently at high temperatures and high\r\n            pressures, while enzymes get damaged at high temperatures (say above 40°C). However, enzymes isolated\r\n            from organisms who normally live under extremely high temperatures (e.g., hot vents and sulphur springs),\r\n            are stable and retain their catalytic power even at high temperatures (upto 80°-90°C). Thermal\r\n            stability is thus an important quality of such enzymes isolated from thermophilic organisms."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91203,
+        91216,
+        91221
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12.1 Chemical Reactions",
+      "id": "h.3whwml4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How do we understand these enzymes? Let us first understand a chemical reaction.\r\n            Chemical compounds undergo two types of changes. A physical change simply refers to a change in shape\r\n            without breaking of bonds. This is a physical process. Another physical process is a change in state of\r\n            matter: when ice melts into water, or when water becomes a vapour. These are also physical processes.\r\n            However, when bonds are broken and new bonds are formed during transformation, this will be called a\r\n            chemical reaction. For example:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ba(OH)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+ H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "SO4 →  BaSO4 + 2H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is an inorganic chemical reaction. Similarly, hydrolysis of starch into glucose is\r\n            an organic chemical reaction. Rate of a physical or chemical process refers to the amount of product formed\r\n            per unit time. It can be expressed as:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rate\r\n            ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Rate can also be called velocity if the direction is specified. Rates of physical\r\n            and chemical processes are influenced by temperature among other factors. A general rule of thumb is that\r\n            rate doubles or decreases by half for every 10°C change in either direction. Catalysed reactions proceed\r\n            at rates vastly higher than that of uncatalysed ones. When enzyme catalysed reactions are observed, the rate\r\n            would be vastly higher than the same but uncatalysed reaction. For example"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+ H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "carbonic acid"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the absence of any enzyme this reaction is very slow, with about 200 molecules\r\n            of H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "being formed in an hour. However, by using the enzyme present within the cytoplasm called\r\n            carbonic anhydrase, the reaction speeds dramatically with about 600,000 molecules being formed every second.\r\n            The enzyme has accelerated the reaction rate by about 10 million times. The power of enzymes is incredible\r\n            indeed!"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There are thousands of types of enzymes each catalysing a unique chemical or\r\n            metabolic reaction. A multistep chemical reaction, when each of the steps is catalysed by the same enzyme\r\n            complex or different enzymes, is called a metabolic pathway. For example,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Glucose  → 2 Pyruvic acid"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "12"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+\r\n            O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "→ 2C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+ 2H"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "O"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is actually a metabolic pathway in which glucose becomes pyruvic acid through ten\r\n            different enzyme catalysed metabolic reactions. When you study respiration in Chapter 14 you will study\r\n            these reactions. At this stage you should know that this very metabolic pathway with one or two additional\r\n            reactions gives rise to a variety of metabolic end products. In our skeletal muscle, under anaerobic\r\n            conditions, lactic acid is formed. Under normal aerobic conditions, pyruvic acid is formed. In yeast, during\r\n            fermentation, the same pathway leads to the production of ethanol (alcohol). Hence, in different conditions\r\n            different products are possible."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12.2 How do Enzymes bring about such High Rates of Chemical\r\n            Conversions?",
+      "id": "h.2bn6wsx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "To understand this we should study enzymes a little more. We have already\r\n            understood the idea of an ‘active site’. The chemical or metabolic conversion refers to a\r\n            reaction. The chemical which is converted into a product is called a ‘substrate’. Hence enzymes,\r\n            i.e. proteins with three dimensional structures including an ‘active site’, convert a substrate\r\n            (S) into a product (P). Symbolically, this can be depicted as:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "S  → P"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is now understood that the substrate ‘S’ has to bind the enzyme at\r\n            its ‘active site’ within a given cleft or pocket. The substrate has to diffuse towards the\r\n            ‘active site’. There is thus, an obligatory formation of an ‘ES’ complex. E stands\r\n            for enzyme. This complex formation is a transient phenomenon."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "During\r\n                the state where substrate is bound to the enzyme active site, a new structure of the substrate called\r\n                transition state structure is formed."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Very soon, after the expected\r\n            bond breaking/making is completed, the product is released from the active site. In other words, the\r\n            structure of substrate gets transformed into the structure of product(s). The pathway of this transformation\r\n            must go through the so-called transition state structure. There could be many more ‘altered structural\r\n            states’ between the stable substrate and the product. Implicit in this statement is the fact that all\r\n            other intermediate structural states are unstable. Stability is something related to energy status of the\r\n            molecule or the structure. Hence, when we look at this pictorially through a graph it looks like something\r\n            as in Figure 9.6."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91214
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image20.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 9.6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Concept of activation energy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The y-axis represents the potential energy content. The x-axis represents the\r\n            progression of the structural transformation or states through the ‘transition state’. You would\r\n            notice two things. The energy level difference between S and P. If ‘P’ is at a lower level than\r\n            ‘S’, the reaction is an exothermic reaction. One need not supply energy (by heating) in order to\r\n            form the product. However, whether it is an exothermic or spontaneous reaction or an endothermic or energy\r\n            requiring reaction, the ‘S’ has to go through a much higher energy state or transition state."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                difference in average energy content of ‘S’ from that of this transition state is called\r\n                ‘activation energy’."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91308
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Enzymes\r\n                eventually bring down this energy barrier making the transition of ‘S’ to ‘P’\r\n                more easy."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91308
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12.3 Nature of Enzyme Action",
+      "id": "h.qsh70q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each enzyme (E) has a substrate (S) binding site in its molecule so that a highly\r\n            reactive enzyme-substrate complex (ES) is produced. This complex is short-lived and dissociates into its\r\n            product(s) P and the unchanged enzyme with an intermediate formation of the enzyme-product complex\r\n            (EP)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The formation of the ES complex is essential for catalysis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E + S <—> ES → EP → E + P"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The catalytic cycle of an enzyme action can be described in the following\r\n            steps:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1. First, the substrate binds to the active site of the enzyme, fitting into the\r\n            active site."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. The binding of the substrate induces the enzyme to alter its shape, fitting\r\n            more tightly around the substrate."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. The active site of the enzyme, now in close proximity of the substrate breaks\r\n            the chemical bonds of the substrate and the new enzyme- product complex is formed."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4. The enzyme releases the products of the reaction and the free enzyme is ready\r\n            to bind to another molecule of the substrate and run through the catalytic cycle once again."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12.4 Factors Affecting Enzyme Activity",
+      "id": "h.3as4poj"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The activity of an enzyme can be affected by a change in the conditions which can\r\n            alter the tertiary structure of the protein. These include temperature, pH, change in substrate\r\n            concentration or binding of specific chemicals that regulate its activity."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image21.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                9.7"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Effect\r\n                of change in : (a) pH (b) Temperature and (c) Concentration of substrate on enzyme activity"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91209,
+        91227,
+        15000432
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Temperature and pH"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Enzymes generally function in a narrow range of temperature and pH (Figure 9.7).\r\n            Each enzyme shows its highest activity at a particular temperature and pH called the optimum temperature and\r\n            optimum pH. Activity declines both below and above the optimum value."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Low\r\n                temperature preserves the enzyme in a temporarily inactive state whereas high temperature destroys\r\n                enzymatic activity because proteins are denatured by heat."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91345
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Concentration of Substrate"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "With the increase in substrate concentration, the velocity of the enzymatic\r\n            reaction rises at first. The reaction ultimately reaches a maximum velocity (Vmax) which is not exceeded by\r\n            any further rise in concentration of the substrate. This is because the enzyme molecules are fewer than the\r\n            substrate molecules and after saturation of these molecules, there are no free enzyme molecules to bind with\r\n            the additional substrate molecules (Figure 9.7)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The activity of an enzyme is also sensitive to the presence of specific chemicals\r\n            that bind to the enzyme. When the binding of the chemical shuts off enzyme activity, the process is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "inhibition"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and the chemical is called an"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "inhibitor"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                the inhibitor closely resembles the substrate in its molecular structure and inhibits the activity of\r\n                the enzyme, it is known as competitive inhibitor. Due to its close structural similarity with the\r\n                substrate, the inhibitor competes with the substrate for the substrate-binding site of the enzyme.\r\n                Consequently, the substrate cannot bind and as a result, the enzyme action declines, e.g., inhibition of\r\n                succinic dehydrogenase by malonate which closely resembles the substrate succinate in\r\n                structure."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Such competitive inhibitors are often used in the control of\r\n            bacterial pathogens."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91210,
+        91228
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12.5 Classification and Nomenclature of Enzymes",
+      "id": "h.1pxezwc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thousands of enzymes have been discovered, isolated and studied. Most of these\r\n            enzymes have been classified into different groups based on the type of reactions they catalyse. Enzymes are\r\n            divided into 6 classes each with 4-13 subclasses and named accordingly by a four-digit number."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Oxidoreductases/dehydrogenases"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Enzymes which\r\n            catalyse oxidoreduction between two substrates S and S’ e.g.,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "S reduced + S’ oxidised  →  S oxidised + S’\r\n            reduced."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Transferases"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Enzymes catalysing a transfer of a\r\n            group, G (other than hydrogen) between a pair of substrate S and S’ e.g.,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "S - G + S’  →  S + S’ - G"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hydrolases"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Enzymes catalysing hydrolysis of ester, ether, peptide, glycosidic, C-C, C-halide or P-N\r\n                bonds."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91364
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Lyases"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Enzymes that catalyse removal of groups from substrates by mechanisms other than hydrolysis leaving\r\n                double bonds."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000463
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Biomolecules-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Isomerases"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": Includes all enzymes catalysing\r\n            inter-conversion of optical, geometric or positional isomers."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ligases"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": ":\r\n                Enzymes catalysing the linking together of 2 compounds, e.g., enzymes which catalyse joining of C-O,\r\n                C-S, C-N, P-O etc. bonds."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000430
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.12.6 Co-factors",
+      "id": "h.49x2ik5"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Enzymes\r\n                are composed of one or several polypeptide chains. However, there are a number of cases in which\r\n                non-protein constituents called co-factors are bound to the the enzyme to make the enzyme catalytically\r\n                active. In these instances, the protein portion of the enzymes is called the apoenzyme. Three kinds of\r\n                cofactors may be identified: prosthetic groups, co-enzymes and metal ions."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91201
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Prosthetic\r\n                groups are organic compounds and are distinguished from other cofactors in that they are tightly bound\r\n                to the apoenzyme."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For example, in peroxidase and catalase, which\r\n            catalyze the breakdown of hydrogen peroxide to water and oxygen, haem is the prosthetic group and it is a\r\n            part of the active site of the enzyme."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91201,
+        91315
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Co-enzymes\r\n                are also organic compounds but their association with the apoenzyme is only transient, usually occurring\r\n                during the course of catalysis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Furthermore, co-enzymes serve as\r\n            co-factors in a number of different enzyme catalyzed reactions."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                essential chemical components of many coenzymes are vitamins, e.g., coenzyme nicotinamide adenine\r\n                dinucleotide (NAD) and NADP contain the vitamin niacin."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91215,
+        91226,
+        91315
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                number of enzymes require metal ions for their activity which form coordination bonds with side chains\r\n                at the active site and at the same time form one or more cordination bonds with the substrate, e.g.,\r\n                zinc is a cofactor for the proteolytic enzyme carboxypeptidase."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91304
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Catalytic activity is lost when the co-factor is removed from the enzyme which\r\n            testifies that they play a crucial role in the catalytic activity of the enzyme."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.2p2csry"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Although there is a bewildering diversity of living organisms, their chemical\r\n            composition and metabolic reactions appear to be remarkably similar. The elemental composition of living\r\n            tissues and non-living matter appear also to be similar when analysed qualitatively. However, a closer\r\n            examination reveals that the relative abundance of carbon, hydrogen and oxygen is higher in living systems\r\n            when compared to inanimate matter. The most abundant chemical in living organisms is water. There are\r\n            thousands of small molecular weight (<1000 Da) biomolecules. Amino acids, monosaccharide and disaccharide\r\n            sugars, fatty acids, glycerol, nucleotides, nucleosides and nitrogen bases are some of the organic compounds\r\n            seen in living organisms. There are 20 types of amino acids and 5 types of nucleotides. Fats and oils are\r\n            glycerides in which fatty acids are esterified to glycerol. Phospholipids contain, in addition, a\r\n            phosphorylated nitrogenous compound."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Only three types of macromolecules, i.e., proteins, nucleic acids and\r\n            polysaccharides are found in living systems. Lipids, because of their association with membranes separate in\r\n            the macromolecular fraction. Biomacromolecules are polymers. They are made of building blocks which are\r\n            different. Proteins are heteropolymers made of amino acids. Nucleic acids (RNA and DNA) are composed of\r\n            nucleotides. Biomacromolecules have a hierarchy of structures – primary, secondary, tertiary and\r\n            quaternary. Nucleic acids serve as genetic material."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Polysaccharides\r\n                are components of cell wall in plants, fungi and also of the exoskeleton of arthropods."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They also are storage forms of energy (e.g., starch and glycogen). Proteins serve a\r\n            variety of cellular functions. Many of them are enzymes, some are antibodies, some are receptors, some are\r\n            hormones and some others are structural proteins."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Collagen\r\n                is the most abundant protein in animal world and Ribulose bisphosphate Carboxylase-Oxygenase (RuBisCO)\r\n                is the most abundant protein in the whole of the biosphere."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91218,
+        91365
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Enzymes are proteins which catalyse biochemical reactions in the cells."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ribozymes\r\n                are nucleic acids with catalytic power."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Proteinaceous enzymes exhibit\r\n            substrate specificity, require optimum temperature and pH for maximal activity. They are denatured at high\r\n            temperatures."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Enzymes\r\n                lower activation energy of reactions and enhance greatly the rate of the reactions."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Nucleic acids carry hereditary information and are passed on from parental generation to\r\n            progeny."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        91203,
+        91308
+      ],
+      "pyq_count": 2
+    }
+  ]
+}

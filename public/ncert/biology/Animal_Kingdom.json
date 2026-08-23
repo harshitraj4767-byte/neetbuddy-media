@@ -1,0 +1,3960 @@
+{
+  "title": "Animal Kingdom",
+  "children": [
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "CHAPTER  4",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ANIMAL KINGDOM"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When you look around, you will observe different animals with different structures\r\n            and forms. As over a million species of animals have been described till now, the need for classification\r\n            becomes all the more important. The classification also helps in assigning a systematic position to newly\r\n            described species."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1 Basis of Classification",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Inspite of differences in structure and form of different animals, there are\r\n            fundamental features common to various individuals in relation to the arrangement of cells, body symmetry,\r\n            nature of coelom, patterns of digestive, circulatory or reproductive systems. These features are used as the\r\n            basis of animal classification and some of them are discussed here."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1.1 Levels of Organisation",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Though all members of Animalia are multicellular, all of them do not exhibit the same\r\n            pattern of organisation of cells. For example, in sponges, the cells are arranged as loose cell aggregates,\r\n            i.e., they exhibit cellular level of organisation. Some division of labour (activities) occur among the\r\n            cells. In coelenterates, the arrangement of cells is more complex. Here the cells performing the same\r\n            function are arranged into tissues, hence is called tissue level of organisation. A still higher level of\r\n            organisation, i.e., organ level is exhibited by members of Platyhelminthes and other higher phyla where\r\n            tissues are grouped together to form organs, each specialised for a particular function. In animals like\r\n            Annelids, Arthropods, Molluscs, Echinoderms and Chordates, organs have associated to form functional\r\n            systems, each system concerned with a specific physiological function. This pattern is called organ system\r\n            level of organisation. Organ systems in different groups of animals exhibit various patterns of\r\n            complexities."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "For\r\n                example, the digestive system in Platyhelminthes has only a single opening to the outside of the body\r\n                that serves as both mouth and anus, and is hence called incomplete."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A complete digestive system has two openings, mouth and anus. Similarly, the circulatory\r\n            system may be of two types:Figure 4.1 (a) Radial symmetry"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40944
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) open type in which the blood is pumped out of the heart and the cells and\r\n            tissues are directly bathed in it and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image31.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image33.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.1 (b) Bilateral symmetry"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) closed type in which the blood is circulated through a series of vessels of\r\n            varying diameters (arteries, veins and capillaries)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1.2 Symmetry",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Animals can be categorised on the basis of their symmetry. Sponges are mostly\r\n            asymmetrical, i.e., any plane that passes through the centre does not divide them into equal\r\n            halves."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "When\r\n                any plane passing through the central axis of the body divides the organism into two identical halves,\r\n                it is called radial symmetry"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Coelenterates, ctenophores and echinoderms have this kind of body plan (Figure 4.1a)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Animals\r\n                like annelids, arthropods, etc., where the body can be divided into identical left and right halves in\r\n                only one plane, exhibit bilateral symmetry (Figure 4.1b)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40909,
+        40980
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image32.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.2 Showing germinal layers :(a) Diploblastic (b) Triploblastic"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1.3 Diploblastic and Triploblastic Organisation",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Animals in which the cells are arranged in two embryonic layers, an external\r\n            ectoderm and an internal endoderm, are called diploblastic animals, e.g., coelenterates. An undifferentiated\r\n            layer, mesoglea, is present in between the ectoderm and the endoderm (Figure 4.2a). Those animals in which\r\n            the developing embryo has a third germinal layer, mesoderm, in between the ectoderm and endoderm, are called\r\n            triploblastic animals (platyhelminthes to chordates, Figure 4.2b)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image35.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.3 Diagrammatic sectional view of : (a) Coelomate (b) Pseudocoelomate (c)\r\n            Acoelomate"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1.4 Coelom",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Presence or absence of a cavity between the body wall and the gut wall is very\r\n            important in classification."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                body cavity, which is lined by mesoderm is called coelom"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Animals\r\n                possessing coelom are called coelomates, e.g., annelids, molluscs, arthropods, echinoderms,\r\n                hemichordates and chordates (Figure 4.3a)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In\r\n            some animals, the body cavity is not lined by mesoderm, instead, the mesoderm is present as scattered\r\n            pouches in between the ectoderm and endoderm."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Such\r\n                a body cavity is called pseudocoelom and the animals possessing them are called pseudocoelomates, e.g.,\r\n                aschelminthes (Figure 4.3b)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The animals in\r\n            which the body cavity is absent are called acoelomates, e.g., platyhelminthes (Figure 4.3c)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40910,
+        40947,
+        40976,
+        15000246
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1.5 Segmentation",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In some animals, the body is externally and internally divided into segments with\r\n            a serial repetition of at least some organs. For example, in earthworm, the body shows this pattern called\r\n            metameric segmentation and the phenomenon is known as metamerism."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.1.6 Notochord",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Notochord is a mesodermally derived rod-like structure formed on the dorsal side\r\n            during embryonic development in some animals. Animals with notochord are called chordates and those animals\r\n            which do not form this structure are called non-chordates, e.g., porifera to echinoderms."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2 Classification of Animals",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The broad classification of Animalia based on common fundamental features as\r\n            mentioned in the preceding sections is given in Figure 4.4."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image34.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "*Echinodermata exhibits radial or bilateral symmetry depending on the\r\n            stage."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                4.4  Broad classification of Kingdom Animalia based on common fundamental features"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40909
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The important characteristic features of the different phyla are described."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4.2.1 Phylum – Porifera"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Members of this phylum are commonly known as sponges."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are generally marine and mostly asymmetrical animals (Figure 4.5)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These are primitive multicellular animals and have cellular level of organisation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Sponges\r\n                have a water transport or canal system."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Water enters through minute\r\n            pores (ostia) in the body wall into a central cavity, spongocoel, from where it goes out through the\r\n            osculum. This pathway of water transport is helpful in food gathering, respiratory exchange and removal of\r\n            waste."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Choanocytes\r\n                or collar cells line the spongocoel and the canals."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Digestion is intracellular."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40917,
+        40971,
+        40994
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image38.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.5 Examples of Porifera : (a) Sycon (b) Euspongia (c) Spongilla"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The body is supported by a skeleton made up of spicules or spongin fibres.\r\n            Sexes are not separate (hermaphrodite), i.e., eggs and sperms are produced by the same individual. Sponges\r\n            reproduce asexually by fragmentation and sexually by formation of gametes."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Fertilisation\r\n                is internal and development is indirect having a larval stage which is morphologically distinct from the\r\n                adult."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40921
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Sycon (Scypha), Spongilla (Fresh water sponge) and Euspongia (Bath sponge)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40945
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.2 Phylum – Coelenterata (Cnidaria)",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are aquatic, mostly marine, sessile or free-swimming, radially symmetrical animals (Figure\r\n                4.6)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                name cnidaria is derived from the cnidoblasts or cnidocytes (which contain the stinging capsules or\r\n                nematocysts) present on the tentacles and the body."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40904,
+        40927,
+        40979,
+        41006
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image37.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image40.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image39.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image43.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.6 Examples of Coelenterata indicating outline of their body form : (a)\r\n            Aurelia (Medusa) (b)Adamsia (Polyp)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cnidoblasts are used for anchorage, defense and for the capture of prey (Figure\r\n            4.7)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Cnidarians\r\n                exhibit tissue level of organisation and are diploblastic."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They have a\r\n            central gastro-vascular cavity with a single opening, mouth on hypostome. Digestion is extracellular and\r\n            intracellular. Some of the cnidarians, e.g., corals have a skeleton composed of calcium carbonate.\r\n            Cnidarians exhibit two basic body forms called polyp and medusa (Figure 4.6). The former is a sessile and\r\n            cylindrical form like Hydra, Adamsia, etc. whereas, the latter is umbrella-shaped and free-swimming like\r\n            Aurelia or jelly fish."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Those\r\n                cnidarians which exist in both forms exhibit alternation of generation (Metagenesis), i.e., polyps\r\n                produce medusae asexually and medusae form the polyps sexually (e.g., Obelia)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40902,
+        40922,
+        40975,
+        41009
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image41.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.7 Diagrammatic view of Cnidoblast"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Physalia (Portuguese man-of-war), Adamsia (Sea anemone), Pennatula (Sea-pen), Gorgonia (Sea-fan) and\r\n                Meandrina (Brain coral)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40928,
+        40965,
+        41005
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.3 Phylum – Ctenophora",
+      "id": "h.lnxbz9"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ctenophores,\r\n                commonly known as sea walnuts or comb jellies are exclusively marine, radially symmetrical, diploblastic\r\n                organisms with tissue level of organisation. The body bears eight external rows of ciliated comb plates,\r\n                which help in locomotion (Figure 4.8)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Digestion is both extracellular\r\n            and intracellular."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Bioluminescence\r\n                (the property of a living organism to emit light) is well-marked in ctenophores"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sexes are not separate."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Reproduction\r\n                takes place only by sexual means"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fertilisation is external with indirect development."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40902,
+        40904,
+        40907,
+        40935,
+        40984,
+        41006
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Pleurobrachia and Ctenoplana"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40960
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image42.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.8 Example of Ctenophora (Pleurobrachia)"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.4 Phylum – Platyhelminthes",
+      "id": "h.35nkun2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They have dorso-ventrally flattened body, hence are called flatworms (Figure 4.9).\r\n            These are mostly endoparasites found in animals including human beings."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Flatworms\r\n                are bilaterally symmetrical, triploblastic and acoelomate animals with organ level of\r\n                organisation."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hooks and suckers are present in the parasitic forms.\r\n            Some of them absorb nutrients from the host directly through their body surface."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Specialised\r\n                cells called flame cells help in osmoregulation and excretion."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sexes\r\n            are not separate. Fertilisation is internal and development is through many larval stages."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                members like Planaria possess high regeneration capacity."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40905,
+        40929,
+        40946,
+        40966,
+        40974,
+        40984,
+        40989,
+        41001,
+        15000484
+      ],
+      "pyq_count": 9
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Taenia (Tapeworm), Fasciola (Liver fluke)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40944,
+        40989,
+        40990
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image44.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image45.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.9 Examples of Platyhelminthes : (a) Tape worm (b) Liver fluke"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.5 Phylum – Aschelminthes",
+      "id": "h.1ksv4uv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The body of the aschelminthes is circular in cross-section, hence, the name\r\n            roundworms (Figure 4.10). They may be freeliving, aquatic and terrestrial or parasitic in plants and\r\n            animals."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Roundworms\r\n                have organ-system level of body organisation. They are bilaterally symmetrical, triploblastic and\r\n                pseudocoelomate animals."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40902,
+        40947,
+        40950
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image46.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Male             Female"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.10 Example of Aschelminthes: Roundworm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Alimentary canal is complete with a well-developed muscular pharynx. An excretory\r\n            tube removes body wastes from the body cavity through the excretory pore."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Sexes\r\n                are separate (dioecious), i.e., males and females are distinct."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Often females are longer than males. Fertilisation is internal and development may be\r\n            direct (the young ones resemble the adult) or indirect."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40969
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples\r\n                : Ascaris (Roundworm), Wuchereria (Filaria worm), Ancylostoma (Hookworm)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40901,
+        40954
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.6 Phylum – Annelida",
+      "id": "h.44sinio"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They may be aquatic (marine and fresh water) or terrestrial; free-living, and\r\n            sometimes parasitic. They exhibit organ-system level of body organisation and bilateral symmetry."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are triploblastic, metamerically segmented and coelomate animals"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Their\r\n                body surface is distinctly marked out into segments or metameres and, hence, the phylum name Annelida\r\n                (Latin, annulus : little ring) (Figure 4.11)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They possess longitudinal\r\n            and circular muscles which help in locomotion."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Aquatic\r\n                annelids like Nereis possess lateral appendages, parapodia, which help in swimming."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\r\n                closed circulatory system is present."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40909,
+        40910,
+        40920,
+        40940,
+        40957,
+        40959,
+        40964,
+        41004
+      ],
+      "pyq_count": 8
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image47.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image48.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.11 Examples of Annelida : (a) Nereis (b) Hirudinaria"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Nephridia\r\n                (sing. nephridium) help in osmoregulation and excretion."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Neural\r\n            system consists of paired ganglia (sing. ganglion) connected by lateral nerves to a double ventral nerve\r\n            cord. Nereis, an aquatic form, is dioecious, but earthworms and leeches are monoecious. Reproduction is\r\n            sexual."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40955
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Examples : Nereis,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Pheretima\r\n                (Earthworm)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and Hirudinaria (Blood sucking\r\n            leech)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40948
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.7 Phylum – Arthropoda",
+      "id": "h.2jxsxqh"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\r\n                is the largest phylum of Animalia which includes insects. Over two-thirds of all named species on earth\r\n                are arthropods (Figure 4.12)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They have\r\n            organ-system level of organisation. They are bilaterally symmetrical, triploblastic, segmented and coelomate\r\n            animals."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40959
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image49.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image50.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image51.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image21.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                4.12 Examples of Arthropoda : (a) Locust (b) Butterfly (c) Scorpion (d) Prawn"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40931,
+        40932,
+        41003
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                body of arthropods is covered by chitinous exoskeleton."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                body consists of head, thorax and abdomen. They have jointed appendages (arthros-joint,\r\n                poda-appendages). Respiratory organs are gills, book gills, book lungs or tracheal system. Circulatory\r\n                system is of open type."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sensory organs like antennae, eyes (compound and simple), statocysts or balancing organs are\r\n            present. Excretion takes place through malpighian tubules."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are mostly dioecious."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fertilisation is usually internal. They are\r\n            mostly oviparous. Development may be direct or indirect."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40926,
+        40956,
+        40967,
+        40969,
+        40981
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Economically important insects – Apis (Honey bee), Bombyx (Silkworm), Laccifer (Lac\r\n                insect)"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41010
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Vectors\r\n                – Anopheles, Culex and Aedes (Mosquitoes)"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41011
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Gregarious pest – Locusta (Locust)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Living\r\n                fossil – Limulus (King crab)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40901
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.8 Phylum – Mollusca",
+      "id": "h.z337ya"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is the second largest animal phylum (Figure 4.13). Molluscs are terrestrial or\r\n            aquatic (marine or fresh water) having an organ-system level of organisation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are bilaterally symmetrical, triploblastic and coelomate animals."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41012
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image22.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image23.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                4.13 Examples of Mollusca :(a) Pila (b) Octopus"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41013
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Body\r\n                is covered by a calcareous shell and is unsegmented with a distinct head, muscular foot and visceral\r\n                hump."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A soft and spongy layer of skin forms a mantle over the visceral\r\n            hump. The space between the hump and the mantle is called the mantle cavity in which feather like gills are\r\n            present. They have respiratory and excretory functions."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                anterior head region has sensory tentacles. The mouth contains a file-like rasping organ for feeding,\r\n                called radula."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40909,
+        41010
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They are usually dioecious and oviparous with indirect development."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Pila (Apple snail), Pinctada (Pearl oyster), Sepia (Cuttlefish), Loligo (Squid), Octopus (Devil fish),\r\n                Aplysia (Sea-hare), Dentalium (Tusk shell) and Chaetopleura (Chiton)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40901,
+        40965,
+        40991,
+        40992
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.9 Phylum – Echinodermata",
+      "id": "h.3j2qqm3"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\r\n                animals have an endoskeleton of calcareous ossicles and, hence, the name Echinodermata (Spiny bodied,\r\n                Figure 4.14)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All are marine with organ-system level of organisation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                adult echinoderms are radially symmetrical but larvae are bilaterally symmetrical."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40956,
+        40968,
+        40980
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image24.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image25.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.14 Examples of Echinodermata : (a) Asterias (b) Ophiura"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are triploblastic and coelomate animals."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Digestive system is complete\r\n            with mouth on the lower (ventral) side and anus on the upper (dorsal) side."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                most distinctive feature of echinoderms is the presence of water vascular system which helps in\r\n                locomotion, capture and transport of food and respiration."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An excretory\r\n            system is absent. Sexes are separate. Reproduction is sexual."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Fertilisation\r\n                is usually external. Development is indirect with free-swimming larva."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40902,
+        40990,
+        41014
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Asterias (Star fish), Echinus (Sea urchin), Antedon (Sea lily), Cucumaria (Sea cucumber) and Ophiura\r\n                (Brittle star)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40931,
+        40992
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.10 Phylum – Hemichordata",
+      "id": "h.1y810tw"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hemichordata was earlier considered as a sub-phylum under phylum Chordata. But now it\r\n            is placed as a separate phylum under non-chordata. Hemichordates have a rudimentary structure in the collar\r\n            region called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "stomochord"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", a structure similar to notochord."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000307
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image26.png",
+              "alt": "p5",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.15 Balanoglossus"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This phylum consists of a small group of worm-like marine animals with organ-system\r\n            level of organisation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are bilaterally symmetrical, triploblastic and coelomate animals."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                body is cylindrical and is composed of an anterior proboscis, a collar and a long trunk (Figure\r\n                4.15)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Circulatory\r\n                system is of open type."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Respiration takes place through gills.\r\n            Excretory organ is proboscis gland. Sexes are separate. Fertilisation is external. Development is\r\n            indirect."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41012,
+        41014,
+        41015
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Examples: Balanoglossus and Saccoglossus."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11 Phylum – Chordata",
+      "id": "h.4i7ojhp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Animals\r\n                belonging to phylum Chordata are fundamentally characterised by the presence of a notochord, a dorsal\r\n                hollow nerve cord and paired pharyngeal gill slits (Figure 4.16)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These\r\n            are bilaterally symmetrical, triploblastic, coelomate with organ-system level of organisation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                possess a post anal tail and a closed circulatory system."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40949,
+        40985,
+        41016
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image27.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.16 Chordata characteristics"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 4.1 presents a comparison of salient features of chordates and\r\n            non-chordates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                4.1 Comparison of Chordates and Non-chordates"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41017,
+        15000253
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image28.png",
+              "alt": "p6",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Phylum\r\n                Chordata is divided into three subphyla: Urochordata or Tunicata, Cephalochordata and\r\n                Vertebrata."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40908
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image29.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.17 Ascidia"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image30.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Subphyla\r\n                Urochordata and Cephalochordata are often referred to as protochordates (Figure 4.17) and are\r\n                exclusively marine."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                Urochordata, notochord is present only in larval tail, while in Cephalochordata, it extends from head to\r\n                tail region and is persistent throughout their life."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40908
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Examples: Urochordata – Ascidia, Salpa, Doliolum; Cephalochordata –\r\n            Branchiostoma (Amphioxus or Lancelet)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                members of subphylum Vertebrata possess notochord during the embryonic period. The notochord is replaced\r\n                by a cartilaginous or bony vertebral column in the adult. Thus all vertebrates are chordates but all\r\n                chordates are not vertebrates."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Besides\r\n                the basic chordate characters, vertebrates have a ventral muscular heart with two, three or four\r\n                chambers, kidneys for excretion and osmoregulation and paired appendages which may be fins or\r\n                limbs."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40942,
+        40983,
+        41017,
+        15000500
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The subphylum Vertebrata is further divided as follows:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.1 Class – Cyclostomata",
+      "id": "h.2xcytpi"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "All\r\n                living members of the class Cyclostomata are ectoparasites on some fishes"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                have an elongated body bearing 6-15 pairs of gill slits for respiration."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Cyclostomes\r\n                have a sucking and circular mouth without jaws"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Fig. 4.18)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Their\r\n                body is devoid of scales and paired fins. Cranium and vertebral column are cartilaginous. Circulation is\r\n                of closed type. Cyclostomes are marine but migrate for spawning to fresh water"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "After spawning, within a few days, they die. Their larvae,\r\n            after metamorphosis, return to the ocean."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40906,
+        40918,
+        40986,
+        41018
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Petromyzon (Lamprey) and Myxine (Hagfish)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40952,
+        15000313
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\r\n                4.18 A jawless vertebrate - Petromyzon"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40902,
+        40923
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.19 Example of Cartilaginous fishes : (a) Scoliodon (b) Pristis"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.2 Class – Chondrichthyes",
+      "id": "h.1ci93xb"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are marine animals with streamlined body and have cartilaginous endoskeleton"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Figure 4.19). Mouth is located ventrally. Notochord is\r\n            persistent throughout life. Gill slits are separate and without operculum (gill cover)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                skin is tough, containing minute placoid scales."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Teeth are modified\r\n            placoid scales which are backwardly directed. Their jaws are very powerful. These animals are\r\n            predaceous."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Due\r\n                to the absence of air bladder, they have to swim constantly to avoid sinking."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Heart is two-chambered (one auricle and one ventricle)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Some\r\n                of them have electric organs (e.g., Torpedo) and some possess poison sting (e.g.,\r\n                Trygon)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They are cold-blooded (poikilothermous) animals, i.e., they\r\n            lack the capacity to regulate their body temperature. Sexes are separate."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\r\n                males pelvic fins bear claspers."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                have internal fertilisation and many of them are viviparous"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40906,
+        40930,
+        40940,
+        40941,
+        40995,
+        41008,
+        41019
+      ],
+      "pyq_count": 7
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Scoliodon (Dog fish), Pristis (Saw fish), Carcharodon (Great white shark), Trygon (Sting\r\n                ray)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40906
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.20 Examples of Bony fishes : (a) Hippocampus (b) Catla"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.3 Class – Osteichthyes",
+      "id": "h.3whwml4"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It includes both marine and fresh water fishes with bony endoskeleton. Their body is\r\n            streamlined. Mouth is mostly terminal (Figure 4.20)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                have four pairs of gills which are covered by an operculum on each side"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Skin is covered with cycloid/ctenoid scales."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Air\r\n                bladder is present which regulates buoyancy."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Heart is two-chambered\r\n            (one auricle and one ventricle). They are cold-blooded animals. Sexes are separate."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Fertilisation\r\n                is usually external."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They are mostly oviparous and development is\r\n            direct."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40906,
+        40939,
+        40956
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Marine – Exocoetus (Flying fish), Hippocampus (Sea horse); Freshwater – Labeo (Rohu), Catla\r\n                (Katla), Clarias (Magur); Aquarium – Betta (Fighting fish), Pterophyllum (Angel fish)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40931,
+        40933,
+        15000313
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.4 Class – Amphibia",
+      "id": "h.2bn6wsx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As the name indicates (Gr., Amphi : dual, bios, life), amphibians can live in\r\n            aquatic as well as terrestrial habitats (Figure 4.21). Most of them have two pairs of limbs. Body is\r\n            divisible into head and trunk. Tail may be present in some."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image17.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image18.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.21 Examples of Amphibia :(a) Salamandra (b) Rana"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                amphibian skin is moist (without scales)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The eyes have eyelids. A tympanum\r\n            represents the ear."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Alimentary\r\n                canal, urinary and reproductive tracts open into a common chamber called cloaca which opens to the\r\n                exterior."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Respiration is by gills, lungs and through skin."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                heart is three-chambered (two auricles and one ventricle). These are cold-blooded\r\n                animals."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Sexes are separate. Fertilisation is\r\n            external."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are oviparous and development is indirect."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40919,
+        40956,
+        40996,
+        41015,
+        41020,
+        41021
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Examples: Bufo (Toad), Rana (Frog), Hyla (Tree frog), Salamandra (Salamander),"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Ichthyophis\r\n                (Limbless amphibia)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000469
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image19.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image20.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.22 Reptiles: (a) Chameleon (b) Crocodilus (c) Chelone (d) Naja"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.5 Class – Reptilia",
+      "id": "h.qsh70q"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The class name refers to their creeping or crawling mode of locomotion (Latin, repere\r\n            or reptum, to creep or crawl)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are mostly terrestrial animals and their body is covered by dry and cornified skin, epidermal scales or\r\n                scutes (Fig. 4.22). They do not have external ear openings."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Tympanum\r\n            represents ear. Limbs, when present, are two pairs."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Heart\r\n                is usually three-chambered, but four-chambered in crocodiles."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Reptiles\r\n            are poikilotherms. Snakes and lizards shed their scales as skin cast. Sexes are separate. Fertilisation is\r\n            internal."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are oviparous and development is direct."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40919,
+        40934,
+        40988,
+        40995,
+        40996,
+        41015
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Chelone (Turtle), Testudo (Tortoise), Chameleon (Tree lizard), Calotes (Garden lizard), Crocodilus\r\n                (Crocodile), Alligator (Alligator)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hemidactylus (Wall lizard),\r\n            Poisonous snakes – Naja (Cobra), Bangarus (Krait), Vipera (Viper)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40903
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.6 Class – Aves",
+      "id": "h.3as4poj"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The characteristic features of Aves (birds) are the presence of feathers and most of\r\n            them can fly except flightless birds (e.g., Ostrich). They possess beak (Figure 4.23)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                forelimbs are modified into wings."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The hind limbs generally have scales and are modified for walking, swimming or clasping the tree\r\n            branches. Skin is dry without glands except the oil gland at the base of the tail."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Endoskeleton\r\n                is fully ossified (bony) and the long bones are hollow with air cavities (pneumatic)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40903,
+        40972,
+        40973
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.23 Some birds : (a) Neophron (b) Struthio (c) Psittacula (d)\r\n            Pavo"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                digestive tract of birds has additional chambers, the crop and gizzard"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Heart is completely four-chambered."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are warm-blooded (homoiothermous) animals, i.e., they are able to maintain a constant body\r\n                temperature"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Respiration is by lungs. Air sacs connected to lungs supplement respiration. Sexes are\r\n            separate. Fertilisation is internal."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are oviparous and development is direct."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40912,
+        40913,
+        40919,
+        40982
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples\r\n                : Corvus (Crow), Columba (Pigeon), Psittacula (Parrot), Struthio (Ostrich), Pavo (Peacock), Aptenodytes\r\n                (Penguin), Neophron (Vulture)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40903,
+        40977,
+        40982
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "4.2.11.7 Class – Mammalia",
+      "id": "h.1pxezwc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They are found in a variety of habitats – polar ice caps, deserts, mountains,\r\n            forests, grasslands and dark caves. Some of them have adapted to fly or live in water."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                most unique mammalian characteristic is the presence of milk producing glands (mammary glands) by which\r\n                the young ones are nourished."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They have two pairs of limbs, adapted\r\n            for walking, running, climbing, burrowing, swimming or flying (Figure 4.24)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40986
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 4.24 Some mammals : (a) Ornithorhynchus (b) Macropus (c) Pteropus (d)\r\n            Balaenoptera"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\r\n                skin of mammals is unique in possessing hair. External ears or pinnae are present."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Different types of teeth are present in the jaw. Heart is four-chambered."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are homoiothermous."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Respiration is by lungs. Sexes are separate and\r\n            fertilisation is internal."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                are viviparous with few exceptions and development is direct."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40915,
+        40919,
+        40958,
+        40986,
+        41015
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Examples:\r\n                Oviparous-Ornithorhynchus (Platypus); Viviparous - Macropus (Kangaroo), Pteropus (Flying fox), Camelus\r\n                (Camel), Macaca (Monkey), Rattus (Rat), Canis (Dog), Felis (Cat), Elephas (Elephant), Equus (Horse),\r\n                Delphinus (Common dolphin), Balaenoptera (Blue whale), Panthera tigris (Tiger), Panthera leo\r\n                (Lion)"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40915,
+        40925,
+        40970
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The salient distinguishing features of all phyla under animal kingdom is\r\n            comprehensively given in the Table 4.2."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\r\n                4.2 Salient Features of Different Phyla in the Animal Kingdom"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        41014
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Animal_Kingdom-image36.png",
+              "alt": "p7",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Summary",
+      "id": "h.49x2ik5"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The basic fundamental features such as level of organisation, symmetry, cell\r\n            organisation, coelom, segmentation, notochord, etc., have enabled us to broadly classify the animal kingdom.\r\n            Besides the fundamental features, there are many other distinctive characters which are specific for each\r\n            phyla or class."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Porifera\r\n                includes multicellular animals which exhibit cellular level of organisation and have characteristic\r\n                flagellated choanocytes."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The coelenterates have tentacles and bear\r\n            cnidoblasts. They are mostly aquatic, sessile or free-floating. The ctenophores are marine animals with comb\r\n            plates. The platyhelminths have flat body and exhibit bilateral symmetry. The parasitic forms show distinct\r\n            suckers and hooks."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Aschelminthes\r\n                are pseudocoelomates and include parasitic as well as non-parasitic roundworms."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40917,
+        40947
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Annelids are metamerically segmented animals with a true coelom. The arthropods\r\n            are the most abundant group of animals characterised by the presence of jointed appendages. The molluscs\r\n            have a soft body surrounded by an external calcareous shell. The body is covered with external skeleton made\r\n            of chitin. The echinoderms possess a spiny skin. Their most distinctive feature is the presence of water\r\n            vascular system. The hemichordates are a small group of worm-like marine animals. They have a cylindrical\r\n            body with proboscis, collar and trunk."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Phylum Chordata includes animals which possess a notochord either throughout or\r\n            during early embryonic life."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Other\r\n                common features observed in the chordates are the dorsal, hollow nerve cord and paired pharyngeal gill\r\n                slits."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some of the vertebrates do not possess jaws (Agnatha) whereas\r\n            most of them possess jaws (Gnathostomata). Agnatha is represented by the class, Cyclostomata. They are the\r\n            most primitive chordates and are ectoparasites on fishes. Gnathostomata has two super classes, Pisces and\r\n            Tetrapoda. Classes Chondrichthyes and Osteichthyes bear fins for locomotion and are grouped under Pisces.\r\n            The Chondrichthyes are fishes with cartilaginous endoskeleton and are marine. Classes, Amphibia, Reptilia,\r\n            Aves and Mammalia have two pairs of limbs and are thus grouped under Tetrapoda. The amphibians have adapted\r\n            to live both on land and water. Reptiles are characterised by the presence of dry and cornified skin. Limbs\r\n            are absent in snakes. Fishes, amphibians and reptiles are poikilothermous (cold-blooded). Aves are\r\n            warm-blooded animals with feathers on their bodies and forelimbs modified into wings for flying. Hind limbs\r\n            are adapted for walking, swimming, perching or clasping. The unique features of mammals are the presence of\r\n            mammary glands and hairs on the skin."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\r\n                commonly exhibit viviparity."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        40914,
+        40919
+      ],
+      "pyq_count": 2
+    }
+  ]
+}

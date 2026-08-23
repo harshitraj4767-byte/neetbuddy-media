@@ -1,0 +1,1928 @@
+{
+  "title": "Ecosystem",
+  "children": [
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Chapter 14",
+      "id": "h.gjdgxs"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Ecosystem",
+      "id": "h.30j0zll"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.1 Ecosystem–Structure and Function"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.2 Productivity"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.3 Decomposition"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.4 Energy Flow"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.5 Ecological Pyramids"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.6 Ecological Succession"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.7 Nutrient Cycling"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14.8 Ecosystem Services"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An ecosystem can be visualised as a functional unit of nature, where living\n            organisms interact among themselves and also with the surrounding physical environment. Ecosystem varies\n            greatly in size from a small pond to a large forest or a sea. Many ecologists regard the entire biosphere as\n            a global ecosystem, as a composite of all local ecosystems on Earth. Since this system is too much big and\n            complex to be studied at one time, it is convenient to divide it into two basic categories, namely the\n            terrestrial and the aquatic. Forest, grassland and desert are some examples of terrestrial ecosystems; pond,\n            lake, wetland, river and estuary are some examples of aquatic ecosystems. Crop fields and an aquarium may\n            also be considered as man-made ecosystems."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We will first look at the structure of the ecosystem, in order to appreciate the\n            input (productivity), transfer of energy (food chain/web, nutrient cycling) and the output (degradation and\n            energy loss). We will also look at the relationships – cycles, chains, webs – that are created\n            as a result of these energy flows within the system and their inter- relationship."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.1 Ecosystem – Structure and Function",
+      "id": "h.1fob9te"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In chapter 13, you have looked at the various components of the environment-\n            abiotic and biotic. You studied how the individual biotic and abiotic factors affected each other and their\n            surrounding. Let us look at these components in a more integrated manner and see how the flow of energy\n            takes place within these components of the ecosystem."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Interaction\n                of biotic and abiotic components result in a physical structure that is characteristic for each type of\n                ecosystem."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Identification and enumeration of plant and animal species\n            of an ecosystem gives its species composition."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Vertical\n                distribution of different species occupying different levels is called stratification."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "For example, trees occupy top vertical strata or layer of a forest, shrubs the second\n            and herbs and grasses occupy the bottom layers."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360804,
+        360926
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                components of the ecosystem are seen to function as a unit when you consider the following\n                aspects:"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360915
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(i)\n                Productivity;"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360915
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(ii)\n                Decomposition;"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360915
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(iii)\n                Energy flow; and"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360915
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "(iv)\n                Nutrient cycling."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360915
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "To understand the ethos of an aquatic ecosystem let us take a small pond as an\n            example. This is fairly a self-sustainable unit and rather simple example that explain even the complex\n            interactions that exist in an aquatic ecosystem. A pond is a shallow water body in which all the above\n            mentioned four basic components of an ecosystem are well exhibited. The abiotic component is the water with\n            all the dissolved inorganic and organic substances and the rich soil deposit at the bottom of the pond. The\n            solar input, the cycle of temperature, day-length and other climatic conditions regulate the rate of\n            function of the entire pond. The autotrophic components include the phytoplankton, some algae and the\n            floating, submerged and marginal plants found at the edges. The consumers are represented by the\n            zooplankton, the free swimming and bottom dwelling forms. The decomposers are the fungi, bacteria and\n            flagellates especially abundant in the bottom of the pond. This system performs all the functions of any\n            ecosystem and of the biosphere as a whole, i.e., conversion of inorganic into organic material with the help\n            of the radiant energy of the sun by the autotrophs; consumption of the autotrophs by heterotrophs;\n            decomposition and mineralisation of the dead matter to release them back for reuse by the autotrophs, these\n            event are repeated over and over again. There is unidirectional movement of energy towards the higher\n            trophic levels and its dissipation and loss as heat to the environment."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.2. Productivity",
+      "id": "h.3znysh7"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A constant input of solar energy is the basic requirement for any ecosystem to\n            function and sustain."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Primary\n                production is defined as the amount of biomass or organic matter produced per unit area over a time\n                period by plants during photosynthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is\n            expressed in terms of weight (gm–2) or energy (kcal m–2). The rate of biomass production is\n            called productivity. It is expressed in terms of gm–2 yr–1 or (kcal m–2) yr–1 to\n            compare the productivity of different ecosystems. It can be divided into gross primary productivity (GPP)\n            and net primary productivity (NPP)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gross\n                primary productivity of an ecosystem is the rate of production of organic matter during\n                photosynthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A considerable amount of GPP is utilised by plants in\n            respiration."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Gross\n                primary productivity minus respiration losses (R), is the net primary productivity (NPP)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360805,
+        360807,
+        360910,
+        360927,
+        360928,
+        360929
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "GPP\n                – R = NPP"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360929
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Net\n                primary productivity is the available biomass for the consumption to heterotrophs (herbiviores and\n                decomposers)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Secondary\n                productivity is defined as the rate of formation of new organic matter by  consumers."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360808,
+        360929,
+        360930,
+        360931,
+        360932
+      ],
+      "pyq_count": 5
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Primary productivity depends on the plant species inhabiting a particular area. It\n            also depends on a variety of environmental factors, availability of nutrients and photosynthetic capacity of\n            plants. Therefore, it varies in different types of ecosystems. The annual net primary productivity of the\n            whole biosphere is approximately 170 billion tons (dry weight) of organic matter."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Of\n                this, despite occupying about 70 per cent of the surface, the productivity of the oceans are only 55\n                billion tons."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Rest of course, is on land. Discuss the main reason\n            for the low productivity of ocean with your teacher."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360902
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.3 Decomposition",
+      "id": "h.2et92p0"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You may have heard of the earthworm being referred to as the farmer’s\n            ‘friend’. This is so because they help in the breakdown of complex organic matter as well as in\n            loosening of the soil. Similarly, decomposers break down complex organic matter into inorganic substances\n            like carbon dioxide, water and nutrients and the process is called decomposition."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Dead\n                plant remains such as leaves, bark, flowers and dead remains of animals, including fecal matter,\n                constitute detritus, which is the raw material for decomposition."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                important steps in the process of decomposition are fragmentation, leaching, catabolism, humification\n                and mineralisation."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360933,
+        360934
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Detritivores\n                (e.g., earthworm) break down detritus into smaller particles."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This\n                process is called fragmentation. By the process of leaching, water-soluble inorganic nutrients go down\n                into the soil horizon and get precipitated as unavailable salts. Bacterial and enzymes degrade detritus\n                into simpler inorganic substances. This process is called as catabolism."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360809,
+        360933,
+        360935
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.1 Diagrammatic representation of decomposition cycle in a terrestrial\n            ecosystem"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is important to note that all the above steps in decomposition operate\n            simultaneously on the detritus (Figure 14.1). Humification and mineralisation occur during decomposition in\n            the soil."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Humification\n                leads to accumulation of a dark coloured amorphous substance called humus that is highly resistant to\n                microbial action and undergoes decomposition at an extremely slow rate. Being colloidal in nature it\n                serves as a reservoir of nutrients."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The humus is further degraded by\n            some microbes and release of inorganic nutrients occur by the process known as mineralisation."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360809,
+        360936
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Decomposition\n                is largely an oxygen-requiring process. The rate of decomposition is controlled by chemical composition\n                of detritus and climatic factors. In a particular climatic condition, decomposition rate is slower if\n                detritus is rich in lignin and chitin, and quicker, if detritus is rich in nitrogen and water-soluble\n                substances like sugars."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Temperature and soil\n            moisture are the most important climatic factors that regulate decomposition through their effects on the\n            activities of soil microbes. Warm and moist environment favour decomposition whereas low temperature and\n            anaerobiosis inhibit decomposition resulting in build up of organic materials."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360913,
+        360937,
+        360938
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.4 Energy Flow",
+      "id": "h.tyjcwt"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Except for the deep sea hydro-thermal ecosystem, sun is the only source of energy for\n            all ecosystems on Earth."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Of\n                the incident solar radiation less than 50 per cent of it is photosynthetically active radiation (PAR)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We know that plants and photosynthetic bacteria (autotrophs), fix Sun’s\n            radiant energy to make food from simple inorganic materials. Plants capture only 2-10 per cent of the PAR\n            and this small amount of energy sustains the entire living world. So, it is very important to know how the\n            solar energy captured by plants flows through different organisms of an ecosystem. All organisms are\n            dependent for their food on producers, either directly or indirectly. So you find unidirectional flow of\n            energy from the sun to producers and then to consumers. Is this in keeping with the first law of\n            thermodynamics?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360939
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Further, ecosystems are not exempt from the Second Law of thermodynamics. They\n            need a constant supply of energy to synthesise the molecules they require, to counteract the universal\n            tendency toward increasing disorderliness."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The green plant in the ecosystem are called producers. In a terrestrial ecosystem,\n            major producers are herbaceous and woody plants."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Likewise,\n                producers in an aquatic ecosystem are various species like phytoplankton, algae and higher\n                plants."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360940
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have read about the food chains and webs that exist in nature. Starting from\n            the plants (or producers) food chains or rather webs are formed such that an animal feeds on a plant or on\n            another animal and in turn is food for another. The chain or web is formed because of this interdependency.\n            No energy that is trapped into an organism remains in it for ever. The energy trapped by the producer,\n            hence, is either passed on to a consumer or the organism dies. Death of organism is the beginning of the\n            detritus food chain/web."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "All animals depend on plants (directly or indirectly) for their food needs. They are\n            hence called consumers and also heterotrophs."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\n                they feed on the producers, the plants, they are called primary consumers, and if the animals eat other\n                animals which in turn eat the plants (or their produce) they are called secondary\n                consumers."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Likewise, you could have tertiary\n            consumers too. Obviously the primary consumers will be herbivores. Some common herbivores are insects, birds\n            and mammals in terrestrial ecosystem and molluscs in aquatic ecosystem."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360813,
+        360814
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The consumers that feed on these herbivores are carnivores, or more correctly\n            primary carnivores (though secondary consumers). Those animals that depend on the primary carnivores for\n            food are labelled secondary carnivores. A simple grazing food chain (GFC) is depicted below:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Grass------>     Goat------>        \n            Man"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(Producer)  (Primary Consumer)  (Secondary consumer)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The detritus food chain (DFC) begins with dead organic matter. It is made up of\n            decomposers which are heterotrophic organisms, mainly fungi and bacteria. They meet their energy and\n            nutrient requirements by degrading dead organic matter or detritus. These are also known as saprotrophs\n            (sapro: to decompose). Decomposers secrete digestive enzymes that breakdown dead and waste materials into\n            simple, inorganic materials, which are subsequently absorbed by them."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In an aquatic ecosystem, GFC is the major conduit for energy flow. As against\n            this, in a terrestrial ecosystem, a much larger fraction of energy flows through the detritus food chain\n            than through the GFC. Detritus food chain may be connected with the grazing food chain at some levels: some\n            of the organisms of DFC are prey to the GFC animals, and in a natural ecosystem, some animals like\n            cockroaches, crows, etc., are omnivores. These natural interconnection of food chains make it a food web.\n            How would you classify human beings!"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Organisms occupy a place in the natural surroundings or in a community according to\n            their feeding relationship with other organisms. Based on the source of their nutrition or food, organisms\n            occupy a specific place in the food chain that is known as their trophic level."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Producers\n                belong to the first trophic level, herbivores (primary consumer) to the second and carnivores (secondary\n                consumer) to the third (Figure 14.2)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360941
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.2 Diagrammatic representation of trophic levels in an ecosystem"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                important point to note is that the amount of energy decreases at successive trophic levels. When any\n                organism dies it is converted to detritus or dead biomass that serves as an energy source for\n                decomposers."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Organisms at each trophic level\n            depend on those at the lower trophic level for their energy demands."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360913,
+        360942
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Each\n                trophic level has a certain mass of living material at a particular time called as the standing\n                crop."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The standing crop is measured as the mass\n            of living organisms (biomass) or the number in a unit area. The biomass of a species is expressed in terms\n            of fresh or dry weight."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Measurement\n                of biomass in terms of dry weight is more accurate."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Why?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360806,
+        360943,
+        360944
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                number of trophic levels in the grazing food chain is restricted as the transfer of energy follows 10\n                per cent law – only 10 per cent of the energy is transferred to each trophic level from the lower\n                trophic level."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In nature, it is possible to have so many levels\n            – producer, herbivore, primary carnivore, secondary carnivore in the grazing food chain (Figure 14.3)\n            . Do you think there is any such limitation in a detritus food chain?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360812,
+        360945,
+        15000232,
+        15000450
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.3 Energy flow through different trophic levels"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.5 Ecological Pyramids",
+      "id": "h.3dy6vkm"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You must be familiar with the shape of a pyramid. The base of a pyramid is broad and\n            it narrows towards the apex. One gets a similar shape, whether you express the food or energy relationship\n            between organisms at different trophic levels."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "This,\n                relationship is expressed in terms of number, biomass or energy."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The\n            base of each pyramid represents the producers or the first trophic level while the apex represents tertiary\n            or top level consumer. The three types of ecological pyramids that are usually studied are (a) pyramid of\n            number; (b) pyramid of biomass and (c) pyramid of energy. For detail (see Figure 14.4 a, b, c and d)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360944
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.4 (a) Pyramid of numbers in a grassland ecosystem. Only three\n            top-carnivores are"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "supported in an ecosystem based on production of nearly 6 millions plants"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.4 (b) Pyramid of biomass shows a sharp decrease in biomass at higher\n            trophic levels"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                14.4 (c) Inverted pyramid of biomass-small standing crop of phytoplankton supports large standing crop\n                of zooplankton"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360901
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.4 (d) An ideal pyramid of energy. Observe that primary producers\n            convert only 1% of the energy in the sunlight available to them into NPP"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Any calculations of energy content, biomass or numbers, has to include all organisms\n            at that trophic level. No generalisations we make will be true if we take only a few individuals at any\n            trophic level into account. Also a given organism may occupy more than one trophic level simultaneously. One\n            must remember that the trophic level represents a functional level, not a species as such."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "A\n                given species may occupy more than one trophic level in the same ecosystem at the same time; for\n                example, a sparrow is a primary consumer when it eats seeds, fruits, peas, and a secondary consumer when\n                it eats insects and worms."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you work out how many trophic levels\n            human beings function at in a food chain?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360946
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In most ecosystems, all the pyramids, of number, of energy and biomass are\n            upright, i.e., producers are more in number and biomass than the herbivores, and herbivores are more in\n            number and biomass than the carnivores. Also enegenergy at a lower trophic level is always more than at a\n            higher level."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There are exceptions to this generalisation: If you were to count the number of\n            insects feeding on a big tree what kind of pyramid would you get? Now add an estimate of the number of small\n            birds depending on the insects, as also the number of larger birds eating the smaller. Draw the shape you\n            would get."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                pyramid of biomass in sea is generally inverted because the biomass of fishes far exceeds that of\n                phytoplankton."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Isn’t that a paradox? How would you explain\n            this?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360816,
+        360947,
+        360948
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Pyramid\n                of energy is always upright, can never be inverted, because when energy flows from a particular trophic\n                level to the next trophic level, some energy is always lost as heat at each step."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Each bar in the energy pyramid indicates the amount of energy present at each trophic\n            level in a given time or annually per unit area."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360947,
+        360949
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "However,\n                there are certain limitations of ecological pyramids such as it does not take into account the same\n                species belonging to two or more trophic levels. It assumes a simple food chain, something that almost\n                never exists in nature; it does not accommodate a food web. Moreover, saprophytes are not given any\n                place in ecological pyramids even though they play a vital role in the ecosystem."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        15000437
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.6 Ecological Succession",
+      "id": "h.1t3h5sf"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have learnt in Chapter 13, the characteristics of population and community and\n            also their response to environment and how such responses vary from an individual response. Let us examine\n            another aspect of community response to environment over time."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An important characteristic of all communities is that their composition and\n            structure constantly change in response to the changing environmental conditions. This change is orderly and\n            sequential, parallel with the changes in the physical environment. These changes lead finally to a community\n            that is in near equilibrium with the environment and that is called a climax community."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                gradual and fairly predictable change in the species composition of a given area is called ecological\n                succession."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "During succession some species colonise an area and\n            their population become more numerous whereas populations of other species decline and even\n            disappear."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360904
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The entire sequence of communities that successively change in a given area are\n            called sere(s). The individual transitional communities are termed seral stages or seral communities. In the\n            successive seral stages there is a change in the diversity of species of organisms, increase in the number\n            of species and organisms as well as an increase in the total biomass."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The present day communities in the world have come to be because of succession\n            that has occurred over millions of years since life started on earth. Actually succession and evolution\n            would have been parallel processes at that time."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Succession is hence a process that starts in an area where no living organisms are\n            there – these could be areas where no living organisms ever existed, say bare rock; or in areas that\n            somehow, lost all the living organisms that existed there. The former is called primary succession, while\n            the latter is termed secondary succession."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Examples of areas where primary succession occurs are newly cooled lava, bare\n            rock, newly created pond or reservoir. The establishment of a new biotic community is generally slow. Before\n            a biotic community of diverse organisms can become established, there must be soil. Depending mostly on the\n            climate, it takes natural processes several hundred to several thousand years to produce fertile soil on\n            bare rock."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Secondary\n                succession begins in areas where natural biotic communities have been destroyed such as in abandoned\n                farm lands, burned or cut forests, lands that have been flooded. Since some soil or sediment is present,\n                succession is faster than primary succession."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360905,
+        360950
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Description of ecological succession usually focuses on changes in vegetation.\n            However, these vegetational changes in turn affect food and shelter for various types of animals. Thus, as\n            succession proceeds, the numbers and types of animals and decomposers also change."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At any time during primary or secondary succession, natural or human induced\n            disturbances (fire, deforestation, etc.), can convert a particular seral stage of succession to an earlier\n            stage. Also such disturbances create new conditions that encourage some species and discourage or eliminate\n            other species."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "14.6.1 Succession of Plants",
+      "id": "h.4d34og8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Based on the nature of the habitat – whether it is water (or very wet areas) or\n            it is on very dry areas – succession of plants is called hydrarch or xerarch, respectively."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hydrarch\n                succession takes place in wet areas and the successional series progress from hydric to the mesic\n                conditions."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As against this, xerarch succession takes place in dry\n            areas and the series progress from xeric to mesic conditions."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Hence,\n                both hydrarch and xerarch successions lead to medium water conditions (mesic) – neither too dry\n                (xeric) nor too wet (hydric)."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360923,
+        360951
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                species that invade a bare area are called pioneer species. In primary succession on rocks these are\n                usually lichens which are able to secrete acids to dissolve rock, helping in weathering and soil\n                formation."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "These later pave way to some very small plants like\n            bryophytes, which are able to take hold in the small amount of soil."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "They\n                are, with time, succeeded by higher plants, and after several more stages, ultimately a stable climax\n                forest community is formed."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The climax community remains stable as\n            long as the environment remains unchanged. With time the xerophytic habitat gets converted into a mesophytic\n            one."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360902,
+        360903,
+        360922,
+        360935
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "In\n                primary succession in water, the pioneers are the small phytoplanktons, which are replaced with time by\n                rooted-submerged plants, rooted-floating angiosperms followed by free-floating plants, then reed-swamp,\n                marsh-meadow, scrub and finally the trees."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The climax again would be a forest. With time the water body is converted into land (Figure\n            14.5)."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360921
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.5 Diagrammatic representation of primary succession"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In secondary succession the species that invade depend on the condition of the\n            soil, availability of water, the environment as also the seeds or other propagules present. Since soil is\n            already there, the rate of succession is much faster and hence, climax is also reached more quickly."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What is important to understand is that succession, particularly primary\n            succession, is a very slow process, taking maybe thousands of years for the climax to be reached. Another\n            important fact is to understand that all succession whether taking place in water or on land, proceeds to a\n            similar climax community – the mesic."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.7 Nutrient Cycling",
+      "id": "h.2s8eyo1"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have studied in Class XI that organisms need a constant supply of nutrients to\n            grow, reproduce and regulate various body functions."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                amount of nutrients, such as carbon, nitrogen, phosphorus, calcium, etc., present in the soil at any\n                given time, is referred to as the standing state."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It varies in\n            different kinds of ecosystems and also on a seasonal basis."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360802
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What is important is to appreciate that nutrients which are never lost from the\n            ecosystems, rather they are recycled time and again indefinitely. The movement of nutrient elements through\n            the various components of an ecosystem is called nutrient cycling. Another name of nutrient cycling is\n            biogeochemical cycles (bio: living organism, geo: rocks, air, water). Nutrient cycles are of two types: (a)\n            gaseous and (b) sedimentary."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                reservoir for gaseous type of nutrient cycle (e.g., nitrogen, carbon cycle) exists in the atmosphere and\n                for the sedimentary cycle (e.g., sulphur and phosphorus cycle), the reservoir is located in\n                Earth’s crust."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Environmental factors, e.g., soil, moisture,\n            pH, temperature, etc., regulate the rate of release of nutrients into the atmosphere. The function of the\n            reservoir is to meet with the deficit which occurs due to imbalance in the rate of influx and efflux."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360906,
+        360952
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 14.6 Simplified model of carbon cycle in the biosphere"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "You have made a detailed study of nitrogen cycle in class XI. Here we discuss\n            carbon and phosphorus cycles."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "14.7.1 Ecosystem – Carbon Cycle",
+      "id": "h.17dp8vu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When you study the composition of living organisms, carbon constitutes 49 per cent of\n            dry weight of organisms and is next only to water."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\n                we look at the total quantity of global carbon, we find that 71 percent carbon is found dissolved in\n                oceans."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This oceanic reservoir regulates the\n            amount of carbon dioxide in the atmosphere (Figure 14.6). Do you know that the atmosphere only contains\n            about 1per cent of total global carbon?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360953
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fossil fuel also represent a reservoir of carbon. Carbon cycling occurs through\n            atmosphere, ocean and through living and dead organisms."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "According\n                to one estimate 4 × 10"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "kg\n                of carbon is fixed annually in the biosphere through photosynthesis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A\n            considerable amount of carbon returns to the atmosphere as CO₂ through respiratory activities of the\n            producers and consumers."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Decomposers\n                also contribute substantially to CO₂ pool by their processing of waste materials and dead organic\n                matter of land or oceans."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Some amount of the fixed carbon is lost to\n            sediments and removed from circulation. Burning of wood, forest fire and combustion of organic matter,\n            fossil fuel, volcanic activity are additional sources for releasing CO2 in the atmosphere."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360954,
+        360955,
+        360956
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Human activities have significantly influenced the carbon cycle. Rapid\n            deforestation and massive burning of fossil fuel for energy and transport have significantly increased the\n            rate of release of carbon dioxide into the atmosphere (see greenhouse effect in Chapter 16)."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "14.7.2 Ecosystem – Phosphorus Cycle",
+      "id": "h.3rdcrjn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Phosphorus is a major constituent of biological membranes, nucleic acids and cellular\n            energy transfer systems. Many animals also need large quantities of this element to make shells, bones and\n            teeth."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                natural reservoir of phosphorus is rock, which contains phosphorus in the form of phosphates. When rocks\n                are weathered, minute amounts of these phosphates dissolve in soil solution and are absorbed by the\n                roots of the plants (Figure 14.7)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Herbivores\n            and other animals obtain this element from plants. The waste products and the dead organisms are decomposed\n            by phosphate-solubilising bacteria releasing phosphorus."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Unlike\n                carbon cycle, there is no respiratory release of phosphorus into atmosphere."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Can you differentiate between the carbon and the phosphorus cycle?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360908,
+        360957
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/biology/images/Ecosystem-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Figure\n                14.7 A simplified model of phosphorus cycling in a terrestrial ecosystem"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360907
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The other two major and important differences between carbon and phosphorus cycle\n            are firstly, atmospheric inputs of phosphorus through rainfall are much smaller than carbon inputs, and,\n            secondly, gaseous exchanges of phosphorus between organism and environment are negligible."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "14.8 Ecosystem Services",
+      "id": "h.26in1rg"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Healthy ecosystems are the base for a wide range of economic, environmental and\n            aesthetic goods and services."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                products of ecosystem processes are named as ecosystem services, for example, healthy forest ecosystems\n                purify air and water, mitigate droughts and floods, cycle nutrients, generate fertile soils, provide\n                wildlife habitat, maintain biodiversity, pollinate crops, provide storage site for carbon and also\n                provide aesthetic, cultural and spiritual values."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Though value of\n            such services of biodiversity is difficult to determine, it seems reasonable to think that biodiversity\n            should carry a hefty price tag."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        360909
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Robert Constanza and his colleagues have very recently tried to put price tags on\n            nature’s life-support services. Researchers have put an average price tag of US $ 33 trillion a year\n            on these fundamental ecosystems services, which are largely taken for granted because they are free. This is\n            nearly twice the value of the global gross national product GNP which is (US $ 18 trillion)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Out of the total cost of various ecosystem services, the soil formation accounts\n            for about 50 per cent, and contributions of other services like recreation and nutrient cycling, are less\n            than 10 per cent each. The cost of climate regulation and habitat for wildlife are about 6 per cent\n            each."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Summary"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "An ecosystem is a structural and functional unit of nature and it comprises\n            abiotic and biotic components. Abiotic components are inorganic materials- air, water and soil, whereas\n            biotic components are producers, consumers and decomposers. Each ecosystem has characteristic physical\n            structure resulting from interaction amongst abiotic and biotic components. Species composition and\n            stratification are the two main structural features of an ecosystem. Based on source of nutrition every\n            organism occupies a place in an ecosystem."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Productivity, decomposition, energy flow, and nutrient cycling are the four\n            important components of an ecosystem. Primary productivity is the rate of capture of solar energy or biomass\n            production of the producers. It is divided into two types: gross primary productivity (GPP) and net primary\n            productivity (NPP). Rate of capture of solar energy or total production of organic matter is called as GPP.\n            NPP is the remaining biomass or the energy left after utilisation of producers. Secondary productivity is\n            the rate of assimilation of food energy by the consumers. In decomposition, complex organic compounds of\n            detritus are converted to carbon dioxide, water and inorganic nutrients by the decomposers. Decomposition\n            involves three processes, namely fragmentation of detritus, leaching and catabolism."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Energy flow is unidirectional. First, plants capture solar energy and then, food\n            is transferred from the producers to decomposers. Organisms of different trophic levels in nature are\n            connected to each other for food or energy relationship forming a food chain. The storage and movement of\n            nutrient elements through the various components of the ecosystem is called nutrient cycling; nutrients are\n            repeatedly used through this process. Nutrient cycling is of two types—gaseous and sedimentary.\n            Atmosphere or hydrosphere is the reservoir for the gaseous type of cycle (carbon), whereas Earth’s\n            crust is the reservoir for sedimentary type (phosphorus). Products of ecosystem processes are named as\n            ecosystem services, e.g., purification of air and water by forests."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The biotic community is dynamic and undergoes changes with the passage of time. These\n            changes are sequentially ordered and constitute ecological succession. Succession begins with invasion of a\n            bare lifeless area by pioneers which later pave way for successors and ultimately a stable climax community\n            is formed. The climax community remains stable as long as the environment remains unchanged."
+        }
+      ]
+    }
+  ]
+}
