@@ -1,72 +1,84 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { Suspense, useState, useMemo, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useMemo, useState } from "react";
 import {
-  fetchNcert, classKey, diagramsFor, metaFor, parseMarkdownTable,
-  type ContentItem, type NcertChapter, type ParagraphItem, type HeadingItem,
-  type ImageItem, type TableItem, type CaptionItem,
-} from "@/ncert-explorer/ncert";
+  listBookChapters,
+  getBookChapter,
+  getBookPyqs,
+  runsOf,
+  type BookBlock,
+  type BookChapter,
+  type BookPyq,
+} from "@/lib/ncert-book";
 import { SiteHeader } from "@/components/site-header";
-import { Loader2, ChevronLeft, ChevronRight, BookOpen, AlignLeft, ImageIcon, Languages, Map, Sparkles, X } from "lucide-react";
-
-const ncertQuery = queryOptions({
-  queryKey: ["ncert-explorer"],
-  queryFn: fetchNcert,
-  staleTime: 1000 * 60 * 60,
-});
-
-/* ------------------------------------------------------------------ */
-/* Image path convention                                               */
-/* public/ncert/<subject>/images/<Chapter_Name>-image<N>.png           */
-/* e.g. public/ncert/biology/images/Anatomy_of_Flowering_Plants-image13.png */
-/* ------------------------------------------------------------------ */
-export function chapterSlug(name: string): string {
-  return name
-    .replace(/[:,]/g, "")
-    .replace(/&/g, "and")
-    .trim()
-    .replace(/\s+/g, "_");
-}
-
-export function ncertImageSrc(subject: string, chapterName: string, file?: string, index?: number): string {
-  const base = `/ncert/${subject.toLowerCase()}/images`;
-  if (file) {
-    if (/^https?:\/\//.test(file) || file.startsWith("/")) return file;
-    return `${base}/${file}`;
-  }
-  return `${base}/${chapterSlug(chapterName)}-image${index ?? 1}.png`;
-}
+import {
+  Loader2,
+  ChevronLeft,
+  ChevronRight,
+  BookOpen,
+  AlignLeft,
+  ImageIcon,
+  Highlighter,
+  Search,
+  X,
+} from "lucide-react";
 
 type Subject = "biology" | "chemistry" | "physics";
-const SUBJECTS: { id: Subject; label: string }[] = [
-  { id: "biology", label: "Biology" },
-  { id: "chemistry", label: "Chemistry" },
-  { id: "physics", label: "Physics" },
+const SUBJECTS: { id: Subject; label: string; icon: string }[] = [
+  { id: "biology", label: "Biology", icon: "🧬" },
+  { id: "chemistry", label: "Chemistry", icon: "⚗️" },
+  { id: "physics", label: "Physics", icon: "⚛️" },
 ];
 
 export const Route = createFileRoute("/highlighted-ncert")({
   head: () => ({
     meta: [
       { title: "Highlighted NCERT E-Book — Neet Buddy" },
-      { name: "description", content: "Read NCERT chapters with PYQ-highlighted lines, diagrams and related previous year questions." },
+      {
+        name: "description",
+        content:
+          "Read full NCERT chapters with PYQ-highlighted lines, diagrams and the previous year questions asked from each line.",
+      },
       { property: "og:title", content: "Highlighted NCERT E-Book — Neet Buddy" },
-      { property: "og:description", content: "NCERT chapters with PYQ-highlighted lines, diagrams and related PYQs." },
+      {
+        property: "og:description",
+        content: "NCERT chapters with PYQ-highlighted lines, diagrams and related PYQs.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  loader: ({ context }) => context.queryClient.ensureQueryData(ncertQuery),
   component: Page,
   errorComponent: ({ error }) => (
     <Shell>
-      <div className="py-10 text-center text-sm text-muted-foreground">Failed to load NCERT data. {error.message}</div>
+      <ErrorBox message={error.message} />
     </Shell>
-  ),
-  pendingComponent: () => (
-    <Shell><Spinner /></Shell>
   ),
 });
 
 function Spinner() {
-  return <div className="flex justify-center py-20"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+  return (
+    <div className="flex justify-center py-20">
+      <Loader2 className="h-6 w-6 animate-spin text-primary" />
+    </div>
+  );
+}
+
+function ErrorBox({ message, onRetry }: { message: string; onRetry?: () => void }) {
+  return (
+    <div className="rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center">
+      <div className="text-sm font-semibold text-destructive">Couldn't load the e-book</div>
+      <p className="mt-1 break-words text-xs text-muted-foreground">{message}</p>
+      {onRetry && (
+        <button
+          onClick={onRetry}
+          className="mt-4 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground"
+        >
+          Try again
+        </button>
+      )}
+    </div>
+  );
 }
 
 function Shell({ children }: { children: React.ReactNode }) {
@@ -79,43 +91,46 @@ function Shell({ children }: { children: React.ReactNode }) {
 }
 
 function Page() {
-  return (
-    <Shell>
-      <Suspense fallback={<Spinner />}>
-        <Inner />
-      </Suspense>
-    </Shell>
-  );
-}
-
-function Inner() {
-  const { data } = useSuspenseQuery(ncertQuery);
   const [subject, setSubject] = useState<Subject>("biology");
-  const [active, setActive] = useState<{ cls: "11" | "12"; num: number } | null>(null);
+  const [slug, setSlug] = useState<string | null>(null);
 
-  useEffect(() => { if (active) window.scrollTo({ top: 0 }); }, [active]);
+  const chaptersQ = useQuery({
+    queryKey: ["ncert-book", "chapters"],
+    queryFn: listBookChapters,
+    staleTime: 1000 * 60 * 30,
+  });
 
-  const chapters = useMemo(
-    () => [...(data.chapters ?? [])].sort((a, b) => a.chapter_name.localeCompare(b.chapter_name)),
-    [data],
-  );
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [slug, subject]);
 
-  if (active) {
-    const ch = chapters.find((c) => classKey(c.class) === active.cls && c.chapter_number === active.num);
-    if (!ch) return <div className="py-10 text-center text-sm text-muted-foreground">Chapter not found.</div>;
-    return <Reader chapter={ch} subject={subject} onBack={() => setActive(null)} />;
+  if (slug) {
+    return (
+      <Shell>
+        <Reader slug={slug} onBack={() => setSlug(null)} />
+      </Shell>
+    );
   }
 
   return (
-    <>
+    <Shell>
       <BookHeader />
       <SubjectTabs value={subject} onChange={setSubject} />
-      {subject === "biology" ? (
-        <ChapterList chapters={chapters} onPick={(c) => setActive({ cls: classKey(c.class), num: c.chapter_number })} />
-      ) : (
-        <EmptySubject label={SUBJECTS.find((s) => s.id === subject)!.label} />
+      {chaptersQ.isPending && <Spinner />}
+      {chaptersQ.isError && (
+        <ErrorBox
+          message={(chaptersQ.error as Error).message}
+          onRetry={() => chaptersQ.refetch()}
+        />
       )}
-    </>
+      {chaptersQ.data && (
+        <ChapterList
+          chapters={chaptersQ.data.filter((c) => c.subject === subject)}
+          subject={subject}
+          onPick={setSlug}
+        />
+      )}
+    </Shell>
   );
 }
 
@@ -131,7 +146,9 @@ function BookHeader() {
         <h1 className="bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-2xl font-extrabold italic tracking-tight text-transparent sm:text-3xl">
           NCERT E-Book
         </h1>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Medical Preparation</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          Highlighted for NEET
+        </p>
       </div>
     </header>
   );
@@ -153,7 +170,7 @@ function SubjectTabs({ value, onChange }: { value: Subject; onChange: (s: Subjec
                 : "bg-secondary text-muted-foreground hover:bg-secondary/70")
             }
           >
-            <SubjectIcon id={s.id} />
+            <span>{s.icon}</span>
             <span>{s.label}</span>
           </button>
         );
@@ -162,160 +179,78 @@ function SubjectTabs({ value, onChange }: { value: Subject; onChange: (s: Subjec
   );
 }
 
-function SubjectIcon({ id }: { id: Subject }) {
-  const cls = "h-4 w-4";
-  if (id === "chemistry") return <span className={cls}>⚗️</span>;
-  if (id === "physics") return <span className={cls}>⚛️</span>;
-  return <span className={cls}>🧬</span>;
-}
-
-function EmptySubject({ label }: { label: string }) {
-  return (
-    <div className="rounded-2xl border border-dashed bg-card/60 p-10 text-center">
-      <Sparkles className="mx-auto mb-2 h-6 w-6 text-primary" />
-      <div className="text-sm font-semibold">{label} e-book coming soon</div>
-      <p className="mt-1 text-xs text-muted-foreground">
-        Upload chapter images to <code className="rounded bg-muted px-1">public/ncert/{label.toLowerCase()}/images/</code> to get started.
-      </p>
-    </div>
-  );
-}
-
 /* --------------------------- chapter list -------------------------- */
 
-function ChapterList({ chapters, onPick }: { chapters: NcertChapter[]; onPick: (c: NcertChapter) => void }) {
+function ChapterList({
+  chapters,
+  subject,
+  onPick,
+}: {
+  chapters: BookChapter[];
+  subject: Subject;
+  onPick: (slug: string) => void;
+}) {
+  const [q, setQ] = useState("");
+  const filtered = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    return needle ? chapters.filter((c) => c.title.toLowerCase().includes(needle)) : chapters;
+  }, [chapters, q]);
+
+  if (chapters.length === 0) {
+    return (
+      <div className="rounded-2xl border border-dashed bg-card/60 p-10 text-center text-sm text-muted-foreground">
+        No {subject} chapters published yet.
+      </div>
+    );
+  }
+
   return (
     <section>
-      <div className="mb-3 flex items-center justify-between px-1">
-        <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">Chapters</div>
-        <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">{chapters.length}</span>
+      <div className="mb-3 flex items-center gap-2">
+        <div className="relative flex-1">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search chapters"
+            className="w-full rounded-full border bg-card py-2.5 pl-9 pr-3 text-sm outline-none focus:border-emerald-500/60"
+          />
+        </div>
+        <span className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+          {filtered.length}
+        </span>
       </div>
       <ul className="grid gap-3 sm:grid-cols-2">
-        {chapters.map((c) => {
-          const paras = c.total_paragraphs ?? countType(c, "paragraph");
-          const imgs = c.total_images ?? Math.max(countType(c, "image"), diagramsFor(c.class, c.chapter_number).length);
-          const meta = metaFor(c.class, c.chapter_number);
-          return (
-            <li key={`${c.class}-${c.chapter_number}`}>
-              <button
-                onClick={() => onPick(c)}
-                className="group flex w-full items-center gap-3 rounded-2xl border bg-card p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-emerald-500/50 hover:shadow-elegant"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/12 text-sm font-bold text-emerald-600 dark:text-emerald-400">
-                  {c.chapter_number}
+        {filtered.map((c, i) => (
+          <li key={c.id}>
+            <button
+              onClick={() => onPick(c.slug)}
+              className="group flex w-full items-center gap-3 rounded-2xl border bg-card p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-emerald-500/50 hover:shadow-elegant"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/12 text-sm font-bold text-emerald-600 dark:text-emerald-400">
+                {i + 1}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[15px] font-bold group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+                  {c.title}
                 </span>
-                <span className="min-w-0 flex-1">
-                  <span className="flex items-center gap-1.5">
-                    <span className="truncate text-[15px] font-bold group-hover:text-emerald-600 dark:group-hover:text-emerald-400">{c.chapter_name}</span>
-                    {meta.important && <span className="shrink-0 text-amber-500">★</span>}
+                <span className="mt-1 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1">
+                    <AlignLeft className="h-3.5 w-3.5" />
+                    {c.para_count}
                   </span>
-                  <span className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center gap-1"><AlignLeft className="h-3.5 w-3.5" />{paras}</span>
-                    <span className="inline-flex items-center gap-1"><ImageIcon className="h-3.5 w-3.5" />{imgs}</span>
+                  <span className="inline-flex items-center gap-1">
+                    <ImageIcon className="h-3.5 w-3.5" />
+                    {c.image_count}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400">
+                    <Highlighter className="h-3.5 w-3.5" />
+                    {c.highlight_count}
                   </span>
                 </span>
-                <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground/60 transition group-hover:translate-x-0.5 group-hover:text-emerald-500" />
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-  );
-}
-
-function countType(c: NcertChapter, t: string) {
-  let n = 0;
-  for (const p of c.pages ?? []) for (const it of p.content ?? []) if (it.type === t) n++;
-  return n;
-}
-
-/* ------------------------------ reader ----------------------------- */
-
-function flatten(chapter: NcertChapter): ContentItem[] {
-  const out: ContentItem[] = [];
-  for (const p of chapter.pages ?? []) for (const c of p.content ?? []) out.push(c);
-  return out;
-}
-
-function Reader({ chapter, subject, onBack }: { chapter: NcertChapter; subject: Subject; onBack: () => void }) {
-  const items = useMemo(() => flatten(chapter), [chapter]);
-  const fallbackDiagrams = diagramsFor(chapter.class, chapter.chapter_number);
-  const [pyqFor, setPyqFor] = useState<ParagraphItem | null>(null);
-  const [showFigures, setShowFigures] = useState(false);
-
-  let imageCounter = 0;
-
-  return (
-    <article>
-      {/* sticky chapter bar */}
-      <div className="sticky top-0 z-20 -mx-3 mb-4 flex items-center gap-2 border-b bg-background/85 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
-        <button onClick={onBack} className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground" aria-label="Back to chapters">
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <div className="min-w-0 flex-1">
-          <div className="truncate text-sm font-bold">{chapter.chapter_name}</div>
-          <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{chapter.class} · Chapter {chapter.chapter_number}</div>
-        </div>
-        <span className="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold text-muted-foreground">
-          <Languages className="h-3.5 w-3.5" /> EN
-        </span>
-        <button
-          onClick={() => setShowFigures((v) => !v)}
-          className={"rounded-full p-1.5 transition " + (showFigures ? "bg-primary/10 text-primary" : "text-primary/70 hover:bg-secondary")}
-          aria-label="Toggle figures"
-        >
-          <Map className="h-5 w-5" />
-        </button>
-      </div>
-
-      <Legend />
-
-      {showFigures && (
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {fallbackDiagrams.map((u) => <Figure key={u} src={u} />)}
-          {fallbackDiagrams.length === 0 && (
-            <p className="col-span-full rounded-xl border border-dashed p-6 text-center text-xs text-muted-foreground">
-              No figures indexed for this chapter yet.
-            </p>
-          )}
-        </div>
-      )}
-
-      <div className="mt-6 space-y-4">
-        {items.map((it, i) => {
-          if (it.type === "image") imageCounter += 1;
-          return (
-            <RenderItem
-              key={i}
-              item={it}
-              chapter={chapter}
-              subject={subject}
-              imageIndex={imageCounter}
-              onPyq={setPyqFor}
-            />
-          );
-        })}
-      </div>
-
-      {pyqFor && <RelatedPyqSheet item={pyqFor} onClose={() => setPyqFor(null)} />}
-    </article>
-  );
-}
-
-function Legend() {
-  const items = [
-    { cls: "bg-yellow-300/70 dark:bg-yellow-400/40", label: "Highlighted line" },
-    { cls: "bg-orange-400/60 dark:bg-orange-400/40", label: "Asked in PYQ" },
-    { cls: "bg-emerald-400/50 dark:bg-emerald-400/35", label: "Expected next" },
-  ];
-  return (
-    <section className="rounded-xl border bg-card/70 px-4 py-3 backdrop-blur">
-      <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-        {items.map((it) => (
-          <li key={it.label} className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span className={`inline-block h-3 w-6 rounded ${it.cls}`} />
-            {it.label}
+              </span>
+              <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground/60 transition group-hover:translate-x-0.5 group-hover:text-emerald-500" />
+            </button>
           </li>
         ))}
       </ul>
@@ -323,187 +258,294 @@ function Legend() {
   );
 }
 
-function RenderItem({
-  item, chapter, subject, imageIndex, onPyq,
-}: {
-  item: ContentItem;
-  chapter: NcertChapter;
-  subject: Subject;
-  imageIndex: number;
-  onPyq: (p: ParagraphItem) => void;
-}) {
-  if (item.type === "heading") {
-    const h = item as HeadingItem;
-    const level = Math.min(4, Math.max(1, h.level ?? 2));
-    const cls =
-      level === 1 ? "mt-9 text-2xl font-extrabold"
-      : level === 2 ? "mt-8 text-xl font-bold"
-      : level === 3 ? "mt-6 text-lg font-bold" : "mt-5 text-base font-semibold";
-    return <h2 className={`${cls} whitespace-pre-line tracking-tight`}>{h.text}</h2>;
-  }
+/* ------------------------------ reader ----------------------------- */
 
-  if (item.type === "paragraph") {
-    const p = item as ParagraphItem;
-    const isPyq = !!p.has_pyq;
-    const isPredicted = !!p.predicted;
-    const accent = isPyq
-      ? "border-l-4 border-blue-500 pl-4"
-      : isPredicted ? "border-l-4 border-emerald-500 pl-4" : "";
-    return (
-      <div className={accent}>
-        {(isPyq || isPredicted) && (
-          <div className="mb-1.5 flex flex-wrap items-center gap-2">
-            {isPyq && (
-              <button
-                onClick={() => onPyq(p)}
-                className="inline-flex items-center gap-1 rounded-full bg-blue-500/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-600 transition hover:bg-blue-500/20 dark:text-blue-300"
-              >
-                Related PYQs · {p.pyq_count ?? 1}
-              </button>
-            )}
-            {isPredicted && !isPyq && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-                {p.prediction?.badge ?? "Expected"}
-                {typeof p.prediction?.confidence === "number" && <span className="font-medium opacity-70">· {p.prediction.confidence}%</span>}
-              </span>
-            )}
-          </div>
-        )}
-        <p className="text-justify text-[15px] leading-[1.9] sm:text-base">
-          <HighlightedText text={p.text} pyq={isPyq} predicted={isPredicted} />
-        </p>
-        {isPredicted && p.prediction?.reason && (
-          <p className="mt-1 text-xs italic text-emerald-700/80 dark:text-emerald-300/80">Why expected: {p.prediction.reason}</p>
-        )}
-      </div>
-    );
-  }
+function Reader({ slug, onBack }: { slug: string; onBack: () => void }) {
+  const q = useQuery({
+    queryKey: ["ncert-book", "chapter", slug],
+    queryFn: () => getBookChapter(slug),
+    staleTime: 1000 * 60 * 30,
+  });
+  const [pyqIds, setPyqIds] = useState<number[] | null>(null);
+  const [onlyHighlights, setOnlyHighlights] = useState(false);
 
-  if (item.type === "table") return <RenderTable text={(item as TableItem).text} />;
+  const data = q.data;
+  const visible = useMemo(() => {
+    const blocks = data?.blocks ?? [];
+    return onlyHighlights ? blocks.filter((b) => isMarked(b)) : blocks;
+  }, [data, onlyHighlights]);
 
-  if (item.type === "image") {
-    const im = item as ImageItem;
-    return (
-      <Figure
-        src={ncertImageSrc(subject, chapter.chapter_name, im.file, imageIndex)}
-        caption={im.caption ?? im.description}
-      />
-    );
-  }
-
-  if (item.type === "caption") {
-    return <p className="text-center text-xs italic text-muted-foreground">{(item as CaptionItem).text}</p>;
-  }
-
-  const text = (item as { text?: unknown }).text;
-  if (typeof text === "string") return <p className="text-[15px] leading-[1.9] text-muted-foreground">{text}</p>;
-  return null;
-}
-
-/** Marker-pen highlighting of the key sentences inside a paragraph. */
-function HighlightedText({ text, pyq, predicted }: { text: string; pyq: boolean; predicted: boolean }) {
-  const sentences = text.match(/[^.!?]+[.!?]+|\S[^.!?]*$/g)?.map((s) => s.trim()) ?? [text];
-  const cueRe = /\b(is defined as|are defined as|is called|are called|is termed|are termed|refers to|known as|consists of|composed of|made up of|essential|only|always|never|first|main|primary|largest|smallest|e\.g\.)\b/i;
-  const tone = pyq
-    ? "bg-orange-300/60 decoration-orange-500 dark:bg-orange-400/30"
-    : predicted
-      ? "bg-emerald-300/50 dark:bg-emerald-400/25"
-      : "bg-yellow-300/70 dark:bg-yellow-400/30";
   return (
-    <>
-      {sentences.map((s, i) => {
-        const sep = i < sentences.length - 1 ? " " : "";
-        const hit = cueRe.test(s) || ((pyq || predicted) && i === 0);
-        if (hit) {
-          return (
-            <span key={i}>
-              <mark className={`rounded-sm bg-none px-0.5 text-foreground ${tone}`}>{s}</mark>
-              {sep}
-            </span>
-          );
-        }
-        return <span key={i}>{s}{sep}</span>;
-      })}
-    </>
+    <article>
+      <div className="sticky top-0 z-20 -mx-3 mb-4 flex items-center gap-2 border-b bg-background/85 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
+        <button
+          onClick={onBack}
+          className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+          aria-label="Back to chapters"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <div className="min-w-0 flex-1">
+          <div className="truncate text-sm font-bold">{q.data?.chapter.title ?? "Loading…"}</div>
+          {q.data && (
+            <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              {q.data.chapter.subject} · {q.data.chapter.highlight_count} highlights ·{" "}
+              {q.data.chapter.pyq_count} PYQs
+            </div>
+          )}
+        </div>
+        <button
+          onClick={() => setOnlyHighlights((v) => !v)}
+          className={
+            "rounded-full px-3 py-1.5 text-[11px] font-bold transition " +
+            (onlyHighlights
+              ? "bg-amber-400 text-amber-950"
+              : "bg-secondary text-muted-foreground hover:text-foreground")
+          }
+        >
+          Highlights
+        </button>
+      </div>
+
+      <Legend />
+
+      {q.isPending && <Spinner />}
+      {q.isError && <ErrorBox message={(q.error as Error).message} onRetry={() => q.refetch()} />}
+
+      {q.data && visible.length === 0 && (
+        <p className="mt-8 rounded-xl border border-dashed p-8 text-center text-xs text-muted-foreground">
+          No highlighted lines in this chapter yet.
+        </p>
+      )}
+
+      <div className="mt-6 space-y-4">
+        {visible.map((b) => (
+          <Block key={b.id} block={b} onPyq={setPyqIds} />
+        ))}
+      </div>
+
+      {pyqIds && <RelatedPyqSheet ids={pyqIds} onClose={() => setPyqIds(null)} />}
+    </article>
   );
 }
 
-function RenderTable({ text }: { text: string }) {
-  const t = parseMarkdownTable(text);
-  if (!t) return <pre className="overflow-x-auto rounded-xl border bg-muted/40 p-3 text-xs">{text}</pre>;
+function isMarked(b: BookBlock) {
+  if (b.status === "marked") return true;
+  return (b.content ?? []).some((r) => r.t === "hl");
+}
+
+function Legend() {
   return (
-    <figure className="my-5 overflow-hidden rounded-2xl border shadow-soft">
-      {t.title && (
-        <figcaption className="bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-2 text-sm font-semibold text-white">{t.title}</figcaption>
+    <section className="rounded-xl border bg-card/70 px-4 py-3 backdrop-blur">
+      <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <li className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="inline-block h-3 w-6 rounded bg-yellow-300/70 dark:bg-yellow-400/40" />
+          Highlighted line
+        </li>
+        <li className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="inline-block h-3 w-6 rounded bg-orange-400/60 dark:bg-orange-400/40" />
+          Asked in a PYQ — tap to open
+        </li>
+      </ul>
+    </section>
+  );
+}
+
+function Block({ block, onPyq }: { block: BookBlock; onPyq: (ids: number[]) => void }) {
+  const runs = runsOf(block);
+  const pyqIds = block.pyq_ids ?? [];
+  const hasPyq = pyqIds.length > 0;
+
+  if (block.type === "heading") {
+    const level = Math.min(4, Math.max(1, block.level ?? 2));
+    const cls =
+      level === 1
+        ? "mt-9 text-2xl font-extrabold"
+        : level === 2
+          ? "mt-8 text-xl font-bold"
+          : level === 3
+            ? "mt-6 text-lg font-bold"
+            : "mt-5 text-base font-semibold";
+    return <h2 className={`${cls} whitespace-pre-line tracking-tight`}>{block.text}</h2>;
+  }
+
+  if (block.type === "image") {
+    return <Figure src={block.image_url ?? ""} caption={block.text ?? undefined} />;
+  }
+
+  const accent = hasPyq ? "border-l-4 border-orange-400 pl-4" : "";
+
+  return (
+    <div className={accent}>
+      {hasPyq && (
+        <button
+          onClick={() => onPyq(pyqIds)}
+          className="mb-1.5 inline-flex items-center gap-1 rounded-full bg-orange-500/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-600 transition hover:bg-orange-500/20 dark:text-orange-300"
+        >
+          Related PYQs · {pyqIds.length}
+        </button>
       )}
-      <div className="overflow-x-auto bg-card">
-        <table className="w-full border-collapse text-sm">
-          <thead>
-            <tr className="bg-emerald-500/10">
-              {t.headers.map((h, i) => <th key={i} className="border-b px-3 py-2 text-left font-semibold text-emerald-700 dark:text-emerald-300">{h}</th>)}
-            </tr>
-          </thead>
-          <tbody>
-            {t.rows.map((r, ri) => (
-              <tr key={ri} className={ri % 2 ? "bg-muted/40" : ""}>
-                {r.map((c, ci) => <td key={ci} className="border-b px-3 py-2 align-top">{c}</td>)}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </figure>
+      <p className="text-justify text-[15px] leading-[1.9] sm:text-base">
+        {runs.map((r, i) => {
+          if (r.t === "br") return <br key={i} />;
+          if (r.t === "img") return <Figure key={i} src={r.src ?? ""} />;
+          if (r.t === "hl")
+            return (
+              <mark
+                key={i}
+                className={
+                  "rounded-sm px-0.5 text-foreground " +
+                  (hasPyq
+                    ? "bg-orange-300/60 dark:bg-orange-400/30"
+                    : "bg-yellow-300/70 dark:bg-yellow-400/30")
+                }
+              >
+                {r.s}
+              </mark>
+            );
+          return <span key={i}>{r.s}</span>;
+        })}
+      </p>
+    </div>
   );
 }
 
 function Figure({ src, caption }: { src: string; caption?: string }) {
   const [failed, setFailed] = useState(false);
-  if (failed) {
+  if (!src || failed) {
     return (
       <figure className="my-4 rounded-2xl border border-dashed bg-muted/30 p-6 text-center text-xs text-muted-foreground">
         <ImageIcon className="mx-auto mb-1 h-5 w-5 opacity-60" />
-        {caption ?? "Figure not uploaded yet"}
-        <div className="mt-1 break-all font-mono text-[10px] opacity-60">{src}</div>
+        {caption ?? "Figure not available"}
       </figure>
     );
   }
   return (
     <figure className="my-4 overflow-hidden rounded-2xl border bg-card shadow-soft">
-      <img src={src} alt={caption ?? "NCERT diagram"} loading="lazy" onError={() => setFailed(true)} className="block w-full" />
-      {caption && <figcaption className="border-t px-3 py-2 text-center text-xs italic text-muted-foreground">{caption}</figcaption>}
+      <img
+        src={src}
+        alt={caption ?? "NCERT diagram"}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        className="block w-full"
+      />
+      {caption && (
+        <figcaption className="border-t px-3 py-2 text-center text-xs italic text-muted-foreground">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }
 
 /* --------------------------- related PYQs --------------------------- */
 
-function RelatedPyqSheet({ item, onClose }: { item: ParagraphItem; onClose: () => void }) {
+function RelatedPyqSheet({ ids, onClose }: { ids: number[]; onClose: () => void }) {
+  const q = useQuery({
+    queryKey: ["ncert-book", "pyqs", ids.join(",")],
+    queryFn: () => getBookPyqs(ids),
+    staleTime: 1000 * 60 * 30,
+  });
+
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-sm sm:items-center" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-sm sm:items-center"
+      onClick={onClose}
+    >
       <div
         onClick={(e) => e.stopPropagation()}
         className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl border bg-card p-5 shadow-2xl sm:rounded-3xl"
       >
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-bold">Related PYQs</h3>
-          <button onClick={onClose} className="rounded-full bg-secondary p-2 text-muted-foreground transition hover:text-foreground" aria-label="Close">
+          <button
+            onClick={onClose}
+            className="rounded-full bg-secondary p-2 text-muted-foreground transition hover:text-foreground"
+            aria-label="Close"
+          >
             <X className="h-4 w-4" />
           </button>
         </div>
-        <div className="rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/10 p-4 text-sm leading-relaxed">
-          {item.text}
+        {q.isPending && <Spinner />}
+        {q.isError && <ErrorBox message={(q.error as Error).message} onRetry={() => q.refetch()} />}
+        <div className="space-y-4">
+          {(q.data ?? []).map((p) => (
+            <PyqCard key={p.unique_id} pyq={p} />
+          ))}
         </div>
-        <p className="mt-4 text-center text-xs text-muted-foreground">
-          {item.pyq_count ?? 1} previous-year question{(item.pyq_count ?? 1) > 1 ? "s" : ""} have been asked from this line.
-        </p>
+        {q.data && q.data.length === 0 && (
+          <p className="py-6 text-center text-xs text-muted-foreground">
+            These questions are no longer available.
+          </p>
+        )}
       </div>
+    </div>
+  );
+}
+
+function PyqCard({ pyq }: { pyq: BookPyq }) {
+  const [show, setShow] = useState(false);
+  const options = [
+    ["A", pyq.option_a],
+    ["B", pyq.option_b],
+    ["C", pyq.option_c],
+    ["D", pyq.option_d],
+  ].filter(([, v]) => !!v) as [string, string][];
+
+  return (
+    <div className="rounded-2xl border bg-gradient-to-br from-blue-500/5 to-indigo-500/5 p-4">
+      <div className="mb-2 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+        {pyq.topic_name && (
+          <span className="rounded-full bg-secondary px-2 py-0.5">{pyq.topic_name}</span>
+        )}
+        {pyq.difficulty && (
+          <span className="rounded-full bg-secondary px-2 py-0.5">{pyq.difficulty}</span>
+        )}
+      </div>
+      <p className="text-sm font-medium leading-relaxed">{pyq.question}</p>
+      {pyq.image_url && (
+        <img src={pyq.image_url} alt="" loading="lazy" className="mt-3 w-full rounded-xl border" />
+      )}
+      {options.length > 0 && (
+        <ul className="mt-3 space-y-1.5">
+          {options.map(([k, v]) => (
+            <li key={k} className="flex gap-2 text-sm">
+              <span className="font-bold text-muted-foreground">{k}.</span>
+              <span>{v}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <button
+        onClick={() => setShow((s) => !s)}
+        className="mt-3 rounded-full bg-secondary px-3 py-1.5 text-xs font-semibold transition hover:bg-secondary/70"
+      >
+        {show ? "Hide answer" : "Show answer"}
+      </button>
+      {show && (
+        <div className="mt-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-3 text-sm">
+          {pyq.answer && (
+            <div className="font-semibold text-emerald-700 dark:text-emerald-300">
+              Answer: {pyq.answer}
+            </div>
+          )}
+          {pyq.explanation && (
+            <p className="mt-1 leading-relaxed text-muted-foreground">{pyq.explanation}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
