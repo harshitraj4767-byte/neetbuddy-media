@@ -120,3 +120,29 @@ export function runsOf(block: BookBlock): Run[] {
   if (block.text) return [{ t: "text", s: block.text }];
   return [];
 }
+
+/**
+ * Resolve an image reference coming from the DB into a servable URL.
+ * Stored values vary: absolute URLs, "/ncert/..." paths, "public/ncert/..."
+ * paths, or a bare filename such as "Alcohols_Phenols_and_Ethers-image16.png".
+ * Bare filenames live in /ncert/{subject}/images/.
+ */
+export function resolveBookImage(raw: string | null | undefined, subject?: string): string {
+  const v = (raw ?? "").trim();
+  if (!v) return "";
+  if (/^(https?:)?\/\//i.test(v) || v.startsWith("data:")) return v;
+  let path = v.replace(/^\.?\//, "").replace(/^public\//, "");
+  // PYQ artwork lives under /ncert/pyq/images/... but some rows store it
+  // without the "images" segment.
+  path = path.replace(/^ncert\/pyq\/(?!images\/)/, "ncert/pyq/images/");
+  if (!path.includes("/")) {
+    const folder = (subject ?? "biology").toLowerCase();
+    path = `ncert/${folder}/images/${path}`;
+  }
+  return "/" + path.split("/").map(encodeURIComponent).join("/");
+}
+
+/** Pick the raw image reference out of an inline run. */
+export function runImageSrc(run: Run): string {
+  return (run.src ?? run.s ?? "").trim();
+}
