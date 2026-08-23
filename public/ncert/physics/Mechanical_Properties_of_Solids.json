@@ -1,0 +1,4712 @@
+{
+  "title": "Mechanical Properties of Solids",
+  "children": [
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.1 Introduction",
+      "id": "h.7kguk76wq6aj"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In Chapter 7, we studied the rotation of the bodies and then realised that the motion\n            of a body depends on how mass is distributed within the body. We restricted ourselves to simpler situations\n            of rigid bodies. A rigid body generally means a hard solid object having a definite shape and size. But in\n            reality,  bodies can be stretched, compressed and bent. Even the appreciably rigid steel bar can be\n            deformed when a sufficiently large external force is applied on it. This means that solid bodies are not\n            perfectly rigid."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A solid has definite shape and size. In order to change (or deform) the shape or size\n            of a body, a force is required. If you stretch a helical spring by gently pulling its ends, the length of\n            the spring increases slightly. When you leave the ends of the spring, it regains its original size and\n            shape. The property of a body, by virtue of which it tends to regain its original size and shape when the\n            applied force is removed, is known as elasticity and the deformation caused is known as elastic deformation.\n            However, if you apply force to a lump of putty or mud, they have no gross tendency to regain their previous\n            shape, and they get permanently deformed. Such substances are called plastic and this property is called\n            plasticity. Putty and mud are close to ideal plastics."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The elastic behaviour of materials plays an important role in engineering design. For\n            example, while designing a building, knowledge of elastic properties of materials like steel, concrete etc.\n            is essential. The same is true in the design of bridges, automobiles, ropeways etc. One could also ask\n            — Can we design an aeroplane which is very light but sufficiently strong? Can we design an artificial\n            limb which is lighter but stronger? Why does a railway track have a particular shape like I? Why is glass\n            brittle while brass is not? Answers to such questions begin with the study of how relatively simple kinds of\n            loads or forces act to deform different solids bodies. In this chapter, we shall study the elastic behaviour\n            and mechanical properties of solids which would answer many such questions."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.2 Elastic behaviour of solids",
+      "id": "h.e4noces7drrc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We know that in a solid, each atom or molecule is surrounded by neighbouring atoms or\n            molecules. These are bonded together by interatomic or intermolecular forces and stay in a stable\n            equilibrium position. When a solid is deformed, the atoms or molecules are displaced from their equilibrium\n            positions causing a change in the interatomic (or intermolecular) distances. When the deforming force is\n            removed, the interatomic forces tend to drive them back to their original positions. Thus the body regains\n            its original shape and size. The restoring mechanism can be visualised by taking a model of spring-ball\n            system shown in the Fig. 9.1. Here the balls represent atoms and springs represent interatomic\n            forces."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image26.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.1 Spring-ball model for the illustration of elastic behaviour of\n            solids."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If you try to displace any ball from its equilibrium position, the spring\n            system tries to restore the ball back to its original position. Thus elastic behaviour of solids can be\n            explained in terms of microscopic nature of the solid. Robert Hooke, an English physicist (1635 - 1703 A.D)\n            performed experiments on springs and found that the elongation (change in the length) produced in a body is\n            proportional to the applied force or load. In 1676, he presented his law of elasticity, now called\n            Hooke’s law. We shall study about it in Section 9.4. This law, like Boyle’s law, is one of the\n            earliest quantitative relationships in science. It is very important to know the behaviour of the materials\n            under various kinds of load from the context of engineering design."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.3 Stress and Strain",
+      "id": "h.rr902qi1ee0w"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When forces are applied on a body in such a manner that the body is still in static\n            equilibrium, it is deformed to a small or large extent depending upon the nature of the material of the body\n            and the magnitude of the deforming force. The deformation may not be noticeable visually in many materials\n            but it is there. When a body is subjected to a deforming force, a restoring force is developed in the body.\n            This restoring force is equal in magnitude but opposite in direction to the applied force. The restoring\n            force per unit area is known as stress."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "If\n                F is the force applied normal to the cross–section and A is the area of cross section of the\n                body,"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390132
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Magnitude of the stress = F/A (9.1)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The SI unit of stress is N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or pascal (Pa) and its dimensional formula is [ ML"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "]."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "There are three ways in which a solid may change its dimensions when an external\n            force acts on it. These are shown in Fig. 9.2. In Fig.9.2(a), a cylinder is stretched by two equal forces\n            applied normal to its cross-sectional area. The restoring force per unit area in this case is called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tensile stress."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the cylinder is compressed under the\n            action of applied forces, the restoring force per unit area is known as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "compressive\n            stress"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Tensile or compressive stress can also be termed as longitudinal\n            stress."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In both the cases, there is a change in the length of the cylinder. The change in the\n            length ∆L to the original length L of the body (cylinder in this case) is known as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "longitudinal strain."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Longitudinal strain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(9.2)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "tangential"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "shearing stress."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Robert Hooke"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(1635 – 1703 A.D.)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Robert Hooke was born on July 18, 1635 in Freshwater, Isle of Wight. He was one of\n            the most brilliant and versatile seventeenth century English scientists. He attended Oxford University but\n            never graduated. Yet he was an extremely talented inventor, instrument-maker and building designer. He\n            assisted Robert Boyle in the construction of Boylean air pump. In 1662, he was appointed as Curator of\n            Experiments to the newly founded Royal Society. In 1665, he became Professor of Geometry in Gresham College\n            where he carried out his astronomical observations. He built a Gregorian reflecting telescope; discovered\n            the fifth star in the trapezium and an asterism in the constellation Orion; suggested that Jupiter rotates\n            on its axis; plotted detailed sketches of Mars which were later used in the 19th century to determine the\n            planet’s rate of rotation; stated the inverse square law to describe planetary motion, which Newton\n            modified later etc. He was elected Fellow of Royal Society and also served as the Society’s Secretary\n            from 1667 to 1682. In his series of observations presented in Micrographia, he suggested wave theory of\n            light and first used the word ‘cell’ in a biological context as a result of his studies of\n            cork."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Robert Hooke is best known to physicists for his discovery of law of elasticity: Ut\n            tensio, sic vis (This is a Latin expression and it means as the distortion, so the force). This law laid the\n            basis for studies of stress and strain and for understanding the elastic materials."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As a result of applied tangential force, there is a relative displacement\n            ∆x between opposite faces of the cylinder as shown in the Fig. 9.2(b). The strain so produced is known\n            as shearing strain and it is defined as the ratio of relative displacement of the faces ∆x to the\n            length of the cylinder L."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Shearing strain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image27.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= tan θ (9.3)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where θ is the angular displacement of the cylinder from the vertical (original\n            position of the cylinder). Usually θ is very small, tan θ is nearly equal to angle θ, (if\n            θ = 10°, for example, there is only 1% difference between θ and tan θ)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It can also be visualised, when a book is pressed with the hand and pushed\n            horizontally, as shown in Fig. 9.2 (c)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, shearing strain = tan θ ≈ θ (9.4)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In Fig. 9.2 (d),  a solid sphere placed in the fluid under high pressure is\n            compressed uniformly on all sides. The force applied by the fluid acts in perpendicular direction at each\n            point of the surface and the body is said to be under hydraulic compression. This leads to decrease in its\n            volume without any change of its geometrical shape."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image21.png",
+              "alt": "c1",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.2 (a) A cylindrical body under tensile stress elongates by ∆L (b)\n            Shearing stress on a cylinder deforming it by an angle θ (c) A body subjected to shearing stress (d) A\n            solid body under a stress normal to the surface at every point (hydraulic stress). The volumetric strain is\n            ∆V/V, but there is no change in shape."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The body develops internal restoring forces that are equal and opposite to the forces\n            applied by the fluid (the body restores its original shape and size when taken out from the fluid). The\n            internal restoring force per unit area in this case is known as hydraulic stress and in magnitude is equal\n            to the hydraulic pressure (applied force per unit area)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The strain produced by a hydraulic pressure is called volume strain and is defined as\n            the ratio of change in volume (∆V) to the original volume (V)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Volume strain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image31.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(9.5)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since the strain is a ratio of change in dimension to the original dimension, it has\n            no units or dimensional formula."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.4 Hooke’s law",
+      "id": "h.c6q4tgks2idv"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Stress and strain take different forms in the situations depicted in the Fig. (9.2).\n            For small deformations the stress and strain are proportional to each other. This is known as Hooke’s\n            law."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, stress ∝ strain"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "stress = k × strain (9.6)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where k is the proportionality constant and is known as modulus of elasticity."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hooke’s law is an empirical law and is found to be valid for most materials.\n            However, there are some materials which do not exhibit this linear relationship."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.1 Young’s Modulus",
+      "id": "h.f8teern12seu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Experimental\n                observation show that for a given material, the magnitude of the strain produced is same whether the\n                stress is tensile or compressive. The ratio of tensile (or compressive) stress (σ) to the\n                longitudinal strain (ε) is defined as"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Young’s\n                modulus"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\n                is denoted by the symbol Y."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390103,
+        390104,
+        390105,
+        390118,
+        390124,
+        390130
+      ],
+      "pyq_count": 6
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(9.7)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Eqs. (9.1) and (9.2), we have"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y = (F/A)/(∆L/L)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "=\n                (F × L) /(A × ∆L) (9.8)"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390110
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since strain is a dimensionless quantity, the unit of Young’s modulus is the\n            same as that of stress i.e., N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or Pascal\n            (Pa). Table 9.1 gives the values of Young’s moduli and yield strengths of some material."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From the data given in Table 9.1, it is noticed that for metals Young’s moduli\n            are large. Therefore, these materials require a large force to produce small change in length. To increase\n            the length of a thin steel wire of 0.1 cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cross-sectional area by 0.1%, a force of 2000 N is required. The force required to produce\n            the same strain in aluminium, brass and copper wires having the same cross-sectional area are 690 N, 900 N\n            and 1100 N respectively. It means that steel is more elastic than copper, brass and aluminium. It is for\n            this reason that steel is preferred in heavy-duty machines and in structural designs. Wood, bone, concrete\n            and glass have rather small Young’s moduli."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Table\n                9.1 Young’s moduli and yield strenghs of some material"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390131
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A structural steel rod has a radius of 10 mm\n            and a length of 1.0 m. A 100 kN force stretches it along its length. Calculate (a) stress, (b) elongation,\n            and (c) strain on the rod. Young’s modulus, of structural steel is 2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We assume that the rod is held by a clamp at one\n            end, and the force F is applied at the other end, parallel to the length of the rod. Then the stress on the\n            rod is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image23.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 3.18 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The elongation,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.59 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.59 mm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The strain is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Strain = ∆L/L"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (1.59 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m)/(1m)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.59 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0.16 % t"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A copper wire of length 2.2 m and a steel\n            wire of length 1.6 m, both of diameter 3.0 mm, are connected end to end. When stretched by a load, the net\n            elongation is found to be 0.70 mm. Obtain the load applied."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The copper and steel wires are under a tensile\n            stress because they have the same tension (equal to the load W) and the same area of cross-section A. From\n            Eq. (9.7) we have stress = strain × Young’s modulus. Therefore"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "W/A = Yc × (∆Lc/Lc) = Ys × (∆Ls/Ls)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where the subscripts c and s refer to copper and stainless steel respectively.\n            Or,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc/∆Ls = (Ys/Yc) × (Lc/Ls)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Given Lc = 2.2 m, Ls = 1.6 m,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Table 9.1 Yc = 1.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N.m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ys = 2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N.m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc/∆Ls = (2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/1.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") × (2.2/1.6) =\n            2.5."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The total elongation is given to be"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc + ∆Ls = 7.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solving the above equations,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc = 5.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m,\n            and ∆Ls = 2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Therefore"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "W = (A × Yc × ∆Lc)/Lc"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= π (1.5 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× [(5.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× 1.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")/2.2]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.8 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N t"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In a human pyramid in a circus, the entire\n            weight of the balanced group is supported by the legs of a performer who is lying on his back (as shown in\n            Fig. 9.5). The combined mass of all the persons performing the act, and the tables, plaques etc. involved is\n            280 kg. The mass of the performer lying on his back at the bottom of the pyramid is 60 kg. Each thighbone\n            (femur) of this performer has a length of 50 cm and an effective radius of 2.0 cm. Determine the amount by\n            which each thighbone gets compressed under the extra load."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.5 Human pyramid in a circus."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Total mass of all the performers, tables, plaques\n            etc. = 280 kg"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mass of the performer = 60 kg"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mass supported by the legs of the performer at the bottom of the pyramid"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 280 – 60 = 220 kg"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Weight of this supported mass"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 220 kg wt. = 220 × 9.8 N = 2156 N."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Weight supported by each thighbone of the performer = ½ (2156) N = 1078\n            N."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Table 9.1, the Young’s modulus for bone is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y = 9.4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Length of each thighbone L = 0.5 m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "the radius of thighbone = 2.0 cm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus the cross-sectional area of the thighbone A = π × (2 ×\n            10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.26 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Using Eq. (9.8), the compression in each thighbone (∆L) can be computed\n            as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆L = [(F × L)/(Y × A)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= [(1078 × 0.5)/(9.4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× 1.26 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 4.55 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m or 4.55\n            × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cm."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is a very small change! The fractional decrease in the thighbone is ∆L/L =\n            0.000091 or 0.0091%."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.5 Stress-Strain curve",
+      "id": "h.tik5o46j1ptl"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The relation between the stress and the strain for a given material under tensile\n            stress can be found experimentally. In a standard test of tensile properties, a test cylinder or a wire is\n            stretched by an applied force. The fractional change in length (the strain) and the applied force needed to\n            cause the strain are recorded. The applied force is gradually increased in steps and the change in length is\n            noted. A graph is plotted between the stress (which is equal in magnitude to the applied force per unit\n            area) and the strain produced. A typical graph for a metal is shown in Fig. 9.3. Analogous graphs for\n            compression and shear stress may also be obtained. The stress-strain curves vary from material to material.\n            These curves help us to understand how a given material deforms with increasing loads. From the graph, we\n            can see that in the region between O to A, the curve is linear. In this region, Hooke’s law is obeyed.\n            The body regains its original dimensions when the applied force is removed. In this region, the solid\n            behaves as an elastic body."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image24.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "9.3\n                A typical stress-strain curve for a metal."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390101
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In the region from A to B, stress and strain are not proportional. Nevertheless, the\n            body still returns to its original dimension when the load is removed. The point B in the curve is known as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "yield point"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(also known as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "elastic\n            limit"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") and the corresponding stress is known as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "yield\n            strength"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(σy) of the material."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the load is increased further, the stress developed exceeds the yield strength and\n            strain increases rapidly even for a small change in the stress. The portion of the curve between B and D\n            shows this. When the load is removed, say at some point C between B and D, the body does not regain its\n            original dimension. In this case, even when the stress is zero, the strain is not zero. The material is said\n            to have a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "permanent set"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The deformation is said to be"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "plastic deformation."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The point D on the graph is the"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ultimate tensile strength (σu)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "of the material.\n            Beyond this point, additional strain is produced even by a reduced applied force and fracture occurs at\n            point E. If the ultimate strength and fracture points D and E are close, the material is said to be"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "brittle"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". If they are far apart, the material is said to be"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ductile"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "As stated earlier, the stress-strain behaviour varies from material to material. For\n            example, rubber can be pulled to several times its original length and still returns to its original shape.\n            Fig. 9.4 shows stress-strain curve for the elastic tissue of aorta, present in the heart. Note that although\n            elastic region is very large, the material does not obey Hooke’s law over most of the region.\n            Secondly, there is no well defined plastic region. Substances like tissue of aorta, rubber etc. which can be\n            stretched to cause large strains are called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "elastomers"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.4 Stress-strain curve for the elastic tissue of Aorta, the large tube\n            (vessel) carrying blood from the heart."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6 Elastic moduli",
+      "id": "h.g5l2ch9rpgm5"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The proportional region within the elastic limit of the stress-strain curve (region\n            OA in Fig. 9.3) is of great importance for structural and manufacturing engineering designs. The ratio of\n            stress and strain, called"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "modulus of elasticity"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", is found to\n            be a characteristic of the material."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.1 Young’s Modulus",
+      "id": "h.hvz57u1cym7w"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Experimental observation show that for a given material, the magnitude of the strain\n            produced is same whether the stress is tensile or compressive. The ratio of tensile (or compressive) stress\n            (σ) to the longitudinal strain (ε) is defined as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Young’s\n            modulus"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and is denoted by the symbol Y."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(9.7)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Eqs. (9.1) and (9.2), we have"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y = (F/A)/(∆L/L)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (F × L) /(A × ∆L) (9.8)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since strain is a dimensionless quantity, the unit of Young’s modulus is the\n            same as that of stress i.e., N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or Pascal\n            (Pa). Table 9.1 gives the values of Young’s moduli and yield strengths of some material."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From the data given in Table 9.1, it is noticed that for metals Young’s moduli\n            are large. Therefore, these materials require a large force to produce small change in length. To increase\n            the length of a thin steel wire of 0.1 cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cross-sectional area by 0.1%, a force of 2000 N is required. The force required to produce\n            the same strain in aluminium, brass and copper wires having the same cross-sectional area are 690 N, 900 N\n            and 1100 N respectively. It means that steel is more elastic than copper, brass and aluminium. It is for\n            this reason that steel is preferred in heavy-duty machines and in structural designs. Wood, bone, concrete\n            and glass have rather small Young’s moduli."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image6.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 9.1 Young’s moduli and yield strenghs of some material"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A structural steel rod has a radius of 10 mm\n            and a length of 1.0 m. A 100 kN force stretches it along its length. Calculate (a) stress, (b) elongation,\n            and (c) strain on the rod. Young’s modulus, of structural steel is 2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We assume that the rod is held by a clamp at one\n            end, and the force F is applied at the other end, parallel to the length of the rod. Then the stress on the\n            rod is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image23.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 3.18 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The elongation,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.59 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.59 mm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The strain is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Strain = ∆L/L"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (1.59 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m)/(1m)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.59 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0.16 % t"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A copper wire of length 2.2 m and a steel\n            wire of length 1.6 m, both of diameter 3.0 mm, are connected end to end. When stretched by a load, the net\n            elongation is found to be 0.70 mm. Obtain the load applied."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The copper and steel wires are under a tensile\n            stress because they have the same tension (equal to the load W) and the same area of cross-section A. From\n            Eq. (9.7) we have stress = strain × Young’s modulus. Therefore"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "W/A = Yc × (∆Lc/Lc) = Ys × (∆Ls/Ls)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where the subscripts c and s refer to copper and stainless steel respectively.\n            Or,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc/∆Ls = (Ys/Yc) × (Lc/Ls)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Given Lc = 2.2 m, Ls = 1.6 m,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Table 9.1 Yc = 1.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N.m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", and"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ys = 2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N.m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc/∆Ls = (2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/1.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") × (2.2/1.6) =\n            2.5."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The total elongation is given to be"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc + ∆Ls = 7.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solving the above equations,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆Lc = 5.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m,\n            and ∆Ls = 2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Therefore"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "W = (A × Yc × ∆Lc)/Lc"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= π (1.5 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× [(5.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× 1.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")/2.2]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.8 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N t"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In a human pyramid in a circus, the entire\n            weight of the balanced group is supported by the legs of a performer who is lying on his back (as shown in\n            Fig. 9.5). The combined mass of all the persons performing the act, and the tables, plaques etc. involved is\n            280 kg. The mass of the performer lying on his back at the bottom of the pyramid is 60 kg. Each thighbone\n            (femur) of this performer has a length of 50 cm and an effective radius of 2.0 cm. Determine the amount by\n            which each thighbone gets compressed under the extra load."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.5 Human pyramid in a circus."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Total mass of all the performers, tables, plaques\n            etc. = 280 kg"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mass of the performer = 60 kg"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Mass supported by the legs of the performer at the bottom of the pyramid"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 280 – 60 = 220 kg"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Weight of this supported mass"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 220 kg wt. = 220 × 9.8 N = 2156 N."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Weight supported by each thighbone of the performer = ½ (2156) N = 1078\n            N."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From Table 9.1, the Young’s modulus for bone is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y = 9.4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Length of each thighbone L = 0.5 m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "the radius of thighbone = 2.0 cm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus the cross-sectional area of the thighbone A = π × (2 ×\n            10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.26 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Using Eq. (9.8), the compression in each thighbone (∆L) can be computed\n            as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆L = [(F × L)/(Y × A)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= [(1078 × 0.5)/(9.4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× 1.26 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 4.55 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m or 4.55\n            × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cm."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is a very small change! The fractional decrease in the thighbone is ∆L/L =\n            0.000091 or 0.0091%."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.2 Determination of Young’s Modulus of the\n            Material of a Wire",
+      "id": "h.gvgitq8z8b7u"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A typical experimental arrangement to determine the Young’s modulus of a\n            material of wire under tension is shown in Fig. 9.6. It consists of two long straight wires of same length\n            and equal radius suspended side by side from a fixed rigid support. The wire A (called the reference wire)\n            carries a millimetre main scale M and a pan to place a weight. The wire B (called the experimental wire) of\n            uniform area of cross-section also carries a pan in which known weights can be placed. A vernier scale V is\n            attached to a pointer at the bottom of the experimental wire B, and the main scale M is fixed to the\n            reference wire A. The weights placed in the pan exert a downward force and stretch the experimental wire\n            under a tensile stress. The elongation of the wire (increase in length) is measured by the vernier\n            arrangement. The reference wire is used to compensate for any change in length that may occur due to change\n            in room temperature, since any change in length of the reference wire due to temperature change will be\n            accompanied by an equal change in experimental wire. (We shall study these temperature effects in detail in\n            Chapter 11.)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image28.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.6 An arrangement for the determination of Young’s modulus of the\n            material of a wire."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Both the reference and experimental wires are given an initial small load to keep the\n            wires straight and the vernier reading is noted. Now the experimental wire is gradually loaded with more\n            weights to bring it under a tensile stress and the vernier reading is noted again. The difference between\n            two vernier readings gives the elongation produced in the wire. Let r and L be the initial radius and length\n            of the experimental wire, respectively. Then the area of cross-section of the wire would be\n            πr"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Let M be the mass that produced an elongation\n            ∆L in the wire. Thus the applied force is equal to Mg, where g is the acceleration due to gravity.\n            From Eq. (9.8), the Young’s modulus of the material of the experimental wire is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image18.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= Mg × L/(πr2 × ∆L) (9.9)"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.3 Shear Modulus",
+      "id": "h.ang4uxh90g65"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The ratio of shearing stress to the corresponding shearing strain is called the shear\n            modulus of the material and is represented by G. It is also called the modulus of rigidity."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "G = shearing stress (σ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")/shearing strain"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "G = (F/A)/(∆x/L)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (F × L)/(A × ∆x) (9.10)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Similarly, from Eq. (9.4)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "G = (F/A)/θ"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= F/(A × θ) (9.11)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The shearing stress σ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "can also be expressed as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "σ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= G × θ\n            (9.12)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "SI unit of shear modulus is N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or Pa. The shear moduli of a few common materials are given in Table 9.2. It can be seen\n            that shear modulus (or modulus of rigidity) is generally less than Young’s modulus (from Table 9.1).\n            For most materials G ≈ Y/3."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image17.png",
+              "alt": "c2",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 9.2 Shear moduli (G) of some common materials"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A square lead slab of side 50 cm and\n            thickness 10 cm is subject to a shearing force (on its narrow face) of 9.0 × 104 N. The lower edge is\n            riveted to the floor. How much will the upper edge be displaced?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The lead slab is fixed and the force is applied\n            parallel to the narrow face as shown in Fig. 9.7. The area of the face parallel to which this force is\n            applied is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A = 50 cm × 10 cm"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0.5 m × 0.1 m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0.05 m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Therefore, the stress applied is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (9.4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N/0.05\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.80 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N.m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image33.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.7"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We know that shearing strain = (∆x/L)= Stress /G."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Therefore the displacement ∆x = (Stress × L)/G"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (1.8 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× 0.5m)/(5.6 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.6 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m =\n            0.16 mm t"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.4 Bulk Modulus",
+      "id": "h.w8clzcrz26qu"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In Section (9.3), we have seen that when a body is submerged in a fluid, it undergoes\n            a hydraulic stress (equal in magnitude to the hydraulic pressure). This leads to the decrease in the volume\n            of the body thus producing a strain called volume strain [Eq. (9.5)]."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                ratio of hydraulic stress to the corresponding hydraulic strain is called bulk modulus"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is denoted by symbol B."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390113
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B = – p/(∆V/V) (9.13)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The negative sign indicates the fact that with an increase in pressure, a decrease in\n            volume occurs. That is, if p is positive, ∆V is negative. Thus for a system in equilibrium, the value\n            of bulk modulus B is always positive. SI unit of bulk modulus is the same as that of pressure i.e., N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or Pa. The bulk moduli of a few common\n            materials are given in Table 9.3."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The reciprocal of the bulk modulus is called compressibility and is denoted by\n            k. It is defined as the fractional change in volume per unit increase in pressure."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "k = (1/B) = – (1/∆p) × (∆V/V) (9.14)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It can be seen from the data given in Table 9.3 that the bulk moduli for solids are\n            much larger than for liquids, which are again much larger than the bulk modulus for gases (air)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image4.png",
+              "alt": "c3",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 9.3 Bulk moduli (B) of some common Materials"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, solids are the least compressible, whereas, gases are the most\n            compressible. Gases are about a million times more compressible than solids! Gases have large\n            compressibilities, which vary with pressure and temperature. The incompressibility of the solids is\n            primarily due to the tight coupling between the neighbouring atoms. The molecules in liquids are also bound\n            with their neighbours but not as strong as in solids. Molecules in gases are very poorly coupled to their\n            neighbours."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 9.4 shows the various types of stress, strain, elastic moduli, and the\n            applicable state of matter at a glance."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 9.5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The average depth of Indian Ocean is about\n            3000 m. Calculate the fractional compression, ∆V/V, of water at the bottom of the ocean, given that\n            the bulk modulus of water is 2.2 × 109 N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ".\n            (Take g = 10 m s"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Answer"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The pressure exerted by a 3000 m column of water\n            on the bottom layer"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "p = hρ g = 3000 m × 1000 kg m–3 × 10 m s–2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 3 × 107 kg m–1 s-2 = 3 × 107 N m–2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fractional compression ∆V/V, is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∆V/V = stress/B = (3 × 107 N m-2)/(2.2 × 109 N m–2)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.36 × 10-2 or 1.36 %"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image25.png",
+              "alt": "c5",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 9.4 Stress, strain and various elastic moduli"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image22.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.5 Poisson’s Ratio",
+      "id": "h.y1vj7cjl4teq"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Careful observations with the Young’s modulus experiment (explained in section\n            9.6.2), show that there is also a slight reduction in the cross-section (or in the diameter) of the wire.\n            The strain perpendicular to the applied force is called lateral strain. Simon Poisson pointed out that\n            within the elastic limit, lateral strain is directly proportional to the longitudinal strain. The ratio of\n            the lateral strain to the longitudinal strain in a stretched wire is called Poisson’s ratio. If the\n            original diameter of the wire is d and the contraction of the diameter under stress is ∆d, the lateral\n            strain is ∆d/d. If the original length of the wire is L and the elongation under stress is ∆L,\n            the longitudinal strain is ∆L/L. Poisson’s ratio is then (∆d/d)/(∆L/L) or\n            (∆d/∆L) × (L/d). Poisson’s ratio is a ratio of two strains; it is a pure number and\n            has no dimensions or units. Its value depends only on the nature of material. For steels the value is\n            between 0.28 and 0.30, and for aluminium alloys it is about 0.33."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.6.6 Elastic Potential Energy in a Stretched Wire",
+      "id": "h.o0xcsyvj5s33"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When a wire is put under a tensile stress, work is done against the inter-atomic\n            forces. This work is stored in the wire in the form of elastic potential energy. When a wire of original\n            length L and area of cross-section A is subjected to a deforming force F along the length of the wire, let\n            the length of the wire be elongated by l. Then from Eq. (9.8), we have F = YA × (l/L). Here Y is the\n            Young’s modulus of the material of the wire. Now for a further elongation of infinitesimal small\n            length dl, work done dW is F × dl or YAldl/L."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Therefore,\n                the amount of work done (W) in increasing the length of the wire from L to L + l, that is from l = 0 to\n                l = l is"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        390107,
+        390108,
+        390109,
+        390133
+      ],
+      "pyq_count": 4
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "W ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image30.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "W ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image19.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Young’s modulus × strain"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× volume of the wire"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "stress × strain × volume of the wire"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This work is stored in the wire in the form of elastic potential energy (U).\n            Therefore the elastic potential energy per unit volume of the wire (u) is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "u ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "×"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(9.15)"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "9.7 Applications of elastic behaviour of materials",
+      "id": "h.gjrw1rrhy8tn"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The elastic behaviour of materials plays an important role in everyday life. All\n            engineering designs require precise knowledge of the elastic behaviour of materials. For example while\n            designing a building, the structural design of the columns, beams and supports require knowledge of strength\n            of materials used. Have you ever thought why the beams used in construction of bridges, as supports etc.\n            have a cross-section of the type I? Why does a heap of sand or a hill have a pyramidal shape? Answers to\n            these questions can be obtained from the study of structural engineering which is based on concepts\n            developed here."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Cranes used for lifting and moving heavy loads from one place to another have a thick\n            metal rope to which the load is attached. The rope is pulled up using pulleys and motors. Suppose we want to\n            make a crane, which has a lifting capacity of 10 tonnes or metric tons (1 metric ton = 1000 kg). How thick\n            should the steel rope be? We obviously want that the load does not deform the rope permanently. Therefore,\n            the extension should not exceed the elastic limit. From Table 9.1, we find that mild steel has a yield\n            strength (σy) of about 300 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Thus, the area of cross-section (A) of the rope\n            should at least be"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A ≥ W/σy = Mg/σy (9.16)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg × 9.8 m\n            s"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")/(300 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 3.3 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "corresponding to a radius of about 1 cm for a rope of circular cross-section.\n            Generally a large margin of safety (of about a factor of ten in the load) is provided. Thus a thicker rope\n            of radius about 3 cm is recommended. A single wire of this radius would practically be a rigid rod. So the\n            ropes are always made of a number of thin wires braided together, like in pigtails, for ease in manufacture,\n            flexibility and strength."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A bridge has to be designed such that it can withstand the load of the flowing\n            traffic, the force of winds and its own weight. Similarly, in the design of buildings the use of beams and\n            columns is very common. In both the cases, the overcoming of the problem of bending of beam under a load is\n            of prime importance. The beam should not bend too much or break. Let us consider the case of a beam loaded\n            at the centre and supported near its ends as shown in"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.8. A bar of length l, breadth b, and depth d when loaded at the centre by a\n            load W sags by an amount given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "δ = W l"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/(4bd"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Y) (9.17)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image29.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.8 A beam supported at the ends and loaded at the centre."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This relation can be derived using what you have already learnt and a little\n            calculus. From Eq. (9.16), we see that to reduce the bending for a given load, one should use a material\n            with a large Young’s modulus Y. For a given material, increasing the depth d rather than the breadth b\n            is more effective in reducing the bending, since δ is proportional to d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and only to b"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(of course the length l of the span should be as small as possible). But on increasing the depth,\n            unless the load is exactly at the right place (difficult to arrange in a bridge with moving traffic), the\n            deep bar may bend as shown in Fig. 9.9(b). This is called buckling. To avoid this, a common compromise is\n            the cross-sectional shape shown in Fig. 9.9(c). This section provides a large load-bearing surface and\n            enough depth to prevent bending. This shape reduces the weight of the beam without sacrificing the strength\n            and hence reduces the cost."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image20.png",
+              "alt": "c6",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.9 Different cross-sectional shapes of a beam."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Rectangular section of a bar;"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) A thin bar and how it can buckle;"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Commonly used section for a load bearing bar."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Mechanical_Properties_of_Solids-image32.png",
+              "alt": "c7",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fig. 9.10 Pillars or columns: (a) a pillar with rounded ends, (b) Pillar with\n            distributed ends."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The answer to the  question why the maximum height of a mountain on earth is ~10\n            km can also be provided by considering the elastic properties of rocks. A mountain base is not under uniform\n            compression and this provides some shearing stress to the rocks under which they can flow. The stress due to\n            all the material on the top should be less than the critical shearing stress at which the rocks flow."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At the bottom of a mountain of height h, the force per unit area due to the weight of\n            the mountain is hρg where ρ is the density of the material of the mountain and g is the acceleration\n            due to gravity. The material at the bottom experiences this force in the vertical direction, and the sides\n            of the mountain are free. Therefore, this is not a case of pressure or bulk compression. There is a shear\n            component, approximately hρg itself. Now the elastic limit for a typical rock is 30 ×\n            10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "gives"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "hρg = 30 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "h = 30 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N\n            m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/(3 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "× 10 m s"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 10 km"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "which is more than the height of Mt. Everest!"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Summary",
+      "id": "h.528ms1fmw467"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. For small deformations, stress is directly proportional to the strain for many\n            materials. This is known as Hooke’s law. The constant of proportionality is called modulus of\n            elasticity. Three elastic moduli viz., Young’s modulus, shear modulus and bulk modulus are used to\n            describe the elastic behaviour of objects as they respond to deforming forces that act on them."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "A class of solids called elastomers does not obey Hooke’s law."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. When an object is under tension or compression, the Hooke’s law takes the\n            form"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "F/A = Y∆L/L"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where ∆L/L is the tensile or compressive strain of the object, F is the\n            magnitude of the applied force causing the strain, A is the cross-sectional area over which F is applied\n            (perpendicular to A) and Y is the Young’s modulus for the object. The stress is F/A."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4. A pair of forces when applied parallel to the upper and lower faces, the solid\n            deforms so that the upper face moves sideways with respect to the lower. The horizontal displacement\n            ∆L of the upper face is perpendicular to the vertical height L. This type of deformation is called\n            shear and the corresponding stress is the shearing stress. This type of stress is possible only in\n            solids."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In this kind of deformation the Hooke’s law takes the form"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "F/A = G × ∆L/L"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where ∆L is the displacement of one end of object in the direction of the\n            applied force F, and G is the shear modulus."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5. When an object undergoes hydraulic compression due to a stress exerted by a\n            surrounding fluid, the Hooke’s law takes the form"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "p = B (∆V/V),"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where p is the pressure (hydraulic stress) on the object due to the fluid, ∆V/V\n            (the volume strain) is the absolute fractional change in the object’s volume due to that pressure and\n            B is the bulk modulus of the object."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Points to ponder",
+      "id": "h.7q4cemze841n"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1. In the case of a wire, suspended from celing and stretched under the action of a\n            weight (F) suspended from its other end, the force exerted by the ceiling on it is equal and opposite to the\n            weight. However, the tension at any cross-section A of the wire is just F and not 2F. Hence, tensile stress\n            which is equal to the tension per unit area is equal to F/A."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. Hooke’s law is valid only in the linear part of stress-strain curve."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. The Young’s modulus and shear modulus are relevant only for solids since\n            only solids have lengths and shapes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4. Bulk modulus is relevant for solids, liquid and gases. It refers to the change in\n            volume when every part of the body is under the uniform stress so that the shape of the body remains\n            unchanged."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5. Metals have larger values of Young’s modulus than alloys and elastomers. A\n            material with large value of Young’s modulus requires a large force to produce small changes in its\n            length."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6. In daily life, we feel that a material which stretches more is more elastic, but\n            it a is misnomer. In fact material which stretches to a lesser extent for a given load is considered to be\n            more elastic."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7. In general, a deforming force in one direction can produce strains in other\n            directions also. The proportionality between stress and strain in such situations cannot be described by\n            just one elastic constant. For example, for a wire under longitudinal strain, the lateral dimensions (radius\n            of cross section) will undergo a small change, which is described by another elastic constant of the\n            material (called Poisson ratio)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8. Stress is not a vector quantity since, unlike a force, the stress cannot be\n            assigned a specific direction. Force acting on the portion of a body on a specified side of a section has a\n            definite direction."
+        }
+      ]
+    }
+  ]
+}

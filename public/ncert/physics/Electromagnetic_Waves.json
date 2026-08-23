@@ -1,0 +1,6604 @@
+{
+  "title": "Electromagnetic Waves",
+  "children": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chapter Eight",
+      "id": "h.ar8j5o6mvwnd"
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Electromagnetic Waves",
+      "id": "h.1jvltcyvd973"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8.1 Introduction",
+      "id": "h.fwz8bfw5v4gx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In Chapter 4, we learnt that an electric current produces magnetic field and\n            that two current-carrying wires exert a magnetic force on each other. Further, in Chapter 6, we have seen\n            that a magnetic field changing with time gives rise to an electric field. Is the converse also true? Does an\n            electric field changing with time give rise to a magnetic field? James Clerk Maxwell (1831-1879), argued\n            that this was indeed the case – not only an electric current but also a time-varying electric field\n            generates magnetic field. While applying the Ampere’s circuital law to find magnetic field at a point\n            outside a capacitor connected to a time-varying current, Maxwell noticed an inconsistency in the\n            Ampere’s circuital law. He suggested the existence of an additional current, called by him, the\n            displacement current to remove this inconsistency."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Maxwell formulated a set of equations involving electric and magnetic fields, and\n            their sources, the charge and current densities. These equations are known as Maxwell’s equations.\n            Together with the Lorentz force formula (Chapter 4), they mathematically express all the basic laws of\n            electromagnetism."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The most important prediction to emerge from Maxwell’s equations is the\n            existence of electromagnetic waves, which are (coupled) time-varying electric and magnetic fields that\n            propagate in space. The speed of the waves, according to these equations, turned out to be very close to the\n            speed of light( 3 ×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m/s), obtained from\n            optical measurements. This led to the remarkable conclusion that light is an electromagnetic wave.\n            Maxwell’s work thus unified the domain of electricity, magnetism and light. Hertz, in 1885,\n            experimentally demonstrated the existence of electromagnetic waves. Its technological use by Marconi and\n            others led in due course to the revolution in communication that we are witnessing today."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image20.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "James Clerk Maxwell (1831 – 1879) Born in Edinburgh, Scotland, was among the\n            greatest physicists of the nineteenth century. He derived the thermal velocity distribution of molecules in\n            a gas and was among the first to obtain reliable estimates of molecular parameters from measurable\n            quantities like viscosity, etc. Maxwell’s greatest acheivement was the unification of the laws of\n            electricity and magnetism (discovered by Coulomb, Oersted, Ampere and Faraday) into a consistent set of\n            equations now called Maxwell’s equations. From these he arrived at the most important conclusion that\n            light is an electromagnetic wave. Interestingly, Maxwell did not agree with the idea (strongly suggested by\n            the Faraday’s laws of electrolysis) that electricity was particulate in nature."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In this chapter, we first discuss the need for displacement current and its\n            consequences. Then we present a descriptive account of electromagnetic waves. The broad spectrum of\n            electromagnetic waves, stretching from γ rays     (wavelength ~10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–12"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m) to long radio waves (wavelength ~10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m) is described. How the electromagnetic waves are sent and\n            received for communication is discussed in Chapter 15."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.2 DISPLACEMENT CURRENT",
+      "id": "h.5nbuypgfiib2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We have seen in Chapter 4 that an electrical current produces a magnetic field\n            around it. Maxwell showed that for logical consistency, a changing electric field must also produce a\n            magnetic field. This effect is of great importance because it explains the existence of radio waves, gamma\n            rays and visible light, as well as all other forms of electromagnetic waves."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "To see how a changing electric field gives rise to a magnetic field, let us consider\n            the process of charging of a capacitor and apply Ampere’s circuital law given by (Chapter 4)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∮B.dl=μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "i(t)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.1)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "to find magnetic field at a point outside the capacitor."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.1(a) shows a parallel plate capacitor C which is a part of circuit through\n            which a time-dependent current i (t) flows . Let us find the magnetic field at a point such as P, in a\n            region outside the parallel plate capacitor. For this, we consider a plane circular loop of radius r whose\n            plane is perpendicular to the direction of the current-carrying wire, and which is centred symmetrically\n            with respect to the wire [Fig. 8.1(a)]. From symmetry, the magnetic field is directed along the\n            circumference of the circular loop and is the same in magnitude at all points on the loop so that if B is\n            the magnitude of the field, the left side of Eq. (8.1) is B (2πr). So we have"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B (2πr) = µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "i(t)    \n                                         \n                    (8 .2)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now, consider a different surface, which has the same boundary. This is a pot like\n            surface [Fig. 8.1(b)] which nowhere touches the current, but has its bottom between the capacitor plates;\n            its mouth is the circular loop mentioned above. Another such surface is shaped like a tiffin box (without\n            the lid) [Fig. 8.1(c)]. On applying Ampere’s circuital law to such surfaces with the same perimeter,\n            we find that the left hand side of Eq. (8.1) has not changed but the right hand side is zero and not\n            µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "i, since no current passes through the surface of\n            Fig. 8.1(b) and (c). So we have a contradiction; calculated one way, there is a magnetic field at a point P;\n            calculated another way, the magnetic field at P is zero."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since the contradiction arises from our use of Ampere’s circuital law,\n            this law must be missing something. The missing term must be such that one gets the same magnetic field at\n            point P, no matter what surface is used."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(see Eq. 2.41). The field is perpendicular to the surface S of Fig. 8.1(c). It has the same\n            magnitude over the area A of the capacitor plates, and vanishes outside it. So what is the electric flux\n            Φ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "through the surface S ? Using Gauss’s law,\n            it is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image38.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.3)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now if the charge Q on the capacitor plates changes with time, there is a current i =\n            (dQ/dt), so that using Eq. (8.3), we have"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image35.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image12.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image25.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.1 A parallel plate capacitor C, as part of a circuit through which a\n            time dependent current i (t) flows, (a) a loop of radius r, to determine magnetic field at a point P on the\n            loop; (b) a pot-shaped surface passing through the interior between the capacitor plates with the loop shown\n            in (a) as its rim; (c) a tiffin-shaped surface with the circular loop as its rim and a flat circular bottom\n            S between the capacitor plates. The arrows show uniform electric field between the capacitor plates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ϕE=|E|A=1/ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q/A\n            A=Q/ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.3)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This implies that for consistency,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(dϕ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/dt)=i  (8.4)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is the missing term in Ampere’s circuital law. If we generalise this law\n            by adding to the total current carried by conductors through the surface, another term which is\n            ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "times the rate of change of electric flux\n            through the same surface, the total has the same value of current i for all surfaces. If this is done, there\n            is no contradiction in the value of B obtained anywhere using the generalised Ampere’s law. B at the\n            point P is non-zero no matter which surface is used for calculating it. B at a point P outside the plates\n            [Fig. 8.1(a)] is the same as at a point M just inside, as it should be. The current carried by conductors\n            due to flow of charges is called conduction current. The current, given by Eq. (8.4), is a new term, and is\n            due to changing electric field (or electric displacement, an old term still used sometimes). It is,\n            therefore, called displacement current or Maxwell’s displacement current. Figure 8.2 shows the\n            electric and magnetic fields inside the parallel plate capacitor discussed above."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The generalisation made by Maxwell then is the following. The source of a magnetic\n            field is not just the conduction electric current due to flowing charges, but also the time rate of change\n            of electric field. More precisely, the total current i is the sum of the conduction current denoted by ic,\n            and the displacement current denoted by id (= ε0 (dΦE/dt)). So we have"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image21.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.5)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= i, and no displacement current,\n            i.e., i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0. On the other hand, inside the capacitor,\n            there is no conduction current, i.e., i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0, and there\n            is only displacement current, so that i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= i."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image36.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image33.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.2 (a) The electric and magnetic fields E and B between the capacitor\n            plates, at the point M. (b) A cross sectional view of Fig. (a)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The generalised (and correct) Ampere’s circuital law has the same form as Eq.\n            (8.1), with one difference: “the total current passing through any surface of which the closed loop is\n            the perimeter” is the sum of the conduction current and the displacement current. The generalised law\n            is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∮B.dl=μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dϕ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/dt  (8.6)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and is known as Ampere-Maxwell law."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In all respects, the displacement current has the same physical effects as the\n            conduction current. In some cases, for example, steady electric fields in a conducting wire, the\n            displacement current may be zero since the electric field E does not change with time. In other cases, for\n            example, the charging capacitor above, both conduction and displacement currents may be present in different\n            regions of space. In most of the cases, they both may be present in the same region of space, as there exist\n            no perfectly conducting or perfectly insulating medium. Most interestingly, there may be large regions of\n            space where there is no conduction current, but there is only a displacement current due to time-varying\n            electric fields. In such a region, we expect a magnetic field, though there is no (conduction) current\n            source nearby! The prediction of such a displacement current can be verified experimentally. For example, a\n            magnetic field (say at point M) between the plates of the capacitor in Fig. 8.2(a) can be measured and is\n            seen to be the same as that just outside (at P)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The displacement current has (literally) far reaching consequences. One thing we\n            immediately notice is that the laws of electricity and magnetism are now more symmetrical*. Faraday’s\n            law of induction states that there is an induced emf equal to the rate of change of magnetic flux. Now,\n            since the emf between two points 1 and 2 is the work done per unit charge in taking it from 1 to 2, the\n            existence of an emf implies the existence of an electric field. So, we can rephrase Faraday’s law of\n            electromagnetic induction by saying that a magnetic field, changing with time, gives rise to an electric\n            field. Then, the fact that an electric field changing with time gives rise to a magnetic field, is the\n            symmetrical counterpart, and is a consequence of the displacement current being a source of a magnetic\n            field. Thus, time- dependent electric and magnetic fields give rise to each other! Faraday’s law of\n            electromagnetic induction and Ampere-Maxwell law give a quantitative expression of this statement, with the\n            current being the total current, as in Eq. (8.5). One very important consequence of this symmetry is the\n            existence of electromagnetic waves, which we discuss qualitatively in the next section."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "* They are still not perfectly symmetrical; there are no known sources of\n            magnetic field (magnetic monopoles) analogous to electric charges which are sources of electric\n            field."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image30.jpg",
+              "alt": "314",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 8.1 A parallel plate capacitor with circular plates of radius 1 m has a\n            capacitance of 1 nF. At t = 0, it is connected for charging in series with a resistor R = 1 MΩ across\n            a 2V battery (Fig. 8.3). Calculate the magnetic field at a point P, halfway between the centre and the\n            periphery of the plates, after t = 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s. (The\n            charge on the capacitor at time t is q (t) = CV [1 – exp (–t/τ)], where the time constant\n            τ is equal to CR.)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image31.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.3"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solution The time constant of the CR circuit is τ = CR = 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s. Then, we have q(t) = CV [1 – exp\n            (–t/τ)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 2 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "[1–\n            exp (–t/10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The electric field in between the plates at time t is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image9.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "; A = π (1)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= area of the plates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Consider now a circular loop of radius (1/2) m parallel to the plates passing through\n            P. The magnetic field B at all points on the loop is along the loop and of the same value."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The flux Φ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "through this\n            loop is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Φ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= E × area of the\n            loop"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= E×π×(1/2)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=\n            πE/4 =q/4πε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The displacement current"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "id=ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dϕ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/dt=¼\n            dq/dt=0.5×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "−6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "exp(−1)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "at t = 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s. Now, applying Ampere-Maxwell law to the loop, we get"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B×2π×("
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1/2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")\n            =μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")=μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(0+i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")\n            =0.5×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "−6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "exp(−1)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or, B = 0.74 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–13"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.3 ELECTROMAGNETIC WAVES",
+      "id": "h.58u5935c19uk"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.3.1 SOURCES OF ELECTROMAGNETIC WAVES",
+      "id": "h.pg8cirlaf6n2"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How are electromagnetic waves produced? Neither stationary charges nor charges\n            in uniform motion (steady currents) can be sources of electromagnetic waves. The former produces only\n            electrostatic fields, while the latter produces magnetic fields that, however, do not vary with\n            time."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\n                is an important result of Maxwell’s theory that accelerated charges radiate electromagnetic\n                waves."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The proof of this basic result is beyond the scope of this book,\n            but we can accept it on the basis of rough, qualitative reasoning. Consider a charge oscillating with some\n            frequency. (An oscillating charge is an example of accelerating charge.) This produces an oscillating\n            electric field in space, which produces an oscillating magnetic field, which in turn, is a source of\n            oscillating electric field, and so on. The oscillating electric and magnetic fields thus regenerate each\n            other, so to speak, as the wave propagates through the space. The frequency of the electromagnetic wave\n            naturally equals the frequency of oscillation of the charge. The energy associated with the propagating wave\n            comes at the expense of the energy of the source – the accelerated charge."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530125
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "From the preceding discussion, it might appear easy to test the prediction that light\n            is an electromagnetic wave. We might think that all we needed to do was to set up an ac circuit in which the\n            current oscillate at the frequency of visible light, say, yellow light. But, alas, that is not possible. The\n            frequency of yellow light is about 6 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz,\n            while the frequency that we get even with modern electronic circuits is hardly about 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz. This is why the experimental demonstration of electromagnetic\n            wave had to come in the low frequency region (the radio wave region), as in the Hertz’s experiment\n            (1887)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hertz’s successful experimental test of Maxwell’s theory created a\n            sensation and sparked off other important works in this field. Two important achievements in this connection\n            deserve mention. Seven years after Hertz, Jagdish Chandra Bose, working at Calcutta (now Kolkata), succeeded\n            in producing and observing electromagnetic waves of much shorter wavelength (25 mm to 5 mm). His experiment,\n            like that of Hertz’s, was confined to the laboratory."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At around the same time, Guglielmo Marconi in Italy followed Hertz’s work and\n            succeeded in transmitting electromagnetic waves over distances of many kilometres. Marconi’s\n            experiment marks the beginning of the field of communication using electromagnetic waves."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image22.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Heinrich Rudolf Hertz (1857 – 1894) German physicist who was the first to\n            broadcast and receive radio waves. He produced electro-magnetic waves, sent them through space, and measured\n            their wave-length and speed. He showed that the nature of their vibration, reflection and refraction was the\n            same as that of light and heat waves, establishing their identity for the first time. He also pioneered\n            research on discharge of electricity through gases, and discovered the photoelectric effect."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.3.2\n                NATURE OF ELECTROMAGNETIC WAVES",
+      "id": "h.w9blydw5i8td"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\n                can be shown from Maxwell’s equations that electric and magnetic fields in an electromagnetic wave\n                are perpendicular to each other, and to the direction of propagation."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It appears reasonable, say from our discussion of the displacement current. Consider Fig.\n            8.2. The electric field inside the plates of the capacitor is directed perpendicular to the plates. The\n            magnetic field this gives rise to via the displacement current is along the perimeter of a circle parallel\n            to the capacitor plates."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "So\n                B and E are perpendicular in this case."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This is a general\n            feature."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530126,
+        530159,
+        530235
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In Fig. 8.4, we show a typical example of a plane electromagnetic wave propagating\n            along the z direction (the fields are shown as a function of the z coordinate, at a given time t). The\n            electric field E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is along the x-axis, and varies\n            sinusoidally with z, at a given time. The magnetic field B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is along the y-axis, and again varies sinusoidally with z. The electric and magnetic fields\n            E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "are perpendicular to each other, and to the direction z of propagation. We can write\n            E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "as follows:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image34.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.4 A linearly polarised electromagnetic wave, propagating in the\n            z-direction with the oscillating electric field E along the x-direction and the oscillating magnetic field B\n            along the y-direction."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin (kz–ωt) [8.7(a)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "o"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin (kz–ωt) [8.7(b)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Here\n                k is related to the wave length λ of the wave by the usual equation"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530149
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image7.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.8)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and ω is the angular frequency. k is the magnitude of the wave vector (or\n            propagation vector) k and its direction describes the direction of propagation of the wave."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                speed of propagation of the wave is (ω/k)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Using Eqs. [8.7(a) and\n            (b)] for E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and Maxwell’s equations, one finds that"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530135
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "ω\n                = ck, where,"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530155
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c=1/√μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "o"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "o"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "[8.9(a)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                relation ω = ck is the standard one for waves (see for example, Section 15.4 of class XI Physics\n                textbook)."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This relation is often written in terms of frequency, ν\n            (=ω/2π) and wavelength, λ (=2π/k) as"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530232
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2πν=c("
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2π/λ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "or"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "νλ = c                    \n                                         \n               [8.9(b)]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "It\n                is also seen from Maxwell’s equations that the magnitude of the electric and the magnetic fields\n                in an electromagnetic wave are related as"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530131,
+        530237
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/c)                  \n                                         \n             (8.10)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We here make remarks on some features of electromagnetic waves. They are\n            self-sustaining oscillations of electric and magnetic fields in free space, or vacuum. They differ\n            from"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "all the other waves we have studied so far, in respect that no material\n            medium is involved in the vibrations of the electric and magnetic fields. Sound waves in air are\n            longitudinal waves of compression and rarefaction. Transverse elastic (sound) waves can also propagate in a\n            solid, which is rigid and that resists shear. Scientists in the nineteenth century were so much used to this\n            mechanical picture that they thought that there must be some medium pervading all space and all matter,\n            which responds to electric and magnetic fields just as any elastic medium does. They called this medium\n            ether. They were so convinced of the reality of this medium, that there is even a novel called The Poison\n            Belt by Sir Arthur Conan Doyle (the creator of the famous detective Sherlock Holmes) where the solar system\n            is supposed to pass through a poisonous region of ether! We now accept that no such physical medium is\n            needed. The famous experiment of Michelson and Morley in 1887 demolished conclusively the hypothesis of\n            ether. Electric and magnetic fields, oscillating in space and time, can sustain each other in vacuum."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "But what if a material medium is actually there? We know that light, an\n            electromagnetic wave, does propagate through glass, for example. We have seen earlier that the total\n            electric and magnetic fields inside a medium are described in terms of a permittivity ε and a\n            magnetic permeability µ (these describe the factors by which the total fields differ from the external\n            fields)."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "These\n                replace ε"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "0"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "and\n                µ"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "0"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "in\n                the description to electric and magnetic fields in Maxwell’s equations with the result that in a\n                material medium of permittivity ε and magnetic permeability µ, the velocity of light\n                becomes,"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530115
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image16.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.11)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Thus,\n                the velocity of light depends on electric and magnetic properties of the medium."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We shall see in the next chapter that the refractive index of one medium with respect to\n            the other is equal to the ratio of velocities of light in the two media."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530138
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The velocity of electromagnetic waves in free space or vacuum is an important\n            fundamental constant. It has been shown by experiments on electromagnetic waves of different wavelengths\n            that this velocity is the same (independent of wavelength) to within a few metres per second, out of a value\n            of 3×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m/s. The constancy of the velocity of em\n            waves in vacuum is so strongly supported by experiments and the actual value is so well known now that this\n            is used to define a standard of length. Namely, the metre is now defined as the distance travelled by light\n            in vacuum in a time (1/c) seconds = (2.99792458 ×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "seconds. This has come about for\n            the following reason. The basic unit of time can be defined very accurately in terms of some atomic\n            frequency, i.e., frequency of light emitted by an atom in a particular process. The basic unit of length is\n            harder to define as accurately in a direct way. Earlier measurement of c using earlier units of length\n            (metre rods, etc.) converged to a value of about 2.9979246 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m/s. Since c is such a strongly fixed number, unit of length can be defined in terms of c\n            and the unit of time!"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hertz not only showed the existence of electromagnetic waves, but also demonstrated\n            that the waves, which had wavelength ten million times that of the light waves, could be diffracted,\n            refracted and polarised. Thus, he conclusively established the wave nature of the radiation. Further, he\n            produced stationary electromagnetic waves and determined their wavelength by measuring the distance between\n            two successive nodes. Since the frequency of the wave was known (being equal to the frequency of the\n            oscillator), he obtained the speed of the wave using the formula v = νλ and found that the waves\n            travelled with the same speed as the speed of light."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The fact that electromagnetic waves are polarised can be easily seen in the response\n            of a portable AM radio to a broadcasting station. If an AM radio has a telescopic antenna, it responds to\n            the electric part of the signal. When the antenna is turned horizontal, the signal will be greatly\n            diminished. Some portable radios have horizontal antenna (usually inside the case of radio), which are\n            sensitive to the magnetic component of the electromagnetic wave. Such a radio must remain horizontal in\n            order to receive the signal. In such cases, response also depends on the orientation of the radio with\n            respect to the station."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Do electromagnetic waves carry energy and momentum like other waves? Yes, they\n            do. We have seen in chapter 2 that in a region of free space with electric field E, there is an energy\n            density (ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/2). Similarly, as seen in Chapter 6, associated with a magnetic field B is a magnetic energy\n            density (B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/2µ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "). As electromagnetic wave contains both electric and magnetic fields, there is a non-zero energy\n            density associated with it. Now consider a plane perpendicular to the direction of propagation of the\n            electromagnetic wave (Fig. 8.4). If there are, on this plane, electric charges, they will be set and\n            sustained in motion by the electric and magnetic fields of the electromagnetic wave. The charges thus\n            acquire energy and momentum from the waves. This just illustrates the fact that an electromagnetic wave\n            (like other waves) carries energy and momentum. Since it carries momentum, an electromagnetic wave also\n            exerts pressure, called radiation pressure."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the total energy transferred to a surface in time t is U, it can be shown that the\n            magnitude of the total momentum delivered to this surface (for complete absorption) is,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image29.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(8.12)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "When the sun shines on your hand, you feel the energy being absorbed from the\n            electromagnetic waves (your hands get warm). Electromagnetic waves also transfer momentum to your hand but\n            because c is very large, the amount of momentum transferred is extremely small and you do not feel the\n            pressure. In 1903, the American scientists Nicols and Hull succeeded in measuring radiation pressure of\n            visible light and verified Eq. (8.12). It was found to be of the order of 7 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N/m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Thus,\n            on a surface of area 10 cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", the force due to radiation is\n            only about 7 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "N."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The great technological importance of electromagnetic waves stems from their\n            capability to carry energy from one place to another. The radio and TV signals from broadcasting stations\n            carry energy. Light carries energy from the sun to the earth, thus making life possible on the earth."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Example\n                8.2 A plane electromagnetic wave of frequency 25 MHz travels in free space along the\n                x-direction."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At a particular point in space and time,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E = 6.3 ˆj V/m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What is B at this point?"
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530122
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solution Using Eq. (8.10), the magnitude of B is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image11.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "To\n                find the direction, we note that E is along y-direction and the wave propagates along\n                x-axis."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Therefore, B should be in a direction perpendicular to both x- and y-axes. Using vector\n            algebra, E × B should be along x-direction."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530117,
+        530238
+      ],
+      "pyq_count": 2
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Since (+ˆj)×(+ˆk)=ˆ]i"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B is along\n            the z-direction."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, B = 2.1 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ˆkT"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Example 8.3 The magnetic field in a plane electromagnetic wave is given by\n            B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= (2 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") T sin (0.5×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x+1.5×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) What is the wavelength and frequency of the wave?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Write an expression for the electric field."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solution"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Comparing the given equation with"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "o"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin[2π("
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x/λ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t/T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "We get,"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image32.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m = 1.26 cm,"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image23.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c = 2×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T × 3 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m/s = 6\n            × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "V/m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The electric field component is perpendicular to the direction of propagation and the\n            direction of magnetic field. Therefore, the electric field component along the z-axis is obtained as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "z"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 60 sin (0.5 ×\n            10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x + 1.5 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "11"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t) V/m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Example\n                8.4 Light with an energy flux of 18 W/cm"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "falls\n                on a non-reflecting surface at normal incidence."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "If the surface has an\n            area of 20 cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", find the average force exerted on the\n            surface during a 30 minute time span."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530128
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solution"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                total energy falling on the surface is"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530108
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "U = (18 W/cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") × (20\n            cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ") × (30 × 60)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 6.48 × 105 J"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Therefore, the total momentum delivered (for complete absorption) is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "p ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image3.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 2.16 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg m/s"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The average force exerted on the surface is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "F ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image13.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "How will your result be modified if the surface is a perfect reflector?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Example\n                8.5 Calculate the electric and magnetic fields produced by the radiation coming from a 100 W bulb at a\n                distance of 3 m. Assume that the efficiency of the bulb is 2.5% and it is a point source."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530111
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Solution The bulb, as a point source, radiates light in all directions uniformly. At\n            a distance of 3 m, the surface area of the surrounding sphere is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image26.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The intensity I at this distance is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image1.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 0.022 W/m"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Half of this intensity is provided by the electric field and half by the magnetic\n            field."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image8.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image17.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 2.9 V/m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The value of E found above is the root mean square value of the electric field."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Since\n                the electric field in a light beam is sinusoidal, the peak electric field, E"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "0"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "is"
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530121
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=√2E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rms"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 4.07 V/m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, you see that the electric field strength of the light that you use for reading\n            is fairly large. Compare it with electric field strength of TV or FM waves, which is of the order of a few\n            microvolts per metre."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Now, let us calculate the strength of the magnetic field. It is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image14.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 9.6 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Again, since the field in the light beam is sinusoidal, the peak magnetic field\n            is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "o"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=√2B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rms"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 1.4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "T"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Note that although the energy in the magnetic field is equal to\n            the energy in the electric field, the magnetic field strength is evidently very weak."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "8.4 ELECTROMAGNETIC SPECTRUM",
+      "id": "h.ogeu0ann157d"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "At the time Maxwell predicted the existence of electromagnetic waves, the only\n            familiar electromagnetic waves were the visible light waves. The existence of ultraviolet and infrared waves\n            was barely established. By the end of the nineteenth century, X-rays and gamma rays had also been\n            discovered."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "We\n                now know that, electromagnetic waves include visible light waves, X-rays, gamma rays, radio waves,\n                microwaves, ultraviolet and infrared waves."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                classification of em waves according to frequency is the electromagnetic spectrum (Fig."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.5). There is no sharp division between one kind of wave and the next."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "The\n                classification is based roughly on how the waves are produced and/or detected."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530190,
+        530210,
+        530218
+      ],
+      "pyq_count": 3
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image2.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.5 The electromagnetic spectrum, with common names for various part of it.\n            The various regions do not have sharply defined boundaries."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "We\n                briefly describe these different types of electromagnetic waves, in order of decreasing\n                wavelengths."
+            }
+          ]
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530236
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.1 RADIO WAVES",
+      "id": "h.o4e8i4ava7a6"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Radio waves are produced by the accelerated motion of charges in conducting\n            wires. They are used in radio and television communication systems. They are generally in the frequency\n            range from 500 kHz to about 1000 MHz. The AM (amplitude modulated) band is from 530 kHz to 1710 kHz. Higher\n            frequencies upto 54 MHz are used for short wave bands. TV waves range from 54 MHz to 890 MHz. The FM\n            (frequency modulated) radio band extends from 88 MHz to 108 MHz. Cellular phones use radio waves to transmit\n            voice communication in the ultrahigh frequency (UHF) band. How these waves are transmitted and received is\n            described in Chapter 15."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.2 MICROWAVES",
+      "id": "h.lo0wfak4f55l"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Microwaves (short-wavelength radio waves), with frequencies in the gigahertz\n            (GHz) range, are produced by special vacuum tubes (called klystrons, magnetrons and Gunn diodes). Due to\n            their short wavelengths, they are suitable for the radar systems used in aircraft navigation. Radar also\n            provides the basis for the speed guns used to time fast balls, tennis- serves, and automobiles."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Microwave\n                ovens are an interesting domestic application of these waves."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "In such\n            ovens, the frequency of the microwaves is selected to match the resonant frequency of water molecules so\n            that energy from the waves is transferred efficiently to the kinetic energy of the molecules."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "This raises the temperature of any food containing water."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530182
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image37.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "MICROWAVE OVEN",
+      "id": "h.rb9p209u5pwa"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The spectrum of electromagnetic radiation contains a part known as microwaves.\n            These waves have frequency and energy smaller than visible light and wavelength larger than it. What is the\n            principle of a microwave oven and how does it work?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "One should use porcelain vessels and not metal containers in a microwave oven because\n            of the danger of getting a shock from accumulated electric charges. Metals may also melt from heating. The\n            porcelain container remains unaffected and cool, because its large molecules vibrate and rotate with much\n            smaller frequencies, and thus cannot absorb microwaves. Hence, they do not get heated up."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Thus, the basic principle of a microwave oven is to generate microwave radiation of\n            appropriate frequency in the working space of the oven where we keep food. This way energy is not wasted in\n            heating up the vessel. In the conventional heating method, the vessel on the burner gets heated first, and\n            then the food inside gets heated because of transfer of energy from the vessel. In the microwave oven, on\n            the other hand, energy is directly delivered to water molecules which is shared by the entire food."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.3 INFRARED WAVES",
+      "id": "h.y3aiweitjijl"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Infrared waves are produced by hot bodies and molecules. This band lies\n            adjacent to the low-frequency or long-wave length end of the visible spectrum. Infrared waves are sometimes\n            referred to as heat waves. This is because water molecules present in most materials readily absorb infrared\n            waves (many other molecules, for example, CO"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ",\n            NH"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", also absorb infrared waves). After absorption, their\n            thermal motion increases, that is, they heat up and heat their surroundings. Infrared lamps are used in\n            physical therapy."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "Infrared\n                radiation also plays an important role in maintaining the earth’s warmth or average temperature\n                through the greenhouse effect. In"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "coming visible light (which passes\n            relatively easily through the atmosphere) is absorbed by the earth’s surface and re-radiated as\n            infrared (longer wavelength) radiations. This radiation is trapped by greenhouse gases such as carbon\n            dioxide and water vapour. Infrared detectors are used in Earth satellites, both for military purposes and to\n            observe growth of crops. Electronic devices (for example semiconductor light emitting diodes) also emit\n            infrared and are widely used in the remote switches of household electronic systems such as TV sets, video\n            recorders and hi-fi systems."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530202
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.4 VISIBLE RAYS",
+      "id": "h.qf3io2gr9u10"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It is the most familiar form of electromagnetic waves. It is the part of the spectrum\n            that is detected by the human eye. It runs from about 4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz to about 7 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "14"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz or a\n            wavelength range of about 700 – 400 nm. Visible light emitted or reflected from objects around us\n            provides us information about the world. Our eyes are sensitive to this range of wavelengths. Different\n            animals are sensitive to different range of wavelengths. For example, snakes can detect infrared waves, and\n            the ‘visible’ range of many insects extends well into the utraviolet."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.5 ULTRAVIOLET RAYS",
+      "id": "h.bdbwemjlrne8"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "It covers wavelengths ranging from about 4 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m (400 nm) down to 6 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m (0.6 nm). Ultraviolet (uv) radiation is produced by special\n            lamps and very hot bodies. The sun is an important source of ultraviolet light."
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "highlighted",
+              "text": "But\n                fortunately, most of it is absorbed in the ozone layer in the atmosphere at an altitude of about 40\n                – 50 km."
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "uv light in large quantities has harmful effects on\n            humans. Exposure to UV radiation induces the production of more melanin, causing tanning of the skin. UV\n            radiation is absorbed by ordinary glass. Hence, one cannot get tanned or sunburn through glass\n            windows."
+        }
+      ],
+      "status": "marked",
+      "pyq_ids": [
+        530206
+      ],
+      "pyq_count": 1
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Welders wear special glass goggles or face masks with glass windows to protect their\n            eyes from large amount of UV produced by welding arcs. Due to its shorter wavelengths, UV radiations can be\n            focussed into very narrow beams for high precision applications such as LASIK (Laser-assisted in situ\n            keratomileusis) eye surgery. UV lamps are used to kill germs in water purifiers."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Ozone layer in the atmosphere plays a protective role, and hence its depletion by\n            chlorofluorocarbons (CFCs) gas (such as freon) is a matter of international concern."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.6 X-RAYS",
+      "id": "h.plygvz626jez"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Beyond the uv region of the electromagnetic spectrum lies the x-ray region. We are\n            familiar with x-rays because of its medical applications. It covers wavelengths from about 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m (10 nm) down to 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–13"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m (10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "nm). One common way to generate X-rays is to bombard a metal target by high energy\n            electrons. X-rays are used as a diagnostic tool in medicine and as a treatment for certain forms of cancer.\n            Because x-rays damage or destroy living tissues and organisms, care must be taken to avoid unnecessary or\n            over exposure."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "8.4.7 GAMMA RAYS",
+      "id": "h.3ehzwoq8jgxx"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They lie in the upper frequency range of the electromagnetic spectrum and have\n            wavelengths of from about 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m to less than\n            10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–14"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m. This high frequency radiation is produced in\n            nuclear reactions and also emitted by radioactive nuclei. They are used in medicine to destroy cancer\n            cells."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Table 8.1 summarises different types of electromagnetic waves, their production and\n            detections. As mentioned earlier, the demarcation between different regions is not sharp and there are\n            overlaps."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image6.jpg",
+              "alt": "315",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "SUMMARY",
+      "id": "h.3k1divxgmhnp"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1. Maxwell found an inconsistency in the Ampere’s law and suggested the\n            existence of an additional current, called displacement current, to remove this inconsistency. This\n            displacement current is due to time-varying electric field and is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image24.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and acts as a source of magnetic field in exactly the same way as conduction\n            current."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. An accelerating charge produces electromagnetic waves. An electric charge\n            oscillating harmonically with frequency ν, produces electromagnetic waves of the same frequency ν. An\n            electric dipole is a basic source of electromagnetic waves."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. Electromagnetic waves with wavelength of the order of a few metres were first\n            produced and detected in the laboratory by Hertz in 1887. He thus verified a basic prediction of\n            Maxwell’s equations."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4. Electric and magnetic fields oscillate sinusoidally in space and time in an\n            electromagnetic wave. The oscillating electric and magnetic fields, E and B are perpendicular to each other,\n            and to the direction of propagation of the electromagnetic wave. For a wave of frequency ν, wavelength\n            λ, propagating along z-direction, we have"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E = Ex (t) = E0 sin (kz – ω t )"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= E0 sin"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image4.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B = By(t) = B0 sin (kz – ω t)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image18.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They are related by E0/B0 = c."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5. The speed c of electromagnetic wave in vacuum is related to µ0 and\n            ε0 (the free space permeability and permittivity constants) as follows:"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image27.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The value of c equals the speed of light obtained from optical\n            measurements."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Light is an electromagnetic wave; c is, therefore, also the speed of light.\n            Electromagnetic waves other than light also have the same velocity c in free space."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The speed of light, or of electromagnetic waves in a material medium is given\n            by"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image19.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "where µ is the permeability of the medium and ε its\n            permittivity."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6. Electromagnetic waves carry energy as they travel through space and this energy is\n            shared equally by the electric and magnetic fields."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Electromagnetic waves transport momentum as well. When these waves strike a surface,\n            a pressure is exerted on the surface. If total energy transferred to a surface in time t is U, total\n            momentum delivered to this surface is p = U/c."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7. The spectrum of electromagnetic waves stretches, in principle, over an infinite\n            range of wavelengths. Different regions are known by different names; γ-rays, X-rays, ultraviolet\n            rays, visible rays, infrared rays, microwaves and radio waves in order of increasing wavelength from\n            10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Å or 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "–12"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m to 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "They interact with matter via their electric and magnetic fields which set in\n            oscillation charges present in all matter. The detailed interaction and so the mechanism of absorption,\n            scattering, etc., depend on the wavelength of the electromagnetic wave, and the nature of the atoms and\n            molecules in the medium."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Points to Ponder"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1. The basic difference between various types of electromagnetic waves lies in their\n            wavelengths or frequencies since all of them travel through vacuum with the same speed. Consequently, the\n            waves differ considerably in their mode of interaction with matter."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2. Accelerated charged particles radiate electromagnetic waves. The wavelength of\n            the electromagnetic wave is often correlated with the characteristic size of the system that radiates. Thus,\n            gamma radiation, having wavelength of 10–14 m to 10–15 m, typically originate from an atomic\n            nucleus. X-rays are emitted from heavy atoms. Radio waves are produced by accelerating electrons in a\n            circuit. A transmitting antenna can most efficiently radiate waves having a wavelength of about the same\n            size as the antenna. Visible radiation emitted by atoms is, however, much longer in wavelength than atomic\n            size."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3. The oscillating fields of an electromagnetic wave can accelerate charges and can\n            produce oscillating currents. Therefore, an apparatus designed to detect electromagnetic waves is based on\n            this fact. Hertz original ‘receiver’ worked in exactly this way. The same basic principle is\n            utilised in practically all modern receiving devices. High frequency electromagnetic waves are detected by\n            other means based on the physical effects they produce on interacting with matter."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4. Infrared waves, with frequencies lower than those of visible light, vibrate not\n            only the electrons, but entire atoms or molecules of a substance. This vibration increases the internal\n            energy and consequently, the temperature of the substance. This is why infrared waves are often called heat\n            waves."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "5. The centre of sensitivity of our eyes coincides with the centre of the wavelength\n            distribution of the sun. It is because humans have evolved with visions most sensitive to the strongest\n            wavelengths from the sun."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "EXERCISES",
+      "id": "h.2mszjwhrvtyq"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.1 Figure 8.6 shows a capacitor made of two circular plates each of radius 12 cm,\n            and separated by 5.0 cm. The capacitor is being charged by an external source (not shown in the figure). The\n            charging current is constant and equal to 0.15A."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Calculate the capacitance and the rate of change of potential difference between\n            the plates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Obtain the displacement current across the plates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Is Kirchhoff’s first rule (junction rule) valid at each plate of the\n            capacitor? Explain."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image5.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.6"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.2 A parallel plate capacitor (Fig. 8.7) made of circular plates each of radius R =\n            6.0 cm has a capacitance C = 100 pF. The capacitor is connected to a 230 V AC supply with a (angular)\n            frequency of 300"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rad−sec"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "−1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) What is the RMS value of the conduction current?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Is the conduction current equal to the displacement current?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Determine the amplitude of B at a point 3.0 cm from the axis between the\n            plates."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image10.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Figure 8.7"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.3 What physical quantity is the same for X-rays of wavelength"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "m, the red light of wavelength\n            6800 Å and radiowaves of wavelength 500m?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.4 A plane electromagnetic wave travels in vacuum along the z-direction. What can\n            you say about the directions of its electric and magnetic field vectors? If the frequency of the wave is 30\n            MHz, what is its wavelength?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.5 A radio can tune in to any station in the 7.5 MHz to 12 MHz bands. What is the\n            corresponding wavelength band?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.6 A charged particle oscillates about its mean equilibrium position with a\n            frequency of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz. What\n            is the frequency of the electromagnetic waves produced by the oscillator?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.7 The amplitude of the magnetic field part of a harmonic electromagnetic wave in\n            vacuum is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "= 510\n            nT"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". What is the amplitude of the electric field part of the wave?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.8 Suppose that the electric field amplitude of an electromagnetic wave is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=120 N/C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and that its frequency is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ν=50.0 MHzν=50.0 MHz"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Determine, B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", ω, k,\n            and λ."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Find expressions for E and B."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.9 The terminology of different parts of the electromagnetic spectrum is given in\n            the text. Use the formula"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E=hν"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(for the energy of a\n            quantum of radiation: photon) and obtain the photon energy in units of eV for different parts of the\n            electromagnetic spectrum. In what way are the different scales of photon energies that you obtain related to\n            the sources of electromagnetic radiation?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "The photon energies for the different parts of the spectrum of a source indicate the\n            spacing of the relevant energy levels of the source."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.10 In a plane electromagnetic wave, the electric field oscillates sinusoidally at\n            a frequency of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2.0 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and amplitude 48 V/m."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) What is the wavelength of the wave?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) What is the amplitude of the oscillating magnetic field?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Show that the average energy density of the electric field equals the average\n            energy density of the magnetic field. ["
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c = 3 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ms"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "−1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "]"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "ADDITIONAL EXERCISES",
+      "id": "h.dyipmixt3hlc"
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.11 Suppose that the electric field part of an electromagnetic wave in vacuum is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E=(3.1N/C)cos[(1.8 rad/m)y + (5.4×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "6"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rad/s)t]ˆi"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) What is the direction of propagation?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) What is the wavelength λ?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) What is the frequency"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ν"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) What is the amplitude of the magnetic field part of the wave?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(e) Write an expression for the magnetic field part of the wave."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.12 About 5% of the power of a 100 W light bulb is converted to visible\n            radiation. What is the average intensity of visible radiation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) at a distance of 1 m from the bulb?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) at a distance of 10 m?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Assume that the radiation is emitted isotropically and neglect reflection."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.13 Use the formula"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "λmT=0.29 cm K"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "to obtain the characteristic temperature ranges for different parts of the\n            electromagnetic spectrum. What do the numbers that you obtain tell you?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.14 Given below are some famous numbers associated with electromagnetic\n            radiations in different contexts in Physics. State the part of the electromagnetic spectrum to which each\n            belongs."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) 21 cm (wavelength emitted by atomic hydrogen in interstellar space)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) 1057 MHz (frequency of radiation arising from two close energy levels in\n            hydrogen; known as Lamb shift)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) 2.7 K [temperature associated with the isotropic radiation filling all\n            space-thought to be a relic of the ‘big-bang’ origin of the universe]."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) 5890 Å - 5896 Å [double lines of sodium]"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(e) 14.4 keV [energy of a particular transition in"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "57"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Fe"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "nucleus associated with a\n            famous high-resolution spectroscopic method (Mössbauer spectroscopy)]."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8.15 Answer the following questions:"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Long-distance radio broadcasts use short-wave bands. Why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) It is necessary to use satellites for long-distance TV transmission.\n            Why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Optical and radio telescopes are built on the ground but X-ray astronomy is\n            possible only from satellites orbiting the earth. Why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) The small ozone layer on top of the stratosphere is crucial for human\n            survival. Why?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(e) If the earth did not have an atmosphere, would its average surface\n            temperature be higher or lower than what it is now?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(f) Some scientists have predicted that a global nuclear war on the earth would\n            be followed by a severe ‘nuclear winter’ with a devastating effect on life on earth. What might\n            be the basis of this prediction?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.2 A linearly polarised electromagnetic wave given as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E=E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ˆi cos\n            (kz−ωt)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is incident normally on a perfectly reflecting infinite\n            wall at z = a. Assuming that the material of the wall is optically inactive, the reflected wave will be\n            given as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Er=E0i^ (kz-ωt)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Er=E0i^cos(kz+ωt)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Er=-E0i^cos(kz+ωt)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Er=E0i^sin(kz-ωt)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.3 Light with an energy flux of 20 W/"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "falls on a non-reflecting surface at normal incidence. If the\n            surface has an area of 30"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cm"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", the\n            momentum delivered (for complete absorption) during 30 min is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) 36×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-5"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg-m/s"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) 36×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg-m/s"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) 108×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg-m/s"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) 1.08×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "kg-m/s"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.4 The electric field intensity produced by the radiations coming from 100 W bulb at\n            a 3 m distance is £. The electric field intensity produced by the radiations coming from 50 W bulb at\n            the same distance is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) E/2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) 2E"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) E/√2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) √2E"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.6 The ratio of contributions made by the electric field and magnetic field\n            components to the intensity of an EM wave is"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) c : 1"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "c"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": 1"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) 1 : 1"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "√c"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ": 1"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.7 An EM wave radiates outwards from a dipole antenna, with"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", as the amplitude of its electric field\n            vector. The electric field"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ",\n            which transports significant energy from the source falls off as"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) 1/r"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "3"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) 1/r"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) 1/r"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) remains constant"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.8 An electromagnetic wave travels in vacuum along z-direction"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E=(E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ˆiE"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ˆj)cos(kz−ωt)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". Choose the\n            correct options from the following"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) The associated magnetic field is given as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B=-1/c(E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "i^-E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "j^) cos(kz-ωt)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) The associated magnetic field is given as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B=-1/c(E1i^-E2j^) cos(kz-ωt)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.9 An electromagnetic wave travelling along z-axis is given as\n            E=E0cos(kz-ωt).Choose the correct options from the following"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) The associated magnetic field is given as\n            R=1ck^×E=1ω(k^×E)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) The electromagnetic field can be written in terms of the associated magnetic\n            field as E=c(B×k^)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) k^-E=0,k^.B=0"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) k^×E=0,k^×B=0"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.10 A plane electromagnetic wave propagating along x-direction can have the\n            following pairs of E and B."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "z"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "x"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "n"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "y"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q. 11 A charged particle oscillates about its mean equilibrium position with a\n            frequency of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz. The\n            electromagnetic waves produced"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) will have frequency of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) will have frequency of"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2 × 10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "9"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) will have wavelength of 0.3 m"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) fall in the region of radiowaves"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q. 12 The source of electromagnetic waves can be a charge"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.13 An EM wave of intensity I falls on a surface kept in vacuum and exerts radiation\n            pressure p on it. Which of the following are true?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Radiation pressure is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I/C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "if\n            the wave is totally absorbed"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Radiation pressure is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I/C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "if\n            the wave is totally reflected"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Radiation pressure is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2I/C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "if the wave is totally reflected"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(d) Radiation pressure is in the range"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I/C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "< P <"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2I/C"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "for real surfaces"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.14 Why is the orientation of the portable radio with respect to broadcasting\n            stations important?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.15 Why does microwave oven heats up a food item containing water molecules most\n            efficiently?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.16 The charge on a parallel plate capacitor varies as"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "q=q"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "cos 2πvt"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ". The plates are very large and close together (area = A, separation =d). Neglecting the edge\n            effects, find the displacement current through the capacitor."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.17 A variable frequency AC source is connected to a capacitor. How will the\n            displacement current change with a decrease in frequency?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=12×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "-8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin(1.20×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "7"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "z-3.60×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "15"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "t)T."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What is the average intensity of the beam?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.19 Poynting vectors § is defined as a vector whose magnitude is equal to the\n            wave intensity and whose direction is along the direction of wave propagation. Mathematically, it is given\n            by"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s=1/μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E×B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ".  Show the nature of s versus t graph."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.20 Professor CV Raman surprised his students by suspending freely a tiny light ball\n            in a transparent vacuum chamber by shining a laser beam on it. Which property of EM waves was he exhibiting?\n            Give one more example of this property."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.21  Show that the magnetic field B at a point in between the plates of\n            parallel capacitor during charging is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "n"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "n"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "rdE/2 dt"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(symbols having usual meaning)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image39.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.22 Electromagnetic waves with a wavelength"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i)"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "λ1"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "λ2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "λ3"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "λ4"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is used to improve visibility in runways during fog and\n            mist conditions."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(a) Identify and name the part of the electromagnetic spectrum to which these\n            radiations belong."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(b) Arrange these wavelengths in ascending order of their magnitude."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(c) Write one more application of each."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.23 Show that average value of radiant flux density S over a single period T is\n            given by S ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "1/2cμ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.24 You are given a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2μF"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "parallel plate capacitor. How would you establish an instantaneous displacement current of\n            1 mA in the space between its plates?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.25 Show that the radiation pressure exerted by an EM wave of intensity I on a\n            surface kept in vacuum is"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I/C."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.27 Even though an electric field E exer ts a force gE on a charged particle yet\n            electric field of an EM wave does not contribute to the radiation pressure (but transfers energy).\n            Explain."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q28. An infinitely long thin wire carrying a uniform linear static charge density"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "λ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "is placed along the z-axis (figure). The wire is\n            set into motion along its length with a uniform velocity v ="
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "vk^z"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "S=1/μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(E×B)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image28.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.29 Seawater at frequency"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "v=4×10"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "8"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Hz has permittivity ε≈80ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ", permeability μ≈μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "and resistivity p=0.25 m. Imagine a parallel player capacitor\n            immersed in seawater and driven by an alternating voltage source"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "V(t)=V"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin(2πvt)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "What fraction of the conduction current density is the displacement current\n            density?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E(s,t)=μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "v cos(2πvt) In ("
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "s/a"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": ")ˆk."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "linebreak"
+            }
+          ]
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) Compare the conduction current"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "with the displacement current"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "d"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.31 A plane EM wave travelling in vacuum along z-direction is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E-E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin(kz-ωt)i^ and\n            B=B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin(kz-ωt)j^."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) Evaluate ∫E·dl over the rectangular loop 1234 shown in figure."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) Evaluate ∫B·ds over the surgace bounded by loop 1234."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iii) use equation ∫E·dl=-dϕBdtto proveE"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=c."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(iv) by using similar process and the equation"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "∫B·dl=μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I+ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "dϕ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/dt, prove that c=1/"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "√"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "content": [
+            {
+              "type": "image",
+              "src": "public/ncert/physics/images/Electromagnetic_Waves-image15.png",
+              "alt": "",
+              "title": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "Q.32 A plane EM wave travelling along z-direction is described by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E=E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin(kz-ωt)i^ and\n            B=B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "sin(kz-ωt)j^. Show that"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(i) the average energy density of the wave is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "U"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "av"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=1/4ε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "+1/4B"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "/μ"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "(ii) the time averaged intensity of the wave is given by"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "I"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "av"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "=1/2cε"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "E"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "2"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "0"
+        },
+        {
+          "type": "inline",
+          "tag": "span",
+          "text": "."
+        }
+      ]
+    }
+  ]
+}
