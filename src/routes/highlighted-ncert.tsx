@@ -1,16 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import {
   listBookChapters,
   getBookChapter,
-  getBookPyqs,
   runsOf,
   resolveBookImage,
   runImageSrc,
   type BookBlock,
   type BookChapter,
-  type BookPyq,
 } from "@/lib/ncert-book";
 import { SiteHeader } from "@/components/site-header";
 import {
@@ -22,7 +20,6 @@ import {
   ImageIcon,
   Highlighter,
   Search,
-  X,
 } from "lucide-react";
 
 type Subject = "biology" | "chemistry" | "physics";
@@ -49,6 +46,11 @@ export const Route = createFileRoute("/highlighted-ncert")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+  }),
+  validateSearch: (search: Record<string, unknown>) => ({
+    subject: typeof search.subject === "string" ? (search.subject as Subject) : undefined,
+    slug: typeof search.slug === "string" ? search.slug : undefined,
+    block: search.block != null && !Number.isNaN(Number(search.block)) ? Number(search.block) : undefined,
   }),
   component: Page,
   errorComponent: ({ error }) => (
@@ -93,8 +95,14 @@ function Shell({ children }: { children: React.ReactNode }) {
 }
 
 function Page() {
-  const [subject, setSubject] = useState<Subject>("biology");
-  const [slug, setSlug] = useState<string | null>(null);
+  const search = Route.useSearch();
+  const navigate = useNavigate({ from: "/highlighted-ncert" });
+  const subject: Subject = search.subject ?? "biology";
+  const slug = search.slug ?? null;
+
+  const setSubject = (s: Subject) => navigate({ search: { subject: s } });
+  const setSlug = (s: string | null) =>
+    navigate({ search: { subject, slug: s ?? undefined } });
 
   const chaptersQ = useQuery({
     queryKey: ["ncert-book", "chapters"],
@@ -103,13 +111,13 @@ function Page() {
   });
 
   useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, [slug, subject]);
+    if (!search.block) window.scrollTo({ top: 0 });
+  }, [slug, subject, search.block]);
 
   if (slug) {
     return (
       <Shell>
-        <Reader slug={slug} onBack={() => setSlug(null)} />
+        <Reader slug={slug} focusBlock={search.block} onBack={() => setSlug(null)} />
       </Shell>
     );
   }
@@ -262,16 +270,44 @@ function ChapterList({
 
 /* ------------------------------ reader ----------------------------- */
 
-function Reader({ slug, onBack }: { slug: string; onBack: () => void }) {
+function Reader({
+  slug,
+  focusBlock,
+  onBack,
+}: {
+  slug: string;
+  focusBlock?: number;
+  onBack: () => void;
+}) {
+  const navigate = useNavigate();
   const q = useQuery({
     queryKey: ["ncert-book", "chapter", slug],
     queryFn: () => getBookChapter(slug),
     staleTime: 1000 * 60 * 30,
   });
-  const [pyqIds, setPyqIds] = useState<number[] | null>(null);
   const [onlyHighlights, setOnlyHighlights] = useState(false);
 
+  const openPractice = (ids: number[], blockId: number) =>
+    navigate({
+      to: "/ncert-practice",
+      search: { ids: ids.join(","), slug, block: blockId },
+    });
+
   const data = q.data;
+
+  useEffect(() => {
+    if (!focusBlock || !data) return;
+    const el = document.getElementById(`blk-${focusBlock}`);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.add("ring-2", "ring-amber-400", "rounded-xl");
+    const t = setTimeout(
+      () => el.classList.remove("ring-2", "ring-amber-400", "rounded-xl"),
+      2600,
+    );
+    return () => clearTimeout(t);
+  }, [focusBlock, data]);
+
   const visible = useMemo(() => {
     const blocks = data?.blocks ?? [];
     return onlyHighlights ? blocks.filter((b) => isMarked(b)) : blocks;
@@ -326,12 +362,11 @@ function Reader({ slug, onBack }: { slug: string; onBack: () => void }) {
             key={b.id}
             block={b}
             subject={data?.chapter.subject}
-            onPyq={setPyqIds}
+            focused={focusBlock === b.id}
+            onPyq={(ids) => openPractice(ids, b.id)}
           />
         ))}
       </div>
-
-      {pyqIds && <RelatedPyqSheet ids={pyqIds} onClose={() => setPyqIds(null)} />}
     </article>
   );
 }
@@ -370,10 +405,12 @@ function cleanText(s: string): string {
 function Block({
   block,
   subject,
+  focused,
   onPyq,
 }: {
   block: BookBlock;
   subject?: string;
+  focused?: boolean;
   onPyq: (ids: number[]) => void;
 }) {
   const runs = runsOf(block);
@@ -440,10 +477,18 @@ function Block({
   };
 
   return (
-    <div onClick={open} className={hasPyq ? "cursor-pointer" : undefined}>
+    <div
+      id={`blk-${block.id}`}
+      onClick={open}
+      className={
+        (hasPyq ? "cursor-pointer " : "") +
+        "scroll-mt-24 p-1 transition " +
+        (focused ? "rounded-xl ring-2 ring-amber-400" : "")
+      }
+    >
       {hasPyq && (
         <span className="mb-1 inline-flex items-center gap-1 rounded-full bg-amber-500/12 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
-          Related PYQs · {pyqIds.length}
+          Practise {pyqIds.length} PYQ{pyqIds.length > 1 ? "s" : ""} from this line
         </span>
       )}
       {hasText && (
@@ -467,7 +512,7 @@ function Block({
       ))}
       {hasPyq && (
         <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-amber-600/80">
-          Tap the highlighted line to see the questions asked from it
+          Tap the highlighted line to solve the questions asked from it
         </span>
       )}
     </div>
@@ -515,122 +560,5 @@ function Figure({ src, caption }: { src: string; caption?: string }) {
         </figcaption>
       )}
     </figure>
-  );
-}
-
-/* --------------------------- related PYQs --------------------------- */
-
-function RelatedPyqSheet({ ids, onClose }: { ids: number[]; onClose: () => void }) {
-  const q = useQuery({
-    queryKey: ["ncert-book", "pyqs", ids.join(",")],
-    queryFn: () => getBookPyqs(ids),
-    staleTime: 1000 * 60 * 30,
-  });
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-sm sm:items-center"
-      onClick={onClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl border bg-card p-5 shadow-2xl sm:rounded-3xl"
-      >
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-bold">Related PYQs</h3>
-          <button
-            onClick={onClose}
-            className="rounded-full bg-secondary p-2 text-muted-foreground transition hover:text-foreground"
-            aria-label="Close"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-        {q.isPending && <Spinner />}
-        {q.isError && <ErrorBox message={(q.error as Error).message} onRetry={() => q.refetch()} />}
-        <div className="space-y-4">
-          {(q.data ?? []).map((p) => (
-            <PyqCard key={p.unique_id} pyq={p} />
-          ))}
-        </div>
-        {q.data && q.data.length === 0 && (
-          <p className="py-6 text-center text-xs text-muted-foreground">
-            These questions are no longer available.
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function PyqCard({ pyq }: { pyq: BookPyq }) {
-  const [show, setShow] = useState(false);
-  const options = [
-    ["A", pyq.option_a],
-    ["B", pyq.option_b],
-    ["C", pyq.option_c],
-    ["D", pyq.option_d],
-  ].filter(([, v]) => !!v) as [string, string][];
-
-  return (
-    <div className="rounded-2xl border bg-gradient-to-br from-blue-500/5 to-indigo-500/5 p-4">
-      <div className="mb-2 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-        {pyq.topic_name && (
-          <span className="rounded-full bg-secondary px-2 py-0.5">{pyq.topic_name}</span>
-        )}
-        {pyq.difficulty && (
-          <span className="rounded-full bg-secondary px-2 py-0.5">{pyq.difficulty}</span>
-        )}
-      </div>
-      <p className="text-sm font-medium leading-relaxed">{pyq.question}</p>
-      {pyq.image_url && (
-        <img
-          src={resolveBookImage(pyq.image_url, pyq.subject)}
-          alt=""
-          loading="lazy"
-          className="mt-3 w-full rounded-xl border bg-white"
-        />
-      )}
-      {options.length > 0 && (
-        <ul className="mt-3 space-y-1.5">
-          {options.map(([k, v]) => (
-            <li key={k} className="flex gap-2 text-sm">
-              <span className="font-bold text-muted-foreground">{k}.</span>
-              <span>{v}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-      <button
-        onClick={() => setShow((s) => !s)}
-        className="mt-3 rounded-full bg-secondary px-3 py-1.5 text-xs font-semibold transition hover:bg-secondary/70"
-      >
-        {show ? "Hide answer" : "Show answer"}
-      </button>
-      {show && (
-        <div className="mt-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-3 text-sm">
-          {pyq.answer && (
-            <div className="font-semibold text-emerald-700 dark:text-emerald-300">
-              Answer: {pyq.answer}
-            </div>
-          )}
-          {pyq.explanation && (
-            <p className="mt-1 leading-relaxed text-muted-foreground">{pyq.explanation}</p>
-          )}
-        </div>
-      )}
-    </div>
   );
 }
