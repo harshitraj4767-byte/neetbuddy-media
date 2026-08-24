@@ -8,7 +8,7 @@ const ITEMS = [
   { to: "/dashboard", label: "Home", icon: Home, match: ["/dashboard"] },
   { to: "/quiz", label: "Quiz", icon: Brain, match: ["/quiz", "/subjects", "/generate", "/battlegrounds", "/contest"] },
   { to: "/test", label: "Test", icon: ClipboardList, match: ["/test", "/mocks", "/pyqs"] },
-  { to: "/study-essentials", label: "Books", icon: BookOpen, match: ["/study-essentials", "/ncert-highlights", "/highlighted-ncert", "/flashcards", "/neetlab", "/study-view"] },
+  { to: "/study-essentials", label: "Books", icon: BookOpen, match: ["/study-essentials", "/ncert-key-points", "/ncert-highlights", "/highlighted-ncert", "/flashcards", "/neetlab", "/study-view"] },
   { to: "/analyse", label: "Analyse", icon: LineChart, match: ["/analyse", "/ai-path", "/score-predictor", "/progress", "/bookmarks", "/mistakes", "/analytics", "/improvement"] },
 ] as const;
 

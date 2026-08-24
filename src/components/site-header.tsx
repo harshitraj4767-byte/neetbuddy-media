@@ -52,7 +52,7 @@ const GROUPS: Group[] = [
       { to: "/study-essentials", label: "Study Essentials" },
       { to: "/pyqs", label: "NEET PYQs" },
       { to: "/flashcards", label: "Flashcards" },
-      { to: "/ncert-highlights", label: "NCERT Key Points" },
+      { to: "/ncert-key-points", label: "NCERT Key Points" },
       { to: "/highlighted-ncert", label: "Highlighted NCERT" },
       { to: "/neetlab", label: "NEETLab" },
       { to: "/bookmarks", label: "Bookmarks" },

@@ -45,6 +45,7 @@ import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as MistakesRouteImport } from './routes/mistakes'
 import { Route as MocksRouteImport } from './routes/mocks'
 import { Route as NcertHighlightsRouteImport } from './routes/ncert-highlights'
+import { Route as NcertKeyPointsRouteImport } from './routes/ncert-key-points'
 import { Route as NcertPracticeRouteImport } from './routes/ncert-practice'
 import { Route as NeetlabRouteImport } from './routes/neetlab'
 import { Route as PremiumRouteImport } from './routes/premium'
@@ -275,6 +276,11 @@ const MocksRoute = MocksRouteImport.update({
 const NcertHighlightsRoute = NcertHighlightsRouteImport.update({
   id: '/ncert-highlights',
   path: '/ncert-highlights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcertKeyPointsRoute = NcertKeyPointsRouteImport.update({
+  id: '/ncert-key-points',
+  path: '/ncert-key-points',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NcertPracticeRoute = NcertPracticeRouteImport.update({
@@ -580,6 +586,7 @@ export interface FileRoutesByFullPath {
   '/mistakes': typeof MistakesRoute
   '/mocks': typeof MocksRoute
   '/ncert-highlights': typeof NcertHighlightsRoute
+  '/ncert-key-points': typeof NcertKeyPointsRoute
   '/ncert-practice': typeof NcertPracticeRoute
   '/neetlab': typeof NeetlabRoute
   '/premium': typeof PremiumRoute
@@ -669,6 +676,7 @@ export interface FileRoutesByTo {
   '/mistakes': typeof MistakesRoute
   '/mocks': typeof MocksRoute
   '/ncert-highlights': typeof NcertHighlightsRoute
+  '/ncert-key-points': typeof NcertKeyPointsRoute
   '/ncert-practice': typeof NcertPracticeRoute
   '/neetlab': typeof NeetlabRoute
   '/premium': typeof PremiumRoute
@@ -759,6 +767,7 @@ export interface FileRoutesById {
   '/mistakes': typeof MistakesRoute
   '/mocks': typeof MocksRoute
   '/ncert-highlights': typeof NcertHighlightsRoute
+  '/ncert-key-points': typeof NcertKeyPointsRoute
   '/ncert-practice': typeof NcertPracticeRoute
   '/neetlab': typeof NeetlabRoute
   '/premium': typeof PremiumRoute
@@ -850,6 +859,7 @@ export interface FileRouteTypes {
     | '/mistakes'
     | '/mocks'
     | '/ncert-highlights'
+    | '/ncert-key-points'
     | '/ncert-practice'
     | '/neetlab'
     | '/premium'
@@ -939,6 +949,7 @@ export interface FileRouteTypes {
     | '/mistakes'
     | '/mocks'
     | '/ncert-highlights'
+    | '/ncert-key-points'
     | '/ncert-practice'
     | '/neetlab'
     | '/premium'
@@ -1028,6 +1039,7 @@ export interface FileRouteTypes {
     | '/mistakes'
     | '/mocks'
     | '/ncert-highlights'
+    | '/ncert-key-points'
     | '/ncert-practice'
     | '/neetlab'
     | '/premium'
@@ -1118,6 +1130,7 @@ export interface RootRouteChildren {
   MistakesRoute: typeof MistakesRoute
   MocksRoute: typeof MocksRoute
   NcertHighlightsRoute: typeof NcertHighlightsRoute
+  NcertKeyPointsRoute: typeof NcertKeyPointsRoute
   NcertPracticeRoute: typeof NcertPracticeRoute
   NeetlabRoute: typeof NeetlabRoute
   PremiumRoute: typeof PremiumRoute
@@ -1415,6 +1428,13 @@ declare module '@tanstack/react-router' {
       path: '/ncert-highlights'
       fullPath: '/ncert-highlights'
       preLoaderRoute: typeof NcertHighlightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncert-key-points': {
+      id: '/ncert-key-points'
+      path: '/ncert-key-points'
+      fullPath: '/ncert-key-points'
+      preLoaderRoute: typeof NcertKeyPointsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ncert-practice': {
@@ -1865,6 +1885,7 @@ const rootRouteChildren: RootRouteChildren = {
   MistakesRoute: MistakesRoute,
   MocksRoute: MocksRoute,
   NcertHighlightsRoute: NcertHighlightsRoute,
+  NcertKeyPointsRoute: NcertKeyPointsRoute,
   NcertPracticeRoute: NcertPracticeRoute,
   NeetlabRoute: NeetlabRoute,
   PremiumRoute: PremiumRoute,
@@ -1913,13 +1934,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
