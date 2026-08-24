@@ -11,14 +11,18 @@ import {
   type BookChapter,
 } from "@/lib/ncert-book";
 import { SiteHeader } from "@/components/site-header";
+import { HubHero } from "@/components/nav-tiles";
+import { getNcertProgress } from "@/lib/ncert-progress";
+import { useAuth } from "@/hooks/use-auth";
 import {
   Loader2,
   ChevronLeft,
   ChevronRight,
   BookOpen,
-  AlignLeft,
-  ImageIcon,
   Highlighter,
+  ImageIcon,
+  HelpCircle,
+  CheckCircle2,
   Search,
 } from "lucide-react";
 
@@ -32,13 +36,13 @@ const SUBJECTS: { id: Subject; label: string; icon: string }[] = [
 export const Route = createFileRoute("/highlighted-ncert")({
   head: () => ({
     meta: [
-      { title: "Highlighted NCERT E-Book — Neet Buddy" },
+      { title: "Highlighted NCERT — Neet Buddy" },
       {
         name: "description",
         content:
           "Read full NCERT chapters with PYQ-highlighted lines, diagrams and the previous year questions asked from each line.",
       },
-      { property: "og:title", content: "Highlighted NCERT E-Book — Neet Buddy" },
+      { property: "og:title", content: "Highlighted NCERT — Neet Buddy" },
       {
         property: "og:description",
         content: "NCERT chapters with PYQ-highlighted lines, diagrams and related PYQs.",
@@ -114,6 +118,14 @@ function Page() {
     staleTime: 1000 * 60 * 30,
   });
 
+  const { user } = useAuth();
+  const progressQ = useQuery({
+    queryKey: ["ncert-book", "progress", user?.id ?? "guest"],
+    queryFn: () => getNcertProgress(user!.id),
+    enabled: !!user?.id,
+    staleTime: 1000 * 30,
+  });
+
   useEffect(() => {
     if (!search.block) window.scrollTo({ top: 0 });
   }, [slug, subject, search.block]);
@@ -141,6 +153,7 @@ function Page() {
         <ChapterList
           chapters={chaptersQ.data.filter((c) => c.subject === subject)}
           subject={subject}
+          progress={progressQ.data ?? {}}
           onPick={setSlug}
         />
       )}
@@ -152,19 +165,17 @@ function Page() {
 
 function BookHeader() {
   return (
-    <header className="mb-4 flex items-center gap-3 rounded-2xl border bg-card/80 p-4 shadow-soft backdrop-blur">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-inset ring-primary/20">
-        <BookOpen className="h-6 w-6" />
-      </div>
-      <div className="min-w-0">
-        <h1 className="bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-2xl font-extrabold italic tracking-tight text-transparent sm:text-3xl">
-          NCERT E-Book
-        </h1>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-          Highlighted for NEET
-        </p>
-      </div>
-    </header>
+    <HubHero
+      eyebrow="NCERT + PYQ"
+      title="Highlighted NCERT"
+      description="Every NCERT line that has ever been asked in NEET, marked inside the chapter — with all the PYQs from that line ready to practise."
+      Icon={Highlighter}
+      accent="amber"
+      variant="banner"
+      compact
+      image="/illustrations/i3d-highlighted-ncert.png"
+      imageAlt="Highlighted NCERT book"
+    />
   );
 }
 
@@ -198,10 +209,13 @@ function SubjectTabs({ value, onChange }: { value: Subject; onChange: (s: Subjec
 function ChapterList({
   chapters,
   subject,
+  progress,
   onPick,
 }: {
   chapters: BookChapter[];
   subject: Subject;
+  /** chapter_slug -> distinct questions attempted by the signed-in user. */
+  progress: Record<string, number>;
   onPick: (slug: string) => void;
 }) {
   const [q, setQ] = useState("");
@@ -248,20 +262,7 @@ function ChapterList({
                 <span className="block truncate text-[15px] font-bold group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
                   {c.title}
                 </span>
-                <span className="mt-1 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                  <span className="inline-flex items-center gap-1">
-                    <AlignLeft className="h-3.5 w-3.5" />
-                    {c.para_count}
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <ImageIcon className="h-3.5 w-3.5" />
-                    {c.image_count}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400">
-                    <Highlighter className="h-3.5 w-3.5" />
-                    {c.highlight_count}
-                  </span>
-                </span>
+                <ChapterProgress total={c.pyq_count} solved={progress[c.slug] ?? 0} />
               </span>
               <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground/60 transition group-hover:translate-x-0.5 group-hover:text-emerald-500" />
             </button>
@@ -269,6 +270,48 @@ function ChapterList({
         ))}
       </ul>
     </section>
+  );
+}
+
+/** Question-based completion: attempted PYQs / total PYQs in the chapter. */
+function ChapterProgress({ total, solved }: { total: number; solved: number }) {
+  if (!total) {
+    return (
+      <span className="mt-1 block text-xs text-muted-foreground">Questions coming soon</span>
+    );
+  }
+  const done = Math.min(solved, total);
+  const pct = Math.round((done / total) * 100);
+  const complete = done >= total;
+  return (
+    <span className="mt-1.5 block">
+      <span className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-1">
+          <HelpCircle className="h-3.5 w-3.5" />
+          {total} questions
+        </span>
+        <span
+          className={
+            "inline-flex items-center gap-1 font-semibold " +
+            (complete ? "text-emerald-600 dark:text-emerald-400" : "")
+          }
+        >
+          {complete && <CheckCircle2 className="h-3.5 w-3.5" />}
+          {done}/{total} · {pct}%
+        </span>
+      </span>
+      <span className="mt-1.5 block h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+        <span
+          className={
+            "block h-full rounded-full transition-all " +
+            (complete
+              ? "bg-gradient-to-r from-emerald-500 to-teal-500"
+              : "bg-gradient-to-r from-amber-500 to-orange-500")
+          }
+          style={{ width: `${Math.max(pct, done > 0 ? 4 : 0)}%` }}
+        />
+      </span>
+    </span>
   );
 }
 
