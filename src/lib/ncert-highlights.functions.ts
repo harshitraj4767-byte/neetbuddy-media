@@ -67,15 +67,26 @@ export const getHighlights = createServerFn({ method: "POST" })
     }).parse(d),
   )
   .handler(async ({ data }) => {
-    let q = supabaseAdmin
-      .from("ncert_highlights" as never)
-      .select("id,subject_id,chapter_id,body,source")
-      .order("created_at", { ascending: true });
-    if (data.chapter_id) q = q.eq("chapter_id", data.chapter_id);
-    else if (data.subject_id) q = q.eq("subject_id", data.subject_id);
-    const { data: rows, error } = await q.limit(200);
-    if (error) throw new Error(error.message);
-    return { rows: (rows ?? []) as Highlight[] };
+    const build = () => {
+      let q = supabaseAdmin
+        .from("ncert_highlights" as never)
+        .select("id,subject_id,chapter_id,body,source")
+        .order("created_at", { ascending: true });
+      if (data.chapter_id) q = q.eq("chapter_id", data.chapter_id);
+      else if (data.subject_id) q = q.eq("subject_id", data.subject_id);
+      return q;
+    };
+    // No 200-row cap: page through every highlight for this chapter/subject.
+    const PAGE = 1000;
+    const rows: Highlight[] = [];
+    for (let off = 0; off < 200000; off += PAGE) {
+      const { data: page, error } = await build().range(off, off + PAGE - 1);
+      if (error) throw new Error(error.message);
+      const chunk = (page ?? []) as Highlight[];
+      rows.push(...chunk);
+      if (chunk.length < PAGE) break;
+    }
+    return { rows };
   });
 
 // ----- Admin: manual add -----

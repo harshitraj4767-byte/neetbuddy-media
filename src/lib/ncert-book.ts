@@ -106,11 +106,20 @@ export async function getBookChapter(
 }
 
 export async function getBookPyqs(ids: number[]): Promise<BookPyq[]> {
-  const unique = Array.from(new Set(ids)).slice(0, 50);
+  // No cap: fetch every linked PYQ, chunked to keep the request URL short.
+  const unique = Array.from(new Set(ids));
   if (unique.length === 0) return [];
-  const { data, error } = await db.from("ncert_book_pyq").select(PYQ_COLS).in("unique_id", unique);
-  if (error) throw new Error(error.message);
-  return (data ?? []) as BookPyq[];
+  const CHUNK = 100;
+  const out: BookPyq[] = [];
+  for (let i = 0; i < unique.length; i += CHUNK) {
+    const { data, error } = await db
+      .from("ncert_book_pyq")
+      .select(PYQ_COLS)
+      .in("unique_id", unique.slice(i, i + CHUNK));
+    if (error) throw new Error(error.message);
+    out.push(...((data ?? []) as BookPyq[]));
+  }
+  return out;
 }
 
 /** Normalise a stored content array; falls back to plain text. */
