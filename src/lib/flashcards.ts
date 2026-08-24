@@ -1,29 +1,30 @@
 // Data access for Flashcards.
-// `flashcards` is public read-only (RLS: SELECT to anon + authenticated), so the
-// browser client reads it directly. The old path went through a server function
-// using the service-role client, which fails against the Data API with the new
-// `sb_secret_*` key format ("Expected 3 parts in JWT; got 1").
+// Live schema (source of truth):
+//   flashcard_decks(id, title, subject, description, card_count, sort_order, is_active)
+//   flashcards(id, deck_id, front, back, hint, tags, difficulty, source, position)
+// Both are public read-only (RLS: SELECT to anon + authenticated), so the
+// browser client reads them directly — no server function, no service-role key.
 import { supabase } from "@/integrations/supabase/client";
 
 export type Flashcard = {
   id: string;
-  subject_id: string | null;
-  chapter_id: string | null;
+  deck_id: string | null;
   front: string;
   back: string;
+  hint: string | null;
   difficulty: string;
   source: string;
 };
 
 export type Deck = {
-  subject_id: string | null;
-  subject_name: string;
-  chapter_id: string | null;
-  chapter_name: string;
+  id: string | null;
+  title: string;
+  subject: string;
+  description: string | null;
   count: number;
 };
 
-const CARD_COLS = "id,subject_id,chapter_id,front,back,difficulty,source";
+const CARD_COLS = "id,deck_id,front,back,hint,difficulty,source,position";
 
 // The generated Database types don't include the flashcard tables yet.
 type QueryBuilder = {
@@ -36,69 +37,69 @@ type QueryBuilder = {
 
 const db = supabase as unknown as { from: (t: string) => QueryBuilder };
 
+type DeckRow = {
+  id: string;
+  title: string;
+  subject: string;
+  description: string | null;
+  card_count: number;
+  sort_order: number;
+};
+
 export async function listFlashcardDecks(): Promise<{ decks: Deck[]; totalCards: number }> {
-  const rows: Array<{ subject_id: string | null; chapter_id: string | null }> = [];
+  const { data, error } = await db
+    .from("flashcard_decks")
+    .select("id,title,subject,description,card_count,sort_order")
+    .order("subject", { ascending: true })
+    .order("sort_order", { ascending: true });
+  if (error) throw new Error(error.message);
+  const rows = (data ?? []) as DeckRow[];
+
+  // card_count is a denormalised column, so verify it against the real rows.
+  const live = await countCardsPerDeck();
+  const decks: Deck[] = rows.map((d) => ({
+    id: d.id,
+    title: d.title,
+    subject: d.subject,
+    description: d.description,
+    count: live.get(d.id) ?? d.card_count ?? 0,
+  }));
+  const totalCards = decks.reduce((n, d) => n + d.count, 0);
+  return { decks: decks.filter((d) => d.count > 0), totalCards };
+}
+
+async function countCardsPerDeck(): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
   const PAGE = 1000;
   for (let offset = 0; offset < 200000; offset += PAGE) {
     const { data, error } = await db
       .from("flashcards")
-      .select("subject_id,chapter_id")
+      .select("deck_id")
       .range(offset, offset + PAGE - 1);
     if (error) throw new Error(error.message);
-    const chunk = (data ?? []) as typeof rows;
-    rows.push(...chunk);
+    const chunk = (data ?? []) as Array<{ deck_id: string | null }>;
+    for (const r of chunk) {
+      if (!r.deck_id) continue;
+      counts.set(r.deck_id, (counts.get(r.deck_id) ?? 0) + 1);
+    }
     if (chunk.length < PAGE) break;
   }
-
-  const counts = new Map<string, number>();
-  for (const r of rows) {
-    const key = `${r.subject_id ?? ""}::${r.chapter_id ?? ""}`;
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-  }
-
-  const [{ data: subjects }, { data: chapters }] = await Promise.all([
-    db.from("subjects").select("id,name"),
-    db.from("chapters").select("id,name,subject_id"),
-  ]);
-  const subjById = new Map<string, string>(
-    ((subjects ?? []) as Array<{ id: string; name: string }>).map((s) => [s.id, s.name]),
-  );
-  const chById = new Map<string, { id: string; name: string }>(
-    ((chapters ?? []) as Array<{ id: string; name: string }>).map((c) => [c.id, c]),
-  );
-
-  const decks: Deck[] = [];
-  for (const [key, count] of counts) {
-    const [sid, cid] = key.split("::");
-    decks.push({
-      subject_id: sid || null,
-      subject_name: (sid && subjById.get(sid)) || "General",
-      chapter_id: cid || null,
-      chapter_name: (cid && chById.get(cid)?.name) || "Mixed",
-      count,
-    });
-  }
-  decks.sort(
-    (a, b) =>
-      a.subject_name.localeCompare(b.subject_name) || a.chapter_name.localeCompare(b.chapter_name),
-  );
-  return { decks, totalCards: rows.length };
+  return counts;
 }
 
 export async function getFlashcards(input: {
-  chapter_id?: string | null;
-  subject_id?: string | null;
+  deck_id?: string | null;
   limit?: number;
 }): Promise<{ cards: Flashcard[] }> {
+  const limit = Math.min(Math.max(input.limit ?? 50, 1), 200);
   let q = db.from("flashcards").select(CARD_COLS);
-  if (input.chapter_id) q = q.eq("chapter_id", input.chapter_id);
-  else if (input.subject_id) q = q.eq("subject_id", input.subject_id);
-  const { data, error } = await q.limit(Math.min(Math.max(input.limit ?? 50, 1), 200));
+  if (input.deck_id) q = q.eq("deck_id", input.deck_id);
+  const { data, error } = await q.limit(input.deck_id ? 200 : 400);
   if (error) throw new Error(error.message);
   const list = (data ?? []) as Flashcard[];
   for (let i = list.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [list[i], list[j]] = [list[j], list[i]];
   }
-  return { cards: list };
+  return { cards: list.slice(0, limit) };
 }
