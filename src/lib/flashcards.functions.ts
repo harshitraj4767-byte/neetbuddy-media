@@ -12,88 +12,6 @@ async function assertAdmin(userId: string) {
   if (!roles?.some((r) => r.role === "admin")) throw new Error("Admin only");
 }
 
-export type Flashcard = {
-  id: string;
-  subject_id: string | null;
-  chapter_id: string | null;
-  front: string;
-  back: string;
-  difficulty: string;
-  source: string;
-};
-
-// -------- Public: list decks (subject × chapter with counts) --------
-export const listFlashcardDecks = createServerFn({ method: "GET" }).handler(async () => {
-  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  // Page past Supabase's 1000-row default to get the FULL count, not capped at 1000.
-  const rows: Array<{ subject_id: string | null; chapter_id: string | null }> = [];
-  const PAGE = 1000;
-  for (let offset = 0; ; offset += PAGE) {
-    const { data, error } = await supabaseAdmin
-      .from("flashcards" as never)
-      .select("subject_id,chapter_id")
-      .range(offset, offset + PAGE - 1);
-    if (error) throw new Error(error.message);
-    const chunk = (data ?? []) as typeof rows;
-    rows.push(...chunk);
-    if (chunk.length < PAGE) break;
-    if (rows.length >= 200000) break;
-  }
-
-  const counts = new Map<string, number>();
-  for (const r of rows) {
-    const key = `${r.subject_id ?? ""}::${r.chapter_id ?? ""}`;
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-  }
-
-  const { data: subjects } = await supabaseAdmin.from("subjects").select("id,name");
-  const { data: chapters } = await supabaseAdmin.from("chapters").select("id,name,subject_id");
-  const subjById = new Map<string, string>((subjects ?? []).map((s: any) => [s.id as string, s.name as string]));
-  const chById = new Map((chapters ?? []).map((c: any) => [c.id, c]));
-
-  const decks: { subject_id: string | null; subject_name: string; chapter_id: string | null; chapter_name: string; count: number }[] = [];
-  for (const [key, count] of counts) {
-    const [sid, cid] = key.split("::");
-    const ch = cid ? (chById.get(cid) as any) : null;
-    decks.push({
-      subject_id: sid || null,
-      subject_name: (sid && subjById.get(sid)) || "General",
-      chapter_id: cid || null,
-      chapter_name: ch?.name ?? "Mixed",
-      count,
-    });
-  }
-  decks.sort((a, b) => a.subject_name.localeCompare(b.subject_name) || a.chapter_name.localeCompare(b.chapter_name));
-  return { decks, totalCards: rows.length };
-});
-
-
-// -------- Public: fetch cards for a deck (or random) --------
-export const getFlashcards = createServerFn({ method: "POST" })
-  .inputValidator((d: { chapter_id?: string | null; subject_id?: string | null; limit?: number }) =>
-    z.object({
-      chapter_id: z.string().uuid().nullable().optional(),
-      subject_id: z.string().uuid().nullable().optional(),
-      limit: z.number().int().min(1).max(200).optional(),
-    }).parse(d),
-  )
-  .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    let q = supabaseAdmin
-      .from("flashcards" as never)
-      .select("id,subject_id,chapter_id,front,back,difficulty,source");
-    if (data.chapter_id) q = q.eq("chapter_id", data.chapter_id);
-    else if (data.subject_id) q = q.eq("subject_id", data.subject_id);
-    const { data: rows, error } = await q.limit(data.limit ?? 50);
-    if (error) throw new Error(error.message);
-    const list = (rows ?? []) as Flashcard[];
-    // shuffle
-    for (let i = list.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [list[i], list[j]] = [list[j], list[i]];
-    }
-    return { cards: list };
-  });
 
 // -------- Auth: record review --------
 export const recordFlashcardReview = createServerFn({ method: "POST" })
@@ -194,6 +112,11 @@ Return only via the emit_flashcards tool. No prose, no preamble.`;
   return (parsed.cards ?? []).filter((c) => c.front && c.back);
 }
 
+// Cards live in flashcard_decks / flashcards (deck_id). There are no
+// subject_id / chapter_id columns on flashcards, so admin generation resolves
+// (or creates) one deck per chapter and writes cards against its deck_id.
+type AdminDb = { from: (t: string) => any };
+
 export const adminGenerateFlashcards = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: { chapter_id: string; count?: number }) =>
@@ -205,6 +128,25 @@ export const adminGenerateFlashcards = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
+    const db = supabaseAdmin as unknown as AdminDb;
+
+    const ensureDeck = async (subject: string, title: string, description: string) => {
+      const { data: found } = await db
+        .from("flashcard_decks")
+        .select("id")
+        .eq("subject", subject)
+        .eq("title", title)
+        .maybeSingle();
+      if (found?.id) return found.id as string;
+      const { data: made, error } = await db
+        .from("flashcard_decks")
+        .insert({ subject, title, description, card_count: 0 })
+        .select("id")
+        .single();
+      if (error) throw new Error(error.message);
+      return made.id as string;
+    };
+
     const { data: ch, error: chErr } = await supabaseAdmin
       .from("chapters")
       .select("id,name,class,subject_id,subjects:subject_id(name)")
@@ -212,21 +154,29 @@ export const adminGenerateFlashcards = createServerFn({ method: "POST" })
       .maybeSingle();
     if (chErr || !ch) throw new Error("Chapter not found");
     const subjName = ((ch as any).subjects?.name as string) ?? "Science";
-    const cards = await generateAiFlashcards(subjName, (ch as any).name, (ch as any).class ?? 12, data.count ?? 20);
+    const chName = (ch as any).name as string;
+    const cards = await generateAiFlashcards(subjName, chName, (ch as any).class ?? 12, data.count ?? 20);
     if (cards.length === 0) throw new Error("AI returned no cards");
 
-    const rows = cards.map((c) => ({
-      subject_id: (ch as any).subject_id,
-      chapter_id: (ch as any).id,
+    const deckId = await ensureDeck(subjName, chName, `AI flashcards for ${chName}`);
+    const rows = cards.map((c, i) => ({
+      deck_id: deckId,
       front: c.front,
       back: c.back,
       difficulty: (c.difficulty ?? "Medium").toLowerCase(),
       source: "AI · NCERT",
-      created_by: context.userId,
+      position: i,
     }));
-    const { error: insErr } = await supabaseAdmin.from("flashcards" as never).insert(rows as any);
+    const { error: insErr } = await db.from("flashcards").insert(rows);
     if (insErr) throw new Error(insErr.message);
-    return { created: rows.length, chapter: (ch as any).name };
+
+    const { count: total } = await db
+      .from("flashcards")
+      .select("id", { count: "exact", head: true })
+      .eq("deck_id", deckId);
+    await db.from("flashcard_decks").update({ card_count: total ?? rows.length }).eq("id", deckId);
+
+    return { created: rows.length, chapter: chName };
   });
 
 export const adminDeleteFlashcardsByChapter = createServerFn({ method: "POST" })
@@ -237,11 +187,28 @@ export const adminDeleteFlashcardsByChapter = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
-    const { error, count } = await supabaseAdmin
-      .from("flashcards" as never)
+    const db = supabaseAdmin as unknown as AdminDb;
+
+    const { data: ch } = await supabaseAdmin
+      .from("chapters")
+      .select("id,name,subjects:subject_id(name)")
+      .eq("id", data.chapter_id)
+      .maybeSingle();
+    if (!ch) throw new Error("Chapter not found");
+    const { data: deck } = await db
+      .from("flashcard_decks")
+      .select("id")
+      .eq("subject", ((ch as any).subjects?.name as string) ?? "Science")
+      .eq("title", (ch as any).name)
+      .maybeSingle();
+    if (!deck?.id) return { deleted: 0 };
+
+    const { error, count } = await db
+      .from("flashcards")
       .delete({ count: "exact" })
-      .eq("chapter_id", data.chapter_id);
+      .eq("deck_id", deck.id);
     if (error) throw new Error(error.message);
+    await db.from("flashcard_decks").update({ card_count: 0 }).eq("id", deck.id);
     return { deleted: count ?? 0 };
   });
 
@@ -265,8 +232,8 @@ export const adminListChaptersForFlashcards = createServerFn({ method: "GET" })
   });
 
 // -------- Admin: BULK generate flashcards across chapters --------
-// Processes chapters that currently have no flashcards, a few per call to stay
-// within serverless time limits. Call repeatedly until `remaining` is 0.
+// Processes chapters that have no deck (or an empty deck), a few per call to
+// stay within serverless time limits. Call repeatedly until `remaining` is 0.
 export const adminGenerateFlashcardsBulk = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: { subject_id?: string | null; per_chapter?: number; max_chapters?: number }) =>
@@ -279,6 +246,7 @@ export const adminGenerateFlashcardsBulk = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     await assertAdmin(context.userId);
+    const db = supabaseAdmin as unknown as AdminDb;
     const per = data.per_chapter ?? 15;
     const batch = data.max_chapters ?? 4;
 
@@ -290,16 +258,17 @@ export const adminGenerateFlashcardsBulk = createServerFn({ method: "POST" })
     const { data: chapters, error: chErr } = await chQ;
     if (chErr) throw new Error(chErr.message);
 
-    const existing: Array<{ chapter_id: string | null }> = [];
-    for (let off = 0; ; off += 1000) {
-      const { data: page } = await supabaseAdmin.from("flashcards" as never).select("chapter_id").range(off, off + 999);
-      const chunk = (page ?? []) as typeof existing;
-      existing.push(...chunk);
-      if (chunk.length < 1000) break;
-      if (existing.length >= 200000) break;
-    }
-    const populated = new Set(existing.map((r: any) => r.chapter_id).filter(Boolean));
-    const pending = (chapters ?? []).filter((c: any) => !populated.has(c.id));
+    const { data: deckRows } = await db
+      .from("flashcard_decks")
+      .select("id,title,subject,card_count");
+    const decks = (deckRows ?? []) as Array<{ id: string; title: string; subject: string; card_count: number }>;
+    const deckKey = (subject: string, title: string) => `${subject.toLowerCase()}|${title.toLowerCase()}`;
+    const byKey = new Map(decks.map((d) => [deckKey(d.subject, d.title), d]));
+
+    const pending = (chapters ?? []).filter((c: any) => {
+      const deck = byKey.get(deckKey(c.subjects?.name ?? "Science", c.name));
+      return !deck || (deck.card_count ?? 0) === 0;
+    });
 
     const slice = pending.slice(0, batch);
     let created = 0;
@@ -308,17 +277,38 @@ export const adminGenerateFlashcardsBulk = createServerFn({ method: "POST" })
       try {
         const subjName = ch.subjects?.name ?? "Science";
         const cards = await generateAiFlashcards(subjName, ch.name, ch.class ?? 12, per);
-        if (cards.length) {
-          const rows = cards.map((c) => ({
-            subject_id: ch.subject_id, chapter_id: ch.id,
-            front: c.front, back: c.back,
-            difficulty: (c.difficulty ?? "Medium").toLowerCase(),
-            source: "AI · NCERT", created_by: context.userId,
-          }));
-          const { error } = await supabaseAdmin.from("flashcards" as never).insert(rows as any);
-          if (!error) { created += rows.length; results.push({ chapter: ch.name, created: rows.length }); }
+        if (!cards.length) continue;
+
+        let deckId = byKey.get(deckKey(subjName, ch.name))?.id;
+        if (!deckId) {
+          const { data: made, error } = await db
+            .from("flashcard_decks")
+            .insert({ subject: subjName, title: ch.name, description: `AI flashcards for ${ch.name}`, card_count: 0 })
+            .select("id")
+            .single();
+          if (error) throw new Error(error.message);
+          deckId = made.id as string;
         }
-      } catch (e) { console.error("bulk flashcards", ch.name, e); }
+        const rows = cards.map((c, i) => ({
+          deck_id: deckId,
+          front: c.front,
+          back: c.back,
+          difficulty: (c.difficulty ?? "Medium").toLowerCase(),
+          source: "AI · NCERT",
+          position: i,
+        }));
+        const { error } = await db.from("flashcards").insert(rows);
+        if (error) continue;
+        const { count: total } = await db
+          .from("flashcards")
+          .select("id", { count: "exact", head: true })
+          .eq("deck_id", deckId);
+        await db.from("flashcard_decks").update({ card_count: total ?? rows.length }).eq("id", deckId);
+        created += rows.length;
+        results.push({ chapter: ch.name, created: rows.length });
+      } catch (e) {
+        console.error("bulk flashcards", ch.name, e);
+      }
     }
     return {
       processed: slice.length,
