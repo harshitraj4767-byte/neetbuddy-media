@@ -1,7 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getBookPyqs, type BookPyq } from "@/lib/ncert-book";
+import { saveNcertAnswer } from "@/lib/ncert-progress";
+import { useAuth } from "@/hooks/use-auth";
 import { SafeRichText } from "@/components/safe-rich-text";
 import { NcertPyqImage } from "@/components/ncert-pyq-image";
 import {
@@ -93,6 +95,8 @@ type Result = { picked: Key | null; correct: boolean };
 function Page() {
   const { ids, slug, subject, title, block } = Route.useSearch();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
 
   const idList = useMemo(
     () =>
@@ -165,10 +169,19 @@ function Page() {
 
   const submit = (picked: Key | null) => {
     if (!current || revealed) return;
-    setResults((r) => ({
-      ...r,
-      [current.unique_id]: { picked, correct: !!picked && picked === correctKeyOf(current) },
-    }));
+    const isCorrect = !!picked && picked === correctKeyOf(current);
+    setResults((r) => ({ ...r, [current.unique_id]: { picked, correct: isCorrect } }));
+    // Persist the attempt so chapter completion on the book page reflects it.
+    void saveNcertAnswer({
+      userId: user?.id,
+      pyqId: current.unique_id,
+      chapterSlug: slug ?? null,
+      blockId: block ?? null,
+      selected: picked,
+      isCorrect,
+    }).then(() => {
+      queryClient.invalidateQueries({ queryKey: ["ncert-book", "progress"] });
+    });
   };
 
   const next = () => {
@@ -287,7 +300,7 @@ function Page() {
 
       {/* ---------------------------- footer ----------------------------- */}
       {current && (
-        <footer className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 backdrop-blur">
+        <footer className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
           {!revealed ? (
             <div className="mx-auto flex max-w-3xl items-center justify-center gap-3 px-4 py-3">
               <button
