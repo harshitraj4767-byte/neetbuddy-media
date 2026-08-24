@@ -52,7 +52,7 @@ function FlashcardsPage() {
     }
     setActive(d); setCards(null); setIdx(0); setFlipped(false); setDone(false);
     try {
-      const r = await getFlashcards({ chapter_id: d?.chapter_id ?? null, subject_id: d?.subject_id ?? null, limit: 30 });
+      const r = await getFlashcards({ deck_id: d?.id ?? null, limit: 30 });
       setCards(r.cards);
       if (r.cards.length === 0) toast.info("No cards in this deck yet.");
     } catch (e: any) { toast.error(e?.message ?? "Failed to load cards"); }
@@ -83,8 +83,8 @@ function FlashcardsPage() {
           {cards && <div className="text-xs font-semibold text-muted-foreground">{Math.min(idx + 1, cards.length)} / {cards.length}</div>}
         </div>
         <div className="mb-3 text-center">
-          <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">{active.subject_name}</div>
-          <h1 className="mt-0.5 text-xl font-bold">{active.chapter_name}</h1>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">{active.subject}</div>
+          <h1 className="mt-0.5 text-xl font-bold">{active.title}</h1>
         </div>
 
         {cards === null ? (
@@ -166,7 +166,7 @@ function FlashcardsPage() {
                 <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Total deck</div>
                 <div className="text-2xl font-extrabold">{total} cards</div>
               </div>
-              <Button onClick={() => start({ subject_id: null, subject_name: "All Subjects", chapter_id: null, chapter_name: "Random mix", count: total })} className="bg-gradient-primary">
+              <Button onClick={() => start({ id: null, title: "Random mix", subject: "All subjects", description: null, count: total })} className="bg-gradient-primary">
                 Random review <ArrowRight className="ml-1.5 h-4 w-4" />
               </Button>
             </CardContent>
@@ -174,15 +174,15 @@ function FlashcardsPage() {
 
           <div className="grid gap-3 sm:grid-cols-2">
             {decks.map((d) => (
-              <button key={`${d.subject_id}-${d.chapter_id}`} onClick={() => start(d)} className="text-left">
+              <button key={d.id ?? d.title} onClick={() => start(d)} className="text-left">
                 <Card className="border-border transition-transform hover:-translate-y-0.5 hover:shadow-elegant">
                   <CardContent className="flex items-center gap-3 p-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white shadow-md">
                       <Layers className="h-5 w-5" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">{d.subject_name}</div>
-                      <div className="truncate text-sm font-bold">{d.chapter_name}</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">{d.subject}</div>
+                      <div className="truncate text-sm font-bold">{d.title}</div>
                       <div className="text-xs text-muted-foreground">{d.count} cards</div>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground" />
