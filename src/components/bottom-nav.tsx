@@ -13,7 +13,7 @@ const ITEMS = [
 ] as const;
 
 // Full-screen exam / auth surfaces must stay chrome-free.
-const HIDDEN_PREFIXES = ["/login", "/quiz/", "/battle/", "/pyqs/result", "/contest/"];
+const HIDDEN_PREFIXES = ["/login", "/quiz/", "/battle/", "/pyqs/result", "/contest/", "/ncert-practice"];
 
 export function BottomNav() {
   const { user } = useAuth();
