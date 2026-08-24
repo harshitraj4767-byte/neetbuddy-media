@@ -350,12 +350,21 @@ function Legend() {
           Highlighted line
         </li>
         <li className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span className="inline-block h-3 w-6 rounded bg-orange-400/60 dark:bg-orange-400/40" />
+          <span className="inline-block h-3 w-6 rounded bg-amber-400/70 dark:bg-amber-400/40" />
           Asked in a PYQ — tap to open
         </li>
       </ul>
     </section>
   );
+}
+
+/** Tidy up text coming from the PDF extraction. */
+function cleanText(s: string): string {
+  return s
+    .replace(/\u00a0/g, " ")
+    .replace(/[ \t]{2,}/g, " ")
+    .replace(/\s+([,.;:!?)\]])/g, "$1")
+    .replace(/([(\[])\s+/g, "$1");
 }
 
 function Block({
@@ -382,7 +391,11 @@ function Block({
           : level === 3
             ? "mt-6 text-lg font-bold"
             : "mt-5 text-base font-semibold";
-    return <h2 className={`${cls} whitespace-pre-line tracking-tight`}>{block.text}</h2>;
+    return (
+      <h2 className={`${cls} whitespace-pre-line tracking-tight`}>
+        {cleanText(block.text ?? "")}
+      </h2>
+    );
   }
 
   if (block.type === "image") {
@@ -399,54 +412,53 @@ function Block({
   const figures = runs.filter((r) => r.t === "img" && runImageSrc(r));
   const textRuns = runs.filter((r) => r.t !== "img");
   const hasText = textRuns.some((r) => (r.s ?? "").trim().length > 0);
+  // Some PYQ-linked paragraphs have no explicit highlight run stored — mark the
+  // whole line so it never looks like an ordinary paragraph.
+  const noHlRun = !textRuns.some((r) => r.t === "hl" && (r.s ?? "").trim());
+  const markAll = hasPyq && noHlRun;
+
+  const markCls =
+    "rounded-[3px] px-0.5 text-foreground decoration-amber-500/60 " +
+    (hasPyq
+      ? "cursor-pointer bg-amber-300/70 underline decoration-dotted underline-offset-4 hover:bg-amber-300 dark:bg-amber-400/35"
+      : "bg-yellow-300/70 dark:bg-yellow-400/30");
+
+  const markProps = {
+    role: hasPyq ? ("button" as const) : undefined,
+    tabIndex: hasPyq ? 0 : undefined,
+    onClick: (e: React.MouseEvent) => {
+      if (!hasPyq) return;
+      e.stopPropagation();
+      open();
+    },
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (hasPyq && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        open();
+      }
+    },
+  };
 
   return (
-    <div
-      onClick={open}
-      className={
-        "rounded-r-xl transition " +
-        (hasPyq
-          ? "cursor-pointer border-l-4 border-orange-400 bg-orange-500/[0.04] py-1 pl-4 pr-1 hover:bg-orange-500/[0.09]"
-          : "")
-      }
-    >
+    <div onClick={open} className={hasPyq ? "cursor-pointer" : undefined}>
       {hasPyq && (
-        <span className="mb-1.5 inline-flex items-center gap-1 rounded-full bg-orange-500/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-300">
+        <span className="mb-1 inline-flex items-center gap-1 rounded-full bg-amber-500/12 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
           Related PYQs · {pyqIds.length}
         </span>
       )}
       {hasText && (
-        <p className="text-justify text-[15px] leading-[1.9] sm:text-base">
+        <p className="whitespace-pre-line text-left text-[15px] leading-[1.85] sm:text-base">
           {textRuns.map((r, i) => {
             if (r.t === "br") return <br key={i} />;
-            if (r.t === "hl")
+            const s = cleanText(r.s ?? "");
+            if (!s) return null;
+            if (r.t === "hl" || markAll)
               return (
-                <mark
-                  key={i}
-                  role={hasPyq ? "button" : undefined}
-                  tabIndex={hasPyq ? 0 : undefined}
-                  onClick={(e) => {
-                    if (!hasPyq) return;
-                    e.stopPropagation();
-                    open();
-                  }}
-                  onKeyDown={(e) => {
-                    if (hasPyq && (e.key === "Enter" || e.key === " ")) {
-                      e.preventDefault();
-                      open();
-                    }
-                  }}
-                  className={
-                    "rounded-sm px-0.5 text-foreground " +
-                    (hasPyq
-                      ? "cursor-pointer bg-orange-300/60 underline decoration-orange-500/50 decoration-dotted underline-offset-4 hover:bg-orange-300/90 dark:bg-orange-400/30"
-                      : "bg-yellow-300/70 dark:bg-yellow-400/30")
-                  }
-                >
-                  {r.s}
+                <mark key={i} {...markProps} className={markCls}>
+                  {s}
                 </mark>
               );
-            return <span key={i}>{r.s}</span>;
+            return <span key={i}>{s}</span>;
           })}
         </p>
       )}
@@ -454,7 +466,7 @@ function Block({
         <Figure key={`f${i}`} src={resolveBookImage(runImageSrc(r), subject)} />
       ))}
       {hasPyq && (
-        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-orange-500/80">
+        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-amber-600/80">
           Tap the highlighted line to see the questions asked from it
         </span>
       )}
@@ -464,6 +476,8 @@ function Block({
 
 function Figure({ src, caption }: { src: string; caption?: string }) {
   const [failed, setFailed] = useState(false);
+  const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
+
   if (!src || failed) {
     return (
       <figure className="my-4 rounded-2xl border border-dashed bg-muted/30 p-6 text-center text-xs text-muted-foreground">
@@ -472,18 +486,32 @@ function Figure({ src, caption }: { src: string; caption?: string }) {
       </figure>
     );
   }
+
+  // Never upscale: tiny inline glyphs (arrows, symbols) stay at their natural
+  // size, big diagrams are capped so they don't dominate the screen.
+  const maxW = dims ? Math.min(dims.w, 640) : undefined;
+
   return (
-    <figure className="my-4 overflow-hidden rounded-2xl border bg-card shadow-soft">
-      <img
-        src={src}
-        alt={caption ?? "NCERT diagram"}
-        loading="lazy"
-        onError={() => setFailed(true)}
-        className="block w-full bg-white"
-      />
+    <figure className="my-4 flex flex-col items-center">
+      <div
+        className="w-full max-w-full overflow-hidden rounded-xl border bg-white"
+        style={maxW ? { maxWidth: `${maxW}px` } : undefined}
+      >
+        <img
+          src={src}
+          alt={caption ?? "NCERT diagram"}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          onLoad={(e) => {
+            const img = e.currentTarget;
+            setDims({ w: img.naturalWidth, h: img.naturalHeight });
+          }}
+          className="mx-auto block max-h-[55vh] w-auto max-w-full object-contain"
+        />
+      </div>
       {caption && (
-        <figcaption className="border-t px-3 py-2 text-center text-xs italic text-muted-foreground">
-          {caption}
+        <figcaption className="mt-1.5 px-3 text-center text-xs italic text-muted-foreground">
+          {cleanText(caption)}
         </figcaption>
       )}
     </figure>
