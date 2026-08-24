@@ -50,7 +50,10 @@ export const Route = createFileRoute("/highlighted-ncert")({
   validateSearch: (search: Record<string, unknown>) => ({
     subject: typeof search.subject === "string" ? (search.subject as Subject) : undefined,
     slug: typeof search.slug === "string" ? search.slug : undefined,
-    block: search.block != null && !Number.isNaN(Number(search.block)) ? Number(search.block) : undefined,
+    block:
+      search.block != null && !Number.isNaN(Number(search.block))
+        ? Number(search.block)
+        : undefined,
   }),
   component: Page,
   errorComponent: ({ error }) => (
@@ -100,9 +103,10 @@ function Page() {
   const subject: Subject = search.subject ?? "biology";
   const slug = search.slug ?? null;
 
-  const setSubject = (s: Subject) => navigate({ search: { subject: s } });
+  const setSubject = (s: Subject) =>
+    navigate({ search: { subject: s, slug: undefined, block: undefined } });
   const setSlug = (s: string | null) =>
-    navigate({ search: { subject, slug: s ?? undefined } });
+    navigate({ search: { subject, slug: s ?? undefined, block: undefined } });
 
   const chaptersQ = useQuery({
     queryKey: ["ncert-book", "chapters"],
@@ -290,28 +294,63 @@ function Reader({
   const openPractice = (ids: number[], blockId: number) =>
     navigate({
       to: "/ncert-practice",
-      search: { ids: ids.join(","), slug, block: blockId },
+      // Carry the subject + block id so "back" returns to this exact line.
+      search: {
+        ids: ids.join(","),
+        slug,
+        block: blockId,
+        subject: q.data?.chapter.subject,
+        title: q.data?.chapter.title,
+      },
     });
 
   const data = q.data;
 
+  // Returning from the practice page must land on the exact line the user left
+  // from, not the top of the chapter. The paragraph may not be painted yet when
+  // the query resolves (images/long chapters), so poll for a few frames before
+  // giving up, then scroll instantly and flash the line.
   useEffect(() => {
     if (!focusBlock || !data) return;
-    const el = document.getElementById(`blk-${focusBlock}`);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "center" });
-    el.classList.add("ring-2", "ring-amber-400", "rounded-xl");
-    const t = setTimeout(
-      () => el.classList.remove("ring-2", "ring-amber-400", "rounded-xl"),
-      2600,
-    );
-    return () => clearTimeout(t);
+    let raf = 0;
+    let tries = 0;
+    let cleanupFlash: (() => void) | undefined;
+
+    const attempt = () => {
+      const el = document.getElementById(`blk-${focusBlock}`);
+      if (!el) {
+        if (tries++ < 120) raf = requestAnimationFrame(attempt);
+        return;
+      }
+      el.scrollIntoView({ behavior: "auto", block: "center" });
+      el.classList.add("ring-2", "ring-amber-400", "rounded-xl");
+      // A second pass after layout settles (lazy images shift the page).
+      const settle = setTimeout(
+        () => el.scrollIntoView({ behavior: "auto", block: "center" }),
+        350,
+      );
+      const clear = setTimeout(
+        () => el.classList.remove("ring-2", "ring-amber-400", "rounded-xl"),
+        2600,
+      );
+      cleanupFlash = () => {
+        clearTimeout(settle);
+        clearTimeout(clear);
+      };
+    };
+
+    raf = requestAnimationFrame(attempt);
+    return () => {
+      cancelAnimationFrame(raf);
+      cleanupFlash?.();
+    };
   }, [focusBlock, data]);
 
   const visible = useMemo(() => {
     const blocks = data?.blocks ?? [];
-    return onlyHighlights ? blocks.filter((b) => isMarked(b)) : blocks;
-  }, [data, onlyHighlights]);
+    if (!onlyHighlights) return blocks;
+    return blocks.filter((b) => isMarked(b) || b.id === focusBlock);
+  }, [data, onlyHighlights, focusBlock]);
 
   return (
     <article>
@@ -429,18 +468,13 @@ function Block({
             ? "mt-6 text-lg font-bold"
             : "mt-5 text-base font-semibold";
     return (
-      <h2 className={`${cls} whitespace-pre-line tracking-tight`}>
-        {cleanText(block.text ?? "")}
-      </h2>
+      <h2 className={`${cls} whitespace-pre-line tracking-tight`}>{cleanText(block.text ?? "")}</h2>
     );
   }
 
   if (block.type === "image") {
     return (
-      <Figure
-        src={resolveBookImage(block.image_url, subject)}
-        caption={block.text ?? undefined}
-      />
+      <Figure src={resolveBookImage(block.image_url, subject)} caption={block.text ?? undefined} />
     );
   }
 

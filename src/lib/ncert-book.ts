@@ -3,6 +3,7 @@
 // authenticated), so the browser client can read them directly — no server
 // function, no service-role key, no SSR fetch of a huge remote JSON file.
 import { supabase } from "@/integrations/supabase/client";
+import { qbankImageUrl } from "@/lib/qbank-images";
 
 export type BookChapter = {
   id: number;
@@ -154,4 +155,49 @@ export function resolveBookImage(raw: string | null | undefined, subject?: strin
 /** Pick the raw image reference out of an inline run. */
 export function runImageSrc(run: Run): string {
   return (run.src ?? run.s ?? "").trim();
+}
+
+/**
+ * PYQ artwork is messier than e-book artwork: rows come from several imports
+ * and store either an NCERT-book path (`ncert/physics/images/x.png`), a
+ * question-bank path (`physics/12_9931_question_1.png`), an app-absolute URL,
+ * or a bare filename. Instead of guessing once, produce every plausible URL so
+ * the <img> can fall through the list until one loads.
+ */
+export function pyqImageCandidates(
+  raw: string | null | undefined,
+  subject?: string | null,
+): string[] {
+  const v = (raw ?? "").trim();
+  if (!v) return [];
+  if (/^(https?:)?\/\//i.test(v) || v.startsWith("data:") || v.startsWith("blob:")) return [v];
+
+  const clean = v.replace(/^\.?\/+/, "").replace(/^public\//i, "");
+  const file = clean.split("/").pop() ?? clean;
+  const subj = (subject ?? "").toLowerCase().trim();
+  const enc = (p: string) => "/" + p.split("/").map(encodeURIComponent).join("/");
+
+  const out: string[] = [];
+  const push = (u: string) => {
+    if (u && !out.includes(u)) out.push(u);
+  };
+
+  // Question-bank layout: subject/<file> served from /img/data/ (or the CDN).
+  const qbankish = /^(physics|chemistry|biology)\//i.test(clean) || /^img\/data\//i.test(clean);
+  const qbankName = /_(question|option|explanation|solution)_?\d*\.\w+$/i.test(file);
+
+  if (qbankish) push(qbankImageUrl(clean) ?? "");
+  if (clean.startsWith("ncert/"))
+    push(enc(clean.replace(/^ncert\/pyq\/(?!images\/)/, "ncert/pyq/images/")));
+  if (qbankName && subj) push(qbankImageUrl(`${subj}/${file}`) ?? "");
+  if (qbankName) push(qbankImageUrl(`pyq/${file}`) ?? "");
+
+  // NCERT book locations.
+  push(enc(`ncert/pyq/images/${file}`));
+  if (subj) push(enc(`ncert/${subj}/images/${file}`));
+  push(enc(`ncert/biology/images/${file}`));
+
+  // Finally the literal path, in case it is already servable as-is.
+  push(clean.includes("/") ? enc(clean) : "");
+  return out.filter(Boolean);
 }

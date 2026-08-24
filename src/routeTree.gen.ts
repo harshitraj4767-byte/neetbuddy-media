@@ -16,6 +16,7 @@ import { Route as AdminBannersRouteImport } from './routes/admin-banners'
 import { Route as AdminCollaboratorsRouteImport } from './routes/admin-collaborators'
 import { Route as AdminInboxRouteImport } from './routes/admin-inbox'
 import { Route as AdminMockCategoriesRouteImport } from './routes/admin-mock-categories'
+import { Route as AdminPyqSyncRouteImport } from './routes/admin-pyq-sync'
 import { Route as AdminStudyMaterialsRouteImport } from './routes/admin-study-materials'
 import { Route as AiPathRouteImport } from './routes/ai-path'
 import { Route as AnalyseRouteImport } from './routes/analyse'
@@ -44,6 +45,7 @@ import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as MistakesRouteImport } from './routes/mistakes'
 import { Route as MocksRouteImport } from './routes/mocks'
 import { Route as NcertHighlightsRouteImport } from './routes/ncert-highlights'
+import { Route as NcertPracticeRouteImport } from './routes/ncert-practice'
 import { Route as NeetlabRouteImport } from './routes/neetlab'
 import { Route as PremiumRouteImport } from './routes/premium'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -128,6 +130,11 @@ const AdminInboxRoute = AdminInboxRouteImport.update({
 const AdminMockCategoriesRoute = AdminMockCategoriesRouteImport.update({
   id: '/admin-mock-categories',
   path: '/admin-mock-categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPyqSyncRoute = AdminPyqSyncRouteImport.update({
+  id: '/admin-pyq-sync',
+  path: '/admin-pyq-sync',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminStudyMaterialsRoute = AdminStudyMaterialsRouteImport.update({
@@ -268,6 +275,11 @@ const MocksRoute = MocksRouteImport.update({
 const NcertHighlightsRoute = NcertHighlightsRouteImport.update({
   id: '/ncert-highlights',
   path: '/ncert-highlights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcertPracticeRoute = NcertPracticeRouteImport.update({
+  id: '/ncert-practice',
+  path: '/ncert-practice',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NeetlabRoute = NeetlabRouteImport.update({
@@ -539,6 +551,7 @@ export interface FileRoutesByFullPath {
   '/admin-collaborators': typeof AdminCollaboratorsRoute
   '/admin-inbox': typeof AdminInboxRoute
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
+  '/admin-pyq-sync': typeof AdminPyqSyncRoute
   '/admin-study-materials': typeof AdminStudyMaterialsRoute
   '/ai-path': typeof AiPathRoute
   '/analyse': typeof AnalyseRoute
@@ -567,6 +580,7 @@ export interface FileRoutesByFullPath {
   '/mistakes': typeof MistakesRoute
   '/mocks': typeof MocksRoute
   '/ncert-highlights': typeof NcertHighlightsRoute
+  '/ncert-practice': typeof NcertPracticeRoute
   '/neetlab': typeof NeetlabRoute
   '/premium': typeof PremiumRoute
   '/privacy': typeof PrivacyRoute
@@ -626,6 +640,7 @@ export interface FileRoutesByTo {
   '/admin-collaborators': typeof AdminCollaboratorsRoute
   '/admin-inbox': typeof AdminInboxRoute
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
+  '/admin-pyq-sync': typeof AdminPyqSyncRoute
   '/admin-study-materials': typeof AdminStudyMaterialsRoute
   '/ai-path': typeof AiPathRoute
   '/analyse': typeof AnalyseRoute
@@ -654,6 +669,7 @@ export interface FileRoutesByTo {
   '/mistakes': typeof MistakesRoute
   '/mocks': typeof MocksRoute
   '/ncert-highlights': typeof NcertHighlightsRoute
+  '/ncert-practice': typeof NcertPracticeRoute
   '/neetlab': typeof NeetlabRoute
   '/premium': typeof PremiumRoute
   '/privacy': typeof PrivacyRoute
@@ -714,6 +730,7 @@ export interface FileRoutesById {
   '/admin-collaborators': typeof AdminCollaboratorsRoute
   '/admin-inbox': typeof AdminInboxRoute
   '/admin-mock-categories': typeof AdminMockCategoriesRoute
+  '/admin-pyq-sync': typeof AdminPyqSyncRoute
   '/admin-study-materials': typeof AdminStudyMaterialsRoute
   '/ai-path': typeof AiPathRoute
   '/analyse': typeof AnalyseRoute
@@ -742,6 +759,7 @@ export interface FileRoutesById {
   '/mistakes': typeof MistakesRoute
   '/mocks': typeof MocksRoute
   '/ncert-highlights': typeof NcertHighlightsRoute
+  '/ncert-practice': typeof NcertPracticeRoute
   '/neetlab': typeof NeetlabRoute
   '/premium': typeof PremiumRoute
   '/privacy': typeof PrivacyRoute
@@ -803,6 +821,7 @@ export interface FileRouteTypes {
     | '/admin-collaborators'
     | '/admin-inbox'
     | '/admin-mock-categories'
+    | '/admin-pyq-sync'
     | '/admin-study-materials'
     | '/ai-path'
     | '/analyse'
@@ -831,6 +850,7 @@ export interface FileRouteTypes {
     | '/mistakes'
     | '/mocks'
     | '/ncert-highlights'
+    | '/ncert-practice'
     | '/neetlab'
     | '/premium'
     | '/privacy'
@@ -890,6 +910,7 @@ export interface FileRouteTypes {
     | '/admin-collaborators'
     | '/admin-inbox'
     | '/admin-mock-categories'
+    | '/admin-pyq-sync'
     | '/admin-study-materials'
     | '/ai-path'
     | '/analyse'
@@ -918,6 +939,7 @@ export interface FileRouteTypes {
     | '/mistakes'
     | '/mocks'
     | '/ncert-highlights'
+    | '/ncert-practice'
     | '/neetlab'
     | '/premium'
     | '/privacy'
@@ -977,6 +999,7 @@ export interface FileRouteTypes {
     | '/admin-collaborators'
     | '/admin-inbox'
     | '/admin-mock-categories'
+    | '/admin-pyq-sync'
     | '/admin-study-materials'
     | '/ai-path'
     | '/analyse'
@@ -1005,6 +1028,7 @@ export interface FileRouteTypes {
     | '/mistakes'
     | '/mocks'
     | '/ncert-highlights'
+    | '/ncert-practice'
     | '/neetlab'
     | '/premium'
     | '/privacy'
@@ -1065,6 +1089,7 @@ export interface RootRouteChildren {
   AdminCollaboratorsRoute: typeof AdminCollaboratorsRoute
   AdminInboxRoute: typeof AdminInboxRoute
   AdminMockCategoriesRoute: typeof AdminMockCategoriesRoute
+  AdminPyqSyncRoute: typeof AdminPyqSyncRoute
   AdminStudyMaterialsRoute: typeof AdminStudyMaterialsRoute
   AiPathRoute: typeof AiPathRoute
   AnalyseRoute: typeof AnalyseRoute
@@ -1093,6 +1118,7 @@ export interface RootRouteChildren {
   MistakesRoute: typeof MistakesRoute
   MocksRoute: typeof MocksRoute
   NcertHighlightsRoute: typeof NcertHighlightsRoute
+  NcertPracticeRoute: typeof NcertPracticeRoute
   NeetlabRoute: typeof NeetlabRoute
   PremiumRoute: typeof PremiumRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -1186,6 +1212,13 @@ declare module '@tanstack/react-router' {
       path: '/admin-mock-categories'
       fullPath: '/admin-mock-categories'
       preLoaderRoute: typeof AdminMockCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-pyq-sync': {
+      id: '/admin-pyq-sync'
+      path: '/admin-pyq-sync'
+      fullPath: '/admin-pyq-sync'
+      preLoaderRoute: typeof AdminPyqSyncRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin-study-materials': {
@@ -1382,6 +1415,13 @@ declare module '@tanstack/react-router' {
       path: '/ncert-highlights'
       fullPath: '/ncert-highlights'
       preLoaderRoute: typeof NcertHighlightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncert-practice': {
+      id: '/ncert-practice'
+      path: '/ncert-practice'
+      fullPath: '/ncert-practice'
+      preLoaderRoute: typeof NcertPracticeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/neetlab': {
@@ -1796,6 +1836,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminCollaboratorsRoute: AdminCollaboratorsRoute,
   AdminInboxRoute: AdminInboxRoute,
   AdminMockCategoriesRoute: AdminMockCategoriesRoute,
+  AdminPyqSyncRoute: AdminPyqSyncRoute,
   AdminStudyMaterialsRoute: AdminStudyMaterialsRoute,
   AiPathRoute: AiPathRoute,
   AnalyseRoute: AnalyseRoute,
@@ -1824,6 +1865,7 @@ const rootRouteChildren: RootRouteChildren = {
   MistakesRoute: MistakesRoute,
   MocksRoute: MocksRoute,
   NcertHighlightsRoute: NcertHighlightsRoute,
+  NcertPracticeRoute: NcertPracticeRoute,
   NeetlabRoute: NeetlabRoute,
   PremiumRoute: PremiumRoute,
   PrivacyRoute: PrivacyRoute,
