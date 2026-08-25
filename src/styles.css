@@ -502,3 +502,66 @@
     animation: none;
   }
 }
+
+/* ── NCERT paper tokens (Task 1: reading surface) ───────────────────── */
+:root {
+  --paper: oklch(0.982 0.014 85);
+  --paper-edge: oklch(0.955 0.022 80);
+  --paper-ink: oklch(0.28 0.03 60);
+  --paper-muted: oklch(0.52 0.03 65);
+  --paper-rule: oklch(0.88 0.02 80);
+  --paper-glow: 0 18px 50px -24px oklch(0.55 0.08 70 / 0.45);
+}
+.dark {
+  --paper: oklch(0.245 0.018 255);
+  --paper-edge: oklch(0.295 0.02 255);
+  --paper-ink: oklch(0.93 0.012 250);
+  --paper-muted: oklch(0.72 0.02 250);
+  --paper-rule: oklch(0.36 0.02 255);
+  --paper-glow: 0 18px 50px -26px oklch(0.1 0.03 260 / 0.85);
+}
+
+.paper-card {
+  position: relative;
+  color: var(--paper-ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(180deg, color-mix(in oklab, var(--paper-edge) 55%, transparent), transparent 160px),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 31px,
+      color-mix(in oklab, var(--paper-rule) 55%, transparent) 31px,
+      color-mix(in oklab, var(--paper-rule) 55%, transparent) 32px
+    );
+  border: 1px solid var(--paper-edge);
+  border-radius: 1.25rem;
+  box-shadow: var(--paper-glow), inset 0 1px 0 color-mix(in oklab, white 45%, transparent);
+}
+.dark .paper-card {
+  box-shadow: var(--paper-glow), inset 0 1px 0 color-mix(in oklab, white 6%, transparent);
+}
+.paper-card .paper-muted { color: var(--paper-muted); }
+.paper-meta {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  color: var(--paper-muted);
+}
+.paper-display {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  letter-spacing: -0.01em;
+}
+.paper-measure {
+  max-width: 70ch;
+  margin-inline: auto;
+}
+.paper-body p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.9;
+}
+@media (max-width: 640px) {
+  .paper-card { border-radius: 1rem; }
+  .paper-body p { text-align: left; hyphens: none; }
+}

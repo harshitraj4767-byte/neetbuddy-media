@@ -96,7 +96,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/40">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-3 pb-28 pt-4 sm:px-4">{children}</main>
+      <main className="mx-auto max-w-4xl px-4 pb-28 pt-4">{children}</main>
     </div>
   );
 }
@@ -397,7 +397,7 @@ function Reader({
 
   return (
     <article>
-      <div className="sticky top-0 z-20 -mx-3 mb-4 flex items-center gap-2 border-b bg-background/85 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
+      <div className="sticky top-0 z-20 -mx-4 mb-4 flex items-center gap-2 border-b bg-background/85 px-4 py-2.5 backdrop-blur">
         <button
           onClick={onBack}
           className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
@@ -438,17 +438,33 @@ function Reader({
         </p>
       )}
 
-      <div className="mt-6 space-y-4">
-        {visible.map((b) => (
-          <Block
-            key={b.id}
-            block={b}
-            subject={data?.chapter.subject}
-            focused={focusBlock === b.id}
-            onPyq={(ids) => openPractice(ids, b.id)}
-          />
-        ))}
-      </div>
+      {q.data && visible.length > 0 && (
+        <div className="paper-card -mx-4 mt-6 px-4 py-7 sm:mx-0 sm:px-8 sm:py-10">
+          <header className="paper-measure mb-7 border-b border-[color:var(--paper-rule)] pb-5">
+            <div className="paper-meta flex items-center justify-between gap-3 text-[11px] font-semibold">
+              <span>NCERT · {q.data.chapter.subject}</span>
+              <span>{q.data.chapter.pyq_count} questions ahead</span>
+            </div>
+            <h1 className="paper-display mt-3 text-[26px] font-bold leading-tight sm:text-4xl">
+              {q.data.chapter.title}
+            </h1>
+            <p className="paper-muted mt-2 text-xs">
+              {q.data.chapter.highlight_count} highlighted lines in this chapter
+            </p>
+          </header>
+          <div className="paper-measure paper-body space-y-4">
+            {visible.map((b) => (
+              <Block
+                key={b.id}
+                block={b}
+                subject={data?.chapter.subject}
+                focused={focusBlock === b.id}
+                onPyq={(ids) => openPractice(ids, b.id)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </article>
   );
 }
@@ -504,14 +520,16 @@ function Block({
     const level = Math.min(4, Math.max(1, block.level ?? 2));
     const cls =
       level === 1
-        ? "mt-9 text-2xl font-extrabold"
+        ? "mt-9 text-2xl font-bold sm:text-3xl"
         : level === 2
-          ? "mt-8 text-xl font-bold"
+          ? "mt-8 text-xl font-bold sm:text-2xl"
           : level === 3
-            ? "mt-6 text-lg font-bold"
+            ? "mt-6 text-lg font-semibold"
             : "mt-5 text-base font-semibold";
     return (
-      <h2 className={`${cls} whitespace-pre-line tracking-tight`}>{cleanText(block.text ?? "")}</h2>
+      <h2 className={`paper-display ${cls} whitespace-pre-line tracking-tight`}>
+        {cleanText(block.text ?? "")}
+      </h2>
     );
   }
 
@@ -569,7 +587,7 @@ function Block({
         </span>
       )}
       {hasText && (
-        <p className="whitespace-pre-line text-left text-[15px] leading-[1.85] sm:text-base">
+        <p className="whitespace-pre-line text-[15px] leading-[1.9] sm:text-[17px]">
           {textRuns.map((r, i) => {
             if (r.t === "br") return <br key={i} />;
             const s = cleanText(r.s ?? "");
@@ -616,7 +634,7 @@ function Figure({ src, caption }: { src: string; caption?: string }) {
   return (
     <figure className="my-4 flex flex-col items-center">
       <div
-        className="w-full max-w-full overflow-hidden rounded-xl border bg-white"
+        className="w-full max-w-full overflow-hidden rounded-xl border border-[color:var(--paper-rule)] bg-white shadow-sm"
         style={maxW ? { maxWidth: `${maxW}px` } : undefined}
       >
         <img
@@ -632,7 +650,7 @@ function Figure({ src, caption }: { src: string; caption?: string }) {
         />
       </div>
       {caption && (
-        <figcaption className="mt-1.5 px-3 text-center text-xs italic text-muted-foreground">
+        <figcaption className="paper-muted mt-2 px-3 text-center text-xs italic">
           {cleanText(caption)}
         </figcaption>
       )}
