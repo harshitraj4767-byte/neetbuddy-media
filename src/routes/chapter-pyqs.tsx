@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { HubHero } from "@/components/nav-tiles";
@@ -12,11 +12,20 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { BookMarked, Loader2, Search, Timer, Zap } from "lucide-react";
+import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
+import {
+  BookMarked,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  Loader2,
+  Play,
+  RotateCw,
+  Search,
+} from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/chapter-pyqs")({
   head: () => ({
@@ -49,28 +58,57 @@ type ChapterRow = {
   last_year: number | null;
 };
 
-type Mode = "quiz" | "cbt";
+type AttemptInfo = { attemptId: string; testId: string; status: string };
 
 const SUBJECTS = [
-  { id: "physics", label: "Physics", accent: "bg-blue-100 text-blue-700" },
-  { id: "chemistry", label: "Chemistry", accent: "bg-emerald-100 text-emerald-700" },
-  { id: "biology", label: "Biology", accent: "bg-rose-100 text-rose-700" },
+  {
+    id: "physics",
+    label: "Physics",
+    icon: "⚛️",
+    ring: "from-blue-500 to-indigo-600",
+    soft: "bg-blue-500/12 text-blue-600 dark:text-blue-400",
+    hover: "hover:border-blue-500/50",
+  },
+  {
+    id: "chemistry",
+    label: "Chemistry",
+    icon: "⚗️",
+    ring: "from-emerald-500 to-teal-600",
+    soft: "bg-emerald-500/12 text-emerald-600 dark:text-emerald-400",
+    hover: "hover:border-emerald-500/50",
+  },
+  {
+    id: "biology",
+    label: "Biology",
+    icon: "🧬",
+    ring: "from-rose-500 to-pink-600",
+    soft: "bg-rose-500/12 text-rose-600 dark:text-rose-400",
+    hover: "hover:border-rose-500/50",
+  },
 ] as const;
+
+type SubjectDef = (typeof SUBJECTS)[number];
 
 const EXAMS = ["NEET", "JEE", "AIIMS", "AIPMT", "KCET", "MHT CET", "TS EAMCET"];
 
 /** CBT papers stay attemptable: long chapters are split into fixed-size sets. */
 const CBT_SET_SIZE = 50;
 
+const titleFor = (chapter: string, setLabel?: string) =>
+  `PYQ · ${chapter}${setLabel ? ` · ${setLabel}` : ""}`;
+
 function ChapterPyqPage() {
   const { user } = useAuth();
   const nav = useNavigate();
   const [rows, setRows] = useState<ChapterRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [subject, setSubject] = useState<string>("physics");
+  const [subject, setSubject] = useState<SubjectDef | null>(null);
   const [query, setQuery] = useState("");
   const [launching, setLaunching] = useState<number | null>(null);
+  const [modePick, setModePick] = useState<ChapterRow | null>(null);
   const [cbtPlan, setCbtPlan] = useState<{ chapter: ChapterRow; qids: string[] } | null>(null);
+  /** chapter title prefix -> latest attempt, drives Reattempt / View solution. */
+  const [attempts, setAttempts] = useState<Record<string, AttemptInfo>>({});
 
   useEffect(() => {
     (async () => {
@@ -87,16 +125,65 @@ function ChapterPyqPage() {
     })().catch((e) => setError(String(e)));
   }, []);
 
-  const total = useMemo(
-    () => (rows ?? []).reduce((s, r) => s + (r.pyq_count ?? 0), 0),
-    [rows],
+  useEffect(() => {
+    if (!user) {
+      setAttempts({});
+      return;
+    }
+    (async () => {
+      const { data: tests } = await supabase
+        .from("tests")
+        .select("id,title")
+        .eq("created_by", user.id)
+        .eq("source", "PYQ");
+      const list = (tests ?? []) as Array<{ id: string; title: string }>;
+      if (!list.length) return;
+      const { data: att } = await supabase
+        .from("attempts")
+        .select("id,test_id,status")
+        .eq("user_id", user.id)
+        .in(
+          "test_id",
+          list.map((t) => t.id),
+        )
+        .order("started_at", { ascending: false });
+      const byTest = new Map<string, { id: string; status: string }>();
+      for (const a of (att ?? []) as Array<{ id: string; test_id: string; status: string }>) {
+        if (!byTest.has(a.test_id)) byTest.set(a.test_id, { id: a.id, status: a.status });
+      }
+      const map: Record<string, AttemptInfo> = {};
+      for (const t of list) {
+        const a = byTest.get(t.id);
+        if (!a) continue;
+        const chapter = t.title.replace(/^PYQ · /, "").split(" · Set ")[0];
+        if (!map[chapter]) map[chapter] = { attemptId: a.id, testId: t.id, status: a.status };
+      }
+      setAttempts(map);
+    })().catch(() => {});
+  }, [user]);
+
+  const totals = useMemo(() => {
+    const t: Record<string, { chapters: number; questions: number }> = {};
+    for (const r of rows ?? []) {
+      const cur = (t[r.subject_id] ??= { chapters: 0, questions: 0 });
+      cur.chapters += 1;
+      cur.questions += r.pyq_count ?? 0;
+    }
+    return t;
+  }, [rows]);
+
+  const grandTotal = useMemo(
+    () => Object.values(totals).reduce((s, v) => s + v.questions, 0),
+    [totals],
   );
 
   const visible = useMemo(() => {
+    if (!subject) return [];
     const q = query.trim().toLowerCase();
     return (rows ?? [])
-      .filter((r) => r.subject_id === subject)
-      .filter((r) => (q ? r.chapter_name.toLowerCase().includes(q) : true));
+      .filter((r) => r.subject_id === subject.id)
+      .filter((r) => (q ? r.chapter_name.toLowerCase().includes(q) : true))
+      .sort((a, b) => a.chapter_name.localeCompare(b.chapter_name));
   }, [rows, subject, query]);
 
   async function fetchPyqIds(chapterId: number) {
@@ -111,12 +198,12 @@ function ChapterPyqPage() {
     return ((data ?? []) as Array<{ id: string }>).map((r) => r.id);
   }
 
-  async function launch(chapter: ChapterRow, mode: Mode, qids: string[], setLabel?: string) {
+  async function launch(chapter: ChapterRow, mode: QuizMode, qids: string[], setLabel?: string) {
     if (!user) {
       toast.error("Log in to start a PYQ session.");
       return;
     }
-    const title = `PYQ · ${chapter.chapter_name}${setLabel ? ` · ${setLabel}` : ""}`;
+    const title = titleFor(chapter.chapter_name, setLabel);
     const { data: existing } = await supabase
       .from("tests")
       .select("id")
@@ -161,7 +248,8 @@ function ChapterPyqPage() {
     nav({ to: "/quiz/$testId", params: { testId: t.id }, search: { mode } as never });
   }
 
-  async function start(chapter: ChapterRow, mode: Mode) {
+  async function start(chapter: ChapterRow, mode: QuizMode) {
+    setModePick(null);
     setLaunching(chapter.chapter_id);
     try {
       const qids = await fetchPyqIds(chapter.chapter_id);
@@ -188,8 +276,8 @@ function ChapterPyqPage() {
         compact
         eyebrow="Previous Years · Chapter wise"
         title="Chapter Wise PYQ"
-        highlight={`${total ? (total / 1000).toFixed(1) : "10.2"}k questions`}
-        description="Every previous year question arranged chapter wise across NEET, JEE, AIIMS, AIPMT and major state exams. Pick a chapter and attempt it in quiz mode or full CBT mode with detailed results."
+        highlight={`${grandTotal ? (grandTotal / 1000).toFixed(1) : "10.2"}k questions`}
+        description="Every previous year question arranged chapter wise across NEET, JEE, AIIMS, AIPMT and major state exams. Pick a subject, open a chapter and choose your mode."
         Icon={BookMarked}
         accent="violet"
       >
@@ -203,103 +291,194 @@ function ChapterPyqPage() {
         ))}
       </HubHero>
 
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        {SUBJECTS.map((s) => {
-          const count = (rows ?? [])
-            .filter((r) => r.subject_id === s.id)
-            .reduce((a, r) => a + r.pyq_count, 0);
-          return (
-            <button
-              key={s.id}
-              onClick={() => setSubject(s.id)}
-              className={cn(
-                "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
-                subject === s.id
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card hover:bg-accent",
-              )}
-            >
-              {s.label}
-              {count ? <span className="ml-1.5 opacity-70">{count}</span> : null}
-            </button>
-          );
-        })}
-        <div className="ml-auto flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5">
-          <Search className="h-3.5 w-3.5 text-muted-foreground" />
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search chapter"
-            className="w-40 bg-transparent text-xs outline-none placeholder:text-muted-foreground"
-          />
-        </div>
-      </div>
-
       {error && (
         <Card>
           <CardContent className="p-6 text-sm text-destructive">{error}</CardContent>
         </Card>
       )}
 
-      {rows === null && (
+      {rows === null && !error && (
         <div className="flex items-center gap-2 p-6 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" /> Loading chapters…
         </div>
       )}
 
-      {rows !== null && !error && (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((c) => (
-            <Card key={c.chapter_id} className="overflow-hidden">
-              <CardContent className="p-4">
-                <div className="flex items-start justify-between gap-2">
-                  <h2 className="text-sm font-bold leading-snug">{c.chapter_name}</h2>
-                  <Badge variant="secondary" className="shrink-0 text-[10px]">
-                    {c.pyq_count} PYQ
-                  </Badge>
-                </div>
-                {c.first_year && c.last_year && (
-                  <div className="mt-1 text-[11px] text-muted-foreground">
-                    {c.first_year}–{c.last_year}
-                  </div>
-                )}
-                <div className="mt-3 flex gap-2">
-                  <Button
-                    size="sm"
-                    className="flex-1"
-                    disabled={launching === c.chapter_id}
-                    onClick={() => start(c, "quiz")}
-                  >
-                    {launching === c.chapter_id ? (
-                      <Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                      <Zap className="mr-1 h-3.5 w-3.5" />
-                    )}
-                    Quiz mode
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="flex-1"
-                    disabled={launching === c.chapter_id}
-                    onClick={() => start(c, "cbt")}
-                  >
-                    <Timer className="mr-1 h-3.5 w-3.5" />
-                    CBT mode
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-          {!visible.length && (
-            <Card className="sm:col-span-2 lg:col-span-3">
-              <CardContent className="p-6 text-sm text-muted-foreground">
-                No chapters match this search.
-              </CardContent>
-            </Card>
-          )}
-        </div>
+      {/* ---------- Step 1: subjects ---------- */}
+      {rows !== null && !error && !subject && (
+        <section className="grid gap-3 sm:grid-cols-3">
+          {SUBJECTS.map((s) => {
+            const t = totals[s.id] ?? { chapters: 0, questions: 0 };
+            return (
+              <button
+                key={s.id}
+                onClick={() => {
+                  setSubject(s);
+                  setQuery("");
+                }}
+                className={`group flex flex-col items-start gap-3 rounded-2xl border bg-card p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:shadow-elegant ${s.hover}`}
+              >
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-2xl ${s.ring} text-white shadow-sm`}
+                >
+                  {s.icon}
+                </span>
+                <span className="block text-base font-bold">{s.label}</span>
+                <span className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <span className={`rounded-full px-2 py-0.5 font-semibold ${s.soft}`}>
+                    {t.questions} PYQs
+                  </span>
+                  <span>{t.chapters} chapters</span>
+                </span>
+                <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary">
+                  Browse chapters <ChevronRight className="h-3.5 w-3.5" />
+                </span>
+              </button>
+            );
+          })}
+        </section>
       )}
+
+      {/* ---------- Step 2: chapters ---------- */}
+      {rows !== null && !error && subject && (
+        <section>
+          <div className="mb-4 flex items-center gap-3">
+            <Button variant="outline" size="sm" onClick={() => setSubject(null)}>
+              <ChevronLeft className="mr-1 h-3.5 w-3.5" /> Subjects
+            </Button>
+            <div className="min-w-0">
+              <div className="truncate text-lg font-bold leading-tight">
+                {subject.icon} {subject.label}
+              </div>
+              <div className="text-xs text-muted-foreground">
+                {(totals[subject.id]?.questions ?? 0).toLocaleString()} previous year questions
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-3 flex items-center gap-2">
+            <div className="relative flex-1">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search chapters"
+                className="w-full rounded-full border bg-card py-2.5 pl-9 pr-3 text-sm outline-none focus:border-primary/60"
+              />
+            </div>
+            <span className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+              {visible.length}
+            </span>
+          </div>
+
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {visible.map((c, i) => {
+              const at = attempts[c.chapter_name];
+              const busy = launching === c.chapter_id;
+              return (
+                <li key={c.chapter_id}>
+                  <Card className="overflow-hidden transition hover:-translate-y-0.5 hover:shadow-elegant">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <span
+                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${subject.soft}`}
+                        >
+                          {i + 1}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <h2 className="text-[15px] font-bold leading-snug">{c.chapter_name}</h2>
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+                            <Badge variant="secondary" className="text-[10px]">
+                              {c.pyq_count} PYQ
+                            </Badge>
+                            {c.first_year && c.last_year && (
+                              <span>
+                                {c.first_year}–{c.last_year}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {at?.status === "completed" ? (
+                          <>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="flex-1"
+                              disabled={busy}
+                              onClick={() => setModePick(c)}
+                            >
+                              {busy ? (
+                                <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                              ) : (
+                                <RotateCw className="mr-1.5 h-3.5 w-3.5" />
+                              )}
+                              Reattempt
+                            </Button>
+                            <Button asChild size="sm" className="flex-1 bg-gradient-primary">
+                              <Link to="/analysis/$attemptId" params={{ attemptId: at.attemptId }}>
+                                <Eye className="mr-1.5 h-3.5 w-3.5" /> View solution
+                              </Link>
+                            </Button>
+                          </>
+                        ) : at?.status === "in_progress" ? (
+                          <Button
+                            asChild
+                            size="sm"
+                            className="flex-1 bg-warning text-warning-foreground hover:bg-warning/90"
+                          >
+                            <Link
+                              to="/quiz/$testId"
+                              params={{ testId: at.testId }}
+                              search={{ mode: "quiz" } as never}
+                            >
+                              <RotateCw className="mr-1.5 h-3.5 w-3.5" /> Resume
+                            </Link>
+                          </Button>
+                        ) : (
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-gradient-primary"
+                            disabled={busy}
+                            onClick={() => setModePick(c)}
+                          >
+                            {busy ? (
+                              <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                            ) : (
+                              <Play className="mr-1.5 h-3.5 w-3.5" />
+                            )}
+                            Start practice
+                          </Button>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </li>
+              );
+            })}
+            {!visible.length && (
+              <li className="sm:col-span-2">
+                <Card>
+                  <CardContent className="p-8 text-center text-sm text-muted-foreground">
+                    No chapters match this search.
+                  </CardContent>
+                </Card>
+              </li>
+            )}
+          </ul>
+        </section>
+      )}
+
+      <QuizModePicker
+        open={!!modePick}
+        subtitle={
+          modePick ? `${modePick.chapter_name} · ${modePick.pyq_count} previous year questions` : undefined
+        }
+        onClose={() => setModePick(null)}
+        onPick={(m) => modePick && start(modePick, m)}
+        busy={launching !== null}
+      />
 
       <Dialog open={!!cbtPlan} onOpenChange={(o) => !o && setCbtPlan(null)}>
         <DialogContent>
