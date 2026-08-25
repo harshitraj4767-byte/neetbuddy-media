@@ -89,7 +89,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/40">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-3 pb-28 pt-4 sm:px-4">{children}</main>
+      <main className="mx-auto max-w-4xl px-3 pb-44 pt-4 sm:px-4">{children}</main>
     </div>
   );
 }
@@ -738,7 +738,7 @@ function TopicPlayer({
       )}
 
       {/* bottom bar: back / continue, exactly like a book page turn */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 px-3 py-3 backdrop-blur sm:px-4">
+      <div className="fixed inset-x-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-40 border-t bg-background/95 px-3 py-3 backdrop-blur sm:px-4">
         <div className="mx-auto flex max-w-4xl items-center gap-3">
           <button
             onClick={prev}
