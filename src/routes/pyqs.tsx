@@ -142,7 +142,6 @@ function PaperList({ onPick }: { onPick: (p: Paper) => void }) {
   const { user } = useAuth();
   const [papers, setPapers] = useState<Paper[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [yearFilter, setYearFilter] = useState<number | "All">("All");
   const [attempted, setAttempted] = useState<Record<string, PyqAttempt>>({});
 
   useEffect(() => {
@@ -183,40 +182,12 @@ function PaperList({ onPick }: { onPick: (p: Paper) => void }) {
   if (error) return <EmptyBlock label={error} />;
   if (!papers.length) return <EmptyBlock label="No PYQ papers available yet." />;
 
-  const years = Array.from(new Set(papers.map((p) => p.year))).sort((a, b) => b - a);
-  const filtered = yearFilter === "All" ? papers : papers.filter((p) => p.year === yearFilter);
-
-  // group by year for cleaner scan
-  const grouped = new Map<number, Paper[]>();
-  for (const p of filtered) {
-    if (!grouped.has(p.year)) grouped.set(p.year, []);
-    grouped.get(p.year)!.push(p);
-  }
-
   return (
     <>
-      <div className="mb-6 flex flex-wrap gap-2">
-        <FilterChip active={yearFilter === "All"} onClick={() => setYearFilter("All")}>
-          All years
-        </FilterChip>
-        {years.map((y) => (
-          <FilterChip key={y} active={yearFilter === y} onClick={() => setYearFilter(y)}>
-            {y}
-          </FilterChip>
-        ))}
-      </div>
-
       <div className="space-y-8">
-        {[...grouped.entries()].map(([year, ps]) => (
-          <div key={year}>
-            <div className="mb-3 flex items-center gap-3">
-              <div className="text-xl font-bold tracking-tight">NEET {year}</div>
-              <div className="text-xs text-muted-foreground">
-                {ps.length} paper{ps.length === 1 ? "" : "s"}
-              </div>
-            </div>
+        <div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {ps.map((p) => {
+              {papers.map((p) => {
                 const at = attempted[p.id];
                 return (
                 <div
@@ -267,36 +238,12 @@ function PaperList({ onPick }: { onPick: (p: Paper) => void }) {
               })}
 
             </div>
-          </div>
-        ))}
+        </div>
       </div>
     </>
   );
 }
 
-function FilterChip({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "rounded-full border px-3 py-1 text-xs font-semibold transition-colors",
-        active
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-border bg-card text-muted-foreground hover:bg-secondary",
-      )}
-    >
-      {children}
-    </button>
-  );
-}
 
 function LoadingBlock() {
   return (
