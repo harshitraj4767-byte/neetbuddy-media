@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { FeatureLock } from "@/components/feature-lock";
 
 export const Route = createFileRoute("/ncert-highlights")({
- head: () => ({ meta: [{ title: "NCERT Key Points — Neet Buddy" }] }),
+ head: () => ({ meta: [{ title: "NCERT Nuggets — Neet Buddy" }] }),
   component: () => (<FeatureLock feature="ncert_highlights"><NcertPage /></FeatureLock>),
 });
 
@@ -87,7 +87,7 @@ function NcertPage() {
   }
 
   return (
-    <PageShell eyebrow="High-yield" title="NCERT Key Points" description="The most-repeated NCERT lines in NEET — curated chapter-wise.">
+    <PageShell eyebrow="High-yield" title="NCERT Nuggets" description="The most-repeated NCERT lines in NEET — curated chapter-wise.">
       {decks === null ? (
         <div className="flex justify-center py-20"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>
       ) : decks.length === 0 ? (

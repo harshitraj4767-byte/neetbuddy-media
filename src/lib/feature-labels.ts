@@ -7,7 +7,7 @@ export const FEATURE_LABEL_MAP: Record<string, string> = {
   weekly_progress: "Progress Report",
   subject_wise_quiz: "Subject-wise Quiz",
   flashcards: "Flashcards",
-  ncert_highlights: "NCERT Key Points",
+  ncert_highlights: "NCERT Nuggets",
   ai_path: "AI Study Path",
   score_predictor: "Score Predictor",
   neetlab: "NEETLab",

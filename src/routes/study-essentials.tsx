@@ -31,7 +31,7 @@ function StudyEssentialsPage() {
   }
 
   const tiles: NavTile[] = [
-    { to: "/ncert-key-points", label: "NCERT Key Points", tag: "Para + Qs", accent: "blue", desc: "Read a key NCERT para, then solve every question from it.", Icon: GraduationCap, image: "/illustrations/i3d-ncert-highlights.png", imageAlt: "3D graduation cap on books icon" },
+    { to: "/ncert-key-points", label: "NCERT Nuggets", tag: "Para + Qs", accent: "blue", desc: "Read a key NCERT para, then solve every question from it.", Icon: GraduationCap, image: "/illustrations/i3d-ncert-highlights.png", imageAlt: "3D graduation cap on books icon" },
     { to: "/highlighted-ncert", label: "Highlighted NCERT", tag: "Important", accent: "amber", desc: "Important NCERT lines, highlighted for you.", Icon: Highlighter, image: "/illustrations/i3d-highlighted-ncert.png", imageAlt: "3D highlighter pen icon" },
     { label: "Short Notes", tag: "Revision", accent: "emerald", desc: "Crisp chapter-wise revision notes.", Icon: ScrollText, onClick: () => setView("short_notes"), image: "/illustrations/i3d-short-notes.png", imageAlt: "3D notebook icon" },
     { to: "/flashcards", label: "Flashcards", tag: "Recall", accent: "violet", desc: "Quick-recall cards for active revision.", Icon: Layers, image: "/illustrations/i3d-flashcards.png", imageAlt: "3D flashcards icon" },

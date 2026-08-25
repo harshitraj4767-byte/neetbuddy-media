@@ -1,4 +1,4 @@
-// NCERT Key Points — paragraph-by-paragraph revision.
+// NCERT Nuggets — paragraph-by-paragraph revision.
 //
 // Flow: subject → chapter → topic grid (nugget tiles) → mode sheet
 //       (Experience / Revision / Analytics) → player.
@@ -24,6 +24,7 @@ import {
   type ChapterKeyPoints,
   type KeyPointQuestion,
   type KeyPointTopic,
+  type KeyPointPara,
   type KeyPointAnswer,
 } from "@/lib/ncert-keypoints";
 import {
@@ -53,13 +54,13 @@ type Mode = "experience" | "revision" | "analytics";
 export const Route = createFileRoute("/ncert-key-points")({
   head: () => ({
     meta: [
-      { title: "NCERT Key Points — Neet Buddy" },
+      { title: "NCERT Nuggets — Neet Buddy" },
       {
         name: "description",
         content:
           "Revise NCERT one key paragraph at a time, then answer every question asked from that line — with your responses saved for analytics.",
       },
-      { property: "og:title", content: "NCERT Key Points — Neet Buddy" },
+      { property: "og:title", content: "NCERT Nuggets — Neet Buddy" },
       {
         property: "og:description",
         content:
@@ -106,7 +107,7 @@ function Spinner({ label }: { label?: string }) {
 function ErrorBox({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
     <div className="rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center">
-      <div className="text-sm font-semibold text-destructive">Couldn't load key points</div>
+      <div className="text-sm font-semibold text-destructive">Couldn't load nuggets</div>
       <p className="mt-1 break-words text-xs text-muted-foreground">{message}</p>
       {onRetry && (
         <button
@@ -163,14 +164,14 @@ function Page() {
     <Shell>
       <HubHero
         eyebrow="NCERT + every question"
-        title="NCERT Key Points"
+        title="NCERT Nuggets"
         description="Read one NCERT key paragraph, then solve every question ever asked from it. Your answers are saved, so you can review or revise any topic later."
         Icon={GraduationCap}
         accent="blue"
         variant="banner"
         compact
         image="/illustrations/i3d-ncert-highlights.png"
-        imageAlt="NCERT key points illustration"
+        imageAlt="NCERT nuggets illustration"
       />
 
       <div className="mb-5 grid grid-cols-3 gap-2">
@@ -268,7 +269,7 @@ function ChapterList({
                     {c.title}
                   </span>
                   <span className="mt-1 block text-xs text-muted-foreground">
-                    {c.para_count} key points
+                    {c.para_count} nuggets
                     {st ? ` · ${st.attempted} answered · ${st.correct} correct` : ""}
                   </span>
                 </span>
@@ -320,7 +321,7 @@ function ChapterView({
 
   const [sheetTopic, setSheetTopic] = useState<KeyPointTopic | null>(null);
 
-  if (dataQ.isPending) return <Spinner label="Building key points" />;
+  if (dataQ.isPending) return <Spinner label="Building NCERT Nuggets" />;
   if (dataQ.isError)
     return <ErrorBox message={(dataQ.error as Error).message} onRetry={() => dataQ.refetch()} />;
 
@@ -453,7 +454,7 @@ function TopicGrid({
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[15px] font-bold">{t.title}</span>
                 <span className="mt-0.5 block text-xs text-muted-foreground">
-                  {t.paraCount} key points · {t.questionCount} questions · {answered} answered
+                  {t.paraCount} nuggets · {t.questionCount} questions · {answered} answered
                 </span>
                 <span className="mt-2 block h-1.5 w-full overflow-hidden rounded-full bg-secondary">
                   <span
@@ -553,7 +554,7 @@ function ModeSheet({
         <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-border sm:hidden" />
         <div className="text-sm font-bold">{topic.title}</div>
         <div className="text-xs text-muted-foreground">
-          {topic.paraCount} key points · {topic.questionCount} questions
+          {topic.paraCount} nuggets · {topic.questionCount} questions
         </div>
         <div className="mt-4 space-y-2">
           {options.map((o) => (
@@ -721,10 +722,7 @@ function TopicPlayer({
       {step.kind === "para" ? (
         <PaperPage
           subject={chapter.chapter.subject}
-          kind={step.para.kind}
-          text={step.para.text}
-          runs={step.para.runs}
-          imageUrl={step.para.imageUrl}
+          para={step.para}
           questionCount={step.para.questions.length}
         />
       ) : (
@@ -798,19 +796,14 @@ function ParaRuns({ runs, text, subject }: { runs: Run[]; text: string; subject:
 
 function PaperPage({
   subject,
-  kind,
-  text,
-  runs,
-  imageUrl,
+  para,
   questionCount,
 }: {
   subject: string;
-  kind: "paragraph" | "heading" | "image";
-  text: string;
-  runs: Run[];
-  imageUrl: string | null;
+  para: KeyPointPara;
   questionCount: number;
 }) {
+  const { kind, text, runs, imageUrl, heading, headingRuns, figures } = para;
   return (
     <article
       className="relative overflow-hidden rounded-3xl border border-amber-900/15 p-5 shadow-elegant sm:p-8"
@@ -825,30 +818,60 @@ function PaperPage({
         {questionCount > 0 && <span>{questionCount} questions ahead</span>}
       </div>
 
-      {kind === "heading" ? (
-        <h2 className="font-serif text-2xl font-bold leading-snug text-amber-950 sm:text-3xl">
-          <ParaRuns runs={runs} text={text} subject={subject} />
+      {/* The section heading always sits on the same page as its paragraph. */}
+      {heading && (
+        <h2 className="mb-3 font-serif text-2xl font-bold leading-snug text-amber-950 sm:text-3xl">
+          <ParaRuns runs={headingRuns} text={heading} subject={subject} />
         </h2>
+      )}
+
+      {kind === "heading" ? (
+        !heading && (
+          <h2 className="font-serif text-2xl font-bold leading-snug text-amber-950 sm:text-3xl">
+            <ParaRuns runs={runs} text={text} subject={subject} />
+          </h2>
+        )
       ) : kind === "image" && imageUrl ? (
-        <figure>
-          <img
-            src={resolveBookImage(imageUrl, subject)}
-            alt={text || "NCERT figure"}
-            loading="lazy"
-            className="mx-auto max-h-[60vh] w-auto rounded-xl bg-white/60 p-2"
-          />
-          {text && (
-            <figcaption className="mt-3 text-center font-serif text-sm italic text-amber-900/70">
-              {text}
-            </figcaption>
-          )}
-        </figure>
+        <BookFigure src={imageUrl} caption={text} runs={runs} subject={subject} />
       ) : (
         <p className="whitespace-pre-line font-serif text-[17px] leading-[1.9] text-amber-950 sm:text-lg sm:leading-[2]">
           <ParaRuns runs={runs} text={text} subject={subject} />
         </p>
       )}
+
+      {/* Figures live with their own caption, never on a lonely page. */}
+      {figures.map((f, i) => (
+        <BookFigure key={`${f.url}-${i}`} src={f.url} caption={f.caption} runs={f.runs} subject={subject} />
+      ))}
     </article>
+  );
+}
+
+function BookFigure({
+  src,
+  caption,
+  runs,
+  subject,
+}: {
+  src: string;
+  caption: string;
+  runs: Run[];
+  subject: string;
+}) {
+  return (
+    <figure className="mt-4">
+      <img
+        src={resolveBookImage(src, subject)}
+        alt={caption || "NCERT figure"}
+        loading="lazy"
+        className="mx-auto max-h-[60vh] w-auto rounded-xl bg-white/60 p-2"
+      />
+      {caption && (
+        <figcaption className="mt-3 text-center font-serif text-sm italic text-amber-900/70">
+          <ParaRuns runs={(runs ?? []).filter((r) => r.t !== "img")} text={caption} subject={subject} />
+        </figcaption>
+      )}
+    </figure>
   );
 }
 
@@ -1000,17 +1023,24 @@ function TopicAnalytics({
     [topic],
   );
 
-  const attempted = questions.filter((q) => byQuestion.has(q.key));
+  // A response can be an answer OR a skip — they must not be mixed up.
+  const responded = questions.filter((q) => byQuestion.has(q.key));
+  const skippedList = responded.filter((q) => byQuestion.get(q.key)!.skipped);
+  const attempted = responded.filter((q) => !byQuestion.get(q.key)!.skipped);
   const correct = attempted.filter((q) => byQuestion.get(q.key)!.is_correct).length;
-  const skipped = attempted.filter((q) => byQuestion.get(q.key)!.skipped).length;
+  const wrong = attempted.length - correct;
+  const skipped = skippedList.length;
+  const timed = responded.filter((q) => (byQuestion.get(q.key)!.time_ms ?? 0) > 0);
   const avgSec =
-    attempted.length > 0
-      ? Math.round(
-          attempted.reduce((n, q) => n + (byQuestion.get(q.key)!.time_ms ?? 0), 0) /
-            attempted.length /
-            1000,
+    timed.length > 0
+      ? Math.max(
+          1,
+          Math.round(
+            timed.reduce((n, q) => n + (byQuestion.get(q.key)!.time_ms ?? 0), 0) / timed.length / 1000,
+          ),
         )
       : 0;
+  // Accuracy is out of the questions actually answered, skips excluded.
   const accuracy = attempted.length ? Math.round((correct / attempted.length) * 100) : 0;
 
   return (
@@ -1037,27 +1067,29 @@ function TopicAnalytics({
         </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
         <Stat label="Attempted" value={`${attempted.length}/${questions.length}`} />
         <Stat label="Accuracy" value={`${accuracy}%`} />
+        <Stat label="Correct" value={`${correct} / ${wrong} wrong`} />
         <Stat label="Skipped" value={String(skipped)} />
-        <Stat label="Avg time" value={`${avgSec}s`} />
+        <Stat label="Avg time" value={avgSec ? `${avgSec}s` : "—"} />
       </div>
 
       <h3 className="mb-2 mt-6 text-sm font-bold">Your responses</h3>
-      {attempted.length === 0 ? (
+      {responded.length === 0 ? (
         <p className="rounded-2xl border border-dashed p-8 text-center text-xs text-muted-foreground">
           You haven't answered any question in this topic yet.
         </p>
       ) : (
         <ul className="space-y-2">
-          {questions.map((q, i) => {
-            const a = byQuestion.get(q.key);
-            if (!a) return null;
+          {questions.map((q, i) => ({ q, a: byQuestion.get(q.key), n: i + 1 }))
+            .filter((r): r is { q: KeyPointQuestion; a: KeyPointAnswer; n: number } => !!r.a)
+            .map(({ q, a, n }, i) => {
             return (
               <li key={q.key} className="rounded-2xl border bg-card p-4">
                 <div className="mb-1 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                   <span>Q{i + 1}</span>
+                  <span className="font-normal normal-case tracking-normal">(question {n} of {questions.length})</span>
                   <span>{q.source === "pyq" ? "PYQ" : "Question bank"}</span>
                   <span
                     className={
@@ -1074,9 +1106,17 @@ function TopicAnalytics({
                 </div>
                 <PyqRichText html={q.question} className="text-sm font-semibold" />
                 <div className="mt-2 text-xs text-muted-foreground">
-                  Your answer: <strong>{a.selected ?? "—"}</strong> · Correct:{" "}
-                  <strong>{q.correctKey ?? "—"}</strong>
-                  {a.time_ms != null && <> · {Math.round(a.time_ms / 1000)}s</>}
+                  {a.skipped ? (
+                    <>Skipped</>
+                  ) : (
+                    <>
+                      Your answer: <strong>{a.selected ?? "—"}</strong>
+                    </>
+                  )}{" "}
+                  · Correct: <strong>{q.correctKey ?? "—"}</strong>
+                  {a.time_ms != null && a.time_ms > 0 && (
+                    <> · {Math.max(1, Math.round(a.time_ms / 1000))}s</>
+                  )}
                 </div>
               </li>
             );

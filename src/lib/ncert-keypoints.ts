@@ -1,4 +1,4 @@
-// Data layer for the NCERT Key Points experience.
+// Data layer for the NCERT Nuggets experience.
 //
 // A chapter is split into TOPICS (the "6.1", "6.2" … NCERT sections). Each
 // topic is a sequence of STEPS: a paragraph rendered on a paper-like page,
@@ -60,6 +60,8 @@ export type KeyPointQuestion = {
   year: number | null;
 };
 
+export type KeyPointFigure = { url: string; caption: string; runs: Run[] };
+
 export type KeyPointPara = {
   blockId: number;
   kind: "paragraph" | "heading" | "image";
@@ -67,6 +69,13 @@ export type KeyPointPara = {
   /** Formatted runs (highlights + inline figures) for faithful rendering. */
   runs: Run[];
   imageUrl: string | null;
+  /** Section/sub-section heading shown on the SAME page as this paragraph. */
+  heading: string | null;
+  headingRuns: Run[];
+  /** Figures shown on the SAME page, each with its own caption. */
+  figures: KeyPointFigure[];
+  /** Block ids merged into this page (headings/figures) — keeps PYQ links. */
+  extraBlockIds: number[];
   questions: KeyPointQuestion[];
 };
 
@@ -192,6 +201,10 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
             text,
             runs: runsOf(b),
             imageUrl: null,
+            heading: null,
+            headingRuns: [],
+            figures: [],
+            extraBlockIds: [],
             questions: [],
           });
         }
@@ -203,6 +216,10 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
         text,
         runs: runsOf(b),
         imageUrl: null,
+        heading: null,
+        headingRuns: [],
+        figures: [],
+        extraBlockIds: [],
         questions: [],
       });
       continue;
@@ -216,6 +233,10 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
         text,
         runs: runsOf(b),
         imageUrl: b.image_url,
+        heading: null,
+        headingRuns: [],
+        figures: [],
+        extraBlockIds: [],
         questions: [],
       });
       continue;
@@ -229,13 +250,116 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
       text,
       runs,
       imageUrl: null,
+      heading: null,
+      headingRuns: [],
+      figures: [],
+      extraBlockIds: [],
       questions: [],
     });
   }
 
+  for (const t of byKey.values()) t.paras = mergePages(t.paras);
+
   return order
     .map((k) => byKey.get(k)!)
     .filter((t) => t.paras.some((p) => p.kind === "paragraph"));
+}
+
+const CAPTION_RE = /^\s*fig(?:ure)?\s*\.?\s*\d/i;
+
+/**
+ * Collapse the raw block stream into real book pages.
+ *
+ * A heading never gets a page of its own: it is printed above the paragraph
+ * that follows it. A figure never gets a page of its own either: it is printed
+ * inside the paragraph it belongs to, together with its "Fig 6.2 …" caption.
+ */
+function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
+  const out: KeyPointPara[] = [];
+  let pendingHeading: KeyPointPara | null = null;
+  let pendingFigures: KeyPointPara[] = [];
+
+  const attachFigures = (host: KeyPointPara, figs: KeyPointPara[]) => {
+    for (const f of figs) {
+      host.figures.push({ url: f.imageUrl!, caption: f.text, runs: f.runs });
+      host.extraBlockIds.push(f.blockId);
+      host.questions.push(...f.questions);
+    }
+  };
+
+  for (const p of paras) {
+    if (p.kind === "heading") {
+      if (pendingHeading) {
+        // Two headings back to back (6.1 then 6.1.2) — keep both lines.
+        pendingHeading = {
+          ...pendingHeading,
+          text: `${pendingHeading.text}\n${p.text}`,
+          runs: [...pendingHeading.runs, { t: "br" } as Run, ...p.runs],
+          extraBlockIds: [...pendingHeading.extraBlockIds, p.blockId],
+          questions: [...pendingHeading.questions, ...p.questions],
+        };
+      } else {
+        pendingHeading = p;
+      }
+      continue;
+    }
+
+    if (p.kind === "image") {
+      if (!p.imageUrl) continue;
+      // A figure belongs to the paragraph just before it when there is one.
+      if (out.length > 0 && !pendingHeading) attachFigures(out[out.length - 1], [p]);
+      else pendingFigures.push(p);
+      continue;
+    }
+
+    // A bare "Fig 6.2 …" line is a caption, not a page.
+    if (CAPTION_RE.test(p.text) && p.text.trim().length < 260) {
+      const host = pendingFigures.length ? pendingFigures[pendingFigures.length - 1] : null;
+      if (host) {
+        host.text = host.text ? `${host.text} ${p.text}`.trim() : p.text;
+        host.extraBlockIds.push(p.blockId);
+        host.questions.push(...p.questions);
+        continue;
+      }
+      const last = out[out.length - 1];
+      if (last && last.figures.length) {
+        const fig = last.figures[last.figures.length - 1];
+        fig.caption = fig.caption ? `${fig.caption} ${p.text}`.trim() : p.text;
+        last.extraBlockIds.push(p.blockId);
+        last.questions.push(...p.questions);
+        continue;
+      }
+    }
+
+    const page: KeyPointPara = { ...p, figures: [...p.figures], extraBlockIds: [...p.extraBlockIds] };
+    if (pendingHeading) {
+      page.heading = pendingHeading.text;
+      page.headingRuns = pendingHeading.runs;
+      page.extraBlockIds.push(pendingHeading.blockId, ...pendingHeading.extraBlockIds);
+      page.questions = [...pendingHeading.questions, ...page.questions];
+      pendingHeading = null;
+    }
+    if (pendingFigures.length) {
+      attachFigures(page, pendingFigures);
+      pendingFigures = [];
+    }
+    out.push(page);
+  }
+
+  // Leftovers at the end of a section still have to be shown somewhere.
+  const last = out[out.length - 1];
+  if (last) {
+    if (pendingHeading) {
+      last.questions.push(...pendingHeading.questions);
+      last.extraBlockIds.push(pendingHeading.blockId);
+    }
+    if (pendingFigures.length) attachFigures(last, pendingFigures);
+  } else {
+    if (pendingHeading) out.push(pendingHeading);
+    for (const f of pendingFigures) out.push(f);
+  }
+
+  return out;
 }
 
 /* ------------------------- question normalising ------------------------ */
@@ -380,10 +504,12 @@ function assignQuestions(
       for (const w of tk) bag.add(w);
     }
     topicTokens.set(t.key, bag);
-    // 1. linked PYQs
+    // 1. linked PYQs (including blocks merged into this page)
     for (const p of t.paras) {
-      const linked = pyqsByBlock.get(p.blockId);
-      if (linked?.length) p.questions.push(...linked);
+      for (const id of [p.blockId, ...p.extraBlockIds]) {
+        const linked = pyqsByBlock.get(id);
+        if (linked?.length) p.questions.push(...linked);
+      }
     }
   }
 
@@ -442,6 +568,20 @@ function assignQuestions(
   }
 
   // Flatten into the linear step list the player walks through.
+  // Drop repeats: the same question can arrive from both sources or sit in the
+  // bank more than once, which used to show up 3x in a row during revision.
+  for (const t of topics) {
+    const seenText = new Set<string>();
+    for (const p of t.paras) {
+      p.questions = p.questions.filter((q) => {
+        const sig = normName(stripHtml(q.question)) + "|" + q.options.map((o) => normName(stripHtml(o.text))).join("|");
+        if (!sig || seenText.has(sig)) return false;
+        seenText.add(sig);
+        return true;
+      });
+    }
+  }
+
   for (const t of topics) {
     t.steps = [];
     for (const p of t.paras) {
