@@ -474,8 +474,8 @@ function TopicGrid({
               )}
             </button>
 
-            {/* nugget tiles: one per key point inside the topic */}
-            <div className="mt-3 grid grid-cols-6 gap-2 sm:grid-cols-10">
+            {/* nugget tiles: one per key point inside the topic, single horizontal slider */}
+            <div className="mt-3 -mx-1 flex snap-x snap-mandatory gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {t.paras
                 .filter((p2) => p2.kind === "paragraph")
                 .map((p2, i) => {
@@ -488,7 +488,7 @@ function TopicGrid({
                       key={p2.blockId}
                       title={p2.text.slice(0, 80)}
                       className={
-                        "flex aspect-square items-center justify-center rounded-xl border text-[11px] font-bold " +
+                        "flex h-11 w-11 shrink-0 snap-start items-center justify-center rounded-xl border text-[11px] font-bold " +
                         (reached
                           ? "border-sky-500/40 bg-sky-500/10 text-sky-600 dark:text-sky-400"
                           : "border-dashed bg-secondary/60 text-muted-foreground")
@@ -499,6 +499,7 @@ function TopicGrid({
                   );
                 })}
             </div>
+
           </section>
         );
       })}
