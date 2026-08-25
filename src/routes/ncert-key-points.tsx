@@ -343,6 +343,8 @@ function ChapterView({
   }
 
   if (topic && (mode === "experience" || mode === "revision")) {
+    const ti = data.topics.findIndex((t) => t.key === topic.key);
+    const nextTopic = ti >= 0 ? data.topics[ti + 1] : undefined;
     return (
       <TopicPlayer
         key={topic.key + mode}
@@ -353,9 +355,12 @@ function ChapterView({
         pastAnswers={answers.filter((a) => a.topic_key === topic.key)}
         onExit={onCloseTopic}
         onAnalytics={() => onOpenTopic(topic.key, "analytics")}
+        nextTopicTitle={nextTopic?.title ?? null}
+        onNextTopic={nextTopic ? () => onOpenTopic(nextTopic.key, mode) : undefined}
       />
     );
   }
+
 
   return (
     <>
@@ -423,17 +428,16 @@ function TopicGrid({
 
   return (
     <div className="space-y-4">
-      {topics.map((t, ti) => {
-        const prev = ti > 0 ? topics[ti - 1] : null;
-        const prevDone = !prev || (progress[prev.key]?.completed ?? false);
+      {topics.map((t) => {
         const p = progress[t.key];
         const started = (p?.step_index ?? 0) > 0;
-        const locked = !prevDone && !started;
+        const locked = false; // every topic is open — jump anywhere, any time
         const done = p?.completed ?? false;
         const answered = answeredByTopic.get(t.key)?.size ?? 0;
         const pct = t.steps.length
           ? Math.round((Math.min(p?.step_index ?? 0, t.steps.length) / t.steps.length) * 100)
           : 0;
+
 
         return (
           <section
@@ -483,7 +487,7 @@ function TopicGrid({
                   const stepIdx = t.steps.findIndex(
                     (s) => s.kind === "para" && s.para.blockId === p2.blockId,
                   );
-                  const reached = (p?.step_index ?? 0) >= stepIdx && !locked;
+                  const reached = (p?.step_index ?? 0) >= stepIdx;
                   return (
                     <div
                       key={p2.blockId}
@@ -495,9 +499,10 @@ function TopicGrid({
                           : "border-dashed bg-secondary/60 text-muted-foreground")
                       }
                     >
-                      {reached ? String(i + 1).padStart(2, "0") : <Lock className="h-3 w-3" />}
+                      {String(i + 1).padStart(2, "0")}
                     </div>
                   );
+
                 })}
             </div>
 
@@ -595,6 +600,8 @@ function TopicPlayer({
   pastAnswers,
   onExit,
   onAnalytics,
+  nextTopicTitle,
+  onNextTopic,
 }: {
   chapter: ChapterKeyPoints;
   topic: KeyPointTopic;
@@ -603,7 +610,10 @@ function TopicPlayer({
   pastAnswers: KeyPointAnswer[];
   onExit: () => void;
   onAnalytics: () => void;
+  nextTopicTitle?: string | null;
+  onNextTopic?: () => void;
 }) {
+
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const total = topic.steps.length;
@@ -739,25 +749,47 @@ function TopicPlayer({
 
       {/* bottom bar: back / continue, exactly like a book page turn */}
       <div className="fixed inset-x-0 bottom-0 z-[60] border-t bg-background/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:px-4">
-        <div className="mx-auto flex max-w-4xl items-center gap-3">
-          <button
-            onClick={prev}
-            disabled={index === 0}
-            className="rounded-full border px-4 py-2.5 text-xs font-bold text-muted-foreground transition disabled:opacity-40"
-          >
-            Back
-          </button>
-          <button
-            onClick={atEnd ? onAnalytics : next}
-            className="flex-1 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 py-3 text-sm font-bold text-white shadow-md shadow-sky-500/25"
-          >
-            {atEnd ? "Finish & view analysis" : "Tap to continue"}
-          </button>
-          <span className="shrink-0 text-xs font-semibold tabular-nums text-muted-foreground">
-            {index + 1}/{total}
-          </span>
+        <div className="mx-auto max-w-4xl">
+          {atEnd && onNextTopic && (
+            <button
+              onClick={onNextTopic}
+              className="mb-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 py-3 text-sm font-bold text-white shadow-md shadow-emerald-500/25"
+            >
+              Next topic
+              {nextTopicTitle ? (
+                <span className="max-w-[45%] truncate font-semibold opacity-90">
+                  · {nextTopicTitle}
+                </span>
+              ) : null}
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          )}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prev}
+              disabled={index === 0}
+              className="rounded-full border px-4 py-2.5 text-xs font-bold text-muted-foreground transition disabled:opacity-40"
+            >
+              Back
+            </button>
+            <button
+              onClick={atEnd ? onAnalytics : next}
+              className={
+                "flex-1 rounded-full py-3 text-sm font-bold transition " +
+                (atEnd
+                  ? "border bg-secondary text-foreground"
+                  : "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-md shadow-sky-500/25")
+              }
+            >
+              {atEnd ? "View analysis" : "Tap to continue"}
+            </button>
+            <span className="shrink-0 text-xs font-semibold tabular-nums text-muted-foreground">
+              {index + 1}/{total}
+            </span>
+          </div>
         </div>
       </div>
+
     </div>
   );
 }

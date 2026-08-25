@@ -185,6 +185,8 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
   };
 
   let current = ensure("intro", "Introduction");
+  let seenBody = false;
+
 
   for (const b of blocks) {
     const text = textOf(b);
@@ -244,6 +246,35 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
 
     const runs = runsOf(b);
     if (!text && !runs.some((r) => r.t === "img")) continue;
+
+    // The very first line of a chapter is its TITLE stored as a paragraph
+    // ("ANATOMY OF FLOWERING PLANTS"). Treat it as a heading so it is printed
+    // on the same page as the introduction instead of on a page of its own.
+    const isChapterTitle =
+      !seenBody &&
+      current.key === "intro" &&
+      text.length > 0 &&
+      text.length < 120 &&
+      !/[.?!]$/.test(text) &&
+      text === text.toUpperCase();
+
+    if (isChapterTitle) {
+      current.paras.push({
+        blockId: b.id,
+        kind: "heading",
+        text,
+        runs,
+        imageUrl: null,
+        heading: null,
+        headingRuns: [],
+        figures: [],
+        extraBlockIds: [],
+        questions: [],
+      });
+      continue;
+    }
+    seenBody = true;
+
     current.paras.push({
       blockId: b.id,
       kind: "paragraph",
@@ -256,6 +287,7 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
       extraBlockIds: [],
       questions: [],
     });
+
   }
 
   for (const t of byKey.values()) t.paras = mergePages(t.paras);
