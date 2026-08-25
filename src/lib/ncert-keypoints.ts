@@ -15,13 +15,15 @@
 import { supabase } from "@/integrations/supabase/client";
 import {
   getBookChapter,
+  runsOf,
+  type Run,
   getBookPyqs,
   type BookBlock,
   type BookChapter,
   type BookPyq,
 } from "@/lib/ncert-book";
 
-export type { BookChapter, BookBlock };
+export type { BookChapter, BookBlock, Run };
 
 type LooseTable = {
   select: (cols: string) => LooseTable;
@@ -62,6 +64,8 @@ export type KeyPointPara = {
   blockId: number;
   kind: "paragraph" | "heading" | "image";
   text: string;
+  /** Formatted runs (highlights + inline figures) for faithful rendering. */
+  runs: Run[];
   imageUrl: string | null;
   questions: KeyPointQuestion[];
 };
@@ -186,13 +190,21 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
             blockId: b.id,
             kind: "heading",
             text,
+            runs: runsOf(b),
             imageUrl: null,
             questions: [],
           });
         }
         continue;
       }
-      current.paras.push({ blockId: b.id, kind: "heading", text, imageUrl: null, questions: [] });
+      current.paras.push({
+        blockId: b.id,
+        kind: "heading",
+        text,
+        runs: runsOf(b),
+        imageUrl: null,
+        questions: [],
+      });
       continue;
     }
 
@@ -202,14 +214,23 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
         blockId: b.id,
         kind: "image",
         text,
+        runs: runsOf(b),
         imageUrl: b.image_url,
         questions: [],
       });
       continue;
     }
 
-    if (!text) continue;
-    current.paras.push({ blockId: b.id, kind: "paragraph", text, imageUrl: null, questions: [] });
+    const runs = runsOf(b);
+    if (!text && !runs.some((r) => r.t === "img")) continue;
+    current.paras.push({
+      blockId: b.id,
+      kind: "paragraph",
+      text,
+      runs,
+      imageUrl: null,
+      questions: [],
+    });
   }
 
   return order

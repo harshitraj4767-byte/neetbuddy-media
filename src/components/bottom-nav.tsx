@@ -17,8 +17,13 @@ const HIDDEN_PREFIXES = ["/login", "/quiz/", "/battle/", "/pyqs/result", "/conte
 
 export function BottomNav() {
   const { user } = useAuth();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const hidden = !user || pathname === "/" || HIDDEN_PREFIXES.some((p) => pathname.startsWith(p));
+  const loc = useRouterState({ select: (s) => s.location });
+  const pathname = loc.pathname;
+  // Full-screen readers/players pass ?mode= — their own action bar owns the
+  // bottom of the screen, so the tab bar must get out of the way.
+  const inPlayer =
+    pathname.startsWith("/ncert-key-points") && /(?:^|[?&])mode=/.test(loc.searchStr ?? "");
+  const hidden = !user || inPlayer || pathname === "/" || HIDDEN_PREFIXES.some((p) => pathname.startsWith(p));
 
   useEffect(() => {
     if (hidden) return;

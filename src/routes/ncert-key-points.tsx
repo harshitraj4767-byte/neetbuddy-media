@@ -13,7 +13,7 @@ import { HubHero } from "@/components/nav-tiles";
 import { PyqRichText } from "@/components/pyq-rich-text";
 import { NcertPyqImage } from "@/components/ncert-pyq-image";
 import { useAuth } from "@/hooks/use-auth";
-import { resolveBookImage, listBookChapters, type BookChapter } from "@/lib/ncert-book";
+import { resolveBookImage, runImageSrc, listBookChapters, type BookChapter, type Run } from "@/lib/ncert-book";
 import {
   getChapterKeyPoints,
   getChapterProgress,
@@ -687,7 +687,7 @@ function TopicPlayer({
   const pct = Math.round(((index + 1) / total) * 100);
 
   return (
-    <div className="pb-24">
+    <div className="pb-32">
       <div className="sticky top-0 z-20 -mx-3 mb-4 border-b bg-background/85 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
         <div className="flex items-center gap-2">
           <button
@@ -723,6 +723,7 @@ function TopicPlayer({
           subject={chapter.chapter.subject}
           kind={step.para.kind}
           text={step.para.text}
+          runs={step.para.runs}
           imageUrl={step.para.imageUrl}
           questionCount={step.para.questions.length}
         />
@@ -739,7 +740,7 @@ function TopicPlayer({
       )}
 
       {/* bottom bar: back / continue, exactly like a book page turn */}
-      <div className="fixed inset-x-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-40 border-t bg-background/95 px-3 py-3 backdrop-blur sm:px-4">
+      <div className="fixed inset-x-0 bottom-0 z-[60] border-t bg-background/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:px-4">
         <div className="mx-auto flex max-w-4xl items-center gap-3">
           <button
             onClick={prev}
@@ -766,16 +767,47 @@ function TopicPlayer({
 /* ------------------------------ paper page ---------------------------- */
 
 /** A single NCERT key point rendered like a real book page. */
+function ParaRuns({ runs, text, subject }: { runs: Run[]; text: string; subject: string }) {
+  const usable = (runs ?? []).filter((r) => (r.t === "img" ? !!runImageSrc(r) : r.t === "br" || !!r.s));
+  if (usable.length === 0) return <>{text}</>;
+  return (
+    <>
+      {usable.map((r, i) => {
+        if (r.t === "br") return <br key={i} />;
+        if (r.t === "img")
+          return (
+            <img
+              key={i}
+              src={resolveBookImage(runImageSrc(r), subject)}
+              alt=""
+              loading="lazy"
+              className="mx-auto my-3 block max-h-[55vh] w-auto rounded-xl bg-white/60 p-2"
+            />
+          );
+        if (r.t === "hl")
+          return (
+            <mark key={i} className="rounded bg-amber-300/60 px-0.5 text-amber-950">
+              {r.s}
+            </mark>
+          );
+        return <span key={i}>{r.s}</span>;
+      })}
+    </>
+  );
+}
+
 function PaperPage({
   subject,
   kind,
   text,
+  runs,
   imageUrl,
   questionCount,
 }: {
   subject: string;
   kind: "paragraph" | "heading" | "image";
   text: string;
+  runs: Run[];
   imageUrl: string | null;
   questionCount: number;
 }) {
@@ -795,7 +827,7 @@ function PaperPage({
 
       {kind === "heading" ? (
         <h2 className="font-serif text-2xl font-bold leading-snug text-amber-950 sm:text-3xl">
-          {text}
+          <ParaRuns runs={runs} text={text} subject={subject} />
         </h2>
       ) : kind === "image" && imageUrl ? (
         <figure>
@@ -813,7 +845,7 @@ function PaperPage({
         </figure>
       ) : (
         <p className="whitespace-pre-line font-serif text-[17px] leading-[1.9] text-amber-950 sm:text-lg sm:leading-[2]">
-          {text}
+          <ParaRuns runs={runs} text={text} subject={subject} />
         </p>
       )}
     </article>

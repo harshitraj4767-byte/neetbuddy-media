@@ -117,8 +117,10 @@ function Page() {
   const list = useMemo(() => {
     const rows = q.data ?? [];
     // Keep the order the reading page linked them in.
-    const rank = new Map(idList.map((id, n) => [id, n]));
-    return [...rows].sort((a, b) => (rank.get(a.unique_id) ?? 0) - (rank.get(b.unique_id) ?? 0));
+    const rank = new Map<number, number>(idList.map((id, n) => [Number(id), n]));
+    return [...rows].sort(
+      (a, b) => (rank.get(Number(a.unique_id)) ?? 0) - (rank.get(Number(b.unique_id)) ?? 0),
+    );
   }, [q.data, idList]);
 
   const [i, setI] = useState(0);
