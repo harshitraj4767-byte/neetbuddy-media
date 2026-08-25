@@ -24,6 +24,7 @@ import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as ArenaRouteImport } from './routes/arena'
 import { Route as BattlegroundsRouteImport } from './routes/battlegrounds'
 import { Route as BookmarksRouteImport } from './routes/bookmarks'
+import { Route as ChapterPyqsRouteImport } from './routes/chapter-pyqs'
 import { Route as CollaboratorsRouteImport } from './routes/collaborators'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as ContestsRouteImport } from './routes/contests'
@@ -171,6 +172,11 @@ const BattlegroundsRoute = BattlegroundsRouteImport.update({
 const BookmarksRoute = BookmarksRouteImport.update({
   id: '/bookmarks',
   path: '/bookmarks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChapterPyqsRoute = ChapterPyqsRouteImport.update({
+  id: '/chapter-pyqs',
+  path: '/chapter-pyqs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollaboratorsRoute = CollaboratorsRouteImport.update({
@@ -565,6 +571,7 @@ export interface FileRoutesByFullPath {
   '/arena': typeof ArenaRoute
   '/battlegrounds': typeof BattlegroundsRouteWithChildren
   '/bookmarks': typeof BookmarksRoute
+  '/chapter-pyqs': typeof ChapterPyqsRoute
   '/collaborators': typeof CollaboratorsRoute
   '/community': typeof CommunityRoute
   '/contests': typeof ContestsRoute
@@ -655,6 +662,7 @@ export interface FileRoutesByTo {
   '/arena': typeof ArenaRoute
   '/battlegrounds': typeof BattlegroundsRouteWithChildren
   '/bookmarks': typeof BookmarksRoute
+  '/chapter-pyqs': typeof ChapterPyqsRoute
   '/collaborators': typeof CollaboratorsRoute
   '/community': typeof CommunityRoute
   '/contests': typeof ContestsRoute
@@ -746,6 +754,7 @@ export interface FileRoutesById {
   '/arena': typeof ArenaRoute
   '/battlegrounds': typeof BattlegroundsRouteWithChildren
   '/bookmarks': typeof BookmarksRoute
+  '/chapter-pyqs': typeof ChapterPyqsRoute
   '/collaborators': typeof CollaboratorsRoute
   '/community': typeof CommunityRoute
   '/contests': typeof ContestsRoute
@@ -838,6 +847,7 @@ export interface FileRouteTypes {
     | '/arena'
     | '/battlegrounds'
     | '/bookmarks'
+    | '/chapter-pyqs'
     | '/collaborators'
     | '/community'
     | '/contests'
@@ -928,6 +938,7 @@ export interface FileRouteTypes {
     | '/arena'
     | '/battlegrounds'
     | '/bookmarks'
+    | '/chapter-pyqs'
     | '/collaborators'
     | '/community'
     | '/contests'
@@ -1018,6 +1029,7 @@ export interface FileRouteTypes {
     | '/arena'
     | '/battlegrounds'
     | '/bookmarks'
+    | '/chapter-pyqs'
     | '/collaborators'
     | '/community'
     | '/contests'
@@ -1109,6 +1121,7 @@ export interface RootRouteChildren {
   ArenaRoute: typeof ArenaRoute
   BattlegroundsRoute: typeof BattlegroundsRouteWithChildren
   BookmarksRoute: typeof BookmarksRoute
+  ChapterPyqsRoute: typeof ChapterPyqsRoute
   CollaboratorsRoute: typeof CollaboratorsRoute
   CommunityRoute: typeof CommunityRoute
   ContestsRoute: typeof ContestsRoute
@@ -1281,6 +1294,13 @@ declare module '@tanstack/react-router' {
       path: '/bookmarks'
       fullPath: '/bookmarks'
       preLoaderRoute: typeof BookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapter-pyqs': {
+      id: '/chapter-pyqs'
+      path: '/chapter-pyqs'
+      fullPath: '/chapter-pyqs'
+      preLoaderRoute: typeof ChapterPyqsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collaborators': {
@@ -1864,6 +1884,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArenaRoute: ArenaRoute,
   BattlegroundsRoute: BattlegroundsRouteWithChildren,
   BookmarksRoute: BookmarksRoute,
+  ChapterPyqsRoute: ChapterPyqsRoute,
   CollaboratorsRoute: CollaboratorsRoute,
   CommunityRoute: CommunityRoute,
   ContestsRoute: ContestsRoute,
@@ -1934,3 +1955,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
