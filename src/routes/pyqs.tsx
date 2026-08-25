@@ -108,7 +108,28 @@ function PyqPage() {
         image="/illustrations/hero-pyq.png"
         imageAlt="NEET PYQ clipboard with books, pen and trophy"
       />
+      <Link to="/chapter-pyqs" className="block">
+        <Card className="transition-colors hover:border-primary/40 hover:bg-accent/40">
+          <CardContent className="flex items-center gap-3 p-4">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <BookMarked className="h-5 w-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-semibold">
+                Practice chapter wise arranged PYQ questions
+              </span>
+              <span className="block text-xs text-muted-foreground">
+                Every previous year question sorted chapter wise — quiz mode or CBT mode.
+              </span>
+            </span>
+            <Badge variant="secondary" className="shrink-0">
+              Open
+            </Badge>
+          </CardContent>
+        </Card>
+      </Link>
       <PaperList onPick={setActivePaper} />
+
     </PageShell>
   );
 }

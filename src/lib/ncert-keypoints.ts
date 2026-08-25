@@ -248,15 +248,17 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
     if (!text && !runs.some((r) => r.t === "img")) continue;
 
     // The very first line of a chapter is its TITLE stored as a paragraph
-    // ("ANATOMY OF FLOWERING PLANTS"). Treat it as a heading so it is printed
+    // ("Anatomy of Flowering Plants"). Treat it as a heading so it is printed
     // on the same page as the introduction instead of on a page of its own.
     const isChapterTitle =
       !seenBody &&
       current.key === "intro" &&
       text.length > 0 &&
       text.length < 120 &&
-      !/[.?!]$/.test(text) &&
-      text === text.toUpperCase();
+      !/[.?!:;]$/.test(text) &&
+      !isBulletLine(text) &&
+      text.split(/\s+/).length <= 14;
+
 
     if (isChapterTitle) {
       current.paras.push({
@@ -298,6 +300,29 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
 }
 
 const CAPTION_RE = /^\s*fig(?:ure)?\s*\.?\s*\d/i;
+const BULLET_RE = /^\s*(?:[•·▪◦‣∙*–—-]|\(?[ivxIVX]{1,4}\)|\(?[a-zA-Z]\)|\d+[.)])\s+/;
+
+/** A stand-alone bullet / numbered list item — never a page of its own. */
+function isBulletLine(text: string): boolean {
+  const t = text.trim();
+  if (!t) return false;
+  if (/^\d+\.\d/.test(t)) return false; // "6.1 …" is a section heading
+  return BULLET_RE.test(t);
+}
+
+/**
+ * A short line with no sentence punctuation is a title, not a paragraph
+ * ("Tissue System", "Meristematic Tissues"). It must share the page with the
+ * text that follows it.
+ */
+function isTitleLike(text: string): boolean {
+  const t = text.trim();
+  if (!t || t.length > 90) return false;
+  if (isBulletLine(t)) return false;
+  if (/[.?!:;,]$/.test(t)) return false;
+  if (t.split(/\s+/).length > 12) return false;
+  return true;
+}
 
 /**
  * Collapse the raw block stream into real book pages.
@@ -305,11 +330,14 @@ const CAPTION_RE = /^\s*fig(?:ure)?\s*\.?\s*\d/i;
  * A heading never gets a page of its own: it is printed above the paragraph
  * that follows it. A figure never gets a page of its own either: it is printed
  * inside the paragraph it belongs to, together with its "Fig 6.2 …" caption.
+ * Bullet points are never split across pages: every consecutive list item is
+ * printed on the same page as the line (and title) that introduced it.
  */
 function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
   const out: KeyPointPara[] = [];
   let pendingHeading: KeyPointPara | null = null;
   let pendingFigures: KeyPointPara[] = [];
+
 
   const attachFigures = (host: KeyPointPara, figs: KeyPointPara[]) => {
     for (const f of figs) {
@@ -319,20 +347,32 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
     }
   };
 
+  const addHeading = (p: KeyPointPara) => {
+    if (pendingHeading) {
+      // Two headings back to back (6.1 then 6.1.2) — keep both lines.
+      pendingHeading = {
+        ...pendingHeading,
+        text: `${pendingHeading.text}\n${p.text}`,
+        runs: [...pendingHeading.runs, { t: "br" } as Run, ...p.runs],
+        extraBlockIds: [...pendingHeading.extraBlockIds, p.blockId],
+        questions: [...pendingHeading.questions, ...p.questions],
+      };
+    } else {
+      pendingHeading = p;
+    }
+  };
+
+  /** Print a list item on the page that is already open. */
+  const appendLine = (host: KeyPointPara, p: KeyPointPara) => {
+    host.text = host.text ? `${host.text}\n${p.text}` : p.text;
+    host.runs = [...host.runs, { t: "br" } as Run, ...p.runs];
+    host.extraBlockIds.push(p.blockId);
+    host.questions.push(...p.questions);
+  };
+
   for (const p of paras) {
     if (p.kind === "heading") {
-      if (pendingHeading) {
-        // Two headings back to back (6.1 then 6.1.2) — keep both lines.
-        pendingHeading = {
-          ...pendingHeading,
-          text: `${pendingHeading.text}\n${p.text}`,
-          runs: [...pendingHeading.runs, { t: "br" } as Run, ...p.runs],
-          extraBlockIds: [...pendingHeading.extraBlockIds, p.blockId],
-          questions: [...pendingHeading.questions, ...p.questions],
-        };
-      } else {
-        pendingHeading = p;
-      }
+      addHeading(p);
       continue;
     }
 
@@ -363,7 +403,21 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
       }
     }
 
+    // Bullet points belong to the page that introduced them — never alone.
+    if (isBulletLine(p.text) && !pendingHeading && out.length > 0) {
+      appendLine(out[out.length - 1], p);
+      continue;
+    }
+
+    // A short title-ish line ("Tissue System") is a heading for the next page,
+    // so a title is never printed on a page without its text.
+    if (isTitleLike(p.text) && !isBulletLine(p.text)) {
+      addHeading({ ...p, kind: "heading" });
+      continue;
+    }
+
     const page: KeyPointPara = { ...p, figures: [...p.figures], extraBlockIds: [...p.extraBlockIds] };
+
     if (pendingHeading) {
       page.heading = pendingHeading.text;
       page.headingRuns = pendingHeading.runs;
@@ -382,14 +436,15 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
   const last = out[out.length - 1];
   if (last) {
     if (pendingHeading) {
-      last.questions.push(...pendingHeading.questions);
-      last.extraBlockIds.push(pendingHeading.blockId);
+      // Keep the text visible on the previous page instead of dropping it.
+      appendLine(last, pendingHeading);
     }
     if (pendingFigures.length) attachFigures(last, pendingFigures);
   } else {
     if (pendingHeading) out.push(pendingHeading);
     for (const f of pendingFigures) out.push(f);
   }
+
 
   return out;
 }
