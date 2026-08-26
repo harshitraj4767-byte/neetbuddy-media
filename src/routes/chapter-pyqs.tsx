@@ -64,7 +64,8 @@ const SUBJECTS = [
   {
     id: "physics",
     label: "Physics",
-    icon: "⚛️",
+    icon: "/illustrations/icon-physics.png",
+    iconAlt: "3D atom icon for Physics",
     ring: "from-blue-500 to-indigo-600",
     soft: "bg-blue-500/12 text-blue-600 dark:text-blue-400",
     hover: "hover:border-blue-500/50",
@@ -72,7 +73,8 @@ const SUBJECTS = [
   {
     id: "chemistry",
     label: "Chemistry",
-    icon: "⚗️",
+    icon: "/illustrations/icon-chemistry.png",
+    iconAlt: "3D lab flasks icon for Chemistry",
     ring: "from-emerald-500 to-teal-600",
     soft: "bg-emerald-500/12 text-emerald-600 dark:text-emerald-400",
     hover: "hover:border-emerald-500/50",
@@ -80,7 +82,8 @@ const SUBJECTS = [
   {
     id: "biology",
     label: "Biology",
-    icon: "🧬",
+    icon: "/illustrations/icon-biology.png",
+    iconAlt: "3D leaf, DNA and microscope icon for Biology",
     ring: "from-rose-500 to-pink-600",
     soft: "bg-rose-500/12 text-rose-600 dark:text-rose-400",
     hover: "hover:border-rose-500/50",
@@ -88,8 +91,6 @@ const SUBJECTS = [
 ] as const;
 
 type SubjectDef = (typeof SUBJECTS)[number];
-
-const EXAMS = ["NEET", "JEE", "AIIMS", "AIPMT", "KCET", "MHT CET", "TS EAMCET"];
 
 /** CBT papers stay attemptable: long chapters are split into fixed-size sets. */
 const CBT_SET_SIZE = 50;
@@ -274,22 +275,16 @@ function ChapterPyqPage() {
       <HubHero
         variant="banner"
         compact
+        hideEyebrow
         eyebrow="Previous Years · Chapter wise"
         title="Chapter Wise PYQ"
         highlight={`${grandTotal ? (grandTotal / 1000).toFixed(1) : "10.2"}k questions`}
-        description="Every previous year question arranged chapter wise across NEET, JEE, AIIMS, AIPMT and major state exams. Pick a subject, open a chapter and choose your mode."
+        description="NEET · JEE · AIIMS · AIPMT + state exams. Pick a chapter, choose quiz or CBT mode."
         Icon={BookMarked}
+        image="/illustrations/hero-pyq.png"
+        imageAlt="3D icon of previous year question papers"
         accent="violet"
-      >
-        {EXAMS.map((e) => (
-          <span
-            key={e}
-            className="mr-1.5 inline-flex items-center rounded-full bg-background/70 px-2 py-1 text-[10px] font-semibold shadow-sm backdrop-blur"
-          >
-            {e}
-          </span>
-        ))}
-      </HubHero>
+      />
 
       {error && (
         <Card>
@@ -318,9 +313,14 @@ function ChapterPyqPage() {
                 className={`group flex flex-col items-start gap-3 rounded-2xl border bg-card p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:shadow-elegant ${s.hover}`}
               >
                 <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-2xl ${s.ring} text-white shadow-sm`}
+                  className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${s.ring} shadow-sm`}
                 >
-                  {s.icon}
+                  <img
+                    src={s.icon}
+                    alt={s.iconAlt}
+                    loading="lazy"
+                    className="h-8 w-8 object-contain drop-shadow"
+                  />
                 </span>
                 <span className="block text-base font-bold">{s.label}</span>
                 <span className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
@@ -346,8 +346,13 @@ function ChapterPyqPage() {
               <ChevronLeft className="mr-1 h-3.5 w-3.5" /> Subjects
             </Button>
             <div className="min-w-0">
-              <div className="truncate text-lg font-bold leading-tight">
-                {subject.icon} {subject.label}
+              <div className="flex items-center gap-2 truncate text-lg font-bold leading-tight">
+                <img
+                  src={subject.icon}
+                  alt={subject.iconAlt}
+                  className="h-6 w-6 shrink-0 object-contain"
+                />
+                {subject.label}
               </div>
               <div className="text-xs text-muted-foreground">
                 {(totals[subject.id]?.questions ?? 0).toLocaleString()} previous year questions
