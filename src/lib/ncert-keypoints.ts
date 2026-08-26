@@ -104,11 +104,11 @@ const LETTERS = ["A", "B", "C", "D", "E", "F"];
 /* ---------------------------- text helpers ---------------------------- */
 
 const STOP = new Set(
-  ("the a an of and or in on for to with is are was were be been by as at from that this these those " +
+  (
+    "the a an of and or in on for to with is are was were be been by as at from that this these those " +
     "which what it its into their they them can may also such other more most than then when where " +
-    "not no all any some each both between during following above below both very only same so").split(
-    " ",
-  ),
+    "not no all any some each both between during following above below both very only same so"
+  ).split(" "),
 );
 
 function stripHtml(s: string): string {
@@ -138,6 +138,13 @@ function overlap(a: Set<string>, b: Set<string>): number {
 
 function normName(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+/** Stable content signature used to collapse copies imported under new ids. */
+function questionSignature(q: KeyPointQuestion): string {
+  const text = normName(stripHtml(q.question));
+  if (text) return text;
+  return q.imageUrl ? `image:${q.imageUrl.toLowerCase().trim()}` : "";
 }
 
 /** "6.1.2 Permanent Tissues" -> { section: "6.1", top: "6", title } */
@@ -187,14 +194,16 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
   let current = ensure("intro", "Introduction");
   let seenBody = false;
 
-
   for (const b of blocks) {
     const text = textOf(b);
     if (b.type === "heading") {
       const { section, title } = parseHeading(text);
       if (section) {
         const topLevel = section.split(".").length === 2 && !/^\d+\.\d+\.\d+/.test(text.trim());
-        current = ensure(section, topLevel ? title : current.key === section ? current.title : title);
+        current = ensure(
+          section,
+          topLevel ? title : current.key === section ? current.title : title,
+        );
         // Sub-headings (6.1.2) are shown as a heading page inside the topic.
         if (/^\d+\.\d+\.\d+/.test(text.trim())) {
           current.paras.push({
@@ -259,7 +268,6 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
       !isBulletLine(text) &&
       text.split(/\s+/).length <= 14;
 
-
     if (isChapterTitle) {
       current.paras.push({
         blockId: b.id,
@@ -289,14 +297,11 @@ export function buildTopics(blocks: BookBlock[]): KeyPointTopic[] {
       extraBlockIds: [],
       questions: [],
     });
-
   }
 
   for (const t of byKey.values()) t.paras = mergePages(t.paras);
 
-  return order
-    .map((k) => byKey.get(k)!)
-    .filter((t) => t.paras.some((p) => p.kind === "paragraph"));
+  return order.map((k) => byKey.get(k)!).filter((t) => t.paras.some((p) => p.kind === "paragraph"));
 }
 
 const CAPTION_RE = /^\s*fig(?:ure)?\s*\.?\s*\d/i;
@@ -337,7 +342,6 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
   const out: KeyPointPara[] = [];
   let pendingHeading: KeyPointPara | null = null;
   let pendingFigures: KeyPointPara[] = [];
-
 
   const attachFigures = (host: KeyPointPara, figs: KeyPointPara[]) => {
     for (const f of figs) {
@@ -416,7 +420,11 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
       continue;
     }
 
-    const page: KeyPointPara = { ...p, figures: [...p.figures], extraBlockIds: [...p.extraBlockIds] };
+    const page: KeyPointPara = {
+      ...p,
+      figures: [...p.figures],
+      extraBlockIds: [...p.extraBlockIds],
+    };
 
     if (pendingHeading) {
       page.heading = pendingHeading.text;
@@ -445,7 +453,6 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
     for (const f of pendingFigures) out.push(f);
   }
 
-
   return out;
 }
 
@@ -465,7 +472,10 @@ function pyqToQuestion(p: BookPyq): KeyPointQuestion {
   const answer = (p.answer ?? "").trim();
   let correctKey: string | null = null;
   if (answer) {
-    const letter = answer.replace(/[^a-dA-D]/g, "").slice(0, 1).toUpperCase();
+    const letter = answer
+      .replace(/[^a-dA-D]/g, "")
+      .slice(0, 1)
+      .toUpperCase();
     if (answer.length <= 3 && LETTERS.includes(letter)) correctKey = letter;
     else {
       const norm = (s: string) => normName(stripHtml(s));
@@ -562,7 +572,10 @@ async function fetchQbQuestions(
     rows.push(...chunk);
     if (chunk.length < PAGE) break;
   }
-  const { data: tData } = await db.from("qb_topics").select("id,name").eq("chapter_id", qbChapterId);
+  const { data: tData } = await db
+    .from("qb_topics")
+    .select("id,name")
+    .eq("chapter_id", qbChapterId);
   return { rows, topics: (tData ?? []) as { id: number; name: string }[] };
 }
 
@@ -607,16 +620,19 @@ function assignQuestions(
     let best: KeyPointTopic | null = null;
     let bestScore = 0;
     for (const t of topics) {
-      const s = Math.max(overlap(tk, tokens(t.title)), overlap(tk, topicTokens.get(t.key)!) * 0.6);
+      const titleScore = overlap(tk, tokens(t.title));
+      const sectionScore = overlap(tk, topicTokens.get(t.key)!) * 0.6;
+      const s = Math.max(titleScore, sectionScore);
       if (s > bestScore) {
         bestScore = s;
         best = t;
       }
     }
-    if (best && bestScore > 0.12) topicOfQbTopic.set(qt.id, best);
+    // Loose one-word matches are common across an NCERT chapter and caused
+    // whole QB topics to be attached to the wrong book section.
+    if (best && bestScore >= 0.22) topicOfQbTopic.set(qt.id, best);
   }
 
-  let rr = 0;
   const seen = new Set<string>();
   for (const t of topics) for (const p of t.paras) for (const q of p.questions) seen.add(q.key);
 
@@ -628,14 +644,18 @@ function assignQuestions(
     let topic = row.topic_id != null ? topicOfQbTopic.get(row.topic_id) : undefined;
     if (!topic) {
       let bestScore = 0;
+      let bestTopic: KeyPointTopic | undefined;
       for (const t of topics) {
         const s = overlap(qTokens, topicTokens.get(t.key)!);
         if (s > bestScore) {
           bestScore = s;
-          topic = t;
+          bestTopic = t;
         }
       }
-      if (!topic || bestScore < 0.06) topic = topics[rr++ % topics.length];
+      // Never place an unrelated question just to make every bank row visible.
+      // Weak matches caused questions from other concepts to appear in a topic.
+      if (!bestTopic || bestScore < 0.12) continue;
+      topic = bestTopic;
     }
 
     const paras = topic.paras.filter((p) => p.kind === "paragraph");
@@ -649,7 +669,10 @@ function assignQuestions(
         target = p;
       }
     }
-    if (bestScore < 0.08) target = paras[rr++ % paras.length];
+    // A mapped QB topic is already chapter/topic relevant. Keep low-overlap
+    // questions together on the topic's first page instead of round-robin
+    // scattering them across unrelated NCERT paragraphs.
+    if (bestScore < 0.08) target = paras[0];
     target.questions.push(q);
     seen.add(q.key);
   }
@@ -657,11 +680,11 @@ function assignQuestions(
   // Flatten into the linear step list the player walks through.
   // Drop repeats: the same question can arrive from both sources or sit in the
   // bank more than once, which used to show up 3x in a row during revision.
+  const seenText = new Set<string>();
   for (const t of topics) {
-    const seenText = new Set<string>();
     for (const p of t.paras) {
       p.questions = p.questions.filter((q) => {
-        const sig = normName(stripHtml(q.question)) + "|" + q.options.map((o) => normName(stripHtml(o.text))).join("|");
+        const sig = questionSignature(q);
         if (!sig || seenText.has(sig)) return false;
         seenText.add(sig);
         return true;
@@ -821,8 +844,10 @@ export async function getKeyPointChapterStats(
       is_correct: boolean;
     }[];
     for (const r of chunk) {
-      const bucket =
-        seen.get(r.chapter_slug) ?? { keys: new Set<string>(), correct: new Set<string>() };
+      const bucket = seen.get(r.chapter_slug) ?? {
+        keys: new Set<string>(),
+        correct: new Set<string>(),
+      };
       const k = `${r.source}:${r.question_id}`;
       bucket.keys.add(k);
       if (r.is_correct) bucket.correct.add(k);
