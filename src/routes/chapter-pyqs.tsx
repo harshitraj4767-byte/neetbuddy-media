@@ -18,6 +18,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Eye,
+  Filter,
   Loader2,
   Play,
   RotateCw,
@@ -26,6 +27,7 @@ import {
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { examLabel } from "@/lib/exam-labels";
 
 export const Route = createFileRoute("/chapter-pyqs")({
   head: () => ({
@@ -56,6 +58,13 @@ type ChapterRow = {
   pyq_count: number;
   first_year: number | null;
   last_year: number | null;
+};
+
+type PyqIndexRow = {
+  id: string;
+  chapter_id: string;
+  tag: string | null;
+  year: number | null;
 };
 
 type AttemptInfo = { attemptId: string; testId: string; status: string };
@@ -105,6 +114,11 @@ function ChapterPyqPage() {
   const [error, setError] = useState<string | null>(null);
   const [subject, setSubject] = useState<SubjectDef | null>(null);
   const [query, setQuery] = useState("");
+  /** Per-subject PYQ index (id, chapter, exam, year) powering the filters. */
+  const [index, setIndex] = useState<PyqIndexRow[] | null>(null);
+  const [examSel, setExamSel] = useState<string[]>([]);
+  const [yearSel, setYearSel] = useState<number[]>([]);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [launching, setLaunching] = useState<number | null>(null);
   const [modePick, setModePick] = useState<ChapterRow | null>(null);
   const [cbtPlan, setCbtPlan] = useState<{ chapter: ChapterRow; qids: string[] } | null>(null);
@@ -163,6 +177,88 @@ function ChapterPyqPage() {
     })().catch(() => {});
   }, [user]);
 
+  useEffect(() => {
+    if (!subject) {
+      setIndex(null);
+      return;
+    }
+    let cancelled = false;
+    setIndex(null);
+    setExamSel([]);
+    setYearSel([]);
+    (async () => {
+      const all: PyqIndexRow[] = [];
+      const PAGE = 1000;
+      for (let from = 0; from < 20000; from += PAGE) {
+        const { data, error: err } = await (supabase as any)
+          .from("questions")
+          .select("id,chapter_id,tag,year")
+          .eq("subject_id", subject.id)
+          .eq("is_pyq", true)
+          .order("year", { ascending: false })
+          .range(from, from + PAGE - 1);
+        if (err) throw new Error(err.message);
+        const page = (data ?? []) as PyqIndexRow[];
+        all.push(...page);
+        if (page.length < PAGE) break;
+      }
+      if (!cancelled) setIndex(all);
+    })().catch((e) => {
+      if (!cancelled) {
+        setIndex([]);
+        toast.error(e instanceof Error ? e.message : "Could not load PYQ filters.");
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [subject]);
+
+  const examOptions = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const r of index ?? []) {
+      const e = examLabel(r.tag);
+      if (!e) continue;
+      counts.set(e, (counts.get(e) ?? 0) + 1);
+    }
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  }, [index]);
+
+  const yearOptions = useMemo(() => {
+    const counts = new Map<number, number>();
+    for (const r of index ?? []) {
+      if (!r.year) continue;
+      counts.set(r.year, (counts.get(r.year) ?? 0) + 1);
+    }
+    return [...counts.entries()].sort((a, b) => b[0] - a[0]);
+  }, [index]);
+
+  const filtered = useMemo(() => {
+    if (!index) return null;
+    if (!examSel.length && !yearSel.length) return index;
+    return index.filter(
+      (r) =>
+        (!examSel.length || examSel.includes(examLabel(r.tag) ?? "")) &&
+        (!yearSel.length || (r.year !== null && yearSel.includes(r.year))),
+    );
+  }, [index, examSel, yearSel]);
+
+  /** chapter_id -> question ids matching the active filters. */
+  const filteredByChapter = useMemo(() => {
+    const m = new Map<string, string[]>();
+    for (const r of filtered ?? []) {
+      const list = m.get(String(r.chapter_id));
+      if (list) list.push(r.id);
+      else m.set(String(r.chapter_id), [r.id]);
+    }
+    return m;
+  }, [filtered]);
+
+  const filtersActive = examSel.length > 0 || yearSel.length > 0;
+
+  const toggle = <T,>(arr: T[], v: T) =>
+    arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v];
+
   const totals = useMemo(() => {
     const t: Record<string, { chapters: number; questions: number }> = {};
     for (const r of rows ?? []) {
@@ -184,10 +280,20 @@ function ChapterPyqPage() {
     return (rows ?? [])
       .filter((r) => r.subject_id === subject.id)
       .filter((r) => (q ? r.chapter_name.toLowerCase().includes(q) : true))
+      .map((r) => ({
+        ...r,
+        pyq_count: filtersActive
+          ? (filteredByChapter.get(String(r.chapter_id))?.length ?? 0)
+          : r.pyq_count,
+      }))
+      .filter((r) => (filtersActive ? r.pyq_count > 0 : true))
       .sort((a, b) => a.chapter_name.localeCompare(b.chapter_name));
-  }, [rows, subject, query]);
+  }, [rows, subject, query, filtersActive, filteredByChapter]);
 
   async function fetchPyqIds(chapterId: number) {
+    const local = filteredByChapter.get(String(chapterId));
+    if (local?.length) return local;
+    if (filtersActive) return [];
     const { data, error: err } = await (supabase as any)
       .from("questions")
       .select("id,year")
@@ -375,6 +481,113 @@ function ChapterPyqPage() {
             </span>
           </div>
 
+          {/* ---------- exam + year filters (multi select) ---------- */}
+          <div className="mb-4 rounded-2xl border bg-card p-3">
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-8 px-2"
+                onClick={() => setFiltersOpen((v) => !v)}
+              >
+                <Filter className="mr-1.5 h-3.5 w-3.5" />
+                Filters
+                {filtersActive && (
+                  <Badge variant="secondary" className="ml-2 text-[10px]">
+                    {examSel.length + yearSel.length}
+                  </Badge>
+                )}
+              </Button>
+              {index === null && (
+                <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                  <Loader2 className="h-3 w-3 animate-spin" /> loading
+                </span>
+              )}
+              <div className="ml-auto flex items-center gap-2">
+                {filtersActive && (
+                  <>
+                    <span className="text-[11px] text-muted-foreground">
+                      {(filtered?.length ?? 0).toLocaleString()} questions
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 px-2 text-[11px]"
+                      onClick={() => {
+                        setExamSel([]);
+                        setYearSel([]);
+                      }}
+                    >
+                      Clear
+                    </Button>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {filtersOpen && (
+              <div className="mt-3 space-y-3 border-t pt-3">
+                <div>
+                  <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Exam
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {examOptions.map(([exam, count]) => {
+                      const on = examSel.includes(exam);
+                      return (
+                        <button
+                          key={exam}
+                          type="button"
+                          onClick={() => setExamSel((a) => toggle(a, exam))}
+                          className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition ${
+                            on
+                              ? "border-primary bg-primary text-primary-foreground"
+                              : "bg-background hover:border-primary/50"
+                          }`}
+                        >
+                          {exam}
+                          <span className="ml-1 opacity-70">{count}</span>
+                        </button>
+                      );
+                    })}
+                    {!examOptions.length && index !== null && (
+                      <span className="text-[11px] text-muted-foreground">No exam tags yet.</span>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Year
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {yearOptions.map(([year, count]) => {
+                      const on = yearSel.includes(year);
+                      return (
+                        <button
+                          key={year}
+                          type="button"
+                          onClick={() => setYearSel((a) => toggle(a, year))}
+                          className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition ${
+                            on
+                              ? "border-primary bg-primary text-primary-foreground"
+                              : "bg-background hover:border-primary/50"
+                          }`}
+                        >
+                          {year}
+                          <span className="ml-1 opacity-70">{count}</span>
+                        </button>
+                      );
+                    })}
+                    {!yearOptions.length && index !== null && (
+                      <span className="text-[11px] text-muted-foreground">No years tagged yet.</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
           <ul className="grid gap-3 sm:grid-cols-2">
             {visible.map((c, i) => {
               const at = attempts[c.chapter_name];
@@ -466,7 +679,9 @@ function ChapterPyqPage() {
               <li className="sm:col-span-2">
                 <Card>
                   <CardContent className="p-8 text-center text-sm text-muted-foreground">
-                    No chapters match this search.
+                    {filtersActive
+                      ? "No chapters match these filters."
+                      : "No chapters match this search."}
                   </CardContent>
                 </Card>
               </li>

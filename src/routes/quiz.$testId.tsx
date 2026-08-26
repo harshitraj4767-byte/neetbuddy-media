@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { attachQuestionMedia } from "@/lib/question-media";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { pyqBadge } from "@/lib/exam-labels";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -69,6 +70,9 @@ type Question = {
   explanation?: string | null;
   subject_id?: string | null;
   chapter_id?: string | null;
+  tag?: string | null;
+  year?: number | null;
+  is_pyq?: boolean | null;
 };
 type Test = {
   id: string;
@@ -886,8 +890,12 @@ function QuizPlayer() {
       </div>
     );
 
-  const sourceLabel = (q.source || test.source || "").toUpperCase().includes("PYQ")
-    ? "NEET PYQ"
+  const isPyq =
+    q.is_pyq === true ||
+    !!q.year ||
+    (q.source || test.source || "").toUpperCase().includes("PYQ");
+  const sourceLabel = isPyq
+    ? pyqBadge(q.tag, q.year)
     : q.source?.toUpperCase() === "NCERT"
       ? "NCERT"
       : q.source || "NCERT";
