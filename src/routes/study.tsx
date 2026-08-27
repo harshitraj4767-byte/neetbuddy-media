@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { GraduationCap, Sparkles, ArrowLeft } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
-import studyMascot from "@/assets/study-mascot.png";
+import { MASCOT_POSES } from "@/lib/mascot";
 
 export const Route = createFileRoute("/study")({
   head: () => ({
@@ -28,8 +28,8 @@ function StudyPage() {
         {/* Floating mascot */}
         <div className="relative z-10 mb-6 flex justify-center sm:mb-8">
           <img
-            src={studyMascot}
-            alt="Dr. Vanshu Study mascot"
+            src={MASCOT_POSES["excited"].src}
+            alt={MASCOT_POSES["excited"].alt}
             width={320}
             height={320}
             className="h-56 w-56 object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105 sm:h-72 sm:w-72"
