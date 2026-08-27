@@ -57,6 +57,7 @@ import { Route as PyqsRouteImport } from './routes/pyqs'
 import { Route as ReferralsRouteImport } from './routes/referrals'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as ScorePredictorRouteImport } from './routes/score-predictor'
+import { Route as StudyRouteImport } from './routes/study'
 import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
 import { Route as StudyViewRouteImport } from './routes/study-view'
 import { Route as SubscriptionRouteImport } from './routes/subscription'
@@ -339,6 +340,11 @@ const ScorePredictorRoute = ScorePredictorRouteImport.update({
   path: '/score-predictor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudyRoute = StudyRouteImport.update({
+  id: '/study',
+  path: '/study',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudyEssentialsRoute = StudyEssentialsRouteImport.update({
   id: '/study-essentials',
   path: '/study-essentials',
@@ -604,6 +610,7 @@ export interface FileRoutesByFullPath {
   '/referrals': typeof ReferralsRoute
   '/refund': typeof RefundRoute
   '/score-predictor': typeof ScorePredictorRoute
+  '/study': typeof StudyRoute
   '/study-essentials': typeof StudyEssentialsRoute
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
@@ -695,6 +702,7 @@ export interface FileRoutesByTo {
   '/referrals': typeof ReferralsRoute
   '/refund': typeof RefundRoute
   '/score-predictor': typeof ScorePredictorRoute
+  '/study': typeof StudyRoute
   '/study-essentials': typeof StudyEssentialsRoute
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
@@ -787,6 +795,7 @@ export interface FileRoutesById {
   '/referrals': typeof ReferralsRoute
   '/refund': typeof RefundRoute
   '/score-predictor': typeof ScorePredictorRoute
+  '/study': typeof StudyRoute
   '/study-essentials': typeof StudyEssentialsRoute
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
@@ -880,6 +889,7 @@ export interface FileRouteTypes {
     | '/referrals'
     | '/refund'
     | '/score-predictor'
+    | '/study'
     | '/study-essentials'
     | '/study-view'
     | '/subscription'
@@ -971,6 +981,7 @@ export interface FileRouteTypes {
     | '/referrals'
     | '/refund'
     | '/score-predictor'
+    | '/study'
     | '/study-essentials'
     | '/study-view'
     | '/subscription'
@@ -1062,6 +1073,7 @@ export interface FileRouteTypes {
     | '/referrals'
     | '/refund'
     | '/score-predictor'
+    | '/study'
     | '/study-essentials'
     | '/study-view'
     | '/subscription'
@@ -1154,6 +1166,7 @@ export interface RootRouteChildren {
   ReferralsRoute: typeof ReferralsRoute
   RefundRoute: typeof RefundRoute
   ScorePredictorRoute: typeof ScorePredictorRoute
+  StudyRoute: typeof StudyRoute
   StudyEssentialsRoute: typeof StudyEssentialsRoute
   StudyViewRoute: typeof StudyViewRoute
   SubscriptionRoute: typeof SubscriptionRoute
@@ -1525,6 +1538,13 @@ declare module '@tanstack/react-router' {
       path: '/score-predictor'
       fullPath: '/score-predictor'
       preLoaderRoute: typeof ScorePredictorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study': {
+      id: '/study'
+      path: '/study'
+      fullPath: '/study'
+      preLoaderRoute: typeof StudyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study-essentials': {
@@ -1917,6 +1937,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReferralsRoute: ReferralsRoute,
   RefundRoute: RefundRoute,
   ScorePredictorRoute: ScorePredictorRoute,
+  StudyRoute: StudyRoute,
   StudyEssentialsRoute: StudyEssentialsRoute,
   StudyViewRoute: StudyViewRoute,
   SubscriptionRoute: SubscriptionRoute,
