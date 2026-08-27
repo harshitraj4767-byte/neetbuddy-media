@@ -1,4 +1,4 @@
-import drVanshu from "@/assets/dr-vanshu.webp";
+import { mascot, type MascotMood } from "@/lib/mascot";
 import { cn } from "@/lib/utils";
 
 export type LoadingVariant =
@@ -11,15 +11,26 @@ export type LoadingVariant =
   | "profile"
   | "default";
 
+const MOODS: Record<LoadingVariant, MascotMood> = {
+  quiz: "thinking",
+  contest: "confident",
+  battle: "confident",
+  result: "working",
+  leaderboard: "confident",
+  analysis: "working",
+  profile: "waving",
+  default: "happy",
+};
+
 const MESSAGES: Record<LoadingVariant, { title: string; sub: string }> = {
-  quiz: { title: "Dr Vanshu is preparing quiz for u", sub: "Picking the best questions…" },
-  contest: { title: "Dr Vanshu is creating contest for u", sub: "Setting up the arena…" },
-  battle: { title: "Dr Vanshu is setting up battlegrounds for u", sub: "Finding your opponent…" },
-  result: { title: "Dr Vanshu is checking your result", sub: "Calculating every mark…" },
-  leaderboard: { title: "Dr Vanshu is ranking everyone", sub: "Sorting the toppers…" },
-  analysis: { title: "Dr Vanshu is analysing your attempt", sub: "Spotting your weak areas…" },
-  profile: { title: "Dr Vanshu is fetching your details", sub: "Almost there…" },
-  default: { title: "Dr Vanshu is getting things ready", sub: "Just a moment…" },
+  quiz: { title: "Brewing your perfect quiz", sub: "Hand-picking questions that match your level…" },
+  contest: { title: "Setting up your arena", sub: "Loading the contest hall and rules…" },
+  battle: { title: "Preparing the battleground", sub: "Matching you with a worthy rival…" },
+  result: { title: "Crunching your score", sub: "Every mark is being counted carefully…" },
+  leaderboard: { title: "Ranking the toppers", sub: "Sorting this week’s champs…" },
+  analysis: { title: "Reading your strengths", sub: "Spotting topics that need more love…" },
+  profile: { title: "Fetching your profile", sub: "Gathering your stats and streaks…" },
+  default: { title: "Getting everything ready", sub: "Just a moment…" },
 };
 
 export function LoadingScreen({
@@ -36,6 +47,7 @@ export function LoadingScreen({
   className?: string;
 }) {
   const msg = MESSAGES[variant] ?? MESSAGES.default;
+  const pose = mascot(MOODS[variant] ?? "happy");
 
   return (
     <div
@@ -50,7 +62,7 @@ export function LoadingScreen({
       <div className="dv-stage">
         <span className="dv-glow" aria-hidden />
         <span className="dv-ring" aria-hidden />
-        <img src={drVanshu} alt="" className="dv-mascot" aria-hidden />
+        <img src={pose.src} alt={pose.alt} className="dv-mascot" aria-hidden />
       </div>
 
       <div className="space-y-1.5">
