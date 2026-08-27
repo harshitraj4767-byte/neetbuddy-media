@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Brain, ClipboardList, BookOpen, LineChart } from "lucide-react";
+import { Home, Brain, ClipboardList, BookOpen, LineChart, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -8,6 +8,7 @@ const ITEMS = [
   { to: "/dashboard", label: "Home", icon: Home, match: ["/dashboard"] },
   { to: "/quiz", label: "Quiz", icon: Brain, match: ["/quiz", "/subjects", "/generate", "/battlegrounds", "/contest"] },
   { to: "/test", label: "Test", icon: ClipboardList, match: ["/test", "/mocks", "/pyqs"] },
+  { to: "/study", label: "Study", icon: GraduationCap, match: ["/study"] },
   { to: "/study-essentials", label: "Books", icon: BookOpen, match: ["/study-essentials", "/ncert-key-points", "/ncert-highlights", "/highlighted-ncert", "/flashcards", "/neetlab", "/study-view"] },
   { to: "/analyse", label: "Analyse", icon: LineChart, match: ["/analyse", "/ai-path", "/score-predictor", "/progress", "/bookmarks", "/mistakes", "/analytics", "/improvement"] },
 ] as const;
