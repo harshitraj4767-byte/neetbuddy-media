@@ -1,4 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { MissionBanner } from "@/components/mission-banner";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { HubHero } from "@/components/nav-tiles";
@@ -378,6 +379,7 @@ function ChapterPyqPage() {
 
   return (
     <PageShell>
+      <MissionBanner />
       <HubHero
         variant="banner"
         compact
