@@ -5,6 +5,7 @@
 // The player shows one NCERT paragraph on a paper page, then every question
 // linked to that paragraph (PYQs + full question bank), then the next
 // paragraph. Every response is stored so the analytics view can replay it.
+import { MissionBanner } from "@/components/mission-banner";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -90,7 +91,10 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/40">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-3 pb-44 pt-4 sm:px-4">{children}</main>
+      <main className="mx-auto max-w-4xl px-3 pb-44 pt-4 sm:px-4">
+        <MissionBanner />
+        {children}
+      </main>
     </div>
   );
 }
