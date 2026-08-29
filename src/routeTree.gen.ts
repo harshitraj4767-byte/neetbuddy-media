@@ -59,6 +59,7 @@ import { Route as RefundRouteImport } from './routes/refund'
 import { Route as ScorePredictorRouteImport } from './routes/score-predictor'
 import { Route as StudyRouteImport } from './routes/study'
 import { Route as StudyEssentialsRouteImport } from './routes/study-essentials'
+import { Route as StudyPlannerRouteImport } from './routes/study-planner'
 import { Route as StudyViewRouteImport } from './routes/study-view'
 import { Route as SubscriptionRouteImport } from './routes/subscription'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -350,6 +351,11 @@ const StudyEssentialsRoute = StudyEssentialsRouteImport.update({
   path: '/study-essentials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudyPlannerRoute = StudyPlannerRouteImport.update({
+  id: '/study-planner',
+  path: '/study-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudyViewRoute = StudyViewRouteImport.update({
   id: '/study-view',
   path: '/study-view',
@@ -612,6 +618,7 @@ export interface FileRoutesByFullPath {
   '/score-predictor': typeof ScorePredictorRoute
   '/study': typeof StudyRoute
   '/study-essentials': typeof StudyEssentialsRoute
+  '/study-planner': typeof StudyPlannerRoute
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
   '/terms': typeof TermsRoute
@@ -704,6 +711,7 @@ export interface FileRoutesByTo {
   '/score-predictor': typeof ScorePredictorRoute
   '/study': typeof StudyRoute
   '/study-essentials': typeof StudyEssentialsRoute
+  '/study-planner': typeof StudyPlannerRoute
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
   '/terms': typeof TermsRoute
@@ -797,6 +805,7 @@ export interface FileRoutesById {
   '/score-predictor': typeof ScorePredictorRoute
   '/study': typeof StudyRoute
   '/study-essentials': typeof StudyEssentialsRoute
+  '/study-planner': typeof StudyPlannerRoute
   '/study-view': typeof StudyViewRoute
   '/subscription': typeof SubscriptionRoute
   '/terms': typeof TermsRoute
@@ -891,6 +900,7 @@ export interface FileRouteTypes {
     | '/score-predictor'
     | '/study'
     | '/study-essentials'
+    | '/study-planner'
     | '/study-view'
     | '/subscription'
     | '/terms'
@@ -983,6 +993,7 @@ export interface FileRouteTypes {
     | '/score-predictor'
     | '/study'
     | '/study-essentials'
+    | '/study-planner'
     | '/study-view'
     | '/subscription'
     | '/terms'
@@ -1075,6 +1086,7 @@ export interface FileRouteTypes {
     | '/score-predictor'
     | '/study'
     | '/study-essentials'
+    | '/study-planner'
     | '/study-view'
     | '/subscription'
     | '/terms'
@@ -1168,6 +1180,7 @@ export interface RootRouteChildren {
   ScorePredictorRoute: typeof ScorePredictorRoute
   StudyRoute: typeof StudyRoute
   StudyEssentialsRoute: typeof StudyEssentialsRoute
+  StudyPlannerRoute: typeof StudyPlannerRoute
   StudyViewRoute: typeof StudyViewRoute
   SubscriptionRoute: typeof SubscriptionRoute
   TermsRoute: typeof TermsRoute
@@ -1552,6 +1565,13 @@ declare module '@tanstack/react-router' {
       path: '/study-essentials'
       fullPath: '/study-essentials'
       preLoaderRoute: typeof StudyEssentialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-planner': {
+      id: '/study-planner'
+      path: '/study-planner'
+      fullPath: '/study-planner'
+      preLoaderRoute: typeof StudyPlannerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study-view': {
@@ -1939,6 +1959,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScorePredictorRoute: ScorePredictorRoute,
   StudyRoute: StudyRoute,
   StudyEssentialsRoute: StudyEssentialsRoute,
+  StudyPlannerRoute: StudyPlannerRoute,
   StudyViewRoute: StudyViewRoute,
   SubscriptionRoute: SubscriptionRoute,
   TermsRoute: TermsRoute,
