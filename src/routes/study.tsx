@@ -137,6 +137,14 @@ function StudyRoadmapPage() {
           <Progress value={(xp / TOTAL_XP_AVAILABLE) * 100} className="h-2" />
         </div>
 
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Button asChild>
+            <Link to="/study-planner">
+              Open study planner <ChevronRight className="ml-0.5 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+
         {!user && !authLoading && (
           <p className="mt-4 text-xs text-muted-foreground">
             <Link to="/login" className="font-semibold text-primary underline-offset-2 hover:underline">
