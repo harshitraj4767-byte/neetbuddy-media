@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useAuth } from "@/hooks/use-auth";
 import { listFeaturedSelections } from "@/lib/selections.functions";
+import { isAppShell } from "@/lib/app-shell";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,9 +42,15 @@ function LandingPage() {
   const nav = useNavigate();
   const [installEvt, setInstallEvt] = useState<any>(null);
   const [showInstall, setShowInstall] = useState(false);
+  // Inside the installed app there is no landing page: signed-in users land on
+  // the dashboard, everyone else goes straight to login. The web build keeps it.
+  const [appShell, setAppShell] = useState(false);
+  useEffect(() => { setAppShell(isAppShell()); }, []);
   useEffect(() => {
-    if (!loading && user) nav({ to: "/dashboard", replace: true });
-  }, [user, loading, nav]);
+    if (loading) return;
+    if (user) { nav({ to: "/dashboard", replace: true }); return; }
+    if (appShell) nav({ to: "/login", replace: true });
+  }, [user, loading, appShell, nav]);
 
   useEffect(() => {
     const h = (e: Event) => { e.preventDefault(); setInstallEvt(e); };
@@ -61,6 +68,11 @@ function LandingPage() {
       } catch { /* fall through */ }
     }
     setShowInstall(true);
+  }
+
+  if (appShell) {
+    // App shell: render nothing while the redirect above runs.
+    return <div className="min-h-screen bg-background" />;
   }
 
   return (
