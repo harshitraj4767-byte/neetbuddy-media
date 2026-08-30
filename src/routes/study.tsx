@@ -4,12 +4,13 @@ import {
   Check,
   ChevronRight,
   Clock,
+  Crown,
   Flame,
   Lock,
-  Sparkles,
   Star,
   Swords,
   Trophy,
+  Zap,
 } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/use-auth";
+import { mascot } from "@/lib/mascot";
 import {
   ROADMAP_META,
   ROADMAP_WORLDS,
@@ -70,6 +72,9 @@ export const Route = createFileRoute("/study")({
   component: StudyRoadmapPage,
 });
 
+/** Serpentine horizontal offsets (%) for the level trail, like a board game path. */
+const TRAIL_OFFSETS = [0, 16, 26, 16, 0, -16, -26, -16, 0, 14];
+
 function StudyRoadmapPage() {
   const { user, loading: authLoading } = useAuth();
   const [state, setState] = useState<RoadmapState>(DEFAULT_STATE);
@@ -95,6 +100,19 @@ function StudyRoadmapPage() {
     [state],
   );
 
+  const currentLevel = useMemo(
+    () =>
+      ROADMAP_LEVELS.find((l) => l.level_id === state.currentLevel) ?? ROADMAP_LEVELS[0],
+    [state.currentLevel],
+  );
+  const nextMission = useMemo(() => {
+    if (!currentLevel) return null;
+    return (
+      currentLevel.missions.find((m) => !state.completedMissionIds.has(m.mission_id)) ??
+      null
+    );
+  }, [currentLevel, state.completedMissionIds]);
+
   async function onCompleteMission(level: RoadmapLevel, mission: RoadmapMission) {
     if (!user) return;
     setSaving(mission.mission_id);
@@ -103,60 +121,90 @@ function StudyRoadmapPage() {
     setSaving(null);
   }
 
+  const heroAccent = worldAccent(currentLevel?.world_index ?? 1);
+  const pose = mascot("studying");
+
   return (
     <PageShell>
-      {/* Hero / stats */}
-      <section className="overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-card via-background to-card p-5 shadow-glow sm:p-8">
-        <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
-          <Sparkles className="h-3.5 w-3.5" />
-          {ROADMAP_META.name}
-        </div>
-        <h1 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-4xl">
-          Your NEET journey, level by level
-        </h1>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          {ROADMAP_META.levels} levels across {ROADMAP_META.worlds} worlds. Full syllabus
-          closed by level {ROADMAP_META.syllabus_closed_by_level}, then revision and NEET-ready
-          arenas.
-        </p>
+      {/* Player HUD */}
+      <div className="grid grid-cols-4 gap-2">
+        <HudChip icon={<Flame className="h-4 w-4" />} tint="#f97316" value={`${state.currentLevel}`} label="Level" />
+        <HudChip icon={<Zap className="h-4 w-4" />} tint="#eab308" value={xp.toLocaleString()} label="XP" />
+        <HudChip icon={<Trophy className="h-4 w-4" />} tint="#22c55e" value={`${clearedLevels}`} label="Cleared" />
+        <HudChip icon={<Crown className="h-4 w-4" />} tint="#8b5cf6" value={state.plannerMode} label="Mode" />
+      </div>
 
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatCard icon={<Flame className="h-4 w-4" />} label="Current level" value={`${state.currentLevel}`} />
-          <StatCard icon={<Star className="h-4 w-4" />} label="XP earned" value={xp.toLocaleString()} />
-          <StatCard icon={<Trophy className="h-4 w-4" />} label="Levels cleared" value={`${clearedLevels}/${ROADMAP_META.levels}`} />
-          <StatCard icon={<Swords className="h-4 w-4" />} label="Planner mode" value={state.plannerMode} />
+      {/* Current mission banner */}
+      <section
+        className="relative mt-3 overflow-hidden rounded-3xl p-5 text-white shadow-lg"
+        style={{ background: `linear-gradient(135deg, ${heroAccent.from}, ${heroAccent.to})` }}
+      >
+        <div className="flex items-center gap-4">
+          <div className="min-w-0 flex-1">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">
+              World {currentLevel?.world_index} · Level {currentLevel?.level_id} · Next up
+            </div>
+            <h1 className="mt-1 truncate text-lg font-extrabold sm:text-2xl">
+              {currentLevel?.title}
+            </h1>
+            <p className="mt-0.5 line-clamp-2 text-sm text-white/85">
+              {nextMission ? nextMission.label : "All missions cleared — jump to the next level!"}
+            </p>
+            {nextMission && missionHref(nextMission) && (
+              <Button
+                asChild
+                size="sm"
+                className="mt-3 bg-white text-foreground hover:bg-white/90"
+              >
+                <a href={missionHref(nextMission)!}>
+                  Start mission <ChevronRight className="ml-0.5 h-4 w-4" />
+                </a>
+              </Button>
+            )}
+          </div>
+          <img
+            src={pose.src}
+            alt={pose.alt}
+            className="h-24 w-24 shrink-0 object-contain drop-shadow-xl sm:h-32 sm:w-32"
+          />
         </div>
 
         <div className="mt-4">
-          <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground">
+          <div className="mb-1.5 flex items-center justify-between text-[11px] font-semibold text-white/85">
             <span>Roadmap XP</span>
             <span>
               {xp.toLocaleString()} / {TOTAL_XP_AVAILABLE.toLocaleString()}
             </span>
           </div>
-          <Progress value={(xp / TOTAL_XP_AVAILABLE) * 100} className="h-2" />
+          <div className="h-2 w-full overflow-hidden rounded-full bg-white/25">
+            <div
+              className="h-full rounded-full bg-white transition-all"
+              style={{ width: `${Math.min(100, (xp / TOTAL_XP_AVAILABLE) * 100)}%` }}
+            />
+          </div>
         </div>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Button asChild>
-            <Link to="/study-planner">
-              Open study planner <ChevronRight className="ml-0.5 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-
-        {!user && !authLoading && (
-          <p className="mt-4 text-xs text-muted-foreground">
-            <Link to="/login" className="font-semibold text-primary underline-offset-2 hover:underline">
-              Sign in
-            </Link>{" "}
-            to save your level progress and XP.
-          </p>
-        )}
       </section>
 
-      {/* Worlds */}
-      <div className="mt-8 space-y-10">
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <Button asChild variant="outline" size="sm">
+          <Link to="/study-planner">Study planner</Link>
+        </Button>
+        <span className="text-xs text-muted-foreground">
+          {ROADMAP_META.levels} levels · {ROADMAP_META.worlds} worlds
+        </span>
+      </div>
+
+      {!user && !authLoading && (
+        <p className="mt-3 text-xs text-muted-foreground">
+          <Link to="/login" className="font-semibold text-primary underline-offset-2 hover:underline">
+            Sign in
+          </Link>{" "}
+          to save your level progress and XP.
+        </p>
+      )}
+
+      {/* Worlds — serpentine level trail */}
+      <div className="mt-8 space-y-12">
         {ROADMAP_WORLDS.map((world) => {
           const accent = worldAccent(world.index);
           const levels = getLevelsForWorld(world.index);
@@ -164,45 +212,48 @@ function StudyRoadmapPage() {
             (l) => levelProgress(l, state.completedMissionIds).complete,
           ).length;
           const worldUnlocked = levels.some((l) => isLevelUnlocked(l.level_id, state));
+          const worldPose = mascot(world.index % 2 === 0 ? "confident" : "idea");
 
           return (
             <section key={world.index}>
-              <div
-                className="flex items-center justify-between gap-3 rounded-2xl border p-4"
-                style={{
-                  borderColor: `${accent.ring}40`,
-                  background: `linear-gradient(135deg, ${accent.from}1f, transparent 70%)`,
-                }}
-              >
-                <div className="min-w-0">
-                  <div className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: accent.to }}>
-                    World {world.index} · Levels {world.levels[0]}–{world.levels[1]}
-                  </div>
-                  <h2 className="truncate text-lg font-bold sm:text-xl">{world.name}</h2>
+              {/* World divider */}
+              <div className="flex items-center gap-3">
+                <span className="h-px flex-1" style={{ background: `${accent.ring}55` }} />
+                <div
+                  className="rounded-full px-4 py-1.5 text-center text-sm font-extrabold text-white shadow-md"
+                  style={{ background: `linear-gradient(135deg, ${accent.from}, ${accent.to})` }}
+                >
+                  {world.name}
                 </div>
-                <div className="shrink-0 text-right">
-                  {worldUnlocked ? (
-                    <span className="text-sm font-semibold" style={{ color: accent.to }}>
-                      {cleared}/{levels.length}
-                    </span>
-                  ) : (
-                    <Lock className="h-4 w-4 text-muted-foreground" />
-                  )}
-                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground">cleared</div>
-                </div>
+                <span className="h-px flex-1" style={{ background: `${accent.ring}55` }} />
+              </div>
+              <div className="mt-1 text-center text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Levels {world.levels[0]}–{world.levels[1]} ·{" "}
+                {worldUnlocked ? `${cleared}/${levels.length} cleared` : "locked"}
               </div>
 
-              {/* Serpentine level trail */}
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
-                {levels.map((level, i) => (
-                  <LevelNode
-                    key={level.level_id}
-                    level={level}
-                    state={state}
-                    offsetRow={i % 2 === 1}
-                    onOpen={() => setOpenLevel(level)}
-                  />
-                ))}
+              <div className="relative mt-5">
+                <img
+                  src={worldPose.src}
+                  alt={worldPose.alt}
+                  aria-hidden
+                  className="pointer-events-none absolute right-0 top-1/3 h-24 w-24 object-contain opacity-90 sm:h-32 sm:w-32"
+                />
+                <ul className="relative flex flex-col items-center gap-4">
+                  {levels.map((level, i) => (
+                    <li
+                      key={level.level_id}
+                      style={{ transform: `translateX(${TRAIL_OFFSETS[i % TRAIL_OFFSETS.length]}%)` }}
+                    >
+                      <LevelNode
+                        level={level}
+                        state={state}
+                        current={level.level_id === state.currentLevel}
+                        onOpen={() => setOpenLevel(level)}
+                      />
+                    </li>
+                  ))}
+                </ul>
               </div>
             </section>
           );
@@ -221,14 +272,26 @@ function StudyRoadmapPage() {
   );
 }
 
-function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function HudChip({
+  icon,
+  value,
+  label,
+  tint,
+}: {
+  icon: React.ReactNode;
+  value: string;
+  label: string;
+  tint: string;
+}) {
   return (
-    <div className="rounded-2xl border border-border bg-card/70 p-3">
-      <div className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-        <span className="text-primary">{icon}</span>
+    <div className="rounded-2xl border border-border bg-card/80 px-2 py-2 text-center">
+      <div className="flex items-center justify-center gap-1.5">
+        <span style={{ color: tint }}>{icon}</span>
+        <span className="text-sm font-extrabold">{value}</span>
+      </div>
+      <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
         {label}
       </div>
-      <div className="mt-1 text-lg font-extrabold">{value}</div>
     </div>
   );
 }
@@ -236,12 +299,12 @@ function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string
 function LevelNode({
   level,
   state,
-  offsetRow,
+  current,
   onOpen,
 }: {
   level: RoadmapLevel;
   state: RoadmapState;
-  offsetRow: boolean;
+  current: boolean;
   onOpen: () => void;
 }) {
   const accent = worldAccent(level.world_index);
@@ -255,53 +318,57 @@ function LevelNode({
     <button
       type="button"
       onClick={onOpen}
-      className={`group relative flex flex-col items-start gap-2 rounded-2xl border p-3 text-left transition-transform ${
-        unlocked ? "hover:-translate-y-0.5" : "opacity-70"
-      } ${offsetRow ? "sm:mt-6" : ""}`}
-      style={{
-        borderColor: prog.complete ? accent.ring : `${accent.ring}33`,
-        background: unlocked
-          ? `linear-gradient(160deg, ${accent.from}1a, transparent 75%)`
-          : undefined,
-      }}
       aria-label={`Level ${level.level_id}: ${level.title}`}
+      className="group flex w-[9.5rem] flex-col items-center gap-1.5 focus:outline-none sm:w-44"
     >
-      <div className="flex w-full items-center justify-between">
-        <span
-          className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-extrabold text-white shadow-md"
-          style={{
-            background: unlocked
-              ? `linear-gradient(140deg, ${accent.from}, ${accent.to})`
-              : "hsl(0 0% 60% / 0.35)",
-          }}
-        >
-          {prog.complete ? <Check className="h-5 w-5" /> : unlocked ? level.level_id : <Lock className="h-4 w-4" />}
-        </span>
+      <span
+        className={`relative flex h-16 w-16 items-center justify-center rounded-full text-lg font-extrabold text-white transition-transform group-hover:-translate-y-1 group-active:translate-y-0.5 sm:h-20 sm:w-20 ${
+          current ? "ring-4 ring-offset-2 ring-offset-background" : ""
+        }`}
+        style={{
+          background: unlocked
+            ? `linear-gradient(150deg, ${accent.from}, ${accent.to})`
+            : "hsl(0 0% 60% / 0.3)",
+          boxShadow: unlocked ? `0 8px 0 0 ${accent.to}80` : "0 6px 0 0 hsl(0 0% 50% / 0.25)",
+          ...(current ? { ["--tw-ring-color" as string]: accent.ring } : {}),
+        }}
+      >
+        {prog.complete ? (
+          <Check className="h-7 w-7" />
+        ) : unlocked ? (
+          level.level_id
+        ) : (
+          <Lock className="h-6 w-6 text-white/80" />
+        )}
+
         {(boss || mock) && (
           <span
-            className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white"
-            style={{ background: boss ? accent.to : subjectColor }}
+            className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-background text-white"
+            style={{ background: boss ? "#e11d48" : subjectColor }}
           >
-            {boss ? "Boss" : "Mock"}
+            {boss ? <Swords className="h-3.5 w-3.5" /> : <Star className="h-3.5 w-3.5" />}
           </span>
         )}
-      </div>
+      </span>
 
-      <div className="w-full">
-        <div className="line-clamp-2 text-xs font-semibold leading-snug">{level.title}</div>
-        <div className="mt-1 flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
-          <span className="inline-block h-2 w-2 rounded-full" style={{ background: subjectColor }} />
-          {level.primary_subject} · {level.xp_reward} XP
-        </div>
-      </div>
+      <span className="line-clamp-2 text-center text-[11px] font-semibold leading-snug">
+        {level.title}
+      </span>
+      <span className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+        <span className="inline-block h-2 w-2 rounded-full" style={{ background: subjectColor }} />
+        {level.xp_reward} XP
+      </span>
 
-      {unlocked && prog.total > 0 && (
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
-          <div
-            className="h-full rounded-full transition-all"
-            style={{ width: `${prog.percent}%`, background: `linear-gradient(90deg, ${accent.from}, ${accent.to})` }}
+      {unlocked && prog.total > 0 && !prog.complete && (
+        <span className="h-1.5 w-20 overflow-hidden rounded-full bg-muted">
+          <span
+            className="block h-full rounded-full"
+            style={{
+              width: `${prog.percent}%`,
+              background: `linear-gradient(90deg, ${accent.from}, ${accent.to})`,
+            }}
           />
-        </div>
+        </span>
       )}
     </button>
   );
@@ -327,109 +394,135 @@ function LevelSheet({
   const unlocked = isLevelUnlocked(level.level_id, state);
   const prog = levelProgress(level, state.completedMissionIds);
   const chapters = getChapterLabels(level);
+  const pose = mascot(prog.complete ? "thumbs-up" : "pointing");
 
   return (
     <Sheet open={!!level} onOpenChange={(o) => !o && onClose()}>
-      <SheetContent side="bottom" className="max-h-[88vh] overflow-y-auto rounded-t-3xl">
-        <SheetHeader className="text-left">
-          <div
-            className="inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white"
-            style={{ background: `linear-gradient(135deg, ${accent.from}, ${accent.to})` }}
-          >
-            Level {level.level_id} · {level.world}
-          </div>
-          <SheetTitle className="text-xl">{level.title}</SheetTitle>
-          <SheetDescription>
-            {level.primary_subject} · {level.difficulty} · {level.xp_reward} XP · pass gate{" "}
-            {level.quiz_gate_percent}% · ~{levelMinutes(level)} min
-          </SheetDescription>
-        </SheetHeader>
+      <SheetContent side="bottom" className="max-h-[88vh] overflow-y-auto rounded-t-3xl p-0">
+        <div
+          className="rounded-t-3xl p-5 text-white"
+          style={{ background: `linear-gradient(135deg, ${accent.from}, ${accent.to})` }}
+        >
+          <SheetHeader className="text-left">
+            <div className="flex items-center gap-3">
+              <div className="min-w-0 flex-1">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">
+                  Level {level.level_id} · {level.world}
+                </div>
+                <SheetTitle className="text-xl text-white">{level.title}</SheetTitle>
+                <SheetDescription className="text-white/85">
+                  {level.primary_subject} · {level.difficulty} · {level.xp_reward} XP · gate{" "}
+                  {level.quiz_gate_percent}% · ~{levelMinutes(level)} min
+                </SheetDescription>
+              </div>
+              <img src={pose.src} alt={pose.alt} className="h-20 w-20 shrink-0 object-contain" />
+            </div>
+          </SheetHeader>
 
-        {!unlocked && (
-          <div className="mt-4 flex items-center gap-2 rounded-xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
-            <Lock className="h-4 w-4" />
-            Clear level {level.level_id - 1} to unlock this level.
-          </div>
-        )}
-
-        {chapters.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {chapters.map((c) => (
-              <span key={c} className="rounded-full border border-border bg-card px-2.5 py-1 text-[11px] font-medium">
-                {c}
+          <div className="mt-4">
+            <div className="mb-1.5 flex items-center justify-between text-[11px] font-semibold text-white/85">
+              <span>
+                Tasks {prog.doneCount}/{prog.total}
               </span>
-            ))}
+              <span>
+                required {prog.requiredDone}/{prog.requiredTotal}
+              </span>
+            </div>
+            <div className="h-2 w-full overflow-hidden rounded-full bg-white/25">
+              <div className="h-full rounded-full bg-white" style={{ width: `${prog.percent}%` }} />
+            </div>
           </div>
-        )}
-
-        <div className="mt-4">
-          <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground">
-            <span>
-              Missions {prog.doneCount}/{prog.total}
-            </span>
-            <span>
-              required {prog.requiredDone}/{prog.requiredTotal}
-            </span>
-          </div>
-          <Progress value={prog.percent} className="h-2" />
         </div>
 
-        <ul className="mt-4 space-y-2 pb-6">
-          {level.missions.map((m) => {
-            const done = state.completedMissionIds.has(m.mission_id);
-            const href = missionHref(m);
-            return (
-              <li
-                key={m.mission_id}
-                className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3"
-              >
+        <div className="p-5">
+          {!unlocked && (
+            <div className="flex items-center gap-2 rounded-xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
+              <Lock className="h-4 w-4" />
+              Clear level {level.level_id - 1} to unlock this level.
+            </div>
+          )}
+
+          {chapters.length > 0 && (
+            <div className="mt-1 flex flex-wrap gap-1.5">
+              {chapters.map((c) => (
                 <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold"
+                  key={c}
+                  className="rounded-full border border-border bg-card px-2.5 py-1 text-[11px] font-medium"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <h3 className="mt-5 text-sm font-bold uppercase tracking-wider text-muted-foreground">
+            Tasks in this level
+          </h3>
+
+          <ul className="mt-3 space-y-2 pb-6">
+            {level.missions.map((m, idx) => {
+              const done = state.completedMissionIds.has(m.mission_id);
+              const href = missionHref(m);
+              return (
+                <li
+                  key={m.mission_id}
+                  className="flex items-center gap-3 rounded-2xl border p-3"
                   style={{
-                    background: done ? accent.to : `${accent.from}22`,
-                    color: done ? "#fff" : accent.to,
+                    borderColor: done ? `${accent.ring}66` : undefined,
+                    background: done ? `${accent.from}12` : undefined,
                   }}
                 >
-                  {done ? <Check className="h-4 w-4" /> : m.type.slice(0, 2).toUpperCase()}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="truncate text-sm font-semibold">
-                    {m.label}
-                    {!m.required && (
-                      <span className="ml-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                        optional
-                      </span>
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold"
+                    style={{
+                      background: done ? accent.to : `${accent.from}22`,
+                      color: done ? "#fff" : accent.to,
+                    }}
+                  >
+                    {done ? <Check className="h-4 w-4" /> : idx + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate text-sm font-semibold">
+                      {m.label}
+                      {!m.required && (
+                        <span className="ml-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                          optional
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                      <Clock className="h-3 w-3" /> {m.est_minutes} min · {m.type} ·{" "}
+                      {m.target_page}
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1.5">
+                    {unlocked && href && (
+                      <Button asChild size="sm" variant={done ? "outline" : "default"}>
+                        <a href={href}>
+                          {done ? "Redo" : "Start"}
+                          <ChevronRight className="ml-0.5 h-3.5 w-3.5" />
+                        </a>
+                      </Button>
+                    )}
+                    {unlocked && signedIn && !done && (
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        disabled={saving === m.mission_id}
+                        onClick={() => onComplete(level, m)}
+                        aria-label={`Mark ${m.label} done`}
+                      >
+                        <Check className="h-4 w-4" />
+                      </Button>
                     )}
                   </div>
-                  <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
-                    <Clock className="h-3 w-3" /> {m.est_minutes} min · {m.target_page}
-                  </div>
-                </div>
-                <div className="flex shrink-0 items-center gap-1.5">
-                  {unlocked && href && (
-                    <Button asChild size="sm" variant={done ? "outline" : "default"}>
-                      <a href={href}>
-                        Start <ChevronRight className="ml-0.5 h-3.5 w-3.5" />
-                      </a>
-                    </Button>
-                  )}
-                  {unlocked && signedIn && !done && (
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      disabled={saving === m.mission_id}
-                      onClick={() => onComplete(level, m)}
-                      aria-label={`Mark ${m.label} done`}
-                    >
-                      <Check className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </SheetContent>
     </Sheet>
   );
 }
+
