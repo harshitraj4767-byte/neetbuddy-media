@@ -103,7 +103,7 @@ const SUBJECTS = [
 type SubjectDef = (typeof SUBJECTS)[number];
 
 /** CBT papers stay attemptable: long chapters are split into fixed-size sets. */
-const CBT_SET_SIZE = 50;
+const CBT_SET_SIZE = 65;
 
 const titleFor = (chapter: string, setLabel?: string) =>
   `PYQ · ${chapter}${setLabel ? ` · ${setLabel}` : ""}`;
