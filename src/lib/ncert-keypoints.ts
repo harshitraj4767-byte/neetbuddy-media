@@ -352,14 +352,15 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
   };
 
   const addHeading = (p: KeyPointPara) => {
-    if (pendingHeading as KeyPointPara | null) {
+    const prev = pendingHeading as KeyPointPara | null;
+    if (prev) {
       // Two headings back to back (6.1 then 6.1.2) — keep both lines.
       pendingHeading = {
-        ...pendingHeading,
-        text: `${pendingHeading.text}\n${p.text}`,
-        runs: [...pendingHeading.runs, { t: "br" } as Run, ...p.runs],
-        extraBlockIds: [...pendingHeading.extraBlockIds, p.blockId],
-        questions: [...pendingHeading.questions, ...p.questions],
+        ...prev,
+        text: `${prev.text}\n${p.text}`,
+        runs: [...prev.runs, { t: "br" } as Run, ...p.runs],
+        extraBlockIds: [...prev.extraBlockIds, p.blockId],
+        questions: [...prev.questions, ...p.questions],
       };
     } else {
       pendingHeading = p;
