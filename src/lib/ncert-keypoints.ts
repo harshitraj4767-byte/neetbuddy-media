@@ -426,11 +426,12 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
       extraBlockIds: [...p.extraBlockIds],
     };
 
-    if (pendingHeading) {
-      page.heading = pendingHeading.text;
-      page.headingRuns = pendingHeading.runs;
-      page.extraBlockIds.push(pendingHeading.blockId, ...pendingHeading.extraBlockIds);
-      page.questions = [...pendingHeading.questions, ...page.questions];
+    const heading: KeyPointPara | null = pendingHeading;
+    if (heading) {
+      page.heading = heading.text;
+      page.headingRuns = heading.runs;
+      page.extraBlockIds.push(heading.blockId, ...heading.extraBlockIds);
+      page.questions = [...heading.questions, ...page.questions];
       pendingHeading = null;
     }
     if (pendingFigures.length) {
