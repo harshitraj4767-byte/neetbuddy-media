@@ -20,6 +20,15 @@ export function BottomNav() {
   const { user } = useAuth();
   const loc = useRouterState({ select: (s) => s.location });
   const pathname = loc.pathname;
+  // Laptops/desktops use the top navbar — the tab bar is mobile/tablet only.
+  const [isSmall, setIsSmall] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 1023px)");
+    const sync = () => setIsSmall(mql.matches);
+    sync();
+    mql.addEventListener("change", sync);
+    return () => mql.removeEventListener("change", sync);
+  }, []);
   // Full-screen readers/players pass ?mode= — their own action bar owns the
   // bottom of the screen, so the tab bar must get out of the way.
   const inPlayer =
