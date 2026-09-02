@@ -352,7 +352,7 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
   };
 
   const addHeading = (p: KeyPointPara) => {
-    if (pendingHeading) {
+    if (pendingHeading as KeyPointPara | null) {
       // Two headings back to back (6.1 then 6.1.2) — keep both lines.
       pendingHeading = {
         ...pendingHeading,
@@ -426,7 +426,7 @@ function mergePages(paras: KeyPointPara[]): KeyPointPara[] {
       extraBlockIds: [...p.extraBlockIds],
     };
 
-    const heading: KeyPointPara | null = pendingHeading;
+    const heading = pendingHeading as KeyPointPara | null;
     if (heading) {
       page.heading = heading.text;
       page.headingRuns = heading.runs;
