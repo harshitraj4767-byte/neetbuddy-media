@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Brain, ClipboardList, BookOpen, LineChart, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -33,7 +33,7 @@ export function BottomNav() {
   // bottom of the screen, so the tab bar must get out of the way.
   const inPlayer =
     pathname.startsWith("/ncert-key-points") && /(?:^|[?&])mode=/.test(loc.searchStr ?? "");
-  const hidden = !user || inPlayer || pathname === "/" || HIDDEN_PREFIXES.some((p) => pathname.startsWith(p));
+  const hidden = !isSmall || !user || inPlayer || pathname === "/" || HIDDEN_PREFIXES.some((p) => pathname.startsWith(p));
 
   useEffect(() => {
     if (hidden) return;
