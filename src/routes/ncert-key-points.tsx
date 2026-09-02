@@ -147,7 +147,7 @@ function Page() {
   });
 
   const go = (next: Partial<typeof search>) =>
-    navigate({ search: { subject, ...search, ...next } as never });
+    navigate({ search: { ...search, ...next } as never });
 
   if (search.slug) {
     return (
