@@ -109,15 +109,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/dashboard" className="flex items-center gap-2">
-          <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-9 w-9 rounded-xl shadow-glow" />
+        <Link to="/dashboard" className="flex shrink-0 items-center gap-2">
+          <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-9 w-9 shrink-0 rounded-xl shadow-glow" />
           <div className="leading-none">
-            <div className="text-base font-bold tracking-tight">Neet <span className="text-gradient-primary">Buddy</span></div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Crack NEET, Smarter</div>
+            <div className="whitespace-nowrap text-base font-bold tracking-tight">Neet <span className="text-gradient-primary">Buddy</span></div>
+            <div className="hidden whitespace-nowrap text-[10px] uppercase tracking-[0.18em] text-muted-foreground xl:block">Crack NEET, Smarter</div>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+
+        <nav className="mx-2 hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
           {navGroups.map((g) => {
             if (g.to) {
               const active = path.startsWith(g.to);
@@ -163,7 +164,7 @@ export function SiteHeader() {
         </nav>
 
 
-        <div className="flex items-center gap-1 md:gap-2">
+        <div className="flex shrink-0 items-center gap-1 md:gap-2">
           <ThemeToggle />
           {user && <NotificationBell />}
           <div className="hidden items-center gap-2 lg:flex">
@@ -176,26 +177,34 @@ export function SiteHeader() {
                 >
                   <Link to="/premium">
                     <Crown className="h-4 w-4" />
-                    <span>Premium</span>
+                    <span className="hidden xl:inline">Premium</span>
                     <Sparkles className="h-3.5 w-3.5 opacity-80" />
                   </Link>
                 </Button>
-                {isAdmin && <Button asChild size="sm" variant="outline"><Link to="/admin">Admin</Link></Button>}
-                {isAdmin && <Button asChild size="sm" variant="outline"><Link to="/admin-inbox">Inbox</Link></Button>}
 
-                <Link
-                  to="/profile"
-                  className="flex items-center gap-2 rounded-full border border-border bg-secondary/60 py-1 pl-1 pr-3 transition-colors hover:bg-secondary"
-                  title={displayName || "Profile"}
-                >
-                  {avatar ? (
-                    <img src={avatar} alt={displayName || "Profile"} className="h-7 w-7 rounded-full object-cover" />
-                  ) : (
-                    <User className="h-5 w-5" />
-                  )}
-                  <span className="max-w-[8rem] truncate text-sm font-semibold">{displayName || "Profile"}</span>
-                </Link>
-                <Button size="sm" variant="outline" onClick={() => signOut()} className="gap-1"><LogOut className="h-4 w-4" /> Log out</Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-2 rounded-full border border-border bg-secondary/60 py-1 pl-1 pr-2 transition-colors hover:bg-secondary focus:outline-none">
+                    {avatar ? (
+                      <img src={avatar} alt={displayName || "Profile"} className="h-7 w-7 rounded-full object-cover" />
+                    ) : (
+                      <User className="h-5 w-5" />
+                    )}
+                    <span className="hidden max-w-[7rem] truncate text-sm font-semibold xl:inline">{displayName || "Profile"}</span>
+                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="min-w-52">
+                    <DropdownMenuLabel className="truncate">{displayName || "Account"}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild><Link to="/profile">My profile</Link></DropdownMenuItem>
+                    <DropdownMenuItem asChild><Link to="/subscription">Subscription</Link></DropdownMenuItem>
+                    {isAdmin && <DropdownMenuItem asChild><Link to="/admin">Admin</Link></DropdownMenuItem>}
+                    {isAdmin && <DropdownMenuItem asChild><Link to="/admin-inbox">Inbox</Link></DropdownMenuItem>}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => signOut()} className="text-destructive focus:text-destructive">
+                      <LogOut className="mr-2 h-4 w-4" /> Log out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </>
             ) : (
               <>
@@ -204,6 +213,7 @@ export function SiteHeader() {
               </>
             )}
           </div>
+
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <button
