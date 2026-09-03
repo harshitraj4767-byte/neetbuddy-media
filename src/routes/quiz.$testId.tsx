@@ -1179,7 +1179,7 @@ function QuizPlayer() {
 
       {/* Top bar */}
       <header className="sticky top-0 z-40 border-b border-border bg-card">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-2.5">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-2.5 lg:max-w-4xl">
           <div className="min-w-0 flex-1">
             {(() => {
               const sname = (subjName || "").toLowerCase();
