@@ -109,13 +109,14 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/dashboard" className="flex items-center gap-2">
-          <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-9 w-9 rounded-xl shadow-glow" />
+        <Link to="/dashboard" className="flex shrink-0 items-center gap-2">
+          <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-9 w-9 shrink-0 rounded-xl shadow-glow" />
           <div className="leading-none">
-            <div className="text-base font-bold tracking-tight">Neet <span className="text-gradient-primary">Buddy</span></div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Crack NEET, Smarter</div>
+            <div className="whitespace-nowrap text-base font-bold tracking-tight">Neet <span className="text-gradient-primary">Buddy</span></div>
+            <div className="hidden whitespace-nowrap text-[10px] uppercase tracking-[0.18em] text-muted-foreground xl:block">Crack NEET, Smarter</div>
           </div>
         </Link>
+
 
         <nav className="hidden items-center gap-1 lg:flex">
           {navGroups.map((g) => {
