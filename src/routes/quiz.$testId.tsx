@@ -1312,8 +1312,9 @@ function QuizPlayer() {
         <div className="h-1 w-full bg-secondary">
           <div className="h-full bg-emerald-500 transition-all" style={{ width: `${progress}%` }} />
         </div>
-        {/* Question palette */}
-        <div className="mx-auto max-w-3xl">
+        {/* Question palette (mobile/tablet — desktop uses the right sidebar) */}
+        <div className="mx-auto max-w-3xl lg:hidden">
+
           <div
             ref={paletteRef}
             className="flex snap-x flex-nowrap gap-1.5 overflow-x-auto overflow-y-hidden px-4 py-2 [scrollbar-width:thin]"
