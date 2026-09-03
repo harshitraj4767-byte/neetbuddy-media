@@ -118,7 +118,7 @@ export function SiteHeader() {
         </Link>
 
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="mx-2 hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
           {navGroups.map((g) => {
             if (g.to) {
               const active = path.startsWith(g.to);
