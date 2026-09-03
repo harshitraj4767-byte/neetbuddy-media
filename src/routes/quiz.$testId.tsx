@@ -1358,7 +1358,7 @@ function QuizPlayer() {
       </header>
 
       {/* Question */}
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5 lg:max-w-4xl">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">
             {idx + 1}
@@ -1491,7 +1491,7 @@ function QuizPlayer() {
       {/* Bottom action */}
       <footer className="sticky bottom-0 border-t border-border bg-card">
         {isCbt ? (
-          <div className="mx-auto max-w-3xl px-3 py-2.5">
+          <div className="mx-auto max-w-3xl px-3 py-2.5 lg:max-w-4xl">
             {/* NTA-style palette legend + counts */}
             <div className="mb-2 grid grid-cols-5 gap-1 text-[10px]">
               {([
@@ -1565,7 +1565,7 @@ function QuizPlayer() {
             </div>
           </div>
         ) : (
-        <div className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-3">
+        <div className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-3 lg:max-w-4xl">
           <Button
             variant="outline"
             size="icon"
