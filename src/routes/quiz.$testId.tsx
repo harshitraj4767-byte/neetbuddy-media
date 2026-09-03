@@ -1164,7 +1164,7 @@ function QuizPlayer() {
   }
 
   return (
-    <div className={cn("relative flex min-h-screen flex-col bg-background", isCbt && "lg:pr-[340px]")}>
+    <div className={cn("relative flex min-h-screen flex-col bg-background lg:pr-[340px]")}>
 
 
 
