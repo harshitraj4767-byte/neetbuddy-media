@@ -1,24 +1,14 @@
-# Migration Helper
-
-https://github.com/sanskarj1589-png/ask-migrate.git
-
-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
-
-Don't worry I will revoke it after work 
-
-This is my git repo and u need to copy the exact files (skip images only) and copy all other things 
-
-Also respo is private so ask me for git token I will provide u also all nessesory supabase details to connect my supabase
+# Welcome to your Lovable project
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/de9a3e8c-ed20-4103-8d90-df1e61cb06d4).
+Open your project in the [Lovable editor](https://lovable.dev) and keep building.
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
+- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -30,3 +20,42 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Built with
+
+- TanStack Start
+- TypeScript
+- React
+- Tailwind CSS
+
+## Deploy on Hostinger Business shared hosting
+
+This repository is configured as a static SPA so it works without a VPS.
+
+### Hostinger Git deployment settings
+
+- **Branch:** `main`
+- **Node.js version:** `22.x`
+- **Install command:** `npm ci`
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- **Environment variables:** none are required by this starter
+
+The build creates `dist/index.html`, copies all public assets, and creates
+`dist/.htaccess` so direct visits and refreshed nested routes load correctly.
+
+### If hPanel still shows 403
+
+1. In File Manager, open the domain's document root (normally `public_html`).
+2. Remove an old default `index.php` if it is taking precedence.
+3. Confirm that `index.html`, `.htaccess`, `assets/`, `favicon.ico`, and
+   `robots.txt` are directly inside `public_html` — not inside a nested
+   `dist` folder.
+4. Set folders to permission `755` and files to `644`.
+5. In hPanel, make sure the domain's document root points to `public_html`.
+
+For manual deployment, run `npm ci && npm run build`, then upload the
+**contents** of `dist/` to `public_html`.
+
+The `npm` deprecation messages are warnings from dependencies; they do not
+cause the Hostinger 403 and do not make a successful build fail.
