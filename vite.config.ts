@@ -10,6 +10,13 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // Enabled with `npm run build:static`, which sets STATIC_BUILD=true.
 const isStaticBuild = process.env["STATIC_BUILD"] === "true";
 
+// Static hosting has no server runtime, so the public Supabase config must be
+// baked into the client bundle at build time. Set SB_URL and SB_PUBLISHABLE_KEY
+// in the build environment (Hostinger → Build settings → Environment variables).
+const supabaseUrl = process.env["SB_URL"] ?? process.env["VITE_SB_URL"] ?? "";
+const supabasePublishableKey =
+  process.env["SB_PUBLISHABLE_KEY"] ?? process.env["VITE_SB_PUBLISHABLE_KEY"] ?? "";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
@@ -25,6 +32,12 @@ export default defineConfig({
   },
   ...(isStaticBuild
     ? {
+        vite: {
+          define: {
+            __APP_SUPABASE_URL__: JSON.stringify(supabaseUrl),
+            __APP_SUPABASE_PUBLISHABLE_KEY__: JSON.stringify(supabasePublishableKey),
+          },
+        },
         // TanStack's SPA build already emits static client files. Running Nitro
         // as well changes dist/ into a server bundle that shared hosting cannot
         // execute and breaks the prerender preview server path.
