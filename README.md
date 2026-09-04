@@ -1,61 +1,57 @@
-# Welcome to your Lovable project
+# migration-helper
 
-This project was built with [Lovable](https://lovable.dev).
+MySQL 8 conversion of a PostgreSQL dump, plus a loader for Hostinger MySQL.
 
-## Build with Lovable
+## Contents
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+| file | size | INSERT batches |
+| --- | --- | --- |
+| `sql/data_part_00.{00,01,02}.sql` | 45 MB total | 239 |
+| `sql/data_part_01.{00,01,02}.sql` | 45 MB total | 397 |
+| `sql/data_part_02.{00,01,02}.sql` | 45 MB total | 146 |
+| `sql/data_part_03.00.sql` | 10 MB | 44 |
+| `load.sh` | | ordered loader (schema -> data -> FKs) |
+| `.env.example` | | connection template |
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Still to add: `sql/01_schema.sql` and `sql/03_foreign_keys.sql`. The data files
+assume the schema already exists.
 
-## Development
+## Load
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+```bash
+cp .env.example .env    # fill in Hostinger MySQL host/user/password/db
+./load.sh
 ```
 
-## Built with
+Each original 45 MB dump was split at statement boundaries into ~15-22 MB
+chunks (`data_part_NN.MM.sql`) so it stays under GitHub's per-file API limit.
+Each chunk is valid standalone SQL and `load.sh` loads them in filename order.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Each data file begins with `SET FOREIGN_KEY_CHECKS=0; SET UNIQUE_CHECKS=0; SET autocommit=0;`
+and commits in chunks. `--max-allowed-packet=1G` is required because some
+INSERT batches are multi-megabyte.
 
-## Deploy on Hostinger Business shared hosting
+Hostinger notes:
+- Enable hPanel -> Databases -> Remote MySQL and whitelist the connecting IP (or `%`).
+- Host is usually `srvNNN.hstgr.io`, port `3306`.
+- phpMyAdmin import cannot handle 45 MB files; use CLI/SSH.
 
-This repository is configured as a static SPA so it works without a VPS.
+## Conversion reference
 
-### Hostinger Git deployment settings
+`uuid -> char(36)`, `text -> longtext` (`varchar(255)` when indexed),
+`jsonb/json -> json`, arrays -> JSON arrays, `boolean -> tinyint(1)`,
+`timestamptz -> datetime(6)` (UTC, offsets stripped), `bytea -> longblob` (UNHEX),
+`numeric -> decimal`, Postgres enums -> MySQL `ENUM`, `nextval` -> `AUTO_INCREMENT`,
+generated columns kept as `STORED`.
 
-- **Branch:** `main`
-- **Node.js version:** `22.x`
-- **Install command:** `npm ci`
-- **Build command:** `npm run build`
-- **Output directory:** `dist`
-- **Environment variables:** none are required by this starter
+Not converted (manual porting required):
+- 65 PL/pgSQL functions and their triggers
+- Row Level Security policies and role grants (MySQL has no RLS - enforce in the app)
+- 14 views (Postgres-specific syntax)
+- GIN / partial / expression indexes (plain btree kept)
 
-The build creates `dist/index.html`, copies all public assets, and creates
-`dist/.htaccess` so direct visits and refreshed nested routes load correctly.
+## Security
 
-### If hPanel still shows 403
-
-1. In File Manager, open the domain's document root (normally `public_html`).
-2. Remove an old default `index.php` if it is taking precedence.
-3. Confirm that `index.html`, `.htaccess`, `assets/`, `favicon.ico`, and
-   `robots.txt` are directly inside `public_html` — not inside a nested
-   `dist` folder.
-4. Set folders to permission `755` and files to `644`.
-5. In hPanel, make sure the domain's document root points to `public_html`.
-
-For manual deployment, run `npm ci && npm run build`, then upload the
-**contents** of `dist/` to `public_html`.
-
-The `npm` deprecation messages are warnings from dependencies; they do not
-cause the Hostinger 403 and do not make a successful build fail.
+These dumps contain application data and a config table with a live secret
+value (`_cron_config`). Keep this repository **private** and rotate any
+credential that appears in the data.
