@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import type { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { getCurrentSession, signOut as signOutFn } from "@/lib/auth-mysql.functions";
+
+export type AuthUser = { id: string; email: string | null; fullName: string | null };
 
 type Profile = {
   id: string;
@@ -17,8 +18,8 @@ type Profile = {
 };
 
 type AuthCtx = {
-  user: User | null;
-  session: Session | null;
+  user: AuthUser | null;
+  session: { user: AuthUser } | null;
   profile: Profile | null;
   isAdmin: boolean;
   loading: boolean;
@@ -29,79 +30,63 @@ type AuthCtx = {
 const Ctx = createContext<AuthCtx | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const loadProfile = async (userId: string) => {
-    const [{ data: prof }, { data: roles }] = await Promise.all([
-      supabase.from("profiles").select("id,email,full_name,avatar_url,wallet_balance,deposit_balance,winnings_balance,bonus_balance,xp_total,daily_goal,target_year").eq("id", userId).maybeSingle(),
-      supabase.from("user_roles").select("role").eq("user_id", userId),
-    ]);
-    setProfile(prof as Profile | null);
-    setIsAdmin(!!roles?.some((r: { role: string }) => r.role === "admin"));
-  };
+  const refresh = useCallback(async () => {
+    try {
+      const s = await getCurrentSession();
+      setUser(s.user ? { id: s.user.id, email: s.user.email, fullName: s.user.fullName } : null);
+      setProfile((s.profile as Profile | null) ?? null);
+      setIsAdmin(s.isAdmin);
+    } catch (error) {
+      console.error("[auth] failed to restore session", error);
+      setUser(null);
+      setProfile(null);
+      setIsAdmin(false);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const tryApplyPendingRef = async (userId: string) => {
-      if (typeof window === "undefined") return;
-      let pending: string | null = null;
-      try { pending = localStorage.getItem("pending_ref_code"); } catch { /* noop */ }
-      if (!pending) return;
+    void refresh();
+  }, [refresh]);
+
+  // Apply a referral code captured before signup, once a user exists.
+  useEffect(() => {
+    if (!user || typeof window === "undefined") return;
+    let pending: string | null = null;
+    try { pending = localStorage.getItem("pending_ref_code"); } catch { /* noop */ }
+    if (!pending) return;
+    (async () => {
       try {
         const { applyReferralCode } = await import("@/lib/referrals.functions");
-        await applyReferralCode({ data: { code: pending } });
+        await applyReferralCode({ data: { code: pending! } });
       } catch (e) {
-        // Already used / invalid / self → just clear so we don't retry forever.
         console.warn("[auth] pending referral apply failed", e);
       } finally {
         try { localStorage.removeItem("pending_ref_code"); } catch { /* noop */ }
-        // Reload profile so the new bonus_balance shows up.
-        loadProfile(userId).catch(() => {});
+        void refresh();
       }
-    };
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, s) => {
-      setSession(s);
-      if (s?.user) {
-        setTimeout(() => loadProfile(s.user.id), 0);
-        if (event === "SIGNED_IN") {
-          setTimeout(() => tryApplyPendingRef(s.user.id), 200);
-        }
-      } else {
-        setProfile(null); setIsAdmin(false);
-      }
-    });
-    supabase.auth.getSession()
-      .then(({ data: { session: s } }) => {
-        setSession(s);
-        if (s?.user) {
-          loadProfile(s.user.id).finally(() => setLoading(false));
-          // Also try at initial mount in case SIGNED_IN fired before listener attached.
-          tryApplyPendingRef(s.user.id);
-        } else {
-          setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error("[auth] failed to restore session", error);
-        setSession(null);
-        setProfile(null);
-        setIsAdmin(false);
-        setLoading(false);
-      });
-    return () => subscription.unsubscribe();
-  }, []);
+    })();
+  }, [user, refresh]);
 
   const value: AuthCtx = {
-    user: session?.user ?? null,
-    session,
+    user,
+    session: user ? { user } : null,
     profile,
     isAdmin,
     loading,
-    signOut: async () => { await supabase.auth.signOut(); },
-    refresh: async () => { if (session?.user) await loadProfile(session.user.id); },
+    signOut: async () => {
+      await signOutFn();
+      setUser(null);
+      setProfile(null);
+      setIsAdmin(false);
+    },
+    refresh,
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
