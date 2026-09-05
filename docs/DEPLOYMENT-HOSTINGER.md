@@ -1,88 +1,90 @@
-# Deploying to Hostinger VPS (Node.js)
+# Deploying to Hostinger
 
-> **Important:** This app is a full-stack server-rendered app. Hostinger's
-> shared/Premium/Business *web hosting* plans cannot run it — they only serve
-> static files, which is why the site showed **403 Forbidden** (no `index.html`
-> exists; HTML is rendered by the server). You need a **Hostinger VPS (KVM)**
-> where you can run Node.js. Alternatively, use Cloudflare Workers per
-> `DEPLOYMENT.md` and point your domain there.
+This app is a full-stack, server-rendered app: pages are rendered by a Node
+server and roughly 120 "server functions" run the database, auth, payments,
+cron and admin logic. It is **not** a folder of HTML files.
 
-## 1. Server setup (once)
+Hostinger now runs Node.js apps directly on **Business Web Hosting** and on
+**Cloud Startup / Professional / Enterprise** plans (in hPanel these are called
+**Web Apps**). That is the supported way to host this project on Hostinger —
+everything keeps working, with no per-page changes.
 
-```bash
-# On the VPS (Ubuntu):
-curl -fsSL https://bun.sh/install | bash      # or use Node 20+ with npm
-sudo apt update && sudo apt install -y git
-npm i -g pm2                                   # process manager
-```
+## Option A (recommended) — Node.js Web App on Business hosting
 
-## 2. Get the code
+### 1. Create the app
 
-```bash
-git clone https://github.com/Harshitraj4767-byte/migration-helper.git
-cd migration-helper
-```
+1. hPanel → **Websites** → **Add Website** → **Node.js web app**.
+2. Choose **Import Git repository** → connect GitHub → pick
+   `harshitraj4767-byte/migration-helper` → branch `main`.
+3. If the domain is already attached to another website on the plan, remove that
+   website first — the Node flow needs a fresh slot for the domain.
 
-## 3. Configure environment
+### 2. Deploy settings
 
-The Supabase URL and publishable key are **baked in at build time**, so they
-must be set before building:
+| Field | Value |
+|---|---|
+| Framework preset | **Other** |
+| Node.js version | **22** (or 20) |
+| Package manager | npm |
+| Build command | `npm run build:node` |
+| Entry file | `start-server.mjs` |
+| Output directory | *(leave empty — this is a server app, not a static one)* |
 
-```bash
-export SB_URL="https://cupvxfoikjkufudgehsr.supabase.co"
-export SB_PUBLISHABLE_KEY="<publishable key>"
-```
+`npm run build:node` produces `.output/server/index.mjs` plus the client assets,
+and `start-server.mjs` boots it on the port Hostinger provides (`$PORT`).
 
-Runtime secrets (service role key, CRON_SECRET, etc.) should go in a `.env`-style
-shell file or `pm2` ecosystem config — never commit them.
+### 3. Environment variables
 
-## 4. Build and run
+Add these under the app's **Environment variables** (needed at build time *and*
+runtime):
 
-```bash
-bun install
-bun run build:node        # builds with the Node server preset into dist/
-PORT=3000 pm2 start dist/server/index.mjs --name neet-buddy
-pm2 save && pm2 startup   # auto-restart on reboot
-```
+| Name | Value |
+|---|---|
+| `SB_URL` | `https://<project>.supabase.co` |
+| `SB_PUBLISHABLE_KEY` | anon / publishable key |
+| `SB_SERVICE_ROLE_KEY` | service role key (**server-only, keep secret**) |
+| `SB_PROJECT_ID` | Supabase project ref |
+| `CRON_SECRET` | random 48-char string, matches `app.cron_secret` in Postgres |
+| `LOVABLE_API_KEY` | only if AI features are used |
+| `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` | only if payments are enabled |
+| `TELEGRAM_STUDY_BOT_TOKEN` | only if the Telegram bot is used |
 
-## 5. Point the domain (reverse proxy)
+### 4. Deploy
 
-With Apache (default on Hostinger VPS images):
+Click **Deploy**. Every later push to `main` redeploys automatically.
+If the build is green but the site does not answer, open **Runtime Logs** —
+the usual cause is a missing environment variable.
 
-```apache
-<VirtualHost *:80>
-  ServerName yourdomain.com
-  ProxyPreserveHost On
-  ProxyPass / http://127.0.0.1:3000/
-  ProxyPassReverse / http://127.0.0.1:3000/
-</VirtualHost>
-```
+### 5. Scheduled jobs
 
-```bash
-sudo a2enmod proxy proxy_http && sudo systemctl reload apache2
-sudo certbot --apache -d yourdomain.com    # free HTTPS
-```
+The cron endpoints live at `/api/public/cron.*` and are protected by
+`CRON_SECRET`. Point Supabase `pg_cron` (or any external scheduler) at
+`https://yourdomain.com/api/public/cron.<name>` with the secret header.
 
-Or with Nginx:
+## Option B — Static build (Premium / older shared plans only)
 
-```nginx
-server {
-  listen 80;
-  server_name yourdomain.com;
-  location / {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-  }
-}
-```
+`npm run build:static` produces a plain `dist/` folder (with an `.htaccess`
+SPA fallback) that can be uploaded into `public_html`. **Limitation:** there is
+no Node process, so every server function fails — logins, payments, admin,
+cron, AI and anything reading the database through the server will not work.
+Use this only for a preview of the front end.
 
-## 6. Updating the site later
+## Option C — Hostinger VPS (full control)
 
 ```bash
-cd migration-helper
-git pull
-bun install
+curl -fsSL https://bun.sh/install | bash
+git clone https://github.com/harshitraj4767-byte/migration-helper.git
+cd migration-helper && bun install
+export SB_URL=... SB_PUBLISHABLE_KEY=...
 bun run build:node
-pm2 restart neet-buddy
+PORT=3000 npx pm2 start start-server.mjs --name neet-buddy
+pm2 save && pm2 startup
 ```
+
+Then reverse-proxy port 3000 with Apache or Nginx and run `certbot` for HTTPS.
+
+## Security note
+
+`wrangler.jsonc` currently contains a live Supabase **service role key** in
+plain text. Anyone with repo access can read and misuse it. Rotate that key in
+Supabase and move it into environment variables / Cloudflare secrets.
