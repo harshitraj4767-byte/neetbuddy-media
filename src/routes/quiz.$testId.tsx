@@ -905,8 +905,7 @@ function QuizPlayer() {
   // ============ NTA-style CBT UI (exact match to screenshots) ============
   if (isCbt) {
     const candidateName =
-      (user?.user_metadata as { full_name?: string; name?: string } | undefined)?.full_name ||
-      (user?.user_metadata as { full_name?: string; name?: string } | undefined)?.name ||
+      user?.fullName ||
       user?.email?.split("@")[0] ||
       "Candidate";
     const subjectLine =
