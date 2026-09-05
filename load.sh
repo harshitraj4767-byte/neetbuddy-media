@@ -25,6 +25,7 @@ echo "== target: $MYSQL_USER@$MYSQL_HOST:$MYSQL_PORT/$MYSQL_DATABASE"
 run_file sql/01_schema.sql
 for f in $(ls sql/data_part_*.sql | sort); do run_file "$f"; done
 run_file sql/03_foreign_keys.sql
+run_file sql/07_auth.sql
 echo "== tables present:"
 mysql_run <<'SQL'
 SELECT COUNT(*) AS tables_loaded FROM information_schema.tables WHERE table_schema = DATABASE();
