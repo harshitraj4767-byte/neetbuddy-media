@@ -35,7 +35,7 @@ function LoginPage() {
     }
   }, []);
 
-  useEffect(() => { if (!loading && user) nav({ to: "/dashboard" }); }, [user, loading, nav]);
+  useEffect(() => { if (!loading && user) nav({ to: "/dashboard", replace: true }); }, [user, loading, nav]);
 
   const onLogin = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true);
@@ -52,7 +52,7 @@ function LoginPage() {
       } catch { /* noop */ }
       await refresh();
       toast.success("Welcome back!");
-      nav({ to: "/dashboard" });
+      nav({ to: "/dashboard", replace: true });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Log in failed");
     } finally {
@@ -70,7 +70,7 @@ function LoginPage() {
       if (!res.ok) return toast.error(res.error);
       await refresh();
       toast.success("Account created!");
-      nav({ to: "/dashboard" });
+      nav({ to: "/dashboard", replace: true });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Sign up failed");
     } finally {
