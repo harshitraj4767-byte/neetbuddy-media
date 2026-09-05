@@ -145,7 +145,10 @@ async function writeSessionCookie(token: string) {
   const { setCookie } = await import("@tanstack/react-start/server");
   setCookie(COOKIE_NAME, token, {
     httpOnly: true,
-    sameSite: "lax",
+    // "none" (with Secure) so the session survives the embedded preview /
+    // installed-app webview, where the app runs in a third-party context and
+    // Lax cookies are dropped on the way back to the server.
+    sameSite: "none",
     secure: true,
     path: "/",
     maxAge: SESSION_DAYS * 24 * 60 * 60,
@@ -205,7 +208,9 @@ async function loadSession(): Promise<SessionResult> {
 // Public server functions
 // ---------------------------------------------------------------------------
 
-export const getCurrentSession = createServerFn({ method: "GET" }).handler(
+// POST, not GET: GET server-fn responses can be served from an edge/browser
+// cache, which would return a stale "signed out" session right after login.
+export const getCurrentSession = createServerFn({ method: "POST" }).handler(
   async (): Promise<SessionResult> => {
     try {
       return await loadSession();
