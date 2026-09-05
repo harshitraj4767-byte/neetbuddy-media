@@ -58,6 +58,7 @@
     "input-otp": "^1.4.2",
     "katex": "^0.16.11",
     "lucide-react": "^0.575.0",
+    "mysql2": "^3.24.3",
     "pdf-lib": "^1.17.1",
     "react": "^19.2.0",
     "react-day-picker": "^9.14.0",
