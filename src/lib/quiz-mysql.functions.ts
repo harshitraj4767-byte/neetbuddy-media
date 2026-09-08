@@ -478,3 +478,404 @@ export const getWrongQuestionIds = createServerFn({ method: "POST" })
     );
     return rows.map((r) => String(r.question_id));
   });
+
+// ---------------------------------------------------------------------------
+// Page-shaped helpers for src/routes/quiz.$testId.tsx
+//
+// These return rows in the exact snake_case shape the quiz player already
+// consumes, so the UI, timer and scoring maths stay untouched.
+// ---------------------------------------------------------------------------
+
+export type QuizTestRow = {
+  id: string;
+  title: string;
+  type: string;
+  difficulty: string;
+  duration_min: number;
+  total_questions: number;
+  source: string;
+  question_ids: string[];
+  marks_correct: number;
+  marks_wrong: number;
+};
+
+export type QuizQuestionRow = {
+  id: string;
+  text: string;
+  options: string[];
+  correct_index: number;
+  difficulty: string;
+  source: string;
+  marks_correct: number;
+  marks_wrong: number;
+  explanation: string | null;
+  question_image_url: string | null;
+  explanation_image_url: string | null;
+  subject_id: string | null;
+  chapter_id: string | null;
+  tag: string | null;
+  year: number | null;
+  is_pyq: boolean | null;
+};
+
+/** tests row for the quiz player (question_ids is a JSON array). */
+export const getQuizPageTest = createServerFn({ method: "POST" })
+  .inputValidator((d: { testId: string }) => d)
+  .handler(async ({ data }): Promise<QuizTestRow | null> => {
+    const { queryOne } = await import("@/lib/db/mysql.server");
+    const row = await queryOne<Record<string, unknown>>(
+      "SELECT * FROM tests WHERE id = ? LIMIT 1",
+      [data.testId],
+    );
+    if (!row) return null;
+    const ids = parseJson<unknown>(row["question_ids"], []);
+    return {
+      id: String(row["id"]),
+      title: String(row["title"] ?? ""),
+      type: String(row["type"] ?? "quiz"),
+      difficulty: String(row["difficulty"] ?? "medium"),
+      duration_min: Number(row["duration_min"] ?? 30),
+      total_questions: Number(row["total_questions"] ?? 0),
+      source: String(row["source"] ?? "NCERT"),
+      question_ids: Array.isArray(ids) ? ids.map((v) => String(v)) : [],
+      marks_correct: Number(row["marks_correct"] ?? 4),
+      marks_wrong: Number(row["marks_wrong"] ?? -1),
+    };
+  });
+
+/** Contest one-shot guard: a completed attempt plus the owning contest id. */
+export const getContestPriorAttempt = createServerFn({ method: "POST" })
+  .inputValidator((d: { testId: string }) => d)
+  .handler(
+    async ({
+      data,
+    }): Promise<{ id: string; score: number | null; contestId: string | null } | null> => {
+      const userId = await getUserId();
+      if (!userId) return null;
+      const { queryOne } = await import("@/lib/db/mysql.server");
+      const prior = await queryOne<{ id: string; score: unknown }>(
+        `SELECT id, score FROM attempts
+          WHERE user_id = ? AND test_id = ? AND status = 'completed'
+          ORDER BY submitted_at DESC LIMIT 1`,
+        [userId, data.testId],
+      );
+      if (!prior) return null;
+      const contest = await queryOne<{ id: string }>(
+        "SELECT id FROM contests WHERE test_id = ? LIMIT 1",
+        [data.testId],
+      );
+      return {
+        id: String(prior.id),
+        score: prior.score == null ? null : Number(prior.score),
+        contestId: contest?.id ? String(contest.id) : null,
+      };
+    },
+  );
+
+/** Active battle match for this test, and whether the current user is in it. */
+export const getActiveBattleMatch = createServerFn({ method: "POST" })
+  .inputValidator((d: { testId: string }) => d)
+  .handler(async ({ data }): Promise<{ id: string; joined: boolean } | null> => {
+    const userId = await getUserId();
+    if (!userId) return null;
+    const { queryOne } = await import("@/lib/db/mysql.server");
+    const match = await queryOne<{ id: string }>(
+      `SELECT id FROM battle_matches
+        WHERE test_id = ? AND status = 'active'
+        ORDER BY started_at DESC LIMIT 1`,
+      [data.testId],
+    );
+    if (!match) return null;
+    const player = await queryOne<{ user_id: string }>(
+      "SELECT user_id FROM battle_match_players WHERE match_id = ? AND user_id = ? LIMIT 1",
+      [match.id, userId],
+    );
+    return { id: String(match.id), joined: Boolean(player) };
+  });
+
+/** Report the player's battle score (winner resolution stays with the finalizer). */
+export const submitBattleScore = createServerFn({ method: "POST" })
+  .inputValidator((d: { matchId: string; score: number }) => d)
+  .handler(async ({ data }): Promise<{ ok: boolean }> => {
+    const userId = await requireUserId();
+    const { execute } = await import("@/lib/db/mysql.server");
+    await execute(
+      `UPDATE battle_match_players
+          SET score = ?, submitted_at = NOW(6)
+        WHERE match_id = ? AND user_id = ?`,
+      [data.score, data.matchId, userId],
+    );
+    return { ok: true };
+  });
+
+/** Questions + subject/chapter names + diagram / option-image ids for a test. */
+export const getQuizPageQuestions = createServerFn({ method: "POST" })
+  .inputValidator((d: { questionIds: string[]; marksCorrect: number; marksWrong: number }) => d)
+  .handler(
+    async ({
+      data,
+    }): Promise<{
+      questions: QuizQuestionRow[];
+      subjects: Record<string, string>;
+      chapters: Record<string, string>;
+      diagrams: Record<string, string[]>;
+      optionImages: Record<string, number[]>;
+    }> => {
+      const ids = [...new Set(data.questionIds.map((v) => String(v)))].filter(Boolean);
+      if (ids.length === 0) {
+        return { questions: [], subjects: {}, chapters: {}, diagrams: {}, optionImages: {} };
+      }
+      const { query } = await import("@/lib/db/mysql.server");
+      const ph = placeholders(ids.length);
+
+      const rows = await query<Record<string, unknown>>(
+        `SELECT q.*, s.name AS subject_name, c.name AS chapter_name
+           FROM qb_questions q
+           LEFT JOIN qb_subjects s ON CAST(s.id AS CHAR) = CAST(q.subject_id AS CHAR)
+           LEFT JOIN qb_chapters c ON CAST(c.id AS CHAR) = CAST(q.chapter_id AS CHAR)
+          WHERE CAST(q.id AS CHAR) IN (${ph})`,
+        ids,
+      );
+
+      const [diagRows, optRows] = await Promise.all([
+        query<{ id: string; question_id: string }>(
+          `SELECT id, CAST(question_id AS CHAR) AS question_id FROM question_diagrams
+            WHERE CAST(question_id AS CHAR) IN (${ph})`,
+          ids,
+        ),
+        query<{ question_id: string; option_index: number }>(
+          `SELECT CAST(question_id AS CHAR) AS question_id, option_index FROM question_option_images
+            WHERE CAST(question_id AS CHAR) IN (${ph})`,
+          ids,
+        ),
+      ]);
+
+      const subjects: Record<string, string> = {};
+      const chapters: Record<string, string> = {};
+      const questions: QuizQuestionRow[] = [];
+      for (const row of rows) {
+        const subjectId = row["subject_id"] == null ? null : String(row["subject_id"]);
+        const chapterId = row["chapter_id"] == null ? null : String(row["chapter_id"]);
+        if (subjectId && row["subject_name"]) subjects[subjectId] = String(row["subject_name"]);
+        if (chapterId && row["chapter_name"]) chapters[chapterId] = String(row["chapter_name"]);
+        questions.push({
+          id: String(row["id"]),
+          text: String(row["question_html"] ?? ""),
+          options: normalizeOptions(row["options"]).map((o) => o.html),
+          correct_index: Number(row["correct_index"] ?? 0),
+          difficulty: String(row["difficulty"] ?? "Medium"),
+          source: String(row["qtype"] ?? "MCQ"),
+          marks_correct: Number(data.marksCorrect) || 4,
+          marks_wrong: Number(data.marksWrong ?? -1),
+          explanation: (row["explanation"] as string | null) ?? null,
+          question_image_url: (row["question_image_url"] as string | null) ?? null,
+          explanation_image_url: (row["explanation_image_url"] as string | null) ?? null,
+          subject_id: subjectId,
+          chapter_id: chapterId,
+          tag: (row["tag"] as string | null) ?? null,
+          year: row["year"] == null ? null : Number(row["year"]),
+          is_pyq: Number(row["is_pyq"] ?? 0) === 1,
+        });
+      }
+
+      const diagrams: Record<string, string[]> = {};
+      for (const d of diagRows) {
+        const key = String(d.question_id);
+        (diagrams[key] ??= []).push(String(d.id));
+      }
+      const optionImages: Record<string, number[]> = {};
+      for (const o of optRows) {
+        const key = String(o.question_id);
+        (optionImages[key] ??= []).push(Number(o.option_index));
+      }
+
+      return { questions, subjects, chapters, diagrams, optionImages };
+    },
+  );
+
+/** Bookmarked + previously-wrong question ids for the current user. */
+export const getQuizUserMarks = createServerFn({ method: "POST" })
+  .inputValidator((d: { questionIds: string[] }) => d)
+  .handler(async ({ data }): Promise<{ bookmarks: string[]; wrong: string[] }> => {
+    const userId = await getUserId();
+    const ids = [...new Set(data.questionIds.map((v) => String(v)))].filter(Boolean);
+    if (!userId || ids.length === 0) return { bookmarks: [], wrong: [] };
+    const { query } = await import("@/lib/db/mysql.server");
+    const ph = placeholders(ids.length);
+    const [bm, wq] = await Promise.all([
+      query<{ question_id: string }>(
+        `SELECT question_id FROM bookmarks WHERE user_id = ? AND question_id IN (${ph})`,
+        [userId, ...ids],
+      ),
+      query<{ question_id: string }>(
+        `SELECT question_id FROM wrong_questions WHERE user_id = ? AND question_id IN (${ph})`,
+        [userId, ...ids],
+      ),
+    ]);
+    return {
+      bookmarks: bm.map((r) => String(r.question_id)),
+      wrong: wq.map((r) => String(r.question_id)),
+    };
+  });
+
+/** Most recent attempt row (any status) for resuming practice quizzes. */
+export const getLatestQuizAttempt = createServerFn({ method: "POST" })
+  .inputValidator((d: { testId: string }) => d)
+  .handler(
+    async ({
+      data,
+    }): Promise<{
+      id: string;
+      answers: Record<string, number>;
+      bookmarks: string[];
+      status: string;
+    } | null> => {
+      const userId = await getUserId();
+      if (!userId) return null;
+      const { queryOne } = await import("@/lib/db/mysql.server");
+      const row = await queryOne<Record<string, unknown>>(
+        `SELECT id, answers, bookmarks, status FROM attempts
+          WHERE user_id = ? AND test_id = ?
+          ORDER BY started_at DESC LIMIT 1`,
+        [userId, data.testId],
+      );
+      if (!row) return null;
+      return {
+        id: String(row["id"]),
+        answers: parseJson<Record<string, number>>(row["answers"], {}),
+        bookmarks: parseJson<string[]>(row["bookmarks"], []),
+        status: String(row["status"] ?? "in_progress"),
+      };
+    },
+  );
+
+/** Add or remove a bookmark explicitly (mirrors the old upsert/delete pair). */
+export const setQuizBookmark = createServerFn({ method: "POST" })
+  .inputValidator((d: { questionId: string; add: boolean }) => d)
+  .handler(async ({ data }): Promise<{ ok: boolean }> => {
+    const userId = await requireUserId();
+    const { execute } = await import("@/lib/db/mysql.server");
+    if (data.add) {
+      await execute(
+        `INSERT INTO bookmarks (id, user_id, question_id, created_at)
+         VALUES (UUID(), ?, ?, NOW(6))
+         ON DUPLICATE KEY UPDATE created_at = created_at`,
+        [userId, data.questionId],
+      );
+    } else {
+      await execute("DELETE FROM bookmarks WHERE user_id = ? AND question_id = ?", [
+        userId,
+        data.questionId,
+      ]);
+    }
+    return { ok: true };
+  });
+
+/** Add or remove a "My Mistakes" / wrong-question row. */
+export const setQuizWrongQuestion = createServerFn({ method: "POST" })
+  .inputValidator((d: { questionId: string; chapterId?: string | null; add: boolean }) => d)
+  .handler(async ({ data }): Promise<{ ok: boolean }> => {
+    const userId = await requireUserId();
+    const { execute } = await import("@/lib/db/mysql.server");
+    if (data.add) {
+      await execute(
+        `INSERT INTO wrong_questions (id, user_id, question_id, chapter_id, created_at)
+         VALUES (UUID(), ?, ?, ?, NOW(6))
+         ON DUPLICATE KEY UPDATE chapter_id = VALUES(chapter_id), created_at = NOW(6)`,
+        [userId, data.questionId, data.chapterId ?? null],
+      );
+    } else {
+      await execute("DELETE FROM wrong_questions WHERE user_id = ? AND question_id = ?", [
+        userId,
+        data.questionId,
+      ]);
+    }
+    return { ok: true };
+  });
+
+/**
+ * Persist a completed attempt exactly like the old Supabase insert did: a new
+ * `completed` row, the wrong-question rows, the prior-attempt count, and the XP
+ * award that used to run in the `award_attempt_xp` SECURITY DEFINER function
+ * (+4 per correct, -1 per wrong, never below zero).
+ */
+export const submitQuizPageAttempt = createServerFn({ method: "POST" })
+  .inputValidator(
+    (d: {
+      testId: string;
+      answers: Record<string, number>;
+      bookmarks: string[];
+      score: number;
+      correctCount: number;
+      wrongCount: number;
+      unattemptedCount: number;
+      timeTakenSec: number;
+      wrongQuestions?: { questionId: string; chapterId?: string | null }[];
+    }) => d,
+  )
+  .handler(async ({ data }): Promise<{ attemptId: string; priorCount: number }> => {
+    const userId = await requireUserId();
+    const { execute, queryOne } = await import("@/lib/db/mysql.server");
+
+    for (const w of data.wrongQuestions ?? []) {
+      await execute(
+        `INSERT INTO wrong_questions (id, user_id, question_id, chapter_id, created_at)
+         VALUES (UUID(), ?, ?, ?, NOW(6))
+         ON DUPLICATE KEY UPDATE chapter_id = VALUES(chapter_id), created_at = NOW(6)`,
+        [userId, w.questionId, w.chapterId ?? null],
+      );
+    }
+
+    const attemptId = crypto.randomUUID();
+    await execute(
+      `INSERT INTO attempts
+         (id, user_id, test_id, answers, bookmarks, score, correct_count, wrong_count,
+          unattempted_count, time_taken_sec, status, started_at, submitted_at)
+       VALUES (?, ?, ?, CAST(? AS JSON), CAST(? AS JSON), ?, ?, ?, ?, ?, 'completed', NOW(6), NOW(6))`,
+      [
+        attemptId,
+        userId,
+        data.testId,
+        JSON.stringify(data.answers ?? {}),
+        JSON.stringify(data.bookmarks ?? []),
+        data.score,
+        data.correctCount,
+        data.wrongCount,
+        data.unattemptedCount,
+        data.timeTakenSec,
+      ],
+    );
+
+    const counted = await queryOne<{ c: number }>(
+      `SELECT COUNT(*) AS c FROM attempts
+        WHERE user_id = ? AND test_id = ? AND status = 'completed'`,
+      [userId, data.testId],
+    );
+
+    const xpDelta = data.correctCount * 4 - data.wrongCount;
+    await execute(
+      "UPDATE profiles SET xp_total = GREATEST(0, xp_total + ?), updated_at = NOW(6) WHERE id = ?",
+      [xpDelta, userId],
+    );
+
+    return { attemptId, priorCount: Number(counted?.c ?? 0) };
+  });
+
+/** Wrong-reason tags recorded against an attempt, used by the result view. */
+export const getAttemptWrongReasons = createServerFn({ method: "POST" })
+  .inputValidator((d: { attemptId: string }) => d)
+  .handler(async ({ data }): Promise<Record<string, string>> => {
+    const userId = await getUserId();
+    if (!userId) return {};
+    const { query } = await import("@/lib/db/mysql.server");
+    const rows = await query<{ question_id: string; wrong_reason: string | null }>(
+      `SELECT CAST(aa.question_id AS CHAR) AS question_id, aa.wrong_reason
+         FROM attempt_answers aa
+         JOIN attempts a ON a.id = aa.attempt_id
+        WHERE aa.attempt_id = ? AND a.user_id = ?`,
+      [data.attemptId, userId],
+    );
+    const out: Record<string, string> = {};
+    for (const r of rows) if (r.wrong_reason) out[String(r.question_id)] = r.wrong_reason;
+    return out;
+  });
