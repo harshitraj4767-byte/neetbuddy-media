@@ -5,9 +5,10 @@ const COOKIE = "nb_session";
 const SESSION_DAYS = 30;
 
 export type AuthUserDTO = { id: string; email: string | null; fullName: string | null };
+export type ProfileDTO = Record<string, string | number | boolean | null>;
 export type SessionDTO = {
   user: AuthUserDTO | null;
-  profile: Record<string, unknown> | null;
+  profile: ProfileDTO | null;
   isAdmin: boolean;
 };
 
@@ -153,7 +154,7 @@ export const getCurrentSession = createServerFn({ method: "GET" }).handler(
     );
     if (!row) return { user: null, profile: null, isAdmin: false };
 
-    const profile = await queryOne<Record<string, unknown>>(
+    const profile = await queryOne<ProfileDTO>(
       "SELECT * FROM profiles WHERE id = ? LIMIT 1",
       [row.id],
     );
