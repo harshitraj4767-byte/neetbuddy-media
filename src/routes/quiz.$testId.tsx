@@ -1,7 +1,20 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { attachQuestionMedia } from "@/lib/question-media";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import {
+  getQuizPageTest,
+  getQuizPageQuestions,
+  getQuizUserMarks,
+  getLatestQuizAttempt,
+  getContestPriorAttempt,
+  getActiveBattleMatch,
+  getAttemptWrongReasons,
+  setQuizBookmark,
+  setQuizWrongQuestion,
+  saveQuizProgress,
+  submitQuizPageAttempt,
+  submitBattleScore,
+} from "@/lib/quiz-mysql.functions";
 import { pyqBadge } from "@/lib/exam-labels";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
@@ -162,7 +175,7 @@ function QuizPlayer() {
 
   useEffect(() => {
     (async () => {
-      const { data: t } = await supabase.from("tests").select("*").eq("id", testId).maybeSingle();
+      const t = await getQuizPageTest({ data: { testId } });
       if (!t) {
         toast.error("Test not found");
         setLoading(false);
@@ -173,23 +186,10 @@ function QuizPlayer() {
       // Contest re-attempt guard: contests are one-shot per user.
       // If a completed attempt already exists for this user/contest test, block.
       if (user && (t as Test).type === "contest") {
-        const { data: prior } = await supabase
-          .from("attempts")
-          .select("id,score")
-          .eq("user_id", user.id)
-          .eq("test_id", testId)
-          .eq("status", "completed")
-          .order("submitted_at", { ascending: false })
-          .limit(1)
-          .maybeSingle();
+        const prior = await getContestPriorAttempt({ data: { testId } });
         if (prior?.id) {
-          const { data: contestRow } = await (supabase as any)
-            .from("contests")
-            .select("id")
-            .eq("test_id", testId)
-            .maybeSingle();
           setAlreadyAttempted({
-            contestId: contestRow?.id ?? null,
+            contestId: prior.contestId ?? null,
             score: typeof prior.score === "number" ? prior.score : null,
           });
           setLoading(false);
@@ -201,23 +201,10 @@ function QuizPlayer() {
       // cap to 10 questions / 5 minutes regardless of the underlying test's config.
       let battleActive = false;
       if (user) {
-        const { data: bm } = await (supabase as any)
-          .from("battle_matches")
-          .select("id,status,test_id,ends_at")
-          .eq("test_id", testId)
-          .eq("status", "active")
-          .order("started_at", { ascending: false })
-          .limit(1)
-          .maybeSingle();
+        const bm = await getActiveBattleMatch({ data: { testId } });
         if (bm?.id) {
-          const { data: mp } = await (supabase as any)
-            .from("battle_match_players")
-            .select("user_id")
-            .eq("match_id", bm.id)
-            .eq("user_id", user.id)
-            .maybeSingle();
-          battleActive = !!mp;
-          if (mp) setBattleMatchId(bm.id);
+          battleActive = bm.joined;
+          if (bm.joined) setBattleMatchId(bm.id);
         }
       }
 
@@ -232,26 +219,19 @@ function QuizPlayer() {
         setLoading(false);
         return;
       }
-      const { data: qs } = await supabase.from("questions").select("*").in("id", ids);
-      let ordered = ids.map((id) => qs?.find((q) => q.id === id)).filter(Boolean) as Question[];
+      const bank = await getQuizPageQuestions({
+        data: {
+          questionIds: ids,
+          marksCorrect: Number(t.marks_correct ?? 4) || 4,
+          marksWrong: Number(t.marks_wrong ?? -1),
+        },
+      });
+      const byId = new Map(bank.questions.map((q) => [q.id, q as Question]));
+      let ordered = ids.map((id) => byId.get(String(id))).filter(Boolean) as Question[];
 
-      const subjIds = Array.from(
-        new Set(ordered.map((q) => q.subject_id).filter(Boolean)),
-      ) as string[];
-      const chapIds = Array.from(
-        new Set(ordered.map((q) => q.chapter_id).filter(Boolean)),
-      ) as string[];
-      const [{ data: subs }, { data: chs }] = await Promise.all([
-        subjIds.length
-          ? supabase.from("subjects").select("id,name").in("id", subjIds)
-          : Promise.resolve({ data: [] as NameLookupRow[] }),
-        chapIds.length
-          ? supabase.from("chapters").select("id,name").in("id", chapIds)
-          : Promise.resolve({ data: [] as NameLookupRow[] }),
-      ]);
-      const subjMap = Object.fromEntries((subs ?? []).map((s: NameLookupRow) => [s.id, s.name]));
+      const subjMap = bank.subjects;
       setSubjects(subjMap);
-      setChapters(Object.fromEntries((chs ?? []).map((c: NameLookupRow) => [c.id, c.name])));
+      setChapters(bank.chapters);
 
       // Mock tests: enforce Physics → Chemistry → Biology ordering
       if ((t as Test).type === "mock") {
@@ -274,27 +254,12 @@ function QuizPlayer() {
       // image references so <RichText /> renders them. Shared with the review
       // page via attachQuestionMedia so both stay in sync.
       try {
-        const admin: any = supabase;
-        const [{ data: diags }, { data: optImgs }] = await Promise.all([
-          admin.from("question_diagrams").select("id,question_id").in("question_id", ids),
-          admin.from("question_option_images").select("question_id,option_index").in("question_id", ids),
-        ]);
-        const diagsByQ = new Map<string, string[]>();
-        for (const d of (diags ?? []) as Array<{ id: string; question_id: string }>) {
-          const arr = diagsByQ.get(d.question_id) ?? [];
-          arr.push(`/api/public/diagram/${d.id}`);
-          diagsByQ.set(d.question_id, arr);
-        }
-        const optsByQ = new Map<string, Set<number>>();
-        for (const oi of (optImgs ?? []) as Array<{ question_id: string; option_index: number }>) {
-          const set = optsByQ.get(oi.question_id) ?? new Set<number>();
-          set.add(oi.option_index);
-          optsByQ.set(oi.question_id, set);
-        }
         ordered = ordered.map((q) =>
           attachQuestionMedia(q, {
-            diagramUrls: diagsByQ.get(q.id) ?? [],
-            optionImageIndexes: optsByQ.get(q.id),
+            diagramUrls: (bank.diagrams[q.id] ?? []).map((id) => `/api/public/diagram/${id}`),
+            optionImageIndexes: bank.optionImages[q.id]
+              ? new Set(bank.optionImages[q.id])
+              : undefined,
           }),
         );
       } catch (e) {
@@ -321,35 +286,18 @@ function QuizPlayer() {
       // CBT sets never resume: each attempt is a fresh timed paper.
       const isPracticeTest = (t as Test).type === "practice" && mode !== "cbt";
       if (user) {
-        const [{ data: existingBm }, { data: existingWrong }] = await Promise.all([
-          supabase
-            .from("bookmarks")
-            .select("question_id")
-            .eq("user_id", user.id)
-            .in("question_id", ids),
-          supabase
-            .from("wrong_questions")
-            .select("question_id")
-            .eq("user_id", user.id)
-            .in("question_id", ids),
-        ]);
-        if (existingBm?.length) setBookmarks(new Set(existingBm.map((b) => b.question_id)));
-        if (existingWrong?.length)
-          setMistakeSaved(new Set(existingWrong.map((w) => w.question_id)));
+        const marks = await getQuizUserMarks({ data: { questionIds: ids } });
+        const existingBm = marks.bookmarks;
+        const existingWrong = marks.wrong;
+        if (existingBm.length) setBookmarks(new Set(existingBm));
+        if (existingWrong.length) setMistakeSaved(new Set(existingWrong));
         // Only show prior wrong marking on chapter-wise practice. For daily / live /
         // mock quizzes the user wants a clean slate every attempt.
-        if (isPracticeTest && existingWrong?.length) {
-          setWrongMarks(new Set(existingWrong.map((w) => w.question_id)));
+        if (isPracticeTest && existingWrong.length) {
+          setWrongMarks(new Set(existingWrong));
         }
         if (isPracticeTest) {
-          const { data: existingAttempts } = await supabase
-            .from("attempts")
-            .select("id,answers,bookmarks,status")
-            .eq("user_id", user.id)
-            .eq("test_id", testId)
-            .order("started_at", { ascending: false })
-            .limit(1);
-          const prev = existingAttempts?.[0];
+          const prev = await getLatestQuizAttempt({ data: { testId } });
           if (prev) {
             setAttemptId(prev.id);
             if (prev.answers && typeof prev.answers === "object")
@@ -415,25 +363,15 @@ function QuizPlayer() {
   // Persist answers in real-time for chapter-wise quizzes (no submit button).
   const persistAnswers = async (next: Record<string, number>) => {
     if (!user || !isChapterPractice) return;
-    if (attemptId) {
-      await supabase
-        .from("attempts")
-        .update({ answers: next, bookmarks: Array.from(bookmarks) })
-        .eq("id", attemptId);
-    } else {
-      const { data } = await supabase
-        .from("attempts")
-        .insert({
-          user_id: user.id,
-          test_id: testId,
-          answers: next,
-          bookmarks: Array.from(bookmarks),
-          status: "in_progress",
-        })
-        .select("id")
-        .maybeSingle();
-      if (data?.id) setAttemptId(data.id);
-    }
+    const { attemptId: savedId } = await saveQuizProgress({
+      data: {
+        testId,
+        attemptId,
+        answers: next,
+        bookmarks: Array.from(bookmarks),
+      },
+    });
+    if (savedId && savedId !== attemptId) setAttemptId(savedId);
   };
 
   const submit = useCallback(async () => {
@@ -442,7 +380,7 @@ function QuizPlayer() {
     let correct = 0,
       wrong = 0,
       score = 0;
-    const wrongRows: { user_id: string; question_id: string; chapter_id: string | null }[] = [];
+    const wrongRows: { questionId: string; chapterId: string | null }[] = [];
     for (const q of questions) {
       const ans = answers[q.id];
       if (ans === undefined) continue;
@@ -452,63 +390,36 @@ function QuizPlayer() {
       } else {
         wrong++;
         score += q.marks_wrong;
-        if (user)
-          wrongRows.push({ user_id: user.id, question_id: q.id, chapter_id: q.chapter_id ?? null });
+        if (user) wrongRows.push({ questionId: q.id, chapterId: q.chapter_id ?? null });
       }
     }
     const unattempted = questions.length - correct - wrong;
-    if (user && wrongRows.length) {
-      await supabase
-        .from("wrong_questions")
-        .upsert(wrongRows, { onConflict: "user_id,question_id" });
-    }
     const result = { score, correct, wrong, unattempted };
     if (user) {
-      const { data: ins } = await supabase
-        .from("attempts")
-        .insert({
-          user_id: user.id,
-          test_id: testId,
+      const submitRes = await submitQuizPageAttempt({
+        data: {
+          testId,
           answers,
           bookmarks: Array.from(bookmarks),
           score,
-          correct_count: correct,
-          wrong_count: wrong,
-          unattempted_count: unattempted,
-          time_taken_sec: Math.floor((Date.now() - startedAt.current) / 1000),
-          status: "completed",
-          submitted_at: new Date().toISOString(),
-        })
-        .select("id")
-        .maybeSingle();
+          correctCount: correct,
+          wrongCount: wrong,
+          unattemptedCount: unattempted,
+          timeTakenSec: Math.floor((Date.now() - startedAt.current) / 1000),
+          wrongQuestions: wrongRows,
+        },
+      });
 
-      // ===== XP management =====
-      // Determine attempt kind:
-      //   live      — first completed attempt during the live window of the test
-      //   post_live — first completed attempt after the live window ended
-      //   reattempt — any subsequent completed attempt (capped XP)
-      const { count: priorCount } = await supabase
-        .from("attempts")
-        .select("id", { count: "exact", head: true })
-        .eq("user_id", user.id)
-        .eq("test_id", testId)
-        .eq("status", "completed");
-      const isReattempt = (priorCount ?? 0) > 1; // current insert above is included
-      // XP is awarded server-side via SECURITY DEFINER RPC (+4 correct / -1 wrong)
-      if (ins?.id) {
-        clearSavedProgress();
-        await supabase.rpc("award_attempt_xp", { _attempt_id: ins.id });
-      }
+      // XP is awarded inside submitQuizPageAttempt (+4 correct / -1 wrong).
+      const isReattempt = (submitRes.priorCount ?? 0) > 1; // current insert is included
+      if (submitRes.attemptId) clearSavedProgress();
       void isReattempt;
 
-      if (ins?.id) {
-        // Battlegrounds: submit score to match and go to the battle result page.
+      if (submitRes.attemptId) {
+        // Battlegrounds: submit score to the match and go to the battle result page.
         if (battleMatchId) {
           try {
-            await (supabase as any).rpc("bg_submit_match_score", {
-              _match_id: battleMatchId,
-              _score: score,
-            });
+            await submitBattleScore({ data: { matchId: battleMatchId, score } });
           } catch {
             /* result page will surface errors */
           }
@@ -521,10 +432,9 @@ function QuizPlayer() {
           setSubmitting(false);
           return;
         }
-        nav({ to: "/analysis/$attemptId", params: { attemptId: ins.id } });
+        nav({ to: "/analysis/$attemptId", params: { attemptId: submitRes.attemptId } });
         return;
       }
-
     }
     setSubmitted(result);
     setSubmitting(false);
@@ -711,19 +621,12 @@ function QuizPlayer() {
           return n;
         });
         if (!isCorrectNow) {
-          void supabase
-            .from("wrong_questions")
-            .upsert(
-              { user_id: user.id, question_id: q.id, chapter_id: q.chapter_id ?? null },
-              { onConflict: "user_id,question_id" },
-            );
+          void setQuizWrongQuestion({
+            data: { questionId: q.id, chapterId: q.chapter_id ?? null, add: true },
+          });
         } else {
           // Remove from persistent wrong list when corrected.
-          void supabase
-            .from("wrong_questions")
-            .delete()
-            .eq("user_id", user.id)
-            .eq("question_id", q.id);
+          void setQuizWrongQuestion({ data: { questionId: q.id, add: false } });
         }
       }
     }
@@ -738,18 +641,10 @@ function QuizPlayer() {
       return n;
     });
     if (!user) return;
-    if (willAdd) {
-      const { error } = await supabase
-        .from("bookmarks")
-        .upsert({ user_id: user.id, question_id: q.id }, { onConflict: "user_id,question_id" });
-      if (error) toast.error("Could not save bookmark");
-    } else {
-      const { error } = await supabase
-        .from("bookmarks")
-        .delete()
-        .eq("user_id", user.id)
-        .eq("question_id", q.id);
-      if (error) toast.error("Could not remove bookmark");
+    try {
+      await setQuizBookmark({ data: { questionId: q.id, add: willAdd } });
+    } catch {
+      toast.error(willAdd ? "Could not save bookmark" : "Could not remove bookmark");
     }
   };
 
@@ -763,23 +658,13 @@ function QuizPlayer() {
       return n;
     });
     if (!user) return;
-    if (willAdd) {
-      const { error } = await supabase
-        .from("wrong_questions")
-        .upsert(
-          { user_id: user.id, question_id: q.id, chapter_id: q.chapter_id ?? null },
-          { onConflict: "user_id,question_id" },
-        );
-      if (error) toast.error("Could not add to My Mistakes");
-      else toast.success("Added to My Mistakes");
-    } else {
-      const { error } = await supabase
-        .from("wrong_questions")
-        .delete()
-        .eq("user_id", user.id)
-        .eq("question_id", q.id);
-      if (error) toast.error("Could not update My Mistakes");
-      else toast.success("Removed from My Mistakes");
+    try {
+      await setQuizWrongQuestion({
+        data: { questionId: q.id, chapterId: q.chapter_id ?? null, add: willAdd },
+      });
+      toast.success(willAdd ? "Added to My Mistakes" : "Removed from My Mistakes");
+    } catch {
+      toast.error(willAdd ? "Could not add to My Mistakes" : "Could not update My Mistakes");
     }
   };
 
@@ -1779,12 +1664,7 @@ function ResultsView({
   useEffect(() => {
     if (!attemptId) return;
     (async () => {
-      const { data } = await (supabase as any)
-        .from("attempt_answers")
-        .select("question_id,wrong_reason")
-        .eq("attempt_id", attemptId);
-      const rmap: Record<string, string> = {};
-      (data ?? []).forEach((r: any) => { if (r.wrong_reason) rmap[r.question_id] = r.wrong_reason; });
+      const rmap = await getAttemptWrongReasons({ data: { attemptId } });
       setReasons(rmap);
     })();
   }, [attemptId]);
