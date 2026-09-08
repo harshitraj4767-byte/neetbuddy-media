@@ -1,11 +1,13 @@
-import mysql from "mysql2/promise";
+/// <reference types="node" />
 
-let pool: mysql.Pool | undefined;
+import { createPool, type Pool, type PoolOptions } from "mysql2/promise";
+
+let pool: Pool | undefined;
 
 /** Shared MySQL pool (Hostinger remote MySQL). Server-only. */
-export function getPool(): mysql.Pool {
+export function getPool(): Pool {
   if (!pool) {
-    pool = mysql.createPool({
+    const options: PoolOptions = {
       host: process.env["MYSQL_HOST"]!,
       port: Number(process.env["MYSQL_PORT"] ?? 3306),
       user: process.env["MYSQL_USER"]!,
@@ -14,7 +16,8 @@ export function getPool(): mysql.Pool {
       waitForConnections: true,
       connectionLimit: 5,
       enableKeepAlive: true,
-    });
+    };
+    pool = createPool(options);
   }
   return pool;
 }
@@ -39,5 +42,5 @@ export async function queryOne<T = Record<string, unknown>>(
 
 /** Run an INSERT/UPDATE/DELETE. */
 export async function execute(sql: string, params: unknown[] = []): Promise<void> {
-  await getPool().execute(sql, params);
+  await getPool().query(sql, params);
 }
