@@ -23,6 +23,7 @@ function LoginPage() {
   const [name, setName] = useState("");
   const [refCode, setRefCode] = useState("");
   const [busy, setBusy] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -36,11 +37,20 @@ function LoginPage() {
   }, []);
 
   useEffect(() => { if (!loading && user) nav({ to: "/dashboard", replace: true }); }, [user, loading, nav]);
+  useEffect(() => { setReady(true); }, []);
+
+  const fieldValue = (form: HTMLFormElement, id: string, fallback: string) => {
+    const el = form.querySelector<HTMLInputElement>(`#${id}`);
+    return el && el.value !== "" ? el.value : fallback;
+  };
 
   const onLogin = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true);
+    // Read live field values from the DOM — React state can lag at hydration.
+    const em = fieldValue(e.currentTarget, "le", email);
+    const pw = fieldValue(e.currentTarget, "lp", password);
     try {
-      const res = await signInWithPassword({ data: { email, password } });
+      const res = await signInWithPassword({ data: { email: em, password: pw } });
       if (!res.ok) return toast.error(res.error);
       try {
         const pending = localStorage.getItem("pending_ref_code");
@@ -62,11 +72,14 @@ function LoginPage() {
 
   const onSignup = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true);
+    const em = fieldValue(e.currentTarget, "se", email);
+    const pw = fieldValue(e.currentTarget, "sp", password);
+    const nm = fieldValue(e.currentTarget, "sn", name);
     if (refCode.trim()) {
       try { localStorage.setItem("pending_ref_code", refCode.trim().toUpperCase()); } catch { /* noop */ }
     }
     try {
-      const res = await signUpWithPassword({ data: { email, password, fullName: name } });
+      const res = await signUpWithPassword({ data: { email: em, password: pw, fullName: nm } });
       if (!res.ok) return toast.error(res.error);
       await refresh();
       toast.success("Account created!");
@@ -117,7 +130,7 @@ function LoginPage() {
                   <Label htmlFor="lp">Password</Label>
                   <Input id="lp" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <Button type="submit" disabled={busy} className="w-full bg-gradient-primary shadow-elegant hover:opacity-95">
+                <Button type="submit" disabled={busy || !ready} className="w-full bg-gradient-primary shadow-elegant hover:opacity-95">
                   {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Log in"}
                 </Button>
               </form>
@@ -141,7 +154,7 @@ function LoginPage() {
                   <Label htmlFor="rc">Referral code <span className="text-muted-foreground">(optional, +10 bonus)</span></Label>
                   <Input id="rc" value={refCode} onChange={(e) => setRefCode(e.target.value.toUpperCase())} placeholder="FRIEND'S CODE" maxLength={20} />
                 </div>
-                <Button type="submit" disabled={busy} className="w-full bg-gradient-primary shadow-elegant hover:opacity-95">
+                <Button type="submit" disabled={busy || !ready} className="w-full bg-gradient-primary shadow-elegant hover:opacity-95">
                   {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Create account"}
                 </Button>
                 <p className="text-center text-[11px] text-muted-foreground">By signing up you agree to our terms & privacy policy.</p>

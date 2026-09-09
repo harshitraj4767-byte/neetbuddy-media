@@ -60,10 +60,11 @@ function readCookie(name: string): string | null {
 }
 
 function setSessionCookie(token: string, maxAgeSeconds: number) {
-  setResponseHeader(
-    "set-cookie",
-    `${COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=${maxAgeSeconds}`,
-  );
+  const proto = (getRequestHeader("x-forwarded-proto") ?? "http").split(",")[0]!.trim();
+  const isHttps = proto === "https";
+  const base = `${COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; Max-Age=${maxAgeSeconds}${isHttps ? "; Secure" : ""}`;
+  // SameSite=None is required inside embedded preview iframes; only valid over HTTPS.
+  setResponseHeader("set-cookie", isHttps ? `${base}; SameSite=None` : `${base}; SameSite=Lax`);
 }
 
 async function createSession(userId: string): Promise<void> {
