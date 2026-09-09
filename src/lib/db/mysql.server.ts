@@ -1,6 +1,21 @@
 import { createPool, type Pool, type PoolOptions } from "mysql2/promise";
 
 let pool: Pool | undefined;
+let envLoaded = false;
+
+/** Load .env once on Node runtimes (dev / VPS). Silently skipped on Workers. */
+function loadEnvFile(): void {
+  if (envLoaded) return;
+  envLoaded = true;
+  try {
+    const proc = (globalThis as {
+      process?: { loadEnvFile?: (path?: string) => void };
+    }).process;
+    proc?.loadEnvFile?.();
+  } catch {
+    // No .env file present or runtime without fs access — env vars must come from the host.
+  }
+}
 
 /** Server-only env access that does not depend on Node type definitions. */
 function env(name: string): string | undefined {
@@ -11,6 +26,7 @@ function env(name: string): string | undefined {
 /** Shared MySQL pool (Hostinger remote MySQL). Server-only. */
 export function getPool(): Pool {
   if (!pool) {
+    loadEnvFile();
     const options: PoolOptions = {
       host: env("MYSQL_HOST") ?? "",
       port: Number(env("MYSQL_PORT") ?? 3306),
