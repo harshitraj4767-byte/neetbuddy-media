@@ -44,7 +44,7 @@ function LoginPage() {
     return el && el.value !== "" ? el.value : fallback;
   };
 
-  const onLogin = async (e: React.FormEvent) => {
+  const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); setBusy(true);
     // Read live field values from the DOM — React state can lag at hydration.
     const em = fieldValue(e.currentTarget, "le", email);
@@ -70,7 +70,7 @@ function LoginPage() {
     }
   };
 
-  const onSignup = async (e: React.FormEvent) => {
+  const onSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); setBusy(true);
     const em = fieldValue(e.currentTarget, "se", email);
     const pw = fieldValue(e.currentTarget, "sp", password);
