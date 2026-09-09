@@ -10,7 +10,12 @@ import {
   GraduationCap, BarChart3, Bot, CheckCircle2,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/integrations/supabase/client";
+import {
+  getDashboardDailyTest,
+  getDashboardSubjectCounts,
+  getDashboardAttempts,
+  getDashboardMistakes,
+} from "@/lib/dashboard-mysql.functions";
 import { TrialBanner } from "@/components/dashboard/trial-banner";
 import { BannerCarousel } from "@/components/dashboard/banner-carousel";
 import { useServerFn } from "@tanstack/react-start";
@@ -67,26 +72,24 @@ function Dashboard() {
   useEffect(() => { if (user) refresh(); }, [user?.id]);
 
   useEffect(() => {
-    supabase.from("tests").select("id,title,type,difficulty,duration_min,total_questions")
-      .eq("type", "daily").order("created_at", { ascending: false }).limit(1).maybeSingle()
-      .then(({ data }) => setDaily((data as Test | null) ?? null));
+    void (async () => {
+      try {
+        const data = await getDashboardDailyTest();
+        setDaily((data as Test | null) ?? null);
+      } catch {
+        setDaily(null);
+      }
+    })();
   }, []);
 
   // Real question bank counts per subject for the Quick Practice tiles.
   useEffect(() => {
-    (async () => {
-      const { data: subjects } = await supabase.from("subjects").select("id,name");
-      if (!subjects) return;
-      const entries = await Promise.all(
-        subjects.map(async (s) => {
-          const { count } = await supabase
-            .from("questions")
-            .select("id", { count: "exact", head: true })
-            .eq("subject_id", s.id);
-          return [s.name, count ?? 0] as const;
-        }),
-      );
-      setQCounts(Object.fromEntries(entries));
+    void (async () => {
+      try {
+        setQCounts(await getDashboardSubjectCounts());
+      } catch {
+        /* leave counts empty */
+      }
     })();
   }, []);
 
@@ -94,14 +97,11 @@ function Dashboard() {
   useEffect(() => {
     if (!user) return;
     const since = new Date(); since.setDate(since.getDate() - 60); since.setHours(0, 0, 0, 0);
-    supabase
-      .from("attempts")
-      .select("submitted_at,score,correct_count,wrong_count,unattempted_count,time_taken_sec")
-      .eq("user_id", user.id)
-      .eq("status", "completed")
-      .gte("submitted_at", since.toISOString())
-      .then(({ data }) => {
-        const rows = (data ?? []) as AttemptRow[];
+    void (async () => {
+      try {
+        const rows = (await getDashboardAttempts({
+          data: { userId: user.id, sinceIso: since.toISOString() },
+        })) as AttemptRow[];
         setAttempts(rows);
         const days = new Set(rows.map((a) => a.submitted_at).filter((s): s is string => !!s).map((s) => dayKey(new Date(s))));
         let s = 0;
@@ -109,18 +109,24 @@ function Dashboard() {
         if (!days.has(dayKey(cur))) cur.setDate(cur.getDate() - 1);
         while (days.has(dayKey(cur))) { s++; cur.setDate(cur.getDate() - 1); }
         setStreak(s);
-      });
+      } catch {
+        setAttempts([]);
+      }
+    })();
   }, [user?.id]);
 
   // Real mistake bank for the recommendation cards.
   useEffect(() => {
     if (!user) return;
-    supabase.from("wrong_questions").select("chapter_id").eq("user_id", user.id)
-      .then(({ data }) => {
-        const rows = data ?? [];
-        setMistakes(rows.length);
-        setWeakChapters(new Set(rows.map((r) => r.chapter_id).filter(Boolean)).size);
-      });
+    void (async () => {
+      try {
+        const res = await getDashboardMistakes({ data: { userId: user.id } });
+        setMistakes(res.mistakes);
+        setWeakChapters(res.weakChapters);
+      } catch {
+        /* keep zeros */
+      }
+    })();
   }, [user?.id]);
 
   const stats = useMemo(() => {
