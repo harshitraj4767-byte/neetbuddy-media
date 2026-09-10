@@ -55,3 +55,7 @@ Not converted (manual porting required):
 These dumps contain application data and a config table with a live secret
 value (`_cron_config`). Keep this repository **private** and rotate any
 credential that appears in the data.
+
+
+---
+Verified by Lovable on 2026-09-10T07:58:50.483473+00:00.
