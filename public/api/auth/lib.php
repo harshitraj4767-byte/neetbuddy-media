@@ -227,6 +227,35 @@ function nb_current_user_id(): ?string
     return $row ? (string) $row['user_id'] : null;
 }
 
+/**
+ * Return the signed-in auth account for endpoints that need user details.
+ */
+function nb_current_user(?PDO $db = null): ?array
+{
+    $userId = nb_current_user_id();
+    if ($userId === null) {
+        return null;
+    }
+
+    $db = $db ?? nb_db();
+    $stmt = $db->prepare('SELECT id, email, full_name FROM auth_users WHERE id = ? LIMIT 1');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+    if (!$user) {
+        return null;
+    }
+
+    // Keep a predictable name field for API consumers while retaining full_name.
+    $user['name'] = $user['full_name'] ?? null;
+    return $user;
+}
+
+/** Backwards-compatible PDO accessor for quiz and dashboard endpoints. */
+function nb_pdo(): PDO
+{
+    return nb_db();
+}
+
 function nb_session_payload(?string $userId): array
 {
     if ($userId === null) {
