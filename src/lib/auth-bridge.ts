@@ -40,29 +40,57 @@ async function php(path: string, body?: unknown): Promise<AuthResult> {
       headers: body === undefined ? undefined : { "Content-Type": "application/json" },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
-    const payload = (await response.json().catch(() => null)) as
-      | (Partial<SessionDTO> & { error?: string })
-      | null;
-    if (!response.ok || !payload) {
-      return { ok: false, error: payload?.error ?? `Request failed (${response.status})` };
+    const payload = (await response.json().catch(() => null)) as unknown;
+    if (!response.ok || payload == null) {
+      const message = (payload as { error?: string } | null)?.error;
+      return { ok: false, error: message ?? `Request failed (${response.status})` };
     }
-    return {
-      ok: true,
-      session: {
-        user: payload.user ?? null,
-        profile: payload.profile ?? null,
-        isAdmin: Boolean(payload.isAdmin),
-      },
-    };
+    return normalize(payload, "Log in failed");
   } catch {
     return { ok: false, error: "Network error. Please check your connection and try again." };
   }
 }
 
-function normalize(
-  result: { ok: true; session: SessionDTO } | { ok: false; error: string },
-): AuthResult {
-  return result;
+// Accepts every shape the different backends have returned over time:
+//   { ok:false, error }            → error
+//   { ok:true, session:{...} }     → session
+//   { user, profile, isAdmin }     → flat session (PHP endpoints)
+//   { session:{ user:... } }       → nested session
+// Anything else becomes a readable error instead of a TypeError such as
+// "Cannot read properties of undefined (reading 'user')".
+function normalize(result: unknown, fallbackError: string): AuthResult {
+  if (result == null || typeof result !== "object") return { ok: false, error: fallbackError };
+  const raw = result as Record<string, unknown>;
+
+  if (raw["ok"] === false || typeof raw["error"] === "string") {
+    return { ok: false, error: (raw["error"] as string) ?? fallbackError };
+  }
+
+  const source = (
+    raw["session"] && typeof raw["session"] === "object"
+      ? (raw["session"] as Record<string, unknown>)
+      : raw
+  ) as Record<string, unknown>;
+
+  const user = source["user"];
+  if (user == null || typeof user !== "object") return { ok: false, error: fallbackError };
+  const u = user as Record<string, unknown>;
+  if (typeof u["id"] !== "string" && typeof u["id"] !== "number") {
+    return { ok: false, error: fallbackError };
+  }
+
+  return {
+    ok: true,
+    session: {
+      user: {
+        id: String(u["id"]),
+        email: (u["email"] as string | null) ?? null,
+        fullName: ((u["fullName"] ?? u["full_name"]) as string | null) ?? null,
+      },
+      profile: (source["profile"] as ProfileDTO | null) ?? null,
+      isAdmin: Boolean(source["isAdmin"] ?? source["is_admin"]),
+    },
+  };
 }
 
 export async function signInWithPassword(opts: {
@@ -70,7 +98,7 @@ export async function signInWithPassword(opts: {
 }): Promise<AuthResult> {
   if (usesPhpAuthApi) return php("login.php", opts.data);
   try {
-    return normalize(await signInServerFn({ data: opts.data }));
+    return normalize(await signInServerFn({ data: opts.data }), "Incorrect email or password.");
   } catch (error) {
     return { ok: false, error: error instanceof Error ? error.message : "Log in failed" };
   }
@@ -81,7 +109,7 @@ export async function signUpWithPassword(opts: {
 }): Promise<AuthResult> {
   if (usesPhpAuthApi) return php("signup.php", opts.data);
   try {
-    return normalize(await signUpServerFn({ data: opts.data }));
+    return normalize(await signUpServerFn({ data: opts.data }), "Sign up failed");
   } catch (error) {
     return { ok: false, error: error instanceof Error ? error.message : "Sign up failed" };
   }
@@ -93,7 +121,8 @@ export async function getCurrentSession(): Promise<SessionDTO> {
     return result.ok ? result.session : EMPTY_SESSION;
   }
   try {
-    return await getSessionServerFn();
+    const result = normalize(await getSessionServerFn(), "");
+    return result.ok ? result.session : EMPTY_SESSION;
   } catch {
     return EMPTY_SESSION;
   }
