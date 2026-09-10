@@ -12,9 +12,15 @@ const out = resolve(root, "dist");
 rmSync(resolve(root, ".output"), { recursive: true, force: true });
 rmSync(out, { recursive: true, force: true });
 
-const result = spawnSync("npx", ["vite", "build"], {
+const result = spawnSync("npx", ["--no-install", "vite", "build"], {
   stdio: "inherit",
-  env: { ...process.env, STATIC_BUILD: "true", NITRO_PRESET: "static" },
+  env: {
+    ...process.env,
+    STATIC_BUILD: "true",
+    NITRO_PRESET: "static",
+    // Hostinger ships the PHP auth endpoints next to the SPA.
+    VITE_AUTH_API_BASE: process.env.VITE_AUTH_API_BASE ?? "/api/auth",
+  },
   shell: process.platform === "win32",
 });
 
