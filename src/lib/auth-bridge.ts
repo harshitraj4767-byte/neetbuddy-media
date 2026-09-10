@@ -32,9 +32,14 @@ const PHP_BASE = (
 
 export const usesPhpAuthApi = PHP_BASE !== "";
 
-async function php(path: string, body?: unknown): Promise<AuthResult> {
+// Static hosting (Hostinger) has no Node runtime, so the TanStack server
+// functions cannot answer there. When they fail we retry the PHP endpoints that
+// ship in public/api/auth, which keeps one build working on both hosts.
+const FALLBACK_PHP_BASE = "/api/auth";
+
+async function php(path: string, body?: unknown, base: string = PHP_BASE): Promise<AuthResult> {
   try {
-    const response = await fetch(`${PHP_BASE}/${path}`, {
+    const response = await fetch(`${base}/${path}`, {
       method: body === undefined ? "GET" : "POST",
       credentials: "include",
       headers: body === undefined ? undefined : { "Content-Type": "application/json" },
@@ -93,26 +98,38 @@ function normalize(result: unknown, fallbackError: string): AuthResult {
   };
 }
 
+// Runs the PHP endpoint as a second attempt; keeps the first error when the
+// PHP API is not deployed (e.g. on Lovable, where the .php files are not run).
+async function withPhpFallback(path: string, body: unknown, first: AuthResult): Promise<AuthResult> {
+  if (first.ok || usesPhpAuthApi || typeof window === "undefined") return first;
+  const retry = await php(path, body, FALLBACK_PHP_BASE);
+  return retry.ok ? retry : first;
+}
+
 export async function signInWithPassword(opts: {
   data: { email: string; password: string };
 }): Promise<AuthResult> {
   if (usesPhpAuthApi) return php("login.php", opts.data);
+  let first: AuthResult;
   try {
-    return normalize(await signInServerFn({ data: opts.data }), "Incorrect email or password.");
+    first = normalize(await signInServerFn({ data: opts.data }), "Incorrect email or password.");
   } catch (error) {
-    return { ok: false, error: error instanceof Error ? error.message : "Log in failed" };
+    first = { ok: false, error: error instanceof Error ? error.message : "Log in failed" };
   }
+  return withPhpFallback("login.php", opts.data, first);
 }
 
 export async function signUpWithPassword(opts: {
   data: { email: string; password: string; fullName?: string };
 }): Promise<AuthResult> {
   if (usesPhpAuthApi) return php("signup.php", opts.data);
+  let first: AuthResult;
   try {
-    return normalize(await signUpServerFn({ data: opts.data }), "Sign up failed");
+    first = normalize(await signUpServerFn({ data: opts.data }), "Sign up failed");
   } catch (error) {
-    return { ok: false, error: error instanceof Error ? error.message : "Sign up failed" };
+    first = { ok: false, error: error instanceof Error ? error.message : "Sign up failed" };
   }
+  return withPhpFallback("signup.php", opts.data, first);
 }
 
 export async function getCurrentSession(): Promise<SessionDTO> {
@@ -122,10 +139,13 @@ export async function getCurrentSession(): Promise<SessionDTO> {
   }
   try {
     const result = normalize(await getSessionServerFn(), "");
-    return result.ok ? result.session : EMPTY_SESSION;
+    if (result.ok) return result.session;
   } catch {
-    return EMPTY_SESSION;
+    /* fall through to the PHP endpoint below */
   }
+  if (typeof window === "undefined") return EMPTY_SESSION;
+  const retry = await php("session.php", undefined, FALLBACK_PHP_BASE);
+  return retry.ok ? retry.session : EMPTY_SESSION;
 }
 
 export async function signOut(): Promise<void> {
@@ -137,5 +157,8 @@ export async function signOut(): Promise<void> {
     await signOutServerFn();
   } catch {
     /* the local session is cleared by the caller regardless */
+  }
+  if (typeof window !== "undefined") {
+    await php("logout.php", {}, FALLBACK_PHP_BASE).catch(() => undefined);
   }
 }
