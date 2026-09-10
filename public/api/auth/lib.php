@@ -157,21 +157,139 @@ function nb_session_payload(?string $userId): array
     }
 
     $db = nb_db();
-    $stmt = $db->prepare('SELECT * FROM profiles WHERE id = ? LIMIT 1');
-    $stmt->execute([$userId]);
-    $profile = $stmt->fetch() ?: null;
 
-    $roles = $db->prepare("SELECT 1 FROM user_roles WHERE user_id = ? AND role = 'admin' LIMIT 1");
-    $roles->execute([$userId]);
-    $isAdmin = (bool) $roles->fetchColumn();
+    $profile = null;
+    try {
+        $stmt = $db->prepare('SELECT * FROM profiles WHERE id = ? LIMIT 1');
+        $stmt->execute([$userId]);
+        $profile = $stmt->fetch() ?: null;
+    } catch (Throwable $e) {
+        error_log('[auth] profile read failed: ' . $e->getMessage());
+    }
+
+    $account = null;
+    try {
+        $stmt = $db->prepare('SELECT email, full_name FROM auth_users WHERE id = ? LIMIT 1');
+        $stmt->execute([$userId]);
+        $account = $stmt->fetch() ?: null;
+    } catch (Throwable $e) {
+        error_log('[auth] account read failed: ' . $e->getMessage());
+    }
+
+    $isAdmin = false;
+    try {
+        $roles = $db->prepare("SELECT 1 FROM user_roles WHERE user_id = ? AND role = 'admin' LIMIT 1");
+        $roles->execute([$userId]);
+        $isAdmin = (bool) $roles->fetchColumn();
+    } catch (Throwable $e) {
+        error_log('[auth] role read failed: ' . $e->getMessage());
+    }
 
     return [
         'user' => [
             'id' => $userId,
-            'email' => $profile['email'] ?? null,
-            'fullName' => $profile['full_name'] ?? null,
+            'email' => $profile['email'] ?? $account['email'] ?? null,
+            'fullName' => $profile['full_name'] ?? $account['full_name'] ?? null,
         ],
         'profile' => $profile,
         'isAdmin' => $isAdmin,
     ];
+}
+
+// ---------------------------------------------------------------------------
+// Schema helpers (added to make sign up resilient on Hostinger MySQL)
+// ---------------------------------------------------------------------------
+
+/** Column names of a table, lowercased. Empty array when the table is absent. */
+function nb_table_columns(string $table): array
+{
+    static $cache = [];
+    if (isset($cache[$table])) {
+        return $cache[$table];
+    }
+    try {
+        $stmt = nb_db()->prepare(
+            'SELECT LOWER(COLUMN_NAME) AS c FROM information_schema.COLUMNS
+             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?'
+        );
+        $stmt->execute([$table]);
+        $cache[$table] = array_map(static fn($r) => (string) $r['c'], $stmt->fetchAll());
+    } catch (Throwable $e) {
+        $cache[$table] = [];
+    }
+    return $cache[$table];
+}
+
+/** Insert $values into $table, silently dropping keys the table does not have. */
+function nb_insert_known(string $table, array $values): void
+{
+    $columns = nb_table_columns($table);
+    if ($columns === []) {
+        throw new RuntimeException("Table `$table` does not exist");
+    }
+    $cols = [];
+    $params = [];
+    foreach ($values as $key => $value) {
+        if (in_array(strtolower($key), $columns, true)) {
+            $cols[] = '`' . $key . '`';
+            $params[] = $value;
+        }
+    }
+    if ($cols === []) {
+        throw new RuntimeException("No matching columns for `$table`");
+    }
+    $sql = 'INSERT INTO `' . $table . '` (' . implode(', ', $cols) . ') VALUES ('
+        . implode(', ', array_fill(0, count($cols), '?')) . ')';
+    nb_db()->prepare($sql)->execute($params);
+}
+
+/** Create the auth tables when they are missing, so a fresh database works. */
+function nb_ensure_auth_tables(): void
+{
+    static $done = false;
+    if ($done) {
+        return;
+    }
+    $done = true;
+    try {
+        nb_db()->exec(
+            'CREATE TABLE IF NOT EXISTS auth_users (
+               id CHAR(36) NOT NULL PRIMARY KEY,
+               email VARCHAR(255) NOT NULL UNIQUE,
+               password_hash VARCHAR(255) NOT NULL,
+               full_name VARCHAR(255) NULL,
+               suspended TINYINT(1) NOT NULL DEFAULT 0,
+               suspended_reason VARCHAR(255) NULL,
+               last_sign_in_at DATETIME NULL,
+               created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
+        );
+        nb_db()->exec(
+            'CREATE TABLE IF NOT EXISTS auth_sessions (
+               token_hash CHAR(64) NOT NULL PRIMARY KEY,
+               user_id CHAR(36) NOT NULL,
+               created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+               expires_at DATETIME NOT NULL,
+               INDEX auth_sessions_user_idx (user_id)
+             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
+        );
+        nb_db()->exec(
+            'CREATE TABLE IF NOT EXISTS profiles (
+               id CHAR(36) NOT NULL PRIMARY KEY,
+               email VARCHAR(255) NULL,
+               full_name VARCHAR(255) NULL,
+               created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+               updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
+        );
+    } catch (Throwable $e) {
+        // Hosting user may lack CREATE rights; existing tables are then used as-is.
+        error_log('[auth] ensure tables skipped: ' . $e->getMessage());
+    }
+}
+
+/** Include the underlying reason in API errors when NB_DEBUG=1 is set. */
+function nb_detail(Throwable $e): string
+{
+    return (getenv('NB_DEBUG') === '1') ? ' (' . $e->getMessage() . ')' : '';
 }
