@@ -25,7 +25,7 @@ type AuthCtx = {
   loading: boolean;
   signOut: () => Promise<void>;
   refresh: () => Promise<void>;
-  applySession: (session: SessionDTO) => void;
+  applySession: (session: SessionDTO | null | undefined) => void;
 };
 
 const Ctx = createContext<AuthCtx | undefined>(undefined);
@@ -36,19 +36,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const applySession = useCallback((s: SessionDTO) => {
-    setUser(s.user ? { id: s.user.id, email: s.user.email, fullName: s.user.fullName } : null);
-    setProfile((s.profile as Profile | null) ?? null);
-    setIsAdmin(Boolean(s.isAdmin));
+  const applySession = useCallback((s: SessionDTO | null | undefined) => {
+    const u = s?.user ?? null;
+    setUser(u ? { id: u.id, email: u.email, fullName: u.fullName } : null);
+    setProfile((s?.profile as Profile | null) ?? null);
+    setIsAdmin(Boolean(s?.isAdmin));
     setLoading(false);
   }, []);
 
   const refresh = useCallback(async () => {
     try {
       const s = await getCurrentSession();
-      setUser(s.user ? { id: s.user.id, email: s.user.email, fullName: s.user.fullName } : null);
-      setProfile((s.profile as Profile | null) ?? null);
-      setIsAdmin(s.isAdmin);
+      const u = s?.user ?? null;
+      setUser(u ? { id: u.id, email: u.email, fullName: u.fullName } : null);
+      setProfile((s?.profile as Profile | null) ?? null);
+      setIsAdmin(Boolean(s?.isAdmin));
     } catch (error) {
       console.error("[auth] failed to restore session", error);
       setUser(null);
