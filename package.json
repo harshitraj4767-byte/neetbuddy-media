@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "node scripts/build-node.mjs",
+    "build": "node scripts/build-static.mjs",
     "build:server": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
