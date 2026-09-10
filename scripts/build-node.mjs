@@ -19,7 +19,7 @@ const env = { ...process.env, NODE_BUILD: "true", STATIC_BUILD: "", NITRO_PRESET
 delete env["LOVABLE_SANDBOX"];
 delete env["DEV_SERVER__PROJECT_PATH"];
 
-const result = spawnSync("npx", ["vite", "build"], {
+const result = spawnSync("npx", ["--no-install", "vite", "build"], {
   stdio: "inherit",
   env,
   shell: process.platform === "win32",
