@@ -86,27 +86,47 @@ function nb_db_try(): ?PDO
     }
 
     $c = nb_config();
-    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4', $c['host'], $c['port'], $c['database']);
-    try {
-        $pdo = new PDO($dsn, $c['user'], $c['password'], [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
-    } catch (Throwable $e) {
-        $code = $e instanceof PDOException ? (string) $e->getCode() : '';
-        $reason = match ($code) {
-            '1045' => 'bad_credentials',
-            '1044' => 'no_access_to_database',
-            '1049' => 'unknown_database',
-            '2002' => 'host_unreachable',
-            default => 'connection_failed',
-        };
-        nb_db_last_error(['reason' => $reason, 'message' => $e->getMessage(), 'code' => $code]);
-        error_log('[auth] database connection failed (' . $reason . '): ' . $e->getMessage());
-        return null;
+
+    // Try the configured host first, then the local socket. On Hostinger the
+    // remote host name (srvNNN.hstgr.io) only answers when Remote MySQL is
+    // enabled for the caller's IP, while "localhost" always works on-server.
+    $hosts = [$c['host']];
+    if (strtolower($c['host']) !== 'localhost' && strtolower($c['host']) !== '127.0.0.1') {
+        $hosts[] = 'localhost';
     }
-    return $pdo;
+
+    $lastError = null;
+    foreach ($hosts as $host) {
+        $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4', $host, $c['port'], $c['database']);
+        try {
+            $pdo = new PDO($dsn, $c['user'], $c['password'], [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_TIMEOUT => 10,
+            ]);
+            return $pdo;
+        } catch (Throwable $e) {
+            $code = $e instanceof PDOException ? (string) $e->getCode() : '';
+            $reason = match ($code) {
+                '1045' => 'bad_credentials',
+                '1044' => 'no_access_to_database',
+                '1049' => 'unknown_database',
+                '2002' => 'host_unreachable',
+                default => 'connection_failed',
+            };
+            $lastError = ['reason' => $reason, 'message' => $e->getMessage(), 'code' => $code, 'host' => $host];
+            error_log('[auth] database connection failed on ' . $host . ' (' . $reason . '): ' . $e->getMessage());
+            // Credentials/database problems will not be fixed by another host.
+            if (in_array($reason, ['bad_credentials', 'no_access_to_database', 'unknown_database'], true)) {
+                break;
+            }
+        }
+    }
+
+    $pdo = null;
+    nb_db_last_error($lastError ?? ['reason' => 'connection_failed', 'message' => 'Could not connect to MySQL.']);
+    return null;
 }
 
 function nb_db(): PDO

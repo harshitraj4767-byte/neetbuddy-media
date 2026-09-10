@@ -2,5 +2,3 @@
 *.zip
 *.zip.0*
 
-# Hostinger local database password (kept out of Git)
-config.local.php
