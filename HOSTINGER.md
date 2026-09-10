@@ -20,8 +20,26 @@ The generated Node bundle includes the server functions used by protected pages,
 
 For a static deployment, upload the **contents** of `dist/` to `public_html/`; the build automatically targets `/api/auth`. Set `VITE_AUTH_API_BASE` only if the PHP API is mounted elsewhere. Do not use this mode when the authenticated quiz flow is required.
 
+## ENOTFOUND / npm network troubleshooting
+
+The repository pins npm to the public registry and retries transient downloads in `.npmrc`. If Hostinger still reports `ENOTFOUND`, the build worker cannot resolve or reach the registry.
+
+Run these checks in the Hostinger build shell, if SSH/build logs provide a shell:
+
+```sh
+getent hosts registry.npmjs.org
+npm config get registry
+npm config get proxy
+npm config get https-proxy
+npm ping --registry=https://registry.npmjs.org/
+```
+
+Expected values are a resolved address, `https://registry.npmjs.org/`, and no proxy unless Hostinger gave you one. If your hosting network requires a proxy, configure `HTTP_PROXY`, `HTTPS_PROXY`, and (if needed) `NO_PROXY` as Hostinger environment variables. Do not put proxy usernames, passwords, or tokens in `.npmrc`, `package.json`, or the repository.
+
+If hPanel has a stale registry or proxy override, clear it and redeploy. A failed `getent` or `npm ping` must be fixed by Hostinger network/DNS support; changing application dependencies cannot repair that infrastructure failure.
+
 ## Security
 
 - Passwords are stored as PBKDF2-SHA256 hashes, never plain text.
 - Sessions use a random HttpOnly cookie and a SHA-256 token hash in `auth_sessions`.
-- Database credentials belong in Hostinger environment variables or server-only configuration, never in the repository.
+- Database credentials and proxy credentials belong in Hostinger environment variables or server-only configuration, never in the repository.
