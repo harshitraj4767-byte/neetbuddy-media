@@ -88,3 +88,33 @@ Then reverse-proxy port 3000 with Apache or Nginx and run `certbot` for HTTPS.
 `wrangler.jsonc` currently contains a live Supabase **service role key** in
 plain text. Anyone with repo access can read and misuse it. Rotate that key in
 Supabase and move it into environment variables / Cloudflare secrets.
+
+---
+
+## Option C — Static site deploy (no Node server)
+
+Use this when the Hostinger website is a plain static/Web hosting site.
+
+| Field | Value |
+|---|---|
+| Framework preset | Vite (or Other) |
+| Node.js version | 20 |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output / publish directory | `dist` |
+
+Notes:
+
+- The repo root contains a valid `package.json` with `engines.node >= 20`, and
+  `package-lock.json` is in sync with it, so `npm ci` works on a clean machine.
+- `npm run build` runs `scripts/build-static.mjs`, which produces `dist/` with
+  `index.html`, hashed `assets/`, all files from `public/`, an Apache/LiteSpeed
+  `.htaccess` SPA fallback, and a `package.json` marking the folder as
+  already-built. It exits non-zero if `dist/index.html` is missing.
+- Server functions do NOT run in this mode. Set `SB_URL` and
+  `SB_PUBLISHABLE_KEY` as build-time environment variables so the client bundle
+  can reach the database directly.
+- If the deploy aborts with "no valid package.json", the clone almost certainly
+  did not finish: this repository is ~2 GB (large `sql/` dumps and ~1.2 GB of
+  images under `public/`). Increase the deploy clone limit or host the heavy
+  assets outside git.

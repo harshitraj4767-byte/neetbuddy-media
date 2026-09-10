@@ -1,8 +1,13 @@
 {
   "name": "tanstack_start_ts",
+  "version": "1.0.0",
   "private": true,
-  "sideEffects": false,
   "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=10"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "node scripts/build-static.mjs",

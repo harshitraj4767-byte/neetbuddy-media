@@ -2,3 +2,6 @@
 *.zip
 *.zip.0*
 
+node_modules
+dist
+.output
