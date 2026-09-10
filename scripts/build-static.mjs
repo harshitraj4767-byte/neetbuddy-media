@@ -48,6 +48,10 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
+# Never send PHP API requests to the SPA shell
+RewriteCond %{REQUEST_URI} ^/api/ [NC]
+RewriteRule ^ - [L]
+
 # Everything else falls back to the SPA shell
 RewriteRule ^ /index.html [L]
 
