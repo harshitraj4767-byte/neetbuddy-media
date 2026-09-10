@@ -3,6 +3,8 @@
 // - On Lovable / any Node-or-Worker deployment: uses the TanStack server functions.
 // - On static hosting (Hostinger), set VITE_AUTH_API_BASE (e.g. "/api/auth") at
 //   build time and the same calls go to the PHP endpoints in public/api/auth.
+//
+// Signatures mirror src/lib/auth-mysql.functions.ts so call sites are unchanged.
 
 export type AuthUserDTO = { id: string; email: string | null; fullName: string | null };
 export type ProfileDTO = Record<string, string | number | boolean | null>;
@@ -12,8 +14,9 @@ export type SessionDTO = {
   isAdmin: boolean;
 };
 
-const PHP_BASE = ((import.meta.env as Record<string, string | undefined>)["VITE_AUTH_API_BASE"] ?? "")
-  .replace(/\/+$/, "");
+const PHP_BASE = (
+  (import.meta.env as Record<string, string | undefined>)["VITE_AUTH_API_BASE"] ?? ""
+).replace(/\/+$/, "");
 
 export const usesPhpAuthApi = PHP_BASE !== "";
 
@@ -32,8 +35,10 @@ async function php<T>(path: string, body?: unknown): Promise<T> {
 }
 
 type ServerAuthModule = {
-  signIn?: (opts: { data: { email: string; password: string } }) => Promise<SessionDTO>;
-  signUp?: (opts: {
+  signInWithPassword: (opts: {
+    data: { email: string; password: string };
+  }) => Promise<SessionDTO>;
+  signUpWithPassword: (opts: {
     data: { email: string; password: string; fullName?: string };
   }) => Promise<SessionDTO>;
   getCurrentSession: () => Promise<SessionDTO>;
@@ -44,22 +49,18 @@ async function serverAuth(): Promise<ServerAuthModule> {
   return (await import("@/lib/auth-mysql.functions")) as unknown as ServerAuthModule;
 }
 
-export async function signIn(email: string, password: string): Promise<SessionDTO> {
-  if (usesPhpAuthApi) return php<SessionDTO>("login.php", { email, password });
-  const mod = await serverAuth();
-  if (!mod.signIn) throw new Error("Sign in is not available");
-  return mod.signIn({ data: { email, password } });
+export async function signInWithPassword(opts: {
+  data: { email: string; password: string };
+}): Promise<SessionDTO> {
+  if (usesPhpAuthApi) return php<SessionDTO>("login.php", opts.data);
+  return (await serverAuth()).signInWithPassword(opts);
 }
 
-export async function signUp(
-  email: string,
-  password: string,
-  fullName?: string,
-): Promise<SessionDTO> {
-  if (usesPhpAuthApi) return php<SessionDTO>("signup.php", { email, password, fullName });
-  const mod = await serverAuth();
-  if (!mod.signUp) throw new Error("Sign up is not available");
-  return mod.signUp({ data: { email, password, fullName } });
+export async function signUpWithPassword(opts: {
+  data: { email: string; password: string; fullName?: string };
+}): Promise<SessionDTO> {
+  if (usesPhpAuthApi) return php<SessionDTO>("signup.php", opts.data);
+  return (await serverAuth()).signUpWithPassword(opts);
 }
 
 export async function getCurrentSession(): Promise<SessionDTO> {
