@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { signInWithPassword, signUpWithPassword } from "@/lib/auth-mysql.functions";
+import { signInWithPassword, signUpWithPassword } from "@/lib/auth-bridge";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 
@@ -170,3 +170,4 @@ function LoginPage() {
     </div>
   );
 }
+
