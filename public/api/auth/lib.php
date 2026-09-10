@@ -48,12 +48,43 @@ function nb_body(): array
     return $_POST;
 }
 
-function nb_db(): PDO
+/** Last connection problem, as [message, reason-code]. Empty before a failed attempt. */
+function nb_db_last_error(?array $set = null): array
+{
+    static $error = [];
+    if ($set !== null) {
+        $error = $set;
+    }
+    return $error;
+}
+
+/**
+ * Open the database connection, or null on failure (the reason is recorded in
+ * nb_db_last_error). Callers that cannot continue should use nb_db().
+ */
+function nb_db_try(): ?PDO
 {
     static $pdo = null;
+    static $tried = false;
     if ($pdo instanceof PDO) {
         return $pdo;
     }
+    if ($tried) {
+        return null;
+    }
+    $tried = true;
+
+    if (!nb_config_is_complete()) {
+        nb_db_last_error([
+            'reason' => 'not_configured',
+            'message' => 'The database credentials are missing on the server. '
+                . 'Add config.local.php (or a .env file with MYSQL_DATABASE / MYSQL_USER / MYSQL_PASSWORD) '
+                . 'next to public/api/auth.',
+        ]);
+        error_log('[auth] database credentials missing: set config.local.php or MYSQL_* values');
+        return null;
+    }
+
     $c = nb_config();
     $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4', $c['host'], $c['port'], $c['database']);
     try {
@@ -63,10 +94,36 @@ function nb_db(): PDO
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
     } catch (Throwable $e) {
-        error_log('[auth] database connection failed: ' . $e->getMessage());
-        nb_fail('Database connection failed', 500);
+        $code = $e instanceof PDOException ? (string) $e->getCode() : '';
+        $reason = match ($code) {
+            '1045' => 'bad_credentials',
+            '1044' => 'no_access_to_database',
+            '1049' => 'unknown_database',
+            '2002' => 'host_unreachable',
+            default => 'connection_failed',
+        };
+        nb_db_last_error(['reason' => $reason, 'message' => $e->getMessage(), 'code' => $code]);
+        error_log('[auth] database connection failed (' . $reason . '): ' . $e->getMessage());
+        return null;
     }
     return $pdo;
+}
+
+function nb_db(): PDO
+{
+    $pdo = nb_db_try();
+    if ($pdo instanceof PDO) {
+        return $pdo;
+    }
+    $error = nb_db_last_error();
+    $reason = (string) ($error['reason'] ?? 'connection_failed');
+    $public = $reason === 'not_configured'
+        ? 'Sign up is temporarily unavailable: the server is not connected to the database yet.'
+        : 'Sign up is temporarily unavailable: the database could not be reached.';
+    nb_json([
+        'error' => $public . (getenv('NB_DEBUG') === '1' ? ' (' . ($error['message'] ?? '') . ')' : ''),
+        'reason' => $reason,
+    ], 503);
 }
 
 function nb_pbkdf2(string $password, string $salt): string
