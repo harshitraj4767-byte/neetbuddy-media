@@ -107,8 +107,8 @@ export function SiteHeader() {
   const avatar = user ? avatarUrl(displayName || user.id, profile?.avatar_url ?? null) : null;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full px-3 pt-3 sm:px-6">
+      <div className="site-header-frame mx-auto flex h-14 max-w-7xl items-center justify-between rounded-2xl px-3 backdrop-blur-xl sm:px-5">
         <Link to="/dashboard" className="flex shrink-0 items-center gap-2">
           <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-9 w-9 shrink-0 rounded-xl shadow-glow" />
           <div className="leading-none">

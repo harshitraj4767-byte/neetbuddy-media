@@ -1,5 +1,19 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowLeft, Loader2, Mail } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  Eye,
+  EyeOff,
+  Loader2,
+  LockKeyhole,
+  Mail,
+  BarChart3,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  UserRound,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +38,7 @@ function LoginPage() {
   const [refCode, setRefCode] = useState("");
   const [busy, setBusy] = useState(false);
   const [ready, setReady] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -99,83 +114,153 @@ function LoginPage() {
     }
   };
 
+  const passwordToggle = (id: string) => (
+    <button
+      type="button"
+      aria-label={showPassword ? "Hide password" : "Show password"}
+      onClick={() => setShowPassword((value) => !value)}
+      className="absolute right-2 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+    >
+      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+      <span className="sr-only">{id}</span>
+    </button>
+  );
+
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-hero opacity-[0.07]" />
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-[480px] w-[700px] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+    <main className="auth-page relative min-h-screen overflow-hidden bg-background">
+      <div className="auth-orb auth-orb-one" />
+      <div className="auth-orb auth-orb-two" />
+      <div className="relative mx-auto grid min-h-screen w-full max-w-6xl items-center gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-10">
+        <section className="auth-spotlight hidden min-h-[620px] flex-col justify-between rounded-[2rem] p-8 text-white shadow-2xl lg:flex xl:p-12">
+          <div>
+            <Link to="/" className="inline-flex items-center gap-3">
+              <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-11 w-11 rounded-2xl bg-white/10 p-1 shadow-lg" />
+              <span className="text-xl font-bold tracking-tight">Neet <span className="text-cyan-200">Buddy</span></span>
+            </Link>
+            <div className="mt-24 max-w-lg">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100">
+                <Sparkles className="h-3.5 w-3.5" /> Your prep, organised
+              </div>
+              <h1 className="text-5xl font-bold leading-[1.05] tracking-[-0.04em] xl:text-6xl">
+                Make every study session count.
+              </h1>
+              <p className="mt-6 max-w-md text-base leading-7 text-blue-100/80">
+                Practice smarter, see your progress clearly, and build the consistency that gets you closer to your NEET score.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { icon: Target, label: "Focused practice" },
+              { icon: BarChart3, label: "Clear insights" },
+              { icon: ShieldCheck, label: "Private by design" },
+            ].map(({ icon: Icon, label }) => (
+              <div key={label} className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-sm">
+                <Icon className="h-4 w-4 text-cyan-200" />
+                <div className="mt-2 text-xs font-semibold text-white/90">{label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <div className="relative mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-4 py-10">
-        <Link to="/" className="mb-7 flex items-center gap-2">
-          <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-10 w-10 rounded-xl shadow-glow" />
-          <span className="text-lg font-bold">Neet <span className="text-gradient-primary">Buddy</span></span>
-        </Link>
-
-        <div className="w-full rounded-3xl border border-border bg-card p-6 shadow-elegant animate-fade-in-up">
-          <div className="mb-1 text-center">
-            <h1 className="text-xl font-bold tracking-tight">{tab === "login" ? "Welcome back" : "Create your account"}</h1>
-            <p className="mt-1 text-xs text-muted-foreground">{tab === "login" ? "Log in to continue your prep." : "Free to start. No credit card."}</p>
+        <section className="mx-auto w-full max-w-md">
+          <div className="mb-7 flex items-center justify-between lg:hidden">
+            <Link to="/" className="flex items-center gap-2">
+              <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-10 w-10 rounded-xl shadow-glow" />
+              <span className="text-lg font-bold">Neet <span className="text-gradient-primary">Buddy</span></span>
+            </Link>
+            <Link to="/" className="text-xs font-semibold text-muted-foreground hover:text-foreground">Home</Link>
           </div>
 
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-px flex-1 bg-border" />
-            <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-muted-foreground"><Mail className="h-3 w-3" /> email</span>
-            <div className="h-px flex-1 bg-border" />
+          <div className="auth-card rounded-[1.75rem] border border-border/80 bg-card/90 p-5 shadow-2xl backdrop-blur-xl sm:p-8">
+            <div className="mb-7">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                {tab === "login" ? <LockKeyhole className="h-5 w-5" /> : <UserRound className="h-5 w-5" />}
+              </div>
+              <h2 className="text-2xl font-bold tracking-tight">{tab === "login" ? "Welcome back" : "Create your account"}</h2>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {tab === "login" ? "Continue your preparation from where you left off." : "Start your personalised NEET preparation journey for free."}
+              </p>
+            </div>
+
+            <Tabs value={tab} onValueChange={(v) => setTab(v as "login" | "signup")}>
+              <TabsList className="grid h-11 w-full grid-cols-2 rounded-xl bg-secondary/80 p-1">
+                <TabsTrigger value="login" className="rounded-lg text-sm">Log in</TabsTrigger>
+                <TabsTrigger value="signup" className="rounded-lg text-sm">Sign up</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="login" className="mt-6">
+                <form className="space-y-4" onSubmit={onLogin}>
+                  <div className="space-y-2">
+                    <Label htmlFor="le">Email address</Label>
+                    <div className="relative">
+                      <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="le" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="h-11 rounded-xl pl-10" placeholder="you@example.com" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between"><Label htmlFor="lp">Password</Label><span className="text-[11px] text-muted-foreground">Minimum 6 characters</span></div>
+                    <div className="relative">
+                      <LockKeyhole className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="lp" type={showPassword ? "text" : "password"} required value={password} onChange={(e) => setPassword(e.target.value)} className="h-11 rounded-xl pl-10 pr-11" placeholder="Enter your password" />
+                      {passwordToggle("password visibility")}
+                    </div>
+                  </div>
+                  <Button type="submit" disabled={busy || !ready} className="h-11 w-full rounded-xl bg-gradient-primary font-semibold shadow-elegant hover:opacity-95">
+                    {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Log in <ArrowRight className="ml-2 h-4 w-4" /></>}
+                  </Button>
+                </form>
+              </TabsContent>
+
+              <TabsContent value="signup" className="mt-6">
+                <form className="space-y-4" onSubmit={onSignup}>
+                  <div className="space-y-2">
+                    <Label htmlFor="sn">Full name</Label>
+                    <div className="relative">
+                      <UserRound className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="sn" required value={name} onChange={(e) => setName(e.target.value)} className="h-11 rounded-xl pl-10" placeholder="Your full name" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="se">Email address</Label>
+                    <div className="relative">
+                      <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="se" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="h-11 rounded-xl pl-10" placeholder="you@example.com" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="sp">Password</Label>
+                    <div className="relative">
+                      <LockKeyhole className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="sp" type={showPassword ? "text" : "password"} required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} className="h-11 rounded-xl pl-10 pr-11" placeholder="Create a password" />
+                      {passwordToggle("password visibility")}
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="rc">Referral code <span className="font-normal text-muted-foreground">(optional)</span></Label>
+                    <Input id="rc" value={refCode} onChange={(e) => setRefCode(e.target.value.toUpperCase())} placeholder="FRIEND'S CODE" maxLength={20} className="h-11 rounded-xl" />
+                  </div>
+                  <Button type="submit" disabled={busy || !ready} className="h-11 w-full rounded-xl bg-gradient-primary font-semibold shadow-elegant hover:opacity-95">
+                    {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Create account <ArrowRight className="ml-2 h-4 w-4" /></>}
+                  </Button>
+                  <div className="flex items-start gap-2 rounded-xl bg-primary/5 p-3 text-[11px] leading-5 text-muted-foreground">
+                    <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                    Your account works on the static Hostinger build and the full app runtime.
+                  </div>
+                </form>
+              </TabsContent>
+            </Tabs>
           </div>
 
-          <Tabs value={tab} onValueChange={(v) => setTab(v as "login" | "signup")}>
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Log in</TabsTrigger>
-              <TabsTrigger value="signup">Sign up</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="login" className="mt-5">
-              <form className="space-y-3" onSubmit={onLogin}>
-                <div className="space-y-1.5">
-                  <Label htmlFor="le">Email</Label>
-                  <Input id="le" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="lp">Password</Label>
-                  <Input id="lp" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <Button type="submit" disabled={busy || !ready} className="w-full bg-gradient-primary shadow-elegant hover:opacity-95">
-                  {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Log in"}
-                </Button>
-              </form>
-            </TabsContent>
-
-            <TabsContent value="signup" className="mt-5">
-              <form className="space-y-3" onSubmit={onSignup}>
-                <div className="space-y-1.5">
-                  <Label htmlFor="sn">Full name</Label>
-                  <Input id="sn" required value={name} onChange={(e) => setName(e.target.value)} />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="se">Email</Label>
-                  <Input id="se" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="sp">Password</Label>
-                  <Input id="sp" type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="rc">Referral code <span className="text-muted-foreground">(optional, +10 bonus)</span></Label>
-                  <Input id="rc" value={refCode} onChange={(e) => setRefCode(e.target.value.toUpperCase())} placeholder="FRIEND'S CODE" maxLength={20} />
-                </div>
-                <Button type="submit" disabled={busy || !ready} className="w-full bg-gradient-primary shadow-elegant hover:opacity-95">
-                  {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Create account"}
-                </Button>
-                <p className="text-center text-[11px] text-muted-foreground">By signing up you agree to our terms & privacy policy.</p>
-              </form>
-            </TabsContent>
-          </Tabs>
-        </div>
-
-        <Button asChild variant="ghost" className="mt-5">
-          <Link to="/"><ArrowLeft className="mr-1 h-4 w-4" /> Back to home</Link>
-        </Button>
+          <div className="mt-5 flex items-center justify-center gap-2 text-xs text-muted-foreground">
+            <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Secure session · Your data stays private
+          </div>
+          <Button asChild variant="ghost" className="mx-auto mt-3 flex">
+            <Link to="/"><ArrowLeft className="mr-1 h-4 w-4" /> Back to home</Link>
+          </Button>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
 

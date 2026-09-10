@@ -17,7 +17,7 @@ export function PageShell({
 }) {
   const hasHeader = !!(eyebrow || title || description);
   return (
-    <div className="flex min-h-screen flex-col bg-background page-enter">
+    <div className="page-shell flex min-h-screen flex-col bg-background page-enter">
       <SiteHeader />
       <main className="flex-1">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">

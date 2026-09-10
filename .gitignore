@@ -1,4 +1,7 @@
 .env
+.env.*
+!.env.example
+public/api/auth/config.local.php
 *.zip
 *.zip.0*
 

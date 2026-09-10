@@ -74,17 +74,18 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.04 240);
 
-  /* Professional blue primary */
-  --primary: oklch(0.52 0.18 255);
-  --primary-foreground: oklch(0.99 0.005 240);
-  --primary-glow: oklch(0.62 0.17 250);
+  /* Neet Buddy indigo/cyan system — the same visual language is used by auth,
+     landing, navigation and the individual study surfaces. */
+  --primary: oklch(0.53 0.2 274);
+  --primary-foreground: oklch(0.99 0.005 270);
+  --primary-glow: oklch(0.7 0.17 235);
 
   --secondary: oklch(0.965 0.008 250);
   --secondary-foreground: oklch(0.2 0.04 250);
   --muted: oklch(0.97 0.006 250);
   --muted-foreground: oklch(0.5 0.02 250);
 
-  --accent: oklch(0.6 0.16 235);
+  --accent: oklch(0.68 0.16 215);
   --accent-foreground: oklch(0.99 0.005 240);
 
   --success: oklch(0.66 0.16 155);
@@ -96,7 +97,7 @@
 
   --border: oklch(0.92 0.01 250);
   --input: oklch(0.92 0.01 250);
-  --ring: oklch(0.52 0.18 255);
+  --ring: oklch(0.53 0.2 274);
 
   --chart-1: oklch(0.52 0.18 255);
   --chart-2: oklch(0.62 0.17 230);
@@ -113,13 +114,13 @@
   --sidebar-border: oklch(0.92 0.01 250);
   --sidebar-ring: oklch(0.52 0.18 255);
 
-  --gradient-primary: linear-gradient(135deg, oklch(0.52 0.18 255), oklch(0.62 0.17 250));
-  --gradient-hero: linear-gradient(135deg, oklch(0.4 0.15 260) 0%, oklch(0.5 0.18 250) 55%, oklch(0.62 0.17 235) 100%);
-  --gradient-accent: linear-gradient(135deg, oklch(0.6 0.16 235), oklch(0.7 0.14 215));
+  --gradient-primary: linear-gradient(135deg, oklch(0.53 0.2 274), oklch(0.66 0.18 232));
+  --gradient-hero: linear-gradient(135deg, oklch(0.31 0.16 278) 0%, oklch(0.46 0.2 270) 55%, oklch(0.62 0.17 220) 100%);
+  --gradient-accent: linear-gradient(135deg, oklch(0.62 0.18 240), oklch(0.75 0.14 205));
   --gradient-surface: linear-gradient(180deg, oklch(1 0 0), oklch(0.98 0.005 250));
   --shadow-soft: 0 1px 2px oklch(0.2 0.04 250 / 0.04), 0 6px 20px oklch(0.2 0.04 250 / 0.06);
-  --shadow-elegant: 0 10px 30px -10px oklch(0.52 0.18 255 / 0.32);
-  --shadow-glow: 0 0 36px oklch(0.62 0.17 250 / 0.35);
+  --shadow-elegant: 0 16px 36px -14px oklch(0.4 0.18 274 / 0.32);
+  --shadow-glow: 0 0 36px oklch(0.62 0.17 235 / 0.35);
 }
 
 .dark {
@@ -131,7 +132,7 @@
   --popover: oklch(0.21 0.03 255);
   --popover-foreground: oklch(0.97 0.005 240);
 
-  --primary: oklch(0.66 0.17 250);
+  --primary: oklch(0.72 0.17 255);
   --primary-foreground: oklch(0.14 0.02 255);
   --primary-glow: oklch(0.74 0.15 245);
 
@@ -139,7 +140,7 @@
   --secondary-foreground: oklch(0.97 0.005 240);
   --muted: oklch(0.24 0.025 255);
   --muted-foreground: oklch(0.72 0.02 240);
-  --accent: oklch(0.7 0.15 230);
+  --accent: oklch(0.75 0.14 215);
   --accent-foreground: oklch(0.14 0.02 255);
 
   --success: oklch(0.74 0.16 155);
@@ -151,7 +152,7 @@
 
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.66 0.17 250);
+  --ring: oklch(0.72 0.17 255);
 
   --sidebar: oklch(0.18 0.025 255);
   --sidebar-foreground: oklch(0.97 0.005 240);
@@ -162,9 +163,9 @@
   --sidebar-border: oklch(1 0 0 / 8%);
   --sidebar-ring: oklch(0.66 0.17 250);
 
-  --gradient-primary: linear-gradient(135deg, oklch(0.5 0.18 260), oklch(0.66 0.17 245));
-  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.14 260) 0%, oklch(0.4 0.16 250) 55%, oklch(0.5 0.16 235) 100%);
-  --gradient-accent: linear-gradient(135deg, oklch(0.6 0.16 235), oklch(0.7 0.14 215));
+  --gradient-primary: linear-gradient(135deg, oklch(0.55 0.2 275), oklch(0.7 0.17 230));
+  --gradient-hero: linear-gradient(135deg, oklch(0.24 0.15 278) 0%, oklch(0.34 0.17 270) 55%, oklch(0.42 0.14 225) 100%);
+  --gradient-accent: linear-gradient(135deg, oklch(0.58 0.18 240), oklch(0.68 0.15 210));
   --gradient-surface: linear-gradient(180deg, oklch(0.22 0.03 255), oklch(0.18 0.025 255));
   --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.3), 0 8px 24px oklch(0 0 0 / 0.25);
   --shadow-elegant: 0 10px 40px -10px oklch(0.5 0.18 260 / 0.5);
@@ -564,4 +565,78 @@
 @media (max-width: 640px) {
   .paper-card { border-radius: 1rem; }
   .paper-body p { text-align: left; hyphens: none; }
+}
+
+/* ── Shared product polish ──────────────────────────────────────────────── */
+.site-header-frame {
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  background: color-mix(in oklab, var(--card) 84%, transparent);
+  box-shadow: 0 14px 32px -24px oklch(0.25 0.08 270 / 0.5);
+}
+
+.page-shell {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 8% 0%, color-mix(in oklab, var(--primary) 7%, transparent), transparent 30rem),
+    radial-gradient(circle at 95% 10%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 28rem);
+}
+
+.auth-page {
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--primary) 11%, transparent), transparent 32rem),
+    radial-gradient(circle at 100% 100%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 30rem);
+}
+
+.auth-orb {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(2px);
+}
+
+.auth-orb-one {
+  width: 22rem;
+  height: 22rem;
+  top: -10rem;
+  right: 8%;
+  background: color-mix(in oklab, var(--primary) 13%, transparent);
+}
+
+.auth-orb-two {
+  width: 18rem;
+  height: 18rem;
+  bottom: -8rem;
+  left: 12%;
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+}
+
+.auth-spotlight {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 18%, oklch(0.72 0.16 215 / 0.3), transparent 22rem),
+    linear-gradient(145deg, oklch(0.2 0.16 278), oklch(0.31 0.18 263) 54%, oklch(0.28 0.12 228));
+}
+
+.auth-spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 42% -15% -35% 34%;
+  border: 1px solid oklch(1 0 0 / 0.13);
+  border-radius: 48% 0 0 0;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.auth-card {
+  animation: authCardIn 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes authCardIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-card { animation: none; }
 }

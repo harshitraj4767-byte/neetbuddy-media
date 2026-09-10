@@ -1,0 +1,7 @@
+Options -Indexes
+
+# These files are server-side configuration or database exports. They must
+# never be downloadable from the public Hostinger document root.
+<FilesMatch "^(config\.local\.php|.*\.sql|\.env.*)$">
+  Require all denied
+</FilesMatch>
