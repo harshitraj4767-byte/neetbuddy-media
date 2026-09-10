@@ -79,6 +79,26 @@ async function createSession(userId: string): Promise<void> {
   setSessionCookie(token, SESSION_DAYS * 86_400);
 }
 
+
+async function sessionPayload(userId: string): Promise<SessionDTO> {
+  const { queryOne } = await import("@/lib/db/mysql.server");
+  const user = await queryOne<{ id: string; email: string; full_name: string | null }>(
+    "SELECT id, email, full_name FROM auth_users WHERE id = ? LIMIT 1",
+    [userId],
+  );
+  if (!user) return { user: null, profile: null, isAdmin: false };
+  const profile = await queryOne<ProfileDTO>("SELECT * FROM profiles WHERE id = ? LIMIT 1", [userId]);
+  const admin = await queryOne<{ c: number }>(
+    "SELECT COUNT(*) AS c FROM user_roles WHERE user_id = ? AND role = 'admin'",
+    [userId],
+  );
+  return {
+    user: { id: user.id, email: user.email, fullName: user.full_name },
+    profile,
+    isAdmin: Number(admin?.c ?? 0) > 0,
+  };
+}
+
 // ---------- server functions ----------
 
 export const signUpWithPassword = createServerFn({ method: "POST" })
@@ -108,7 +128,7 @@ export const signUpWithPassword = createServerFn({ method: "POST" })
     );
     await execute("INSERT IGNORE INTO user_roles (user_id, role) VALUES (?, 'user')", [id]);
     await createSession(id);
-    return { ok: true as const, user: { id, email, fullName: data.fullName ?? null } };
+    return { ok: true as const, session: await sessionPayload(id) };
   });
 
 export const signInWithPassword = createServerFn({ method: "POST" })
@@ -132,10 +152,7 @@ export const signInWithPassword = createServerFn({ method: "POST" })
     if (user.suspended) return { ok: false as const, error: "This account is suspended." };
 
     await createSession(user.id);
-    return {
-      ok: true as const,
-      user: { id: user.id, email: user.email, fullName: user.full_name },
-    };
+    return { ok: true as const, session: await sessionPayload(user.id) };
   });
 
 export const getCurrentSession = createServerFn({ method: "GET" }).handler(
