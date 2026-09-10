@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
-import { getCurrentSession, signOut as signOutFn } from "@/lib/auth-bridge";
+import { getCurrentSession, signOut as signOutFn, type SessionDTO } from "@/lib/auth-bridge";
 
 export type AuthUser = { id: string; email: string | null; fullName: string | null };
 
@@ -25,6 +25,7 @@ type AuthCtx = {
   loading: boolean;
   signOut: () => Promise<void>;
   refresh: () => Promise<void>;
+  applySession: (session: SessionDTO) => void;
 };
 
 const Ctx = createContext<AuthCtx | undefined>(undefined);
@@ -34,6 +35,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const applySession = useCallback((s: SessionDTO) => {
+    setUser(s.user ? { id: s.user.id, email: s.user.email, fullName: s.user.fullName } : null);
+    setProfile((s.profile as Profile | null) ?? null);
+    setIsAdmin(Boolean(s.isAdmin));
+    setLoading(false);
+  }, []);
 
   const refresh = useCallback(async () => {
     try {
@@ -87,6 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsAdmin(false);
     },
     refresh,
+    applySession,
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
