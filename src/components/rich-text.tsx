@@ -1,5 +1,11 @@
 import { Fragment, useEffect, useMemo, useRef, type ReactNode } from "react";
-import { InlineMath, BlockMath } from "react-katex";
+// react-katex ships CommonJS; named ESM imports break SSR ("Named export 'BlockMath' not found").
+import reactKatex from "react-katex";
+type KatexProps = { math: string; renderError?: (error: Error) => ReactNode };
+const { InlineMath, BlockMath } = reactKatex as unknown as {
+  InlineMath: (props: KatexProps) => ReactNode;
+  BlockMath: (props: KatexProps) => ReactNode;
+};
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { cn } from "@/lib/utils";
