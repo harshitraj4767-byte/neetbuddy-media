@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "vite dev",
-    "build": "node scripts/build-static.mjs",
+    "build": "vite build",
     "build:server": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
