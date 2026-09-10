@@ -16,7 +16,7 @@ export const Route = createFileRoute("/login")({
 
 function LoginPage() {
   const nav = useNavigate();
-  const { user, loading, refresh } = useAuth();
+  const { user, loading, refresh, applySession } = useAuth();
   const [tab, setTab] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -51,7 +51,11 @@ function LoginPage() {
     const pw = fieldValue(e.currentTarget, "lp", password);
     try {
       const res = await signInWithPassword({ data: { email: em, password: pw } });
-      if (!res.ok) return toast.error(res.error);
+      if (!res.ok) {
+        toast.error(res.error);
+        return;
+      }
+      applySession(res.session);
       try {
         const pending = localStorage.getItem("pending_ref_code");
         if (pending) {
@@ -60,7 +64,7 @@ function LoginPage() {
           localStorage.removeItem("pending_ref_code");
         }
       } catch { /* noop */ }
-      await refresh();
+      void refresh();
       toast.success("Welcome back!");
       nav({ to: "/dashboard", replace: true });
     } catch (err) {
@@ -80,8 +84,12 @@ function LoginPage() {
     }
     try {
       const res = await signUpWithPassword({ data: { email: em, password: pw, fullName: nm } });
-      if (!res.ok) return toast.error(res.error);
-      await refresh();
+      if (!res.ok) {
+        toast.error(res.error);
+        return;
+      }
+      applySession(res.session);
+      void refresh();
       toast.success("Account created!");
       nav({ to: "/dashboard", replace: true });
     } catch (err) {
