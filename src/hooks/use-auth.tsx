@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
-import { getCurrentSession, signOut as signOutFn } from "@/lib/auth-mysql.functions";
+import { getCurrentSession, signOut as signOutFn } from "@/lib/auth-bridge";
 
 export type AuthUser = { id: string; email: string | null; fullName: string | null };
 
