@@ -1,18 +1,36 @@
 # Hostinger deployment
 
-Use Hostinger's **Web App / Node.js hosting** for the complete application. The dashboard, authenticated pages, server functions, and quiz flow require the Node runtime; a static-only upload cannot execute those server functions.
+Use Hostinger's **Web App** hosting with the **Nitro** framework preset. The app
+is a TanStack Start / Nitro application: the dashboard, authenticated pages,
+server functions and quiz flow all need the Node server bundle, so a
+static-only upload cannot run them.
 
-## Full app: Node.js Web App (recommended)
+## Settings that work (verified by a clean local run)
 
-1. Select Node **20.19+** (or Node 22.12+) in hPanel.
-2. Set the build command to `npm ci && npm run build:node`.
-3. Set the startup/entry file to `start-server.mjs`.
-4. Set the application root to the repository root and expose the Hostinger-provided `PORT`.
-5. Add the MySQL variables used by the app: `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE`.
-6. Import the schema/data SQL files into the MySQL database before signing in.
-7. Open the site and verify `/login`, a successful redirect to `/dashboard`, and a quiz route such as `/quiz/subjects` before inviting users.
+| Field | Value |
+| --- | --- |
+| Framework / configuration | Nitro |
+| Node version | 22 (or 20.19+) |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output / server entry | `.output/server/index.mjs` |
+| Start command | `npm start` (runs `node start-server.mjs`) |
+| Port | Hostinger's injected `PORT` (the server reads it automatically) |
 
-The generated Node bundle includes the server functions used by protected pages, so this mode supports the complete login → dashboard → quiz flow.
+Required environment variables (set them before the first build, otherwise the
+server logs `Missing SB_URL or SB_PUBLISHABLE_KEY` and Supabase-backed pages
+fail):
+
+- `SB_URL`, `SB_PUBLISHABLE_KEY`
+- `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`
+
+Notes:
+
+- `npm run build` writes a single self-contained `.output/` tree. It no longer
+  duplicates the 1.2 GB asset tree into `dist/`; set `COPY_DIST=true` only if a
+  host explicitly needs a separate `dist/` folder.
+- Import the schema/data SQL files into the MySQL database before signing in.
+- After deploying, check `/`, `/login`, `/dashboard` and a quiz route.
 
 ## Static-only option
 

@@ -41,13 +41,19 @@ if (!serverEntry) {
   process.exit(1);
 }
 
-const publicOut = resolve(root, ".output/public");
-const distDir = resolve(root, "dist");
-if (existsSync(publicOut) && !existsSync(distDir)) {
-  mkdirSync(distDir, { recursive: true });
-  cpSync(publicOut, distDir, { recursive: true });
+// The Nitro node-server output in .output/ is self-contained (it serves
+// .output/public itself). Copying that tree into dist/ again doubles the build
+// size, which can exhaust the disk/time budget on hosting build workers.
+// Opt in with COPY_DIST=true only when a host needs a separate dist/ folder.
+if (process.env.COPY_DIST === "true") {
+  const publicOut = resolve(root, ".output/public");
+  const distDir = resolve(root, "dist");
+  if (existsSync(publicOut) && !existsSync(distDir)) {
+    mkdirSync(distDir, { recursive: true });
+    cpSync(publicOut, distDir, { recursive: true });
+  }
 }
 
 console.log(`\n✔ Node server build ready: ${serverEntry}`);
-console.log("  Output directories populated: .output/ and dist/");
+console.log("  Output directory: .output (public assets in .output/public)");
 console.log("  Start command: npm start (or node start-server.mjs)");

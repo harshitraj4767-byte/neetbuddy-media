@@ -20,7 +20,6 @@
 
   "vars": {
     "SB_URL": "https://cupvxfoikjkufudgehsr.supabase.co",
-    "SB_PUBLISHABLE_KEY": "NILL",
-    "SB_SERVICE_ROLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1cHZ4Zm9pa2prdWZ1ZGdlaHNyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3ODY1MzAyNCwiZXhwIjoyMDk0MjI5MDI0fQ.ILms04mzL-kByO_tVmBLOPr7qBIMFpyIWDGoSSsM2g4"
+    "SB_PUBLISHABLE_KEY": ""
   }
 }
