@@ -26,7 +26,7 @@ async function admin() {
 
 export const adminUpsertChapter = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z
       .object({
         id: ChapterId.optional(),
@@ -80,7 +80,7 @@ export const adminUpsertChapter = createServerFn({ method: "POST" })
 
 export const adminDeleteChapter = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({ id: ChapterId, deleteQuestions: z.boolean().default(true) }).parse(d),
   )
   .handler(async ({ data, context }) => {
@@ -110,7 +110,7 @@ export const adminDeleteChapter = createServerFn({ method: "POST" })
 
 export const adminDeleteSubject = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: SubjectId }).parse(d))
+  .validator((d) => z.object({ id: SubjectId }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const db = await admin();
@@ -142,7 +142,7 @@ export const adminDeleteSubject = createServerFn({ method: "POST" })
 /** Delete every question in a chapter but keep the chapter itself. */
 export const adminDeleteChapterQuestions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ chapterId: ChapterId }).parse(d))
+  .validator((d) => z.object({ chapterId: ChapterId }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const db = await admin();
@@ -163,7 +163,7 @@ export const adminDeleteChapterQuestions = createServerFn({ method: "POST" })
 /** Delete every question in a subject (chapters are kept). */
 export const adminDeleteSubjectQuestions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ subjectId: SubjectId }).parse(d))
+  .validator((d) => z.object({ subjectId: SubjectId }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const db = await admin();
