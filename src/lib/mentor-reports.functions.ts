@@ -66,7 +66,7 @@ async function assertMentorCanView(userId: string, targetUserId: string) {
 /** Find user by email (only if they are a mentee of the current mentor). */
 export const mentorLookupUserByEmail = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ email: z.string().trim().email() }).parse(i))
+  .validator((i) => z.object({ email: z.string().trim().email() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const adminFlag = await isAdmin(context.userId);
@@ -83,7 +83,7 @@ export const mentorLookupUserByEmail = createServerFn({ method: "POST" })
 /** Detailed report for one user (must be a mentee of the requester). */
 export const getUserReport = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ user_id: z.string().uuid(), days: z.number().int().min(1).max(60).default(30) }).parse(i))
+  .validator((i) => z.object({ user_id: z.string().uuid(), days: z.number().int().min(1).max(60).default(30) }).parse(i))
   .handler(async ({ data, context }) => {
     await assertMentorCanView(context.userId, data.user_id);
     const db = await admin();
@@ -176,7 +176,7 @@ export const getUserReport = createServerFn({ method: "POST" })
 /** Combined data for every mentee of the current mentor (leaderboard-style). */
 export const getMenteesOverview = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ days: z.number().int().min(1).max(30).default(7) }).parse(i))
+  .validator((i) => z.object({ days: z.number().int().min(1).max(30).default(7) }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { ids, groups } = await menteeIdsForMentor(context.userId);

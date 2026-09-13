@@ -42,7 +42,7 @@ export const getMentorContext = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const adminCreateGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       name: z.string().trim().min(1).max(120),
       description: z.string().max(2000).optional().nullable(),
@@ -68,7 +68,7 @@ export const adminCreateGroup = createServerFn({ method: "POST" })
 
 export const adminAssignMentorToGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       group_id: z.string().uuid(),
       mentor_id: z.string().uuid().nullable(),
@@ -87,7 +87,7 @@ export const adminAssignMentorToGroup = createServerFn({ method: "POST" })
 
 export const adminAddGroupMemberByEmail = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ group_id: z.string().uuid(), email: z.string().trim().email() }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -106,7 +106,7 @@ export const adminAddGroupMemberByEmail = createServerFn({ method: "POST" })
 
 export const adminRemoveGroupMember = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ group_id: z.string().uuid(), user_id: z.string().uuid() }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -183,7 +183,7 @@ export const listMyGroups = createServerFn({ method: "POST" })
 
 export const getGroupDetail = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ group_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ group_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const [adminFlag, mid] = await Promise.all([isAdmin(context.userId), myMentorId(context.userId)]);
@@ -285,7 +285,7 @@ async function assertGroupMember(userId: string, groupId: string): Promise<{ can
 
 export const listGroupMessages = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ group_id: z.string().uuid(), limit: z.number().int().min(1).max(200).default(100) }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -336,7 +336,7 @@ export const listGroupMessages = createServerFn({ method: "POST" })
 
 export const sendGroupMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       group_id: z.string().uuid(),
       body: z.string().max(4000).optional().nullable(),
@@ -368,7 +368,7 @@ export const sendGroupMessage = createServerFn({ method: "POST" })
 
 export const createGroupPoll = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       group_id: z.string().uuid(),
       question: z.string().trim().min(1).max(300),
@@ -396,7 +396,7 @@ export const createGroupPoll = createServerFn({ method: "POST" })
 
 export const voteGroupPoll = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ message_id: z.string().uuid(), option_idx: z.number().int().min(0).max(9) }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -420,7 +420,7 @@ export const voteGroupPoll = createServerFn({ method: "POST" })
 
 export const pinGroupMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ message_id: z.string().uuid(), pinned: z.boolean() }).parse(i))
+  .validator((i) => z.object({ message_id: z.string().uuid(), pinned: z.boolean() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { data: msg } = await db.from("group_messages").select("group_id").eq("id", data.message_id).maybeSingle();
@@ -437,7 +437,7 @@ export const pinGroupMessage = createServerFn({ method: "POST" })
 
 export const deleteGroupMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ message_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ message_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { data: msg } = await db.from("group_messages").select("group_id, user_id").eq("id", data.message_id).maybeSingle();
@@ -454,7 +454,7 @@ export const deleteGroupMessage = createServerFn({ method: "POST" })
 
 export const uploadGroupImage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       group_id: z.string().uuid(),
       data_url: z.string().startsWith("data:image/").max(6_500_000),
@@ -489,7 +489,7 @@ function weekStartISO(d = new Date()): string {
 
 export const mentorCreateWeeklyTarget = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       group_id: z.string().uuid(),
       week_start: z.string().optional(),
@@ -523,7 +523,7 @@ export const mentorCreateWeeklyTarget = createServerFn({ method: "POST" })
 
 export const listGroupWeeklyTargets = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ group_id: z.string().uuid(), limit: z.number().int().min(1).max(20).default(6) }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -553,7 +553,7 @@ export const listGroupWeeklyTargets = createServerFn({ method: "POST" })
 
 export const toggleWeeklyTargetItem = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ target_item_id: z.string().uuid(), done: z.boolean() }).parse(i))
+  .validator((i) => z.object({ target_item_id: z.string().uuid(), done: z.boolean() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     if (data.done) {

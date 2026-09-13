@@ -36,7 +36,7 @@ export const getAppSettings = createServerFn({ method: "GET" }).handler(async ()
 
 export const adminUpdateSetting = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { key: string; value: number }) =>
+  .validator((d: { key: string; value: number }) =>
     z.object({
       key: z.enum([
         "flashcards_cost",

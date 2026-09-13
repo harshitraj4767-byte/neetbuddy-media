@@ -102,7 +102,7 @@ async function sessionPayload(userId: string): Promise<SessionDTO> {
 // ---------- server functions ----------
 
 export const signUpWithPassword = createServerFn({ method: "POST" })
-  .inputValidator((d: { email: string; password: string; fullName?: string }) => d)
+  .validator((d: { email: string; password: string; fullName?: string }) => d)
   .handler(async ({ data }) => {
     const email = data.email.trim().toLowerCase();
     if (!email || !data.password || data.password.length < 6) {
@@ -132,7 +132,7 @@ export const signUpWithPassword = createServerFn({ method: "POST" })
   });
 
 export const signInWithPassword = createServerFn({ method: "POST" })
-  .inputValidator((d: { email: string; password: string }) => d)
+  .validator((d: { email: string; password: string }) => d)
   .handler(async ({ data }) => {
     const email = data.email.trim().toLowerCase();
     const { queryOne } = await import("@/lib/db/mysql.server");

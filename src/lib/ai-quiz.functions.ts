@@ -572,7 +572,7 @@ async function createOneAiQuiz(chapter: {
 }
 
 export const generateAiDailyQuizzes = createServerFn({ method: "POST" })
-  .inputValidator((d: { count?: number }) => ({
+  .validator((d: { count?: number }) => ({
     count: Math.min(Math.max(d?.count ?? 1, 1), 20),
   }))
   .handler(async ({ data }) => {
@@ -734,7 +734,7 @@ export { renderDiagramPng };
 
 
 export const generateAiDiagramDpp = createServerFn({ method: "POST" })
-  .inputValidator((d: { count?: number; subject?: string }) => ({
+  .validator((d: { count?: number; subject?: string }) => ({
     count: Math.min(Math.max(d?.count ?? 10, 3), 15),
     subject: (d?.subject ?? "").trim().toLowerCase() || undefined,
   }))

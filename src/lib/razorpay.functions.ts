@@ -32,7 +32,7 @@ const CreateSchema = z.object({
 
 export const createRazorpayOrder = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => CreateSchema.parse(d))
+  .validator((d) => CreateSchema.parse(d))
   .handler(async ({ data, context }) => {
     const { keyId, keySecret } = creds();
     const db = await admin();
@@ -126,7 +126,7 @@ const VerifySchema = z.object({
 
 export const verifyRazorpayPayment = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => VerifySchema.parse(d))
+  .validator((d) => VerifySchema.parse(d))
   .handler(async ({ data }) => {
     const { keySecret } = creds();
     const expected = crypto

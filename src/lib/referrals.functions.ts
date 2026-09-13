@@ -53,7 +53,7 @@ export const generateReferralCode = createServerFn({ method: "POST" })
 
 export const applyReferralCode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({ code: z.string().min(4).max(20) }).parse(d),
   )
   .handler(async ({ data, context }) => {

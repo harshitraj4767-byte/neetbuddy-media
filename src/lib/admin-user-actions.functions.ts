@@ -20,7 +20,7 @@ async function assertAdmin(context: { supabase: any; userId: string }) {
 /** Suspend (ban) or unsuspend a user via Supabase Auth Admin API. */
 export const adminSuspendUser = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z
       .object({
         userId: z.string().uuid(),
@@ -59,7 +59,7 @@ export const adminSuspendUser = createServerFn({ method: "POST" })
 /** Adjust a user's balance (credit or debit). Reason is required for audit. */
 export const adminAdjustBalance = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z
       .object({
         userId: z.string().uuid(),

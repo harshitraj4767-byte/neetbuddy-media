@@ -23,7 +23,7 @@ export const getMyTrialUsage = createServerFn({ method: "GET" })
 
 export const createBookmarkTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ question_ids: z.array(z.string()).min(1).max(300), title: z.string().default("My Bookmarks") }).parse(d))
+  .validator((d) => z.object({ question_ids: z.array(z.string()).min(1).max(300), title: z.string().default("My Bookmarks") }).parse(d))
   .handler(async ({ data, context }) => {
     await consumeTrialQuota(context.userId, TRIAL_LIMITS.bookmarkTest);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -48,7 +48,7 @@ export const createBookmarkTest = createServerFn({ method: "POST" })
 
 export const createMistakesTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ question_ids: z.array(z.string()).min(1).max(300), title: z.string().default("My Mistakes Retest") }).parse(d))
+  .validator((d) => z.object({ question_ids: z.array(z.string()).min(1).max(300), title: z.string().default("My Mistakes Retest") }).parse(d))
   .handler(async ({ data, context }) => {
     await consumeTrialQuota(context.userId, TRIAL_LIMITS.mistakesTest);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -73,7 +73,7 @@ export const createMistakesTest = createServerFn({ method: "POST" })
 
 export const logShortNoteDownload = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ material_id: z.string().uuid().optional(), title: z.string().optional() }).parse(d))
+  .validator((d) => z.object({ material_id: z.string().uuid().optional(), title: z.string().optional() }).parse(d))
   .handler(async ({ context }) => {
     const r = await consumeTrialQuota(context.userId, TRIAL_LIMITS.shortNoteDownload);
     return { ok: true, ...r };
@@ -81,7 +81,7 @@ export const logShortNoteDownload = createServerFn({ method: "POST" })
 
 export const logNeetlabView = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ topic: z.string().min(1) }).parse(d))
+  .validator((d) => z.object({ topic: z.string().min(1) }).parse(d))
   .handler(async ({ context }) => {
     const r = await consumeTrialQuota(context.userId, TRIAL_LIMITS.neetlabView);
     return { ok: true, ...r };

@@ -51,7 +51,7 @@ const BatchInput = z.object({
 
 export const adminUpsertBatch = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => BatchInput.parse(i))
+  .validator((i) => BatchInput.parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();
@@ -70,7 +70,7 @@ export const adminUpsertBatch = createServerFn({ method: "POST" })
 
 export const adminDeleteBatch = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();
@@ -102,7 +102,7 @@ export const FEATURE_LABEL_MAP = FEATURE_LABELS;
 
 export const adminGenerateBatchDescription = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       title: z.string().min(2),
       features: z.record(z.boolean()),
@@ -184,7 +184,7 @@ export const adminListCoupons = createServerFn({ method: "GET" })
 
 export const adminUpsertCoupon = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       id: z.string().uuid().optional(),
       code: z.string().min(2).max(40).regex(/^[A-Z0-9_-]+$/i),
@@ -235,7 +235,7 @@ export const adminUpsertCoupon = createServerFn({ method: "POST" })
 
 export const adminDeleteCoupon = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();
@@ -247,7 +247,7 @@ export const adminDeleteCoupon = createServerFn({ method: "POST" })
 // ---------- Validate coupon (user) ----------
 export const validateCoupon = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ code: z.string().min(1).max(40), batch_id: z.string().uuid() }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -282,7 +282,7 @@ export const validateCoupon = createServerFn({ method: "POST" })
 // ---------- Admin: grant premium to a user ----------
 export const adminGrantPremium = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       user_id: z.string().uuid(),
       days: z.number().int().min(1).max(3650),
@@ -306,7 +306,7 @@ export const adminGrantPremium = createServerFn({ method: "POST" })
 // ---------- Image upload (signed by client; this returns upload URL) ----------
 export const adminCreateBatchImageUploadUrl = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ filename: z.string().min(1).max(120) }).parse(i))
+  .validator((i) => z.object({ filename: z.string().min(1).max(120) }).parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();
@@ -322,7 +322,7 @@ export const adminCreateBatchImageUploadUrl = createServerFn({ method: "POST" })
 // Compares 2-3 selected batches using Lovable AI Gateway. Optionally accepts
 // the batches' marketing image URLs so the model can reason about them too.
 export const compareBatchesAi = createServerFn({ method: "POST" })
-  .inputValidator((i) =>
+  .validator((i) =>
     z
       .object({
         batch_ids: z.array(z.string().uuid()).min(2).max(3),

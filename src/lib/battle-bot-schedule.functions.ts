@@ -105,7 +105,7 @@ function planServerBotScore(humanScore: number, maxQuestions: number, stake: num
 
 export const scheduleBotMatchSubmission = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z
       .object({
         matchId: z.string().uuid(),
@@ -182,7 +182,7 @@ export const scheduleBotMatchSubmission = createServerFn({ method: "POST" })
 
 export const submitBattleAttempt = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({
       matchId: z.string().uuid(),
       humanScore: z.number().int().min(0).max(50).optional(),

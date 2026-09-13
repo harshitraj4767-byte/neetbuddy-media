@@ -64,7 +64,7 @@ export const getMyTicket = createServerFn({ method: "GET" })
 
 export const setSupportMode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ mode: z.enum(["ai", "team"]) }).parse(i))
+  .validator((i) => z.object({ mode: z.enum(["ai", "team"]) }).parse(i))
   .handler(async ({ data, context }) => {
     const ticket = await getOrCreateOpen(context.userId);
     const supabaseAdmin = await getAdmin();
@@ -83,7 +83,7 @@ export const setSupportMode = createServerFn({ method: "POST" })
 
 export const sendSupportMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ content: z.string().trim().min(1).max(2000) }).parse(i))
+  .validator((i) => z.object({ content: z.string().trim().min(1).max(2000) }).parse(i))
   .handler(async ({ data, context }) => {
     const ticket = await getOrCreateOpen(context.userId);
     const supabaseAdmin = await getAdmin();
@@ -134,7 +134,7 @@ export const listOpenTickets = createServerFn({ method: "GET" })
 
 export const getTicketMessages = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ ticket_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ ticket_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const supabaseAdmin = await getAdmin();
@@ -146,7 +146,7 @@ export const getTicketMessages = createServerFn({ method: "POST" })
 
 export const adminReply = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({
+  .validator((i) => z.object({
     ticket_id: z.string().uuid(),
     content: z.string().trim().min(1).max(2000),
   }).parse(i))
@@ -163,7 +163,7 @@ export const adminReply = createServerFn({ method: "POST" })
 
 export const closeTicket = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ ticket_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ ticket_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const supabaseAdmin = await getAdmin();
@@ -176,7 +176,7 @@ export const closeTicket = createServerFn({ method: "POST" })
 // `send: true` posts it to the user as a team reply; otherwise it's returned as a suggestion.
 export const adminBotReply = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({
+  .validator((i) => z.object({
     ticket_id: z.string().uuid(),
     send: z.boolean().default(false),
   }).parse(i))

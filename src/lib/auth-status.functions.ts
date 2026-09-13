@@ -18,7 +18,7 @@ type Result =
   | { suspended: false };
 
 export const getSuspensionReasonByEmail = createServerFn({ method: "POST" })
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({ email: z.string().email().max(320) }).parse(input),
   )
   .handler(async ({ data }): Promise<Result> => {

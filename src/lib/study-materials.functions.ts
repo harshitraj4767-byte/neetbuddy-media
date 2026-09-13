@@ -24,7 +24,7 @@ export const listStudySubjects = createServerFn({ method: "GET" })
 
 export const listStudyChaptersWithMaterials = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { subjectId: string; materialType: MaterialType }) =>
+  .validator((d: { subjectId: string; materialType: MaterialType }) =>
     z.object({
       subjectId: z.string().min(1),
       materialType: z.enum(["short_notes"]),
@@ -66,7 +66,7 @@ const MaterialRow = z.object({
 
 export const adminBulkAddStudyMaterials = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ rows: z.array(MaterialRow).min(1).max(500) }).parse(d))
+  .validator((d) => z.object({ rows: z.array(MaterialRow).min(1).max(500) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     let created = 0;
@@ -112,7 +112,7 @@ export const adminListStudyMaterials = createServerFn({ method: "GET" })
 
 export const adminDeleteStudyMaterial = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any).from("study_materials").delete().eq("id", data.id);

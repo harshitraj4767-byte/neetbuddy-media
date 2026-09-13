@@ -74,7 +74,7 @@ function ratingOf(weekSeconds: number, activeDays7: number, completionRate: numb
 // ---------------------------------------------------------------------------
 export const createStudyGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ name: z.string().trim().min(2).max(80), description: z.string().trim().max(500).optional() }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -102,7 +102,7 @@ export const createStudyGroup = createServerFn({ method: "POST" })
 
 export const joinStudyGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ code: z.string().trim().min(4).max(16) }).parse(i))
+  .validator((i) => z.object({ code: z.string().trim().min(4).max(16) }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const code = data.code.toUpperCase();
@@ -116,7 +116,7 @@ export const joinStudyGroup = createServerFn({ method: "POST" })
 
 export const leaveStudyGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ group_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ group_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { data: g } = await db.from("study_groups").select("owner_id").eq("id", data.group_id).maybeSingle();
@@ -167,7 +167,7 @@ export const listMyStudyGroups = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const getStudyGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ group_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ group_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     await assertMember(context.userId, data.group_id);
     const db = await admin();
@@ -269,7 +269,7 @@ export const getStudyGroup = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const startStudySession = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z
       .object({
         group_id: z.string().uuid(),
@@ -305,7 +305,7 @@ export const startStudySession = createServerFn({ method: "POST" })
 
 export const beatStudySession = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ session_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ session_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     await db
@@ -319,7 +319,7 @@ export const beatStudySession = createServerFn({ method: "POST" })
 
 export const stopStudySession = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ session_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ session_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { data: s } = await db
@@ -343,7 +343,7 @@ export const stopStudySession = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const createGroupTask = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z
       .object({
         group_id: z.string().uuid(),
@@ -371,7 +371,7 @@ export const createGroupTask = createServerFn({ method: "POST" })
 
 export const deleteGroupTask = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ task_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ task_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { data: t } = await db
@@ -388,7 +388,7 @@ export const deleteGroupTask = createServerFn({ method: "POST" })
 
 export const toggleGroupTask = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ task_id: z.string().uuid(), done: z.boolean() }).parse(i))
+  .validator((i) => z.object({ task_id: z.string().uuid(), done: z.boolean() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const { data: t } = await db.from("study_group_tasks").select("group_id").eq("id", data.task_id).maybeSingle();

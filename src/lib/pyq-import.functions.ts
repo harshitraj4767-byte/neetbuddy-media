@@ -20,7 +20,7 @@ const PyqQ = z.object({
 
 export const importPyqQuestions = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ questions: z.array(PyqQ).min(1).max(2000) }).parse(d))
+  .validator((d) => z.object({ questions: z.array(PyqQ).min(1).max(2000) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
 

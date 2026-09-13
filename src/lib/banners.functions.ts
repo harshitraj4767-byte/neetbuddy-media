@@ -55,7 +55,7 @@ export const adminListBanners = createServerFn({ method: "GET" })
 
 export const adminUpsertBanner = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z
       .object({
         id: z.string().uuid().optional(),
@@ -98,7 +98,7 @@ export const adminUpsertBanner = createServerFn({ method: "POST" })
 
 export const adminDeleteBanner = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any)
@@ -116,7 +116,7 @@ export const adminDeleteBanner = createServerFn({ method: "POST" })
  */
 export const adminCreateBannerUploadUrl = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ filename: z.string().min(1).max(160) }).parse(d))
+  .validator((d) => z.object({ filename: z.string().min(1).max(160) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const ext = (data.filename.split(".").pop() ?? "jpg").toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";

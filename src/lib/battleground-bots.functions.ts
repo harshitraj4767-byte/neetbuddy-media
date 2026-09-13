@@ -33,7 +33,7 @@ export const adminListBattleBots = createServerFn({ method: "GET" })
 
 export const adminAddBattleBot = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({ name: z.string().trim().min(2).max(80), iconKey: z.number().int().min(1).max(20) }).parse(input),
   )
   .handler(async ({ data, context }) => {
@@ -51,7 +51,7 @@ export const adminAddBattleBot = createServerFn({ method: "POST" })
 
 export const adminToggleBattleBot = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) => z.object({ id: z.string().uuid(), isActive: z.boolean() }).parse(input))
+  .validator((input) => z.object({ id: z.string().uuid(), isActive: z.boolean() }).parse(input))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await supabaseAdmin
@@ -64,7 +64,7 @@ export const adminToggleBattleBot = createServerFn({ method: "POST" })
 
 export const adminDeleteBattleBot = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) => z.object({ id: z.string().uuid() }).parse(input))
+  .validator((input) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await supabaseAdmin.from("bg_bot_profiles" as never).delete().eq("id", data.id);
@@ -79,7 +79,7 @@ export const adminDeleteBattleBot = createServerFn({ method: "POST" })
  */
 export const adminBulkAddBattleBots = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({ names: z.string().min(1).max(20000) }).parse(input),
   )
   .handler(async ({ data, context }) => {

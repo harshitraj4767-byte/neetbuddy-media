@@ -52,7 +52,7 @@ const PreviewSchema = z.object({
 
 export const previewMentorshipCoupon = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => PreviewSchema.parse(d))
+  .validator((d) => PreviewSchema.parse(d))
   .handler(async ({ data, context }) => {
     const plan = MENTORSHIP_PLANS[data.plan];
     const base = plan.price;
@@ -74,7 +74,7 @@ const OrderSchema = z.object({
 
 export const createMentorshipOrder = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => OrderSchema.parse(d))
+  .validator((d) => OrderSchema.parse(d))
   .handler(async ({ data, context }) => {
     const { keyId, keySecret } = creds();
     const db = await admin();
@@ -128,7 +128,7 @@ const VerifySchema = z.object({
 
 export const verifyMentorshipPayment = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => VerifySchema.parse(d))
+  .validator((d) => VerifySchema.parse(d))
   .handler(async ({ data, context }) => {
     const { keySecret } = creds();
     const expected = crypto.createHmac("sha256", keySecret)

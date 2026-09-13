@@ -9,7 +9,7 @@ export const DPP_PAST_COST_BONUS = 0;
 
 export const startDppAttempt = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ test_id: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ test_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
 

@@ -10,7 +10,7 @@ const ReportSchema = z.object({
 
 export const reportQuestion = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: unknown) => ReportSchema.parse(data))
+  .validator((data: unknown) => ReportSchema.parse(data))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
     const { error } = await supabase.from("question_reports").upsert(

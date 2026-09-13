@@ -167,7 +167,7 @@ function mapAttempt(row: Record<string, unknown>): QuizAttemptDTO {
 
 /** Load one test row; question_ids is stored as a JSON array. */
 export const getQuizTest = createServerFn({ method: "GET" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(async ({ data }): Promise<QuizTestDTO | null> => {
     const { queryOne } = await import("@/lib/db/mysql.server");
     const row = await queryOne<Record<string, unknown>>(
@@ -199,7 +199,7 @@ export const getQuizTest = createServerFn({ method: "GET" })
  * names, with diagram ids attached. Returned in the order of `questionIds`.
  */
 export const getQuizQuestions = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionIds: string[] }) => d)
+  .validator((d: { questionIds: string[] }) => d)
   .handler(async ({ data }): Promise<QuizQuestionDTO[]> => {
     const ids = [...new Set(data.questionIds.map((v) => String(v)))].filter(Boolean);
     if (ids.length === 0) return [];
@@ -260,7 +260,7 @@ export const getQuizQuestions = createServerFn({ method: "POST" })
 
 /** Which of these questions the current user has bookmarked. */
 export const getQuizBookmarks = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionIds: string[] }) => d)
+  .validator((d: { questionIds: string[] }) => d)
   .handler(async ({ data }): Promise<string[]> => {
     const userId = await getUserId();
     const ids = [...new Set(data.questionIds.map((v) => String(v)))].filter(Boolean);
@@ -276,7 +276,7 @@ export const getQuizBookmarks = createServerFn({ method: "POST" })
 
 /** Add or remove a bookmark; returns the resulting state. */
 export const toggleQuizBookmark = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionId: string }) => d)
+  .validator((d: { questionId: string }) => d)
   .handler(async ({ data }): Promise<{ bookmarked: boolean }> => {
     const userId = await requireUserId();
     const { queryOne, execute } = await import("@/lib/db/mysql.server");
@@ -297,7 +297,7 @@ export const toggleQuizBookmark = createServerFn({ method: "POST" })
 
 /** Latest attempt for this user + test, if any. */
 export const getQuizAttempt = createServerFn({ method: "POST" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(async ({ data }): Promise<QuizAttemptDTO | null> => {
     const userId = await getUserId();
     if (!userId) return null;
@@ -313,7 +313,7 @@ export const getQuizAttempt = createServerFn({ method: "POST" })
 
 /** How many times this user already attempted this test. */
 export const getQuizAttemptCount = createServerFn({ method: "POST" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(async ({ data }): Promise<number> => {
     const userId = await getUserId();
     if (!userId) return 0;
@@ -327,7 +327,7 @@ export const getQuizAttemptCount = createServerFn({ method: "POST" })
 
 /** Create or update the in-progress attempt (autosave). Returns its id. */
 export const saveQuizProgress = createServerFn({ method: "POST" })
-  .inputValidator(
+  .validator(
     (d: {
       testId: string;
       attemptId?: string | null;
@@ -379,7 +379,7 @@ export const saveQuizProgress = createServerFn({ method: "POST" })
  * client logic); this only persists the result and the wrong-question rows.
  */
 export const submitQuizAttempt = createServerFn({ method: "POST" })
-  .inputValidator(
+  .validator(
     (d: {
       testId: string;
       attemptId?: string | null;
@@ -465,7 +465,7 @@ export const submitQuizAttempt = createServerFn({ method: "POST" })
 
 /** Questions this user previously got wrong (used for the "seen before" hint). */
 export const getWrongQuestionIds = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionIds: string[] }) => d)
+  .validator((d: { questionIds: string[] }) => d)
   .handler(async ({ data }): Promise<string[]> => {
     const userId = await getUserId();
     const ids = [...new Set(data.questionIds.map((v) => String(v)))].filter(Boolean);
@@ -520,7 +520,7 @@ export type QuizQuestionRow = {
 
 /** tests row for the quiz player (question_ids is a JSON array). */
 export const getQuizPageTest = createServerFn({ method: "POST" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(async ({ data }): Promise<QuizTestRow | null> => {
     const { queryOne } = await import("@/lib/db/mysql.server");
     const row = await queryOne<Record<string, unknown>>(
@@ -545,7 +545,7 @@ export const getQuizPageTest = createServerFn({ method: "POST" })
 
 /** Contest one-shot guard: a completed attempt plus the owning contest id. */
 export const getContestPriorAttempt = createServerFn({ method: "POST" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(
     async ({
       data,
@@ -574,7 +574,7 @@ export const getContestPriorAttempt = createServerFn({ method: "POST" })
 
 /** Active battle match for this test, and whether the current user is in it. */
 export const getActiveBattleMatch = createServerFn({ method: "POST" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(async ({ data }): Promise<{ id: string; joined: boolean } | null> => {
     const userId = await getUserId();
     if (!userId) return null;
@@ -595,7 +595,7 @@ export const getActiveBattleMatch = createServerFn({ method: "POST" })
 
 /** Report the player's battle score (winner resolution stays with the finalizer). */
 export const submitBattleScore = createServerFn({ method: "POST" })
-  .inputValidator((d: { matchId: string; score: number }) => d)
+  .validator((d: { matchId: string; score: number }) => d)
   .handler(async ({ data }): Promise<{ ok: boolean }> => {
     const userId = await requireUserId();
     const { execute } = await import("@/lib/db/mysql.server");
@@ -610,7 +610,7 @@ export const submitBattleScore = createServerFn({ method: "POST" })
 
 /** Questions + subject/chapter names + diagram / option-image ids for a test. */
 export const getQuizPageQuestions = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionIds: string[]; marksCorrect: number; marksWrong: number }) => d)
+  .validator((d: { questionIds: string[]; marksCorrect: number; marksWrong: number }) => d)
   .handler(
     async ({
       data,
@@ -695,7 +695,7 @@ export const getQuizPageQuestions = createServerFn({ method: "POST" })
 
 /** Bookmarked + previously-wrong question ids for the current user. */
 export const getQuizUserMarks = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionIds: string[] }) => d)
+  .validator((d: { questionIds: string[] }) => d)
   .handler(async ({ data }): Promise<{ bookmarks: string[]; wrong: string[] }> => {
     const userId = await getUserId();
     const ids = [...new Set(data.questionIds.map((v) => String(v)))].filter(Boolean);
@@ -720,7 +720,7 @@ export const getQuizUserMarks = createServerFn({ method: "POST" })
 
 /** Most recent attempt row (any status) for resuming practice quizzes. */
 export const getLatestQuizAttempt = createServerFn({ method: "POST" })
-  .inputValidator((d: { testId: string }) => d)
+  .validator((d: { testId: string }) => d)
   .handler(
     async ({
       data,
@@ -751,7 +751,7 @@ export const getLatestQuizAttempt = createServerFn({ method: "POST" })
 
 /** Add or remove a bookmark explicitly (mirrors the old upsert/delete pair). */
 export const setQuizBookmark = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionId: string; add: boolean }) => d)
+  .validator((d: { questionId: string; add: boolean }) => d)
   .handler(async ({ data }): Promise<{ ok: boolean }> => {
     const userId = await requireUserId();
     const { execute } = await import("@/lib/db/mysql.server");
@@ -773,7 +773,7 @@ export const setQuizBookmark = createServerFn({ method: "POST" })
 
 /** Add or remove a "My Mistakes" / wrong-question row. */
 export const setQuizWrongQuestion = createServerFn({ method: "POST" })
-  .inputValidator((d: { questionId: string; chapterId?: string | null; add: boolean }) => d)
+  .validator((d: { questionId: string; chapterId?: string | null; add: boolean }) => d)
   .handler(async ({ data }): Promise<{ ok: boolean }> => {
     const userId = await requireUserId();
     const { execute } = await import("@/lib/db/mysql.server");
@@ -800,7 +800,7 @@ export const setQuizWrongQuestion = createServerFn({ method: "POST" })
  * (+4 per correct, -1 per wrong, never below zero).
  */
 export const submitQuizPageAttempt = createServerFn({ method: "POST" })
-  .inputValidator(
+  .validator(
     (d: {
       testId: string;
       answers: Record<string, number>;
@@ -863,7 +863,7 @@ export const submitQuizPageAttempt = createServerFn({ method: "POST" })
 
 /** Wrong-reason tags recorded against an attempt, used by the result view. */
 export const getAttemptWrongReasons = createServerFn({ method: "POST" })
-  .inputValidator((d: { attemptId: string }) => d)
+  .validator((d: { attemptId: string }) => d)
   .handler(async ({ data }): Promise<Record<string, string>> => {
     const userId = await getUserId();
     if (!userId) return {};

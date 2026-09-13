@@ -24,7 +24,7 @@ async function assertAdmin(userId: string) {
 
 export const getUserReport = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) => z.object({ email: z.string().trim().min(3) }).parse(input))
+  .validator((input) => z.object({ email: z.string().trim().min(3) }).parse(input))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
 

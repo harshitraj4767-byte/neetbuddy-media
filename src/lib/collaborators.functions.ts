@@ -10,7 +10,7 @@ const FIXED_MIN_WITHDRAWAL = 100;
 
 export const applyForCollaboratorProgram = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       name: z.string().trim().min(2).max(120),
       contact: z.string().trim().min(4).max(60),
@@ -123,7 +123,7 @@ export const adminListCollaborators = createServerFn({ method: "GET" })
 
 export const adminUpdateCollaboratorStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({
+  .validator((d) => z.object({
     id: z.string().uuid(),
     status: z.enum(["pending", "approved", "rejected", "ended"]),
     admin_notes: z.string().max(2000).optional(),

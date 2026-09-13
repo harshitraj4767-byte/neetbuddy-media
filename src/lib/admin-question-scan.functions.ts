@@ -44,7 +44,7 @@ async function callGeminiJudge(payload: unknown, apiKey: string): Promise<ScanVe
 
 export const scanQuestionsForSyllabus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       subjectId: z.string().uuid().optional(),
       chapterId: z.string().uuid().optional(),
@@ -112,7 +112,7 @@ export const scanQuestionsForSyllabus = createServerFn({ method: "POST" })
 
 export const listQuestionFlags = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ status: z.enum(["open","approved_keep","deleted","ignored"]).default("open"), limit: z.number().min(1).max(200).default(100) }).parse(d))
+  .validator((d) => z.object({ status: z.enum(["open","approved_keep","deleted","ignored"]).default("open"), limit: z.number().min(1).max(200).default(100) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const q = db.from("question_flags")
@@ -128,7 +128,7 @@ export const listQuestionFlags = createServerFn({ method: "POST" })
 
 export const resolveQuestionFlag = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({
+  .validator((d) => z.object({
     flagId: z.string().uuid(),
     action: z.enum(["delete","approve_keep","ignore"]),
   }).parse(d))
@@ -151,7 +151,7 @@ export const resolveQuestionFlag = createServerFn({ method: "POST" })
 
 export const attachQuestionDiagram = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({
+  .validator((d) => z.object({
     questionId: z.string().uuid(),
     diagramUrl: z.string().url().optional(),
     imagePrompt: z.string().max(2000).optional(),

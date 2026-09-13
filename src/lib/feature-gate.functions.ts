@@ -11,7 +11,7 @@ type Feature = "flashcards" | "ncert_highlights";
  */
 export const accessStudyFeature = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { feature: Feature }) =>
+  .validator((d: { feature: Feature }) =>
     z.object({ feature: z.enum(["flashcards", "ncert_highlights"]) }).parse(d),
   )
   .handler(async ({ data, context }) => {

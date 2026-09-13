@@ -5,7 +5,7 @@ import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 export const submitFeedback = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({
       rating: z.number().int().min(1).max(5),
       category: z.enum(["bug", "idea", "other"]).default("other"),

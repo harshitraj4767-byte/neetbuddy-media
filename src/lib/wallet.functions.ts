@@ -42,7 +42,7 @@ async function getBalance(admin: any, userId: string): Promise<{ available: numb
 
 export const requestWithdrawal = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => bankSchema.parse(d))
+  .validator((d: unknown) => bankSchema.parse(d))
   .handler(async ({ data, context }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const admin = supabaseAdmin as any;
@@ -138,7 +138,7 @@ export const adminListPendingWithdrawals = createServerFn({ method: "GET" })
 
 export const adminApproveWithdrawal = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z.object({ id: z.string().uuid(), note: z.string().max(500).optional().nullable() }).parse(d),
   )
   .handler(async ({ data, context }) => {
@@ -190,7 +190,7 @@ export const adminApproveWithdrawal = createServerFn({ method: "POST" })
 
 export const adminRejectWithdrawal = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
+  .validator((d: unknown) =>
     z.object({ id: z.string().uuid(), note: z.string().min(2).max(500) }).parse(d),
   )
   .handler(async ({ data, context }) => {

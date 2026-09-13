@@ -227,7 +227,7 @@ async function buildDayQuiz(userId: string, dayNum: number, focusSubject: string
 
 export const generateAiPath = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { user_focus?: string } | undefined) =>
+  .validator((d: { user_focus?: string } | undefined) =>
     z.object({ user_focus: z.string().max(500).optional() }).parse(d ?? {}),
   )
   .handler(async ({ data, context }) => {
@@ -342,7 +342,7 @@ ${neetHistoryPromptBlock()}`;
 
 export const updatePathProgress = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { path_id: string; key: string; done: boolean }) =>
+  .validator((d: { path_id: string; key: string; done: boolean }) =>
     z.object({
       path_id: z.string().uuid(),
       key: z.string().min(1).max(50),
@@ -367,7 +367,7 @@ export const updatePathProgress = createServerFn({ method: "POST" })
 /** Generate a "week is done" improvement report. Only allowed when every task is checked. */
 export const generateWeeklyReport = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { path_id: string }) => z.object({ path_id: z.string().uuid() }).parse(d))
+  .validator((d: { path_id: string }) => z.object({ path_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const { data: row } = await supabaseAdmin
       .from("ai_paths" as never)

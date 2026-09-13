@@ -111,7 +111,7 @@ export const getMentorshipOverview = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const listMentorshipMessages = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ limit: z.number().int().min(1).max(200).optional() }).parse(d ?? {}))
+  .validator((d) => z.object({ limit: z.number().int().min(1).max(200).optional() }).parse(d ?? {}))
   .handler(async ({ data, context }) => {
     const admin = supabaseAdmin as any;
     const a = await resolveAccess(context.userId);
@@ -152,7 +152,7 @@ export const listMentorshipMessages = createServerFn({ method: "POST" })
 
 export const sendMentorshipMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       body: z.string().trim().max(4000).optional(),
       attachment_url: z.string().trim().url().max(1000).optional(),
@@ -185,7 +185,7 @@ export const sendMentorshipMessage = createServerFn({ method: "POST" })
 
 export const pinMentorshipMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid(), pinned: z.boolean() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid(), pinned: z.boolean() }).parse(d))
   .handler(async ({ data, context }) => {
     const admin = supabaseAdmin as any;
     const a = await resolveAccess(context.userId);
@@ -200,7 +200,7 @@ export const pinMentorshipMessage = createServerFn({ method: "POST" })
 
 export const deleteMentorshipMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     const admin = supabaseAdmin as any;
     const a = await resolveAccess(context.userId);
@@ -224,7 +224,7 @@ export const deleteMentorshipMessage = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const muteMentorshipUser = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ user_id: z.string().uuid(), muted: z.boolean(), reason: z.string().trim().max(300).optional() }).parse(d))
+  .validator((d) => z.object({ user_id: z.string().uuid(), muted: z.boolean(), reason: z.string().trim().max(300).optional() }).parse(d))
   .handler(async ({ data, context }) => {
     const admin = supabaseAdmin as any;
     const a = await resolveAccess(context.userId);
@@ -262,7 +262,7 @@ export const listMutedUsers = createServerFn({ method: "POST" })
 // ---------------------------------------------------------------------------
 export const rateMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       mentor_id: z.string().uuid(),
       rating: z.number().int().min(1).max(5),

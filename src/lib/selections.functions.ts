@@ -58,7 +58,7 @@ const SelInput = z.object({
 
 export const adminUpsertSelection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => SelInput.parse(i))
+  .validator((i) => SelInput.parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();
@@ -75,7 +75,7 @@ export const adminUpsertSelection = createServerFn({ method: "POST" })
 
 export const adminDeleteSelection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();
@@ -87,7 +87,7 @@ export const adminDeleteSelection = createServerFn({ method: "POST" })
 // Signed upload URL for admins to upload media into selection-results bucket
 export const adminCreateSelectionUploadUrl = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ filename: z.string().min(1).max(160), kind: z.enum(["image", "video"]) }).parse(i))
+  .validator((i) => z.object({ filename: z.string().min(1).max(160), kind: z.enum(["image", "video"]) }).parse(i))
   .handler(async ({ data, context }) => {
     await ensureAdmin(context);
     const db = await admin();

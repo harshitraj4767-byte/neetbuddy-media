@@ -16,7 +16,7 @@ async function assertAdmin(userId: string) {
 // -------- Auth: record review --------
 export const recordFlashcardReview = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { card_id: string; rating: 1 | 2 | 3 }) =>
+  .validator((d: { card_id: string; rating: 1 | 2 | 3 }) =>
     z.object({
       card_id: z.string().uuid(),
       rating: z.number().int().min(1).max(3),
@@ -119,7 +119,7 @@ type AdminDb = { from: (t: string) => any };
 
 export const adminGenerateFlashcards = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { chapter_id: string; count?: number }) =>
+  .validator((d: { chapter_id: string; count?: number }) =>
     z.object({
       chapter_id: z.string().uuid(),
       count: z.number().int().min(5).max(60).optional(),
@@ -181,7 +181,7 @@ export const adminGenerateFlashcards = createServerFn({ method: "POST" })
 
 export const adminDeleteFlashcardsByChapter = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { chapter_id: string }) =>
+  .validator((d: { chapter_id: string }) =>
     z.object({ chapter_id: z.string().uuid() }).parse(d),
   )
   .handler(async ({ data, context }) => {
@@ -236,7 +236,7 @@ export const adminListChaptersForFlashcards = createServerFn({ method: "GET" })
 // stay within serverless time limits. Call repeatedly until `remaining` is 0.
 export const adminGenerateFlashcardsBulk = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { subject_id?: string | null; per_chapter?: number; max_chapters?: number }) =>
+  .validator((d: { subject_id?: string | null; per_chapter?: number; max_chapters?: number }) =>
     z.object({
       subject_id: z.string().uuid().nullable().optional(),
       per_chapter: z.number().int().min(5).max(40).optional(),

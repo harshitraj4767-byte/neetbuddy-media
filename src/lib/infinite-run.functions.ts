@@ -50,7 +50,7 @@ export const getInfiniteRunStatus = createServerFn({ method: "GET" })
 // ---- Start ----
 export const startInfiniteRun = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { modes?: RunMode[]; per_tick_count?: number }) =>
+  .validator((d: { modes?: RunMode[]; per_tick_count?: number }) =>
     z.object({
       modes: z.array(z.enum(["dpp", "diagram"])).min(1).max(2).optional(),
       per_tick_count: z.number().int().min(1).max(20).optional(),

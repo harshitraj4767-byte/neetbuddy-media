@@ -45,7 +45,7 @@ function questionCountForStake(stake: number) {
 
 export const finalizeBotMatch = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z
       .object({
         matchId: z.string().uuid(),

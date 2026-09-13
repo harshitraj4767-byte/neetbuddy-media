@@ -9,7 +9,7 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 export const adminCreateContest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z
       .object({
         title: z.string().min(3).max(120),
@@ -35,7 +35,7 @@ export const adminCreateContest = createServerFn({ method: "POST" })
 
 export const joinContest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z
       .object({
         contest_id: z.string().uuid(),
@@ -58,7 +58,7 @@ export const listPastContests = createServerFn({ method: "GET" })
 
 export const getContestDetail = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) => z.object({ contest_id: z.string().uuid() }).parse(input))
+  .validator((input) => z.object({ contest_id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
     const { getContestDetailImpl } = await import("@/lib/contests.server");
     return getContestDetailImpl(data, context);

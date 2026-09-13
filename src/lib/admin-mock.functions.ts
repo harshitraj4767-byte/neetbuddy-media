@@ -14,7 +14,7 @@ const DifficultySchema = z.enum(["easy", "medium", "hard", "mixed"]);
 // Preview: count available questions per subject for the given chapters/difficulty.
 export const previewMockSelection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       groups: z.array(SubjectChaptersSchema).min(1),
       difficulty: DifficultySchema.default("mixed"),
@@ -47,7 +47,7 @@ export const previewMockSelection = createServerFn({ method: "POST" })
 // Create the mock test: 45 (or N) questions per subject, randomly selected.
 export const createMockTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       title: z.string().min(1).max(255),
       description: z.string().max(1000).optional().nullable(),
@@ -133,7 +133,7 @@ export const createMockTest = createServerFn({ method: "POST" })
 // ─────────────────────────────────────────────────────────────────────────────
 export const generateAiMockBatch = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       count: z.number().int().min(1).max(20),
       perMock: z.literal(180).default(180),
@@ -368,7 +368,7 @@ export const generateAiMockBatch = createServerFn({ method: "POST" })
 // Admin delete a test (any type). Cascades via FK: attempts, contests, battle_matches.
 export const adminDeleteTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await supabaseAdmin.from("tests").delete().eq("id", data.id);

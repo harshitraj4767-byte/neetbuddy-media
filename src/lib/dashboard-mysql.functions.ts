@@ -58,7 +58,7 @@ export const getDashboardSubjectCounts = createServerFn({ method: "POST" }).hand
 
 /** Completed attempts from the last 60 days: streak, today's progress, weekly chart. */
 export const getDashboardAttempts = createServerFn({ method: "POST" })
-  .inputValidator((d: { userId: string; sinceIso: string }) => d)
+  .validator((d: { userId: string; sinceIso: string }) => d)
   .handler(async ({ data }): Promise<DashboardAttemptDTO[]> => {
     const { query } = await import("@/lib/db/mysql.server");
     const since = new Date(data.sinceIso);
@@ -83,7 +83,7 @@ export const getDashboardAttempts = createServerFn({ method: "POST" })
 
 /** Mistake bank totals for the recommendation cards. */
 export const getDashboardMistakes = createServerFn({ method: "POST" })
-  .inputValidator((d: { userId: string }) => d)
+  .validator((d: { userId: string }) => d)
   .handler(async ({ data }): Promise<{ mistakes: number; weakChapters: number }> => {
     const { query } = await import("@/lib/db/mysql.server");
     const rows = await query<{ chapter_id: string | null }>(

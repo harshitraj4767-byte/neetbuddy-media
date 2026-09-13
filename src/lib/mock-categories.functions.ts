@@ -15,7 +15,7 @@ export const listMockCategories = createServerFn({ method: "GET" }).handler(asyn
 
 export const adminUpsertMockCategory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d) =>
     z.object({
       id: z.string().uuid().optional(),
       name: z.string().min(1).max(64),
@@ -38,7 +38,7 @@ export const adminUpsertMockCategory = createServerFn({ method: "POST" })
 
 export const adminDeleteMockCategory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any).from("mock_categories").delete().eq("id", data.id);
@@ -48,7 +48,7 @@ export const adminDeleteMockCategory = createServerFn({ method: "POST" })
 
 export const adminSetTestCategory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ test_id: z.string().uuid(), category_id: z.string().uuid().nullable() }).parse(d))
+  .validator((d) => z.object({ test_id: z.string().uuid(), category_id: z.string().uuid().nullable() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any).from("tests").update({ category_id: data.category_id }).eq("id", data.test_id);

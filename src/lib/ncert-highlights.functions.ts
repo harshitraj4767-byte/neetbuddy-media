@@ -60,7 +60,7 @@ export const listHighlightDecks = createServerFn({ method: "GET" }).handler(asyn
 
 
 export const getHighlights = createServerFn({ method: "POST" })
-  .inputValidator((d: { chapter_id?: string | null; subject_id?: string | null }) =>
+  .validator((d: { chapter_id?: string | null; subject_id?: string | null }) =>
     z.object({
       chapter_id: z.string().uuid().nullable().optional(),
       subject_id: z.string().uuid().nullable().optional(),
@@ -92,7 +92,7 @@ export const getHighlights = createServerFn({ method: "POST" })
 // ----- Admin: manual add -----
 export const adminAddHighlight = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { chapter_id: string; body: string; source?: string }) =>
+  .validator((d: { chapter_id: string; body: string; source?: string }) =>
     z.object({
       chapter_id: z.string().uuid(),
       body: z.string().trim().min(3).max(4000),
@@ -131,7 +131,7 @@ Rules per highlight:
 
 export const adminGenerateHighlights = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { chapter_id: string; count?: number }) =>
+  .validator((d: { chapter_id: string; count?: number }) =>
     z.object({
       chapter_id: z.string().uuid(),
       count: z.number().int().min(5).max(40).optional(),
@@ -193,7 +193,7 @@ export const adminGenerateHighlights = createServerFn({ method: "POST" })
 
 export const adminDeleteHighlightsByChapter = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { chapter_id: string }) => z.object({ chapter_id: z.string().uuid() }).parse(d))
+  .validator((d: { chapter_id: string }) => z.object({ chapter_id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error, count } = await supabaseAdmin
@@ -206,7 +206,7 @@ export const adminDeleteHighlightsByChapter = createServerFn({ method: "POST" })
 
 export const adminDeleteHighlight = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await supabaseAdmin.from("ncert_highlights" as never).delete().eq("id", data.id);
@@ -253,7 +253,7 @@ async function generateAiHighlights(subjName: string, chapterName: string, klass
 // `remaining` is 0 to cover the whole syllabus without hitting time limits.
 export const adminGenerateHighlightsBulk = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { subject_id?: string | null; per_chapter?: number; max_chapters?: number }) =>
+  .validator((d: { subject_id?: string | null; per_chapter?: number; max_chapters?: number }) =>
     z.object({
       subject_id: z.string().uuid().nullable().optional(),
       per_chapter: z.number().int().min(5).max(40).optional(),

@@ -80,7 +80,7 @@ const ChapterSchema = z.object({
 
 export const createAdminTest = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => TestSchema.parse(d))
+  .validator((d) => TestSchema.parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const rows: any[] = [];
@@ -118,7 +118,7 @@ export const createAdminTest = createServerFn({ method: "POST" })
 
 export const importChapterQuizzes = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ groups: z.array(ChapterQuizSchema).min(1).max(100) }).parse(d))
+  .validator((d) => z.object({ groups: z.array(ChapterQuizSchema).min(1).max(100) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     let created = 0;
@@ -160,7 +160,7 @@ export const importChapterQuizzes = createServerFn({ method: "POST" })
 
 export const importChapters = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ chapters: z.array(ChapterSchema).min(1).max(2000) }).parse(d))
+  .validator((d) => z.object({ chapters: z.array(ChapterSchema).min(1).max(2000) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     let created = 0;

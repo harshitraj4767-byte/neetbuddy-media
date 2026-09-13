@@ -34,7 +34,7 @@ function pickMixed(pool: QbQ[], n: number): QbQ[] {
 }
 
 export const generateDailyDppsFromDb = createServerFn({ method: "POST" })
-  .inputValidator((d) => z.object({
+  .validator((d) => z.object({
     count: z.number().int().min(1).max(20).optional(),
     questions_per_dpp: z.number().int().min(15).max(30).optional(),
     duration_min: z.number().int().min(5).max(120).optional(),

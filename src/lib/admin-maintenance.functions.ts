@@ -54,7 +54,7 @@ const HAS_IMAGE_REGEX = /!\[diagram\]|\/api\/public\/diagram\//i;
 
 export const backfillDiagrams = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { limit?: number }) =>
+  .validator((d: { limit?: number }) =>
     z.object({ limit: z.number().int().min(1).max(50).default(10) }).parse(d ?? {}),
   )
   .handler(async ({ data, context }) => {
@@ -116,7 +116,7 @@ export const backfillDiagrams = createServerFn({ method: "POST" })
 // ── 3) Irrelevant biology question cleanup (AI classifier, auto-delete high-confidence) ──
 export const cleanupIrrelevantBio = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: { limit?: number }) =>
+  .validator((d: { limit?: number }) =>
     z.object({ limit: z.number().int().min(1).max(100).default(30) }).parse(d ?? {}),
   )
   .handler(async ({ data, context }) => {

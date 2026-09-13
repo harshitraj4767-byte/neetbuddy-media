@@ -32,7 +32,7 @@ async function upsertChecklist(userId: string, date: string) {
 /** Get today (or a given date's) checklist for the current user. */
 export const getMyChecklist = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ date: z.string().optional() }).parse(i))
+  .validator((i) => z.object({ date: z.string().optional() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const date = data.date ?? todayISO();
@@ -54,7 +54,7 @@ export const getMyChecklist = createServerFn({ method: "POST" })
 /** Morning: replace today's tasks with the provided list. */
 export const submitMorningChecklist = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       date: z.string().optional(),
       items: z.array(z.string().trim().min(1).max(300)).min(1).max(30),
@@ -85,7 +85,7 @@ export const submitMorningChecklist = createServerFn({ method: "POST" })
 /** Toggle a single task done state. */
 export const toggleChecklistItem = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ item_id: z.string().uuid(), done: z.boolean() }).parse(i))
+  .validator((i) => z.object({ item_id: z.string().uuid(), done: z.boolean() }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     // Verify ownership
@@ -113,7 +113,7 @@ export const toggleChecklistItem = createServerFn({ method: "POST" })
 /** Night: save good_things + regrets + mark night submitted. */
 export const submitNightReflection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       date: z.string().optional(),
       good_things: z.string().max(3000).optional().nullable(),
@@ -139,7 +139,7 @@ export const submitNightReflection = createServerFn({ method: "POST" })
 /** Recent checklist history for the current user. */
 export const listMyChecklistHistory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ days: z.number().int().min(1).max(60).default(14) }).parse(i))
+  .validator((i) => z.object({ days: z.number().int().min(1).max(60).default(14) }).parse(i))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const since = new Date();
@@ -200,7 +200,7 @@ function istHour(iso: string | null): number | null {
 /** Full performance snapshot: daily / weekly / monthly comparisons, streaks, habits. */
 export const getChecklistAnalytics = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ days: z.number().int().min(30).max(180).default(90) }).parse(i ?? {}))
+  .validator((i) => z.object({ days: z.number().int().min(30).max(180).default(90) }).parse(i ?? {}))
   .handler(async ({ data, context }) => {
     const db = await admin();
     const span = data.days;

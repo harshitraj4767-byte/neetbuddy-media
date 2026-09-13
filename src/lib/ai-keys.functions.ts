@@ -111,7 +111,7 @@ export const adminListAiKeys = createServerFn({ method: "GET" })
 
 export const adminAddAiKey = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({
       label: z.string().trim().min(1).max(80),
       key: z.string().trim().min(8).max(2000),
@@ -137,7 +137,7 @@ export const adminAddAiKey = createServerFn({ method: "POST" })
 
 export const adminToggleAiKey = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) =>
+  .validator((input) =>
     z.object({ id: z.string().uuid(), is_active: z.boolean() }).parse(input),
   )
   .handler(async ({ data, context }) => {
@@ -153,7 +153,7 @@ export const adminToggleAiKey = createServerFn({ method: "POST" })
 
 export const adminDeleteAiKey = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input) => z.object({ id: z.string().uuid() }).parse(input))
+  .validator((input) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const supabaseAdmin = await getAdmin();

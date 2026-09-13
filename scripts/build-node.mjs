@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { existsSync, rmSync } from "node:fs";
+import { existsSync, rmSync, cpSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = process.cwd();
@@ -12,27 +12,42 @@ const env = {
   NODE_BUILD: "true",
   STATIC_BUILD: "",
   NITRO_PRESET: "node-server",
-  NODE_OPTIONS: "--max-old-space-size=4096 " + (process.env.NODE_OPTIONS || ""),
+  NODE_OPTIONS: process.env.NODE_OPTIONS || "--max-old-space-size=2048",
 };
 delete env["LOVABLE_SANDBOX"];
 delete env["DEV_SERVER__PROJECT_PATH"];
 
-const result = spawnSync("npx", ["--no-install", "vite", "build"], {
+const viteBin = resolve(root, "node_modules/.bin/vite");
+const cmd = existsSync(viteBin) ? viteBin : "npx";
+const args = existsSync(viteBin) ? ["build"] : ["vite", "build"];
+
+console.log(`Running Vite build with ${cmd} ${args.join(" ")}...`);
+const result = spawnSync(cmd, args, {
   stdio: "inherit",
   env,
   shell: process.platform === "win32",
 });
 
-if (result.status !== 0) process.exit(result.status ?? 1);
+if (result.status !== 0) {
+  process.exit(result.status ?? 1);
+}
 
-const entry = [".output/server/index.mjs", "dist/server/index.mjs"]
+const serverEntry = [".output/server/index.mjs", "dist/server/index.mjs"]
   .map((p) => resolve(root, p))
   .find((p) => existsSync(p));
 
-if (!entry) {
+if (!serverEntry) {
   console.error("ERROR: no Node server bundle was produced (.output/server/index.mjs missing).");
   process.exit(1);
 }
 
-console.log(`\n✔ Node server build ready: ${entry}`);
-console.log("  Start it with: npm start   (listens on $PORT, default 3000)");
+const publicOut = resolve(root, ".output/public");
+const distDir = resolve(root, "dist");
+if (existsSync(publicOut) && !existsSync(distDir)) {
+  mkdirSync(distDir, { recursive: true });
+  cpSync(publicOut, distDir, { recursive: true });
+}
+
+console.log(`\n✔ Node server build ready: ${serverEntry}`);
+console.log("  Output directories populated: .output/ and dist/");
+console.log("  Start command: npm start (or node start-server.mjs)");

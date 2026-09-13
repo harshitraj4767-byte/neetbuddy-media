@@ -39,7 +39,7 @@ export const adminListFeedback = createServerFn({ method: "GET" })
 
 export const adminMarkFeedbackResolved = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid(), resolved: z.boolean() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid(), resolved: z.boolean() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any)
@@ -56,7 +56,7 @@ export const adminMarkFeedbackResolved = createServerFn({ method: "POST" })
 
 export const adminDeleteFeedback = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any).from("feedback").delete().eq("id", data.id);

@@ -97,7 +97,7 @@ export const getBattleQueueState = createServerFn({ method: "POST" })
  */
 export const matchWithBot = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ subject: z.string().min(1).max(40) }).parse(d))
+  .validator((d) => z.object({ subject: z.string().min(1).max(40) }).parse(d))
   .handler(async ({ data, context }) => {
     const sb = context.supabase as any;
 

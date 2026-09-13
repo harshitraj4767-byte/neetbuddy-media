@@ -6,7 +6,7 @@ import { assertAdmin, logAdminAction } from "./admin-content.server";
 
 export const bulkDeleteByChapter = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ chapterId: z.string().uuid() }).parse(d))
+  .validator((d) => z.object({ chapterId: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { count: qcount } = await supabaseAdmin
@@ -19,7 +19,7 @@ export const bulkDeleteByChapter = createServerFn({ method: "POST" })
 
 export const bulkDeleteBySubject = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ subjectId: z.string().uuid(), alsoDeleteTests: z.boolean().optional() }).parse(d))
+  .validator((d) => z.object({ subjectId: z.string().uuid(), alsoDeleteTests: z.boolean().optional() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { count: qcount } = await supabaseAdmin

@@ -9,7 +9,7 @@ async function admin() {
 
 export const adminSetMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({
       user_id: z.string().uuid(),
       display_name: z.string().min(1).max(120),
@@ -36,7 +36,7 @@ export const adminSetMentor = createServerFn({ method: "POST" })
 
 export const adminRemoveMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ user_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ user_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const sb: any = context.supabase;
     const { data: ok } = await sb.rpc("has_role", { _user_id: context.userId, _role: "admin" });
@@ -65,7 +65,7 @@ export const adminListMentorsForAssign = createServerFn({ method: "GET" })
 
 export const adminAssignMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ user_id: z.string().uuid(), mentor_id: z.string().uuid() }).parse(i),
   )
   .handler(async ({ data, context }) => {
@@ -80,7 +80,7 @@ export const adminAssignMentor = createServerFn({ method: "POST" })
 
 export const adminUnassignMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ user_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ user_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const sb: any = context.supabase;
     const { error } = await sb.rpc("admin_unassign_mentor", { _user_id: data.user_id });
@@ -90,7 +90,7 @@ export const adminUnassignMentor = createServerFn({ method: "POST" })
 
 export const getUserAssignedMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) => z.object({ user_id: z.string().uuid() }).parse(i))
+  .validator((i) => z.object({ user_id: z.string().uuid() }).parse(i))
   .handler(async ({ data, context }) => {
     const sb: any = context.supabase;
     const { data: ok } = await sb.rpc("has_role", { _user_id: context.userId, _role: "admin" });
@@ -113,7 +113,7 @@ export const getUserAssignedMentor = createServerFn({ method: "POST" })
 // ---- Group renaming (mentor or admin) ------------------------------------
 export const renameMentorshipGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i) =>
+  .validator((i) =>
     z.object({ group_id: z.string().uuid(), name: z.string().trim().min(1).max(120) }).parse(i),
   )
   .handler(async ({ data, context }) => {

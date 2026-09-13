@@ -7,7 +7,7 @@ import { consumeTrialQuota, TRIAL_LIMITS } from "@/lib/trial-limits.server";
 /** Creates a custom quiz test by sampling questions from the question bank. */
 export const createCustomTestWithBonus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => CreateCustomTestSchema.parse(d))
+  .validator((d) => CreateCustomTestSchema.parse(d))
   .handler(async ({ data, context }) => {
     const { userId } = context;
     // Trial: max 3 generated tests per day.
