@@ -1,8 +1,73 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig as defineLovableConfig } from "@lovable.dev/vite-tanstack-config";
+import { mergeConfig, type Plugin, type PluginOption, type UserConfig } from "vite";
 
 const isNodeBuild = process.env["NODE_BUILD"] === "true" || process.env["NITRO_PRESET"] === "node-server";
 
-export default defineConfig({
+/**
+ * Vite 8 resolves tsconfig `paths` natively (`resolve.tsconfigPaths`), so the
+ * bundled `vite-tsconfig-paths` plugin is dropped here: it emitted a
+ * deprecation warning on every build and accounted for most of the build time.
+ * The `@` alias below is declared explicitly so nothing depends on the plugin.
+ */
+function dropTsconfigPathsPlugin(plugins: PluginOption[] | undefined): PluginOption[] {
+  const keep: PluginOption[] = [];
+  for (const plugin of plugins ?? []) {
+    if (!plugin) continue;
+    if (Array.isArray(plugin)) {
+      keep.push(dropTsconfigPathsPlugin(plugin));
+      continue;
+    }
+    const name = (plugin as Plugin).name;
+    if (name === "vite-tsconfig-paths") continue;
+    keep.push(plugin);
+  }
+  return keep;
+}
+
+/** Vendor chunks: keeps any single chunk well under the 500 kB warning limit. */
+const vendorGroups = [
+  { name: "vendor-react", test: /node_modules\/(react|react-dom|scheduler|react-is|prop-types)\// },
+  { name: "vendor-tanstack", test: /node_modules\/@tanstack\// },
+  { name: "vendor-radix", test: /node_modules\/(@radix-ui|cmdk|vaul|input-otp|embla-carousel[^/]*|react-resizable-panels)\// },
+  { name: "vendor-charts", test: /node_modules\/(recharts|d3-[^/]+|victory-vendor|decimal\.js-light|internmap|robust-predicates|delaunator)\// },
+  { name: "vendor-katex", test: /node_modules\/(katex|react-katex)\// },
+  { name: "vendor-pdf", test: /node_modules\/(pdf-lib|@pdf-lib)\// },
+  { name: "vendor-supabase", test: /node_modules\/@supabase\// },
+  { name: "vendor-forms", test: /node_modules\/(react-hook-form|@hookform|zod)\// },
+  { name: "vendor-dates", test: /node_modules\/(date-fns|react-day-picker)\// },
+  { name: "vendor-icons", test: /node_modules\/lucide-react\// },
+];
+
+const extraConfig: UserConfig = {
+  resolve: {
+    // Native replacement for the vite-tsconfig-paths plugin.
+    tsconfigPaths: true,
+    alias: {
+      "@": new URL("./src", import.meta.url).pathname,
+    },
+  },
+  build: {
+    chunkSizeWarningLimit: 700,
+  },
+  environments: {
+    // Vendor splitting only matters for what the browser downloads; the SSR /
+    // prerender build keeps the framework's own chunking untouched.
+    client: {
+      build: {
+        rolldownOptions: {
+          output: {
+            codeSplitting: {
+              minSize: 0,
+              groups: [...vendorGroups, { name: "vendor-misc", test: /node_modules\// }],
+            },
+          },
+        },
+      },
+    },
+  },
+} as UserConfig;
+
+const lovableConfig = defineLovableConfig({
   nitro: {
     preset: isNodeBuild ? "node-server" : "static",
     output: {
@@ -16,3 +81,10 @@ export default defineConfig({
     prerender: isNodeBuild ? { enabled: false } : { enabled: true, crawlLinks: false },
   },
 });
+
+export default async (env: { command: string; mode: string }) => {
+  const base = (await (lovableConfig as unknown as (e: unknown) => Promise<UserConfig>)(env)) ?? {};
+  const config = mergeConfig(base, extraConfig) as UserConfig;
+  config.plugins = dropTsconfigPathsPlugin(base.plugins as PluginOption[] | undefined);
+  return config;
+};
