@@ -8,9 +8,11 @@ import { downloadWatermarkedPdf } from "@/lib/pdf-watermark";
 import { logShortNoteDownload } from "@/lib/trial-limits.functions";
 import { toast } from "sonner";
 
+// Search params must never throw: a bare /study-view visit (or the prerender
+// pass, which has no query string) would otherwise fail the whole route.
 const searchSchema = z.object({
-  url: z.string().url(),
-  title: z.string().optional(),
+  url: z.string().url().optional().catch(undefined),
+  title: z.string().optional().catch(undefined),
 });
 
 export const Route = createFileRoute("/study-view")({
@@ -31,7 +33,7 @@ function StudyViewPage() {
   const displayTitle = title ?? "Study Material";
 
   async function handleDownload() {
-    if (busy) return;
+    if (busy || !url) return;
     setBusy(true);
     try {
       // Trial-quota check + record BEFORE downloading so bandwidth isn't wasted.
@@ -43,6 +45,22 @@ function StudyViewPage() {
     } finally {
       setBusy(false);
     }
+  }
+
+  if (!url) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
+        <h1 className="text-lg font-semibold">No document selected</h1>
+        <p className="text-sm text-muted-foreground">
+          Open a study material from the library to read it here.
+        </p>
+        <Button asChild size="sm">
+          <Link to="/study-essentials">
+            <ArrowLeft className="mr-1 h-4 w-4" /> Browse study materials
+          </Link>
+        </Button>
+      </div>
+    );
   }
 
   return (

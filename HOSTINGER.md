@@ -26,6 +26,9 @@ fail):
 
 Notes:
 
+- `npm run build` builds the Nitro node-server bundle (`scripts/build.mjs` ->
+  `scripts/build-node.mjs`). Set `BUILD_TARGET=static` (or run
+  `npm run build:static`) only for the static/PHP option below.
 - `npm run build` writes a single self-contained `.output/` tree. It no longer
   duplicates the 1.2 GB asset tree into `dist/`; set `COPY_DIST=true` only if a
   host explicitly needs a separate `dist/` folder.
