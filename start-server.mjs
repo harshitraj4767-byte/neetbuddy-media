@@ -34,6 +34,8 @@ if (!entry) {
 
 process.env.PORT ??= "3000";
 process.env.HOST ??= "0.0.0.0";
+process.env.NITRO_PORT = process.env.PORT;
+process.env.NITRO_HOST = process.env.HOST;
 
 console.log(`Starting server from ${entry} on port ${process.env.PORT}`);
 await import(pathToFileURL(entry).href);

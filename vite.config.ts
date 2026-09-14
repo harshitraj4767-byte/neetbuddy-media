@@ -1,7 +1,8 @@
 import { defineConfig as defineLovableConfig } from "@lovable.dev/vite-tanstack-config";
 import { mergeConfig, type Plugin, type PluginOption, type UserConfig } from "vite";
 
-const isNodeBuild = process.env["NODE_BUILD"] === "true" || process.env["NITRO_PRESET"] === "node-server";
+const isStaticBuild = process.env["STATIC_BUILD"] === "true" || process.env["BUILD_TARGET"] === "static";
+const isNodeBuild = !isStaticBuild;
 
 /**
  * Vite 8 resolves tsconfig `paths` natively (`resolve.tsconfigPaths`), so the
