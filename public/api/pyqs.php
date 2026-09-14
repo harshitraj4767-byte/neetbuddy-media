@@ -1,44 +1,43 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/auth/lib.php';
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Credentials: true');
- = ['HTTP_ORIGIN'] ?? '*';
-header('Access-Control-Allow-Origin: ' . );
-header('Access-Control-Allow-Methods: GET, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-if (['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
- = nb_pdo();
- = ['subject_id'] ?? null;
- = ['chapter_id'] ?? null;
- = ['year'] ?? null;
+require_once __DIR__ . "/auth/lib.php";
 
- = 'SELECT * FROM questions WHERE is_pyq = 1';
- = [];
+nb_cors();
 
-if () {
-     .= ' AND subject_id = :sid';
-    [':sid'] = ;
+$pdo = nb_pdo();
+$subjectId = $_GET["subject_id"] ?? null;
+$chapterId = $_GET["chapter_id"] ?? null;
+$year = $_GET["year"] ?? null;
+
+$sql = "SELECT * FROM qb_questions WHERE (is_pyq = 1 OR year IS NOT NULL)";
+$params = [];
+
+if ($subjectId) {
+    $sql .= " AND subject_id = :sid";
+    $params[":sid"] = $subjectId;
 }
-if () {
-     .= ' AND chapter_id = :cid';
-    [':cid'] = ;
+if ($chapterId) {
+    $sql .= " AND chapter_id = :cid";
+    $params[":cid"] = $chapterId;
 }
-if () {
-     .= ' AND pyq_year = :yr';
-    [':yr'] = ;
+if ($year) {
+    $sql .= " AND (year = :yr OR pyq_year = :yr)";
+    $params[":yr"] = (int)$year;
 }
- .= ' ORDER BY pyq_year DESC, id ASC LIMIT 100';
+$sql .= " ORDER BY year DESC, id ASC LIMIT 100";
 
- = ->prepare();
-->execute();
- = ->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ( as &) {
-    if (isset(['options']) && is_string(['options'])) {
-        ['options'] = json_decode(['options'], true) ?: ['options'];
+foreach ($rows as &$r) {
+    if (isset($r["options"]) && is_string($r["options"])) {
+        $r["options"] = json_decode($r["options"], true) ?: $r["options"];
     }
 }
 
-echo json_encode(['pyqs' => , 'count' => count()]);
+nb_json([
+    "pyqs" => $rows,
+    "count" => count($rows),
+]);
