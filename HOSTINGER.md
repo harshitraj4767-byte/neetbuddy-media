@@ -49,3 +49,6 @@ Set these in Hostinger hPanel under Environment Variables before deploying:
 - MYSQL_USER
 - MYSQL_PASSWORD
 - MYSQL_DATABASE
+
+
+<!-- Deployment trigger: 2026-09-14 08:58:04 UTC -->
