@@ -178,7 +178,7 @@ function Dashboard() {
 
   return (
     <PageShell>
-      <div className="mx-auto w-full max-w-5xl">
+      <div className="mx-auto w-full max-w-[1536px]">
 
         {/* ── Greeting hero ─────────────────────────────────────────── */}
         <div className="relative isolate overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-sky-500/15 p-4 shadow-soft sm:p-7">
