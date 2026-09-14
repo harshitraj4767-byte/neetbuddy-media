@@ -16,12 +16,26 @@ const EMPTY: MyAccess = {
   features: [],
 };
 
+// On static hosting (Hostinger) the TanStack server function cannot answer,
+// so fall back to the PHP endpoint shipped in public/api/access.php.
+async function fetchAccessPhp(): Promise<MyAccess> {
+  const res = await fetch("/api/access.php", { credentials: "include" });
+  if (!res.ok) return EMPTY;
+  return (await res.json()) as MyAccess;
+}
+
 export function useAccess() {
   const { user, loading: authLoading } = useAuth();
   const fetchAccess = useServerFn(getMyAccess);
   const q = useQuery({
     queryKey: ["access", user?.id ?? "anon"],
-    queryFn: () => fetchAccess(),
+    queryFn: async () => {
+      try {
+        return await fetchAccess();
+      } catch {
+        return fetchAccessPhp();
+      }
+    },
     enabled: !!user && !authLoading,
     staleTime: 30_000,
   });
