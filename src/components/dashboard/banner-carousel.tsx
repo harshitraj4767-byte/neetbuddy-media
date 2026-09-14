@@ -7,15 +7,49 @@ import { useTheme } from "@/hooks/use-theme";
 
 const AUTO_MS = 10_000;
 
-/**
- * Admin-managed banner plot shown directly under the dashboard hero card.
- * Uses the same 8:3 (≈2.67:1) box as the hero, auto-slides every 10s and
- * supports manual arrows, dots and touch swipe.
- */
+const DEFAULT_BANNERS: BannerRow[] = [
+  {
+    id: "def-physics",
+    title: "Master Physics with High Yield Formulae & Tests",
+    image_url: "/illustrations/banner-physics.png",
+    image_url_dark: "/illustrations/banner-physics.png",
+    link_url: "/physics",
+    sort_order: 10,
+    active: true,
+  },
+  {
+    id: "def-chemistry",
+    title: "NEET Chemistry NCERT Practice",
+    image_url: "/illustrations/banner-chemistry.png",
+    image_url_dark: "/illustrations/banner-chemistry.png",
+    link_url: "/chemistry",
+    sort_order: 20,
+    active: true,
+  },
+  {
+    id: "def-biology",
+    title: "Complete Biology Chapterwise Question Bank",
+    image_url: "/illustrations/banner-biology.png",
+    image_url_dark: "/illustrations/banner-biology.png",
+    link_url: "/biology",
+    sort_order: 30,
+    active: true,
+  },
+  {
+    id: "def-neetlab",
+    title: "Interactive NEET Virtual Simulations",
+    image_url: "/illustrations/banner-neetlab.png",
+    image_url_dark: "/illustrations/banner-neetlab.png",
+    link_url: "/neetlab",
+    sort_order: 40,
+    active: true,
+  },
+];
+
 export function BannerCarousel() {
   const load = useServerFn(listActiveBanners);
   const { theme } = useTheme();
-  const [banners, setBanners] = useState<BannerRow[]>([]);
+  const [banners, setBanners] = useState<BannerRow[]>(DEFAULT_BANNERS);
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
   const paused = useRef(false);
@@ -23,8 +57,14 @@ export function BannerCarousel() {
   useEffect(() => {
     let alive = true;
     load()
-      .then((rows) => { if (alive) setBanners(rows ?? []); })
-      .catch(() => { if (alive) setBanners([]); });
+      .then((rows) => {
+        if (alive && rows && rows.length > 0) {
+          setBanners(rows);
+        }
+      })
+      .catch(() => {
+        // Keeps DEFAULT_BANNERS on error
+      });
     return () => { alive = false; };
   }, []);
 
@@ -65,25 +105,27 @@ export function BannerCarousel() {
           className="flex h-full w-full transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
-          {banners.map((b) => {
-            // Admins upload separate light/dark artwork; fall back to the
-            // light image when no dark variant was provided.
-            const src = theme === "dark" ? (b.image_url_dark || b.image_url) : b.image_url;
+          {banners.map((b, i) => {
+            const rawSrc = theme === "dark" ? (b.image_url_dark || b.image_url) : b.image_url;
+            const fallbackSrc = DEFAULT_BANNERS[i % DEFAULT_BANNERS.length].image_url;
+            const src = rawSrc && !rawSrc.includes("supabase.co") ? rawSrc : fallbackSrc;
+
             const img = (
               <img
                 src={src}
                 alt={b.title ?? "Banner"}
                 loading="lazy"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = fallbackSrc;
+                }}
                 className="h-full w-full select-none object-cover"
               />
             );
             return (
-              <div key={b.id} className="h-full w-full shrink-0 grow-0 basis-full">
+              <div key={b.id || i} className="h-full w-full shrink-0 grow-0 basis-full">
                 {!b.link_url ? (
                   img
                 ) : b.link_url.startsWith("/") ? (
-                  // In-app destinations are stored as paths, so client-side nav works
-                  // regardless of the deployment URL.
                   <Link to={b.link_url} className="block h-full w-full">
                     {img}
                   </Link>
@@ -124,7 +166,7 @@ export function BannerCarousel() {
           <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1.5">
             {banners.map((b, i) => (
               <button
-                key={b.id}
+                key={b.id || i}
                 type="button"
                 aria-label={`Go to banner ${i + 1}`}
                 onClick={() => go(i)}
