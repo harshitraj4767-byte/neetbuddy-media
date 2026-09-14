@@ -22,7 +22,7 @@ export function PageShell({
     <div className="page-shell flex min-h-screen flex-col bg-background page-enter">
       <SiteHeader />
       <main className="flex-1">
-        <div className={`mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:px-8 ${fluid ? "w-full max-w-[1536px]" : "max-w-7xl"}`}>
+        <div className={`mx-auto px-3 py-6 sm:px-6 sm:py-8 lg:px-8 xl:px-10 ${fluid ? "w-full max-w-[1700px]" : "max-w-7xl"}`}>
           {hasHeader && (
             <div className="animate-fade-in-up">
               {eyebrow && (
