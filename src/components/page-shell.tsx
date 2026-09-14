@@ -8,19 +8,21 @@ export function PageShell({
   description,
   children,
   showFooter = false,
+  fluid = true,
 }: {
   eyebrow?: string;
   title?: string;
   description?: string;
   children: ReactNode;
   showFooter?: boolean;
+  fluid?: boolean;
 }) {
   const hasHeader = !!(eyebrow || title || description);
   return (
     <div className="page-shell flex min-h-screen flex-col bg-background page-enter">
       <SiteHeader />
       <main className="flex-1">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+        <div className={`mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:px-8 ${fluid ? "w-full max-w-[1536px]" : "max-w-7xl"}`}>
           {hasHeader && (
             <div className="animate-fade-in-up">
               {eyebrow && (
@@ -34,7 +36,7 @@ export function PageShell({
               )}
             </div>
           )}
-          <div className={hasHeader ? "mt-10" : ""}>{children}</div>
+          <div className={hasHeader ? "mt-8" : ""}>{children}</div>
         </div>
       </main>
       {showFooter && <SiteFooter />}
@@ -44,15 +46,8 @@ export function PageShell({
 
 export function ComingSoonCard({ note }: { note?: string }) {
   return (
-    <div className="rounded-3xl border border-dashed border-border bg-gradient-surface p-10 text-center shadow-soft">
-      <div className="mx-auto h-12 w-12 rounded-2xl bg-gradient-primary opacity-90 shadow-glow" />
-      <div className="mt-4 text-lg font-semibold">Wiring up next</div>
-      <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-        {note ?? "This page is part of the Neet Buddy build. Auth, database, and full features land in the next phase."}
-      </p>
+    <div className="rounded-3xl border border-dashed border-border bg-gradient-surface p-10 text-center">
+      <p className="text-sm text-muted-foreground">{note || "Feature arriving soon."}</p>
     </div>
   );
 }
-
-// Re-export footer so opt-in pages can place it themselves where appropriate.
-export { SiteFooter };
