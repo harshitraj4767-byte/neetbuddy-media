@@ -146,6 +146,16 @@ function PaperList({ onPick }: { onPick: (p: Paper) => void }) {
 
   useEffect(() => {
     (async () => {
+      try {
+        const res = await fetch("/api/pyqs.php?action=papers");
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json?.papers) && json.papers.length > 0) {
+            setPapers(json.papers as Paper[]);
+            return;
+          }
+        }
+      } catch {}
       const { data, error: err } = await (supabase as any)
         .from("neet_pyq_papers")
         .select("id,ext_id,title,year,total_questions,duration_minutes")
