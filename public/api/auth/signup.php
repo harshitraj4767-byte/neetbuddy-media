@@ -59,11 +59,16 @@ try {
 // Best-effort profile row. Only columns that actually exist are written, and a
 // failure here is logged instead of rolling the new account back.
 try {
+    // New accounts start a 3-day free trial (matches the dashboard banner).
+    // Without this the app sees trial_expires_at = NULL and shows
+    // "your free trial has ended" to brand-new users.
+    $trialExpires = (new DateTimeImmutable('now'))->modify('+3 days')->format('Y-m-d H:i:s');
     nb_insert_known('profiles', [
         'id' => $userId,
         'user_id' => $userId,
         'email' => $email,
         'full_name' => $fullName !== '' ? $fullName : null,
+        'trial_expires_at' => $trialExpires,
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s'),
     ]);
