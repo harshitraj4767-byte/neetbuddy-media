@@ -18,7 +18,9 @@
     "format": "prettier --write .",
     "build:static": "node scripts/build-static.mjs",
     "build:node": "node scripts/build-node.mjs",
-    "start": "node start-server.mjs"
+    "start": "node start-server.mjs",
+    "verify:deployment": "node scripts/verify-deployment.mjs",
+    "build:verify": "npm run build && npm run verify:deployment"
   },
   "overrides": {
     "rolldown": "1.2.1"

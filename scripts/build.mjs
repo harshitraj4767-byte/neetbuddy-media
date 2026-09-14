@@ -11,8 +11,7 @@ import { resolve } from "node:path";
 
 const root = process.cwd();
 
-const target = (
-  process.env.BUILD_TARGET ??
+const target = (process.env.BUILD_TARGET ??
   (process.env.STATIC_BUILD === "true" ? "static" : "node")
 ).toLowerCase();
 

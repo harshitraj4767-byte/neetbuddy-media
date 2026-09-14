@@ -26,6 +26,7 @@ fail):
 
 Notes:
 
+- Keep Hostinger’s project/root directory set to the repository root. Do not set it to `public`; the root `package.json` owns the Nitro build.
 - `npm run build` builds the Nitro node-server bundle (`scripts/build.mjs` ->
   `scripts/build-node.mjs`). Set `BUILD_TARGET=static` (or run
   `npm run build:static`) only for the static/PHP option below.
@@ -63,4 +64,5 @@ If hPanel has a stale registry or proxy override, clear it and redeploy. A faile
 
 - Passwords are stored as PBKDF2-SHA256 hashes, never plain text.
 - Sessions use a random HttpOnly cookie and a SHA-256 token hash in `auth_sessions`.
-- Database credentials and proxy credentials belong in Hostinger environment variables or server-only configuration, never in the repository.
+- Database credentials and proxy credentials belong in Hostinger environment variables, never in `.env`, `config.local.php`, or the repository.
+- Before deploying a new revision, `npm run build:verify` performs a clean production build and checks the generated server plus key pages.
