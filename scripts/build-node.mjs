@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { existsSync, rmSync, cpSync, mkdirSync } from "node:fs";
+import { existsSync, rmSync, cpSync, mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = process.cwd();
