@@ -24,6 +24,10 @@ const TRIAL_FALLBACK_FEATURES = [
 ];
 const PRIME_ONLY_FEATURES = ['ai_path', 'score_predictor'];
 const FREE_FEATURES = ['daily_dpp', 'contests', 'battlegrounds'];
+// Length of the free trial granted to every new account.
+const TRIAL_DAYS = 3;
+// Accounts that always get full (admin) access, regardless of user_roles rows.
+const ADMIN_EMAILS = ['sanskarjaiswal6892@gmail.com'];
 
 function nb_features_from_json($features): array
 {
@@ -87,8 +91,30 @@ if ($sub && !empty($sub['source_batch_id'])) {
     $batch = nb_query_one($db, 'SELECT id, title, features FROM batches WHERE id = ? LIMIT 1', [$sub['source_batch_id']]);
 }
 
-$prof = nb_query_one($db, 'SELECT trial_expires_at FROM profiles WHERE id = ? LIMIT 1', [$userId]);
+// `profiles.trial_expires_at` does not exist in every deployment of the schema,
+// so fall back to the account creation date + TRIAL_DAYS. Without this, brand
+// new users were immediately shown "Trial ended".
+$prof = nb_query_one($db, 'SELECT trial_expires_at, email, created_at FROM profiles WHERE id = ? LIMIT 1', [$userId]);
+if ($prof === null) {
+    $prof = nb_query_one($db, 'SELECT email, created_at FROM profiles WHERE id = ? LIMIT 1', [$userId]);
+}
+
+$email = $prof['email'] ?? null;
+if ($email === null) {
+    $authRow = nb_query_one($db, 'SELECT email FROM auth_users WHERE id = ? LIMIT 1', [$userId]);
+    $email = $authRow['email'] ?? null;
+}
+if ($email !== null && in_array(strtolower((string) $email), ADMIN_EMAILS, true)) {
+    $isAdmin = true;
+}
+
 $trialExp = $prof['trial_expires_at'] ?? null;
+if (($trialExp === null || $trialExp === '') && !empty($prof['created_at'])) {
+    $createdTs = strtotime((string) $prof['created_at']);
+    if ($createdTs !== false) {
+        $trialExp = date('c', $createdTs + TRIAL_DAYS * 86400);
+    }
+}
 $trialActive = $trialExp !== null && $trialExp !== '' && strtotime((string) $trialExp) > time();
 
 $base = [

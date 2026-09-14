@@ -31,6 +31,12 @@ const PRIME_ONLY_FEATURES = ["ai_path", "score_predictor"];
 
 // Always free for every signed-in user, trial or not.
 export const FREE_FEATURES = ["daily_dpp", "contests", "battlegrounds"];
+
+// Length of the free trial granted to every new account.
+const TRIAL_DAYS = 3;
+
+// Accounts that always get full (admin) access, regardless of the DB role rows.
+const ADMIN_EMAILS = ["sanskarjaiswal6892@gmail.com"];
 function stripPrimeOnly(features: string[]): string[] {
   return features.filter((k) => !PRIME_ONLY_FEATURES.includes(k));
 }
@@ -70,7 +76,7 @@ export async function getAccessForUser(userId: string): Promise<MyAccess> {
     .eq("role", "admin")
     .limit(1)
     .maybeSingle();
-  const isAdmin = !!role;
+  let isAdmin = !!role;
 
   // Mentor?
   const { data: mentorRow } = await db
@@ -103,13 +109,47 @@ export async function getAccessForUser(userId: string): Promise<MyAccess> {
     if (b) batchRow = b as any;
   }
 
-  // Trial info
-  const { data: prof } = await db
-    .from("profiles")
-    .select("trial_expires_at")
-    .eq("id", userId)
-    .maybeSingle();
-  const trialExp: string | null = prof?.trial_expires_at ?? null;
+  // Trial info.
+  // `profiles.trial_expires_at` does not exist on every deployment, so when it
+  // is missing/empty we derive the trial window from the account's creation
+  // date. Without this, brand-new users fell through to "trial ended".
+  let profRow: any = null;
+  {
+    const { data, error } = await db
+      .from("profiles")
+      .select("email, created_at, trial_expires_at")
+      .eq("id", userId)
+      .maybeSingle();
+    if (error || !data) {
+      const { data: basic } = await db
+        .from("profiles")
+        .select("email, created_at")
+        .eq("id", userId)
+        .maybeSingle();
+      profRow = basic ?? null;
+    } else {
+      profRow = data;
+    }
+  }
+
+  let email: string | null = (profRow?.email ?? null) as string | null;
+  if (!email) {
+    try {
+      const { data: authUser } = await (supabaseAdmin as any).auth.admin.getUserById(userId);
+      email = authUser?.user?.email ?? null;
+    } catch {
+      // Auth admin API unavailable (e.g. non-Supabase host) — ignore.
+    }
+  }
+  if (email && ADMIN_EMAILS.includes(email.toLowerCase())) isAdmin = true;
+
+  let trialExp: string | null = profRow?.trial_expires_at ?? null;
+  if (!trialExp) {
+    const createdAt = profRow?.created_at ? new Date(profRow.created_at).getTime() : NaN;
+    if (!Number.isNaN(createdAt)) {
+      trialExp = new Date(createdAt + TRIAL_DAYS * 86_400_000).toISOString();
+    }
+  }
   const trialActive = !!trialExp && new Date(trialExp).getTime() > now;
 
   let result: MyAccess;
