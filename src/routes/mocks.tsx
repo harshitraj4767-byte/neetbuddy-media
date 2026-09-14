@@ -65,13 +65,10 @@ function MocksPage() {
   useEffect(() => { if (!loading && !user) nav({ to: "/login" }); }, [user, loading, nav]);
 
   useEffect(() => {
-    (supabase.from("tests") as any)
-      .select("id,title,description,difficulty,duration_min,total_questions,source,entry_fee,is_paid,syllabus,category_id,created_at")
-      .eq("type", "mock")
-      .then(({ data }: any) => {
-        const rows = ((data ?? []) as Test[]).slice();
-        // Sort by numeric portion of title (Mock 1, Mock 2, … Mock 10) ascending;
-        // fall back to alphabetical, then created_at.
+    fetch("/api/mocks.php")
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error("Mocks API failed"))))
+      .then((json) => {
+        const rows = ((json?.tests ?? []) as Test[]).slice();
         const numOf = (s: string) => {
           const m = s.match(/(\d+)/);
           return m ? parseInt(m[1], 10) : Number.POSITIVE_INFINITY;
@@ -82,6 +79,24 @@ function MocksPage() {
           return a.title.localeCompare(b.title);
         });
         setTests(rows);
+      })
+      .catch(() => {
+        (supabase.from("tests") as any)
+          .select("id,title,description,difficulty,duration_min,total_questions,source,entry_fee,is_paid,syllabus,category_id,created_at")
+          .eq("type", "mock")
+          .then(({ data }: any) => {
+            const rows = ((data ?? []) as Test[]).slice();
+            const numOf = (s: string) => {
+              const m = s.match(/(\d+)/);
+              return m ? parseInt(m[1], 10) : Number.POSITIVE_INFINITY;
+            };
+            rows.sort((a, b) => {
+              const na = numOf(a.title), nb = numOf(b.title);
+              if (na !== nb) return na - nb;
+              return a.title.localeCompare(b.title);
+            });
+            setTests(rows);
+          });
       });
     loadCats().then((c) => setCategories((c as Category[]).filter((x) => x.active))).catch(() => {});
   }, [loadCats]);
