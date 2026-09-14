@@ -178,7 +178,7 @@ function Dashboard() {
 
   return (
     <PageShell>
-      <div className="mx-auto w-full max-w-[1536px]">
+      <div className="mx-auto w-full max-w-[1700px]">
 
         {/* ── Greeting hero ─────────────────────────────────────────── */}
         <div className="relative isolate overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-sky-500/15 p-4 shadow-soft sm:p-7">
@@ -222,7 +222,7 @@ function Dashboard() {
             src="/illustrations/study-desk.png"
             alt="Student studying at a desk"
             loading="lazy"
-            className="pointer-events-none absolute bottom-0 right-0 z-0 h-[88%] max-h-[220px] w-[46%] max-w-[320px] select-none object-contain object-bottom object-right drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[94%] sm:max-h-[275px]"
+            className="pointer-events-none absolute bottom-0 right-0 z-0 h-[85%] max-h-[180px] w-[38%] max-w-[180px] select-none object-contain object-bottom object-right drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[92%] sm:max-h-[240px] sm:w-[42%] sm:max-w-[280px] lg:h-[96%] lg:max-h-[270px] lg:w-[45%] lg:max-w-[340px]"
           />
         </div>
 
