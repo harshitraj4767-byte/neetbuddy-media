@@ -1,4 +1,4 @@
-import { defineNitroConfig } from "nitro/config";
+import { defineNitroConfig } from "nitropack/config";
 
 // Standalone Nitro configuration for Hostinger Web App (Nitro preset).
 export default defineNitroConfig({
@@ -8,4 +8,5 @@ export default defineNitroConfig({
     serverDir: ".output/server",
     publicDir: ".output/public",
   },
+  compatibilityDate: "2026-09-15",
 });
