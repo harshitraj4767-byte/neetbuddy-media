@@ -78,7 +78,7 @@ const lovableConfig = defineLovableConfig({
     },
   },
   tanstackStart: {
-    server: { entry: "server" },
+    server: { entry: "./src/server.ts" },
     prerender: isNodeBuild ? { enabled: false } : { enabled: true, crawlLinks: false },
   },
 });
