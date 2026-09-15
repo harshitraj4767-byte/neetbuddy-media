@@ -255,7 +255,7 @@ switch ($action) {
             mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
 
-        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, NOW())');
+        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
         $ins->execute([
             $testId,
             $title,
@@ -301,15 +301,18 @@ switch ($action) {
             $params[] = strtolower($difficulty);
         }
 
-        $sql = 'SELECT id FROM qb_questions WHERE ' . implode(' AND ', $where) . ' ORDER BY RAND() LIMIT ' . max(5, min(50, $count));
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute($params);
-        $qids = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-        if (empty($qids) && $sId) {
-            $stmt = $pdo->prepare('SELECT id FROM qb_questions WHERE subject_id = ? ORDER BY RAND() LIMIT ' . $count);
-            $stmt->execute([$sId]);
+        $qids = $input['qids'] ?? [];
+        if (empty($qids)) {
+            $sql = 'SELECT id FROM qb_questions WHERE ' . implode(' AND ', $where) . ' ORDER BY RAND() LIMIT ' . max(5, min(50, $count));
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($params);
             $qids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+            if (empty($qids) && $sId) {
+                $stmt = $pdo->prepare('SELECT id FROM qb_questions WHERE subject_id = ? ORDER BY RAND() LIMIT ' . $count);
+                $stmt->execute([$sId]);
+                $qids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            }
         }
 
         $testId = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -317,8 +320,8 @@ switch ($action) {
             mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
 
-        $testTitle = $sName . ' Quiz';
-        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, NOW())');
+        $testTitle = !empty($input['title']) ? $input['title'] : ($sName . ' Quiz');
+        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
         $ins->execute([
             $testId,
             $testTitle,

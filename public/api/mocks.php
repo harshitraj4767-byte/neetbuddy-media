@@ -9,7 +9,7 @@ $pdo = nb_pdo();
 $category = $_GET['category'] ?? null;
 $limit = min((int)($_GET['limit'] ?? 100), 200);
 
-$query = 'SELECT id, title, description, difficulty, COALESCE(duration_min, 180) AS duration_min, total_questions, source, entry_fee, is_paid, syllabus, category_id, type, created_at FROM tests WHERE (type = "mock" OR type = "test" OR is_active = 1)';
+$query = 'SELECT id, title, description, difficulty, COALESCE(duration_min, 180) AS duration_min, total_questions, source, entry_fee, is_paid, syllabus, category_id, type, created_at FROM tests WHERE (type = "mock" OR type = "test" OR type = "practice" OR 1=1)';
 $params = [];
 
 if ($category && $category !== 'all') {
@@ -27,7 +27,7 @@ try {
     $stmt->execute($params);
     $tests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Throwable $e) {
-    $stmt = $pdo->query('SELECT * FROM tests WHERE is_active = 1 LIMIT ' . $limit);
+    $stmt = $pdo->query('SELECT * FROM tests WHERE 1=1 LIMIT ' . $limit);
     $tests = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
 }
 
