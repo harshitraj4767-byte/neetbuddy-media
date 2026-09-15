@@ -1,52 +1,49 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . "/auth/lib.php";
+require_once __DIR__ . '/auth/lib.php';
 
 nb_cors();
 
- = nb_pdo();
- = ["category"] ?? null;
- = min((int)(["limit"] ?? 100), 200);
+$pdo = nb_pdo();
+$category = $_GET['category'] ?? null;
+$limit = min((int)($_GET['limit'] ?? 100), 200);
 
- = "SELECT id, title, description, difficulty, COALESCE(duration_min, duration_minutes, 180) AS duration_min, total_questions, source, entry_fee, is_paid, syllabus, category_id, type, created_at FROM tests WHERE is_active = 1";
- = [];
+$query = 'SELECT id, title, description, difficulty, COALESCE(duration_min, 180) AS duration_min, total_questions, source, entry_fee, is_paid, syllabus, category_id, type, created_at FROM tests WHERE (type = "mock" OR type = "test" OR is_active = 1)';
+$params = [];
 
-if ( &&  !== 'all') {
-    if ( === 'uncat') {
-         .= " AND (category_id IS NULL OR category_id = '')";
+if ($category && $category !== 'all') {
+    if ($category === 'uncat') {
+        $query .= ' AND (category_id IS NULL OR category_id = "")';
     } else {
-         .= " AND category_id = :cat";
-        [":cat"] = ;
+        $query .= ' AND category_id = :cat';
+        $params[':cat'] = $category;
     }
 }
- .= " ORDER BY created_at DESC LIMIT " . ;
+$query .= ' ORDER BY created_at DESC LIMIT ' . $limit;
 
 try {
-     = ->prepare();
-    ->execute();
-     = ->fetchAll(PDO::FETCH_ASSOC);
-} catch (Throwable ) {
-     = ->query("SELECT * FROM tests WHERE is_active = 1 LIMIT " . );
-     =  ? ->fetchAll(PDO::FETCH_ASSOC) : [];
+    $stmt = $pdo->prepare($query);
+    $stmt->execute($params);
+    $tests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Throwable $e) {
+    $stmt = $pdo->query('SELECT * FROM tests WHERE is_active = 1 LIMIT ' . $limit);
+    $tests = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
 }
 
-foreach ( as &) {
-    if (isset(["syllabus"]) && is_string(["syllabus"])) {
-         = json_decode(["syllabus"], true);
-        if ( !== null) {
-            ["syllabus"] = ;
+foreach ($tests as &$t) {
+    if (isset($t['syllabus']) && is_string($t['syllabus'])) {
+        $parsed = json_decode($t['syllabus'], true);
+        if ($parsed !== null) {
+            $t['syllabus'] = $parsed;
         }
     }
-    if (isset(["is_paid"])) {
-        ["is_paid"] = (bool)["is_paid"];
-    }
-    if (isset(["duration_minutes"]) && !isset(["duration_min"])) {
-        ["duration_min"] = (int)["duration_minutes";
+    if (isset($t['is_paid'])) {
+        $t['is_paid'] = (bool)$t['is_paid'];
     }
 }
 
 nb_json([
-    "tests" => ,
-    "count" => count(),
+    'tests' => $tests,
+    'count' => count($tests),
 ]);

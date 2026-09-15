@@ -3,163 +3,77 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/auth/lib.php';
 
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Credentials: true');
- = ['HTTP_ORIGIN'] ?? '*';
-header('Access-Control-Allow-Origin: ' . );
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+nb_cors();
 
-if (['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(204);
-    exit;
-}
+$pdo = nb_pdo();
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
- = nb_pdo();
- = ['REQUEST_METHOD'];
+$raw = file_get_contents('php://input');
+$body = json_decode($raw, true) ?: [];
 
-// Accept params from GET or JSON body
- = file_get_contents('php://input');
- = json_decode(, true) ?: [];
+$testId = $_GET['test_id'] ?? $body['test_id'] ?? null;
+$chapterId = $_GET['chapter_id'] ?? $body['chapter_id'] ?? null;
+$subjectId = $_GET['subject_id'] ?? $body['subject_id'] ?? null;
+$questionIds = $_GET['question_ids'] ?? $body['question_ids'] ?? (isset($_GET['ids']) ? explode(',', (string)$_GET['ids']) : null);
+$limit = min((int)($_GET['limit'] ?? $body['limit'] ?? 50), 100);
 
- = ['test_id'] ?? ['test_id'] ?? null;
- = ['chapter_id'] ?? ['chapter_id'] ?? null;
- = ['subject_id'] ?? ['subject_id'] ?? null;
- = ['question_ids'] ?? (isset(['ids']) ? explode(',', ['ids']) : null);
- = min((int)(['limit'] ?? ['limit'] ?? 50), 100);
+if ($testId) {
+    $stmt = $pdo->prepare('SELECT * FROM tests WHERE id = :id');
+    $stmt->execute([':id' => $testId]);
+    $test = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Detect if qb_questions table exists, otherwise fallback to questions table
- = ->query("SHOW TABLES LIKE 'qb_questions'")->fetchColumn();
- = !empty();
-
-if () {
-    // 1. Fetch test
-     = ->prepare('SELECT * FROM tests WHERE id = :id');
-    ->execute([':id' => ]);
-     = ->fetch(PDO::FETCH_ASSOC);
-
-    if (!) {
-        http_response_code(404);
-        echo json_encode(['error' => 'Test not found']);
-        exit;
+    if (!$test) {
+        nb_fail('Test not found', 404);
     }
 
-     = [];
-    if (!empty(['question_ids'])) {
-         = is_string(['question_ids']) ? json_decode(['question_ids'], true) : ['question_ids'];
+    $ids = [];
+    if (!empty($test['question_ids'])) {
+        $ids = is_string($test['question_ids']) ? json_decode($test['question_ids'], true) : $test['question_ids'];
     }
 
-     = [];
-    if (!empty() && is_array()) {
-         = implode(',', array_fill(0, count(), '?'));
-        if () {
-             = ->prepare("
-                SELECT q.id, q.question_html, q.options, q.correct_index, q.explanation,
-                       q.explanation_image_url, q.question_image_url, q.difficulty, q.qtype,
-                       q.year, q.tag, q.is_pyq, q.subject_id, s.name as subject_name,
-                       q.chapter_id, c.name as chapter_name
-                FROM qb_questions q
-                LEFT JOIN qb_subjects s ON s.id = q.subject_id
-                LEFT JOIN qb_chapters c ON c.id = q.chapter_id
-                WHERE q.id IN ()
-            ");
-        } else {
-             = ->prepare("
-                SELECT q.id, q.question_text as question_html, q.options,
-                       q.correct_option as correct_index, q.explanation,
-                       q.difficulty, q.is_pyq, q.subject_id, s.name as subject_name,
-                       q.chapter_id, c.name as chapter_name
-                FROM questions q
-                LEFT JOIN subjects s ON s.id = q.subject_id
-                LEFT JOIN chapters c ON c.id = q.chapter_id
-                WHERE q.id IN ()
-            ");
-        }
-        ->execute(array_values());
-         = ->fetchAll(PDO::FETCH_ASSOC);
+    $questions = [];
+    if (!empty($ids) && is_array($ids)) {
+        $in = implode(',', array_fill(0, count($ids), '?'));
+        $qStmt = $pdo->prepare("SELECT * FROM qb_questions WHERE id IN ($in)");
+        $qStmt->execute(array_values($ids));
+        $questions = $qStmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Format options cleanly
-    foreach ( as &) {
-        if (isset(['options']) && is_string(['options'])) {
-             = json_decode(['options'], true);
-            if (is_array()) {
-                ['options'] = ;
-            }
+    foreach ($questions as &$q) {
+        if (isset($q['options']) && is_string($q['options'])) {
+            $q['options'] = json_decode($q['options'], true) ?: $q['options'];
         }
     }
 
-    echo json_encode([
-        'test' => ,
-        'questions' => ,
-        'total' => count()
-    ]);
-    exit;
+    nb_json(['test' => $test, 'questions' => $questions, 'count' => count($questions)]);
 }
 
-// 2. Fetch by chapter or subject or arbitrary questions
- = [];
- = [];
+$where = ['1=1'];
+$params = [];
 
-if () {
-    [] = 'q.chapter_id = ?';
-    [] = ;
+if ($chapterId) {
+    $where[] = 'chapter_id = :cid';
+    $params[':cid'] = $chapterId;
 }
-if () {
-    [] = 'q.subject_id = ?';
-    [] = ;
+if ($subjectId) {
+    $where[] = 'subject_id = :sid';
+    $params[':sid'] = $subjectId;
 }
-if (!empty() && is_array()) {
-     = implode(',', array_fill(0, count(), '?'));
-    [] = "q.id IN ()";
-     = array_merge(, );
-}
-
- = !empty() ? 'WHERE ' . implode(' AND ', ) : '';
-
-if () {
-     = "
-        SELECT q.id, q.question_html, q.options, q.correct_index, q.explanation,
-               q.explanation_image_url, q.question_image_url, q.difficulty, q.qtype,
-               q.year, q.tag, q.is_pyq, q.subject_id, s.name as subject_name,
-               q.chapter_id, c.name as chapter_name
-        FROM qb_questions q
-        LEFT JOIN qb_subjects s ON s.id = q.subject_id
-        LEFT JOIN qb_chapters c ON c.id = q.chapter_id
-        
-        ORDER BY q.id ASC
-        LIMIT ?
-    ";
+if (!empty($questionIds) && is_array($questionIds)) {
+    $in = implode(',', array_fill(0, count($questionIds), '?'));
+    $where[] = "id IN ($in)";
+    $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' LIMIT ' . $limit);
+    $stmt->execute(array_values($questionIds));
 } else {
-     = "
-        SELECT q.id, q.question_text as question_html, q.options,
-               q.correct_option as correct_index, q.explanation,
-               q.difficulty, q.is_pyq, q.subject_id, s.name as subject_name,
-               q.chapter_id, c.name as chapter_name
-        FROM questions q
-        LEFT JOIN subjects s ON s.id = q.subject_id
-        LEFT JOIN chapters c ON c.id = q.chapter_id
-        
-        ORDER BY q.id ASC
-        LIMIT ?
-    ";
+    $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' LIMIT ' . $limit);
+    $stmt->execute($params);
 }
 
-[] = ;
- = ->prepare();
-->execute();
- = ->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ( as &) {
-    if (isset(['options']) && is_string(['options'])) {
-         = json_decode(['options'], true);
-        if (is_array()) {
-            ['options'] = ;
-        }
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+foreach ($rows as &$r) {
+    if (isset($r['options']) && is_string($r['options'])) {
+        $r['options'] = json_decode($r['options'], true) ?: $r['options'];
     }
 }
 
-echo json_encode([
-    'questions' => ,
-    'count' => count()
-]);
+nb_json(['questions' => $rows, 'count' => count($rows)]);

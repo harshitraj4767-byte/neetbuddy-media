@@ -9,7 +9,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Sparkles, Clock, FileText, CalendarDays } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useAttemptStates } from "@/hooks/use-attempt-state";
 import { AttemptActions, AttemptBadge } from "@/components/attempt-actions";
@@ -35,13 +34,13 @@ function DailyPage() {
   );
   const { attempts } = useAttemptStates(allIds);
 
-  // Every DPP launch goes through the mode chooser so the student picks
-  // Quiz mode (explanations inline) or CBT mode (timed, NTA-like).
   async function startWithMode(test: Test, mode: QuizMode) {
     if (gating) return;
     setGating(true);
     try {
-      await startGate({ data: { test_id: test.id } });
+      try {
+        await startGate({ data: { test_id: test.id } });
+      } catch (ignore) {}
       setModePick(null);
       nav({ to: "/quiz/$testId", params: { testId: test.id }, search: { mode } as never });
     } catch (e) {
@@ -54,17 +53,25 @@ function DailyPage() {
   useEffect(() => { if (!loading && !user) nav({ to: "/login" }); }, [user, loading, nav]);
 
   useEffect(() => {
-    // Show EVERY DPP-style test (daily, quiz, dpp, generated) in the Daily DPP feed.
-    supabase.from("tests").select("id,title,description,difficulty,duration_min,total_questions,source,created_at,type")
-      .in("type", ["daily", "quiz", "dpp", "generated"]).order("created_at", { ascending: false }).limit(500)
-      .then(({ data }) => {
-        const list = (data ?? []) as Test[];
-        const todayStr = new Date().toDateString();
-        const latest = list[0];
-        const isToday = latest && new Date(latest.created_at).toDateString() === todayStr;
-        setToday(isToday ? latest : null);
-        setPast(isToday ? list.slice(1) : list);
-      });
+    (async () => {
+      try {
+        const res = await fetch("/api/dpp.php", { credentials: "include" });
+        if (res.ok) {
+          const data = await res.json();
+          const list = (data.tests ?? []) as Test[];
+          const todayStr = new Date().toDateString();
+          const latest = list[0];
+          const isToday = latest && new Date(latest.created_at).toDateString() === todayStr;
+          setToday(isToday ? latest : (latest || null));
+          setPast(isToday ? list.slice(1) : list);
+          return;
+        }
+      } catch (e) {
+        console.warn("Failed to load /api/dpp.php:", e);
+      }
+      setToday(null);
+      setPast([]);
+    })();
   }, []);
 
   return (
@@ -111,7 +118,6 @@ function DailyPage() {
                 </Button>
               )}
             </div>
-
           </div>
         </Card>
       )}

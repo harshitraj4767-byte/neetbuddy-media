@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Play, RotateCw, Eye, FileText, Search, X } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { startDppAttempt } from "@/lib/dpp-gate.functions";
 import { toast } from "sonner";
@@ -38,15 +37,22 @@ function DppPage() {
 
   useEffect(() => {
     (async () => {
-      const { data: t } = await supabase.from("tests").select("id,title,difficulty,total_questions,duration_min,marks_correct,created_at,starts_at,ends_at,type")
-        .in("type", ["daily", "quiz"]).order("created_at", { ascending: false });
-      setTests((t ?? []) as Test[]);
-      if (user) {
-        const { data: a } = await supabase.from("attempts").select("id,test_id,status").eq("user_id", user.id).order("started_at", { ascending: false });
-        const map: Record<string, Attempt> = {};
-        (a ?? []).forEach((row) => { if (!map[row.test_id]) map[row.test_id] = row as Attempt; });
-        setAttempts(map);
+      try {
+        const res = await fetch("/api/dpp.php", { credentials: "include" });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.tests)) {
+            setTests(data.tests as Test[]);
+            if (data.attempts && typeof data.attempts === "object") {
+              setAttempts(data.attempts as Record<string, Attempt>);
+            }
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn("Failed to load /api/dpp.php:", e);
       }
+      setTests([]);
     })();
   }, [user]);
 
@@ -55,7 +61,11 @@ function DppPage() {
     setGating(t.id);
     setModePick(null);
     try {
-      await startGate({ data: { test_id: t.id } });
+      try {
+        await startGate({ data: { test_id: t.id } });
+      } catch (ignore) {
+        // Fallback directly to quiz player
+      }
       nav({ to: "/quiz/$testId", params: { testId: t.id }, search: { mode } as never });
     } catch (e: any) {
       toast.error(e?.message ?? "Could not start DPP");
@@ -131,7 +141,7 @@ function DppPage() {
                       <span>{new Date(t.created_at).toLocaleDateString()}</span>
                     </div>
                     <div className="mt-1 text-sm font-semibold leading-tight">{t.title}</div>
-                    <div className="mt-1 text-xs text-muted-foreground">{t.total_questions} Qs · {t.total_questions * t.marks_correct} Marks · {t.duration_min} min</div>
+                    <div className="mt-1 text-xs text-muted-foreground">{t.total_questions} Qs · {t.total_questions * (t.marks_correct ?? 4)} Marks · {t.duration_min} min</div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {a?.status === "completed" ? (
                         <>
@@ -165,7 +175,6 @@ function DppPage() {
                         </Button>
                       )}
                     </div>
-
                   </div>
                 </CardContent>
               </Card>
