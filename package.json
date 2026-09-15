@@ -79,6 +79,7 @@
     "katex": "^0.16.11",
     "lucide-react": "^0.575.0",
     "mysql2": "^3.24.3",
+    "nitro": "3.0.260903-beta",
     "nitropack": "^2.13.4",
     "pdf-lib": "^1.17.1",
     "prop-types": "^15.8.1",
@@ -98,8 +99,7 @@
     "vaul": "^1.1.2",
     "vite": "8.1.5",
     "vite-tsconfig-paths": "^6.0.2",
-    "zod": "^3.24.2",
-    "nitro": "npm:nitropack@^2.13.4"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
