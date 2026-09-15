@@ -1,60 +1,60 @@
 <?php
 declare(strict_types=1);
+
 require_once __DIR__ . '/auth/lib.php';
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Credentials: true');
- = ['HTTP_ORIGIN'] ?? '*';
-header('Access-Control-Allow-Origin: ' . );
-header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
 
-if (['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+nb_cors();
 
- = nb_current_user();
-if (!) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Authentication required']);
-    exit;
+$pdo = nb_pdo();
+$user = nb_current_user($pdo);
+if (!$user) {
+    nb_fail('Authentication required', 401);
 }
+$userId = $user['id'];
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
- = nb_pdo();
- = ['REQUEST_METHOD'];
+if ($method === 'GET') {
+    try {
+        $stmt = $pdo->prepare('
+            SELECT b.id, b.question_id, b.created_at,
+                   q.id as q_id, q.question_text, q.options, q.correct_option, q.explanation, q.difficulty, q.subject_id, q.chapter_id,
+                   s.name as subject_name, c.name as chapter_name
+            FROM bookmarks b
+            JOIN qb_questions q ON q.id = b.question_id
+            LEFT JOIN qb_subjects s ON s.id = q.subject_id
+            LEFT JOIN qb_chapters c ON c.id = q.chapter_id
+            WHERE b.user_id = ?
+            ORDER BY b.created_at DESC
+        ');
+        $stmt->execute([$userId]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ( === 'GET') {
-     = ->prepare('SELECT b.id, b.question_id, b.created_at, q.question_text, q.options, q.correct_option, q.explanation, q.difficulty, q.subject_id, q.chapter_id FROM bookmarks b JOIN questions q ON q.id = b.question_id WHERE b.user_id = :uid ORDER BY b.created_at DESC');
-    ->execute([':uid' => ['id']]);
-     = ->fetchAll(PDO::FETCH_ASSOC);
-    foreach ( as &) {
-        if (isset(['options']) && is_string(['options'])) {
-            ['options'] = json_decode(['options'], true) ?: ['options'];
+        foreach ($rows as &$r) {
+            if (isset($r['options']) && is_string($r['options'])) {
+                $r['options'] = json_decode($r['options'], true) ?: $r['options'];
+            }
         }
+
+        nb_json(['bookmarks' => $rows, 'count' => count($rows)]);
+    } catch (Throwable $e) {
+        nb_fail($e->getMessage(), 500);
     }
-    echo json_encode(['bookmarks' => ]);
-    exit;
 }
 
-if ( === 'POST') {
-     = file_get_contents('php://input');
-     = json_decode(, true) ?: [];
-     = ['question_id'] ?? null;
-    if (!) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Missing question_id']);
-        exit;
+if ($method === 'POST' || $method === 'DELETE') {
+    $input = json_decode(file_get_contents('php://input'), true) ?? $_POST;
+    $qid = $input['question_id'] ?? $input['id'] ?? null;
+    if (!$qid) {
+        nb_fail('Missing question_id or id', 400);
     }
-     = ->prepare('SELECT id FROM bookmarks WHERE user_id = :uid AND question_id = :qid');
-    ->execute([':uid' => ['id'], ':qid' => ]);
-     = ->fetch();
-    if () {
-         = ->prepare('DELETE FROM bookmarks WHERE id = :id');
-        ->execute([':id' => ['id']]);
-        echo json_encode(['bookmarked' => false]);
-    } else {
-         = ->prepare('INSERT INTO bookmarks (id, user_id, question_id, created_at) VALUES (UUID(), :uid, :qid, NOW())');
-        ->execute([':uid' => ['id'], ':qid' => ]);
-        echo json_encode(['bookmarked' => true]);
+
+    try {
+        $del = $pdo->prepare('DELETE FROM bookmarks WHERE (question_id = ? OR id = ?) AND user_id = ?');
+        $del->execute([$qid, $qid, $userId]);
+        nb_json(['success' => true]);
+    } catch (Throwable $e) {
+        nb_fail($e->getMessage(), 500);
     }
-    exit;
 }
-http_response_code(405);
-echo json_encode(['error' => 'Method not allowed']);
+
+nb_fail('Method not allowed', 405);

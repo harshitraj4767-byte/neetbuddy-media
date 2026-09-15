@@ -1,26 +1,33 @@
 <?php
 declare(strict_types=1);
+
 require_once __DIR__ . '/auth/lib.php';
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Credentials: true');
- = ['HTTP_ORIGIN'] ?? '*';
-header('Access-Control-Allow-Origin: ' . );
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-if (['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
- = nb_current_user();
- = nb_pdo();
-if (['REQUEST_METHOD'] === 'GET') {
-     = ['action'] ?? 'rooms';
-    if ( === 'history' && ) {
-         = ->prepare('SELECT * FROM battle_matches WHERE player1_id = :uid OR player2_id = :uid ORDER BY created_at DESC LIMIT 20');
-        ->execute([':uid' => ['id']]);
-        echo json_encode(['history' => ->fetchAll(PDO::FETCH_ASSOC)]);
-        exit;
+
+nb_cors();
+
+$pdo = nb_pdo();
+$user = nb_current_user($pdo);
+$userId = $user['id'] ?? null;
+$action = $_GET['action'] ?? $_POST['action'] ?? 'rooms';
+
+if ($action === 'history' && $userId) {
+    try {
+        $stmt = $pdo->prepare('SELECT * FROM battle_matches WHERE player1_id = :uid OR player2_id = :uid ORDER BY created_at DESC LIMIT 20');
+        $stmt->execute([':uid' => $userId]);
+        nb_json(['history' => $stmt->fetchAll(PDO::FETCH_ASSOC)]);
+    } catch (Throwable $e) {
+        nb_json(['history' => []]);
     }
-     = ->prepare('SELECT * FROM battle_matches WHERE status = "waiting" ORDER BY created_at DESC LIMIT 20');
-    ->execute();
-    echo json_encode(['rooms' => ->fetchAll(PDO::FETCH_ASSOC)]);
-    exit;
 }
-http_response_code(405); echo json_encode(['error' => 'Method not allowed']);
+
+if ($action === 'rooms') {
+    try {
+        $stmt = $pdo->prepare('SELECT * FROM battle_matches WHERE status = "waiting" ORDER BY created_at DESC LIMIT 20');
+        $stmt->execute();
+        nb_json(['rooms' => $stmt->fetchAll(PDO::FETCH_ASSOC)]);
+    } catch (Throwable $e) {
+        nb_json(['rooms' => []]);
+    }
+}
+
+nb_json(['success' => true]);

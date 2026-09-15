@@ -1,36 +1,45 @@
 <?php
 declare(strict_types=1);
+
 require_once __DIR__ . '/auth/lib.php';
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Credentials: true');
- = ['HTTP_ORIGIN'] ?? '*';
-header('Access-Control-Allow-Origin: ' . );
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-if (['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
- = nb_pdo();
- = nb_current_user();
- = ['contest_id'] ?? null;
+nb_cors();
 
-if (['REQUEST_METHOD'] === 'GET') {
-    if () {
-         = ->prepare('SELECT * FROM tests WHERE id = :id AND type = "contest"');
-        ->execute([':id' => ]);
-         = ->fetch(PDO::FETCH_ASSOC);
-        if (!) {
-            http_response_code(404);
-            echo json_encode(['error' => 'Contest not found']);
-            exit;
+$pdo = nb_pdo();
+$user = nb_current_user($pdo);
+$userId = $user['id'] ?? null;
+$contestId = $_GET['contest_id'] ?? null;
+
+if ($contestId) {
+    try {
+        $stmt = $pdo->prepare('SELECT * FROM tests WHERE id = :id AND type = "contest" LIMIT 1');
+        $stmt->execute([':id' => $contestId]);
+        $contest = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$contest) {
+            nb_fail('Contest not found', 404);
         }
-        echo json_encode(['contest' => ]);
-        exit;
+        nb_json(['contest' => $contest]);
+    } catch (Throwable $e) {
+        nb_fail($e->getMessage(), 500);
     }
-
-     = ->query('SELECT * FROM tests WHERE type = "contest" ORDER BY starts_at DESC LIMIT 30');
-    echo json_encode(['contests' => ->fetchAll(PDO::FETCH_ASSOC)]);
-    exit;
 }
 
-http_response_code(405);
-echo json_encode(['error' => 'Method not allowed']);
+try {
+    $stmt = $pdo->query('SELECT * FROM tests WHERE type = "contest" ORDER BY starts_at DESC, created_at DESC LIMIT 50');
+    $contests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $myEntries = [];
+    if ($userId && !empty($contests)) {
+        $ids = array_column($contests, 'id');
+        $in = implode(',', array_fill(0, count($ids), '?'));
+        $eStmt = $pdo->prepare("SELECT test_id, id as attempt_id, status, score FROM attempts WHERE user_id = ? AND test_id IN ($in)");
+        $eStmt->execute(array_merge([$userId], $ids));
+        while ($r = $eStmt->fetch(PDO::FETCH_ASSOC)) {
+            $myEntries[$r['test_id']] = $r;
+        }
+    }
+
+    nb_json(['contests' => $contests, 'entries' => $myEntries]);
+} catch (Throwable $e) {
+    nb_fail($e->getMessage(), 500);
+}
