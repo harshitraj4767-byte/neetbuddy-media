@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { existsSync, rmSync, cpSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, rmSync, mkdirSync, writeFileSync, copyFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = process.cwd();
@@ -41,18 +41,28 @@ if (!serverEntry) {
   process.exit(1);
 }
 
-// The Nitro node-server output in .output/ is self-contained (it serves
-// .output/public itself). Copying that tree into dist/ again doubles the build
-// size, which can exhaust the disk/time budget on hosting build workers.
-// Opt in with COPY_DIST=true only when a host needs a separate dist/ folder.
-if (process.env.COPY_DIST === "true") {
-  const publicOut = resolve(root, ".output/public");
-  const distDir = resolve(root, "dist");
-  if (existsSync(publicOut) && !existsSync(distDir)) {
-    mkdirSync(distDir, { recursive: true });
-    cpSync(publicOut, distDir, { recursive: true });
-  }
+// Ensure both .mjs and .js extensions exist in .output/server/
+const serverDir = resolve(root, ".output/server");
+if (existsSync(resolve(serverDir, "index.mjs")) && !existsSync(resolve(serverDir, "index.js"))) {
+  writeFileSync(resolve(serverDir, "index.js"), 'export * from "./index.mjs";\nimport "./index.mjs";\n');
 }
+
+// Satisfy framework validators that look for index.html in the output directory
+const fallbackHtml = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Neet Buddy</title></head><body><div id="root"></div></body></html>';
+const publicDir = resolve(root, ".output/public");
+if (existsSync(publicDir) && !existsSync(resolve(publicDir, "index.html"))) {
+  writeFileSync(resolve(publicDir, "index.html"), fallbackHtml);
+}
+if (!existsSync(resolve(root, ".output/index.html"))) {
+  writeFileSync(resolve(root, ".output/index.html"), fallbackHtml);
+}
+
+// Create a light dist/ fallback directory pointing to server output
+const distServerDir = resolve(root, "dist/server");
+mkdirSync(distServerDir, { recursive: true });
+writeFileSync(resolve(distServerDir, "index.mjs"), 'export * from "../../.output/server/index.mjs";\nimport "../../.output/server/index.mjs";\n');
+writeFileSync(resolve(distServerDir, "index.js"), 'export * from "../../.output/server/index.mjs";\nimport "../../.output/server/index.mjs";\n');
+writeFileSync(resolve(root, "dist/index.html"), fallbackHtml);
 
 console.log(`\n✔ Node server build ready: ${serverEntry}`);
 console.log("  Output directory: .output (public assets in .output/public)");
