@@ -4,7 +4,6 @@ import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
 import { Loader2, Check, ChevronDown } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
