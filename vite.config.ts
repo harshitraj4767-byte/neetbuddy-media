@@ -77,6 +77,15 @@ const lovableConfig = defineLovableConfig({
       publicDir: isNodeBuild ? ".output/public" : "dist/client",
       serverDir: isNodeBuild ? ".output/server" : "dist/server",
     },
+    ignore: [
+      "**/img/**",
+      "**/ncert/**",
+      "**/chemistry/**",
+      "**/physics/**",
+      "**/illustrations/**",
+      "**/mascot/**",
+      "**/short_notes/**",
+    ],
   },
   tanstackStart: {
     server: { entry: "./src/server.ts" },

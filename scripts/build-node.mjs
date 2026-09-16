@@ -9,6 +9,7 @@ import {
   linkSync,
   copyFileSync,
   symlinkSync,
+  renameSync,
 } from "node:fs";
 import { resolve } from "node:path";
 
@@ -27,19 +28,64 @@ const env = {
 delete env["LOVABLE_SANDBOX"];
 delete env["DEV_SERVER__PROJECT_PATH"];
 
-const viteBin = resolve(root, "node_modules/.bin/vite");
-const cmd = existsSync(viteBin) ? viteBin : "npx";
-const args = existsSync(viteBin) ? ["build"] : ["vite", "build"];
+// Media directories that carry ~25,000+ files (~900 MB).
+// Stashing them during Vite/Nitro compilation prevents Vite and Nitro from
+// globbing and copying thousands of files, which previously exhausted container disk
+// and hit Hostinger's 5-minute timeout.
+const heavyDirs = [
+  "img",
+  "ncert",
+  "chemistry",
+  "physics",
+  "illustrations",
+  "mascot",
+  "short_notes",
+];
 
-console.log(`Running Vite build with ${cmd} ${args.join(" ")}...`);
-const result = spawnSync(cmd, args, {
-  stdio: "inherit",
-  env,
-  shell: process.platform === "win32",
-});
+const stashedDirs = [];
+const stashParent = resolve(root, ".build_media_stash");
 
-if (result.status !== 0) {
-  process.exit(result.status ?? 1);
+try {
+  rmSync(stashParent, { recursive: true, force: true });
+  mkdirSync(stashParent, { recursive: true });
+
+  for (const name of heavyDirs) {
+    const srcPath = resolve(root, "public", name);
+    if (existsSync(srcPath)) {
+      const stashPath = resolve(stashParent, name);
+      renameSync(srcPath, stashPath);
+      stashedDirs.push({ name, srcPath, stashPath });
+    }
+  }
+
+  if (stashedDirs.length > 0) {
+    console.log(
+      `[build] stashed ${stashedDirs.length} heavy media directories during compilation (avoids duplicating ~900 MB)`,
+    );
+  }
+
+  const viteBin = resolve(root, "node_modules/.bin/vite");
+  const cmd = existsSync(viteBin) ? viteBin : "npx";
+  const args = existsSync(viteBin) ? ["build"] : ["vite", "build"];
+
+  console.log(`Running Vite build with ${cmd} ${args.join(" ")}...`);
+  const result = spawnSync(cmd, args, {
+    stdio: "inherit",
+    env,
+    shell: process.platform === "win32",
+  });
+
+  if (result.status !== 0) {
+    process.exit(result.status ?? 1);
+  }
+} finally {
+  // Always restore stashed media back to public/
+  for (const { srcPath, stashPath } of stashedDirs) {
+    if (existsSync(stashPath) && !existsSync(srcPath)) {
+      renameSync(stashPath, srcPath);
+    }
+  }
+  rmSync(stashParent, { recursive: true, force: true });
 }
 
 const serverEntry = [".output/server/index.mjs", "dist/server/index.mjs"]
@@ -64,17 +110,16 @@ if (existsSync(resolve(serverDir, "index.mjs")) && !existsSync(resolve(serverDir
 const fallbackHtml =
   '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Neet Buddy</title></head><body><div id="root"></div></body></html>';
 const publicDir = resolve(root, ".output/public");
-if (existsSync(publicDir) && !existsSync(resolve(publicDir, "index.html"))) {
+mkdirSync(publicDir, { recursive: true });
+
+if (!existsSync(resolve(publicDir, "index.html"))) {
   writeFileSync(resolve(publicDir, "index.html"), fallbackHtml);
 }
 if (!existsSync(resolve(root, ".output/index.html"))) {
   writeFileSync(resolve(root, ".output/index.html"), fallbackHtml);
 }
 
-// --- Fast zero-copy public asset linking -------------------------------------
-// Vite does not copy the 900 MB public/ directory (copyPublicDir: false).
-// Instead, we link public/ subdirectories directly into .output/public so
-// assets are available instantly without duplicating 25,000+ files or exhausting disk.
+// Zero-copy link of all public media & files into .output/public
 function linkPublicAssets() {
   const source = resolve(root, "public");
   const target = resolve(root, ".output/public");
@@ -96,7 +141,7 @@ function linkPublicAssets() {
         symlinkSync(srcPath, destPath, "junction");
         dirCount++;
       } catch (err) {
-        console.warn(, err.message);
+        console.warn(`[build] symlink fallback for ${entry.name}:`, err.message);
       }
     } else if (entry.isFile()) {
       try {
@@ -110,7 +155,9 @@ function linkPublicAssets() {
       }
     }
   }
-  console.log();
+  console.log(
+    `[build] linked ${dirCount} media directories and ${fileCount} root public files into .output/public (0 MB extra disk)`,
+  );
 }
 
 linkPublicAssets();

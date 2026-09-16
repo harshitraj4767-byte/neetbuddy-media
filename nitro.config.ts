@@ -8,5 +8,14 @@ export default defineNitroConfig({
     serverDir: ".output/server",
     publicDir: ".output/public",
   },
+  ignore: [
+    "**/img/**",
+    "**/ncert/**",
+    "**/chemistry/**",
+    "**/physics/**",
+    "**/illustrations/**",
+    "**/mascot/**",
+    "**/short_notes/**",
+  ],
   compatibilityDate: "2026-09-15",
 });
