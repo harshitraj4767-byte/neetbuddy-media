@@ -17,7 +17,7 @@ if ($action === 'papers') {
         $stmt = $pdo->query('SELECT id, ext_id, title, year, total_questions, duration_minutes FROM neet_pyq_papers ORDER BY year DESC, title ASC');
         $papers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Throwable $e) {
-        $stmt = $pdo->query('SELECT DISTINCT COALESCE(year, pyq_year) as year FROM qb_questions WHERE is_pyq = 1 OR year IS NOT NULL ORDER BY year DESC');
+        $stmt = $pdo->query('SELECT DISTINCT COALESCE(year, pyq_year) as year FROM qb_questions WHERE year IS NOT NULL OR pyq_year IS NOT NULL ORDER BY year DESC');
         $years = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $papers = [];
         foreach ($years as $row) {
@@ -42,7 +42,7 @@ if ($action === 'chapters') {
         // Return chapters with PYQ count
         $stmt = $pdo->query('
             SELECT c.id, c.name, c.subject_id, s.name AS subject_name,
-                   (SELECT COUNT(*) FROM qb_questions q WHERE q.chapter_id = c.id AND (q.is_pyq = 1 OR q.year IS NOT NULL)) AS pyq_count
+                   (SELECT COUNT(*) FROM qb_questions q WHERE q.chapter_id = c.id AND (q.year IS NOT NULL OR q.pyq_year IS NOT NULL)) AS pyq_count
             FROM qb_chapters c
             LEFT JOIN qb_subjects s ON s.id = c.subject_id
             ORDER BY s.name ASC, c.name ASC
@@ -58,7 +58,7 @@ if ($action === 'chapter_questions') {
     $chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? '';
     if (!$chapterId) nb_fail('chapter_id required');
     try {
-        $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE chapter_id = ? AND (is_pyq = 1 OR year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 200');
+        $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE chapter_id = ? AND (year IS NOT NULL OR pyq_year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 200');
         $stmt->execute([$chapterId]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($rows as &$r) {
@@ -94,7 +94,7 @@ if ($action === 'get_or_create_chapter_test') {
         }
 
         // Get questions
-        $qStmt = $pdo->prepare('SELECT id FROM qb_questions WHERE chapter_id = ? AND (is_pyq = 1 OR year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 100');
+        $qStmt = $pdo->prepare('SELECT id FROM qb_questions WHERE chapter_id = ? AND (year IS NOT NULL OR pyq_year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 100');
         $qStmt->execute([$chapterId]);
         $qids = $qStmt->fetchAll(PDO::FETCH_COLUMN);
 
@@ -110,7 +110,7 @@ if ($action === 'get_or_create_chapter_test') {
             mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
 
-        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, NOW())');
+        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
         $ins->execute([
             $testId,
             $searchTitle,
@@ -167,7 +167,7 @@ $chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? null;
 $year = $_GET['year'] ?? $input['year'] ?? null;
 $limit = min((int)($_GET['limit'] ?? $input['limit'] ?? 50), 200);
 
-$where = ['(is_pyq = 1 OR year IS NOT NULL)'];
+$where = ['(year IS NOT NULL OR pyq_year IS NOT NULL)'];
 $params = [];
 
 if ($subjectId) {
