@@ -137,6 +137,7 @@ function linkPublicAssets() {
     if (existsSync(destPath)) continue;
 
     if (entry.isDirectory()) {
+    if (heavyDirs.includes(entry.name)) continue;
       try {
         symlinkSync(srcPath, destPath, "junction");
         dirCount++;
