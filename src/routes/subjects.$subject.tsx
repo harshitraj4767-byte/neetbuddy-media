@@ -19,6 +19,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { CheckCircle2, RotateCcw, Eye } from "lucide-react";
+import { HubHero, type TileAccent } from "@/components/nav-tiles";
 
 export const Route = createFileRoute("/subjects/$subject")({
   head: () => ({ meta: [{ title: "Subject — Neet Buddy" }] }),
@@ -41,10 +42,34 @@ const QTYPES = [
   { value: "Graph/Figure", label: "Diagram / graph based" },
 ] as const;
 
-const META: Record<string, { icon: typeof Atom; tint: string }> = {
-  Physics: { icon: Atom, tint: "from-sky-100 to-blue-100" },
-  Chemistry: { icon: FlaskConical, tint: "from-orange-100 to-amber-100" },
-  Biology: { icon: Leaf, tint: "from-emerald-100 to-green-100" },
+const META: Record<
+  string,
+  { icon: typeof Atom; tint: string; accent: TileAccent; image: string; alt: string; blurb: string }
+> = {
+  Physics: {
+    icon: Atom,
+    tint: "from-sky-100 to-blue-100",
+    accent: "blue",
+    image: "/illustrations/banner-physics.png",
+    alt: "3D atom, magnet and lightning bolt illustration",
+    blurb: "Numericals first, then concept one-liners — chapter by chapter.",
+  },
+  Chemistry: {
+    icon: FlaskConical,
+    tint: "from-orange-100 to-amber-100",
+    accent: "orange",
+    image: "/illustrations/banner-chemistry.png",
+    alt: "3D lab flasks and molecule illustration",
+    blurb: "Physical, Organic and Inorganic chapters in one flow.",
+  },
+  Biology: {
+    icon: Leaf,
+    tint: "from-emerald-100 to-green-100",
+    accent: "emerald",
+    image: "/illustrations/banner-biology.png",
+    alt: "3D leaf, DNA helix and microscope illustration",
+    blurb: "NCERT-aligned Botany and Zoology, 360 marks worth of practice.",
+  },
 };
 
 type Filters = { difficulty: string; qtype: string };
@@ -225,62 +250,68 @@ function SubjectPage() {
   const filtersActive = difficulty !== "any" || qtype !== "any" || excluded.size > 0;
 
   return (
-    <PageShell
-      eyebrow="Subject"
-      title={subject}
-      description="Pick a chapter to begin practice. Multi-statement, numerical, diagram, assertion-reason and match-the-column questions are placed first and mixed with quick one-liners."
-    >
-      <div className={`mb-6 flex items-center gap-4 rounded-2xl bg-gradient-to-br ${meta.tint} p-5 shadow-soft`}>
-        <Icon className="h-10 w-10" strokeWidth={1.6} />
-        <div>
-          <div className="text-xs uppercase tracking-widest text-foreground/60">NEET 2027 Syllabus</div>
-          <div className="text-lg font-bold">{chapters?.length ?? 0} Chapters</div>
-        </div>
-      </div>
+    <PageShell>
+      <HubHero
+        variant="banner"
+        compact
+        eyebrow="Subject"
+        title={subject}
+        highlight="Chapter practice"
+        description={meta.blurb}
+        Icon={Icon}
+        accent={meta.accent}
+        image={meta.image}
+        imageAlt={meta.alt}
+      >
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-2 py-1 text-[10px] font-semibold shadow-sm backdrop-blur">
+          <Icon className="h-3 w-3" strokeWidth={2.2} />
+          {chapters?.length ?? 0} chapters
+        </span>
+      </HubHero>
 
-      <div className="mb-4 grid gap-3 sm:grid-cols-2">
-        <div>
-          <Label className="text-xs">Difficulty</Label>
-          <Select value={difficulty} onValueChange={setDifficulty}>
-            <SelectTrigger><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="any">Any difficulty</SelectItem>
-              {DIFFICULTIES.map((d) => (
-                <SelectItem key={d} value={d}>{d}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <Label className="text-xs">Question type</Label>
-          <Select value={qtype} onValueChange={setQType}>
-            <SelectTrigger><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="any">Any type</SelectItem>
-              {QTYPES.map((t) => (
-                <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      {filtersActive && (
-        <div className="mb-4 flex flex-wrap items-center gap-2">
-          <Badge variant="secondary" className="gap-1"><SlidersHorizontal className="h-3 w-3" /> Filters on</Badge>
-          {difficulty !== "any" && <Badge variant="outline">{difficulty}</Badge>}
-          {qtype !== "any" && <Badge variant="outline">{qtype}</Badge>}
-          {excluded.size > 0 && <Badge variant="outline">{topicStats.selected}/{topicStats.total} topics</Badge>}
+      {/* Consolidated, single-row compact filter bar */}
+      <div className="mb-3 flex items-center gap-2 rounded-xl border border-border/70 bg-card/70 px-2 py-1.5 shadow-sm backdrop-blur-xl">
+        <SlidersHorizontal className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+        <Select value={difficulty} onValueChange={setDifficulty}>
+          <SelectTrigger className="h-8 min-w-0 flex-1 rounded-lg border-0 bg-secondary/60 px-2 text-xs">
+            <SelectValue placeholder="Difficulty" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="any">Any difficulty</SelectItem>
+            {DIFFICULTIES.map((d) => (
+              <SelectItem key={d} value={d}>{d}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select value={qtype} onValueChange={setQType}>
+          <SelectTrigger className="h-8 min-w-0 flex-1 rounded-lg border-0 bg-secondary/60 px-2 text-xs">
+            <SelectValue placeholder="Type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="any">Any type</SelectItem>
+            {QTYPES.map((t) => (
+              <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {filtersActive && (
           <Button
             size="sm"
             variant="ghost"
-            className="h-7 px-2 text-xs"
+            className="h-8 shrink-0 px-2 text-[11px]"
             onClick={() => { setDifficulty("any"); setQType("any"); setExcluded(new Set()); }}
           >
             Reset
           </Button>
+        )}
+      </div>
+
+      {filtersActive && excluded.size > 0 && (
+        <div className="mb-3 flex flex-wrap items-center gap-1.5">
+          <Badge variant="outline" className="text-[10px]">{topicStats.selected}/{topicStats.total} topics</Badge>
         </div>
       )}
+
 
       {chapters === null ? (
         <Loader2 className="h-5 w-5 animate-spin text-primary" />

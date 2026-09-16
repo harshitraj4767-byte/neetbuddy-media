@@ -199,6 +199,55 @@ switch ($action) {
         nb_json(['success' => true, 'attemptId' => $attemptId]);
         break;
 
+        case 'getTopicTree':
+        try {
+            $chapterIds = $input['chapter_ids'] ?? (isset($_GET['chapter_ids']) ? explode(',', $_GET['chapter_ids']) : []);
+            $numeric = array_values(array_filter(array_map('intval', (array)$chapterIds)));
+            if (empty($numeric)) {
+                nb_json(['tree' => []]);
+            }
+            $in = implode(',', array_fill(0, count($numeric), '?'));
+            $tStmt = $pdo->prepare("SELECT id, chapter_id, name FROM qb_topics WHERE chapter_id IN ($in) ORDER BY name ASC");
+            $tStmt->execute($numeric);
+            $topics = $tStmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $topicIds = array_column($topics, 'id');
+            $subtopics = [];
+            if (!empty($topicIds)) {
+                $subIn = implode(',', array_fill(0, count($topicIds), '?'));
+                $sStmt = $pdo->prepare("SELECT id, topic_id, name FROM qb_subtopics WHERE topic_id IN ($subIn) ORDER BY name ASC");
+                $sStmt->execute($topicIds);
+                $subtopics = $sStmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+
+            $subsByTopic = [];
+            foreach ($subtopics as $s) {
+                $subsByTopic[$s['topic_id']][] = ['id' => (string)$s['id'], 'name' => $s['name']];
+            }
+
+            $topicsByChapter = [];
+            foreach ($topics as $t) {
+                $cId = (string)$t['chapter_id'];
+                $topicsByChapter[$cId][] = [
+                    'id' => (string)$t['id'],
+                    'name' => $t['name'],
+                    'subtopics' => $subsByTopic[$t['id']] ?? []
+                ];
+            }
+
+            $tree = [];
+            foreach ($numeric as $cid) {
+                $tree[] = [
+                    'chapterId' => (string)$cid,
+                    'topics' => $topicsByChapter[(string)$cid] ?? []
+                ];
+            }
+            nb_json(['tree' => $tree]);
+        } catch (Throwable $e) {
+            nb_fail($e->getMessage(), 500);
+        }
+        break;
+
     case 'getSubjectTree':
         try {
             $sStmt = $pdo->query('SELECT id, name FROM qb_subjects ORDER BY name ASC');
