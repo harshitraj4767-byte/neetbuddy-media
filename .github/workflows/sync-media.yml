@@ -1,0 +1,28 @@
+name: Push Media to Public Repo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.MEDIA_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+
+      - name: Push to neetbuddy-media
+        run: |
+          git remote add media git@github.com:harshitraj4767-byte/neetbuddy-media.git || git remote set-url media git@github.com:harshitraj4767-byte/neetbuddy-media.git
+          git push -f media main:main
