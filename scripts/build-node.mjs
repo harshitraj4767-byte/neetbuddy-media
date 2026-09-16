@@ -7,6 +7,8 @@ import {
   readdirSync,
   statSync,
   linkSync,
+  copyFileSync,
+  symlinkSync,
 } from "node:fs";
 import { resolve } from "node:path";
 
@@ -69,78 +71,49 @@ if (!existsSync(resolve(root, ".output/index.html"))) {
   writeFileSync(resolve(root, ".output/index.html"), fallbackHtml);
 }
 
-// --- Disk guard -------------------------------------------------------------
-// Nitro copies the whole `public/` tree into `.output/public`, so a build needs
-// roughly 2x the size of public/ in free disk. On Hostinger that silently kills
-// the build container (OOM/disk) with no log at all. Replacing each copied file
-// with a hard link back to public/ keeps the output byte-identical while using
-// almost no extra disk. Set DEDUPE_PUBLIC=false to skip.
-function dirStats(dir) {
-  let bytes = 0;
-  let files = 0;
-  const stack = [dir];
-  while (stack.length) {
-    const current = stack.pop();
-    for (const entry of readdirSync(current, { withFileTypes: true })) {
-      const full = resolve(current, entry.name);
-      if (entry.isDirectory()) stack.push(full);
-      else if (entry.isFile()) {
-        files += 1;
-        bytes += statSync(full).size;
-      }
-    }
-  }
-  return { bytes, files };
-}
-
-function hardlinkDedupePublic() {
+// --- Fast zero-copy public asset linking -------------------------------------
+// Vite does not copy the 900 MB public/ directory (copyPublicDir: false).
+// Instead, we link public/ subdirectories directly into .output/public so
+// assets are available instantly without duplicating 25,000+ files or exhausting disk.
+function linkPublicAssets() {
   const source = resolve(root, "public");
   const target = resolve(root, ".output/public");
   if (!existsSync(source) || !existsSync(target)) return;
 
-  let linked = 0;
-  let saved = 0;
-  const stack = [""];
-  while (stack.length) {
-    const rel = stack.pop();
-    const dir = resolve(target, rel);
-    for (const entry of readdirSync(dir, { withFileTypes: true })) {
-      const relPath = rel ? `${rel}/${entry.name}` : entry.name;
-      if (entry.isDirectory()) {
-        stack.push(relPath);
-        continue;
-      }
-      if (!entry.isFile()) continue;
-      const original = resolve(source, relPath);
-      const copy = resolve(target, relPath);
+  const entries = readdirSync(source, { withFileTypes: true });
+  let dirCount = 0;
+  let fileCount = 0;
+
+  for (const entry of entries) {
+    if (entry.name.startsWith(".")) continue;
+    const srcPath = resolve(source, entry.name);
+    const destPath = resolve(target, entry.name);
+
+    if (existsSync(destPath)) continue;
+
+    if (entry.isDirectory()) {
       try {
-        const a = statSync(original);
-        const b = statSync(copy);
-        if (!a.isFile() || a.size !== b.size || a.ino === b.ino) continue;
-        rmSync(copy);
-        linkSync(original, copy);
-        linked += 1;
-        saved += a.size;
+        symlinkSync(srcPath, destPath, "junction");
+        dirCount++;
+      } catch (err) {
+        console.warn(, err.message);
+      }
+    } else if (entry.isFile()) {
+      try {
+        linkSync(srcPath, destPath);
+        fileCount++;
       } catch {
-        // Different filesystem or unreadable file: keep the copy as-is.
+        try {
+          copyFileSync(srcPath, destPath);
+          fileCount++;
+        } catch {}
       }
     }
   }
-  if (linked) {
-    console.log(
-      `[build] deduped ${linked} public assets via hard links (~${Math.round(saved / 1024 / 1024)} MB saved)`,
-    );
-  }
+  console.log();
 }
 
-if (process.env.DEDUPE_PUBLIC !== "false") {
-  hardlinkDedupePublic();
-}
-
-if (existsSync(publicDir)) {
-  const { bytes, files } = dirStats(publicDir);
-  console.log(`[build] .output/public: ${files} files, ${Math.round(bytes / 1024 / 1024)} MB`);
-}
+linkPublicAssets();
 
 // Create a light dist/ fallback directory pointing to server output
 const distServerDir = resolve(root, "dist/server");

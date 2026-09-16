@@ -49,6 +49,7 @@ const extraConfig: UserConfig = {
   },
   build: {
     chunkSizeWarningLimit: 700,
+    copyPublicDir: false,
   },
   environments: {
     // Vendor splitting only matters for what the browser downloads; the SSR /

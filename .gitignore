@@ -8,3 +8,7 @@ public/api/auth/config.local.php
 node_modules
 dist
 .output
+
+# Ignore large SQL database dumps
+sql/*.sql
+!sql/07_auth.sql
