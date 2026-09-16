@@ -101,3 +101,58 @@ export function resolveBookImage(url: string | null | undefined): string | null 
 export function runImageSrc(run: Run): string | null {
   return run.src ? resolveBookImage(run.src) : null;
 }
+
+/**
+ * Candidate URLs for an NCERT-linked PYQ diagram.
+ *
+ * Stored references are inconsistent across imports: some rows hold a full
+ * `ncert/pyq/images/<subject>/<type>/<id>q.png` path, some hold only the file
+ * name, some already hold an absolute URL. Return every plausible location in
+ * priority order so <NcertPyqImage> can fall through on error.
+ */
+export function pyqImageCandidates(
+  src: string | null | undefined,
+  subject?: string | null,
+): string[] {
+  if (!src) return [];
+  const raw = String(src).trim();
+  if (!raw) return [];
+
+  // Absolute / data URLs are used as-is.
+  if (/^(?:https?:|data:|blob:)/i.test(raw)) return [raw];
+
+  const clean = raw.replace(/^\/+/, "").replace(/^public\//i, "");
+  const subj = (subject ?? "").toLowerCase().trim();
+  const file = clean.split("/").pop() ?? clean;
+  if (!file) return [];
+
+  const out: string[] = [];
+  const push = (p: string) => {
+    const url = p.startsWith("/") ? p : `/${p}`;
+    if (!out.includes(url)) out.push(url);
+  };
+
+  // 1. The stored path itself, as served from public/.
+  if (clean.includes("/")) push(clean);
+
+  // 2. Mirrored layouts under public/ncert/pyq.
+  if (clean.startsWith("ncert/pyq/images/")) {
+    push(`ncert/pyq/${clean.slice("ncert/pyq/images/".length)}`);
+  } else if (clean.startsWith("ncert/pyq/")) {
+    push(`ncert/pyq/images/${clean.slice("ncert/pyq/".length)}`);
+  }
+
+  // 3. Subject-based guesses for bare file names.
+  if (subj) {
+    for (const type of ["mcq", "flashcard"]) {
+      push(`ncert/pyq/images/${subj}/${type}/${file}`);
+      push(`ncert/pyq/${subj}/${type}/${file}`);
+    }
+  }
+
+  // 4. Last resort: the question-bank resolver.
+  const qbank = qbankImageUrl(clean);
+  if (qbank && !out.includes(qbank)) out.push(qbank);
+
+  return out;
+}
