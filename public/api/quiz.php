@@ -177,7 +177,7 @@ switch ($action) {
         $bookmarks = json_encode($input['bookmarks'] ?? []);
         
         if ($attemptId) {
-            $stmt = $pdo->prepare('UPDATE attempts SET score = ?, correct_count = ?, wrong_count = ?, unattempted_count = ?, time_taken_sec = ?, answers = ?, bookmarks = ?, status = "completed", submitted_at = NOW(), updated_at = NOW() WHERE id = ? AND user_id = ?');
+            $stmt = $pdo->prepare('UPDATE attempts SET score = ?, correct_count = ?, wrong_count = ?, unattempted_count = ?, time_taken_sec = ?, answers = ?, bookmarks = ?, status = "completed", submitted_at = NOW() WHERE id = ? AND user_id = ?');
             $stmt->execute([$score, $correctCount, $wrongCount, $unattempted, $timeTaken, $answers, $bookmarks, $attemptId, $userId]);
         } else if ($testId) {
             $attemptId = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -304,7 +304,7 @@ switch ($action) {
             mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
 
-        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
         $ins->execute([
             $testId,
             $title,
@@ -370,7 +370,7 @@ switch ($action) {
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
 
         $testTitle = !empty($input['title']) ? $input['title'] : ($sName . ' Quiz');
-        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
         $ins->execute([
             $testId,
             $testTitle,
@@ -383,26 +383,83 @@ switch ($action) {
             'Subject Quiz',
             'quiz',
             json_encode($qids),
+            $userId,
         ]);
 
         nb_json(['success' => true, 'test_id' => $testId]);
         break;
 
     case 'getSubjectQuestions':
-        $subject = $_GET['subject'] ?? '';
-        $sStmt = $pdo->prepare('SELECT id, name FROM qb_subjects WHERE LOWER(name) = LOWER(?) LIMIT 1');
-        $sStmt->execute([$subject]);
+        $subject = $_GET['subject'] ?? ($input['subject'] ?? '');
+        $difficulty = $_GET['difficulty'] ?? ($input['difficulty'] ?? '');
+        $qtype = $_GET['qtype'] ?? ($input['qtype'] ?? '');
+
+        // Route params carry the display name ("Physics") while ids are slugs ("physics").
+        $sStmt = $pdo->prepare('SELECT id, name FROM qb_subjects WHERE LOWER(name) = LOWER(?) OR LOWER(id) = LOWER(?) LIMIT 1');
+        $sStmt->execute([$subject, $subject]);
         $sRow = $sStmt->fetch(PDO::FETCH_ASSOC);
         $sId = $sRow['id'] ?? null;
 
         $chapters = [];
         if ($sId) {
-            $cStmt = $pdo->prepare('SELECT id, name, (SELECT COUNT(*) FROM qb_questions WHERE chapter_id = qb_chapters.id) AS q_count FROM qb_chapters WHERE subject_id = ? ORDER BY name ASC');
-            $cStmt->execute([$sId]);
-            $chapters = $cStmt->fetchAll(PDO::FETCH_ASSOC);
+            $countWhere = 'chapter_id = qb_chapters.id';
+            $params = [];
+            if ($difficulty !== '' && strtolower($difficulty) !== 'any' && strtolower($difficulty) !== 'all') {
+                $countWhere .= ' AND LOWER(difficulty) = ?';
+                $params[] = strtolower($difficulty);
+            }
+            if ($qtype !== '' && strtolower($qtype) !== 'any' && strtolower($qtype) !== 'all') {
+                $countWhere .= ' AND LOWER(qtype) = ?';
+                $params[] = strtolower($qtype);
+            }
+            $params[] = $sId;
+
+            $cStmt = $pdo->prepare(
+                'SELECT id, name, (SELECT COUNT(*) FROM qb_questions WHERE ' . $countWhere . ') AS q_count
+                   FROM qb_chapters WHERE subject_id = ? ORDER BY name ASC'
+            );
+            $cStmt->execute($params);
+            $rows = $cStmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as $idx => $row) {
+                $chapters[] = [
+                    'id' => (string) $row['id'],
+                    'name' => (string) $row['name'],
+                    'q_count' => (int) $row['q_count'],
+                    'order_index' => $idx,
+                ];
+            }
         }
 
         nb_json(['subject' => $sRow, 'chapters' => $chapters]);
+        break;
+
+    case 'getPracticeSetStatuses':
+        if (!$userId) nb_json(['statuses' => new stdClass()]);
+        $titles = $input['titles'] ?? [];
+        if (!is_array($titles) || empty($titles)) nb_json(['statuses' => new stdClass()]);
+        $titles = array_values(array_filter(array_map('strval', $titles)));
+        if (empty($titles)) nb_json(['statuses' => new stdClass()]);
+
+        $ph = implode(',', array_fill(0, count($titles), '?'));
+        $stmt = $pdo->prepare(
+            'SELECT t.title, a.id AS attempt_id, a.score, a.correct_count
+               FROM tests t
+               JOIN attempts a ON a.test_id = t.id AND a.user_id = ? AND a.status = "completed"
+              WHERE t.created_by = ? AND t.title IN (' . $ph . ')
+              ORDER BY a.submitted_at DESC'
+        );
+        $stmt->execute(array_merge([$userId, $userId], $titles));
+        $statuses = [];
+        foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $title = (string) $row['title'];
+            if (isset($statuses[$title])) continue; // keep the latest attempt only
+            $statuses[$title] = [
+                'attempt_id' => (string) $row['attempt_id'],
+                'score' => (float) $row['score'],
+                'correct_count' => (int) $row['correct_count'],
+            ];
+        }
+        nb_json(['statuses' => empty($statuses) ? new stdClass() : $statuses]);
         break;
 
     case 'getQuizBookmarks':

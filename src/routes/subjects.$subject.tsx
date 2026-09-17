@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, ChevronDown, Play, Atom, FlaskConical, Leaf, SlidersHorizontal } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -84,26 +83,24 @@ async function fetchChapterQuestions(
   topicFilter: { fullTopicIds: string[]; subtopicIds: string[]; everything: boolean },
 ): Promise<MixableQuestion[]> {
   try {
-    const res = await fetch(`/api/questions.php?chapter_id=${chapterId}&limit=100`);
+    const params = new URLSearchParams({ chapter_id: String(chapterId), limit: "1000" });
+    if (filters.difficulty !== "any") params.set("difficulty", filters.difficulty);
+    if (filters.qtype !== "any") params.set("qtype", filters.qtype);
+    // The API filters in SQL, so an empty list genuinely means "nothing matches"
+    // rather than "the first page happened to contain no match".
+    const res = await fetch(`/api/questions.php?${params.toString()}`, { credentials: "include" });
     if (res.ok) {
       const data = await res.json();
       const list = Array.isArray(data.questions) ? data.questions : [];
-      let filtered = list;
-      if (filters.difficulty !== "any") {
-        filtered = filtered.filter((q: any) => String(q.difficulty || "").toLowerCase() === filters.difficulty.toLowerCase());
-      }
-      if (filters.qtype !== "any") {
-        filtered = filtered.filter((q: any) => String(q.qtype || "") === filters.qtype);
-      }
-      return (filtered.length ? filtered : list).map((q: any) => ({
+      return list.map((q: any) => ({
         id: String(q.id),
-        text: q.question_text || q.text || "",
+        text: q.question_html || q.question_text || q.text || "",
         qtype: q.qtype || "MCQ",
         question_image_url: q.question_image_url || null,
       }));
     }
   } catch (e) {
-    console.warn("fetchChapterQuestions fallback:", e);
+    console.warn("fetchChapterQuestions failed:", e);
   }
   return [];
 }
@@ -125,46 +122,35 @@ function SubjectPage() {
     if (!loading && !user) nav({ to: "/login" });
   }, [user, loading, nav]);
 
+  // Chapters (and the question count matching the current filters) come straight
+  // from the live question bank.
   useEffect(() => {
-    (async () => {
-      const { data: subj } = await supabase.from("subjects").select("id").eq("name", subject).maybeSingle();
-      if (!subj) return setChapters([]);
-      const { data: chs } = await supabase
-        .from("chapters")
-        .select("id,name,order_index")
-        .eq("subject_id", subj.id)
-        .order("order_index");
-      const list = (chs ?? []) as Chapter[];
-      setChapters(list.map((c) => ({ ...c, q_count: undefined })));
-    })();
-  }, [subject]);
-
-  // Recount matching questions per chapter whenever the difficulty / qtype
-  // filters change so the card shows the true pool size the user will draw
-  // from — not the raw chapter total.
-  useEffect(() => {
-    if (!chapters || chapters.length === 0) return;
     let cancelled = false;
+    setChapters(null);
     (async () => {
-      const results = await Promise.all(
-        chapters.map(async (c) => {
-          let q: any = supabase
-            .from("questions")
-            .select("id", { count: "exact", head: true })
-            .eq("chapter_id", c.id);
-          if (difficulty !== "any") q = q.eq("difficulty", difficulty);
-          if (qtype !== "any") q = q.eq("qtype", qtype);
-          const { count } = await q;
-          return [c.id, count ?? 0] as const;
-        }),
-      );
-      if (cancelled) return;
-      const map = Object.fromEntries(results);
-      setChapters((prev) => prev?.map((c) => ({ ...c, q_count: map[c.id] ?? 0 })) ?? prev);
+      try {
+        const params = new URLSearchParams({ action: "getSubjectQuestions", subject });
+        if (difficulty !== "any") params.set("difficulty", difficulty);
+        if (qtype !== "any") params.set("qtype", qtype);
+        const res = await fetch(`/api/quiz.php?${params.toString()}`, { credentials: "include" });
+        const data = res.ok ? await res.json() : { chapters: [] };
+        if (cancelled) return;
+        const list = (Array.isArray(data.chapters) ? data.chapters : []).map((c: any, i: number) => ({
+          id: String(c.id),
+          name: String(c.name ?? ""),
+          order_index: Number(c.order_index ?? i),
+          q_count: Number(c.q_count ?? 0),
+        })) as Chapter[];
+        setChapters(list);
+      } catch (e) {
+        console.warn("chapter load failed:", e);
+        if (!cancelled) setChapters([]);
+      }
     })();
-    return () => { cancelled = true; };
-  }, [chapters?.length, difficulty, qtype]);
-
+    return () => {
+      cancelled = true;
+    };
+  }, [subject, difficulty, qtype]);
 
   // Sub-topic tree for whichever chapter is currently expanded / launching.
   const treeChapterIds = useMemo(
@@ -446,39 +432,39 @@ function CbtSetPicker({
     if (!plan || !userId) return;
     setStatuses({});
     setLoadingSets(true);
+    let cancelled = false;
     (async () => {
       const titles = Array.from({ length: totalSets }, (_, i) => setTitle(plan.baseTitle, i, totalSets));
-      const { data: tests } = await supabase
-        .from("tests")
-        .select("id,title")
-        .eq("created_by", userId)
-        .eq("type", "practice")
-        .in("title", titles);
-      const byId = new Map<string, string>((tests ?? []).map((t) => [t.id as string, t.title as string]));
-      if (byId.size) {
-        const { data: attempts } = await supabase
-          .from("attempts")
-          .select("id,test_id,score,correct_count,submitted_at")
-          .eq("user_id", userId)
-          .eq("status", "completed")
-          .in("test_id", Array.from(byId.keys()))
-          .order("submitted_at", { ascending: false });
+      try {
+        const res = await fetch("/api/quiz.php?action=getPracticeSetStatuses", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ titles }),
+        });
+        const data = res.ok ? await res.json() : { statuses: {} };
+        if (cancelled) return;
         const next: Record<number, SetStatus> = {};
-        for (const a of attempts ?? []) {
-          const title = byId.get(a.test_id as string);
-          const idx = titles.indexOf(title ?? "");
-          if (idx < 0 || next[idx]) continue;
+        titles.forEach((title, idx) => {
+          const row = (data.statuses ?? {})[title];
+          if (!row) return;
           next[idx] = {
-            attemptId: a.id as string,
-            score: (a.score as number | null) ?? null,
-            correct: (a.correct_count as number | null) ?? null,
+            attemptId: String(row.attempt_id),
+            score: row.score == null ? null : Number(row.score),
+            correct: row.correct_count == null ? null : Number(row.correct_count),
             total: Math.min(CBT_SET_SIZE, plan.qids.length - idx * CBT_SET_SIZE),
           };
-        }
+        });
         setStatuses(next);
+      } catch (e) {
+        console.warn("set status load failed:", e);
+      } finally {
+        if (!cancelled) setLoadingSets(false);
       }
-      setLoadingSets(false);
     })();
+    return () => {
+      cancelled = true;
+    };
   }, [plan?.baseTitle, userId, totalSets]);
 
   async function launchSet(index: number) {

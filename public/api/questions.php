@@ -15,7 +15,10 @@ $testId = $_GET['test_id'] ?? $body['test_id'] ?? null;
 $chapterId = $_GET['chapter_id'] ?? $body['chapter_id'] ?? null;
 $subjectId = $_GET['subject_id'] ?? $body['subject_id'] ?? null;
 $questionIds = $_GET['question_ids'] ?? $body['question_ids'] ?? (isset($_GET['ids']) ? explode(',', (string)$_GET['ids']) : null);
-$limit = min((int)($_GET['limit'] ?? $body['limit'] ?? 50), 100);
+$limit = min(max((int)($_GET['limit'] ?? $body['limit'] ?? 50), 1), 1000);
+$difficulty = (string)($_GET['difficulty'] ?? $body['difficulty'] ?? '');
+$qtype = (string)($_GET['qtype'] ?? $body['qtype'] ?? '');
+$isFilter = static fn (string $v): bool => $v !== '' && !in_array(strtolower($v), ['any', 'all'], true);
 
 if ($testId) {
     $stmt = $pdo->prepare('SELECT * FROM tests WHERE id = :id');
@@ -48,26 +51,39 @@ if ($testId) {
     nb_json(['test' => $test, 'questions' => $questions, 'count' => count($questions)]);
 }
 
+// All placeholders are positional so the filters can be combined with an id list
+// (PDO rejects mixing named and positional placeholders in one statement).
 $where = ['1=1'];
 $params = [];
 
-if ($chapterId) {
-    $where[] = 'chapter_id = :cid';
-    $params[':cid'] = $chapterId;
-}
-if ($subjectId) {
-    $where[] = 'subject_id = :sid';
-    $params[':sid'] = $subjectId;
+if (!empty($questionIds) && is_array($questionIds)) {
+    $questionIds = array_values(array_filter(array_map('strval', $questionIds), static fn ($v) => $v !== ''));
 }
 if (!empty($questionIds) && is_array($questionIds)) {
-    $in = implode(',', array_fill(0, count($questionIds), '?'));
-    $where[] = "id IN ($in)";
-    $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' LIMIT ' . $limit);
-    $stmt->execute(array_values($questionIds));
-} else {
-    $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' LIMIT ' . $limit);
-    $stmt->execute($params);
+    $where[] = 'id IN (' . implode(',', array_fill(0, count($questionIds), '?')) . ')';
+    $params = array_merge($params, $questionIds);
 }
+if ($chapterId) {
+    $where[] = 'chapter_id = ?';
+    $params[] = $chapterId;
+}
+if ($subjectId) {
+    $where[] = 'subject_id = ?';
+    $params[] = $subjectId;
+}
+// Filter in SQL so the client always receives a pool that already matches the
+// chosen difficulty / question type instead of a truncated, then-filtered page.
+if ($isFilter($difficulty)) {
+    $where[] = 'LOWER(difficulty) = ?';
+    $params[] = strtolower($difficulty);
+}
+if ($isFilter($qtype)) {
+    $where[] = 'LOWER(qtype) = ?';
+    $params[] = strtolower($qtype);
+}
+
+$stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' LIMIT ' . $limit);
+$stmt->execute($params);
 
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($rows as &$r) {
