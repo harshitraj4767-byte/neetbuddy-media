@@ -15,25 +15,25 @@
   ],
   "icons": [
     {
-      "src": "https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/icons/icon-192.png",
+      "src": "https://raw.githubusercontent.com/harshitraj4767-byte/neetbuddy-media/main/public/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/icons/icon-512.png",
+      "src": "https://raw.githubusercontent.com/harshitraj4767-byte/neetbuddy-media/main/public/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/icons/maskable-512.png",
+      "src": "https://raw.githubusercontent.com/harshitraj4767-byte/neetbuddy-media/main/public/icons/maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/icons/apple-touch-icon.png",
+      "src": "https://raw.githubusercontent.com/harshitraj4767-byte/neetbuddy-media/main/public/icons/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
