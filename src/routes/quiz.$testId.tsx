@@ -175,7 +175,43 @@ function QuizPlayer() {
 
   useEffect(() => {
     (async () => {
-      const t = await getQuizPageTest({ data: { testId } });
+      let t: any = null;
+      try {
+        t = await getQuizPageTest({ data: { testId } });
+      } catch (err) {
+        console.warn("[quiz] getQuizPageTest failed, trying /api/quiz.php fallback", err);
+      }
+
+      if (!t) {
+        try {
+          const res = await fetch(`/api/quiz.php?action=getQuizTest&testId=${encodeURIComponent(testId)}`, { credentials: "include" });
+          if (res.ok) {
+            const data = await res.json();
+            if (data?.test) {
+              const raw = data.test;
+              let qids = raw.question_ids;
+              if (typeof qids === "string") {
+                try { qids = JSON.parse(qids); } catch { qids = qids.split(",").map((s: string) => s.trim()); }
+              }
+              t = {
+                id: String(raw.id),
+                title: String(raw.title || ""),
+                type: String(raw.type || "quiz"),
+                difficulty: String(raw.difficulty || "medium"),
+                duration_min: Number(raw.duration_min || 30),
+                total_questions: Number(raw.total_questions || 0),
+                source: String(raw.source || "NCERT"),
+                question_ids: Array.isArray(qids) ? qids.map(String) : [],
+                marks_correct: Number(raw.marks_correct ?? 4),
+                marks_wrong: Number(raw.marks_wrong ?? -1),
+              };
+            }
+          }
+        } catch (e) {
+          console.warn("[quiz] /api/quiz.php fallback error", e);
+        }
+      }
+
       if (!t) {
         toast.error("Test not found");
         setLoading(false);
@@ -219,19 +255,67 @@ function QuizPlayer() {
         setLoading(false);
         return;
       }
-      const bank = await getQuizPageQuestions({
-        data: {
-          questionIds: ids,
-          marksCorrect: Number(t.marks_correct ?? 4) || 4,
-          marksWrong: Number(t.marks_wrong ?? -1),
-        },
-      });
-      const byId = new Map(bank.questions.map((q) => [q.id, q as Question]));
-      let ordered = ids.map((id) => byId.get(String(id))).filter(Boolean) as Question[];
+      let bank: any = null;
+      try {
+        bank = await getQuizPageQuestions({
+          data: {
+            questionIds: ids,
+            marksCorrect: Number(t.marks_correct ?? 4) || 4,
+            marksWrong: Number(t.marks_wrong ?? -1),
+          },
+        });
+      } catch (err) {
+        console.warn("[quiz] getQuizPageQuestions failed, trying /api/quiz.php fallback", err);
+      }
 
-      const subjMap = bank.subjects;
+      if (!bank || !bank.questions || bank.questions.length === 0) {
+        try {
+          const res = await fetch("/api/quiz.php?action=getQuizQuestions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ testId, questionIds: ids }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data.questions)) {
+              bank = {
+                questions: data.questions.map((q: any) => ({
+                  id: String(q.id),
+                  text: q.questionHtml || q.text || "",
+                  options: (q.options || []).map((o: any) => typeof o === "string" ? o : (o.html || "")),
+                  correct_index: Number(q.correctIndex ?? q.correct_index ?? 0),
+                  difficulty: q.difficulty || t.difficulty || "medium",
+                  source: t.source || "NCERT",
+                  marks_correct: Number(t.marks_correct ?? 4),
+                  marks_wrong: Number(t.marks_wrong ?? -1),
+                  explanation: q.explanation || null,
+                  subject_id: q.subjectId ? String(q.subjectId) : null,
+                  chapter_id: q.chapterId ? String(q.chapterId) : null,
+                  tag: q.tag || null,
+                  year: q.year || null,
+                  is_pyq: Boolean(q.isPyq),
+                })),
+                subjects: {},
+                chapters: {},
+              };
+            }
+          }
+        } catch (e) {
+          console.warn("[quiz] fallback /api/quiz.php questions error", e);
+        }
+      }
+
+      const questionsList = bank?.questions || [];
+      const byId = new Map(questionsList.map((q: any) => [q.id, q as Question]));
+      let ordered = ids.map((id: string) => byId.get(String(id))).filter(Boolean) as Question[];
+      if (ordered.length === 0 && questionsList.length > 0) {
+        ordered = questionsList as Question[];
+      }
+
+      const subjMap = bank?.subjects || {};
       setSubjects(subjMap);
-      setChapters(bank.chapters);
+      setChapters(bank?.chapters || {});
 
       // Mock tests: enforce Physics → Chemistry → Biology ordering
       if ((t as Test).type === "mock") {
