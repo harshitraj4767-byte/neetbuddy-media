@@ -30,6 +30,36 @@ if ($method === 'GET') {
             }
         }
 
+        if (empty($tests)) {
+            // First visit of the day: create today's DPP so the page is never empty.
+            $qStmt = $pdo->prepare('SELECT id FROM qb_questions ORDER BY RAND() LIMIT 10');
+            $qStmt->execute();
+            $dppQids = $qStmt->fetchAll(PDO::FETCH_COLUMN);
+            if (!empty($dppQids)) {
+                $dppId = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+                    mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
+                    mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
+                $insDpp = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+                $insDpp->execute([
+                    $dppId,
+                    'Daily DPP - ' . date('d M Y'),
+                    '10 Daily Practice Questions curated for NEET',
+                    'medium',
+                    15,
+                    count($dppQids),
+                    4,
+                    -1,
+                    'Daily DPP',
+                    'dpp',
+                    json_encode($dppQids),
+                    $userId,
+                ]);
+                $tStmt = $pdo->prepare('SELECT id, title, description, difficulty, duration_min, total_questions, source, created_at, starts_at, ends_at, type FROM tests WHERE id = ? LIMIT 1');
+                $tStmt->execute([$dppId]);
+                $tests = $tStmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
+
         nb_json([
             'tests' => $tests,
             'dpp_list' => $tests,
@@ -64,7 +94,7 @@ if ($method === 'POST') {
                         mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
                         mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
                     
-                    $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, is_active, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, NOW())');
+                    $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
                     $title = 'Daily DPP - ' . date('d M Y');
                     $ins->execute([
                         $testId,
@@ -78,6 +108,7 @@ if ($method === 'POST') {
                         'Daily DPP',
                         'dpp',
                         json_encode($qids),
+                        $userId,
                     ]);
 
                     $tStmt = $pdo->prepare('SELECT * FROM tests WHERE id = ? LIMIT 1');

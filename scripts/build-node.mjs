@@ -37,8 +37,6 @@ const heavyDirs = [
   "ncert",
   "chemistry",
   "physics",
-  "illustrations",
-  "mascot",
   "short_notes",
 ];
 
