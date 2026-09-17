@@ -65,12 +65,8 @@ switch ($action) {
             $where = ['1=1'];
             $params = [];
             if ($deckId) {
-                $where[] = '(deck_id = :did OR subject = :did)';
+                $where[] = 'deck_id = :did';
                 $params[':did'] = $deckId;
-            }
-            if ($subject) {
-                $where[] = 'subject = :sub';
-                $params[':sub'] = $subject;
             }
             $sql = 'SELECT id, deck_id, front, back, front_body, back_body, hint, tags, difficulty, source, position 
                     FROM flashcards WHERE ' . implode(' AND ', $where) . ' 

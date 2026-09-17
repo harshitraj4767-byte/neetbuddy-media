@@ -78,6 +78,53 @@ switch ($action) {
         }
         break;
 
+    case 'highlight_decks':
+    case 'decks':
+        try {
+            $stmt = $pdo->query('
+                SELECT c.id AS chapter_id, c.title AS chapter_name, c.subject, c.slug,
+                       COALESCE(c.highlight_count, (
+                           SELECT COUNT(*) FROM ncert_book_blocks b 
+                           WHERE b.chapter_id = c.id AND (b.type = "highlight" OR b.status = "highlight" OR b.text LIKE "%highlight%")
+                       ), 15) AS count
+                FROM ncert_book_chapters c
+                ORDER BY c.ord ASC, c.title ASC
+            ');
+            $decks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $mapped = [];
+            foreach ($decks as $d) {
+                $mapped[] = [
+                    'chapter_id' => (string)$d['chapter_id'],
+                    'chapter_name' => (string)$d['chapter_name'],
+                    'subject_id' => (string)$d['subject'],
+                    'subject_name' => ucfirst((string)$d['subject']),
+                    'count' => max(5, (int)($d['count'] ?? 10)),
+                ];
+            }
+            nb_json(['decks' => $mapped]);
+        } catch (Throwable $e) {
+            nb_json(['decks' => [], 'error' => $e->getMessage()]);
+        }
+        break;
+
+    case 'highlights':
+    case 'get_highlights':
+        $chapterId = $_GET['chapter_id'] ?? $_POST['chapter_id'] ?? null;
+        try {
+            $stmt = $pdo->prepare('
+                SELECT b.id, b.chapter_id, b.text AS body, c.subject AS subject_id, "NCERT" AS source
+                FROM ncert_book_blocks b
+                JOIN ncert_book_chapters c ON c.id = b.chapter_id
+                WHERE b.chapter_id = ? AND b.text IS NOT NULL AND CHAR_LENGTH(b.text) > 20
+                ORDER BY b.idx ASC LIMIT 50
+            ');
+            $stmt->execute([$chapterId]);
+            $highlights = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            nb_json(['highlights' => $highlights]);
+        } catch (Throwable $e) {
+            nb_json(['highlights' => [], 'error' => $e->getMessage()]);
+        }
+        break;
     default:
         nb_json(['status' => 'ok']);
         break;

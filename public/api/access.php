@@ -21,6 +21,11 @@ const TRIAL_FALLBACK_FEATURES = [
     'bookmarks',
     'weekly_progress',
     'subject_wise_quiz',
+    'flashcards',
+    'ncert_highlights',
+    'ncert_nuggets',
+    'contests',
+    'battlegrounds',
 ];
 const PRIME_ONLY_FEATURES = ['ai_path', 'score_predictor'];
 const FREE_FEATURES = ['daily_dpp', 'contests', 'battlegrounds'];
@@ -134,7 +139,12 @@ if ($isAdmin) {
     } catch (Throwable $e) {
         error_log('[access] batch merge failed: ' . $e->getMessage());
     }
-    foreach (['contests', 'battlegrounds', 'infinite_run', 'pyqs'] as $k) {
+    foreach ([
+        'daily_dpp', 'mock_tests', 'generate_test', 'bookmarks', 'weekly_progress',
+        'subject_wise_quiz', 'flashcards', 'ncert_highlights', 'ncert_nuggets',
+        'score_predictor', 'neetlab', 'ai_path', 'advanced_analytics',
+        'priority_support', 'contests', 'battlegrounds', 'infinite_run', 'pyqs'
+    ] as $k) {
         $merged[$k] = true;
     }
     nb_json($base + [
