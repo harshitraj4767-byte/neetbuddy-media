@@ -3,8 +3,10 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Sparkles, Target, Rocket, Heart, Quote } from "lucide-react";
-import sanskarImage from "@/assets/sanskar.jpg";
-import akmalImage from "@/assets/akmal.jpg";
+import { mediaAsset } from "@/lib/media-assets";
+
+const sanskarImage = mediaAsset("src/assets/sanskar.jpg");
+const akmalImage = mediaAsset("src/assets/akmal.jpg");
 
 export const Route = createFileRoute("/about")({
   head: () => ({

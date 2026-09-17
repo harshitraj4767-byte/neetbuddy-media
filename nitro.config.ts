@@ -14,6 +14,9 @@ export default defineNitroConfig({
     "**/chemistry/**",
     "**/physics/**",
     "**/short_notes/**",
+    "**/icons/**",
+    "**/illustrations/**",
+    "**/mascot/**",
   ],
   compatibilityDate: "2026-09-15",
 });

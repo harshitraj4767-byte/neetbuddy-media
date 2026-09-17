@@ -1,18 +1,21 @@
-import waving from "@/assets/mascot/dr-vanshu-waving.webp";
-import happy from "@/assets/mascot/dr-vanshu-happy.webp";
-import thinking from "@/assets/mascot/dr-vanshu-thinking.webp";
-import idea from "@/assets/mascot/dr-vanshu-idea.webp";
-import studying from "@/assets/mascot/dr-vanshu-studying.webp";
-import thumbsUp from "@/assets/mascot/dr-vanshu-thumbs-up.webp";
-import excited from "@/assets/mascot/dr-vanshu-excited.webp";
-import confident from "@/assets/mascot/dr-vanshu-confident.webp";
-import shocked from "@/assets/mascot/dr-vanshu-shocked.webp";
-import pointing from "@/assets/mascot/dr-vanshu-pointing.webp";
-import coffeeBreak from "@/assets/mascot/dr-vanshu-coffee-break.webp";
-import working from "@/assets/mascot/dr-vanshu-working.webp";
-import calm from "@/assets/mascot/dr-vanshu-calm.webp";
-import bored from "@/assets/mascot/dr-vanshu-bored.webp";
-import grateful from "@/assets/mascot/dr-vanshu-grateful.webp";
+import { mediaAsset } from "@/lib/media-assets";
+
+const waving = mediaAsset("src/assets/mascot/dr-vanshu-waving.webp");
+const happy = mediaAsset("src/assets/mascot/dr-vanshu-happy.webp");
+const thinking = mediaAsset("src/assets/mascot/dr-vanshu-thinking.webp");
+const idea = mediaAsset("src/assets/mascot/dr-vanshu-idea.webp");
+const studying = mediaAsset("src/assets/mascot/dr-vanshu-studying.webp");
+const thumbsUp = mediaAsset("src/assets/mascot/dr-vanshu-thumbs-up.webp");
+const excited = mediaAsset("src/assets/mascot/dr-vanshu-excited.webp");
+const confident = mediaAsset("src/assets/mascot/dr-vanshu-confident.webp");
+const shocked = mediaAsset("src/assets/mascot/dr-vanshu-shocked.webp");
+const pointing = mediaAsset("src/assets/mascot/dr-vanshu-pointing.webp");
+const coffeeBreak = mediaAsset("src/assets/mascot/dr-vanshu-coffee-break.webp");
+const working = mediaAsset("src/assets/mascot/dr-vanshu-working.webp");
+const calm = mediaAsset("src/assets/mascot/dr-vanshu-calm.webp");
+const bored = mediaAsset("src/assets/mascot/dr-vanshu-bored.webp");
+const grateful = mediaAsset("src/assets/mascot/dr-vanshu-grateful.webp");
+
 
 export type MascotMood =
   | "waving"

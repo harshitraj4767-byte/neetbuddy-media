@@ -38,6 +38,9 @@ const heavyDirs = [
   "chemistry",
   "physics",
   "short_notes",
+  "icons",
+  "illustrations",
+  "mascot",
 ];
 
 const stashedDirs = [];

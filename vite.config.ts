@@ -4,6 +4,25 @@ import { mergeConfig, type Plugin, type PluginOption, type UserConfig } from "vi
 const isStaticBuild = process.env["STATIC_BUILD"] === "true" || process.env["BUILD_TARGET"] === "static";
 const isNodeBuild = !isStaticBuild;
 
+const REMOTE_MEDIA_BASE = "https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public";
+
+/** Rewrite static public media URLs so they are never bundled into Hostinger builds. */
+const remoteMediaPlugin: Plugin = {
+  name: "remote-media-assets",
+  enforce: "post",
+  transform(code, id) {
+    if (!/(?:\.[cm]?[jt]sx?|\.css)$/.test(id) || id.includes("node_modules")) return null;
+    const transformed = code.replace(
+      /([\"'`])\/(icons|illustrations|img|mascot)\/([^\"'`]*\.(?:png|jpe?g|webp|svg|gif|avif|ico))(?:\?[^\"'`]*)?\1/g,
+      (_match, quote, directory, file) => quote + REMOTE_MEDIA_BASE + "/" + directory + "/" + file + quote,
+    ).replace(
+      /([\"'`])\/(favicon(?:-[^\"'`]+)?\.(?:png|ico))\1/g,
+      (_match, quote, file) => quote + REMOTE_MEDIA_BASE + "/" + file + quote,
+    );
+    return transformed === code ? null : { code: transformed, map: null };
+  },
+};
+
 /**
  * Vite 8 resolves tsconfig `paths` natively (`resolve.tsconfigPaths`), so the
  * bundled `vite-tsconfig-paths` plugin is dropped here: it emitted a
@@ -96,6 +115,6 @@ const lovableConfig = defineLovableConfig({
 export default async (env: { command: string; mode: string }) => {
   const base = (await (lovableConfig as unknown as (e: unknown) => Promise<UserConfig>)(env)) ?? {};
   const config = mergeConfig(base, extraConfig) as UserConfig;
-  config.plugins = dropTsconfigPathsPlugin(base.plugins as PluginOption[] | undefined);
+  config.plugins = [remoteMediaPlugin, ...dropTsconfigPathsPlugin(base.plugins as PluginOption[] | undefined)];
   return config;
 };

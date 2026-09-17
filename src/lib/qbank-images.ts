@@ -2,7 +2,9 @@
 //
 // Images are served directly via free jsDelivr CDN from the public neetbuddy-media repository.
 
-const CDN_BASE = "https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public";
+import { PUBLIC_MEDIA_BASE_URL } from "@/lib/media-assets";
+
+const CDN_BASE = PUBLIC_MEDIA_BASE_URL;
 const RAW_BASE =
   (typeof import.meta !== "undefined" &&
     (import.meta as unknown as { env?: Record<string, string> }).env?.VITE_QBANK_IMAGE_BASE) ||
