@@ -135,7 +135,7 @@ function Page() {
 
   const chaptersQ = useQuery({
     queryKey: ["keypoints", "chapters"],
-    queryFn: listBookChapters,
+    queryFn: () => listBookChapters(),
     staleTime: 1000 * 60 * 30,
   });
 
