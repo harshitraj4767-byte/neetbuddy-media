@@ -44,9 +44,10 @@ export type BookPyq = {
   image_url: string | null;
 };
 
-export async function listBookChapters(subject?: string): Promise<BookChapter[]> {
+export async function listBookChapters(subject?: string | unknown): Promise<BookChapter[]> {
   try {
-    const url = subject ? `/api/ncert.php?action=book_chapters&subject=${encodeURIComponent(subject)}` : `/api/ncert.php?action=book_chapters`;
+    const subjStr = typeof subject === "string" && subject.trim() && !subject.includes("object Object") ? subject.trim() : "";
+    const url = subjStr ? `/api/ncert.php?action=book_chapters&subject=${encodeURIComponent(subjStr)}` : `/api/ncert.php?action=book_chapters`;
     const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
