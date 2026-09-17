@@ -13,8 +13,6 @@ export default defineNitroConfig({
     "**/ncert/**",
     "**/chemistry/**",
     "**/physics/**",
-    "**/illustrations/**",
-    "**/mascot/**",
     "**/short_notes/**",
   ],
   compatibilityDate: "2026-09-15",
