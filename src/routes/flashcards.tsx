@@ -2,7 +2,6 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { MissionBanner } from "@/components/mission-banner";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useServerFn } from "@tanstack/react-start";
 import { SiteHeader } from "@/components/site-header";
 import { HubHero } from "@/components/nav-tiles";
 import { Button } from "@/components/ui/button";
@@ -20,15 +19,14 @@ import {
   CheckCircle2,
   Undo2,
 } from "lucide-react";
-import { recordFlashcardReview } from "@/lib/flashcards.functions";
 import {
   listFlashcardDecks,
   getFlashcards,
+  saveFlashcardReview,
   type Deck,
   type Flashcard,
   type CardBody,
 } from "@/lib/flashcards";
-import { accessStudyFeature } from "@/lib/feature-gate.functions";
 import { useAuth } from "@/hooks/use-auth";
 import { RichText } from "@/components/rich-text";
 import { toast } from "sonner";
@@ -94,12 +92,10 @@ function FlashcardsPage() {
   const search = Route.useSearch();
   const navigate = useNavigate({ from: "/flashcards" });
   const subject: Subject = search.subject ?? "biology";
-  const unlock = useServerFn(accessStudyFeature);
 
   const [active, setActive] = useState<Deck | null>(null);
   const [cards, setCards] = useState<Flashcard[] | null>(null);
   const [starting, setStarting] = useState(false);
-  const unlockedRef = useRef(false);
 
   const decksQ = useQuery({
     queryKey: ["flashcards", "decks"],
@@ -117,23 +113,14 @@ function FlashcardsPage() {
       return;
     }
     setStarting(true);
-    try {
-      if (!unlockedRef.current) {
-        await unlock({ data: { feature: "flashcards" } });
-        unlockedRef.current = true;
-      }
-    } catch (e: any) {
-      setStarting(false);
-      toast.error(e?.message ?? "Could not unlock flashcards");
-      return;
-    }
     setActive(d);
     setCards(null);
     try {
-      const r = await getFlashcards({ deck_id: d.id, limit: 40 });
-      setCards(r.cards);
-      if (r.cards.length === 0) toast.info("No cards in this deck yet.");
+      const rows = await getFlashcards({ deckId: d.id, limit: 40, random: !d.id });
+      setCards(rows);
+      if (rows.length === 0) toast.info("No cards in this deck yet.");
     } catch (e: any) {
+      setCards([]);
       toast.error(e?.message ?? "Failed to load cards");
     } finally {
       setStarting(false);
@@ -369,7 +356,6 @@ function Reviewer({
   onRestart: () => void;
 }) {
   const { user } = useAuth();
-  const review = useServerFn(recordFlashcardReview);
   const [idx, setIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [showHint, setShowHint] = useState(false);
@@ -408,11 +394,7 @@ function Reviewer({
     if (!card) return;
     setRatings((prev) => [...prev, r]);
     if (user) {
-      try {
-        await review({ data: { card_id: card.id, rating: r } });
-      } catch {
-        /* silent — recall tracking is best-effort */
-      }
+      await saveFlashcardReview(card.id, r);
     }
     advance();
   }

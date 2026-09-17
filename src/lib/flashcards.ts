@@ -40,17 +40,29 @@ export async function listFlashcardDecks(): Promise<{ decks: Deck[]; totalCards:
   return { decks: [], totalCards: 0 };
 }
 
-export async function getFlashcards(opts: {
+export type GetFlashcardsOpts = {
   deckId?: string | null;
-  subject?: string;
+  /** Accepted as an alias so callers can use either casing. */
+  deck_id?: string | null;
+  subject?: string | null;
+  random?: boolean;
   limit?: number;
   offset?: number;
-}): Promise<Flashcard[]> {
-  const { deckId, subject, limit = 100, offset = 0 } = opts;
+};
+
+export async function getFlashcards(opts: GetFlashcardsOpts): Promise<Flashcard[]> {
+  const deckId = opts.deckId ?? opts.deck_id ?? null;
+  const { subject, random, limit = 100, offset = 0 } = opts;
   try {
-    const params = new URLSearchParams({ action: "cards", limit: String(limit), offset: String(offset) });
+    const params = new URLSearchParams({
+      action: "cards",
+      limit: String(limit),
+      offset: String(offset),
+    });
     if (deckId) params.set("deck_id", deckId);
     if (subject) params.set("subject", subject);
+    // No deck picked = "random mix", so let the API shuffle.
+    if (random ?? !deckId) params.set("random", "1");
 
     const res = await fetch(`/api/flashcards.php?${params.toString()}`);
     if (res.ok) {
@@ -61,4 +73,18 @@ export async function getFlashcards(opts: {
     console.warn("getFlashcards failed:", e);
   }
   return [];
+}
+
+/** Best-effort recall tracking through the Hostinger API. */
+export async function saveFlashcardReview(cardId: string, rating: 1 | 2 | 3): Promise<void> {
+  try {
+    await fetch("/api/flashcards.php?action=review", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ card_id: cardId, rating }),
+    });
+  } catch (e) {
+    console.warn("saveFlashcardReview failed:", e);
+  }
 }

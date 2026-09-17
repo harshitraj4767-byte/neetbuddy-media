@@ -16,12 +16,34 @@ const EMPTY: MyAccess = {
   features: [],
 };
 
-// On static hosting (Hostinger) the TanStack server function cannot answer,
-// so fall back to the PHP endpoint shipped in public/api/access.php.
-async function fetchAccessPhp(): Promise<MyAccess> {
-  const res = await fetch("/api/access.php", { credentials: "include" });
-  if (!res.ok) return EMPTY;
-  return (await res.json()) as MyAccess;
+// On static hosting (Hostinger) the TanStack server function cannot answer at
+// all, so the PHP endpoint in public/api/access.php is the primary source and
+// the server function is only a fallback. Neither call may hang or throw, or
+// gated pages would stay on their loading skeleton forever.
+const ACCESS_TIMEOUT_MS = 8000;
+
+async function fetchAccessPhp(): Promise<MyAccess | null> {
+  try {
+    const res = await fetch("/api/access.php", {
+      credentials: "include",
+      signal: AbortSignal.timeout(ACCESS_TIMEOUT_MS),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as Partial<MyAccess> | null;
+    if (!data || !Array.isArray(data.features)) return null;
+    return { ...EMPTY, ...data } as MyAccess;
+  } catch {
+    return null;
+  }
+}
+
+function withTimeout<T>(p: Promise<T>): Promise<T> {
+  return Promise.race([
+    p,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error("access check timed out")), ACCESS_TIMEOUT_MS),
+    ),
+  ]);
 }
 
 export function useAccess() {
@@ -29,13 +51,16 @@ export function useAccess() {
   const fetchAccess = useServerFn(getMyAccess);
   const q = useQuery({
     queryKey: ["access", user?.id ?? "anon"],
-    queryFn: async () => {
+    queryFn: async (): Promise<MyAccess> => {
+      const php = await fetchAccessPhp();
+      if (php) return php;
       try {
-        return await fetchAccess();
+        return await withTimeout(fetchAccess());
       } catch {
-        return fetchAccessPhp();
+        return EMPTY;
       }
     },
+    retry: false,
     enabled: !!user && !authLoading,
     staleTime: 30_000,
   });

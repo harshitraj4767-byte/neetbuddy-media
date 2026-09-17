@@ -62,15 +62,21 @@ switch ($action) {
         $limit = min((int)($_GET['limit'] ?? $input['limit'] ?? 100), 200);
 
         try {
+            $random = !empty($_GET['random']) || !empty($input['random']);
             $where = ['1=1'];
             $params = [];
             if ($deckId) {
                 $where[] = 'deck_id = :did';
                 $params[':did'] = $deckId;
             }
+            if ($subject) {
+                $where[] = 'LOWER(subject) = :subj';
+                $params[':subj'] = strtolower((string)$subject);
+            }
+            $order = $random ? 'RAND()' : 'position ASC, id ASC';
             $sql = 'SELECT id, deck_id, front, back, front_body, back_body, hint, tags, difficulty, source, position 
                     FROM flashcards WHERE ' . implode(' AND ', $where) . ' 
-                    ORDER BY position ASC, id ASC LIMIT ' . $limit . ' OFFSET ' . $offset;
+                    ORDER BY ' . $order . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
             $stmt = $pdo->prepare($sql);
             $stmt->execute($params);
             $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
