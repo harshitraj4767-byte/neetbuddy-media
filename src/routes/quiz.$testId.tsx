@@ -283,7 +283,7 @@ function QuizPlayer() {
                 questions: data.questions.map((q: any) => ({
                   id: String(q.id),
                   text: q.questionHtml || q.text || "",
-                  options: (q.options || []).map((o: any) => typeof o === "string" ? o : (o.html || "")),
+                  options: (q.options || []).map((o: any) => typeof o === "string" ? o : (o.text || o.html || o.value || "")),
                   correct_index: Number(q.correctIndex ?? q.correct_index ?? 0),
                   difficulty: q.difficulty || t.difficulty || "medium",
                   source: t.source || "NCERT",

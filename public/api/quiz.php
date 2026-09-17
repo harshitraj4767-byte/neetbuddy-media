@@ -66,9 +66,16 @@ switch ($action) {
                 $rawOpts = is_string($row['options']) ? json_decode($row['options'], true) : $row['options'];
                 if (is_array($rawOpts)) {
                     foreach ($rawOpts as $idx => $opt) {
+                        $val = '';
+                        if (is_string($opt)) {
+                            $val = $opt;
+                        } elseif (is_array($opt)) {
+                            $val = (string)($opt['text'] ?? $opt['html'] ?? $opt['value'] ?? $opt['option'] ?? '');
+                        }
                         $opts[] = [
                             'index' => is_numeric($idx) ? (int)$idx : count($opts),
-                            'html' => is_string($opt) ? $opt : (string)($opt['html'] ?? ''),
+                            'html' => $val,
+                            'text' => $val,
                         ];
                     }
                 }

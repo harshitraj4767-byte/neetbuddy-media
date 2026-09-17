@@ -121,16 +121,29 @@ function parseJson<T>(value: unknown, fallback: T): T {
 function normalizeOptions(raw: unknown): QuizOptionDTO[] {
   const parsed = parseJson<unknown>(raw, []);
   if (Array.isArray(parsed)) {
-    return parsed.map((o, index) => ({
-      index,
-      html: typeof o === "string" ? o : String((o as { html?: unknown })?.html ?? ""),
-    }));
+    return parsed.map((o, index) => {
+      let val = "";
+      if (typeof o === "string") val = o;
+      else if (o && typeof o === "object") {
+        const obj = o as Record<string, unknown>;
+        val = String(obj["text"] ?? obj["html"] ?? obj["value"] ?? "");
+      }
+      return { index, html: val };
+    });
   }
   if (parsed && typeof parsed === "object") {
-    return Object.entries(parsed as Record<string, unknown>).map(([k, v], index) => ({
-      index: Number.isNaN(Number(k)) ? index : Number(k),
-      html: typeof v === "string" ? v : String((v as { html?: unknown })?.html ?? ""),
-    }));
+    return Object.entries(parsed as Record<string, unknown>).map(([k, v], index) => {
+      let val = "";
+      if (typeof v === "string") val = v;
+      else if (v && typeof v === "object") {
+        const obj = v as Record<string, unknown>;
+        val = String(obj["text"] ?? obj["html"] ?? obj["value"] ?? "");
+      }
+      return {
+        index: Number.isNaN(Number(k)) ? index : Number(k),
+        html: val,
+      };
+    });
   }
   return [];
 }
