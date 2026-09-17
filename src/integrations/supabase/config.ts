@@ -45,8 +45,8 @@ export function getPublicSupabaseConfig(): PublicSupabaseConfig {
 
 const publicConfig = getPublicSupabaseConfig();
 
-export const SUPABASE_URL: string = publicConfig.url;
-export const SUPABASE_PUBLISHABLE_KEY: string = publicConfig.publishableKey;
+export const SUPABASE_URL: string = publicConfig.url || "https://missing-config.supabase.co";
+export const SUPABASE_PUBLISHABLE_KEY: string = publicConfig.publishableKey || "missing-publishable-key";
 
 if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
   // eslint-disable-next-line no-console
