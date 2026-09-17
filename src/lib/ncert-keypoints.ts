@@ -12,7 +12,6 @@
 // All source tables (ncert_book_*, qb_*) are anon-readable, so the browser
 // client reads them directly. User answers/progress live in
 // ncert_keypoint_answers / ncert_keypoint_progress (RLS scoped to the user).
-import { supabase } from "@/integrations/supabase/client";
 import {
   getBookChapter,
   runsOf,
@@ -25,20 +24,33 @@ import {
 
 export type { BookChapter, BookBlock, Run };
 
-type LooseTable = {
-  select: (cols: string) => LooseTable;
-  eq: (col: string, val: unknown) => LooseTable;
-  in: (col: string, vals: unknown[]) => LooseTable;
-  order: (col: string, opts: { ascending: boolean }) => LooseTable;
-  range: (from: number, to: number) => LooseTable;
-  insert: (rows: unknown) => PromiseLike<{ error: { message: string } | null }>;
-  upsert: (
-    rows: unknown,
-    opts?: { onConflict?: string },
-  ) => PromiseLike<{ error: { message: string } | null }>;
-} & PromiseLike<{ data: unknown; error: { message: string } | null }>;
+/** All Nuggets data lives in Hostinger MySQL, read through /api/ncert.php. */
+const API = "/api/ncert.php";
 
-const db = supabase as unknown as { from: (t: string) => LooseTable };
+async function apiGet<T>(params: Record<string, string>, fallback: T): Promise<T> {
+  try {
+    const qs = new URLSearchParams(params).toString();
+    const res = await fetch(`${API}?${qs}`, { credentials: "include" });
+    if (!res.ok) return fallback;
+    return ((await res.json()) ?? fallback) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+async function apiPost(action: string, body: unknown): Promise<void> {
+  const res = await fetch(`${API}?action=${action}`, {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const payload = (await res.json().catch(() => null)) as { error?: string } | null;
+    throw new Error(payload?.error ?? `Request failed (${res.status})`);
+  }
+}
+
 
 /* ------------------------------- types ------------------------------- */
 
@@ -540,45 +552,45 @@ function qbToQuestion(r: QbRow): KeyPointQuestion {
 /* --------------------------- question bank fetch ------------------------ */
 
 async function fetchQbChapterId(chapter: BookChapter): Promise<number | null> {
-  const { data, error } = await db
-    .from("qb_chapters")
-    .select("id,subject_id,name")
-    .eq("subject_id", chapter.subject);
-  if (error) return null;
-  const rows = (data ?? []) as { id: number; name: string }[];
+  const data = await apiGet<{ chapters?: { id: number; name: string }[] }>(
+    { action: "qb_chapters", subject: chapter.subject ?? "" },
+    {},
+  );
+  const rows = data.chapters ?? [];
   const want = normName(chapter.title);
   const exact = rows.find((r) => normName(r.name) === want);
-  if (exact) return exact.id;
+  if (exact) return Number(exact.id);
   const loose = rows.find(
     (r) => normName(r.name).includes(want) || want.includes(normName(r.name)),
   );
-  return loose?.id ?? null;
+  return loose ? Number(loose.id) : null;
 }
 
 async function fetchQbQuestions(
   qbChapterId: number,
 ): Promise<{ rows: QbRow[]; topics: { id: number; name: string }[] }> {
-  const PAGE = 1000;
+  const PAGE = 2000;
   const rows: QbRow[] = [];
+  let topics: { id: number; name: string }[] = [];
   for (let off = 0; off < 20000; off += PAGE) {
-    const { data, error } = await db
-      .from("qb_questions")
-      .select(
-        "id,topic_id,question_html,options,correct_index,explanation,question_image_url,explanation_image_url,difficulty,year",
-      )
-      .eq("chapter_id", qbChapterId)
-      .order("id", { ascending: true })
-      .range(off, off + PAGE - 1);
-    if (error) throw new Error(error.message);
-    const chunk = (data ?? []) as QbRow[];
+    const data = await apiGet<{
+      questions?: QbRow[];
+      topics?: { id: number; name: string }[];
+    }>(
+      {
+        action: "qb_questions",
+        chapter_id: String(qbChapterId),
+        limit: String(PAGE),
+        offset: String(off),
+      },
+      {},
+    );
+    const chunk = data.questions ?? [];
+    if (off === 0) topics = data.topics ?? [];
     rows.push(...chunk);
     if (chunk.length < PAGE) break;
   }
-  const { data: tData } = await db
-    .from("qb_topics")
-    .select("id,name")
-    .eq("chapter_id", qbChapterId);
-  return { rows, topics: (tData ?? []) as { id: number; name: string }[] };
+  return { rows, topics };
 }
 
 /* ------------------------------ assignment ----------------------------- */
@@ -765,8 +777,7 @@ export async function saveKeyPointAnswer(input: {
   timeMs: number | null;
 }): Promise<void> {
   if (!input.userId) return;
-  const { error } = await db.from("ncert_keypoint_answers").insert({
-    user_id: input.userId,
+  await apiPost("keypoint_answer", {
     chapter_slug: input.chapterSlug,
     topic_key: input.topicKey,
     block_id: input.blockId,
@@ -777,7 +788,6 @@ export async function saveKeyPointAnswer(input: {
     skipped: input.skipped,
     time_ms: input.timeMs,
   });
-  if (error) throw new Error(error.message);
 }
 
 export async function saveKeyPointProgress(input: {
@@ -789,18 +799,13 @@ export async function saveKeyPointProgress(input: {
   completed: boolean;
 }): Promise<void> {
   if (!input.userId) return;
-  await db.from("ncert_keypoint_progress").upsert(
-    {
-      user_id: input.userId,
-      chapter_slug: input.chapterSlug,
-      topic_key: input.topicKey,
-      step_index: input.stepIndex,
-      steps_total: input.stepsTotal,
-      completed: input.completed,
-      updated_at: new Date().toISOString(),
-    },
-    { onConflict: "user_id,chapter_slug,topic_key" },
-  );
+  await apiPost("keypoint_progress_save", {
+    chapter_slug: input.chapterSlug,
+    topic_key: input.topicKey,
+    step_index: input.stepIndex,
+    steps_total: input.stepsTotal,
+    completed: input.completed,
+  });
 }
 
 export type TopicProgress = {
@@ -812,77 +817,36 @@ export type TopicProgress = {
 
 /** topic_key -> saved position, for one chapter. */
 export async function getChapterProgress(
-  userId: string,
+  _userId: string,
   chapterSlug: string,
 ): Promise<Record<string, TopicProgress>> {
-  const { data, error } = await db
-    .from("ncert_keypoint_progress")
-    .select("topic_key,step_index,steps_total,completed")
-    .eq("user_id", userId)
-    .eq("chapter_slug", chapterSlug);
-  if (error) throw new Error(error.message);
+  const data = await apiGet<{ progress?: TopicProgress[] }>(
+    { action: "keypoint_progress", chapter_slug: chapterSlug },
+    {},
+  );
   const out: Record<string, TopicProgress> = {};
-  for (const r of (data ?? []) as TopicProgress[]) out[r.topic_key] = r;
+  for (const r of data.progress ?? []) out[r.topic_key] = r;
   return out;
 }
 
 /** Every chapter's attempted-question count, for the chapter list. */
 export async function getKeyPointChapterStats(
-  userId: string,
+  _userId: string,
 ): Promise<Record<string, { attempted: number; correct: number }>> {
-  const PAGE = 1000;
-  const seen = new Map<string, { keys: Set<string>; correct: Set<string> }>();
-  for (let off = 0; off < 200000; off += PAGE) {
-    const { data, error } = await db
-      .from("ncert_keypoint_answers")
-      .select("chapter_slug,source,question_id,is_correct")
-      .eq("user_id", userId)
-      .range(off, off + PAGE - 1);
-    if (error) throw new Error(error.message);
-    const chunk = (data ?? []) as {
-      chapter_slug: string;
-      source: string;
-      question_id: number;
-      is_correct: boolean;
-    }[];
-    for (const r of chunk) {
-      const bucket = seen.get(r.chapter_slug) ?? {
-        keys: new Set<string>(),
-        correct: new Set<string>(),
-      };
-      const k = `${r.source}:${r.question_id}`;
-      bucket.keys.add(k);
-      if (r.is_correct) bucket.correct.add(k);
-      seen.set(r.chapter_slug, bucket);
-    }
-    if (chunk.length < PAGE) break;
-  }
-  const out: Record<string, { attempted: number; correct: number }> = {};
-  for (const [slug, b] of seen) out[slug] = { attempted: b.keys.size, correct: b.correct.size };
-  return out;
+  const data = await apiGet<{
+    stats?: Record<string, { attempted: number; correct: number }>;
+  }>({ action: "keypoint_stats" }, {});
+  return data.stats ?? {};
 }
 
 /** Raw attempts for one chapter — powers the analytics view. */
 export async function getChapterAnswers(
-  userId: string,
+  _userId: string,
   chapterSlug: string,
 ): Promise<KeyPointAnswer[]> {
-  const PAGE = 1000;
-  const out: KeyPointAnswer[] = [];
-  for (let off = 0; off < 50000; off += PAGE) {
-    const { data, error } = await db
-      .from("ncert_keypoint_answers")
-      .select(
-        "chapter_slug,topic_key,block_id,source,question_id,selected,is_correct,skipped,time_ms,answered_at",
-      )
-      .eq("user_id", userId)
-      .eq("chapter_slug", chapterSlug)
-      .order("answered_at", { ascending: true })
-      .range(off, off + PAGE - 1);
-    if (error) throw new Error(error.message);
-    const chunk = (data ?? []) as KeyPointAnswer[];
-    out.push(...chunk);
-    if (chunk.length < PAGE) break;
-  }
-  return out;
+  const data = await apiGet<{ answers?: KeyPointAnswer[] }>(
+    { action: "keypoint_answers", chapter_slug: chapterSlug },
+    {},
+  );
+  return data.answers ?? [];
 }

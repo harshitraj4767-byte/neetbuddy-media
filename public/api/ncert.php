@@ -125,6 +125,217 @@ switch ($action) {
             nb_json(['highlights' => [], 'error' => $e->getMessage()]);
         }
         break;
+    // --- NCERT Nuggets: question bank served straight from MySQL ---------
+    case 'qb_chapters':
+        try {
+            $subject = trim((string)($_GET['subject'] ?? ''));
+            if ($subject !== '') {
+                $stmt = $pdo->prepare('SELECT id, subject_id, name FROM qb_chapters WHERE LOWER(subject_id) = LOWER(:s) ORDER BY name ASC');
+                $stmt->execute([':s' => $subject]);
+            } else {
+                $stmt = $pdo->query('SELECT id, subject_id, name FROM qb_chapters ORDER BY name ASC');
+            }
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as &$r) {
+                $r['id'] = (int)$r['id'];
+            }
+            nb_json(['chapters' => $rows]);
+        } catch (Throwable $e) {
+            nb_json(['chapters' => [], 'error' => $e->getMessage()]);
+        }
+        break;
+
+    case 'qb_questions':
+        $chapterId = (int)($_GET['chapter_id'] ?? 0);
+        if ($chapterId <= 0) {
+            nb_json(['questions' => [], 'topics' => []]);
+        }
+        try {
+            $limit = min(5000, max(1, (int)($_GET['limit'] ?? 2000)));
+            $offset = max(0, (int)($_GET['offset'] ?? 0));
+            $stmt = $pdo->prepare(
+                'SELECT id, topic_id, question_html, options, correct_index, explanation,
+                        question_image_url, explanation_image_url, difficulty, year
+                 FROM qb_questions WHERE chapter_id = :cid ORDER BY id ASC LIMIT :lim OFFSET :off'
+            );
+            $stmt->bindValue(':cid', $chapterId, PDO::PARAM_INT);
+            $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':off', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as &$r) {
+                $r['id'] = (int)$r['id'];
+                $r['topic_id'] = $r['topic_id'] === null ? null : (int)$r['topic_id'];
+                $r['correct_index'] = $r['correct_index'] === null ? null : (int)$r['correct_index'];
+                $r['year'] = $r['year'] === null ? null : (int)$r['year'];
+                if (is_string($r['options'])) {
+                    $r['options'] = json_decode($r['options'], true) ?: [];
+                }
+            }
+            unset($r);
+
+            $tStmt = $pdo->prepare('SELECT id, name FROM qb_topics WHERE chapter_id = :cid');
+            $tStmt->execute([':cid' => $chapterId]);
+            $topics = $tStmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($topics as &$t) {
+                $t['id'] = (int)$t['id'];
+            }
+            nb_json(['questions' => $rows, 'topics' => $topics]);
+        } catch (Throwable $e) {
+            nb_json(['questions' => [], 'topics' => [], 'error' => $e->getMessage()]);
+        }
+        break;
+
+    // --- NCERT Nuggets: per-user answers and progress --------------------
+    case 'keypoint_answer':
+        $userId = nb_current_user_id();
+        if ($userId === null) {
+            nb_json(['ok' => false, 'error' => 'Not signed in'], 401);
+        }
+        try {
+            $b = nb_body();
+            $stmt = $pdo->prepare(
+                'INSERT INTO ncert_keypoint_answers
+                    (id, user_id, chapter_slug, topic_key, block_id, source, question_id,
+                     selected, is_correct, skipped, time_ms, answered_at)
+                 VALUES (:id, :uid, :slug, :topic, :block, :source, :qid, :sel, :ok, :skip, :ms, NOW())'
+            );
+            $stmt->execute([
+                ':id' => nb_uuid(),
+                ':uid' => $userId,
+                ':slug' => (string)($b['chapter_slug'] ?? ''),
+                ':topic' => (string)($b['topic_key'] ?? ''),
+                ':block' => isset($b['block_id']) && $b['block_id'] !== null ? (int)$b['block_id'] : null,
+                ':source' => (string)($b['source'] ?? ''),
+                ':qid' => (int)($b['question_id'] ?? 0),
+                ':sel' => $b['selected'] ?? null,
+                ':ok' => !empty($b['is_correct']) ? 1 : 0,
+                ':skip' => !empty($b['skipped']) ? 1 : 0,
+                ':ms' => isset($b['time_ms']) && $b['time_ms'] !== null ? (int)$b['time_ms'] : null,
+            ]);
+            nb_json(['ok' => true]);
+        } catch (Throwable $e) {
+            nb_json(['ok' => false, 'error' => $e->getMessage()], 500);
+        }
+        break;
+
+    case 'keypoint_progress_save':
+        $userId = nb_current_user_id();
+        if ($userId === null) {
+            nb_json(['ok' => false, 'error' => 'Not signed in'], 401);
+        }
+        try {
+            $b = nb_body();
+            $params = [
+                ':uid' => $userId,
+                ':slug' => (string)($b['chapter_slug'] ?? ''),
+                ':topic' => (string)($b['topic_key'] ?? ''),
+                ':idx' => (int)($b['step_index'] ?? 0),
+                ':total' => (int)($b['steps_total'] ?? 0),
+                ':done' => !empty($b['completed']) ? 1 : 0,
+            ];
+            $upd = $pdo->prepare(
+                'UPDATE ncert_keypoint_progress
+                 SET step_index = :idx, steps_total = :total, completed = :done, updated_at = NOW()
+                 WHERE user_id = :uid AND chapter_slug = :slug AND topic_key = :topic'
+            );
+            $upd->execute($params);
+            if ($upd->rowCount() === 0) {
+                $chk = $pdo->prepare(
+                    'SELECT 1 FROM ncert_keypoint_progress WHERE user_id = :uid AND chapter_slug = :slug AND topic_key = :topic LIMIT 1'
+                );
+                $chk->execute([':uid' => $params[':uid'], ':slug' => $params[':slug'], ':topic' => $params[':topic']]);
+                if (!$chk->fetch()) {
+                    $ins = $pdo->prepare(
+                        'INSERT INTO ncert_keypoint_progress
+                            (user_id, chapter_slug, topic_key, step_index, steps_total, completed, updated_at)
+                         VALUES (:uid, :slug, :topic, :idx, :total, :done, NOW())'
+                    );
+                    $ins->execute($params);
+                }
+            }
+            nb_json(['ok' => true]);
+        } catch (Throwable $e) {
+            nb_json(['ok' => false, 'error' => $e->getMessage()], 500);
+        }
+        break;
+
+    case 'keypoint_progress':
+        $userId = nb_current_user_id();
+        if ($userId === null) {
+            nb_json(['progress' => []]);
+        }
+        try {
+            $stmt = $pdo->prepare(
+                'SELECT topic_key, step_index, steps_total, completed
+                 FROM ncert_keypoint_progress WHERE user_id = :uid AND chapter_slug = :slug'
+            );
+            $stmt->execute([':uid' => $userId, ':slug' => (string)($_GET['chapter_slug'] ?? '')]);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as &$r) {
+                $r['step_index'] = (int)$r['step_index'];
+                $r['steps_total'] = (int)$r['steps_total'];
+                $r['completed'] = (bool)$r['completed'];
+            }
+            nb_json(['progress' => $rows]);
+        } catch (Throwable $e) {
+            nb_json(['progress' => [], 'error' => $e->getMessage()]);
+        }
+        break;
+
+    case 'keypoint_answers':
+        $userId = nb_current_user_id();
+        if ($userId === null) {
+            nb_json(['answers' => []]);
+        }
+        try {
+            $stmt = $pdo->prepare(
+                'SELECT chapter_slug, topic_key, block_id, source, question_id, selected,
+                        is_correct, skipped, time_ms, answered_at
+                 FROM ncert_keypoint_answers
+                 WHERE user_id = :uid AND chapter_slug = :slug ORDER BY answered_at ASC'
+            );
+            $stmt->execute([':uid' => $userId, ':slug' => (string)($_GET['chapter_slug'] ?? '')]);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as &$r) {
+                $r['block_id'] = $r['block_id'] === null ? null : (int)$r['block_id'];
+                $r['question_id'] = (int)$r['question_id'];
+                $r['is_correct'] = (bool)$r['is_correct'];
+                $r['skipped'] = (bool)$r['skipped'];
+                $r['time_ms'] = $r['time_ms'] === null ? null : (int)$r['time_ms'];
+            }
+            nb_json(['answers' => $rows]);
+        } catch (Throwable $e) {
+            nb_json(['answers' => [], 'error' => $e->getMessage()]);
+        }
+        break;
+
+    case 'keypoint_stats':
+        $userId = nb_current_user_id();
+        if ($userId === null) {
+            nb_json(['stats' => []]);
+        }
+        try {
+            $stmt = $pdo->prepare(
+                'SELECT chapter_slug,
+                        COUNT(DISTINCT CONCAT(source, ":", question_id)) AS attempted,
+                        COUNT(DISTINCT CASE WHEN is_correct = 1 THEN CONCAT(source, ":", question_id) END) AS correct
+                 FROM ncert_keypoint_answers WHERE user_id = :uid GROUP BY chapter_slug'
+            );
+            $stmt->execute([':uid' => $userId]);
+            $out = [];
+            foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $r) {
+                $out[(string)$r['chapter_slug']] = [
+                    'attempted' => (int)$r['attempted'],
+                    'correct' => (int)$r['correct'],
+                ];
+            }
+            nb_json(['stats' => (object)$out]);
+        } catch (Throwable $e) {
+            nb_json(['stats' => (object)[], 'error' => $e->getMessage()]);
+        }
+        break;
+
     default:
         nb_json(['status' => 'ok']);
         break;
