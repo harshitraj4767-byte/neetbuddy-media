@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/page-shell";
@@ -219,7 +220,7 @@ function Dashboard() {
             </Link>
           </div>
           <img
-            src="/illustrations/study-desk.png"
+            src={publicMediaAsset("illustrations/study-desk.png")}
             alt="Student studying at a desk"
             loading="lazy"
             className="pointer-events-none absolute bottom-0 right-0 z-0 h-[85%] max-h-[180px] w-[38%] max-w-[180px] select-none object-contain object-bottom object-right drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[92%] sm:max-h-[240px] sm:w-[42%] sm:max-w-[280px] lg:h-[96%] lg:max-h-[270px] lg:w-[45%] lg:max-w-[340px]"
