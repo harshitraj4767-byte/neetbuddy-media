@@ -59,6 +59,11 @@ export function qbankImageUrl(pathOrUrl: string | null | undefined): string | nu
   if (!pathOrUrl) return null;
   const raw = String(pathOrUrl).trim();
   if (!raw) return null;
+  const legacyPath = legacyMediaPath(raw);
+  if (legacyPath) {
+    const dataPath = legacyPath.replace(/^img\/data\//i, "");
+    return dataPath === legacyPath ? `${CDN_BASE}/${legacyPath}` : `${CDN_BASE}/img/data/${dataPath}`;
+  }
   if (ABSOLUTE_RE.test(raw)) return raw;
 
   // Illustrations, mascot, and NCERT assets
