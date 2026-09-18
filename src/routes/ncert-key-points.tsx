@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 // NCERT Nuggets — paragraph-by-paragraph revision.
 //
 // Flow: subject → chapter → topic grid (nugget tiles) → mode sheet
@@ -174,7 +175,7 @@ function Page() {
         accent="blue"
         variant="banner"
         compact
-        image="/illustrations/i3d-ncert-highlights.png"
+        image={publicMediaAsset("illustrations/i3d-ncert-highlights.png")}
         imageAlt="NCERT nuggets illustration"
       />
 
