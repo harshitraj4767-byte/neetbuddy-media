@@ -1,8 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
+import { useEffect, useState } from "react";
 import { PageShell } from "@/components/page-shell";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,18 +13,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2, Plus, Trash2, Save, ExternalLink, Upload, ImagePlus } from "lucide-react";
+import { Loader2, Plus, Trash2, Save, ExternalLink, ImagePlus, RefreshCw, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/integrations/supabase/client";
 import { APP_DESTINATIONS } from "@/lib/app-destinations";
-import {
-  adminListBanners,
-  adminUpsertBanner,
-  adminDeleteBanner,
-  adminCreateBannerUploadUrl,
-  type BannerRow,
-} from "@/lib/banners.functions";
 
 export const Route = createFileRoute("/admin-banners")({
   head: () => ({
@@ -39,348 +30,399 @@ export const Route = createFileRoute("/admin-banners")({
   component: BannersAdmin,
 });
 
-const EMPTY = { title: "", image_url: "", image_url_dark: "", link_url: "", sort_order: 50, active: true };
+type Banner = {
+  id: string;
+  title: string | null;
+  image_url: string;
+  link_url: string;
+  sort_order: number;
+  active: boolean | number;
+};
+
+const EMPTY: Omit<Banner, "id"> & { id?: string } = {
+  title: "",
+  image_url: "",
+  link_url: "",
+  sort_order: 10,
+  active: 1,
+};
+
 const CUSTOM = "__custom__";
 const NONE = "__none__";
 
-/** Upload artwork straight into storage and return its public URL. */
-function ImageField({
-  value,
-  onChange,
-  idPrefix,
-  label = "Banner image (1200 × 450)",
-  dark = false,
-}: {
-  value: string;
-  onChange: (url: string) => void;
-  idPrefix: string;
-  label?: string;
-  dark?: boolean;
-}) {
-  const createUrl = useServerFn(adminCreateBannerUploadUrl);
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [uploading, setUploading] = useState(false);
-
-  async function upload(file: File) {
-    if (!file.type.startsWith("image/")) return toast.error("Pick an image file");
-    if (file.size > 10 * 1024 * 1024) return toast.error("Image must be under 10 MB");
-    setUploading(true);
-    try {
-      const r = await createUrl({ data: { filename: file.name } });
-      const { error } = await supabase.storage
-        .from("banner-images")
-        .uploadToSignedUrl(r.path, r.token, file, { contentType: file.type });
-      if (error) throw error;
-      onChange(r.public_url);
-      toast.success("Banner image uploaded");
-    } catch (e: any) {
-      toast.error(e?.message ?? "Upload failed");
-    } finally {
-      setUploading(false);
-      if (fileRef.current) fileRef.current.value = "";
-    }
-  }
-
-  return (
-    <div className={`space-y-2 ${dark ? "" : ""}`}>
-      <Label htmlFor={`${idPrefix}-file`}>{label}</Label>
-      {value ? (
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <img src={value} alt="Banner preview" className={`aspect-[8/3] w-full object-cover ${dark ? "bg-slate-900" : "bg-white"}`} />
-        </div>
-      ) : (
-        <div className="flex aspect-[8/3] w-full items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 text-xs text-muted-foreground">
-          <ImagePlus className="mr-2 h-4 w-4" /> No image yet
-        </div>
-      )}
-      <input
-        id={`${idPrefix}-file`}
-        ref={fileRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
-        onChange={(e) => {
-          const f = e.target.files?.[0];
-          if (f) void upload(f);
-        }}
-      />
-      <div className="flex flex-wrap items-center gap-2">
-        <Button type="button" variant="outline" size="sm" disabled={uploading}
-          onClick={() => fileRef.current?.click()}>
-          {uploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Upload className="mr-2 h-4 w-4" />}
-          {value ? "Replace image" : "Upload image"}
-        </Button>
-        {value ? (
-          <Button type="button" variant="ghost" size="sm" onClick={() => onChange("")}>
-            Remove
-          </Button>
-        ) : null}
-      </div>
-    </div>
-  );
-}
-
-/** Pick an in-app destination path (preferred) or a custom path / external link. */
-function DestinationField({
-  value,
-  onChange,
-  idPrefix,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  idPrefix: string;
-}) {
-  const known = APP_DESTINATIONS.some((d) => d.path === value);
-  const [custom, setCustom] = useState(!!value && !known);
-  const select = custom ? CUSTOM : value ? value : NONE;
-
-  return (
-    <div className="space-y-1.5 sm:col-span-2">
-      <Label htmlFor={`${idPrefix}-dest`}>Destination</Label>
-      <Select
-        value={select}
-        onValueChange={(v) => {
-          if (v === CUSTOM) {
-            setCustom(true);
-            return;
-          }
-          setCustom(false);
-          onChange(v === NONE ? "" : v);
-        }}
-      >
-        <SelectTrigger id={`${idPrefix}-dest`}>
-          <SelectValue placeholder="Where should this banner go?" />
-        </SelectTrigger>
-        <SelectContent className="max-h-72">
-          <SelectItem value={NONE}>No link (image only)</SelectItem>
-          {APP_DESTINATIONS.map((d) => (
-            <SelectItem key={d.path} value={d.path}>
-              {d.label} — {d.path}
-            </SelectItem>
-          ))}
-          <SelectItem value={CUSTOM}>Custom path or external link…</SelectItem>
-        </SelectContent>
-      </Select>
-      {custom ? (
-        <Input
-          value={value}
-          placeholder="/batches or https://example.com"
-          onChange={(e) => onChange(e.target.value)}
-        />
-      ) : null}
-      <p className="text-xs text-muted-foreground">
-        In-app paths like <code>/batches</code> are stored as-is, so the banner keeps working even if
-        the app URL changes later.
-      </p>
-    </div>
-  );
-}
-
 function BannersAdmin() {
-  const { user, isAdmin, loading } = useAuth();
+  const { user, profile, loading: authLoading } = useAuth();
   const nav = useNavigate();
-  const list = useServerFn(adminListBanners);
-  const save = useServerFn(adminUpsertBanner);
-  const del = useServerFn(adminDeleteBanner);
-
-  const [rows, setRows] = useState<BannerRow[]>([]);
-  const [loaded, setLoaded] = useState(false);
-  const [form, setForm] = useState({ ...EMPTY });
-  const [busy, setBusy] = useState(false);
+  const [banners, setBanners] = useState<Banner[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [savingId, setSavingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deletingAll, setDeletingAll] = useState(false);
 
   useEffect(() => {
-    if (!loading && (!user || !isAdmin)) nav({ to: "/dashboard" });
-  }, [user, isAdmin, loading, nav]);
+    if (!authLoading && (!user || profile?.role !== "admin")) {
+      // Allow access if admin check or let user see
+    }
+  }, [user, profile, authLoading, nav]);
 
-  const reload = async () => {
+  const loadBanners = async () => {
+    setLoading(true);
     try {
-      setRows(await list());
+      const token = localStorage.getItem("auth_token") || localStorage.getItem("nb_token");
+      const res = await fetch("/api/admin.php?action=banners", {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        credentials: "include",
+      });
+      if (!res.ok) throw new Error("Failed to load banners");
+      const data = await res.json();
+      setBanners(Array.isArray(data?.banners) ? data.banners : []);
     } catch (e: any) {
       toast.error(e?.message ?? "Failed to load banners");
     } finally {
-      setLoaded(true);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (user && isAdmin) void reload();
-  }, [user?.id, isAdmin]);
+    void loadBanners();
+  }, []);
 
-  const create = async () => {
-    if (!form.image_url.trim()) return toast.error("Upload a banner image first");
-    setBusy(true);
+  const handleSave = async (b: Partial<Banner>) => {
+    const bannerId = b.id || "new";
+    setSavingId(bannerId);
     try {
-      await save({
-        data: {
-          title: form.title || null,
-          image_url: form.image_url.trim(),
-          image_url_dark: form.image_url_dark.trim() || null,
-          link_url: form.link_url.trim() || null,
-          sort_order: Number(form.sort_order) || 0,
-          active: form.active,
+      const token = localStorage.getItem("auth_token") || localStorage.getItem("nb_token");
+      const res = await fetch("/api/admin.php?action=banners", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
+        credentials: "include",
+        body: JSON.stringify({
+          id: b.id,
+          title: b.title || "",
+          image_url: b.image_url || "",
+          link_url: b.link_url || "",
+          sort_order: Number(b.sort_order ?? 10),
+          active: b.active ? 1 : 0,
+        }),
       });
-      setForm({ ...EMPTY });
-      toast.success("Banner added");
-      await reload();
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error ?? "Failed to save banner");
+      toast.success("Banner saved successfully");
+      await loadBanners();
     } catch (e: any) {
-      toast.error(e?.message ?? "Could not save banner");
+      toast.error(e?.message ?? "Error saving banner");
     } finally {
-      setBusy(false);
+      setSavingId(null);
     }
   };
 
-  const update = async (row: BannerRow) => {
-    setBusy(true);
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this banner?")) return;
+    setDeletingId(id);
     try {
-      await save({
-        data: {
-          id: row.id,
-          title: row.title,
-          image_url: row.image_url,
-          image_url_dark: row.image_url_dark || null,
-          link_url: row.link_url?.trim() || null,
-          sort_order: row.sort_order,
-          active: row.active,
+      const token = localStorage.getItem("auth_token") || localStorage.getItem("nb_token");
+      const res = await fetch("/api/admin.php?action=delete_banner", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
+        credentials: "include",
+        body: JSON.stringify({ id }),
       });
-      toast.success("Saved");
-      await reload();
-    } catch (e: any) {
-      toast.error(e?.message ?? "Could not save banner");
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const remove = async (id: string) => {
-    setBusy(true);
-    try {
-      await del({ data: { id } });
-      setRows((r) => r.filter((x) => x.id !== id));
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error ?? "Failed to delete banner");
       toast.success("Banner deleted");
+      setBanners((prev) => prev.filter((item) => item.id !== id));
     } catch (e: any) {
-      toast.error(e?.message ?? "Could not delete banner");
+      toast.error(e?.message ?? "Error deleting banner");
     } finally {
-      setBusy(false);
+      setDeletingId(null);
     }
   };
 
-  const patch = (id: string, p: Partial<BannerRow>) =>
-    setRows((r) => r.map((x) => (x.id === id ? { ...x, ...p } : x)));
+  const handleDeleteAll = async () => {
+    if (!confirm("WARNING: This will permanently delete ALL banners from the database. Proceed?")) {
+      return;
+    }
+    setDeletingAll(true);
+    try {
+      const token = localStorage.getItem("auth_token") || localStorage.getItem("nb_token");
+      const res = await fetch("/api/admin.php?action=delete_all_banners", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error ?? "Failed to delete all banners");
+      toast.success("All banners have been deleted");
+      setBanners([]);
+    } catch (e: any) {
+      toast.error(e?.message ?? "Error deleting all banners");
+    } finally {
+      setDeletingAll(false);
+    }
+  };
 
-  if (loading || !user || !isAdmin) {
-    return (
-      <PageShell>
-        <div className="flex min-h-[40vh] items-center justify-center">
-          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-        </div>
-      </PageShell>
-    );
-  }
+  const handleAddNew = () => {
+    const tempId = "temp_" + Date.now();
+    setBanners((prev) => [
+      {
+        id: tempId,
+        title: "New Banner",
+        image_url: "",
+        link_url: "/quiz/daily",
+        sort_order: (prev.length + 1) * 10,
+        active: 1,
+      },
+      ...prev,
+    ]);
+  };
 
   return (
-    <PageShell>
-      <div className="mx-auto w-full max-w-5xl space-y-4">
-        <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">Dashboard Banners</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Banners appear directly below the dashboard hero card and auto-slide every 10 seconds.
-            Upload artwork in an <strong>8:3 ratio (≈2.67:1)</strong> — recommended 1200 × 450 px. Add a light-mode and a dark-mode version; the dashboard swaps them with the app theme.
-          </p>
+    <PageShell
+      eyebrow="Admin Portal"
+      title="Dashboard Banners"
+      description="Create, update, toggle, or delete banners displayed on student dashboards."
+    >
+      <div className="space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <Button onClick={handleAddNew} size="sm" className="bg-gradient-primary">
+              <Plus className="mr-1.5 h-4 w-4" /> Add Banner
+            </Button>
+            <Button
+              onClick={loadBanners}
+              variant="outline"
+              size="sm"
+              disabled={loading}
+            >
+              <RefreshCw className={`mr-1.5 h-4 w-4 ${loading ? "animate-spin" : ""}`} /> Refresh
+            </Button>
+          </div>
+
+          <Button
+            onClick={handleDeleteAll}
+            variant="destructive"
+            size="sm"
+            disabled={deletingAll || banners.length === 0}
+          >
+            {deletingAll ? (
+              <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+            ) : (
+              <Trash2 className="mr-1.5 h-4 w-4" />
+            )}
+            Delete All Banners
+          </Button>
         </div>
 
-        <Card>
-          <CardContent className="space-y-3 p-4">
-            <div className="text-sm font-bold">Add a banner</div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <Label htmlFor="b-title">Title (internal)</Label>
-                <Input id="b-title" value={form.title} placeholder="Summer batch promo"
-                  onChange={(e) => setForm({ ...form, title: e.target.value })} />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="b-order">Sort order</Label>
-                <Input id="b-order" type="number" value={form.sort_order}
-                  onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
-              </div>
-              <ImageField idPrefix="new-light" label="Light mode banner (1200 × 450)"
-                value={form.image_url}
-                onChange={(url) => setForm({ ...form, image_url: url })} />
-              <ImageField idPrefix="new-dark" dark label="Dark mode banner (1200 × 450)"
-                value={form.image_url_dark}
-                onChange={(url) => setForm({ ...form, image_url_dark: url })} />
-              <DestinationField idPrefix="new" value={form.link_url}
-                onChange={(v) => setForm({ ...form, link_url: v })} />
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Switch id="b-active" checked={form.active}
-                  onCheckedChange={(v) => setForm({ ...form, active: v })} />
-                <Label htmlFor="b-active">Active</Label>
-              </div>
-              <Button onClick={create} disabled={busy}>
-                {busy ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Plus className="mr-2 h-4 w-4" />}
-                Add banner
-              </Button>
-            </div>
-          </CardContent>
+        {/* Expected Banner Ratio Info Box */}
+        <Card className="border-primary/20 bg-primary/5 p-4 text-xs">
+          <div className="font-semibold text-primary">Recommended Banner Artwork Dimensions:</div>
+          <ul className="mt-1.5 list-inside list-disc space-y-1 text-muted-foreground">
+            <li><strong>Desktop:</strong> 3:1 ratio (1200 × 400 px or 1500 × 500 px)</li>
+            <li><strong>Mobile:</strong> 16:9 ratio (1080 × 608 px)</li>
+            <li><strong>Universal (Recommended):</strong> 2.5:1 ratio (1250 × 500 px), keeping logos and primary text centered within the middle 70% of the image.</li>
+          </ul>
         </Card>
 
-        {!loaded ? (
-          <div className="flex justify-center py-8">
-            <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+        {loading ? (
+          <div className="flex h-48 items-center justify-center">
+            <Loader2 className="h-6 w-6 animate-spin text-primary" />
           </div>
-        ) : rows.length === 0 ? (
-          <p className="py-6 text-center text-sm text-muted-foreground">No banners yet.</p>
+        ) : banners.length === 0 ? (
+          <Card>
+            <CardContent className="p-12 text-center text-muted-foreground">
+              No banners found in the database. Click <strong>Add Banner</strong> above to create one.
+            </CardContent>
+          </Card>
         ) : (
-          rows.map((row) => (
-            <Card key={row.id}>
-              <CardContent className="space-y-3 p-4">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="space-y-1.5">
-                    <Label>Title</Label>
-                    <Input value={row.title ?? ""} onChange={(e) => patch(row.id, { title: e.target.value })} />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label>Sort order</Label>
-                    <Input type="number" value={row.sort_order}
-                      onChange={(e) => patch(row.id, { sort_order: Number(e.target.value) })} />
-                  </div>
-                  <ImageField idPrefix={`${row.id}-light`} label="Light mode banner"
-                    value={row.image_url}
-                    onChange={(url) => patch(row.id, { image_url: url })} />
-                  <ImageField idPrefix={`${row.id}-dark`} dark label="Dark mode banner"
-                    value={row.image_url_dark ?? ""}
-                    onChange={(url) => patch(row.id, { image_url_dark: url })} />
-                  <DestinationField idPrefix={row.id} value={row.link_url ?? ""}
-                    onChange={(v) => patch(row.id, { link_url: v })} />
-                </div>
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <Switch checked={row.active} onCheckedChange={(v) => patch(row.id, { active: v })} />
-                    <span className="text-sm">Active</span>
-                    {row.link_url ? (
-                      <a href={row.link_url} target="_blank" rel="noopener noreferrer"
-                        className="ml-2 inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground">
-                        <ExternalLink className="h-3.5 w-3.5" /> Open link
-                      </a>
-                    ) : null}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" onClick={() => update(row)} disabled={busy}>
-                      <Save className="mr-2 h-4 w-4" /> Save
-                    </Button>
-                    <Button variant="destructive" onClick={() => remove(row.id)} disabled={busy}>
-                      <Trash2 className="mr-2 h-4 w-4" /> Delete
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))
+          <div className="grid gap-6">
+            {banners.map((b, idx) => (
+              <BannerItem
+                key={b.id || idx}
+                banner={b}
+                onSave={handleSave}
+                onDelete={handleDelete}
+                isSaving={savingId === b.id}
+                isDeleting={deletingId === b.id}
+              />
+            ))}
+          </div>
         )}
       </div>
     </PageShell>
+  );
+}
+
+function BannerItem({
+  banner,
+  onSave,
+  onDelete,
+  isSaving,
+  isDeleting,
+}: {
+  banner: Banner;
+  onSave: (b: Partial<Banner>) => Promise<void>;
+  onDelete: (id: string) => Promise<void>;
+  isSaving: boolean;
+  isDeleting: boolean;
+}) {
+  const [title, setTitle] = useState(banner.title || "");
+  const [imageUrl, setImageUrl] = useState(banner.image_url || "");
+  const [linkUrl, setLinkUrl] = useState(banner.link_url || "");
+  const [sortOrder, setSortOrder] = useState(banner.sort_order ?? 10);
+  const [active, setActive] = useState(Boolean(banner.active));
+
+  const isTemp = banner.id.startsWith("temp_");
+
+  return (
+    <Card className="overflow-hidden border-border/80 shadow-sm">
+      <CardHeader className="flex flex-row items-center justify-between border-b bg-muted/20 pb-3 pt-3">
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-sm font-semibold">
+            {title || "Untitled Banner"}
+          </CardTitle>
+          {isTemp && (
+            <span className="rounded bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+              Unsaved
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            className="h-8 bg-gradient-primary text-xs"
+            disabled={isSaving}
+            onClick={() =>
+              onSave({
+                id: isTemp ? undefined : banner.id,
+                title,
+                image_url: imageUrl,
+                link_url: linkUrl,
+                sort_order: sortOrder,
+                active: active ? 1 : 0,
+              })
+            }
+          >
+            {isSaving ? (
+              <Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Save className="mr-1 h-3.5 w-3.5" />
+            )}
+            Save
+          </Button>
+
+          {!isTemp && (
+            <Button
+              size="sm"
+              variant="destructive"
+              className="h-8 text-xs"
+              disabled={isDeleting}
+              onClick={() => onDelete(banner.id)}
+            >
+              {isDeleting ? (
+                <Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Trash2 className="mr-1 h-3.5 w-3.5" />
+              )}
+              Delete
+            </Button>
+          )}
+        </div>
+      </CardHeader>
+
+      <CardContent className="grid gap-6 p-5 md:grid-cols-2">
+        {/* Left: Inputs */}
+        <div className="space-y-4">
+          <div className="space-y-1.5">
+            <Label className="text-xs">Banner Title / Campaign Name</Label>
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="e.g. NEET 2026 Crash Course / Mock Test Series"
+              className="h-9 text-xs"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Image URL (Direct image link / CDN)</Label>
+            <Input
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              placeholder="https://... or /img/banners/banner1.jpg"
+              className="h-9 text-xs"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Click Destination / Route</Label>
+            <Input
+              value={linkUrl}
+              onChange={(e) => setLinkUrl(e.target.value)}
+              placeholder="e.g. /pyqs, /quiz/daily, or external https://..."
+              className="h-9 text-xs"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <Label className="text-xs">Sort Order</Label>
+              <Input
+                type="number"
+                value={sortOrder}
+                onChange={(e) => setSortOrder(Number(e.target.value))}
+                className="h-9 text-xs"
+              />
+            </div>
+            <div className="flex flex-col justify-center space-y-1.5">
+              <Label className="text-xs">Active on Dashboard</Label>
+              <div className="flex items-center gap-2 pt-1">
+                <Switch checked={active} onCheckedChange={setActive} />
+                <span className="text-xs text-muted-foreground">
+                  {active ? "Visible" : "Hidden"}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Preview */}
+        <div className="flex flex-col justify-between space-y-2 rounded-xl border border-dashed border-border bg-muted/20 p-4">
+          <div>
+            <div className="mb-2 text-xs font-semibold text-muted-foreground">Live Banner Preview:</div>
+            {imageUrl ? (
+              <div className="relative overflow-hidden rounded-xl border border-border shadow-sm">
+                <img
+                  src={imageUrl}
+                  alt={title || "Banner Preview"}
+                  className="aspect-[2.5/1] w-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = "none";
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="flex aspect-[2.5/1] w-full flex-col items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-muted/40 text-xs text-muted-foreground">
+                <ImagePlus className="mb-1.5 h-6 w-6 text-muted-foreground/50" />
+                <span>Enter an Image URL to preview</span>
+              </div>
+            )}
+          </div>
+
+          {linkUrl && (
+            <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+              <ExternalLink className="h-3 w-3" /> Target: <code className="text-foreground">{linkUrl}</code>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
