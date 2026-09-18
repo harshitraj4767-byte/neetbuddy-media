@@ -86,6 +86,60 @@ if ($method === "POST" || $method === "DELETE") {
     }
 
     switch ($action) {
+        case "upload_banner":
+            $uploadDir = __DIR__ . '/../uploads/banners';
+            if (!is_dir($uploadDir)) {
+                @mkdir($uploadDir, 0755, true);
+            }
+
+            $uploadedUrl = null;
+            if (isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
+                $file = $_FILES['image'];
+                $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
+                if (!in_array($ext, $allowed, true)) {
+                    nb_fail("Invalid image format. Allowed: " . implode(', ', $allowed), 400);
+                }
+                $filename = 'banner_' . bin2hex(random_bytes(8)) . '_' . time() . '.' . $ext;
+                $target = $uploadDir . '/' . $filename;
+                if (!move_uploaded_file($file['tmp_name'], $target)) {
+                    nb_fail("Failed to save uploaded file", 500);
+                }
+                $uploadedUrl = '/uploads/banners/' . $filename;
+            } elseif (!empty($input['image_data'])) {
+                $data = (string)$input['image_data'];
+                if (preg_match('/^data:image\/([a-zA-Z0-9+]+);base64,(.+)$/', $data, $m)) {
+                    $ext = strtolower($m[1]);
+                    if ($ext === 'jpeg') $ext = 'jpg';
+                    if ($ext === 'svg+xml') $ext = 'svg';
+                    $allowed = ['jpg', 'png', 'webp', 'gif', 'svg'];
+                    if (!in_array($ext, $allowed, true)) {
+                        nb_fail("Invalid image type", 400);
+                    }
+                    $bin = base64_decode($m[2]);
+                    if ($bin === false) {
+                        nb_fail("Malformed base64 data", 400);
+                    }
+                    $filename = 'banner_' . bin2hex(random_bytes(8)) . '_' . time() . '.' . $ext;
+                    $target = $uploadDir . '/' . $filename;
+                    if (file_put_contents($target, $bin) === false) {
+                        nb_fail("Failed to write image to disk", 500);
+                    }
+                    $uploadedUrl = '/uploads/banners/' . $filename;
+                } else {
+                    nb_fail("Invalid data URI", 400);
+                }
+            } else {
+                nb_fail("No image file or image_data provided", 400);
+            }
+
+            nb_json([
+                "success" => true,
+                "url" => $uploadedUrl,
+                "message" => "Image uploaded successfully"
+            ]);
+            exit;
+
         case "delete_all_banners":
             $pdo->exec("DELETE FROM dashboard_banners");
             nb_json(["success" => true, "message" => "All banners deleted successfully"]);
@@ -109,14 +163,19 @@ if ($method === "POST" || $method === "DELETE") {
                 mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
             $title = $input["title"] ?? null;
             $imageUrl = $input["image_url"] ?? "";
+            $imageUrlDark = !empty($input["image_url_dark"]) ? $input["image_url_dark"] : null;
             $linkUrl = $input["link_url"] ?? "";
             $sortOrder = (int)($input["sort_order"] ?? 0);
             $active = (int)($input["active"] ?? 1);
 
-            $stmt = $pdo->prepare("INSERT INTO dashboard_banners (id, title, image_url, link_url, sort_order, active, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, NOW())
-                ON DUPLICATE KEY UPDATE title = VALUES(title), image_url = VALUES(image_url), link_url = VALUES(link_url), sort_order = VALUES(sort_order), active = VALUES(active)");
-            $stmt->execute([$id, $title, $imageUrl, $linkUrl, $sortOrder, $active]);
+            try {
+                $pdo->exec("ALTER TABLE dashboard_banners ADD COLUMN image_url_dark TEXT NULL");
+            } catch (Throwable $e) {}
+
+            $stmt = $pdo->prepare("INSERT INTO dashboard_banners (id, title, image_url, image_url_dark, link_url, sort_order, active, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, NOW())
+                ON DUPLICATE KEY UPDATE title = VALUES(title), image_url = VALUES(image_url), image_url_dark = VALUES(image_url_dark), link_url = VALUES(link_url), sort_order = VALUES(sort_order), active = VALUES(active)");
+            $stmt->execute([$id, $title, $imageUrl, $imageUrlDark, $linkUrl, $sortOrder, $active]);
             nb_json(["success" => true, "id" => $id]);
             exit;
 
