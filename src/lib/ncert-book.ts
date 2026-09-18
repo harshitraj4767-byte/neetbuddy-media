@@ -132,8 +132,8 @@ export function pyqImageCandidates(
 
   const out: string[] = [];
   const push = (p: string) => {
-    const url = p.startsWith("/") ? p : `/${p}`;
-    if (!out.includes(url)) out.push(url);
+    const url = qbankImageUrl(p);
+    if (url && !out.includes(url)) out.push(url);
   };
 
   // 1. The stored path itself, as served from public/.
