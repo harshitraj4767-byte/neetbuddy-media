@@ -51,10 +51,37 @@ function AnalysisPage() {
 
   useEffect(() => {
     (async () => {
+      // First try MySQL PHP API
+      try {
+        const res = await fetch(`/api/results.php?attempt_id=${encodeURIComponent(attemptId)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.attempt) {
+            if (data.test?.type === "contest") {
+              nav({ to: "/contests" });
+              return;
+            }
+            setAttempt(data.attempt as Attempt);
+            setTest(data.test as Test | null);
+            if (Array.isArray(data.questions)) {
+              const withMedia = data.questions.map((q: any) => attachQuestionMedia(q as Question)) as Question[];
+              setQuestions(withMedia);
+            }
+            if (data.subjects) setSubjects(data.subjects);
+            if (data.chapters) setChapters(data.chapters);
+            if (data.reasons) setReasons(data.reasons);
+            setLoading(false);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn("MySQL results fetch failed:", err);
+      }
+
+      // Fallback to Supabase
       const { data: a } = await supabase.from("attempts").select("*").eq("id", attemptId).maybeSingle();
       if (!a) { setLoading(false); return; }
       const { data: t } = await supabase.from("tests").select("*").eq("id", a.test_id).maybeSingle();
-      // Guard: contest attempts must never expose solutions/reattempt here.
       if (t?.type === "contest") {
         nav({ to: "/contests" });
         return;
@@ -67,7 +94,6 @@ function AnalysisPage() {
         const ordered = ids
           .map((id) => qs?.find((q) => q.id === id))
           .filter(Boolean)
-          // Same image handling as the quiz page (diagrams / explanation images).
           .map((q) => attachQuestionMedia(q as Question)) as Question[];
         setQuestions(ordered);
 
