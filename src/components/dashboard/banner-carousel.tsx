@@ -89,7 +89,7 @@ export function BannerCarousel() {
         if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
       }}
     >
-      <div className="aspect-[16/9] sm:aspect-[2.2/1] lg:aspect-[3/1] xl:aspect-[3.4/1] max-h-[340px] w-full">
+      <div className="aspect-[7/2] w-full">
         <div
           className="flex h-full w-full transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${index * 100}%)` }}

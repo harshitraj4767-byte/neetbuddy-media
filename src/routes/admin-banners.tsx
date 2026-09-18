@@ -222,9 +222,7 @@ function BannersAdmin() {
         <Card className="border-primary/20 bg-primary/5 p-4 text-xs">
           <div className="font-semibold text-primary">Recommended Banner Artwork Dimensions:</div>
           <ul className="mt-1.5 list-inside list-disc space-y-1 text-muted-foreground">
-            <li><strong>Desktop:</strong> 3:1 ratio (1200 × 400 px or 1500 × 500 px)</li>
-            <li><strong>Mobile:</strong> 16:9 ratio (1080 × 608 px)</li>
-            <li><strong>Universal (Recommended):</strong> 2.5:1 ratio (1250 × 500 px), keeping logos and primary text centered within the middle 70% of the image.</li>
+            <li><strong>Mobile & Desktop Unified:</strong> 2:7 ratio (7:2 aspect ratio — 1400 × 400 px or 700 × 200 px), ensuring consistent presentation across all screen sizes.</li>
             <li><strong>Dark Mode Variant:</strong> Upload an optional dark version suited for dark theme viewports. If omitted, the light banner will be used.</li>
           </ul>
         </Card>
@@ -600,7 +598,7 @@ function BannerItem({
                   <img
                     src={imageUrl}
                     alt={title || "Light Banner Preview"}
-                    className="aspect-[2.5/1] w-full rounded-lg object-cover"
+                    className="aspect-[7/2] w-full rounded-lg object-cover"
                     onError={(e) => {
                       (e.target as HTMLElement).style.display = "none";
                     }}
@@ -608,7 +606,7 @@ function BannerItem({
                   <div className="mt-1 px-1 text-right text-[10px] text-slate-500">Light theme preview</div>
                 </div>
               ) : (
-                <div className="flex aspect-[2.5/1] w-full flex-col items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-white/70 text-xs text-muted-foreground">
+                <div className="flex aspect-[7/2] w-full flex-col items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-white/70 text-xs text-muted-foreground">
                   <ImagePlus className="mb-1.5 h-6 w-6 text-muted-foreground/50" />
                   <span>Upload or enter a Light Banner image</span>
                 </div>
@@ -619,7 +617,7 @@ function BannerItem({
                   <img
                     src={imageUrlDark || imageUrl}
                     alt={title || "Dark Banner Preview"}
-                    className="aspect-[2.5/1] w-full rounded-lg object-cover"
+                    className="aspect-[7/2] w-full rounded-lg object-cover"
                     onError={(e) => {
                       (e.target as HTMLElement).style.display = "none";
                     }}
@@ -629,7 +627,7 @@ function BannerItem({
                   </div>
                 </div>
               ) : (
-                <div className="flex aspect-[2.5/1] w-full flex-col items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-slate-950/70 text-xs text-muted-foreground">
+                <div className="flex aspect-[7/2] w-full flex-col items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-slate-950/70 text-xs text-muted-foreground">
                   <ImagePlus className="mb-1.5 h-6 w-6 text-muted-foreground/50" />
                   <span>Upload or enter a Dark Banner image</span>
                 </div>

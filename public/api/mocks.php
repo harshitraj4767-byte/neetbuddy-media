@@ -9,7 +9,20 @@ $pdo = nb_pdo();
 $category = $_GET['category'] ?? null;
 $limit = min((int)($_GET['limit'] ?? 100), 200);
 
-$query = 'SELECT id, title, description, difficulty, COALESCE(duration_min, 180) AS duration_min, total_questions, source, entry_fee, is_paid, syllabus, category_id, type, created_at FROM tests WHERE (type = "mock" OR type = "test" OR type = "practice" OR 1=1)';
+$action = $_GET['action'] ?? $_POST['action'] ?? '';
+if ($action === 'delete_all_mock_tests' || (isset($_GET['delete_all']) && $_GET['delete_all'] === 'true')) {
+    try {
+        $pdo->exec("DELETE FROM attempts WHERE test_id IN (SELECT id FROM tests WHERE type = 'mock' OR type = 'test')");
+        $pdo->exec("DELETE FROM tests WHERE type = 'mock' OR type = 'test'");
+        nb_json(['success' => true, 'message' => 'All mock test data deleted successfully']);
+    } catch (Throwable $e) {
+        nb_fail($e->getMessage(), 500);
+    }
+}
+
+
+// Only return authentic mock tests — do not mix with practice tests or DPPs
+$query = 'SELECT id, title, description, difficulty, COALESCE(duration_min, 180) AS duration_min, total_questions, source, entry_fee, is_paid, syllabus, category_id, type, created_at FROM tests WHERE type = "mock"';
 $params = [];
 
 if ($category && $category !== 'all') {
@@ -27,7 +40,7 @@ try {
     $stmt->execute($params);
     $tests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Throwable $e) {
-    $stmt = $pdo->query('SELECT * FROM tests WHERE 1=1 LIMIT ' . $limit);
+    $stmt = $pdo->query('SELECT * FROM tests WHERE type = "mock" LIMIT ' . $limit);
     $tests = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
 }
 

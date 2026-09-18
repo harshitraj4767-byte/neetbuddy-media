@@ -44,6 +44,11 @@ if ($method === "GET") {
             ]);
             exit;
 
+                case "delete_all_mock_tests":
+            $pdo->exec("DELETE FROM attempts WHERE test_id IN (SELECT id FROM tests WHERE type = 'mock' OR type = 'test')");
+            $pdo->exec("DELETE FROM tests WHERE type = 'mock' OR type = 'test'");
+            nb_json(["success" => true, "message" => "All mock tests and related attempts deleted successfully"]);
+
         case "delete_all_banners":
             $pdo->exec("DELETE FROM dashboard_banners");
             nb_json(["success" => true, "message" => "All banners deleted successfully"]);

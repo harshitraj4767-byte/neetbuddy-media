@@ -12,7 +12,7 @@ $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 if ($method === 'GET') {
     try {
-        $stmt = $pdo->prepare('SELECT id, title, description, difficulty, duration_min, total_questions, source, created_at, starts_at, ends_at, type FROM tests WHERE type IN ("dpp", "daily", "quiz", "generated") ORDER BY created_at DESC LIMIT 100');
+        $stmt = $pdo->prepare('SELECT id, title, description, difficulty, duration_min, total_questions, source, created_at, starts_at, ends_at, type FROM tests WHERE type IN ("dpp", "daily") ORDER BY created_at DESC LIMIT 100');
         $stmt->execute();
         $tests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
