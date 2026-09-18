@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { attachQuestionMedia } from "@/lib/question-media";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -1635,7 +1636,7 @@ function QuizPlayer() {
       {(
         <aside className="fixed right-0 top-0 z-30 hidden h-screen w-[340px] flex-col border-l border-border bg-card lg:flex">
           <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-            <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-8 w-8 rounded-md" />
+            <img src={publicMediaAsset("icons/icon-192.png")} alt="Neet Buddy" className="h-8 w-8 rounded-md" />
             <div className="min-w-0">
               <div className="truncate text-sm font-bold">{isCbt ? "Neet Buddy CBT" : "Neet Buddy Quiz"}</div>
               <div className="truncate text-[10px] text-muted-foreground">{test.title}</div>
