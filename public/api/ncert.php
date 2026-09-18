@@ -69,9 +69,48 @@ switch ($action) {
         }
         try {
             $in = implode(',', array_fill(0, count($ids), '?'));
-            $stmt = $pdo->prepare("SELECT unique_id, subject, question, answer, explanation, topic_name, chapter_name, difficulty, quiz_type, option_a, option_b, option_c, option_d, syllabus, year, exam_name, image_url FROM ncert_book_pyq WHERE unique_id IN ($in)");
+            // Only select columns that actually exist in this database. Older
+            // imports of ncert_book_pyq have no syllabus/year/exam_name columns,
+            // and selecting them made every PYQ lookup fail with SQLSTATE 42S22,
+            // so highlighted NCERT lines opened an empty practice screen.
+            $available = [];
+            try {
+                $colStmt = $pdo->query('SHOW COLUMNS FROM ncert_book_pyq');
+                foreach ($colStmt->fetchAll(PDO::FETCH_ASSOC) as $col) {
+                    $available[strtolower((string)$col['Field'])] = true;
+                }
+            } catch (Throwable $e) {
+                $available = [];
+            }
+
+            $wanted = ['unique_id', 'subject', 'question', 'answer', 'explanation', 'topic_name',
+                       'chapter_name', 'difficulty', 'quiz_type', 'option_a', 'option_b',
+                       'option_c', 'option_d', 'image_url', 'syllabus', 'syllabus_update',
+                       'year', 'exam_name', 'ncert22_page', 'ncert23_page'];
+            $select = [];
+            foreach ($wanted as $col) {
+                if (!$available || isset($available[$col])) {
+                    $select[] = '`' . $col . '`';
+                }
+            }
+            $cols = $select ? implode(', ', $select) : '*';
+
+            $stmt = $pdo->prepare("SELECT $cols FROM ncert_book_pyq WHERE unique_id IN ($in)");
             $stmt->execute(array_values($ids));
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as &$row) {
+                // Normalise legacy column names so the app always gets the same shape.
+                if (!array_key_exists('syllabus', $row)) {
+                    $row['syllabus'] = $row['syllabus_update'] ?? null;
+                }
+                if (!array_key_exists('year', $row)) {
+                    $row['year'] = null;
+                }
+                if (!array_key_exists('exam_name', $row)) {
+                    $row['exam_name'] = null;
+                }
+            }
+            unset($row);
             nb_json(['pyqs' => $rows]);
         } catch (Throwable $e) {
             nb_json(['pyqs' => [], 'error' => $e->getMessage()]);
