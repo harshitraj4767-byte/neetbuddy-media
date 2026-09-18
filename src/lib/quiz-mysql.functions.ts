@@ -311,6 +311,7 @@ export const listUserBookmarks = createServerFn({ method: "POST" })
     const rows = await query<Record<string, unknown>>(
       `SELECT b.id, CAST(b.question_id AS CHAR) AS question_id, b.created_at,
               q.question_html, q.options, q.difficulty,
+              q.question_image_url, q.explanation_image_url,
               s.name AS subject_name, c.name AS chapter_name
          FROM bookmarks b
          JOIN qb_questions q ON CAST(q.id AS CHAR) = CAST(b.question_id AS CHAR)
@@ -320,16 +321,34 @@ export const listUserBookmarks = createServerFn({ method: "POST" })
         ORDER BY b.created_at DESC`,
       [userId],
     );
-    return rows.map((row) => ({
-      id: String(row["id"]),
-      questionId: String(row["question_id"]),
-      questionHtml: String(row["question_html"] ?? ""),
-      options: normalizeOptions(row["options"]),
-      difficulty: String(row["difficulty"] ?? "Medium"),
-      subjectName: (row["subject_name"] as string | null) ?? null,
-      chapterName: (row["chapter_name"] as string | null) ?? null,
-      createdAt: toIsoOrNull(row["created_at"]),
-    }));
+    const { attachQuestionMedia } = await import("@/lib/question-media");
+    return rows.map((row) => {
+      const qid = String(row["question_id"]);
+      const rawText = String(row["question_html"] ?? "");
+      const rawOpts = normalizeOptions(row["options"]);
+      const withMedia = attachQuestionMedia({
+        id: qid,
+        text: rawText,
+        question_image_url: (row["question_image_url"] as string | null) ?? null,
+        explanation_image_url: (row["explanation_image_url"] as string | null) ?? null,
+        options: rawOpts.map((o) => o.html),
+      });
+      const optsList = withMedia.options || rawOpts.map((o) => o.html);
+      return {
+        id: String(row["id"]),
+        questionId: qid,
+        questionHtml: withMedia.text || rawText,
+        options: optsList.map((opt, idx) => ({
+          index: idx,
+          html: opt,
+          text: opt,
+        })),
+        difficulty: String(row["difficulty"] ?? "Medium"),
+        subjectName: (row["subject_name"] as string | null) ?? null,
+        chapterName: (row["chapter_name"] as string | null) ?? null,
+        createdAt: toIsoOrNull(row["created_at"]),
+      };
+    });
   });
 
 /** Add or remove a bookmark; returns the resulting state. */
@@ -971,6 +990,8 @@ export const listUserMistakes = createServerFn({ method: "POST" }).handler(
               q.correct_index,
               q.explanation,
               q.difficulty,
+              q.question_image_url,
+              q.explanation_image_url,
               s.name AS subject_name,
               c.name AS chapter_name
          FROM wrong_questions wq
@@ -981,17 +1002,36 @@ export const listUserMistakes = createServerFn({ method: "POST" }).handler(
         ORDER BY wq.created_at DESC`,
       [userId],
     );
-    return rows.map((row) => ({
-      id: String(row["id"] ?? row["question_id"]),
-      questionId: String(row["question_id"]),
-      questionHtml: String(row["question_html"] ?? ""),
-      options: normalizeOptions(row["options"]),
-      difficulty: String(row["difficulty"] ?? "Medium"),
-      explanation: (row["explanation"] as string | null) ?? null,
-      correctIndex: Number(row["correct_index"] ?? 0),
-      subjectName: row["subject_name"] == null ? null : String(row["subject_name"]),
-      chapterName: row["chapter_name"] == null ? null : String(row["chapter_name"]),
-      createdAt: toIsoOrNull(row["created_at"]),
-    }));
+    const { attachQuestionMedia } = await import("@/lib/question-media");
+    return rows.map((row) => {
+      const qid = String(row["question_id"]);
+      const rawText = String(row["question_html"] ?? "");
+      const rawOpts = normalizeOptions(row["options"]);
+      const withMedia = attachQuestionMedia({
+        id: qid,
+        text: rawText,
+        explanation: (row["explanation"] as string | null) ?? null,
+        question_image_url: (row["question_image_url"] as string | null) ?? null,
+        explanation_image_url: (row["explanation_image_url"] as string | null) ?? null,
+        options: rawOpts.map((o) => o.html),
+      });
+      const optsList = withMedia.options || rawOpts.map((o) => o.html);
+      return {
+        id: String(row["id"] ?? row["question_id"]),
+        questionId: qid,
+        questionHtml: withMedia.text || rawText,
+        options: optsList.map((opt, idx) => ({
+          index: idx,
+          html: opt,
+          text: opt,
+        })),
+        difficulty: String(row["difficulty"] ?? "Medium"),
+        explanation: withMedia.explanation || (row["explanation"] as string | null) ?? null,
+        correctIndex: Number(row["correct_index"] ?? 0),
+        subjectName: row["subject_name"] == null ? null : String(row["subject_name"]),
+        chapterName: row["chapter_name"] == null ? null : String(row["chapter_name"]),
+        createdAt: toIsoOrNull(row["created_at"]),
+      };
+    });
   },
 );
