@@ -119,8 +119,11 @@ export function pyqImageCandidates(
   const raw = String(src).trim();
   if (!raw) return [];
 
-  // Absolute / data URLs are used as-is.
-  if (/^(?:https?:|data:|blob:)/i.test(raw)) return [raw];
+  // Canonicalize legacy media URLs while preserving unrelated external/data URLs.
+  if (/^(?:https?:|data:|blob:)/i.test(raw)) {
+    const resolved = qbankImageUrl(raw);
+    return resolved ? [resolved] : [];
+  }
 
   const clean = raw.replace(/^\/+/, "").replace(/^public\//i, "");
   const subj = (subject ?? "").toLowerCase().trim();
