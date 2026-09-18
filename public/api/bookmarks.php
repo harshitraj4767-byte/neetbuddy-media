@@ -17,7 +17,7 @@ if ($method === 'GET') {
     try {
         $stmt = $pdo->prepare('
             SELECT b.id, b.question_id, b.created_at,
-                   q.id as q_id, q.question_text, q.options, q.correct_option, q.explanation, q.difficulty, q.subject_id, q.chapter_id,
+                   q.id as q_id, q.question_html AS question_text, q.options, q.correct_option, q.explanation, q.difficulty, q.subject_id, q.chapter_id,
                    s.name as subject_name, c.name as chapter_name
             FROM bookmarks b
             JOIN qb_questions q ON q.id = b.question_id
@@ -48,10 +48,22 @@ if ($method === 'POST' || $method === 'DELETE') {
         nb_fail('Missing question_id or id', 400);
     }
 
+    // `add` (or action=add) inserts; anything else removes. Without this the
+    // endpoint could only ever delete, so bookmarks never saved.
+    $add = $input['add'] ?? ($input['action'] ?? null) === 'add';
+    $add = $add === true || $add === 1 || $add === '1' || $add === 'true' || $add === 'add';
+
     try {
+        if ($method !== 'DELETE' && $add) {
+            $ins = $pdo->prepare('INSERT INTO bookmarks (id, user_id, question_id, created_at)
+                VALUES (UUID(), ?, ?, NOW(6))
+                ON DUPLICATE KEY UPDATE created_at = created_at');
+            $ins->execute([$userId, $qid]);
+            nb_json(['success' => true, 'bookmarked' => true]);
+        }
         $del = $pdo->prepare('DELETE FROM bookmarks WHERE (question_id = ? OR id = ?) AND user_id = ?');
         $del->execute([$qid, $qid, $userId]);
-        nb_json(['success' => true]);
+        nb_json(['success' => true, 'bookmarked' => false]);
     } catch (Throwable $e) {
         nb_fail($e->getMessage(), 500);
     }

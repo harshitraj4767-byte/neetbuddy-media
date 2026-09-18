@@ -287,6 +287,51 @@ export const getQuizBookmarks = createServerFn({ method: "POST" })
     return rows.map((r) => String(r.question_id));
   });
 
+export type BookmarkListItemDTO = {
+  id: string;
+  questionId: string;
+  questionHtml: string;
+  options: QuizOptionDTO[];
+  difficulty: string;
+  subjectName: string | null;
+  chapterName: string | null;
+  createdAt: string | null;
+};
+
+/**
+ * Every bookmark of the current user, newest first, joined to the question
+ * bank. Ids are compared as CHAR because bookmarks.question_id is text while
+ * qb_questions.id may be numeric.
+ */
+export const listUserBookmarks = createServerFn({ method: "POST" })
+  .handler(async (): Promise<BookmarkListItemDTO[]> => {
+    const userId = await getUserId();
+    if (!userId) return [];
+    const { query } = await import("@/lib/db/mysql.server");
+    const rows = await query<Record<string, unknown>>(
+      `SELECT b.id, CAST(b.question_id AS CHAR) AS question_id, b.created_at,
+              q.question_html, q.options, q.difficulty,
+              s.name AS subject_name, c.name AS chapter_name
+         FROM bookmarks b
+         JOIN qb_questions q ON CAST(q.id AS CHAR) = CAST(b.question_id AS CHAR)
+         LEFT JOIN qb_subjects s ON s.id = q.subject_id
+         LEFT JOIN qb_chapters c ON c.id = q.chapter_id
+        WHERE b.user_id = ?
+        ORDER BY b.created_at DESC`,
+      [userId],
+    );
+    return rows.map((row) => ({
+      id: String(row["id"]),
+      questionId: String(row["question_id"]),
+      questionHtml: String(row["question_html"] ?? ""),
+      options: normalizeOptions(row["options"]),
+      difficulty: String(row["difficulty"] ?? "Medium"),
+      subjectName: (row["subject_name"] as string | null) ?? null,
+      chapterName: (row["chapter_name"] as string | null) ?? null,
+      createdAt: toIsoOrNull(row["created_at"]),
+    }));
+  });
+
 /** Add or remove a bookmark; returns the resulting state. */
 export const toggleQuizBookmark = createServerFn({ method: "POST" })
   .validator((d: { questionId: string }) => d)

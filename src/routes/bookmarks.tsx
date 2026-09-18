@@ -1,71 +1,59 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Trash2, ChevronLeft, Bookmark } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { SafeRichText as RichText } from "@/components/safe-rich-text";
+import {
+  listUserBookmarks,
+  setQuizBookmark,
+  type BookmarkListItemDTO,
+} from "@/lib/quiz-mysql.functions";
 
 export const Route = createFileRoute("/bookmarks")({
   head: () => ({ meta: [{ title: "Bookmarks — Neet Buddy" }] }),
   component: BookmarksPage,
 });
 
-type BookmarkItem = {
-  id: string;
-  question_id: string;
-  question_text: string;
-  options: string[] | { html: string }[];
-  difficulty: string;
-  subject_name?: string;
-  chapter_name?: string;
-};
-
 function BookmarksPage() {
   const { user, loading } = useAuth();
   const nav = useNavigate();
-  const [bookmarks, setBookmarks] = useState<BookmarkItem[] | null>(null);
+  const [bookmarks, setBookmarks] = useState<BookmarkListItemDTO[] | null>(null);
   const [removing, setRemoving] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !user) nav({ to: "/login" });
   }, [user, loading, nav]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("/api/bookmarks.php", { credentials: "include" });
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data.bookmarks)) {
-            setBookmarks(data.bookmarks);
-            return;
-          }
-        }
-      } catch (e) {
-        console.warn("Failed to load /api/bookmarks.php:", e);
-      }
+  const load = useCallback(async () => {
+    if (!user) return;
+    try {
+      const rows = await listUserBookmarks();
+      setBookmarks(rows);
+    } catch (e) {
+      console.warn("[bookmarks] failed to load bookmarks", e);
+      toast.error("Could not load your bookmarks");
       setBookmarks([]);
-    })();
+    }
   }, [user]);
+
+  useEffect(() => {
+    void load();
+  }, [load]);
 
   async function handleRemove(questionId: string) {
     setRemoving(questionId);
+    const previous = bookmarks;
+    setBookmarks((prev) => (prev ?? []).filter((b) => b.questionId !== questionId));
     try {
-      const res = await fetch("/api/bookmarks.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ question_id: questionId }),
-      });
-      if (res.ok) {
-        setBookmarks((prev) => (prev ?? []).filter((b) => b.question_id !== questionId));
-        toast.success("Bookmark removed");
-      }
+      await setQuizBookmark({ data: { questionId, add: false } });
+      toast.success("Bookmark removed");
     } catch (e: any) {
+      setBookmarks(previous);
       toast.error(e?.message ?? "Error removing bookmark");
     } finally {
       setRemoving(null);
@@ -83,24 +71,24 @@ function BookmarksPage() {
       ) : (
         <div className="space-y-4">
           {bookmarks.map((b) => (
-            <Card key={b.id || b.question_id} className="p-4">
+            <Card key={b.id || b.questionId} className="p-4">
               <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
                 <div className="flex items-center gap-2">
-                  {b.subject_name && <Badge variant="outline">{b.subject_name}</Badge>}
-                  {b.chapter_name && <span className="truncate max-w-xs">{b.chapter_name}</span>}
+                  {b.subjectName && <Badge variant="outline">{b.subjectName}</Badge>}
+                  {b.chapterName && <span className="truncate max-w-xs">{b.chapterName}</span>}
                 </div>
                 <Button
                   size="sm"
                   variant="ghost"
                   className="h-8 text-destructive hover:bg-destructive/10"
-                  disabled={removing === b.question_id}
-                  onClick={() => handleRemove(b.question_id)}
+                  disabled={removing === b.questionId}
+                  onClick={() => handleRemove(b.questionId)}
                 >
                   <Trash2 className="h-4 w-4 mr-1" /> Remove
                 </Button>
               </div>
               <div className="text-sm font-medium">
-                <RichText content={b.question_text} />
+                <RichText>{b.questionHtml}</RichText>
               </div>
             </Card>
           ))}
