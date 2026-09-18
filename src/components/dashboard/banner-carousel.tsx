@@ -1,4 +1,3 @@
-import { publicMediaAsset } from "@/lib/media-assets";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
@@ -8,66 +7,55 @@ import { useTheme } from "@/hooks/use-theme";
 
 const AUTO_MS = 10_000;
 
-const DEFAULT_BANNERS: BannerRow[] = [
-  {
-    id: "def-physics",
-    title: "Master Physics with High Yield Formulae & Tests",
-    image_url: publicMediaAsset("illustrations/banner-physics.png"),
-    image_url_dark: publicMediaAsset("illustrations/banner-physics.png"),
-    link_url: "/physics",
-    sort_order: 10,
-    active: true,
-  },
-  {
-    id: "def-chemistry",
-    title: "NEET Chemistry NCERT Practice",
-    image_url: publicMediaAsset("illustrations/banner-chemistry.png"),
-    image_url_dark: publicMediaAsset("illustrations/banner-chemistry.png"),
-    link_url: "/chemistry",
-    sort_order: 20,
-    active: true,
-  },
-  {
-    id: "def-biology",
-    title: "Complete Biology Chapterwise Question Bank",
-    image_url: publicMediaAsset("illustrations/banner-biology.png"),
-    image_url_dark: publicMediaAsset("illustrations/banner-biology.png"),
-    link_url: "/biology",
-    sort_order: 30,
-    active: true,
-  },
-  {
-    id: "def-neetlab",
-    title: "Interactive NEET Virtual Simulations",
-    image_url: publicMediaAsset("illustrations/banner-neetlab.png"),
-    image_url_dark: publicMediaAsset("illustrations/banner-neetlab.png"),
-    link_url: "/neetlab",
-    sort_order: 40,
-    active: true,
-  },
-];
-
 export function BannerCarousel() {
   const load = useServerFn(listActiveBanners);
   const { theme } = useTheme();
-  const [banners, setBanners] = useState<BannerRow[]>(DEFAULT_BANNERS);
+  const [banners, setBanners] = useState<BannerRow[]>([]);
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
   const paused = useRef(false);
 
   useEffect(() => {
     let alive = true;
-    load()
-      .then((rows) => {
-        if (alive && rows && rows.length > 0) {
-          setBanners(rows);
+    async function fetchBanners() {
+      try {
+        const res = await fetch("/api/admin.php?action=banners", { credentials: "include" });
+        if (res.ok) {
+          const json = await res.json();
+          const list = json.banners || json.data;
+          if (Array.isArray(list)) {
+            const active = list.filter((b: any) => Boolean(b.active ?? true)).map((b: any) => ({
+              id: String(b.id),
+              title: b.title || null,
+              image_url: b.image_url || b.imageUrl,
+              image_url_dark: b.image_url_dark || b.imageUrlDark || null,
+              link_url: b.link_url || b.linkUrl || null,
+              sort_order: Number(b.sort_order ?? 0),
+              active: true,
+            }));
+            if (alive) {
+              setBanners(active);
+              return;
+            }
+          }
         }
-      })
-      .catch(() => {
-        // Keeps DEFAULT_BANNERS on error
-      });
+      } catch {
+        // Continue to server function
+      }
+
+      try {
+        const rows = await load();
+        if (alive) {
+          setBanners(rows || []);
+        }
+      } catch {
+        if (alive) setBanners([]);
+      }
+    }
+
+    fetchBanners();
     return () => { alive = false; };
-  }, []);
+  }, [load]);
 
   const count = banners.length;
   const go = useCallback((next: number) => {
@@ -107,9 +95,8 @@ export function BannerCarousel() {
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {banners.map((b, i) => {
-            const rawSrc = theme === "dark" ? (b.image_url_dark || b.image_url) : b.image_url;
-            const fallbackSrc = DEFAULT_BANNERS[i % DEFAULT_BANNERS.length].image_url;
-            const src = rawSrc && !rawSrc.includes("supabase.co") ? rawSrc : fallbackSrc;
+            const src = theme === "dark" ? (b.image_url_dark || b.image_url) : b.image_url;
+            if (!src) return null;
 
             const img = (
               <img
@@ -117,7 +104,7 @@ export function BannerCarousel() {
                 alt={b.title ?? "Banner"}
                 loading="lazy"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = fallbackSrc;
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
                 }}
                 className="h-full w-full select-none object-cover"
               />

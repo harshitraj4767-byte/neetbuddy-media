@@ -61,24 +61,34 @@ function MistakesPage() {
       if (res.ok) {
         const json = await res.json();
         if (Array.isArray(json?.mistakes)) {
-          const mapped: MistakeListItemDTO[] = json.mistakes.map((m: any) => ({
-            id: String(m.id || m.question_id),
-            questionId: String(m.question_id || m.id),
-            questionHtml: withMedia.text || rawText,
-            options: Array.isArray(m.options)
-              ? m.options.map((opt: any, idx: number) => ({
-                  index: idx,
-                  html: typeof opt === "string" ? opt : String(opt?.text || opt?.html || ""),
-                  text: typeof opt === "string" ? opt : String(opt?.text || opt?.html || ""),
-                }))
-              : [],
-            difficulty: String(m.difficulty || "medium"),
-            explanation: m.explanation || null,
-            correctIndex: Number(m.correct_option ?? m.correct_index ?? 0),
-            subjectName: m.subject_name || null,
-            chapterName: m.chapter_name || null,
-            createdAt: m.created_at || null,
-          }));
+          const mapped: MistakeListItemDTO[] = json.mistakes.map((m: any) => {
+            const rawText = String(m.question_text || m.question_html || "");
+            const rawOpts = Array.isArray(m.options) ? m.options.map((o: any) => typeof o === "string" ? o : String(o?.text || o?.html || "")) : [];
+            const withMedia = attachQuestionMedia({
+              id: String(m.question_id || m.id || m.q_id),
+              text: rawText,
+              question_image_url: m.question_image_url || m.image_url,
+              explanation_image_url: m.explanation_image_url,
+              options: rawOpts,
+            });
+            const optsList = withMedia.options || rawOpts;
+            return {
+              id: String(m.id || m.question_id),
+              questionId: String(m.question_id || m.id || m.q_id),
+              questionHtml: withMedia.text || rawText,
+              options: optsList.map((opt: string, idx: number) => ({
+                index: idx,
+                html: opt,
+                text: opt,
+              })),
+              difficulty: String(m.difficulty || "medium"),
+              explanation: m.explanation || null,
+              correctIndex: Number(m.correct_option ?? m.correct_index ?? 0),
+              subjectName: m.subject_name || null,
+              chapterName: m.chapter_name || null,
+              createdAt: m.created_at || null,
+            };
+          });
           setMistakes(mapped);
           return;
         }

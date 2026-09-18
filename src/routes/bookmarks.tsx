@@ -56,28 +56,30 @@ function BookmarksPage() {
         if (Array.isArray(json?.bookmarks)) {
           const mapped: BookmarkListItemDTO[] = json.bookmarks.map((b: any) => {
             const rawText = String(b.question_text || b.question_html || "");
+            const rawOpts = Array.isArray(b.options) ? b.options.map((o: any) => typeof o === "string" ? o : String(o?.text || o?.html || "")) : [];
             const withMedia = attachQuestionMedia({
-              id: String(b.question_id || b.id),
+              id: String(b.question_id || b.id || b.q_id),
               text: rawText,
               question_image_url: b.question_image_url || b.image_url,
-              options: Array.isArray(b.options) ? b.options.map((o: any) => typeof o === "string" ? o : String(o?.text || o?.html || "")) : [],
+              explanation_image_url: b.explanation_image_url,
+              options: rawOpts,
             });
+            const optsList = withMedia.options || rawOpts;
             return {
-            id: String(b.id || b.question_id),
-            questionId: String(b.question_id || b.id),
-            questionHtml: withMedia.text || rawText,
-            options: Array.isArray(b.options)
-              ? b.options.map((opt: any, idx: number) => ({
-                  index: idx,
-                  html: typeof opt === "string" ? opt : String(opt?.text || opt?.html || ""),
-                  text: typeof opt === "string" ? opt : String(opt?.text || opt?.html || ""),
-                }))
-              : [],
-            difficulty: String(b.difficulty || "medium"),
-            subjectName: b.subject_name || null,
-            chapterName: b.chapter_name || null,
-            createdAt: b.created_at || null,
-          }; });
+              id: String(b.id || b.question_id),
+              questionId: String(b.question_id || b.id || b.q_id),
+              questionHtml: withMedia.text || rawText,
+              options: optsList.map((opt: string, idx: number) => ({
+                index: idx,
+                html: opt,
+                text: opt,
+              })),
+              difficulty: String(b.difficulty || "medium"),
+              subjectName: b.subject_name || null,
+              chapterName: b.chapter_name || null,
+              createdAt: b.created_at || null,
+            };
+          });
           setBookmarks(mapped);
           return;
         }

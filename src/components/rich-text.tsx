@@ -398,7 +398,7 @@ function renderBlocks(src: string): ReactNode[] {
 
 function DiagramFrame({ children }: { children: ReactNode }) {
   return (
-    <span className="my-3 flex justify-center overflow-x-auto rounded-xl border border-border/60 bg-card/60 p-3 shadow-sm">
+    <span className="my-2 flex justify-center overflow-x-auto">
       {children}
     </span>
   );
@@ -431,22 +431,24 @@ function renderInline(src: string): ReactNode[] {
   while ((m = re.exec(src))) {
     if (m.index > last) out.push(<Fragment key={k++}>{withBreaks(src.slice(last, m.index), `t${k}`)}</Fragment>);
     if (m[1] !== undefined) {
-      const imgUrl = m[2];
-      out.push(
-        <img
-          key={k++}
-          src={imgUrl}
-          alt={m[1] || "diagram"}
-          loading="lazy"
-          decoding="async"
-          onError={(e) => {
-            const img = e.currentTarget as HTMLImageElement;
-            img.style.display = "none";
-          }}
-          className="my-2 inline-block max-h-80 max-w-full object-contain"
-          style={{ border: "none", outline: "none", background: "transparent", boxShadow: "none" }}
-        />,
-      );
+      const imgUrl = m[2]?.trim();
+      if (imgUrl && imgUrl !== "null" && imgUrl !== "undefined") {
+        out.push(
+          <img
+            key={k++}
+            src={imgUrl}
+            alt={m[1] || "diagram"}
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              const img = e.currentTarget as HTMLImageElement;
+              img.style.display = "none";
+            }}
+            className="my-2 inline-block max-h-80 max-w-full object-contain"
+            style={{ border: "none", outline: "none", background: "transparent", boxShadow: "none" }}
+          />,
+        );
+      }
 
     } else if (m[3] !== undefined || m[4] !== undefined) {
       const tex = (m[3] ?? m[4]) as string;
