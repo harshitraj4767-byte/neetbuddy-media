@@ -73,6 +73,10 @@ export function qbankImageUrl(pathOrUrl: string | null | undefined): string | nu
   if (raw.startsWith("/mascot/") || raw.startsWith("mascot/")) {
     return `${CDN_BASE}/${raw.replace(/^\/+/, "")}`;
   }
+  if (raw.startsWith("/icons/") || raw.startsWith("icons/")) {
+    return `${CDN_BASE}/${raw.replace(/^\/+/, "")}`;
+  }
+
   if (raw.startsWith("/ncert/") || raw.startsWith("ncert/")) {
     return `${CDN_BASE}/${raw.replace(/^\/+/, "")}`;
   }
