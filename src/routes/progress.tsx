@@ -118,13 +118,19 @@ function ProgressPage() {
     const since = new Date();
     since.setDate(since.getDate() - 90);
     since.setHours(0, 0, 0, 0);
-    supabase
-      .from("attempts")
-      .select("correct_count,wrong_count,unattempted_count,submitted_at")
-      .eq("user_id", user.id)
-      .eq("status", "completed")
-      .gte("submitted_at", since.toISOString())
-      .then(({ data }) => setAttempts((data ?? []) as Attempt[]));
+    fetch(`/api/progress.php?action=attempts&since=${encodeURIComponent(since.toISOString())}`)
+      .then((res) => res.json())
+      .then((data) => setAttempts((data?.attempts ?? []) as Attempt[]))
+      .catch(() => {
+        // Fallback to supabase if present
+        supabase
+          .from("attempts")
+          .select("correct_count,wrong_count,unattempted_count,submitted_at")
+          .eq("user_id", user.id)
+          .eq("status", "completed")
+          .gte("submitted_at", since.toISOString())
+          .then(({ data }) => setAttempts((data ?? []) as Attempt[]));
+      });
   }, [user]);
 
   useEffect(() => {
@@ -147,9 +153,18 @@ function ProgressPage() {
         Hard: "#ef4444",
       };
 
-      const { data: allSubs } = await supabase.from("subjects").select("id,name,color").order("name");
-      type SubRow = { id: string; name: string; color: string | null };
-      const subjectsList = (allSubs ?? []) as SubRow[];
+      let subjectsList: Array<{ id: string; name: string; color: string | null }> = [];
+      try {
+        const subRes = await fetch("/api/progress.php?action=subjects");
+        if (subRes.ok) {
+          const subData = await subRes.json();
+          if (Array.isArray(subData.subjects)) subjectsList = subData.subjects;
+        }
+      } catch {}
+      if (subjectsList.length === 0) {
+        const { data: allSubs } = await supabase.from("subjects").select("id,name,color").order("name");
+        subjectsList = (allSubs ?? []) as Array<{ id: string; name: string; color: string | null }>;
+      }
 
       const subjBuckets = new Map<string, { correct: number; total: number; color: string }>();
       subjectsList.forEach((s) => {
@@ -161,22 +176,29 @@ function ProgressPage() {
         ["Hard", { correct: 0, total: 0 }],
       ]);
 
-      // Aggregated in Postgres: a single week can hold thousands of answered
-      // question ids, which is far too many for a client-side `in(...)` filter.
       type BreakdownRow = { kind: string; label: string; correct: number; total: number };
-      const { data: rows, error } = await (
-        supabase as unknown as {
-          rpc: (
-            fn: string,
-            args: Record<string, string>,
-          ) => Promise<{ data: BreakdownRow[] | null; error: { message: string } | null }>;
+      let rows: BreakdownRow[] = [];
+      try {
+        const bRes = await fetch(`/api/progress.php?action=breakdown&start=${encodeURIComponent(ws.toISOString())}&end=${encodeURIComponent(we.toISOString())}`);
+        if (bRes.ok) {
+          const bData = await bRes.json();
+          if (Array.isArray(bData.rows)) rows = bData.rows;
         }
-      ).rpc("weekly_accuracy_breakdown", { _start: ws.toISOString(), _end: we.toISOString() });
+      } catch {}
+
+      if (rows.length === 0) {
+        const { data: sbRows } = await (
+          supabase as unknown as {
+            rpc: (
+              fn: string,
+              args: Record<string, string>,
+            ) => Promise<{ data: BreakdownRow[] | null; error: { message: string } | null }>;
+          }
+        ).rpc("weekly_accuracy_breakdown", { _start: ws.toISOString(), _end: we.toISOString() });
+        if (sbRows) rows = sbRows;
+      }
 
       if (cancelled) return;
-      if (error) {
-        console.error("weekly_accuracy_breakdown", error.message);
-      }
 
       for (const r of rows ?? []) {
         if (r.kind === "subject") {
@@ -364,6 +386,18 @@ function ProgressPage() {
     if (!user) return;
     const v = Math.max(1, Math.min(500, Math.round(goalDraft)));
     setGoalOpen(false);
+    try {
+      const res = await fetch("/api/progress.php?action=update_goal", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ daily_goal: v }),
+      });
+      if (res.ok) {
+        await refresh();
+        toast.success(`Daily goal updated to ${v}`);
+        return;
+      }
+    } catch {}
     const { error } = await supabase.from("profiles").update({ daily_goal: v }).eq("id", user.id);
     if (error) return toast.error(error.message);
     await refresh();
