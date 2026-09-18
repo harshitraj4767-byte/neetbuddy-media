@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { createCustomTestWithBonus } from "@/lib/generate-test.functions";
 import { TopicPicker, TopicPickerLoading, useTopicTree } from "@/components/topic-picker";
 import { countSelectedTopics, toTopicFilter } from "@/lib/topic-tree";
+import { getSubjectTree, createCustomTestMysql } from "@/lib/practice-mysql.functions";
 
 export const Route = createFileRoute("/generate")({
   head: () => ({ meta: [{ title: "Generate Test — Neet Buddy" }] }),
@@ -44,11 +45,10 @@ function GeneratePage() {
   const [allChapters, setAllChapters] = useState<Chapter[]>([]);
 
   useEffect(() => {
-    fetch("/api/quiz.php?action=getSubjectTree")
-      .then((r) => r.json())
+    getSubjectTree()
       .then((data) => {
-        if (data.subjects) setSubjects(data.subjects);
-        if (data.chapters) setAllChapters(data.chapters);
+        if (data.subjects) setSubjects(data.subjects as never);
+        if (data.chapters) setAllChapters(data.chapters as never);
       })
       .catch((e) => console.warn("Failed to load subject tree:", e));
   }, []);
@@ -101,26 +101,20 @@ function GeneratePage() {
     // Bonus/wallet feature removed — tests are free now.
     setLaunching(true);
     try {
-      const res = await fetch("/api/quiz.php?action=generateCustomTest", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          subject_ids: subjectIds,
-          chapter_ids: chapIds,
-          total_questions: count,
+      const topicFilter = toTopicFilter(tree, excluded);
+      const { testId } = await createCustomTestMysql({
+        data: {
+          chapterIds: chapIds.map(String),
+          topicIds: topicFilter.everything ? [] : topicFilter.fullTopicIds,
+          subtopicIds: topicFilter.everything ? [] : topicFilter.subtopicIds,
+          subjectName,
+          count,
           difficulty,
-          duration_min: timer,
-          title: `${subjectName} Custom Test`,
-        }),
+          durationMin: timer,
+        },
       });
-      const data = await res.json();
-      if (data.test_id) {
-        toast.success("Test ready");
-        nav({ to: "/quiz/$testId", params: { testId: data.test_id }, search: { mode } as never });
-      } else {
-        toast.error(data.error || "Could not generate test");
-      }
+      toast.success("Test ready");
+      nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Could not start");
     } finally {

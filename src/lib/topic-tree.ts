@@ -13,21 +13,15 @@ export const excludeKey = {
 /** Fetch topics + subtopics for the given chapter ids from the Hostinger database */
 export async function loadTopicTree(chapterIds: string[]): Promise<ChapterTopics[]> {
   if (!chapterIds.length) return [];
-  const numeric = chapterIds.map((c) => Number(c)).filter((n) => Number.isFinite(n));
+  const numeric = chapterIds.filter((c) => Number.isFinite(Number(c)));
   if (!numeric.length) return [];
-
   try {
-    const res = await fetch(`/api/quiz.php?action=getTopicTree&chapter_ids=${numeric.join(",")}`);
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data.tree)) {
-        return data.tree;
-      }
-    }
+    const { getTopicTree } = await import("@/lib/practice-mysql.functions");
+    const tree = await getTopicTree({ data: { chapterIds: numeric } });
+    if (Array.isArray(tree)) return tree as ChapterTopics[];
   } catch (e) {
     console.warn("loadTopicTree failed:", e);
   }
-
   return chapterIds.map((chapterId) => ({ chapterId, topics: [] }));
 }
 

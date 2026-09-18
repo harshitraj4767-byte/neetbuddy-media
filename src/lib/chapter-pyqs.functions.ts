@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestHeader } from "@tanstack/react-start/server";
 
 // ---------------------------------------------------------------------------
 // Chapter-wise PYQs, MySQL edition.
@@ -15,6 +16,29 @@ export type PyqChapterDTO = {
   subject_name: string | null;
   pyq_count: number;
 };
+
+/** Resolve the signed-in user from the MySQL session cookie (tests.created_by). */
+async function getSessionUserId(): Promise<string | null> {
+  const raw = getRequestHeader("cookie") ?? "";
+  let token: string | null = null;
+  for (const part of raw.split(";")) {
+    const [k, ...v] = part.trim().split("=");
+    if (k === "nb_session") token = decodeURIComponent(v.join("="));
+  }
+  if (!token) return null;
+  const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)))]
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+  const { queryOne } = await import("@/lib/db/mysql.server");
+  const row = await queryOne<{ user_id: string }>(
+    `SELECT s.user_id FROM auth_sessions s
+       JOIN auth_users u ON u.id = s.user_id
+      WHERE s.token_hash = ? AND s.expires_at > NOW() AND u.suspended = 0
+      LIMIT 1`,
+    [hash],
+  );
+  return row?.user_id ?? null;
+}
 
 /** True when MySQL complains about a column the older schema does not have. */
 function isUnknownColumn(error: unknown): boolean {
@@ -108,19 +132,36 @@ export const getOrCreateChapterPyqTest = createServerFn({ method: "POST" })
     const questionIds = rows.map((r) => String(r.id));
     const testId = crypto.randomUUID();
 
+    // tests.created_by is NOT NULL — leaving it out made this insert fail, which
+    // is why the PYQ page never got a test id and stayed stuck on loading.
+    const userId = await getSessionUserId();
+    const columns = [
+      "id", "title", "description", "difficulty", "duration_min", "total_questions",
+      "marks_correct", "marks_wrong", "source", "type", "question_ids", "created_at",
+    ];
+    const values: Array<string | number | null> = [
+      testId,
+      title,
+      `Previous Year Questions practice for ${chapterName}`,
+      "medium",
+      Math.max(15, questionIds.length * 2),
+      questionIds.length,
+      4,
+      -1,
+      "Chapter PYQ",
+      "practice",
+      JSON.stringify(questionIds),
+    ];
+    let placeholders = "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW()";
+    if (userId) {
+      columns.push("created_by");
+      placeholders += ", ?";
+      values.push(userId);
+    }
+
     await execute(
-      `INSERT INTO tests
-         (id, title, description, difficulty, duration_min, total_questions,
-          marks_correct, marks_wrong, source, type, question_ids, created_at)
-       VALUES (?, ?, ?, 'medium', ?, ?, 4, -1, 'Chapter PYQ', 'practice', CAST(? AS JSON), NOW())`,
-      [
-        testId,
-        title,
-        `Previous Year Questions practice for ${chapterName}`,
-        Math.max(15, questionIds.length * 2),
-        questionIds.length,
-        JSON.stringify(questionIds),
-      ],
+      `INSERT INTO tests (${columns.join(", ")}) VALUES (${placeholders})`,
+      values,
     );
 
     return { testId, totalQuestions: questionIds.length };

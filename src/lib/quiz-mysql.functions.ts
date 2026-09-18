@@ -401,7 +401,7 @@ export const saveQuizProgress = createServerFn({ method: "POST" })
 
     if (data.attemptId) {
       await execute(
-        `UPDATE attempts SET answers = CAST(? AS JSON), bookmarks = CAST(? AS JSON)
+        `UPDATE attempts SET answers = ?, bookmarks = ?
           WHERE id = ? AND user_id = ?`,
         [answers, bookmarks, data.attemptId, userId],
       );
@@ -416,7 +416,7 @@ export const saveQuizProgress = createServerFn({ method: "POST" })
     );
     if (open) {
       await execute(
-        `UPDATE attempts SET answers = CAST(? AS JSON), bookmarks = CAST(? AS JSON) WHERE id = ?`,
+        `UPDATE attempts SET answers = ?, bookmarks = ? WHERE id = ?`,
         [answers, bookmarks, open.id],
       );
       return { attemptId: open.id };
@@ -426,7 +426,7 @@ export const saveQuizProgress = createServerFn({ method: "POST" })
     await execute(
       `INSERT INTO attempts
          (id, user_id, test_id, answers, bookmarks, status, started_at)
-       VALUES (?, ?, ?, CAST(? AS JSON), CAST(? AS JSON), 'in_progress', NOW(6))`,
+       VALUES (?, ?, ?, ?, ?, 'in_progress', NOW(6))`,
       [id, userId, data.testId, answers, bookmarks],
     );
     return { attemptId: id };
@@ -471,7 +471,7 @@ export const submitQuizAttempt = createServerFn({ method: "POST" })
     if (attemptId) {
       await execute(
         `UPDATE attempts
-            SET answers = CAST(? AS JSON), bookmarks = CAST(? AS JSON), score = ?,
+            SET answers = ?, bookmarks = ?, score = ?,
                 correct_count = ?, wrong_count = ?, unattempted_count = ?,
                 time_taken_sec = ?, status = 'submitted', submitted_at = NOW(6)
           WHERE id = ? AND user_id = ?`,
@@ -493,7 +493,7 @@ export const submitQuizAttempt = createServerFn({ method: "POST" })
         `INSERT INTO attempts
            (id, user_id, test_id, answers, bookmarks, score, correct_count, wrong_count,
             unattempted_count, time_taken_sec, status, started_at, submitted_at)
-         VALUES (?, ?, ?, CAST(? AS JSON), CAST(? AS JSON), ?, ?, ?, ?, ?, 'submitted', NOW(6), NOW(6))`,
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'submitted', NOW(6), NOW(6))`,
         [
           attemptId,
           userId,
@@ -889,7 +889,7 @@ export const submitQuizPageAttempt = createServerFn({ method: "POST" })
       `INSERT INTO attempts
          (id, user_id, test_id, answers, bookmarks, score, correct_count, wrong_count,
           unattempted_count, time_taken_sec, status, started_at, submitted_at)
-       VALUES (?, ?, ?, CAST(? AS JSON), CAST(? AS JSON), ?, ?, ?, ?, ?, 'completed', NOW(6), NOW(6))`,
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'completed', NOW(6), NOW(6))`,
       [
         attemptId,
         userId,

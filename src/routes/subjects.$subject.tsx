@@ -20,6 +20,12 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "
 import { useIsMobile } from "@/hooks/use-mobile";
 import { CheckCircle2, RotateCcw, Eye } from "lucide-react";
 import { HubHero, type TileAccent } from "@/components/nav-tiles";
+import {
+  getSubjectChapters,
+  getChapterQuestionPool,
+  getPracticeSetStatuses,
+  createPracticeTest,
+} from "@/lib/practice-mysql.functions";
 
 export const Route = createFileRoute("/subjects/$subject")({
   head: () => ({ meta: [{ title: "Subject — Neet Buddy" }] }),
@@ -74,6 +80,8 @@ const META: Record<
 
 type Filters = { difficulty: string; qtype: string };
 
+
+
 /**
  * Pull every matching question row (id + the fields the mixer needs), paging
  * past PostgREST's 1000-row cap.
@@ -84,26 +92,19 @@ async function fetchChapterQuestions(
   topicFilter: { fullTopicIds: string[]; subtopicIds: string[]; everything: boolean },
 ): Promise<MixableQuestion[]> {
   try {
-    const params = new URLSearchParams({ chapter_id: String(chapterId), limit: "1000" });
-    if (filters.difficulty !== "any") params.set("difficulty", filters.difficulty);
-    if (filters.qtype !== "any") params.set("qtype", filters.qtype);
-    // The API filters in SQL, so an empty list genuinely means "nothing matches"
-    // rather than "the first page happened to contain no match".
-    const res = await fetch(`/api/questions.php?${params.toString()}`, { credentials: "include" });
-    if (res.ok) {
-      const data = await res.json();
-      const list = Array.isArray(data.questions) ? data.questions : [];
-      return list.map((q: any) => ({
-        id: String(q.id),
-        text: q.question_html || q.question_text || q.text || "",
-        qtype: q.qtype || "MCQ",
-        question_image_url: q.question_image_url || null,
-      }));
-    }
+    return await getChapterQuestionPool({
+      data: {
+        chapterId: String(chapterId),
+        difficulty: filters.difficulty,
+        qtype: filters.qtype,
+        topicIds: topicFilter.everything ? [] : topicFilter.fullTopicIds,
+        subtopicIds: topicFilter.everything ? [] : topicFilter.subtopicIds,
+      },
+    });
   } catch (e) {
     console.warn("fetchChapterQuestions failed:", e);
+    return [];
   }
-  return [];
 }
 
 function SubjectPage() {
@@ -130,18 +131,10 @@ function SubjectPage() {
     setChapters(null);
     (async () => {
       try {
-        const params = new URLSearchParams({ action: "getSubjectQuestions", subject });
-        if (difficulty !== "any") params.set("difficulty", difficulty);
-        if (qtype !== "any") params.set("qtype", qtype);
-        const res = await fetch(`/api/quiz.php?${params.toString()}`, { credentials: "include" });
-        const data = res.ok ? await res.json() : { chapters: [] };
-        if (cancelled) return;
-        const list = (Array.isArray(data.chapters) ? data.chapters : []).map((c: any, i: number) => ({
-          id: String(c.id),
-          name: String(c.name ?? ""),
-          order_index: Number(c.order_index ?? i),
-          q_count: Number(c.q_count ?? 0),
+        const list = (await getSubjectChapters({
+          data: { subject, difficulty, qtype },
         })) as Chapter[];
+        if (cancelled) return;
         setChapters(list);
       } catch (e) {
         console.warn("chapter load failed:", e);
@@ -208,25 +201,16 @@ function SubjectPage() {
 
 
 
-      const res = await fetch("/api/quiz.php?action=createSubjectQuiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          subject,
-          chapter_id: chapter.id,
-          difficulty: difficulty !== "any" ? difficulty : "Medium",
-          count: qids.length ? Math.min(qids.length, 30) : 15,
-          qids: qids.length ? qids : undefined,
+      const { testId } = await createPracticeTest({
+        data: {
           title,
-        }),
+          questionIds: qids.slice(0, 30),
+          difficulty: difficulty !== "any" ? difficulty : "medium",
+        },
       });
-      const data = await res.json();
-      if (data.test_id) {
-        nav({ to: "/quiz/$testId", params: { testId: data.test_id }, search: { mode } as never });
-      } else {
-        toast.error(data.error || "Could not launch quiz");
-      }
+      nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Could not launch quiz");
     } finally {
       setLaunching(null);
     }
@@ -437,17 +421,11 @@ function CbtSetPicker({
     (async () => {
       const titles = Array.from({ length: totalSets }, (_, i) => setTitle(plan.baseTitle, i, totalSets));
       try {
-        const res = await fetch("/api/quiz.php?action=getPracticeSetStatuses", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ titles }),
-        });
-        const data = res.ok ? await res.json() : { statuses: {} };
+        const statusMap = await getPracticeSetStatuses({ data: { titles } });
         if (cancelled) return;
         const next: Record<number, SetStatus> = {};
         titles.forEach((title, idx) => {
-          const row = (data.statuses ?? {})[title];
+          const row = statusMap[title];
           if (!row) return;
           next[idx] = {
             attemptId: String(row.attempt_id),
@@ -474,26 +452,17 @@ function CbtSetPicker({
     try {
       const slice = plan.qids.slice(index * CBT_SET_SIZE, (index + 1) * CBT_SET_SIZE);
       const title = setTitle(plan.baseTitle, index, totalSets);
-      const res = await fetch("/api/quiz.php?action=createSubjectQuiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          subject: (plan.chapter as any).subject || "Physics",
-          chapter_id: plan.chapter.id,
+      const { testId } = await createPracticeTest({
+        data: {
           title,
-          qids: slice,
-          difficulty: difficulty !== "any" ? difficulty : "Medium",
-          count: slice.length,
-        }),
+          questionIds: slice,
+          difficulty: difficulty !== "any" ? difficulty : "medium",
+        },
       });
-      const data = await res.json();
-      if (data.test_id) {
-        onClose();
-        nav({ to: "/quiz/$testId", params: { testId: data.test_id }, search: { mode: "cbt" } as never });
-      } else {
-        toast.error(data.error || "Could not start this set");
-      }
+      onClose();
+      nav({ to: "/quiz/$testId", params: { testId }, search: { mode: "cbt" } as never });
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Could not start this set");
     } finally {
       setStarting(null);
     }
