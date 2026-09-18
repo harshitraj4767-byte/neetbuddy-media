@@ -15,7 +15,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Meet the founders of Neet Buddy — Sanskar Jaiswal and Mohd Akmal — and the mission behind India's smartest NEET preparation platform.",
+          "Meet the founders of Neet Buddy — Sanskar Jaiswal and Harshit Kumar — and the mission behind India's smartest NEET preparation platform.",
       },
       { property: "og:title", content: "About Neet Buddy — Our Story & Founders" },
       {
@@ -98,11 +98,11 @@ function AboutPage() {
 
           <FounderCard
             image={akmalImage}
-            name="Mohd Akmal"
+            name="Harshit Kumar"
             role="Founder, Neet Buddy"
             badge="3rd Year MBBS · NEET Mentor"
             paragraphs={[
-              "Mohd Akmal is the Founder of Neet Buddy, a 3rd Year MBBS student, and a dedicated NEET mentor with years of experience guiding medical aspirants. His inspiring journey — from scoring 30 marks to 655 marks in just 9 months — reflects the power of determination, smart strategy, and consistent effort.",
+              "Harshit Kumar is the Founder of Neet Buddy, a 3rd Year MBBS student, and a dedicated NEET mentor with years of experience guiding medical aspirants. His inspiring journey — from scoring 30 marks to 655 marks in just 9 months — reflects the power of determination, smart strategy, and consistent effort.",
               "Through mentorship, personalized guidance, and practical preparation techniques, he has helped countless students improve their performance and stay motivated throughout their NEET journey. At Neet Buddy, his mission is to ensure that every aspirant receives the right direction, confidence, and support needed to succeed.",
             ]}
             visionLabel="Mission"

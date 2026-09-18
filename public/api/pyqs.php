@@ -234,3 +234,53 @@ foreach ($rows as &$r) {
 }
 
 nb_json(['questions' => $rows, 'count' => count($rows)]);
+
+if ($action === 'attempts') {
+    if (!$userId) {
+        nb_json(['attempts' => []]);
+    }
+    try {
+        $stmt = $pdo->prepare('SELECT id, paper_id, score, submitted_at FROM neet_pyq_attempts WHERE user_id = ? ORDER BY submitted_at DESC');
+        $stmt->execute([$userId]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        nb_json(['attempts' => $rows]);
+    } catch (Throwable $e) {
+        nb_json(['attempts' => []]);
+    }
+}
+
+if ($action === 'save_paper_attempt') {
+    if (!$userId) {
+        nb_fail('Unauthorized', 401);
+    }
+    $paperId = $input['paper_id'] ?? '';
+    $responses = $input['responses'] ?? [];
+    $score = $input['score'] ?? 0;
+    $correct = $input['correct_count'] ?? 0;
+    $wrong = $input['wrong_count'] ?? 0;
+    $skipped = $input['skipped_count'] ?? 0;
+    $timeSpent = $input['time_spent_sec'] ?? 0;
+
+    $attemptId = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+        mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
+        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
+
+    try {
+        $ins = $pdo->prepare('INSERT INTO neet_pyq_attempts (id, user_id, paper_id, responses, score, correct_count, wrong_count, skipped_count, time_spent_sec, submitted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+        $ins->execute([
+            $attemptId,
+            $userId,
+            $paperId,
+            is_string($responses) ? $responses : json_encode($responses),
+            $score,
+            $correct,
+            $wrong,
+            $skipped,
+            $timeSpent
+        ]);
+        nb_json(['success' => true, 'attempt_id' => $attemptId]);
+    } catch (Throwable $e) {
+        nb_fail($e->getMessage(), 500);
+    }
+}

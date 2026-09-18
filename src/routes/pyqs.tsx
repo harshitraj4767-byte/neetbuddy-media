@@ -170,20 +170,28 @@ function PaperList({ onPick }: { onPick: (p: Paper) => void }) {
     })();
   }, []);
 
-  // Latest attempt per paper → drives "Attempt" vs "Reattempt + View result".
+  // Latest attempt per paper
   useEffect(() => {
     if (!user) { setAttempted({}); return; }
     (async () => {
-      const { data } = await (supabase as any)
-        .from("neet_pyq_attempts")
-        .select("id,paper_id,score,submitted_at")
-        .eq("user_id", user.id)
-        .order("submitted_at", { ascending: false });
-      const map: Record<string, PyqAttempt> = {};
-      for (const r of (data ?? []) as Array<PyqAttempt & { paper_id: string }>) {
-        if (!map[r.paper_id]) map[r.paper_id] = { id: r.id, score: r.score, submitted_at: r.submitted_at };
-      }
-      setAttempted(map);
+      try {
+        const token = localStorage.getItem("auth_token") || localStorage.getItem("nb_token");
+        const res = await fetch("/api/pyqs.php?action=attempts", {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+          credentials: "include"
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json?.attempts)) {
+            const map: Record<string, PyqAttempt> = {};
+            for (const r of json.attempts) {
+              if (!map[r.paper_id]) map[r.paper_id] = { id: r.id, score: r.score, submitted_at: r.submitted_at };
+            }
+            setAttempted(map);
+            return;
+          }
+        }
+      } catch {}
     })().catch(() => {});
   }, [user]);
 
@@ -290,18 +298,29 @@ function PyqCbtRunner({ paper, onExit }: { paper: Paper; onExit: () => void }) {
   useEffect(() => {
     (async () => {
       try {
-        const { data, error: err } = await (supabase as any)
-          .from("neet_pyq_questions")
-          .select("id,question_no,year,subject,chapter,text,options,correct,explanation")
-          .eq("paper_id", paper.id)
-          .order("question_no", { ascending: true })
-          .limit(500);
-        if (err) throw err;
-        const rows = ((data ?? []) as unknown) as PYQ[];
+        const res = await fetch(`/api/pyqs.php?action=paper_questions&paper_id=${encodeURIComponent(paper.id)}`);
+        if (!res.ok) throw new Error("Failed to load questions");
+        const json = await res.json();
+        const rawList = Array.isArray(json?.questions) ? json.questions : [];
+        const rows: PYQ[] = rawList.map((q: any, idx: number) => ({
+          id: String(q.id),
+          question_no: Number(q.question_no ?? q.question_order ?? idx + 1),
+          year: q.year ? Number(q.year) : paper.year,
+          subject: q.subject || q.subject_name || "General",
+          chapter: q.chapter || q.chapter_name || "",
+          text: q.text || q.question_text || q.question_html || "",
+          options: Array.isArray(q.options)
+            ? q.options.map((opt: any) => typeof opt === "string" ? opt : String(opt?.text || opt?.html || ""))
+            : typeof q.options === "object" && q.options !== null
+            ? Object.values(q.options).map(String)
+            : [],
+          correct: String(q.correct ?? q.correct_option ?? q.correct_index ?? "1"),
+          explanation: q.explanation || "",
+        }));
         setQuestions(rows);
-        // Mark first as visited
-        if (rows.length)
+        if (rows.length) {
           setResponses({ 0: { visited: true, markedForReview: false } });
+        }
       } catch (e: any) {
         setError(e?.message ?? "Failed to load questions");
         setQuestions([]);
@@ -391,26 +410,39 @@ function PyqCbtRunner({ paper, onExit }: { paper: Paper; onExit: () => void }) {
   useEffect(() => {
     if (!submitted || !questions?.length) return;
     (async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) return;
-      const respMap: Record<string, string> = {};
-      for (let i = 0; i < questions.length; i++) {
-        const a = responses[i]?.answer;
-        if (a) respMap[questions[i].id] = a;
+      try {
+        const respMap: Record<string, string> = {};
+        for (let i = 0; i < questions.length; i++) {
+          const a = responses[i]?.answer;
+          if (a) respMap[questions[i].id] = a;
+        }
+        const token = localStorage.getItem("auth_token") || localStorage.getItem("nb_token");
+        const res = await fetch("/api/pyqs.php?action=save_paper_attempt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {})
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            paper_id: paper.id,
+            responses: respMap,
+            score: score.marks,
+            correct_count: score.correct,
+            wrong_count: score.wrong,
+            skipped_count: score.unattempted,
+            time_spent_sec: Math.max(0, Math.floor((Date.now() - startRef.current) / 1000)),
+          })
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json?.attempt_id) {
+            setSavedAttemptId(json.attempt_id);
+          }
+        }
+      } catch (err) {
+        console.warn("Failed to save attempt via api:", err);
       }
-      const { data: inserted } = await (supabase as any).from("neet_pyq_attempts").insert({
-        user_id: user.id,
-        paper_id: paper.id,
-        responses: respMap,
-        score: score.marks,
-        correct_count: score.correct,
-        wrong_count: score.wrong,
-        skipped_count: score.unattempted,
-        time_spent_sec: Math.max(0, Math.floor((Date.now() - startRef.current) / 1000)),
-      }).select("id").maybeSingle();
-      if (inserted?.id) setSavedAttemptId(inserted.id as string);
     })();
   }, [submitted, questions, responses, score, paper.id]);
 

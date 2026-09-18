@@ -16,6 +16,37 @@ if (!$action && isset($input['action'])) {
 }
 
 switch ($action) {
+    case 'create_custom_test':
+        $qids = $input['question_ids'] ?? [];
+        $title = $input['title'] ?? 'Custom Practice Test';
+        $type = $input['type'] ?? 'practice';
+        if (empty($qids) || !is_array($qids)) {
+            nb_fail('question_ids required', 400);
+        }
+        $testId = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+            mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+            mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
+            mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
+        
+        $duration = max(10, count($qids) * 2);
+        $ins = $pdo->prepare('INSERT INTO tests (id, title, description, difficulty, duration_min, total_questions, marks_correct, marks_wrong, source, type, question_ids, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+        $ins->execute([
+            $testId,
+            $title,
+            'Practice test with ' . count($qids) . ' selected questions',
+            'medium',
+            $duration,
+            count($qids),
+            4,
+            -1,
+            'practice',
+            $type,
+            json_encode(array_values($qids)),
+            $userId
+        ]);
+        nb_json(['success' => true, 'test_id' => $testId, 'testId' => $testId]);
+        break;
+
     case 'getQuizTest':
         $testId = $input['testId'] ?? $_GET['testId'] ?? '';
         if (!$testId) nb_fail('testId required');

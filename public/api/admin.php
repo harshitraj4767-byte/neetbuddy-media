@@ -44,6 +44,10 @@ if ($method === "GET") {
             ]);
             exit;
 
+        case "delete_all_banners":
+            $pdo->exec("DELETE FROM dashboard_banners");
+            nb_json(["success" => true, "message" => "All banners deleted"]);
+            break;
         case "banners":
             $banners = $pdo->query("SELECT * FROM dashboard_banners ORDER BY sort_order ASC, created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
             nb_json(["banners" => $banners]);

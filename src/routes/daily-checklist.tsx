@@ -54,7 +54,7 @@ function DailyChecklistPage() {
           return { checklist: d.checklist, items: d.items ?? [] };
         }
       } catch {}
-      return getToday({ data: {} });
+      return { checklist: null, items: [] };
     },
     enabled: !!user,
   });
@@ -68,7 +68,7 @@ function DailyChecklistPage() {
           return d.history ?? [];
         }
       } catch {}
-      return history({ data: { days: 14 } });
+      return [];
     },
     enabled: !!user,
   });
