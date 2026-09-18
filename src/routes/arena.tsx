@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { Trophy, Swords, Crown } from "lucide-react";
@@ -25,7 +26,7 @@ function ArenaPage() {
         Icon={Swords}
         accent="amber"
         variant="banner"
-        image="/illustrations/hub-arena.png"
+        image={publicMediaAsset("illustrations/hub-arena.png")}
         imageAlt="Golden trophy on a podium with crossed swords"
       />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -34,7 +35,7 @@ function ArenaPage() {
             title="Daily Live Quiz"
             desc="Daily 6 PM live quiz with leaderboards and XP rewards."
             icon={Trophy}
-            image="/illustrations/i3d-contests.png"
+            image={publicMediaAsset("illustrations/i3d-contests.png")}
             grad="from-amber-500 to-orange-600"
             badge="LIVE"
           />
@@ -44,7 +45,7 @@ function ArenaPage() {
             title="Battlegrounds"
             desc="Quick 1v1 quiz duels — subject-wise, real opponents."
             icon={Swords}
-            image="/illustrations/i3d-battlegrounds.png"
+            image={publicMediaAsset("illustrations/i3d-battlegrounds.png")}
             grad="from-rose-500 to-red-600"
             badge="LIVE"
           />
@@ -58,7 +59,7 @@ function ArenaPage() {
             title="Tournaments"
             desc="Bracket-style elimination rounds with big prize pools."
             icon={Crown}
-            image="/illustrations/i3d-arena.png"
+            image={publicMediaAsset("illustrations/i3d-arena.png")}
             grad="from-fuchsia-500 to-purple-600"
             badge="SOON"
           />
