@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/page-shell";
@@ -49,7 +50,7 @@ const META: Record<
     icon: Atom,
     tint: "from-sky-100 to-blue-100",
     accent: "blue",
-    image: "/illustrations/banner-physics.png",
+    image: publicMediaAsset("illustrations/banner-physics.png"),
     alt: "3D atom, magnet and lightning bolt illustration",
     blurb: "Numericals first, then concept one-liners — chapter by chapter.",
   },
@@ -57,7 +58,7 @@ const META: Record<
     icon: FlaskConical,
     tint: "from-orange-100 to-amber-100",
     accent: "orange",
-    image: "/illustrations/banner-chemistry.png",
+    image: publicMediaAsset("illustrations/banner-chemistry.png"),
     alt: "3D lab flasks and molecule illustration",
     blurb: "Physical, Organic and Inorganic chapters in one flow.",
   },
@@ -65,7 +66,7 @@ const META: Record<
     icon: Leaf,
     tint: "from-emerald-100 to-green-100",
     accent: "emerald",
-    image: "/illustrations/banner-biology.png",
+    image: publicMediaAsset("illustrations/banner-biology.png"),
     alt: "3D leaf, DNA helix and microscope illustration",
     blurb: "NCERT-aligned Botany and Zoology, 360 marks worth of practice.",
   },
