@@ -892,3 +892,61 @@ export const getAttemptWrongReasons = createServerFn({ method: "POST" })
     for (const r of rows) if (r.wrong_reason) out[String(r.question_id)] = r.wrong_reason;
     return out;
   });
+
+// ---------------------------------------------------------------------------
+// "My Mistakes" notebook listing (src/routes/mistakes.tsx).
+// The page used to fetch /api/mistakes.php, which is never executed by the
+// Node server, so the list was always empty. Read from MySQL instead.
+// ---------------------------------------------------------------------------
+
+export type MistakeListItemDTO = {
+  id: string;
+  questionId: string;
+  questionHtml: string;
+  options: QuizOptionDTO[];
+  difficulty: string;
+  explanation: string | null;
+  correctIndex: number;
+  subjectName: string | null;
+  chapterName: string | null;
+  createdAt: string | null;
+};
+
+export const listUserMistakes = createServerFn({ method: "POST" }).handler(
+  async (): Promise<MistakeListItemDTO[]> => {
+    const userId = await getUserId();
+    if (!userId) return [];
+    const { query } = await import("@/lib/db/mysql.server");
+    const rows = await query<Record<string, unknown>>(
+      `SELECT wq.id,
+              CAST(wq.question_id AS CHAR) AS question_id,
+              wq.created_at,
+              q.question_html,
+              q.options,
+              q.correct_index,
+              q.explanation,
+              q.difficulty,
+              s.name AS subject_name,
+              c.name AS chapter_name
+         FROM wrong_questions wq
+         JOIN qb_questions q ON CAST(q.id AS CHAR) = CAST(wq.question_id AS CHAR)
+         LEFT JOIN qb_subjects s ON CAST(s.id AS CHAR) = CAST(q.subject_id AS CHAR)
+         LEFT JOIN qb_chapters c ON CAST(c.id AS CHAR) = CAST(COALESCE(wq.chapter_id, q.chapter_id) AS CHAR)
+        WHERE CAST(wq.user_id AS CHAR) = ?
+        ORDER BY wq.created_at DESC`,
+      [userId],
+    );
+    return rows.map((row) => ({
+      id: String(row["id"] ?? row["question_id"]),
+      questionId: String(row["question_id"]),
+      questionHtml: String(row["question_html"] ?? ""),
+      options: normalizeOptions(row["options"]),
+      difficulty: String(row["difficulty"] ?? "Medium"),
+      explanation: (row["explanation"] as string | null) ?? null,
+      correctIndex: Number(row["correct_index"] ?? 0),
+      subjectName: row["subject_name"] == null ? null : String(row["subject_name"]),
+      chapterName: row["chapter_name"] == null ? null : String(row["chapter_name"]),
+      createdAt: toIsoOrNull(row["created_at"]),
+    }));
+  },
+);

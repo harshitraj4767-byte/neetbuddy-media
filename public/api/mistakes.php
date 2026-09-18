@@ -17,7 +17,7 @@ if ($method === 'GET') {
     try {
         $stmt = $pdo->prepare('
             SELECT wq.id, wq.question_id, wq.chapter_id, wq.created_at,
-                   q.id as q_id, q.question_text, q.options, q.correct_option, q.explanation, q.subject_id, q.difficulty,
+                   q.id as q_id, q.question_html AS question_text, q.options, q.correct_option, q.explanation, q.subject_id, q.difficulty,
                    s.name as subject_name, c.name as chapter_name
             FROM wrong_questions wq
             JOIN qb_questions q ON q.id = wq.question_id
