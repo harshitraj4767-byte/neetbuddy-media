@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -134,7 +135,7 @@ function LoginPage() {
         <section className="auth-spotlight hidden min-h-[620px] flex-col justify-between rounded-[2rem] p-8 text-white shadow-2xl lg:flex xl:p-12">
           <div>
             <Link to="/" className="inline-flex items-center gap-3">
-              <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-11 w-11 rounded-2xl bg-white/10 p-1 shadow-lg" />
+              <img src={publicMediaAsset("icons/icon-192.png")} alt="Neet Buddy" className="h-11 w-11 rounded-2xl bg-white/10 p-1 shadow-lg" />
               <span className="text-xl font-bold tracking-tight">Neet <span className="text-cyan-200">Buddy</span></span>
             </Link>
             <div className="mt-24 max-w-lg">
@@ -166,7 +167,7 @@ function LoginPage() {
         <section className="mx-auto w-full max-w-md">
           <div className="mb-7 flex items-center justify-between lg:hidden">
             <Link to="/" className="flex items-center gap-2">
-              <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-10 w-10 rounded-xl shadow-glow" />
+              <img src={publicMediaAsset("icons/icon-192.png")} alt="Neet Buddy" className="h-10 w-10 rounded-xl shadow-glow" />
               <span className="text-lg font-bold">Neet <span className="text-gradient-primary">Buddy</span></span>
             </Link>
             <Link to="/" className="text-xs font-semibold text-muted-foreground hover:text-foreground">Home</Link>
