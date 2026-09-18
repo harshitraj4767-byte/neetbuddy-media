@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -86,7 +87,7 @@ function LandingPage() {
 
         <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:py-28">
           <img
-            src="/icons/icon-192.png"
+            src={publicMediaAsset("icons/icon-192.png")}
             alt="Neet Buddy"
             className="h-16 w-16 rounded-2xl shadow-elegant"
           />
