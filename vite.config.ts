@@ -5,20 +5,24 @@ const isStaticBuild = process.env["STATIC_BUILD"] === "true" || process.env["BUI
 const isNodeBuild = !isStaticBuild;
 
 const REMOTE_MEDIA_BASE = "https://raw.githubusercontent.com/sanskarj1589-png/neetbuddy-media/main/public";
+const REMOTE_MEDIA_DIR_RE = /(["'\u0060])\/(?:public\/)?(icons|illustrations|img|mascot|ncert)\/([^"'\u0060]*\.(?:png|jpe?g|webp|svg|gif|avif|ico)(?:\?[^"'\u0060]*)?)\1/g;
+const REMOTE_MEDIA_FAVICON_RE = /(["'\u0060])\/(?:public\/)?(favicon(?:-[^"'\u0060]+)?\.(?:png|ico)(?:\?[^"'\u0060]*)?)\1/g;
 
-/** Rewrite static public media URLs so they are never bundled into Hostinger builds. */
+/** Rewrite all public media paths to the canonical neetbuddy-media repository. */
 const remoteMediaPlugin: Plugin = {
   name: "remote-media-assets",
   enforce: "post",
   transform(code, id) {
     if (!/(?:\.[cm]?[jt]sx?|\.css)$/.test(id) || id.includes("node_modules")) return null;
-    const transformed = code.replace(
-      /([\"'`])\/(icons|illustrations|img|mascot)\/([^\"'`]*\.(?:png|jpe?g|webp|svg|gif|avif|ico))(?:\?[^\"'`]*)?\1/g,
-      (_match, quote, directory, file) => quote + REMOTE_MEDIA_BASE + "/" + directory + "/" + file + quote,
-    ).replace(
-      /([\"'`])\/(favicon(?:-[^\"'`]+)?\.(?:png|ico))\1/g,
-      (_match, quote, file) => quote + REMOTE_MEDIA_BASE + "/" + file + quote,
-    );
+    const transformed = code
+      .replace(
+        REMOTE_MEDIA_DIR_RE,
+        (_match, quote, directory, file) => quote + REMOTE_MEDIA_BASE + "/" + directory + "/" + file + quote,
+      )
+      .replace(
+        REMOTE_MEDIA_FAVICON_RE,
+        (_match, quote, file) => quote + REMOTE_MEDIA_BASE + "/" + file + quote,
+      );
     return transformed === code ? null : { code: transformed, map: null };
   },
 };
