@@ -172,23 +172,56 @@ if ($action === 'get_or_create_chapter_test') {
 
 if ($action === 'paper_questions') {
     $paperId = $_GET['paper_id'] ?? $input['paper_id'] ?? '';
+    $extId = $_GET['ext_id'] ?? $input['ext_id'] ?? '';
+    $requestedYear = $_GET['year'] ?? $input['year'] ?? null;
+    $rows = [];
+
+    // 1. Try neet_pyq_questions by paper_id or ext_id
     try {
-        $stmt = $pdo->prepare('SELECT * FROM neet_pyq_questions WHERE paper_id = :pid ORDER BY question_order ASC, id ASC');
-        $stmt->execute([':pid' => $paperId]);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($paperId || $extId) {
+            $stmt = $pdo->prepare('SELECT * FROM neet_pyq_questions WHERE paper_id = :pid OR paper_id = :eid OR ext_id = :pid OR ext_id = :eid ORDER BY question_order ASC, id ASC');
+            $stmt->execute([':pid' => (string)$paperId, ':eid' => (string)$extId]);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     } catch (Throwable $e) {
         $rows = [];
     }
 
+    // 2. If empty, resolve paper details from neet_pyq_papers
+    $year = $requestedYear ? (int)$requestedYear : null;
     if (empty($rows)) {
-        $year = null;
-        if (preg_match('/(\d{4})/', (string)$paperId, $m)) {
+        try {
+            $stmt = $pdo->prepare('SELECT id, ext_id, year FROM neet_pyq_papers WHERE id = :pid OR ext_id = :pid OR id = :eid OR ext_id = :eid LIMIT 1');
+            $stmt->execute([':pid' => (string)$paperId, ':eid' => (string)$extId]);
+            $paperRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($paperRow && !empty($paperRow['year'])) {
+                $year = (int)$paperRow['year'];
+            }
+        } catch (Throwable $e) {}
+
+        if (!$year && preg_match('/(\d{4})/', (string)$paperId, $m)) {
             $year = (int)$m[1];
         }
+        if (!$year && preg_match('/(\d{4})/', (string)$extId, $m)) {
+            $year = (int)$m[1];
+        }
+
+        // Try neet_pyq_questions by year
         if ($year) {
-            $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE year = :yr ORDER BY id ASC LIMIT 200');
-            $stmt->execute([':yr' => $year]);
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            try {
+                $stmt = $pdo->prepare('SELECT * FROM neet_pyq_questions WHERE year = :yr ORDER BY question_order ASC, id ASC');
+                $stmt->execute([':yr' => $year]);
+                $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (Throwable $e) {}
+        }
+
+        // Try qb_questions by year
+        if (empty($rows) && $year) {
+            try {
+                $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE year = :yr ORDER BY id ASC LIMIT 200');
+                $stmt->execute([':yr' => $year]);
+                $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (Throwable $e) {}
         }
     }
 

@@ -1,3 +1,4 @@
+import { attachQuestionMedia } from "@/lib/question-media";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/page-shell";

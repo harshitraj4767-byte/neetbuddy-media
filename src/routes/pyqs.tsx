@@ -298,10 +298,62 @@ function PyqCbtRunner({ paper, onExit }: { paper: Paper; onExit: () => void }) {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`/api/pyqs.php?action=paper_questions&paper_id=${encodeURIComponent(paper.id)}`);
-        if (!res.ok) throw new Error("Failed to load questions");
-        const json = await res.json();
-        const rawList = Array.isArray(json?.questions) ? json.questions : [];
+        const queryParams = new URLSearchParams({
+          action: "paper_questions",
+          paper_id: paper.id,
+          ext_id: paper.ext_id || "",
+          year: String(paper.year || ""),
+        });
+        let rawList: any[] = [];
+        try {
+          const res = await fetch(`/api/pyqs.php?${queryParams.toString()}`);
+          if (res.ok) {
+            const json = await res.json();
+            if (Array.isArray(json?.questions) && json.questions.length > 0) {
+              rawList = json.questions;
+            }
+          }
+        } catch {}
+
+        if (!rawList.length) {
+          try {
+            let { data: pqData } = await (supabase as any)
+              .from("neet_pyq_questions")
+              .select("*")
+              .eq("paper_id", paper.id)
+              .order("question_order", { ascending: true });
+
+            if (!pqData?.length && paper.ext_id) {
+              const res2 = await (supabase as any)
+                .from("neet_pyq_questions")
+                .select("*")
+                .eq("paper_id", paper.ext_id)
+                .order("question_order", { ascending: true });
+              pqData = res2.data;
+            }
+
+            if (!pqData?.length && paper.year) {
+              const res3 = await (supabase as any)
+                .from("neet_pyq_questions")
+                .select("*")
+                .eq("year", paper.year)
+                .order("question_order", { ascending: true });
+              pqData = res3.data;
+            }
+
+            if (pqData?.length) {
+              rawList = pqData;
+            } else if (paper.year) {
+              const { data: qbData } = await (supabase as any)
+                .from("qb_questions")
+                .select("*")
+                .eq("year", paper.year)
+                .limit(200);
+              if (qbData?.length) rawList = qbData;
+            }
+          } catch {}
+        }
+
         const rows: PYQ[] = rawList.map((q: any, idx: number) => ({
           id: String(q.id),
           question_no: Number(q.question_no ?? q.question_order ?? idx + 1),
