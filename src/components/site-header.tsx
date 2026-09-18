@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, LogOut, Sun, Moon, ChevronDown, User, Crown, Sparkles } from "lucide-react";
 import { useState } from "react";
@@ -110,7 +111,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full px-2 pt-2 sm:px-4 sm:pt-3 lg:px-8">
       <div className="site-header-frame mx-auto flex h-14 max-w-[1700px] w-full items-center justify-between rounded-2xl px-4 backdrop-blur-xl sm:px-6 lg:px-8">
         <Link to="/dashboard" className="flex shrink-0 items-center gap-2">
-          <img src="/icons/icon-192.png" alt="Neet Buddy" className="h-9 w-9 shrink-0 rounded-xl shadow-glow" />
+          <img src={publicMediaAsset("icons/icon-192.png")} alt="Neet Buddy" className="h-9 w-9 shrink-0 rounded-xl shadow-glow" />
           <div className="leading-none">
             <div className="whitespace-nowrap text-base font-bold tracking-tight">Neet <span className="text-gradient-primary">Buddy</span></div>
             <div className="hidden whitespace-nowrap text-[10px] uppercase tracking-[0.18em] text-muted-foreground xl:block">Crack NEET, Smarter</div>
@@ -226,7 +227,7 @@ export function SiteHeader() {
             <SheetContent side="right" className="w-[88vw] max-w-sm overflow-y-auto p-0">
               <SheetHeader className="border-b border-border/60 bg-gradient-to-br from-primary/5 to-amber-500/5 px-5 py-4">
                 <SheetTitle className="flex items-center gap-2 text-base">
-                  <img src="/icons/icon-192.png" alt="" className="h-8 w-8 rounded-lg" />
+                  <img src={publicMediaAsset("icons/icon-192.png")} alt="" className="h-8 w-8 rounded-lg" />
                   Neet <span className="text-gradient-primary">Buddy</span>
                 </SheetTitle>
               </SheetHeader>
