@@ -4,16 +4,16 @@
 
   # Redirect missing illustrations, mascot, and question images directly to the neetbuddy-media CDN
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^illustrations/(.*)$ https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/illustrations/$1 [R=302,L]
+  RewriteRule ^illustrations/(.*)$ https://cdn.jsdelivr.net/gh/sanskarj1589-png/neetbuddy-media@main/public/illustrations/$1 [R=302,L]
 
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^mascot/(.*)$ https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/mascot/$1 [R=302,L]
+  RewriteRule ^mascot/(.*)$ https://cdn.jsdelivr.net/gh/sanskarj1589-png/neetbuddy-media@main/public/mascot/$1 [R=302,L]
 
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^img/data/(.*)$ https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/img/data/$1 [R=302,L]
+  RewriteRule ^img/data/(.*)$ https://cdn.jsdelivr.net/gh/sanskarj1589-png/neetbuddy-media@main/public/img/data/$1 [R=302,L]
 
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^ncert/(.*)$ https://cdn.jsdelivr.net/gh/harshitraj4767-byte/neetbuddy-media@main/public/ncert/$1 [R=302,L]
+  RewriteRule ^ncert/(.*)$ https://cdn.jsdelivr.net/gh/sanskarj1589-png/neetbuddy-media@main/public/ncert/$1 [R=302,L]
 
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
