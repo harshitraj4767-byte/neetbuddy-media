@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -112,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/x-icon", sizes: "32x32", href: "/favicon.ico" },
       { rel: "icon", type: "image/x-icon", sizes: "192x192", href: "/favicon.ico" },
-      { rel: "apple-touch-icon", sizes: "180x180", href: "/icons/apple-touch-icon.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: publicMediaAsset("icons/apple-touch-icon.png") },
     ],
   }),
   shellComponent: RootShell,
