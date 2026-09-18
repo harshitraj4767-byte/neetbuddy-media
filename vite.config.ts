@@ -4,7 +4,7 @@ import { mergeConfig, type Plugin, type PluginOption, type UserConfig } from "vi
 const isStaticBuild = process.env["STATIC_BUILD"] === "true" || process.env["BUILD_TARGET"] === "static";
 const isNodeBuild = !isStaticBuild;
 
-const REMOTE_MEDIA_BASE = "https://raw.githubusercontent.com/harshitraj4767-byte/neetbuddy-media/main/public";
+const REMOTE_MEDIA_BASE = "https://raw.githubusercontent.com/sanskarj1589-png/neetbuddy-media/main/public";
 
 /** Rewrite static public media URLs so they are never bundled into Hostinger builds. */
 const remoteMediaPlugin: Plugin = {
