@@ -44,7 +44,22 @@ try {
 
         $iStmt = $pdo->prepare('SELECT * FROM daily_checklist_items WHERE checklist_id = ? ORDER BY position ASC, id ASC');
         $iStmt->execute([$cl['id']]);
-        $items = $iStmt->fetchAll(PDO::FETCH_ASSOC);
+        $rawItems = $iStmt->fetchAll(PDO::FETCH_ASSOC);
+        $items = [];
+        foreach ($rawItems as $it) {
+            $taskText = $it['task'] ?? $it['text'] ?? '';
+            $isDone = !empty($it['completed']) || !empty($it['done']);
+            $items[] = [
+                'id' => (string)$it['id'],
+                'checklist_id' => $it['checklist_id'] ?? '',
+                'task' => $taskText,
+                'text' => $taskText,
+                'position' => (int)($it['position'] ?? 0),
+                'completed' => $isDone ? 1 : 0,
+                'done' => $isDone,
+                'created_at' => $it['created_at'] ?? null,
+            ];
+        }
 
         nb_json([
             'checklist' => $cl,
@@ -53,7 +68,7 @@ try {
     }
 
     if ($action === 'submit_morning') {
-        $tasks = $input['tasks'] ?? [];
+        $tasks = $input['tasks'] ?? $input['items'] ?? [];
         if (!is_array($tasks)) $tasks = [];
 
         $stmt = $pdo->prepare('SELECT id FROM daily_checklist WHERE user_id = ? AND date = ? LIMIT 1');
@@ -97,8 +112,8 @@ try {
     }
 
     if ($action === 'submit_night') {
-        $good = $input['good'] ?? '';
-        $regret = $input['regret'] ?? '';
+        $good = $input['good'] ?? $input['good_things'] ?? '';
+        $regret = $input['regret'] ?? $input['regrets'] ?? '';
         $stmt = $pdo->prepare('UPDATE daily_checklist SET good_things = ?, regrets = ?, night_submitted_at = NOW() WHERE user_id = ? AND date = ?');
         $stmt->execute([$good, $regret, $userId, $date]);
         nb_json(['success' => true]);

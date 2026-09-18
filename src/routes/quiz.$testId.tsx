@@ -496,26 +496,59 @@ function QuizPlayer() {
     const unattempted = questions.length - correct - wrong;
     const result = { score, correct, wrong, unattempted };
     if (user) {
-      const submitRes = await submitQuizPageAttempt({
-        data: {
-          testId,
-          answers,
-          bookmarks: Array.from(bookmarks),
-          score,
-          correctCount: correct,
-          wrongCount: wrong,
-          unattemptedCount: unattempted,
-          timeTakenSec: Math.floor((Date.now() - startedAt.current) / 1000),
-          wrongQuestions: wrongRows,
-        },
-      });
+      let finalAttemptId = "";
+      try {
+        const submitRes = await submitQuizPageAttempt({
+          data: {
+            testId,
+            answers,
+            bookmarks: Array.from(bookmarks),
+            score,
+            correctCount: correct,
+            wrongCount: wrong,
+            unattemptedCount: unattempted,
+            timeTakenSec: Math.floor((Date.now() - startedAt.current) / 1000),
+            wrongQuestions: wrongRows,
+          },
+        });
+        if (submitRes?.attemptId) {
+          finalAttemptId = finalAttemptId;
+        }
+      } catch (err) {
+        console.warn("[quiz] submitQuizPageAttempt failed, trying /api/quiz.php fallback", err);
+      }
 
-      // XP is awarded inside submitQuizPageAttempt (+4 correct / -1 wrong).
-      const isReattempt = (submitRes.priorCount ?? 0) > 1; // current insert is included
-      if (submitRes.attemptId) clearSavedProgress();
-      void isReattempt;
+      if (!finalAttemptId) {
+        try {
+          const res = await fetch("/api/quiz.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({
+              action: "submitQuizAttempt",
+              testId,
+              answers,
+              bookmarks: Array.from(bookmarks),
+              score,
+              correctCount: correct,
+              wrongCount: wrong,
+              unattemptedCount: unattempted,
+              timeTakenSec: Math.floor((Date.now() - startedAt.current) / 1000),
+              wrongQuestions: wrongRows,
+            }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data?.attemptId) finalAttemptId = data.attemptId;
+          }
+        } catch (e) {
+          console.error("[quiz] /api/quiz.php submit fallback error", e);
+        }
+      }
 
-      if (submitRes.attemptId) {
+      if (finalAttemptId) clearSavedProgress();
+
+      if (finalAttemptId) {
         // Battlegrounds: submit score to the match and go to the battle result page.
         if (battleMatchId) {
           try {
@@ -532,7 +565,7 @@ function QuizPlayer() {
           setSubmitting(false);
           return;
         }
-        nav({ to: "/analysis/$attemptId", params: { attemptId: submitRes.attemptId } });
+        nav({ to: "/analysis/$attemptId", params: { attemptId: finalAttemptId } });
         return;
       }
     }

@@ -9,6 +9,42 @@ $pdo = nb_pdo();
 $user = nb_current_user($pdo);
 $userId = $user['id'] ?? null;
 
+$action = $_GET['action'] ?? '';
+if ($action === 'analytics' || $action === 'user_attempts') {
+    if (!$userId) {
+        nb_json(['attempts' => [], 'tests' => (object)[]]);
+    }
+    try {
+        $stmt = $pdo->prepare('
+            SELECT id, test_id, score, correct_count, wrong_count, unattempted_count, submitted_at, time_taken_sec
+            FROM attempts
+            WHERE user_id = ? AND status = "completed"
+            ORDER BY submitted_at DESC
+            LIMIT 50
+        ');
+        $stmt->execute([$userId]);
+        $attempts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $testIds = array_filter(array_unique(array_column($attempts, 'test_id')));
+        $testsMap = [];
+        if (!empty($testIds)) {
+            $inClause = implode(',', array_fill(0, count($testIds), '?'));
+            $tStmt = $pdo->prepare("SELECT id, title, type FROM tests WHERE id IN ($inClause)");
+            $tStmt->execute(array_values($testIds));
+            foreach ($tStmt->fetchAll(PDO::FETCH_ASSOC) as $t) {
+                $testsMap[$t['id']] = $t;
+            }
+        }
+        nb_json([
+            'success' => true,
+            'attempts' => $attempts,
+            'tests' => (object)$testsMap,
+        ]);
+    } catch (Throwable $e) {
+        nb_fail($e->getMessage(), 500);
+    }
+}
+
 $attemptId = $_GET['attempt_id'] ?? $_GET['id'] ?? null;
 if (!$attemptId) {
     nb_fail('Missing attempt_id', 400);

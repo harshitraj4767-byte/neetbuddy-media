@@ -196,6 +196,25 @@ switch ($action) {
             $stmt->execute([$attemptId, $userId, $testId, $score, $correctCount, $wrongCount, $unattempted, $timeTaken, $answers, $bookmarks]);
         }
 
+        // Save answers in attempt_answers for solutions & analysis
+        $ansArray = is_array($input['answers'] ?? null) ? $input['answers'] : (json_decode((string)($input['answers'] ?? '[]'), true) ?: []);
+        if (!empty($ansArray) && $attemptId) {
+            try {
+                $aaStmt = $pdo->prepare('
+                    INSERT INTO attempt_answers (id, attempt_id, question_id, selected_index, created_at)
+                    VALUES (?, ?, ?, ?, NOW())
+                    ON DUPLICATE KEY UPDATE selected_index = VALUES(selected_index)
+                ');
+                foreach ($ansArray as $qid => $selIdx) {
+                    $aaId = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+                        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+                        mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000,
+                        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
+                    $aaStmt->execute([$aaId, $attemptId, (string)$qid, (int)$selIdx]);
+                }
+            } catch (Throwable $ignore) {}
+        }
+
         // Award XP
         try {
             $xpGain = max(10, (int)($correctCount * 4));

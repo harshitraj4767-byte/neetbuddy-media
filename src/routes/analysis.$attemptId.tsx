@@ -53,7 +53,7 @@ function AnalysisPage() {
     (async () => {
       // First try MySQL PHP API
       try {
-        const res = await fetch(`/api/results.php?attempt_id=${encodeURIComponent(attemptId)}`);
+        const res = await fetch(`/api/results.php?attempt_id=${encodeURIComponent(attemptId)}`, { credentials: 'include' });
         if (res.ok) {
           const data = await res.json();
           if (data.attempt) {

@@ -17,7 +17,7 @@ if ($action === 'papers') {
         $stmt = $pdo->query('SELECT id, ext_id, title, year, total_questions, duration_minutes FROM neet_pyq_papers ORDER BY year DESC, title ASC');
         $papers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Throwable $e) {
-        $stmt = $pdo->query('SELECT DISTINCT COALESCE(year, pyq_year) as year FROM qb_questions WHERE year IS NOT NULL OR pyq_year IS NOT NULL ORDER BY year DESC');
+        $stmt = $pdo->query('SELECT DISTINCT year as year FROM qb_questions WHERE year IS NOT NULL ORDER BY year DESC');
         $years = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $papers = [];
         foreach ($years as $row) {
@@ -41,12 +41,12 @@ if ($action === 'chapters') {
     $year = $_GET['year'] ?? null;
     $exam = $_GET['exam_type'] ?? null;
 
-    $qWhere = ['q.chapter_id = c.id', '(q.year IS NOT NULL OR q.pyq_year IS NOT NULL)'];
+    $qWhere = ['q.chapter_id = c.id', '(q.year IS NOT NULL)'];
     if ($year && $year !== 'All') {
         if ($year === 'Older') {
-            $qWhere[] = 'COALESCE(q.year, q.pyq_year) < 2016';
+            $qWhere[] = 'q.year < 2016';
         } else {
-            $qWhere[] = 'COALESCE(q.year, q.pyq_year) = ' . (int)$year;
+            $qWhere[] = 'q.year = ' . (int)$year;
         }
     }
     if ($exam && $exam !== 'All') {
@@ -75,7 +75,7 @@ if ($action === 'chapter_questions') {
     $chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? '';
     if (!$chapterId) nb_fail('chapter_id required');
     try {
-        $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE chapter_id = ? AND (year IS NOT NULL OR pyq_year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 200');
+        $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE chapter_id = ? AND (year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 200');
         $stmt->execute([$chapterId]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($rows as &$r) {
@@ -116,14 +116,14 @@ if ($action === 'get_or_create_chapter_test') {
         }
 
         // Query questions matching chapter and optional year / exam type filters
-        $qWhere = ['chapter_id = ?', '(year IS NOT NULL OR pyq_year IS NOT NULL)'];
+        $qWhere = ['chapter_id = ?', '(year IS NOT NULL)'];
         $qParams = [$chapterId];
 
         if ($year && $year !== 'All') {
             if ($year === 'Older') {
-                $qWhere[] = 'COALESCE(year, pyq_year) < 2016';
+                $qWhere[] = 'year < 2016';
             } else {
-                $qWhere[] = 'COALESCE(year, pyq_year) = ?';
+                $qWhere[] = 'year = ?';
                 $qParams[] = (int)$year;
             }
         }
@@ -186,7 +186,7 @@ if ($action === 'paper_questions') {
             $year = (int)$m[1];
         }
         if ($year) {
-            $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE (year = :yr OR pyq_year = :yr) ORDER BY id ASC LIMIT 200');
+            $stmt = $pdo->prepare('SELECT * FROM qb_questions WHERE year = :yr ORDER BY id ASC LIMIT 200');
             $stmt->execute([':yr' => $year]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -206,7 +206,7 @@ $chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? null;
 $year = $_GET['year'] ?? $input['year'] ?? null;
 $limit = min((int)($_GET['limit'] ?? $input['limit'] ?? 50), 200);
 
-$where = ['(year IS NOT NULL OR pyq_year IS NOT NULL)'];
+$where = ['(year IS NOT NULL)'];
 $params = [];
 
 if ($subjectId) {
@@ -218,7 +218,7 @@ if ($chapterId) {
     $params[':cid'] = $chapterId;
 }
 if ($year) {
-    $where[] = '(year = :yr OR pyq_year = :yr)';
+    $where[] = 'year = :yr';
     $params[':yr'] = (int)$year;
 }
 

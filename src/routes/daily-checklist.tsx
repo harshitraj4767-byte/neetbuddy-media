@@ -124,14 +124,23 @@ function DailyChecklistPage() {
                 {items.map((it: any) => (
                   <label key={it.id} className="flex items-start gap-3 rounded-lg border border-border bg-card/50 p-3">
                     <Checkbox
-                      checked={it.done}
+                      checked={Boolean(it.done ?? it.completed)}
                       onCheckedChange={async (v) => {
-                        await toggleItem({ data: { item_id: it.id, done: !!v } });
+                        try {
+                          await fetch("/api/checklist.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            credentials: "include",
+                            body: JSON.stringify({ action: "toggle_item", item_id: it.id, completed: v ? 1 : 0 }),
+                          });
+                        } catch {
+                          try { await toggleItem({ data: { item_id: it.id, done: !!v } }); } catch {}
+                        }
                         invalidate();
                       }}
                       className="mt-0.5"
                     />
-                    <span className={"flex-1 text-sm " + (it.done ? "text-muted-foreground line-through" : "")}>{it.text}</span>
+                    <span className={"flex-1 text-sm " + ((it.done ?? it.completed) ? "text-muted-foreground line-through" : "")}>{it.text || it.task}</span>
                   </label>
                 ))}
                 {items.length === 0 && <p className="text-sm text-muted-foreground">No tasks yet.</p>}
@@ -164,11 +173,23 @@ function DailyChecklistPage() {
                     if (!clean.length) return;
                     setSavingMorning(true);
                     try {
-                      await submitMorning({ data: { items: clean } });
+                      const res = await fetch("/api/checklist.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        credentials: "include",
+                        body: JSON.stringify({ action: "submit_morning", tasks: clean, items: clean }),
+                      });
+                      if (!res.ok) throw new Error("Failed to save via API");
                       toast.success("Morning plan saved");
                       invalidate();
-                    } catch (e: any) {
-                      toast.error(e.message ?? "Failed");
+                    } catch {
+                      try {
+                        await submitMorning({ data: { items: clean } });
+                        toast.success("Morning plan saved");
+                        invalidate();
+                      } catch (e: any) {
+                        toast.error(e.message ?? "Failed to save morning plan");
+                      }
                     } finally {
                       setSavingMorning(false);
                     }

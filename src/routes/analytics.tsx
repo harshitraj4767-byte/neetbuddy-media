@@ -62,18 +62,37 @@ function AnalyticsPage() {
   useEffect(() => {
     if (!user) return;
     (async () => {
-      const { data: ats } = await supabase.from("attempts")
-        .select("id,test_id,score,correct_count,wrong_count,unattempted_count,submitted_at,time_taken_sec")
-        .eq("user_id", user.id).eq("status", "completed").order("submitted_at", { ascending: false }).limit(50);
-      const list = (ats ?? []) as Attempt[];
-      setAttempts(list);
-      if (!list.length) return;
-
-      const ids = [...new Set(list.map((a) => a.test_id))];
-      const { data: ts } = await supabase.from("tests").select("id,title,type").in("id", ids);
+      let list: Attempt[] = [];
       const tmap: Record<string, Test> = {};
-      (ts ?? []).forEach((t) => { tmap[t.id] = t as Test; });
+
+      try {
+        const res = await fetch("/api/results.php?action=analytics", { credentials: "include" });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.attempts)) {
+            list = data.attempts as Attempt[];
+            if (data.tests) Object.assign(tmap, data.tests);
+          }
+        }
+      } catch (err) {
+        console.warn("MySQL analytics fetch failed, trying Supabase fallback", err);
+      }
+
+      if (!list.length) {
+        const { data: ats } = await supabase.from("attempts")
+          .select("id,test_id,score,correct_count,wrong_count,unattempted_count,submitted_at,time_taken_sec")
+          .eq("user_id", user.id).eq("status", "completed").order("submitted_at", { ascending: false }).limit(50);
+        list = (ats ?? []) as Attempt[];
+        if (list.length) {
+          const ids = [...new Set(list.map((a) => a.test_id))];
+          const { data: ts } = await supabase.from("tests").select("id,title,type").in("id", ids);
+          (ts ?? []).forEach((t) => { tmap[t.id] = t as Test; });
+        }
+      }
+
+      setAttempts(list);
       setTests(tmap);
+      if (!list.length) return;
 
       // Deep breakdown from answered questions
       const { data: ansRaw } = await (supabase as any).from("attempt_answers")

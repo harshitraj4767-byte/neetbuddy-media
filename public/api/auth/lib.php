@@ -210,7 +210,19 @@ function nb_session_token(): ?string
 {
     $c = nb_config();
     $token = $_COOKIE[$c['cookie']] ?? null;
-    return is_string($token) && $token !== '' ? $token : null;
+    if (is_string($token) && $token !== '') {
+        return $token;
+    }
+    // Check Authorization header (Bearer <token>)
+    $auth = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+    if (!$auth && function_exists('apache_request_headers')) {
+        $headers = apache_request_headers();
+        $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+    }
+    if (preg_match('/Bearer\s+([A-Za-z0-9_.-]+)/', $auth, $matches)) {
+        return $matches[1];
+    }
+    return null;
 }
 
 function nb_current_user_id(): ?string
