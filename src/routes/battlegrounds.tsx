@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -309,7 +310,7 @@ function BattlegroundsPage() {
         description="Pick a subject. Win battles. Earn XP and climb higher!"
         Icon={Flame}
         accent="blue"
-        image="/illustrations/hero-battlegrounds.png"
+        image={publicMediaAsset("illustrations/hero-battlegrounds.png")}
         imageAlt="Shield and swords on a podium with an XP coin and trophy"
       >
         <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1.5 text-[11px] font-semibold text-blue-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-blue-200">
