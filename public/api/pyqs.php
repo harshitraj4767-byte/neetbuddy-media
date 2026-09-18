@@ -74,6 +74,8 @@ if ($action === 'chapter_questions') {
 
 if ($action === 'get_or_create_chapter_test') {
     $chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? '';
+    $year = $_GET['year'] ?? $input['year'] ?? null;
+    $examType = $_GET['exam_type'] ?? $input['exam_type'] ?? null;
     if (!$chapterId) nb_fail('chapter_id required');
 
     try {
@@ -83,8 +85,11 @@ if ($action === 'get_or_create_chapter_test') {
         $ch = $cStmt->fetch(PDO::FETCH_ASSOC);
         $chName = $ch['name'] ?? 'Chapter';
 
-        // Check if a practice test for this chapter already exists
-        $searchTitle = $chName . ' PYQ Practice';
+        $filterLabel = '';
+        if ($year && $year !== 'All') $filterLabel .= " ($year)";
+        if ($examType && $examType !== 'All') $filterLabel .= " [$examType]";
+
+        $searchTitle = $chName . ' PYQ Practice' . $filterLabel;
         $tStmt = $pdo->prepare('SELECT id, question_ids FROM tests WHERE title = ? AND type = "practice" LIMIT 1');
         $tStmt->execute([$searchTitle]);
         $existing = $tStmt->fetch(PDO::FETCH_ASSOC);
@@ -93,9 +98,26 @@ if ($action === 'get_or_create_chapter_test') {
             nb_json(['test_id' => $existing['id'], 'success' => true]);
         }
 
-        // Get questions
-        $qStmt = $pdo->prepare('SELECT id FROM qb_questions WHERE chapter_id = ? AND (year IS NOT NULL OR pyq_year IS NOT NULL) ORDER BY year DESC, id ASC LIMIT 100');
-        $qStmt->execute([$chapterId]);
+        // Query questions matching chapter and optional year / exam type filters
+        $qWhere = ['chapter_id = ?', '(year IS NOT NULL OR pyq_year IS NOT NULL)'];
+        $qParams = [$chapterId];
+
+        if ($year && $year !== 'All') {
+            if ($year === 'Older') {
+                $qWhere[] = 'COALESCE(year, pyq_year) < 2016';
+            } else {
+                $qWhere[] = 'COALESCE(year, pyq_year) = ?';
+                $qParams[] = (int)$year;
+            }
+        }
+        if ($examType && $examType !== 'All') {
+            $qWhere[] = '(tag LIKE ? OR question_html LIKE ?)';
+            $qParams[] = '%' . $examType . '%';
+            $qParams[] = '%' . $examType . '%';
+        }
+
+        $qStmt = $pdo->prepare('SELECT id FROM qb_questions WHERE ' . implode(' AND ', $qWhere) . ' ORDER BY year DESC, id ASC LIMIT 100');
+        $qStmt->execute($qParams);
         $qids = $qStmt->fetchAll(PDO::FETCH_COLUMN);
 
         if (empty($qids)) {
