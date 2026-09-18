@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { NavTiles, HubHero, type NavTile } from "@/components/nav-tiles";
@@ -18,9 +19,9 @@ export const Route = createFileRoute("/quiz/subjects")({
 });
 
 const TILES: NavTile[] = [
-  { to: "/subjects/$subject", params: { subject: "Physics" }, label: "Physics", tag: "Numericals", accent: "blue", desc: "Chapter-wise practice with difficulty filters.", Icon: Atom, image: "/illustrations/icon-physics.png", imageAlt: "3D atom icon for Physics" },
-  { to: "/subjects/$subject", params: { subject: "Chemistry" }, label: "Chemistry", tag: "P + O + I", accent: "orange", desc: "Physical, Organic and Inorganic chapters.", Icon: FlaskConical, image: "/illustrations/icon-chemistry.png", imageAlt: "3D lab flasks icon for Chemistry" },
-  { to: "/subjects/$subject", params: { subject: "Biology" }, label: "Biology", tag: "360 marks", accent: "emerald", desc: "Botany and Zoology, NCERT-aligned.", Icon: Leaf, image: "/illustrations/icon-biology.png", imageAlt: "3D leaf, DNA and microscope icon for Biology" },
+  { to: "/subjects/$subject", params: { subject: "Physics" }, label: "Physics", tag: "Numericals", accent: "blue", desc: "Chapter-wise practice with difficulty filters.", Icon: Atom, image: publicMediaAsset("illustrations/icon-physics.png"), imageAlt: "3D atom icon for Physics" },
+  { to: "/subjects/$subject", params: { subject: "Chemistry" }, label: "Chemistry", tag: "P + O + I", accent: "orange", desc: "Physical, Organic and Inorganic chapters.", Icon: FlaskConical, image: publicMediaAsset("illustrations/icon-chemistry.png"), imageAlt: "3D lab flasks icon for Chemistry" },
+  { to: "/subjects/$subject", params: { subject: "Biology" }, label: "Biology", tag: "360 marks", accent: "emerald", desc: "Botany and Zoology, NCERT-aligned.", Icon: Leaf, image: publicMediaAsset("illustrations/icon-biology.png"), imageAlt: "3D leaf, DNA and microscope icon for Biology" },
 ];
 
 function SubjectQuizPage() {
@@ -35,7 +36,7 @@ function SubjectQuizPage() {
         description="Pick a subject, choose chapters and start practising instantly."
         Icon={BookOpenCheck}
         accent="emerald"
-        image="/illustrations/hero-subjects.png"
+        image={publicMediaAsset("illustrations/hero-subjects.png")}
         imageAlt="Books with Physics, Chemistry and Biology subject icons"
       />
       <NavTiles tiles={TILES} />
