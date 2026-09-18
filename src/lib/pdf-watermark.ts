@@ -1,8 +1,9 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 // Client-only helper: download a PDF stamped with the app logo as a soft, centered watermark.
 // Uses the app icon PNG (already has rounded/smooth edges) at 0.16 opacity in the center of every page.
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 
-const LOGO_URL = "/icons/icon-192.png";
+const LOGO_URL = publicMediaAsset("icons/icon-192.png");
 
 async function fetchBytes(url: string): Promise<Uint8Array> {
   const r = await fetch(url, { credentials: "omit" });
