@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
@@ -11,8 +12,8 @@ const DEFAULT_BANNERS: BannerRow[] = [
   {
     id: "def-physics",
     title: "Master Physics with High Yield Formulae & Tests",
-    image_url: "/illustrations/banner-physics.png",
-    image_url_dark: "/illustrations/banner-physics.png",
+    image_url: publicMediaAsset("illustrations/banner-physics.png"),
+    image_url_dark: publicMediaAsset("illustrations/banner-physics.png"),
     link_url: "/physics",
     sort_order: 10,
     active: true,
@@ -20,8 +21,8 @@ const DEFAULT_BANNERS: BannerRow[] = [
   {
     id: "def-chemistry",
     title: "NEET Chemistry NCERT Practice",
-    image_url: "/illustrations/banner-chemistry.png",
-    image_url_dark: "/illustrations/banner-chemistry.png",
+    image_url: publicMediaAsset("illustrations/banner-chemistry.png"),
+    image_url_dark: publicMediaAsset("illustrations/banner-chemistry.png"),
     link_url: "/chemistry",
     sort_order: 20,
     active: true,
@@ -29,8 +30,8 @@ const DEFAULT_BANNERS: BannerRow[] = [
   {
     id: "def-biology",
     title: "Complete Biology Chapterwise Question Bank",
-    image_url: "/illustrations/banner-biology.png",
-    image_url_dark: "/illustrations/banner-biology.png",
+    image_url: publicMediaAsset("illustrations/banner-biology.png"),
+    image_url_dark: publicMediaAsset("illustrations/banner-biology.png"),
     link_url: "/biology",
     sort_order: 30,
     active: true,
@@ -38,8 +39,8 @@ const DEFAULT_BANNERS: BannerRow[] = [
   {
     id: "def-neetlab",
     title: "Interactive NEET Virtual Simulations",
-    image_url: "/illustrations/banner-neetlab.png",
-    image_url_dark: "/illustrations/banner-neetlab.png",
+    image_url: publicMediaAsset("illustrations/banner-neetlab.png"),
+    image_url_dark: publicMediaAsset("illustrations/banner-neetlab.png"),
     link_url: "/neetlab",
     sort_order: 40,
     active: true,
