@@ -7,3 +7,10 @@ export function mediaAsset(path: string): string {
   const normalized = path.replace(/^\/+/, "");
   return `${MEDIA_REPO_BASE_URL}/${normalized}`;
 }
+
+
+/** Resolve an asset stored below the media repository's public/ directory. */
+export function publicMediaAsset(path: string): string {
+  const normalized = path.replace(/^\/+/, "").replace(/^public\//i, "");
+  return PUBLIC_MEDIA_BASE_URL + "/" + normalized;
+}
