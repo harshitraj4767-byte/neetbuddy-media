@@ -54,10 +54,18 @@ function BookmarksPage() {
       if (res.ok) {
         const json = await res.json();
         if (Array.isArray(json?.bookmarks)) {
-          const mapped: BookmarkListItemDTO[] = json.bookmarks.map((b: any) => ({
+          const mapped: BookmarkListItemDTO[] = json.bookmarks.map((b: any) => {
+            const rawText = String(b.question_text || b.question_html || "");
+            const withMedia = attachQuestionMedia({
+              id: String(b.question_id || b.id),
+              text: rawText,
+              question_image_url: b.question_image_url || b.image_url,
+              options: Array.isArray(b.options) ? b.options.map((o: any) => typeof o === "string" ? o : String(o?.text || o?.html || "")) : [],
+            });
+            return {
             id: String(b.id || b.question_id),
             questionId: String(b.question_id || b.id),
-            questionHtml: String(b.question_text || b.question_html || ""),
+            questionHtml: withMedia.text || rawText,
             options: Array.isArray(b.options)
               ? b.options.map((opt: any, idx: number) => ({
                   index: idx,
@@ -69,7 +77,7 @@ function BookmarksPage() {
             subjectName: b.subject_name || null,
             chapterName: b.chapter_name || null,
             createdAt: b.created_at || null,
-          }));
+          }; });
           setBookmarks(mapped);
           return;
         }

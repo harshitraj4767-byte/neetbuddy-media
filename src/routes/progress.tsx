@@ -406,7 +406,7 @@ function ProgressPage() {
 
   return (
     <PageShell>
-      <div className="mx-auto max-w-5xl px-4 pb-10">
+      <div className="mx-auto max-w-7xl px-4 pb-10">
         {/* Top nav */}
         <div className="-mx-4 mb-6 flex items-center justify-between px-4 pt-4">
           <button

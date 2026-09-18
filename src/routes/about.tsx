@@ -6,7 +6,8 @@ import { GraduationCap, Sparkles, Target, Rocket, Heart, Quote } from "lucide-re
 import { mediaAsset } from "@/lib/media-assets";
 
 const sanskarImage = mediaAsset("src/assets/sanskar.jpg");
-const akmalImage = mediaAsset("src/assets/akmal.jpg");
+// Mohd Akmal photo removed per request
+const akmalImage = "";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -183,11 +184,17 @@ function FounderCard({
       <div className={`h-24 w-full bg-gradient-to-r ${accent}`} />
       <CardContent className="-mt-14 p-6">
         <div className="flex items-end gap-4">
-          <img
-            src={image}
-            alt={name}
-            className="h-28 w-28 rounded-2xl border-4 border-background object-cover shadow-elegant sm:h-32 sm:w-32"
-          />
+          {image ? (
+            <img
+              src={image}
+              alt={name}
+              className="h-28 w-28 rounded-2xl border-4 border-background object-cover shadow-elegant sm:h-32 sm:w-32"
+            />
+          ) : (
+            <div className="flex h-28 w-28 flex-col items-center justify-center rounded-2xl border-4 border-background bg-secondary/80 p-2 text-center shadow-elegant sm:h-32 sm:w-32">
+              <span className="text-[11px] font-semibold text-muted-foreground">Images added soon...</span>
+            </div>
+          )}
           <div className="pb-2">
             <div className="text-lg font-extrabold leading-tight sm:text-xl">{name}</div>
             <div className="text-xs font-medium text-muted-foreground">{role}</div>

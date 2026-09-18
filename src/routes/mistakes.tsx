@@ -64,7 +64,7 @@ function MistakesPage() {
           const mapped: MistakeListItemDTO[] = json.mistakes.map((m: any) => ({
             id: String(m.id || m.question_id),
             questionId: String(m.question_id || m.id),
-            questionHtml: String(m.question_text || m.question_html || ""),
+            questionHtml: withMedia.text || rawText,
             options: Array.isArray(m.options)
               ? m.options.map((opt: any, idx: number) => ({
                   index: idx,

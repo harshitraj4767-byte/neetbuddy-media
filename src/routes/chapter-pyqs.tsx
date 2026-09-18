@@ -124,65 +124,67 @@ function ChapterPyqsPage() {
 
   return (
     <PageShell eyebrow="Practice" title="Chapter-wise PYQs" description="Master previous year questions chapter by chapter with custom year and exam filters.">
-      {/* Filters section */}
-      <div className="mb-6 space-y-4">
-        {/* Subject Filter */}
-        <div>
-          <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Subject</div>
-          <div className="flex flex-wrap gap-2">
-            {subjects.map((sub) => (
-              <Button
-                key={sub}
-                variant={selectedSubject === sub ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedSubject(sub)}
-              >
-                {sub}
-              </Button>
-            ))}
+      {/* Filters section - Clean Mobile-Friendly Card */}
+      <Card className="mb-6 border-border/60 bg-card/80 backdrop-blur-sm shadow-soft">
+        <CardContent className="p-4 space-y-3.5">
+          <div>
+            <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Subject</div>
+            <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              {subjects.map((sub) => (
+                <Button
+                  key={sub}
+                  variant={selectedSubject === sub ? "default" : "secondary"}
+                  size="sm"
+                  className={`h-8 shrink-0 rounded-full px-3.5 text-xs font-medium ${selectedSubject === sub ? "shadow-sm" : "bg-muted/60 text-muted-foreground hover:text-foreground"}`}
+                  onClick={() => setSelectedSubject(sub)}
+                >
+                  {sub}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Year Filter */}
-        <div>
-          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            <Calendar className="h-3.5 w-3.5" /> Exam Year
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {YEARS.map((yr) => (
-              <Button
-                key={yr}
-                variant={selectedYear === yr ? "secondary" : "ghost"}
-                size="sm"
-                className={`h-7 px-2.5 text-xs ${selectedYear === yr ? "font-bold shadow-sm" : ""}`}
-                onClick={() => setSelectedYear(yr)}
-              >
-                {yr}
-              </Button>
-            ))}
-          </div>
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 border-t border-border/40">
+            <div>
+              <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                <Calendar className="h-3 w-3" /> Exam Year
+              </div>
+              <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-none">
+                {YEARS.map((yr) => (
+                  <Button
+                    key={yr}
+                    variant={selectedYear === yr ? "default" : "outline"}
+                    size="sm"
+                    className={`h-7 shrink-0 rounded-lg px-2.5 text-[11px] ${selectedYear === yr ? "font-bold shadow-xs" : "border-border/60"}`}
+                    onClick={() => setSelectedYear(yr)}
+                  >
+                    {yr}
+                  </Button>
+                ))}
+              </div>
+            </div>
 
-        {/* Exam Type Filter */}
-        <div>
-          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            <Award className="h-3.5 w-3.5" /> Exam Type
+            <div>
+              <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                <Award className="h-3 w-3" /> Exam Type
+              </div>
+              <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-none">
+                {EXAMS.map((ex) => (
+                  <Button
+                    key={ex}
+                    variant={selectedExam === ex ? "default" : "outline"}
+                    size="sm"
+                    className={`h-7 shrink-0 rounded-lg px-2.5 text-[11px] ${selectedExam === ex ? "font-bold shadow-xs" : "border-border/60"}`}
+                    onClick={() => setSelectedExam(ex)}
+                  >
+                    {ex}
+                  </Button>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            {EXAMS.map((ex) => (
-              <Button
-                key={ex}
-                variant={selectedExam === ex ? "secondary" : "ghost"}
-                size="sm"
-                className={`h-7 px-2.5 text-xs ${selectedExam === ex ? "font-bold shadow-sm" : ""}`}
-                onClick={() => setSelectedExam(ex)}
-              >
-                {ex}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {loading ? (
         <div className="flex h-48 items-center justify-center">

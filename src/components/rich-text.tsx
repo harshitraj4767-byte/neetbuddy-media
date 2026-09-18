@@ -105,9 +105,7 @@ function HtmlRichText({ html, className }: { html: string; className?: string })
     // on screen — fade it instead. Keeps future image uploads risk-free.
     el.querySelectorAll("img").forEach((img) => {
       img.addEventListener("error", () => {
-        img.style.opacity = "0.3";
-        img.classList.add("bg-muted", "border", "border-dashed");
-        console.warn("[rich-text] diagram failed to load", img.getAttribute("src"));
+        img.style.display = "none";
       });
       img.setAttribute("loading", img.getAttribute("loading") ?? "lazy");
       img.setAttribute("decoding", "async");
@@ -443,9 +441,7 @@ function renderInline(src: string): ReactNode[] {
           decoding="async"
           onError={(e) => {
             const img = e.currentTarget as HTMLImageElement;
-            img.style.opacity = "0.3";
-            img.classList.add("bg-muted", "border", "border-dashed");
-            console.warn("[rich-text] diagram failed to load", imgUrl);
+            img.style.display = "none";
           }}
           className="my-2 inline-block max-h-80 max-w-full object-contain"
           style={{ border: "none", outline: "none", background: "transparent", boxShadow: "none" }}

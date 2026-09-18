@@ -97,7 +97,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/40">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-4 pb-28 pt-4">
+      <main className="mx-auto max-w-7xl px-4 pb-28 pt-4">
         <MissionBanner />
         {children}
       </main>

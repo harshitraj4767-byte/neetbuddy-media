@@ -94,7 +94,29 @@ function Dashboard() {
     })();
   }, []);
 
-  // Real attempt history (last 60 days) powers streak, today's progress and weekly charts.
+  // Fetch streak directly from new Hostinger database / leaderboard API
+  useEffect(() => {
+    if (!user) return;
+    void (async () => {
+      try {
+        const res = await fetch("/api/leaderboard.php", { credentials: "include" });
+        if (res.ok) {
+          const data = await res.json();
+          if (typeof data.myStreak === "number") {
+            setStreak(data.myStreak);
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn("Failed to fetch streak from /api/leaderboard.php:", e);
+      }
+      if (typeof (profile as any)?.streak === "number") {
+        setStreak((profile as any).streak);
+      }
+    })();
+  }, [user?.id, profile]);
+
+  // Real attempt history (last 60 days) powers today's progress and weekly charts.
   useEffect(() => {
     if (!user) return;
     const since = new Date(); since.setDate(since.getDate() - 60); since.setHours(0, 0, 0, 0);
@@ -104,12 +126,6 @@ function Dashboard() {
           data: { userId: user.id, sinceIso: since.toISOString() },
         })) as AttemptRow[];
         setAttempts(rows);
-        const days = new Set(rows.map((a) => a.submitted_at).filter((s): s is string => !!s).map((s) => dayKey(new Date(s))));
-        let s = 0;
-        const cur = new Date(); cur.setHours(0, 0, 0, 0);
-        if (!days.has(dayKey(cur))) cur.setDate(cur.getDate() - 1);
-        while (days.has(dayKey(cur))) { s++; cur.setDate(cur.getDate() - 1); }
-        setStreak(s);
       } catch {
         setAttempts([]);
       }
@@ -228,7 +244,16 @@ function Dashboard() {
         </div>
 
         {/* ── Banner plot (admin managed, 8:3 like the hero card) ───── */}
-        <BannerCarousel />
+        <div className="relative">
+          <BannerCarousel />
+          {isAdmin && (
+            <div className="mt-1 flex justify-end">
+              <Link to="/admin-banners" className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:underline">
+                <span>Audit banners</span> &rarr;
+              </Link>
+            </div>
+          )}
+        </div>
 
         {/* ── Today's progress ──────────────────────────────────────── */}
         <div className="mt-4 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-5 text-slate-100 shadow-elegant">
