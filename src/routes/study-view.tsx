@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
@@ -86,7 +87,7 @@ function StudyViewPage() {
           className="pointer-events-none absolute inset-0 flex items-center justify-center"
         >
           <img
-            src="/icons/icon-192.png"
+            src={publicMediaAsset("icons/icon-192.png")}
             alt=""
             className="h-[min(320px,40vw)] w-[min(320px,40vw)] rounded-[22%] object-cover opacity-[0.17]"
           />
