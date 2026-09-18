@@ -7,11 +7,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
-import { BookOpenCheck, ChevronRight, Filter, Loader2, Sparkles, Trophy, CheckCircle2, RotateCcw } from "lucide-react";
+import { BookOpenCheck, ChevronRight, Filter, Loader2, Sparkles, Trophy, CheckCircle2, RotateCcw, Calendar, Award } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/use-auth";
 import { listPyqChapters, getOrCreateChapterPyqTest } from "@/lib/chapter-pyqs.functions";
-
 
 export const Route = createFileRoute("/chapter-pyqs")({
   head: () => ({
@@ -33,12 +32,17 @@ type ChapterRow = {
   pyq_count?: number;
 };
 
+const YEARS = ["All", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "Older"];
+const EXAMS = ["All", "NEET", "AIPMT", "JEE Main", "AIIMS"];
+
 function ChapterPyqsPage() {
   const { user } = useAuth();
   const nav = useNavigate();
   const [chapters, setChapters] = useState<ChapterRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedSubject, setSelectedSubject] = useState<string>("All");
+  const [selectedYear, setSelectedYear] = useState<string>("All");
+  const [selectedExam, setSelectedExam] = useState<string>("All");
   const [modePick, setModePick] = useState<ChapterRow | null>(null);
   const [starting, setStarting] = useState(false);
 
@@ -49,7 +53,6 @@ function ChapterPyqsPage() {
         setChapters(rows as ChapterRow[]);
       } catch (e) {
         console.warn("Failed to load chapter PYQs:", e);
-        // Legacy PHP endpoint, only reachable on the old PHP host.
         try {
           const res = await fetch("/api/pyqs.php?action=chapters");
           if (res.ok) {
@@ -79,9 +82,30 @@ function ChapterPyqsPage() {
   async function handleStart(chapter: ChapterRow, mode: QuizMode) {
     setStarting(true);
     try {
-      const { testId } = await getOrCreateChapterPyqTest({
-        data: { chapterId: String(chapter.id) },
+      // Direct call to PHP API with filters
+      const params = new URLSearchParams({
+        action: "get_or_create_chapter_test",
+        chapter_id: String(chapter.id),
       });
+      if (selectedYear !== "All") params.set("year", selectedYear);
+      if (selectedExam !== "All") params.set("exam_type", selectedExam);
+
+      let testId: string | undefined;
+      try {
+        const res = await fetch(`/api/pyqs.php?${params.toString()}`);
+        if (res.ok) {
+          const data = await res.json();
+          testId = data.test_id;
+        }
+      } catch {}
+
+      if (!testId) {
+        const fallback = await getOrCreateChapterPyqTest({
+          data: { chapterId: String(chapter.id) },
+        });
+        testId = fallback.testId;
+      }
+
       setModePick(null);
       nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
     } catch (e: any) {
@@ -91,20 +115,66 @@ function ChapterPyqsPage() {
     }
   }
 
-
   return (
-    <PageShell eyebrow="Practice" title="Chapter-wise PYQs" description="Master previous year questions chapter by chapter.">
-      <div className="mb-6 flex flex-wrap gap-2">
-        {subjects.map((sub) => (
-          <Button
-            key={sub}
-            variant={selectedSubject === sub ? "default" : "outline"}
-            size="sm"
-            onClick={() => setSelectedSubject(sub)}
-          >
-            {sub}
-          </Button>
-        ))}
+    <PageShell eyebrow="Practice" title="Chapter-wise PYQs" description="Master previous year questions chapter by chapter with custom year and exam filters.">
+      {/* Filters section */}
+      <div className="mb-6 space-y-4">
+        {/* Subject Filter */}
+        <div>
+          <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Subject</div>
+          <div className="flex flex-wrap gap-2">
+            {subjects.map((sub) => (
+              <Button
+                key={sub}
+                variant={selectedSubject === sub ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedSubject(sub)}
+              >
+                {sub}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Year Filter */}
+        <div>
+          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <Calendar className="h-3.5 w-3.5" /> Exam Year
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {YEARS.map((yr) => (
+              <Button
+                key={yr}
+                variant={selectedYear === yr ? "secondary" : "ghost"}
+                size="sm"
+                className={`h-7 px-2.5 text-xs ${selectedYear === yr ? "font-bold shadow-sm" : ""}`}
+                onClick={() => setSelectedYear(yr)}
+              >
+                {yr}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Exam Type Filter */}
+        <div>
+          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <Award className="h-3.5 w-3.5" /> Exam Type
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {EXAMS.map((ex) => (
+              <Button
+                key={ex}
+                variant={selectedExam === ex ? "secondary" : "ghost"}
+                size="sm"
+                className={`h-7 px-2.5 text-xs ${selectedExam === ex ? "font-bold shadow-sm" : ""}`}
+                onClick={() => setSelectedExam(ex)}
+              >
+                {ex}
+              </Button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {loading ? (
@@ -126,7 +196,7 @@ function ChapterPyqsPage() {
               </div>
               <div className="mt-4 flex gap-2">
                 <Button size="sm" className="w-full" onClick={() => setModePick(ch)}>
-                  Practice Now
+                  Practice Now {selectedYear !== "All" || selectedExam !== "All" ? `(${[selectedYear !== "All" && selectedYear, selectedExam !== "All" && selectedExam].filter(Boolean).join(", ")})` : ""}
                 </Button>
               </div>
             </Card>
