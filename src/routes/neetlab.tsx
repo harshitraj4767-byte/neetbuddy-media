@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
@@ -35,7 +36,7 @@ function NEETLabPage() {
           description="3D models, interactive simulations and virtual labs for NEET aspirants."
           Icon={FlaskConical}
           accent="orange"
-          image="/illustrations/banner-neetlab.png"
+          image={publicMediaAsset("illustrations/banner-neetlab.png")}
           imageAlt="3D microscope, DNA helix, molecules and the NEETLab app illustration"
         />
 
