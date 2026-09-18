@@ -1,11 +1,4 @@
 import { Fragment, useEffect, useMemo, useRef, type ReactNode } from "react";
-// react-katex ships CommonJS; named ESM imports break SSR ("Named export 'BlockMath' not found").
-import reactKatex from "react-katex";
-type KatexProps = { math: string; renderError?: (error: Error) => ReactNode };
-const { InlineMath, BlockMath } = reactKatex as unknown as {
-  InlineMath: (props: KatexProps) => ReactNode;
-  BlockMath: (props: KatexProps) => ReactNode;
-};
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { cn } from "@/lib/utils";
@@ -395,7 +388,7 @@ function renderBlocks(src: string): ReactNode[] {
       const tex = (m[5] ?? m[6] ?? "") as string;
       out.push(
         <span key={k++} className="my-2 block sm:inline-block min-w-full overflow-x-auto text-center">
-          <BlockMath math={tex} renderError={() => <span className="font-sans text-base not-italic">{plainLatex(tex)}</span>} />
+          <KatexMath math={tex} displayMode />
         </span>,
       );
     }
@@ -465,7 +458,7 @@ function renderInline(src: string): ReactNode[] {
       // it stays one inline-block and scrolls horizontally if it overflows.
       out.push(
         <span key={k++} className="inline-block max-w-full overflow-x-auto overflow-y-hidden py-[2px] align-middle">
-          <InlineMath math={tex} renderError={() => <span>{plainLatex(tex)}</span>} />
+          <KatexMath math={tex} />
         </span>,
       );
     } else if (m[5] !== undefined) {
@@ -479,6 +472,27 @@ function renderInline(src: string): ReactNode[] {
   }
   if (last < src.length) out.push(<Fragment key={k++}>{withBreaks(src.slice(last), `t${k}`)}</Fragment>);
   return out;
+}
+
+/**
+ * Render directly with KaTeX instead of react-katex. The latter's CommonJS
+ * interop differs between the server and browser bundles and was invoking its
+ * error fallback for valid formulas, exposing strings such as `dfrac` and
+ * `mathrm` after the fallback stripped their slashes and braces.
+ */
+function KatexMath({ math, displayMode = false }: { math: string; displayMode?: boolean }) {
+  try {
+    const html = katex.renderToString(math.trim(), {
+      displayMode,
+      throwOnError: false,
+      output: "html",
+      strict: "ignore",
+    });
+    return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  } catch (error) {
+    console.warn("[rich-text] invalid math", error, { preview: math.slice(0, 120) });
+    return <span className="font-sans not-italic">{plainLatex(math)}</span>;
+  }
 }
 
 /**

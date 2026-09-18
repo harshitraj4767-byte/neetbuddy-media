@@ -10,6 +10,8 @@ import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { BookOpenCheck, ChevronRight, Filter, Loader2, Sparkles, Trophy, CheckCircle2, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/use-auth";
+import { listPyqChapters, getOrCreateChapterPyqTest } from "@/lib/chapter-pyqs.functions";
+
 
 export const Route = createFileRoute("/chapter-pyqs")({
   head: () => ({
@@ -43,19 +45,21 @@ function ChapterPyqsPage() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/api/pyqs.php?action=chapters");
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data.chapters)) {
-            setChapters(data.chapters);
-            setLoading(false);
-            return;
-          }
-        }
+        const rows = await listPyqChapters();
+        setChapters(rows as ChapterRow[]);
       } catch (e) {
-        console.warn("Failed to load /api/pyqs.php?action=chapters:", e);
+        console.warn("Failed to load chapter PYQs:", e);
+        // Legacy PHP endpoint, only reachable on the old PHP host.
+        try {
+          const res = await fetch("/api/pyqs.php?action=chapters");
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data.chapters)) setChapters(data.chapters);
+          }
+        } catch {}
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     })();
   }, []);
 
@@ -75,25 +79,18 @@ function ChapterPyqsPage() {
   async function handleStart(chapter: ChapterRow, mode: QuizMode) {
     setStarting(true);
     try {
-      const res = await fetch("/api/pyqs.php?action=get_or_create_chapter_test", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ chapter_id: chapter.id }),
+      const { testId } = await getOrCreateChapterPyqTest({
+        data: { chapterId: String(chapter.id) },
       });
-      const data = await res.json();
-      if (data.test_id) {
-        setModePick(null);
-        nav({ to: "/quiz/$testId", params: { testId: data.test_id }, search: { mode } as never });
-      } else {
-        toast.error("Could not load chapter test");
-      }
+      setModePick(null);
+      nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
     } catch (e: any) {
-      toast.error(e?.message ?? "Error launching test");
+      toast.error(e?.message ?? "Could not load chapter test");
     } finally {
       setStarting(false);
     }
   }
+
 
   return (
     <PageShell eyebrow="Practice" title="Chapter-wise PYQs" description="Master previous year questions chapter by chapter.">
