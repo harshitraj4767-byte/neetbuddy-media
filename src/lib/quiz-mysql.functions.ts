@@ -1026,7 +1026,7 @@ export const listUserMistakes = createServerFn({ method: "POST" }).handler(
           text: opt,
         })),
         difficulty: String(row["difficulty"] ?? "Medium"),
-        explanation: withMedia.explanation || (row["explanation"] as string | null) ?? null,
+        explanation: withMedia.explanation || ((row["explanation"] as string | null) ?? null),
         correctIndex: Number(row["correct_index"] ?? 0),
         subjectName: row["subject_name"] == null ? null : String(row["subject_name"]),
         chapterName: row["chapter_name"] == null ? null : String(row["chapter_name"]),
