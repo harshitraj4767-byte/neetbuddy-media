@@ -147,7 +147,10 @@ export function pyqImageCandidates(
   }
 
   // 3. Subject-based guesses for bare file names.
-  if (subj) {
+  // Avoid guessing generic file names (e.g., 1.png, 2.jpg, fig1.png, q1.png) which belong
+  // to different questions and cause diagrams to bleed across questions.
+  const isGenericName = /^(?:fig(?:ure)?[_-]?\d+|q(?:uestion)?[_-]?\d+|\d+|image|img|diagram)\.(?:png|jpe?g|webp|svg)$/i.test(file) || file.length <= 7;
+  if (subj && !isGenericName) {
     for (const type of ["mcq", "flashcard"]) {
       push(`ncert/pyq/images/${subj}/${type}/${file}`);
       push(`ncert/pyq/${subj}/${type}/${file}`);
