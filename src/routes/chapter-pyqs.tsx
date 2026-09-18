@@ -48,23 +48,30 @@ function ChapterPyqsPage() {
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       try {
+        const params = new URLSearchParams({ action: "chapters" });
+        if (selectedYear !== "All") params.set("year", selectedYear);
+        if (selectedExam !== "All") params.set("exam_type", selectedExam);
+
+        const res = await fetch(`/api/pyqs.php?${params.toString()}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.chapters)) {
+            setChapters(data.chapters);
+            setLoading(false);
+            return;
+          }
+        }
         const rows = await listPyqChapters();
         setChapters(rows as ChapterRow[]);
       } catch (e) {
         console.warn("Failed to load chapter PYQs:", e);
-        try {
-          const res = await fetch("/api/pyqs.php?action=chapters");
-          if (res.ok) {
-            const data = await res.json();
-            if (Array.isArray(data.chapters)) setChapters(data.chapters);
-          }
-        } catch {}
       } finally {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [selectedYear, selectedExam]);
 
   const subjects = useMemo(() => {
     const set = new Set<string>();

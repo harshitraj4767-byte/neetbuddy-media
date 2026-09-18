@@ -38,15 +38,32 @@ if ($action === 'papers') {
 }
 
 if ($action === 'chapters') {
+    $year = $_GET['year'] ?? null;
+    $exam = $_GET['exam_type'] ?? null;
+
+    $qWhere = ['q.chapter_id = c.id', '(q.year IS NOT NULL OR q.pyq_year IS NOT NULL)'];
+    if ($year && $year !== 'All') {
+        if ($year === 'Older') {
+            $qWhere[] = 'COALESCE(q.year, q.pyq_year) < 2016';
+        } else {
+            $qWhere[] = 'COALESCE(q.year, q.pyq_year) = ' . (int)$year;
+        }
+    }
+    if ($exam && $exam !== 'All') {
+        $safeExam = $pdo->quote('%' . $exam . '%');
+        $qWhere[] = "(q.tag LIKE $safeExam OR q.question_html LIKE $safeExam)";
+    }
+    $subCond = implode(' AND ', $qWhere);
+
     try {
-        // Return chapters with PYQ count
-        $stmt = $pdo->query('
+        $sql = "
             SELECT c.id, c.name, c.subject_id, s.name AS subject_name,
-                   (SELECT COUNT(*) FROM qb_questions q WHERE q.chapter_id = c.id AND (q.year IS NOT NULL OR q.pyq_year IS NOT NULL)) AS pyq_count
+                   (SELECT COUNT(*) FROM qb_questions q WHERE $subCond) AS pyq_count
             FROM qb_chapters c
             LEFT JOIN qb_subjects s ON s.id = c.subject_id
             ORDER BY s.name ASC, c.name ASC
-        ');
+        ";
+        $stmt = $pdo->query($sql);
         $chapters = $stmt->fetchAll(PDO::FETCH_ASSOC);
         nb_json(['chapters' => $chapters]);
     } catch (Throwable $e) {

@@ -918,8 +918,8 @@ function QuizPlayer() {
     return (
       <div className="min-h-screen bg-slate-100 text-slate-900">
         {/* Candidate strip */}
-        <div className="border-b border-slate-300 bg-white px-3 py-3 sm:px-6">
-          <div className="mx-auto flex max-w-6xl items-start justify-between gap-4">
+        <div className="border-b border-slate-300 bg-white px-4 py-3 sm:px-8">
+          <div className="mx-auto flex w-full max-w-[1700px] items-start justify-between gap-4">
             <div className="flex items-start gap-3">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded bg-slate-200 text-slate-500">
                 <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor" aria-hidden>
@@ -938,8 +938,8 @@ function QuizPlayer() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-6xl px-3 py-3 sm:px-6 lg:max-w-7xl">
-         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-4 lg:items-start">
+        <div className="mx-auto w-full max-w-[1700px] px-4 py-3 sm:px-8">
+         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6 lg:items-start">
           <div className="min-w-0 space-y-3 lg:col-start-1">
           {/* Question card */}
           <div className="rounded border border-slate-300 bg-white shadow-sm">

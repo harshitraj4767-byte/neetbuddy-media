@@ -46,12 +46,30 @@ function DailyChecklistPage() {
 
   const todayQ = useQuery({
     queryKey: ["checklist", "today"],
-    queryFn: () => getToday({ data: {} }),
+    queryFn: async () => {
+      try {
+        const res = await fetch("/api/checklist.php?action=today");
+        if (res.ok) {
+          const d = await res.json();
+          return { checklist: d.checklist, items: d.items ?? [] };
+        }
+      } catch {}
+      return getToday({ data: {} });
+    },
     enabled: !!user,
   });
   const historyQ = useQuery({
     queryKey: ["checklist", "history"],
-    queryFn: () => history({ data: { days: 14 } }),
+    queryFn: async () => {
+      try {
+        const res = await fetch("/api/checklist.php?action=history&days=14");
+        if (res.ok) {
+          const d = await res.json();
+          return d.history ?? [];
+        }
+      } catch {}
+      return history({ data: { days: 14 } });
+    },
     enabled: !!user,
   });
 

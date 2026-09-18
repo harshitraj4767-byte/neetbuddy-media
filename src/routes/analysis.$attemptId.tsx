@@ -141,14 +141,14 @@ function AnalysisPage() {
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
       <header className="sticky top-0 z-30 border-b bg-background">
-        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
+        <div className="mx-auto flex max-w-[1600px] w-full items-center gap-3 px-4 py-3">
           <Link to="/analytics" aria-label="Back" className="rounded-full p-2 hover:bg-secondary"><ArrowLeft className="h-5 w-5" /></Link>
           <div className="min-w-0 flex-1 truncate text-base font-bold">{test.title}</div>
           <Badge className="rounded-full border border-primary/20 bg-primary/10 text-primary hover:bg-primary/15">XP {Math.max(0, Math.round(score * 10))}</Badge>
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl space-y-4 px-4 py-5">
+      <main className="mx-auto max-w-[1600px] w-full space-y-4 px-4 py-5">
         {/* Hero card — DPP style */}
         <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
           <CardContent className="p-5 sm:p-6">
