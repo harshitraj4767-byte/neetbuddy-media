@@ -1,3 +1,4 @@
+import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { NavTiles, HubHero, HubQuickLinks, type NavTile } from "@/components/nav-tiles";
@@ -18,9 +19,9 @@ export const Route = createFileRoute("/quiz/")({
 });
 
 const TILES: NavTile[] = [
-  { to: "/quiz/subjects", label: "Subject-wise quiz", tag: "Chapters", accent: "blue", desc: "Practice Physics, Chemistry or Biology chapter-wise.", Icon: BookOpenCheck, image: "/illustrations/i3d-subject-wise-quiz.png", imageAlt: "3D open book icon" },
-  { to: "/generate", label: "Generate test", tag: "AI", accent: "emerald", desc: "Build a custom AI test with your own filters.", Icon: Sparkles, image: "/illustrations/i3d-generate-test.png", imageAlt: "3D test paper with pencil icon" },
-  { to: "/arena", label: "Arena", tag: "Live", accent: "amber", desc: "Contests, 1v1 battlegrounds and tournaments in one place.", Icon: Swords, image: "/illustrations/i3d-arena.png", imageAlt: "3D trophy with crossed swords icon" },
+  { to: "/quiz/subjects", label: "Subject-wise quiz", tag: "Chapters", accent: "blue", desc: "Practice Physics, Chemistry or Biology chapter-wise.", Icon: BookOpenCheck, image: publicMediaAsset("illustrations/i3d-subject-wise-quiz.png"), imageAlt: "3D open book icon" },
+  { to: "/generate", label: "Generate test", tag: "AI", accent: "emerald", desc: "Build a custom AI test with your own filters.", Icon: Sparkles, image: publicMediaAsset("illustrations/i3d-generate-test.png"), imageAlt: "3D test paper with pencil icon" },
+  { to: "/arena", label: "Arena", tag: "Live", accent: "amber", desc: "Contests, 1v1 battlegrounds and tournaments in one place.", Icon: Swords, image: publicMediaAsset("illustrations/i3d-arena.png"), imageAlt: "3D trophy with crossed swords icon" },
 ];
 
 function QuizHub() {
@@ -33,7 +34,7 @@ function QuizHub() {
         description="Pick how you want to practise today — chapters, AI tests or the live Arena."
         Icon={Brain}
         accent="violet"
-        image="/illustrations/hub-quiz.png"
+        image={publicMediaAsset("illustrations/hub-quiz.png")}
         imageAlt="Trophy, dartboard and winners podium"
       />
       <HubQuickLinks
