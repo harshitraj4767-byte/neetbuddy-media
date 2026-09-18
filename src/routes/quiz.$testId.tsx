@@ -280,6 +280,14 @@ function QuizPlayer() {
           if (res.ok) {
             const data = await res.json();
             if (Array.isArray(data.questions)) {
+              // The PHP fallback returns image fields in camelCase; keep them
+              // (as the snake_case names attachQuestionMedia expects) or the
+              // quiz renders every question without its picture.
+              const diagrams: Record<string, string[]> = {};
+              for (const q of data.questions) {
+                const ids = Array.isArray(q.diagramIds) ? q.diagramIds.map(String) : [];
+                if (ids.length) diagrams[String(q.id)] = ids;
+              }
               bank = {
                 questions: data.questions.map((q: any) => ({
                   id: String(q.id),
@@ -291,6 +299,8 @@ function QuizPlayer() {
                   marks_correct: Number(t.marks_correct ?? 4),
                   marks_wrong: Number(t.marks_wrong ?? -1),
                   explanation: q.explanation || null,
+                  question_image_url: q.questionImageUrl ?? q.question_image_url ?? null,
+                  explanation_image_url: q.explanationImageUrl ?? q.explanation_image_url ?? null,
                   subject_id: q.subjectId ? String(q.subjectId) : null,
                   chapter_id: q.chapterId ? String(q.chapterId) : null,
                   tag: q.tag || null,
@@ -299,6 +309,8 @@ function QuizPlayer() {
                 })),
                 subjects: {},
                 chapters: {},
+                diagrams,
+                optionImages: {},
               };
             }
           }
@@ -341,9 +353,12 @@ function QuizPlayer() {
       try {
         ordered = ordered.map((q) =>
           attachQuestionMedia(q, {
-            diagramUrls: (bank.diagrams[q.id] ?? []).map((id) => `/api/public/diagram/${id}`),
-            optionImageIndexes: bank.optionImages[q.id]
-              ? new Set(bank.optionImages[q.id])
+            // Optional chaining: the PHP fallback bank has no diagram /
+            // option-image maps, and a throw here used to strip the images
+            // off every question in the set.
+            diagramUrls: (bank?.diagrams?.[q.id] ?? []).map((id: string) => `/api/public/diagram/${id}`),
+            optionImageIndexes: bank?.optionImages?.[q.id]
+              ? new Set<number>(bank.optionImages[q.id])
               : undefined,
           }),
         );
