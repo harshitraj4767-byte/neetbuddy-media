@@ -13,25 +13,40 @@ $action = $_GET['action'] ?? $_POST['action'] ?? 'questions';
 $input = json_decode(file_get_contents('php://input'), true) ?? $_POST;
 
 if ($action === 'papers') {
+    $papers = [];
     try {
         $stmt = $pdo->query('SELECT id, ext_id, title, year, total_questions, duration_minutes FROM neet_pyq_papers ORDER BY year DESC, title ASC');
-        $papers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $papers = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     } catch (Throwable $e) {
-        $stmt = $pdo->query('SELECT DISTINCT year as year FROM qb_questions WHERE year IS NOT NULL ORDER BY year DESC');
-        $years = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $papers = [];
-        foreach ($years as $row) {
-            $yr = (int)($row['year'] ?? 0);
-            if ($yr > 0) {
+    }
+
+    // The paper table is missing OR has no rows on this host: build one paper per
+    // year that actually has questions, so the list is never empty. (Previously
+    // this fallback only ran when the query threw, so an empty table returned
+    // zero papers.)
+    if (!$papers) {
+        foreach (['neet_pyq_questions', 'qb_questions'] as $table) {
+            try {
+                $stmt = $pdo->query("SELECT year, COUNT(*) AS cnt FROM $table WHERE year IS NOT NULL AND year > 0 GROUP BY year ORDER BY year DESC");
+                $years = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+            } catch (Throwable $e) {
+                continue;
+            }
+            foreach ($years as $row) {
+                $yr = (int)($row['year'] ?? 0);
+                $cnt = (int)($row['cnt'] ?? 0);
+                if ($yr <= 0 || $cnt <= 0) continue;
                 $papers[] = [
                     'id' => 'pyq_paper_' . $yr,
                     'ext_id' => 'neet_' . $yr,
                     'title' => 'NEET ' . $yr . ' Official Paper',
                     'year' => $yr,
-                    'total_questions' => 180,
-                    'duration_minutes' => 180
+                    'total_questions' => min($cnt, 200),
+                    'duration_minutes' => 180,
                 ];
             }
+            if ($papers) break;
         }
     }
     nb_json(['papers' => $papers, 'count' => count($papers)]);
@@ -233,41 +248,6 @@ if ($action === 'paper_questions') {
     nb_json(['questions' => $rows, 'count' => count($rows)]);
 }
 
-// Default action: query qb_questions by filters
-$subjectId = $_GET['subject_id'] ?? $input['subject_id'] ?? null;
-$chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? null;
-$year = $_GET['year'] ?? $input['year'] ?? null;
-$limit = min((int)($_GET['limit'] ?? $input['limit'] ?? 50), 200);
-
-$where = ['(year IS NOT NULL)'];
-$params = [];
-
-if ($subjectId) {
-    $where[] = 'subject_id = :sid';
-    $params[':sid'] = $subjectId;
-}
-if ($chapterId) {
-    $where[] = 'chapter_id = :cid';
-    $params[':cid'] = $chapterId;
-}
-if ($year) {
-    $where[] = 'year = :yr';
-    $params[':yr'] = (int)$year;
-}
-
-$sql = 'SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' ORDER BY year DESC, id ASC LIMIT ' . $limit;
-$stmt = $pdo->prepare($sql);
-$stmt->execute($params);
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($rows as &$r) {
-    if (isset($r['options']) && is_string($r['options'])) {
-        $r['options'] = json_decode($r['options'], true) ?: $r['options'];
-    }
-}
-
-nb_json(['questions' => $rows, 'count' => count($rows)]);
-
 if ($action === 'attempts') {
     if (!$userId) {
         nb_json(['attempts' => []]);
@@ -317,3 +297,39 @@ if ($action === 'save_paper_attempt') {
         nb_fail($e->getMessage(), 500);
     }
 }
+
+
+// Default action: query qb_questions by filters
+$subjectId = $_GET['subject_id'] ?? $input['subject_id'] ?? null;
+$chapterId = $_GET['chapter_id'] ?? $input['chapter_id'] ?? null;
+$year = $_GET['year'] ?? $input['year'] ?? null;
+$limit = min((int)($_GET['limit'] ?? $input['limit'] ?? 50), 200);
+
+$where = ['(year IS NOT NULL)'];
+$params = [];
+
+if ($subjectId) {
+    $where[] = 'subject_id = :sid';
+    $params[':sid'] = $subjectId;
+}
+if ($chapterId) {
+    $where[] = 'chapter_id = :cid';
+    $params[':cid'] = $chapterId;
+}
+if ($year) {
+    $where[] = 'year = :yr';
+    $params[':yr'] = (int)$year;
+}
+
+$sql = 'SELECT * FROM qb_questions WHERE ' . implode(' AND ', $where) . ' ORDER BY year DESC, id ASC LIMIT ' . $limit;
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($rows as &$r) {
+    if (isset($r['options']) && is_string($r['options'])) {
+        $r['options'] = json_decode($r['options'], true) ?: $r['options'];
+    }
+}
+
+nb_json(['questions' => $rows, 'count' => count($rows)]);
