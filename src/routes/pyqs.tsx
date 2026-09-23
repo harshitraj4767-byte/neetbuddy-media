@@ -11,6 +11,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PyqRichText } from "@/components/pyq-rich-text";
+import { attachQuestionMedia } from "@/lib/question-media";
 import { LoadingScreen } from "@/components/loading-screen";
 import { useForceLightMode } from "@/hooks/use-force-light";
 
@@ -277,6 +278,107 @@ function EmptyBlock({ label }: { label: string }) {
   );
 }
 
+// ---------------- Row normalizer ----------------
+
+const OPTION_KEYS = ["A", "B", "C", "D", "E", "F"];
+
+function optionText(raw: unknown): string {
+  if (typeof raw === "string") return raw;
+  if (raw == null) return "";
+  if (typeof raw !== "object") return String(raw);
+  const o = raw as Record<string, unknown>;
+  return String(o["text"] ?? o["html"] ?? o["value"] ?? o["option"] ?? o["label"] ?? "");
+}
+
+function optionImage(raw: unknown): string | null {
+  if (!raw || typeof raw !== "object") return null;
+  const o = raw as Record<string, unknown>;
+  const url = o["image"] ?? o["image_url"] ?? o["imageUrl"] ?? o["img"];
+  return url ? String(url) : null;
+}
+
+/** Options arrive as a JSON string, an array, or a keyed object depending on the source. */
+function rawOptionList(raw: unknown): unknown[] {
+  let parsed: unknown = raw;
+  if (typeof parsed === "string") {
+    try {
+      parsed = JSON.parse(parsed);
+    } catch {
+      return [];
+    }
+  }
+  if (Array.isArray(parsed)) return parsed;
+  if (parsed && typeof parsed === "object") return Object.values(parsed as Record<string, unknown>);
+  return [];
+}
+
+/**
+ * Correct answers come as a letter ("B"), a 1-based option number, or a
+ * 0-based `correct_index`. Everything is normalized to option keys (A/B/C/D)
+ * so scoring and review can compare against `Option.key`.
+ */
+function correctKeys(q: any, count: number): string[] {
+  const zeroBased = q?.correct_index ?? q?.correctIndex;
+  const raw =
+    q?.correct ?? q?.correct_option ?? q?.correct_answer ?? q?.answer ?? zeroBased;
+  const isZeroBased =
+    (q?.correct ?? q?.correct_option ?? q?.correct_answer ?? q?.answer) == null &&
+    zeroBased != null;
+  const list = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string" && raw.includes(",")
+      ? raw.split(",")
+      : [raw];
+  const keys: string[] = [];
+  for (const entry of list) {
+    if (entry === null || entry === undefined || entry === "") continue;
+    const s = String(entry).trim();
+    if (/^[A-Fa-f]$/.test(s)) {
+      const key = s.toUpperCase();
+      if (!keys.includes(key)) keys.push(key);
+      continue;
+    }
+    const n = Number(s);
+    if (!Number.isFinite(n)) continue;
+    const idx = isZeroBased ? n : n - 1;
+    const key = OPTION_KEYS[idx];
+    if (key && idx < count && !keys.includes(key)) keys.push(key);
+  }
+  return keys;
+}
+
+function normalizePyqRow(q: any, idx: number, paper: Paper): PYQ {
+  const rawOpts = rawOptionList(q?.options);
+  const texts = rawOpts.map(optionText);
+  const images = rawOpts.map(optionImage);
+  const withMedia = attachQuestionMedia({
+    id: String(q?.id ?? idx),
+    text: String(q?.text ?? q?.question_text ?? q?.question_html ?? ""),
+    explanation: String(q?.explanation ?? ""),
+    options: texts,
+    subject_id: q?.subject_id ?? null,
+    chapter_id: q?.chapter_id ?? null,
+    question_image_url: q?.question_image_url ?? q?.questionImageUrl ?? null,
+    explanation_image_url: q?.explanation_image_url ?? q?.explanationImageUrl ?? null,
+  });
+  const finalTexts = withMedia.options ?? texts;
+  return {
+    id: String(q?.id ?? idx),
+    question_no: Number(q?.question_no ?? q?.question_order ?? idx + 1),
+    year: q?.year ? Number(q.year) : paper.year,
+    subject: q?.subject || q?.subject_name || "General",
+    chapter: q?.chapter || q?.chapter_name || "",
+    text: withMedia.text || "",
+    options: finalTexts.map((text, i) => ({
+      key: OPTION_KEYS[i] ?? String(i + 1),
+      text,
+      image: images[i] ?? null,
+    })),
+    correct: correctKeys(q, finalTexts.length),
+    explanation: withMedia.explanation || "",
+  };
+}
+
 // ---------------- CBT Runner ----------------
 
 type Response = { answer?: string; visited: boolean; markedForReview: boolean };
@@ -354,21 +456,7 @@ function PyqCbtRunner({ paper, onExit }: { paper: Paper; onExit: () => void }) {
           } catch {}
         }
 
-        const rows: PYQ[] = rawList.map((q: any, idx: number) => ({
-          id: String(q.id),
-          question_no: Number(q.question_no ?? q.question_order ?? idx + 1),
-          year: q.year ? Number(q.year) : paper.year,
-          subject: q.subject || q.subject_name || "General",
-          chapter: q.chapter || q.chapter_name || "",
-          text: q.text || q.question_text || q.question_html || "",
-          options: Array.isArray(q.options)
-            ? q.options.map((opt: any) => typeof opt === "string" ? opt : String(opt?.text || opt?.html || ""))
-            : typeof q.options === "object" && q.options !== null
-            ? Object.values(q.options).map(String)
-            : [],
-          correct: String(q.correct ?? q.correct_option ?? q.correct_index ?? "1"),
-          explanation: q.explanation || "",
-        }));
+        const rows: PYQ[] = rawList.map((q: any, idx: number) => normalizePyqRow(q, idx, paper));
         setQuestions(rows);
         if (rows.length) {
           setResponses({ 0: { visited: true, markedForReview: false } });
