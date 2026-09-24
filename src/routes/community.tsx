@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Users, MessageSquare, Send, ExternalLink, MessageCircle, GraduationCap, Info } from "lucide-react";
+import { MessageSquare, Send, MessageCircle, GraduationCap, Info } from "lucide-react";
 
 export const Route = createFileRoute("/community")({
   head: () => ({ meta: [{ title: "Our Community — Neet Buddy" }] }),
@@ -23,11 +22,6 @@ function CommunityPage() {
               <div className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">New</div>
               <div className="mt-1 text-lg font-extrabold leading-tight">WhatsApp Channel</div>
               <div className="mt-1 text-sm text-foreground/70">Get daily DPPs, mock alerts and important NEET updates straight on WhatsApp.</div>
-              <Button asChild className="mt-3 bg-emerald-600 text-white hover:bg-emerald-700">
-                <a href="https://whatsapp.com/channel/0029VbBJW235a246vKXJyo3T" target="_blank" rel="noopener noreferrer">
-                  Join channel <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
-                </a>
-              </Button>
             </div>
           </CardContent>
         </Card>
@@ -42,9 +36,6 @@ function CommunityPage() {
               <div className="text-base font-bold">NEET Mentorship — Telegram</div>
               <div className="mt-1 text-sm text-foreground/70">Personalized mentorship, strategy, and doubt solving with Mohd Akmal &amp; the Neet Buddy team.</div>
             </div>
-            <Button asChild className="bg-gradient-primary">
-              <a href="https://t.me/neetmentorship4" target="_blank" rel="noopener noreferrer">Join mentorship <ExternalLink className="ml-1.5 h-3.5 w-3.5" /></a>
-            </Button>
           </CardContent>
         </Card>
 
@@ -58,9 +49,6 @@ function CommunityPage() {
               <div className="text-base font-bold">Founder — Sanskar</div>
               <div className="mt-1 text-sm text-foreground/70">Personal updates &amp; study tips from co-founder Sanskar Jaiswal.</div>
             </div>
-            <Button asChild variant="outline" className="border-amber-400 text-amber-700 hover:bg-amber-50 dark:text-amber-300 dark:hover:bg-amber-500/10">
-              <a href="https://t.me/sanskar279" target="_blank" rel="noopener noreferrer">Follow @sanskar279 <ExternalLink className="ml-1.5 h-3.5 w-3.5" /></a>
-            </Button>
           </CardContent>
         </Card>
 
@@ -74,9 +62,6 @@ function CommunityPage() {
               <div className="text-base font-bold">Founder — Mohd Akmal</div>
               <div className="mt-1 text-sm text-foreground/70">MBBS mentor · 30 → 655 in 9 months. Follow for strategy &amp; motivation.</div>
             </div>
-            <Button asChild variant="outline" className="border-fuchsia-400 text-fuchsia-700 hover:bg-fuchsia-50 dark:text-fuchsia-300 dark:hover:bg-fuchsia-500/10">
-              <a href="https://t.me/akmal_mbbs" target="_blank" rel="noopener noreferrer">Follow @akmal_mbbs <ExternalLink className="ml-1.5 h-3.5 w-3.5" /></a>
-            </Button>
           </CardContent>
         </Card>
 
@@ -89,9 +74,6 @@ function CommunityPage() {
             <div className="flex-1">
               <div className="text-sm font-semibold">Meet the founders</div>
               <p className="mt-1 text-sm text-muted-foreground">Learn the story behind Neet Buddy and the team building it.</p>
-              <Button asChild variant="outline" className="mt-3">
-                <Link to="/about">About Neet Buddy →</Link>
-              </Button>
             </div>
           </CardContent>
         </Card>

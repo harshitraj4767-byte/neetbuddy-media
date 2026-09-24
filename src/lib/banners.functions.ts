@@ -30,13 +30,14 @@ export type BannerRow = {
 
 /** Public: only active banners, ordered for the dashboard slider. */
 export const listActiveBanners = createServerFn({ method: "GET" }).handler(async () => {
-  const { data } = await (supabaseAdmin as any)
-    .from("dashboard_banners")
-    .select("id,title,image_url,image_url_dark,link_url,sort_order,active")
-    .eq("active", true)
-    .order("sort_order", { ascending: true })
-    .order("created_at", { ascending: false });
-  return (data ?? []) as BannerRow[];
+  const { query } = await import("@/lib/db/mysql.server");
+  const rows = await query<BannerRow & { active: boolean | number }>(
+    `SELECT id, title, image_url, image_url_dark, link_url, sort_order, active
+       FROM dashboard_banners
+      WHERE active = 1
+      ORDER BY sort_order ASC, created_at DESC`,
+  );
+  return rows.map((row) => ({ ...row, active: Boolean(row.active) }));
 });
 
 /** Admin: every banner, active or not. */
@@ -55,7 +56,7 @@ export const adminListBanners = createServerFn({ method: "GET" })
 
 export const adminUpsertBanner = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .validator((d) =>
+  .inputValidator((d) =>
     z
       .object({
         id: z.string().uuid().optional(),
@@ -98,7 +99,7 @@ export const adminUpsertBanner = createServerFn({ method: "POST" })
 
 export const adminDeleteBanner = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .validator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { error } = await (supabaseAdmin as any)
@@ -116,7 +117,7 @@ export const adminDeleteBanner = createServerFn({ method: "POST" })
  */
 export const adminCreateBannerUploadUrl = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .validator((d) => z.object({ filename: z.string().min(1).max(160) }).parse(d))
+  .inputValidator((d) => z.object({ filename: z.string().min(1).max(160) }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const ext = (data.filename.split(".").pop() ?? "jpg").toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";

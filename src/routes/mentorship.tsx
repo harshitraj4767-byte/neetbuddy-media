@@ -8,12 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import {
-  GraduationCap, MessageCircle, Check, Sparkles, Trophy, ArrowRight,
+  GraduationCap, Check, Sparkles, Trophy, ArrowRight,
   Star, ShieldCheck, Users, Clock, Loader2, Tag, X,
 } from "lucide-react";
-import { mediaAsset } from "@/lib/media-assets";
-
-const akmalImage = mediaAsset("src/assets/akmal.jpg");
+import akmalImage from "@/assets/akmal.jpg";
 import { listFeaturedSelections } from "@/lib/selections.functions";
 import {
   previewMentorshipCoupon,
@@ -34,9 +32,6 @@ export const Route = createFileRoute("/mentorship")({
   }),
   component: MentorshipPurchasePage,
 });
-
-// WhatsApp redirect number for payment confirmation.
-const WHATSAPP_NUMBER = "919720317761";
 
 type PlanKey = "1m" | "6m" | "neet";
 const PLANS: { key: PlanKey; label: string; price: number; duration: string; tag: string; highlight?: boolean }[] = [
@@ -80,47 +75,6 @@ function loadRazorpayScript(): Promise<boolean> {
     s.onerror = () => resolve(false);
     document.body.appendChild(s);
   });
-}
-
-function whatsappRedirect(
-  plan: typeof PLANS[number],
-  paymentId: string | null,
-  orderId: string | null,
-  purchased: boolean,
-  amountPaid?: number,
-  couponCode?: string | null,
-  discount?: number,
-) {
-  const now = new Date();
-  const when = now.toLocaleString("en-IN", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-  const paid = amountPaid ?? plan.price;
-  const lines = purchased
-    ? [
-        "Hi Neet Buddy team,",
-        "",
-        `I have purchased the Mentorship Program — ${plan.label} plan.`,
-        `Amount paid: ₹${paid.toLocaleString("en-IN")}`,
-        couponCode ? `Coupon: ${couponCode} (saved ₹${(discount ?? 0).toLocaleString("en-IN")})` : "",
-        `Access: ${plan.duration}`,
-        `Payment time: ${when}`,
-        orderId ? `Order ID: ${orderId}` : "",
-        paymentId ? `Payment ID: ${paymentId}` : "",
-        "",
-        "Please activate my mentorship and share the next steps.",
-      ]
-    : [
-        "Hi Neet Buddy team,",
-        "",
-        `I want to know about the Mentorship Program — ${plan.label} plan (₹${plan.price.toLocaleString("en-IN")}).`,
-        "Could you share the details and help me get started?",
-      ];
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    lines.filter(Boolean).join("\n"),
-  )}`;
-  window.open(url, "_blank", "noopener");
 }
 
 function MentorshipPurchasePage() {
@@ -181,11 +135,10 @@ function MentorshipPurchasePage() {
               plan: selected,
               coupon_id: applied?.coupon_id ?? null,
             } });
-            toast.success("Mentorship activated — opening WhatsApp");
+            toast.success("Mentorship activated");
           } catch (e: any) {
-            toast.error(e?.message ?? "Verification failed — WhatsApp will still open");
+            toast.error(e?.message ?? "Verification failed");
           }
-          whatsappRedirect(plan, resp.razorpay_payment_id, resp.razorpay_order_id, true, order.finalAmount, applied?.code ?? null, applied?.discount ?? 0);
         },
         modal: {
           ondismiss: () => setBusy(false),
@@ -197,10 +150,6 @@ function MentorshipPurchasePage() {
     } finally {
       setBusy(false);
     }
-  }
-
-  function whatsappOnly() {
-    whatsappRedirect(plan, null, null, false);
   }
 
   return (
@@ -354,15 +303,11 @@ function MentorshipPurchasePage() {
                     {busy ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : null}
                     Pay ₹{payable.toLocaleString("en-IN")} with Razorpay
                   </Button>
-                  <Button variant="outline" onClick={whatsappOnly}>
-                    <MessageCircle className="mr-1 h-4 w-4" /> Ask on WhatsApp
-                  </Button>
                 </div>
               </div>
 
               <p className="text-[11px] text-muted-foreground">
-                Secure payments by Razorpay. After payment, you'll be redirected to WhatsApp
-                (+91 97203 17761) with your payment and plan details so we can activate your mentorship the same day.
+                Secure payments by Razorpay. After payment, your mentorship access will be activated from your account.
               </p>
             </CardContent>
           </Card>
