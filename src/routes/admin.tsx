@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { 
   Users, 
   HelpCircle, 
@@ -16,7 +16,11 @@ import {
   BarChart2,
   ShieldCheck
 } from "lucide-react";
-import { useAuth } from "@/lib/auth";
+import { useAuth } from "@/hooks/use-auth";
+
+export const Route = createFileRoute("/admin")({
+  component: AdminPage,
+});
 
 interface AdminStats {
   users_count: number;
