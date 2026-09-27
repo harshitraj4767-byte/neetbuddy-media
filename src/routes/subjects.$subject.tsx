@@ -5,25 +5,41 @@ import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, ChevronDown, Play, Atom, FlaskConical, Leaf, SlidersHorizontal } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import {
+  Loader2,
+  ChevronDown,
+  Play,
+  Atom,
+  FlaskConical,
+  Leaf,
+  SlidersHorizontal,
+  Search,
+  Dices,
+  Clock,
+  Sparkles,
+  BookOpen,
+  RotateCcw,
+  CheckCircle2,
+  Trophy,
+  X,
+  Layers,
+} from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
 import { TopicPicker, TopicPickerLoading, useTopicTree } from "@/components/topic-picker";
 import { countSelectedTopics, toTopicFilter } from "@/lib/topic-tree";
 import { mixQuestions, type MixableQuestion } from "@/lib/question-mix";
-import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
+import type { QuizMode } from "@/components/quiz-mode-picker";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { CheckCircle2, RotateCcw, Eye } from "lucide-react";
 import { HubHero, type TileAccent } from "@/components/nav-tiles";
 import {
   getSubjectChapters,
   getChapterQuestionPool,
-  getPracticeSetStatuses,
   createPracticeTest,
 } from "@/lib/practice-mysql.functions";
 
@@ -34,10 +50,6 @@ export const Route = createFileRoute("/subjects/$subject")({
 
 type Chapter = { id: string; name: string; order_index: number; q_count?: number };
 
-// These values are stored EXACTLY like this in qb_questions — the old filters
-// sent lowercase slugs (`easy`, `assertion_reason`) against a column holding
-// `Easy` / `Assertion and Reason`, which is why every filtered quiz came back
-// empty.
 const DIFFICULTIES = ["Easy", "Medium", "Hard", "Very Hard"] as const;
 const QTYPES = [
   { value: "MCQ", label: "Standard MCQ" },
@@ -80,12 +92,6 @@ const META: Record<
 
 type Filters = { difficulty: string; qtype: string };
 
-
-
-/**
- * Pull every matching question row (id + the fields the mixer needs), paging
- * past PostgREST's 1000-row cap.
- */
 async function fetchChapterQuestions(
   chapterId: string,
   filters: Filters,
@@ -107,25 +113,33 @@ async function fetchChapterQuestions(
   }
 }
 
+// Fisher-Yates array shuffle for true random question distribution
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function SubjectPage() {
   const { subject } = Route.useParams();
   const { user, loading } = useAuth();
   const nav = useNavigate();
   const [chapters, setChapters] = useState<Chapter[] | null>(null);
   const [launching, setLaunching] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const [difficulty, setDifficulty] = useState<string>("any");
   const [qtype, setQType] = useState<string>("any");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [excluded, setExcluded] = useState<Set<string>>(new Set());
-  const [modePick, setModePick] = useState<Chapter | null>(null);
-  const [cbtPlan, setCbtPlan] = useState<CbtPlan | null>(null);
+  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
 
   useEffect(() => {
     if (!loading && !user) nav({ to: "/login" });
   }, [user, loading, nav]);
 
-  // Chapters (and the question count matching the current filters) come straight
-  // from the live question bank.
   useEffect(() => {
     let cancelled = false;
     setChapters(null);
@@ -146,10 +160,9 @@ function SubjectPage() {
     };
   }, [subject, difficulty, qtype]);
 
-  // Sub-topic tree for whichever chapter is currently expanded / launching.
   const treeChapterIds = useMemo(
-    () => (expanded ? [expanded] : modePick ? [modePick.id] : []),
-    [expanded, modePick],
+    () => (expanded ? [expanded] : selectedChapter ? [selectedChapter.id] : []),
+    [expanded, selectedChapter],
   );
   const { tree, loading: treeLoading } = useTopicTree(treeChapterIds);
   const topicStats = countSelectedTopics(tree, excluded);
@@ -162,10 +175,47 @@ function SubjectPage() {
     });
   }, []);
 
-  const startChapter = async (chapter: Chapter, mode: QuizMode) => {
+  const filteredChapters = useMemo(() => {
+    if (!chapters) return [];
+    if (!searchQuery.trim()) return chapters;
+    const q = searchQuery.toLowerCase().trim();
+    return chapters.filter((c) => c.name.toLowerCase().includes(q));
+  }, [chapters, searchQuery]);
+
+  const activeFiltersCount =
+    (difficulty !== "any" ? 1 : 0) +
+    (qtype !== "any" ? 1 : 0) +
+    (searchQuery.trim() ? 1 : 0) +
+    (excluded.size > 0 ? 1 : 0);
+
+  const resetFilters = () => {
+    setDifficulty("any");
+    setQType("any");
+    setSearchQuery("");
+    setExcluded(new Set());
+  };
+
+  const handleRandomChapter = () => {
+    const pool = (filteredChapters.length ? filteredChapters : chapters ?? []).filter(
+      (c) => (c.q_count ?? 0) > 0,
+    );
+    if (!pool.length) {
+      toast.error("No chapters with available questions found.");
+      return;
+    }
+    const picked = pool[Math.floor(Math.random() * pool.length)];
+    setSelectedChapter(picked);
+    toast.success(`Selected "${picked.name}"!`);
+  };
+
+  const startPractice = async (
+    chapter: Chapter,
+    mode: QuizMode,
+    options: { count: number; timerMin: number },
+  ) => {
     if (!user) return;
     setLaunching(chapter.id);
-    setModePick(null);
+    setSelectedChapter(null);
     try {
       const topicFilter = toTopicFilter(tree, excluded);
       if (!topicFilter.everything && !topicFilter.fullTopicIds.length && !topicFilter.subtopicIds.length) {
@@ -177,9 +227,12 @@ function SubjectPage() {
         toast.error("No questions match the selected filters.");
         return;
       }
-      // Rich formats first, rotating between them and woven with one-liners.
-      const qids = mixQuestions(rows, `${chapter.id}:${difficulty}:${qtype}`).map((r) => r.id);
 
+      // Mix and randomly shuffle questions for a fresh randomized session every time
+      const mixed = mixQuestions(rows, `${chapter.id}:${difficulty}:${qtype}:${Date.now()}`).map((r) => r.id);
+      const shuffled = shuffleArray(mixed);
+      const targetCount = options.count > 0 ? Math.min(options.count, shuffled.length) : shuffled.length;
+      const qids = shuffled.slice(0, targetCount);
 
       const filterTag = [
         difficulty !== "any" ? difficulty : null,
@@ -188,26 +241,19 @@ function SubjectPage() {
       ]
         .filter(Boolean)
         .join(", ");
-      const title = `${subject} · ${chapter.name}${filterTag ? ` (${filterTag})` : ""}`;
 
-      // CBT mode: a chapter can hold hundreds of questions, which nobody can
-      // sit through in one timed paper. Split them into fixed-size sets and
-      // let the student pick which set to attempt. Each set is submitted and
-      // scored on its own, exactly like a mini NTA paper.
-      if (mode === "cbt") {
-        setCbtPlan({ chapter, qids, baseTitle: title });
-        return;
-      }
-
-
+      const timerTag = options.timerMin > 0 ? `${options.timerMin}m` : "Untimed";
+      const title = `${subject} · ${chapter.name} (${qids.length} Qs · ${timerTag}${filterTag ? ` · ${filterTag}` : ""})`;
 
       const { testId } = await createPracticeTest({
         data: {
           title,
-          questionIds: qids.slice(0, 30),
+          questionIds: qids,
           difficulty: difficulty !== "any" ? difficulty : "medium",
+          durationMin: options.timerMin,
         },
       });
+
       nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Could not launch quiz");
@@ -218,119 +264,229 @@ function SubjectPage() {
 
   const meta = META[subject] ?? META.Physics;
   const Icon = meta.icon;
-  const filtersActive = difficulty !== "any" || qtype !== "any" || excluded.size > 0;
 
   return (
     <PageShell>
       <HubHero
         variant="banner"
         compact
-        eyebrow="Subject"
+        eyebrow="Subject Practice"
         title={subject}
-        highlight="Chapter practice"
+        highlight="Chapter Quiz"
         description={meta.blurb}
         Icon={Icon}
         accent={meta.accent}
         image={meta.image}
         imageAlt={meta.alt}
       >
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/70 px-2 py-1 text-[10px] font-semibold shadow-sm backdrop-blur">
-          <Icon className="h-3 w-3" strokeWidth={2.2} />
-          {chapters?.length ?? 0} chapters
-        </span>
-      </HubHero>
-
-      {/* Consolidated, single-row compact filter bar */}
-      <div className="mb-3 flex items-center gap-2 rounded-xl border border-border/70 bg-card/70 px-2 py-1.5 shadow-sm backdrop-blur-xl">
-        <SlidersHorizontal className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
-        <Select value={difficulty} onValueChange={setDifficulty}>
-          <SelectTrigger className="h-8 min-w-0 flex-1 rounded-lg border-0 bg-secondary/60 px-2 text-xs">
-            <SelectValue placeholder="Difficulty" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="any">Any difficulty</SelectItem>
-            {DIFFICULTIES.map((d) => (
-              <SelectItem key={d} value={d}>{d}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={qtype} onValueChange={setQType}>
-          <SelectTrigger className="h-8 min-w-0 flex-1 rounded-lg border-0 bg-secondary/60 px-2 text-xs">
-            <SelectValue placeholder="Type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="any">Any type</SelectItem>
-            {QTYPES.map((t) => (
-              <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        {filtersActive && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-background/80 px-2.5 py-1 text-xs font-semibold shadow-xs backdrop-blur">
+            <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
+            {chapters?.length ?? 0} chapters
+          </span>
           <Button
             size="sm"
-            variant="ghost"
-            className="h-8 shrink-0 px-2 text-[11px]"
-            onClick={() => { setDifficulty("any"); setQType("any"); setExcluded(new Set()); }}
+            variant="outline"
+            onClick={handleRandomChapter}
+            disabled={!chapters || chapters.length === 0}
+            className="h-7 gap-1.5 rounded-full border-primary/30 bg-background/80 px-3 text-xs font-semibold text-primary hover:bg-primary/10 shadow-xs backdrop-blur"
           >
-            Reset
+            <Dices className="h-3.5 w-3.5" />
+            Random Chapter
           </Button>
-        )}
+        </div>
+      </HubHero>
+
+      {/* Modern Filter & Selector Bar */}
+      <div className="mb-4 rounded-2xl border border-border/80 bg-card/80 p-3 sm:p-4 shadow-xs backdrop-blur-md space-y-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          {/* Chapter Search */}
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={`Search ${subject} chapters...`}
+              className="h-9 pl-9 pr-8 text-xs sm:text-sm bg-background/70 rounded-xl border-border/60"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* Quick Random Action */}
+          <Button
+            size="sm"
+            onClick={handleRandomChapter}
+            disabled={!chapters || chapters.length === 0}
+            className="h-9 gap-1.5 rounded-xl bg-gradient-primary px-3.5 text-xs font-semibold shadow-xs shrink-0"
+          >
+            <Dices className="h-4 w-4" />
+            <span>Random Quiz</span>
+          </Button>
+        </div>
+
+        {/* Filters Row */}
+        <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground shrink-0">
+            <SlidersHorizontal className="h-3.5 w-3.5" />
+            <span>Filters:</span>
+          </div>
+
+          {/* Difficulty Selector */}
+          <Select value={difficulty} onValueChange={setDifficulty}>
+            <SelectTrigger className="h-8 min-w-[125px] rounded-lg border-border/60 bg-secondary/60 px-2.5 text-xs font-medium">
+              <SelectValue placeholder="Difficulty" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="any">Any difficulty</SelectItem>
+              {DIFFICULTIES.map((d) => (
+                <SelectItem key={d} value={d}>{d}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Question Type Selector */}
+          <Select value={qtype} onValueChange={setQType}>
+            <SelectTrigger className="h-8 min-w-[135px] rounded-lg border-border/60 bg-secondary/60 px-2.5 text-xs font-medium">
+              <SelectValue placeholder="Question Type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="any">Any type</SelectItem>
+              {QTYPES.map((t) => (
+                <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {activeFiltersCount > 0 && (
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-8 gap-1 px-2.5 text-xs text-muted-foreground hover:text-foreground"
+              onClick={resetFilters}
+            >
+              <RotateCcw className="h-3 w-3" />
+              Reset ({activeFiltersCount})
+            </Button>
+          )}
+
+          {excluded.size > 0 && (
+            <Badge variant="outline" className="text-[10px] ml-auto">
+              {topicStats.selected}/{topicStats.total} sub-topics
+            </Badge>
+          )}
+        </div>
       </div>
 
-      {filtersActive && excluded.size > 0 && (
-        <div className="mb-3 flex flex-wrap items-center gap-1.5">
-          <Badge variant="outline" className="text-[10px]">{topicStats.selected}/{topicStats.total} topics</Badge>
-        </div>
-      )}
+      {/* Chapters Count & Feedback */}
+      <div className="mb-2.5 flex items-center justify-between text-xs text-muted-foreground px-1">
+        <span>
+          Showing {filteredChapters.length} of {chapters?.length ?? 0} chapters
+        </span>
+      </div>
 
-
+      {/* Chapters Listing */}
       {chapters === null ? (
-        <Loader2 className="h-5 w-5 animate-spin text-primary" />
-      ) : chapters.length === 0 ? (
-        <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">No chapters yet.</CardContent></Card>
+        <div className="flex flex-col items-center justify-center p-12 text-center text-muted-foreground">
+          <Loader2 className="h-6 w-6 animate-spin text-primary mb-2" />
+          <span className="text-xs">Loading {subject} chapters...</span>
+        </div>
+      ) : filteredChapters.length === 0 ? (
+        <Card className="rounded-2xl border-dashed">
+          <CardContent className="p-10 text-center space-y-3">
+            <div className="text-sm font-semibold">No chapters match your filters</div>
+            <p className="text-xs text-muted-foreground">
+              Try adjusting your search query, difficulty, or question type filters.
+            </p>
+            {activeFiltersCount > 0 && (
+              <Button size="sm" variant="outline" onClick={resetFilters} className="rounded-xl text-xs">
+                Reset all filters
+              </Button>
+            )}
+          </CardContent>
+        </Card>
       ) : (
         <div className="space-y-2.5">
-          {chapters.map((c, i) => {
+          {filteredChapters.map((c, i) => {
             const isOpen = expanded === c.id;
+            const qCount = c.q_count ?? 0;
             return (
-              <div key={c.id} className="rounded-xl border border-border bg-card shadow-sm transition hover:border-primary/40">
-                <div className="flex items-center gap-3 p-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-muted-foreground">
+              <div
+                key={c.id}
+                className={cn(
+                  "rounded-2xl border border-border bg-card shadow-xs transition hover:border-primary/40 hover:shadow-sm",
+                  isOpen && "ring-1 ring-primary/20",
+                )}
+              >
+                <div className="flex items-center gap-3 p-3.5 sm:p-4">
+                  {/* Chapter number pill */}
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-secondary/80 text-xs sm:text-sm font-bold text-foreground">
                     {i + 1}
                   </span>
-                  <span className="h-8 w-px bg-border" />
+
+                  {/* Chapter Details */}
                   <button
-                    onClick={() => setModePick(c)}
-                    disabled={!c.q_count || launching === c.id}
-                    className="min-w-0 flex-1 text-left disabled:opacity-50"
+                    onClick={() => setSelectedChapter(c)}
+                    disabled={qCount === 0 || launching === c.id}
+                    className="min-w-0 flex-1 text-left group disabled:opacity-50"
                   >
-                    <div className="text-sm font-semibold leading-tight">{c.name}</div>
-                    <div className="mt-0.5 text-xs text-muted-foreground">
-                      {c.q_count === undefined ? "Counting…" : `${c.q_count} Questions`}
-                      {filtersActive && c.q_count !== undefined && " (filtered)"}
+                    <div className="text-sm sm:text-base font-semibold leading-tight text-foreground group-hover:text-primary transition-colors">
+                      {c.name}
+                    </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+                      <span className="inline-flex items-center gap-1 font-medium">
+                        <BookOpen className="h-3 w-3" />
+                        {c.q_count === undefined ? "Counting..." : `${c.q_count} Questions`}
+                      </span>
+                      {activeFiltersCount > 0 && c.q_count !== undefined && (
+                        <span className="text-[11px] text-primary/80 font-medium">(filtered)</span>
+                      )}
                     </div>
                   </button>
+
+                  {/* Subtopics Toggle */}
                   <Button
                     size="sm"
                     variant="ghost"
-                    className="h-8 w-8 p-0"
+                    className="h-8 gap-1 px-2 text-xs text-muted-foreground hover:text-foreground"
                     aria-label={isOpen ? "Hide sub-topics" : "Choose sub-topics"}
-                    aria-expanded={isOpen}
                     onClick={() => setExpanded(isOpen ? null : c.id)}
                   >
-                    <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
+                    <Layers className="h-3.5 w-3.5 hidden sm:inline" />
+                    <span className="hidden sm:inline">Topics</span>
+                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", isOpen && "rotate-180")} />
                   </Button>
+
+                  {/* Start Practice Button */}
                   <Button
                     size="sm"
-                    className="bg-gradient-primary"
-                    disabled={!c.q_count || launching === c.id}
-                    onClick={() => setModePick(c)}
+                    className="h-8 sm:h-9 gap-1.5 rounded-xl bg-gradient-primary px-3 sm:px-4 text-xs font-semibold shadow-xs"
+                    disabled={qCount === 0 || launching === c.id}
+                    onClick={() => setSelectedChapter(c)}
                   >
-                    {launching === c.id ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />}
+                    {launching === c.id ? (
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    ) : (
+                      <>
+                        <Play className="h-3.5 w-3.5 fill-current" />
+                        <span className="hidden xs:inline">Practice</span>
+                      </>
+                    )}
                   </Button>
                 </div>
+
+                {/* Subtopic Filter Expansion */}
                 {isOpen && (
-                  <div className="border-t border-border px-4 py-3">
+                  <div className="border-t border-border/60 bg-muted/20 px-4 py-3 rounded-b-2xl">
+                    <div className="mb-2 text-xs font-semibold text-muted-foreground flex items-center justify-between">
+                      <span>Select Sub-topics to practice:</span>
+                    </div>
                     {treeLoading ? (
                       <TopicPickerLoading />
                     ) : (
@@ -348,26 +504,21 @@ function SubjectPage() {
         </div>
       )}
 
-      <QuizModePicker
-        open={!!modePick}
-        subtitle={modePick ? `${subject} · ${modePick.name}` : undefined}
-        onClose={() => setModePick(null)}
-        onPick={(m) => modePick && startChapter(modePick, m)}
-        busy={!!launching}
+      {/* Practice Configuration Modal with Randomizers */}
+      <PracticeConfigModal
+        chapter={selectedChapter}
+        subject={subject}
+        busy={launching !== null}
+        onClose={() => setSelectedChapter(null)}
+        onStart={(chapter, mode, opts) => startPractice(chapter, mode, opts)}
       />
 
-      <CbtSetPicker
-        plan={cbtPlan}
-        userId={user?.id ?? null}
-        difficulty={difficulty}
-        onClose={() => setCbtPlan(null)}
-      />
-
-
-
-      <div className="mt-6">
-        <Button asChild variant="ghost">
-          <Link to="/dashboard">← Back to dashboard</Link>
+      <div className="mt-8 flex items-center justify-between border-t border-border/40 pt-4">
+        <Button asChild variant="ghost" className="text-xs">
+          <Link to="/quiz/subjects">← Other Subjects</Link>
+        </Button>
+        <Button asChild variant="ghost" className="text-xs">
+          <Link to="/dashboard">Dashboard</Link>
         </Button>
       </div>
     </PageShell>
@@ -375,202 +526,358 @@ function SubjectPage() {
 }
 
 /* ------------------------------------------------------------------ */
-/* CBT sets                                                            */
+/* Practice Configuration Modal with Random Selectors                */
 /* ------------------------------------------------------------------ */
 
-// How many questions go into one CBT set. A chapter with 800 questions
-// becomes 800 / SET_SIZE separate timed papers.
-const CBT_SET_SIZE = 30;
-
-type CbtPlan = { chapter: Chapter; qids: string[]; baseTitle: string };
-type SetStatus = { attemptId: string; score: number | null; correct: number | null; total: number };
-
-function setTitle(baseTitle: string, index: number, total: number) {
-  return `${baseTitle} · CBT Set ${index + 1}/${total}`;
-}
-
-/**
- * Lets the student pick which chunk ("set") of a chapter to attempt in CBT
- * mode, and shows which sets they've already submitted. Each set is a normal
- * practice test, so its answers and score are saved on submit and appear in
- * the usual analysis page — same as subject-wise quiz mode.
- */
-function CbtSetPicker({
-  plan,
-  userId,
-  difficulty,
-  onClose,
-}: {
-  plan: CbtPlan | null;
-  userId: string | null;
-  difficulty: string;
+type PracticeConfigModalProps = {
+  chapter: Chapter | null;
+  subject: string;
+  busy: boolean;
   onClose: () => void;
-}) {
-  const nav = useNavigate();
-  const [statuses, setStatuses] = useState<Record<number, SetStatus>>({});
-  const [loadingSets, setLoadingSets] = useState(false);
-  const [starting, setStarting] = useState<number | null>(null);
+  onStart: (chapter: Chapter, mode: QuizMode, options: { count: number; timerMin: number }) => void;
+};
 
-  const totalSets = plan ? Math.max(1, Math.ceil(plan.qids.length / CBT_SET_SIZE)) : 0;
+const COUNT_PRESETS = [10, 20, 30, 45];
+const TIMER_PRESETS = [
+  { label: "Untimed", value: 0 },
+  { label: "10 min", value: 10 },
+  { label: "15 min", value: 15 },
+  { label: "30 min", value: 30 },
+  { label: "45 min", value: 45 },
+  { label: "60 min", value: 60 },
+];
 
-  useEffect(() => {
-    if (!plan || !userId) return;
-    setStatuses({});
-    setLoadingSets(true);
-    let cancelled = false;
-    (async () => {
-      const titles = Array.from({ length: totalSets }, (_, i) => setTitle(plan.baseTitle, i, totalSets));
-      try {
-        const statusMap = await getPracticeSetStatuses({ data: { titles } });
-        if (cancelled) return;
-        const next: Record<number, SetStatus> = {};
-        titles.forEach((title, idx) => {
-          const row = statusMap[title];
-          if (!row) return;
-          next[idx] = {
-            attemptId: String(row.attempt_id),
-            score: row.score == null ? null : Number(row.score),
-            correct: row.correct_count == null ? null : Number(row.correct_count),
-            total: Math.min(CBT_SET_SIZE, plan.qids.length - idx * CBT_SET_SIZE),
-          };
-        });
-        setStatuses(next);
-      } catch (e) {
-        console.warn("set status load failed:", e);
-      } finally {
-        if (!cancelled) setLoadingSets(false);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [plan?.baseTitle, userId, totalSets]);
-
-  async function launchSet(index: number) {
-    if (!plan || !userId || starting !== null) return;
-    setStarting(index);
-    try {
-      const slice = plan.qids.slice(index * CBT_SET_SIZE, (index + 1) * CBT_SET_SIZE);
-      const title = setTitle(plan.baseTitle, index, totalSets);
-      const { testId } = await createPracticeTest({
-        data: {
-          title,
-          questionIds: slice,
-          difficulty: difficulty !== "any" ? difficulty : "medium",
-        },
-      });
-      onClose();
-      nav({ to: "/quiz/$testId", params: { testId }, search: { mode: "cbt" } as never });
-    } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Could not start this set");
-    } finally {
-      setStarting(null);
-    }
-  }
-
+function PracticeConfigModal({ chapter, subject, busy, onClose, onStart }: PracticeConfigModalProps) {
   const isMobile = useIsMobile();
-  const title = "Choose a CBT set";
-  const description = plan
-    ? `${plan.qids.length} questions split into ${totalSets} timed sets of up to ${CBT_SET_SIZE}. Attempt one set at a time — your answers and score are saved when you submit.`
-    : "";
+  const maxPool = chapter?.q_count ?? 30;
 
-  const body = loadingSets ? (
-    <div className="flex justify-center py-6"><Loader2 className="h-5 w-5 animate-spin text-primary" /></div>
-  ) : (
-    <div className="grid gap-2 py-2">
-      {Array.from({ length: totalSets }, (_, i) => {
-        const from = i * CBT_SET_SIZE + 1;
-        const to = Math.min((i + 1) * CBT_SET_SIZE, plan?.qids.length ?? 0);
-        const done = statuses[i];
-        const isBusy = starting === i;
-        return (
-          <div
-            key={i}
+  const [count, setCount] = useState<number>(() => Math.min(20, Math.max(5, maxPool)));
+  const [customCountInput, setCustomCountInput] = useState<string>("");
+  const [isCustomCount, setIsCustomCount] = useState(false);
+
+  const [timer, setTimer] = useState<number>(15);
+  const [customTimerInput, setCustomTimerInput] = useState<string>("");
+  const [isCustomTimer, setIsCustomTimer] = useState(false);
+
+  const [mode, setMode] = useState<QuizMode>("quiz");
+
+  // Keep count bounded when chapter changes
+  useEffect(() => {
+    if (chapter) {
+      const initial = Math.min(20, Math.max(5, chapter.q_count ?? 30));
+      setCount(initial);
+      setIsCustomCount(false);
+      setCustomCountInput("");
+    }
+  }, [chapter]);
+
+  if (!chapter) return null;
+
+  const handleRollRandomCount = () => {
+    const minQ = 5;
+    const maxQ = Math.max(minQ, Math.min(chapter.q_count ?? 50, 60));
+    // Pick common intervals or a nice rounded number
+    const randomChoices = [10, 15, 20, 25, 30, 40, 50].filter((n) => n <= maxQ && n >= minQ);
+    const rolled = randomChoices.length
+      ? randomChoices[Math.floor(Math.random() * randomChoices.length)]
+      : Math.floor(Math.random() * (maxQ - minQ + 1)) + minQ;
+    setCount(rolled);
+    setIsCustomCount(false);
+    toast.success(`🎲 Rolled ${rolled} questions!`);
+  };
+
+  const handleRollRandomTimer = () => {
+    const timerChoices = [10, 15, 20, 30, 45];
+    const rolled = timerChoices[Math.floor(Math.random() * timerChoices.length)];
+    setTimer(rolled);
+    setIsCustomTimer(false);
+    toast.success(`🎲 Rolled ${rolled} minutes timer!`);
+  };
+
+  const handleCustomCountChange = (val: string) => {
+    setCustomCountInput(val);
+    const num = parseInt(val, 10);
+    if (!isNaN(num) && num > 0) {
+      setCount(Math.min(num, chapter.q_count ?? 999));
+    }
+  };
+
+  const handleCustomTimerChange = (val: string) => {
+    setCustomTimerInput(val);
+    const num = parseInt(val, 10);
+    if (!isNaN(num) && num >= 0) {
+      setTimer(num);
+    }
+  };
+
+  const content = (
+    <div className="space-y-5 py-2">
+      {/* Chapter Context Banner */}
+      <div className="rounded-xl bg-secondary/50 border border-border/60 p-3 flex items-center justify-between">
+        <div>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">{subject}</span>
+          <h4 className="text-sm font-semibold text-foreground line-clamp-1">{chapter.name}</h4>
+        </div>
+        <Badge variant="outline" className="text-xs bg-background/80 shrink-0">
+          {chapter.q_count ?? 0} Qs in pool
+        </Badge>
+      </div>
+
+      {/* 1. Questions Selector */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-1.5">
+            <BookOpen className="h-4 w-4 text-primary" />
+            <span>Number of Questions</span>
+          </label>
+          <span className="text-xs font-semibold text-primary">
+            {count} Questions
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+          {COUNT_PRESETS.map((n) => {
+            const disabled = (chapter.q_count ?? 0) < n;
+            const active = !isCustomCount && count === n;
+            return (
+              <button
+                key={n}
+                type="button"
+                disabled={disabled}
+                onClick={() => {
+                  setCount(n);
+                  setIsCustomCount(false);
+                }}
+                className={cn(
+                  "rounded-xl border p-2 text-xs font-semibold transition disabled:opacity-40",
+                  active
+                    ? "border-primary bg-primary/10 text-primary font-bold shadow-xs"
+                    : "border-border bg-card text-muted-foreground hover:border-border/80 hover:text-foreground",
+                )}
+              >
+                {n} Qs
+              </button>
+            );
+          })}
+
+          {/* All Questions */}
+          <button
+            type="button"
+            onClick={() => {
+              setCount(chapter.q_count ?? 30);
+              setIsCustomCount(false);
+            }}
             className={cn(
-              "rounded-xl border p-3 transition",
-              done ? "border-emerald-300 bg-emerald-50/60 dark:border-emerald-500/40 dark:bg-emerald-500/5" : "border-border bg-card",
+              "rounded-xl border p-2 text-xs font-semibold transition",
+              !isCustomCount && count === (chapter.q_count ?? 30)
+                ? "border-primary bg-primary/10 text-primary font-bold shadow-xs"
+                : "border-border bg-card text-muted-foreground hover:border-border/80 hover:text-foreground",
             )}
           >
-            <div className="flex items-center gap-3">
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <div className="text-sm font-semibold">Set {i + 1} of {totalSets}</div>
-                  {done && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
-                      <CheckCircle2 className="h-3 w-3" /> Attempted
-                    </span>
-                  )}
-                </div>
-                <div className="mt-0.5 text-xs text-muted-foreground">
-                  Questions {from}–{to} · {to - from + 1} Qs · {Math.max(10, to - from + 1)} min
-                </div>
-                {done && (
-                  <div className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-300">
-                    Scored {done.score ?? 0} · {done.correct ?? 0}/{done.total} correct
-                  </div>
+            All ({chapter.q_count ?? 0})
+          </button>
+
+          {/* Random Roll Button */}
+          <button
+            type="button"
+            onClick={handleRollRandomCount}
+            className="rounded-xl border border-dashed border-primary/50 bg-primary/5 p-2 text-xs font-semibold text-primary transition hover:bg-primary/15 flex items-center justify-center gap-1"
+          >
+            <Dices className="h-3.5 w-3.5" />
+            <span>Random</span>
+          </button>
+        </div>
+
+        {/* Custom Count Toggle/Input */}
+        <div className="pt-1 flex items-center gap-2">
+          <Input
+            type="number"
+            min={1}
+            max={chapter.q_count ?? 200}
+            placeholder={`Custom count (max ${chapter.q_count ?? 200})`}
+            value={customCountInput}
+            onChange={(e) => {
+              setIsCustomCount(true);
+              handleCustomCountChange(e.target.value);
+            }}
+            className="h-8 text-xs rounded-xl flex-1"
+          />
+        </div>
+      </div>
+
+      {/* 2. Timer Selector */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-1.5">
+            <Clock className="h-4 w-4 text-primary" />
+            <span>Timer / Duration</span>
+          </label>
+          <span className="text-xs font-semibold text-primary">
+            {timer === 0 ? "Untimed" : `${timer} Minutes`}
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+          {TIMER_PRESETS.map((t) => {
+            const active = !isCustomTimer && timer === t.value;
+            return (
+              <button
+                key={t.value}
+                type="button"
+                onClick={() => {
+                  setTimer(t.value);
+                  setIsCustomTimer(false);
+                }}
+                className={cn(
+                  "rounded-xl border p-2 text-xs font-semibold transition",
+                  active
+                    ? "border-primary bg-primary/10 text-primary font-bold shadow-xs"
+                    : "border-border bg-card text-muted-foreground hover:border-border/80 hover:text-foreground",
                 )}
-              </div>
+              >
+                {t.label}
+              </button>
+            );
+          })}
+
+          {/* Random Timer Button */}
+          <button
+            type="button"
+            onClick={handleRollRandomTimer}
+            className="rounded-xl border border-dashed border-primary/50 bg-primary/5 p-2 text-xs font-semibold text-primary transition hover:bg-primary/15 flex items-center justify-center gap-1 col-span-3 sm:col-span-2"
+          >
+            <Dices className="h-3.5 w-3.5" />
+            <span>Random Timer</span>
+          </button>
+        </div>
+
+        {/* Custom Timer Input */}
+        <div className="pt-1 flex items-center gap-2">
+          <Input
+            type="number"
+            min={0}
+            max={180}
+            placeholder="Custom duration in minutes (0 for untimed)"
+            value={customTimerInput}
+            onChange={(e) => {
+              setIsCustomTimer(true);
+              handleCustomTimerChange(e.target.value);
+            }}
+            className="h-8 text-xs rounded-xl flex-1"
+          />
+        </div>
+      </div>
+
+      {/* 3. Mode Selector */}
+      <div className="space-y-2">
+        <label className="text-xs sm:text-sm font-bold text-foreground">Practice Mode</label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          {/* Quiz Mode Card */}
+          <button
+            type="button"
+            onClick={() => setMode("quiz")}
+            className={cn(
+              "flex flex-col text-left rounded-2xl border p-3.5 transition",
+              mode === "quiz"
+                ? "border-primary bg-primary/5 ring-1 ring-primary/40 shadow-xs"
+                : "border-border bg-card hover:border-border/80",
+            )}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-xs sm:text-sm font-bold flex items-center gap-1.5 text-foreground">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Quiz Mode
+              </span>
+              <Badge variant="secondary" className="text-[10px]">Instant Solutions</Badge>
             </div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {done ? (
-                <>
-                  <Button asChild size="sm" variant="outline" className="gap-1.5">
-                    <Link to="/analysis/$attemptId" params={{ attemptId: done.attemptId }}>
-                      <Eye className="h-3.5 w-3.5" /> View answers
-                    </Link>
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    className="gap-1.5"
-                    disabled={starting !== null}
-                    onClick={() => launchSet(i)}
-                  >
-                    {isBusy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
-                    Reattempt
-                  </Button>
-                </>
-              ) : (
-                <Button
-                  size="sm"
-                  className="ml-auto bg-gradient-primary"
-                  disabled={starting !== null}
-                  onClick={() => launchSet(i)}
-                >
-                  {isBusy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Start set"}
-                </Button>
-              )}
+            <p className="text-[11px] text-muted-foreground leading-normal">
+              Reveal answers and full NCERT explanations immediately after each question.
+            </p>
+          </button>
+
+          {/* CBT / Exam Mode Card */}
+          <button
+            type="button"
+            onClick={() => setMode("cbt")}
+            className={cn(
+              "flex flex-col text-left rounded-2xl border p-3.5 transition",
+              mode === "cbt"
+                ? "border-emerald-500 bg-emerald-500/5 ring-1 ring-emerald-500/40 shadow-xs"
+                : "border-border bg-card hover:border-border/80",
+            )}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-xs sm:text-sm font-bold flex items-center gap-1.5 text-foreground">
+                <Trophy className="h-4 w-4 text-emerald-500" />
+                CBT Exam Mode
+              </span>
+              <Badge variant="secondary" className="text-[10px] bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
+                NTA Simulation
+              </Badge>
             </div>
-          </div>
-        );
-      })}
+            <p className="text-[11px] text-muted-foreground leading-normal">
+              Full NTA exam simulation with question palette. Results displayed after final submit.
+            </p>
+          </button>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="pt-2 flex flex-col sm:flex-row items-center gap-2">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onClose}
+          className="w-full sm:w-auto rounded-xl text-xs sm:text-sm"
+        >
+          Cancel
+        </Button>
+        <Button
+          type="button"
+          disabled={busy || count < 1}
+          onClick={() => onStart(chapter, mode, { count, timerMin: timer })}
+          className="w-full sm:flex-1 rounded-xl bg-gradient-primary h-11 text-xs sm:text-sm font-bold shadow-md"
+        >
+          {busy ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Building Practice Session...
+            </>
+          ) : (
+            `Start ${mode === "cbt" ? "CBT Exam" : "Quiz"} (${count} Qs · ${timer > 0 ? `${timer}m` : "Untimed"})`
+          )}
+        </Button>
+      </div>
     </div>
   );
 
   if (isMobile) {
     return (
-      <Sheet open={!!plan} onOpenChange={(o) => !o && onClose()}>
-        <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto rounded-t-2xl">
-          <SheetHeader className="text-left">
-            <SheetTitle>{title}</SheetTitle>
-            <SheetDescription>{description}</SheetDescription>
+      <Sheet open={!!chapter} onOpenChange={(o) => !o && onClose()}>
+        <SheetContent side="bottom" className="max-h-[90vh] overflow-y-auto rounded-t-3xl p-5">
+          <SheetHeader className="text-left pb-1">
+            <SheetTitle className="text-base font-bold">Customize Practice Quiz</SheetTitle>
+            <SheetDescription className="text-xs">
+              Configure question pool, timer and test mode.
+            </SheetDescription>
           </SheetHeader>
-          {body}
+          {content}
         </SheetContent>
       </Sheet>
     );
   }
 
   return (
-    <Dialog open={!!plan} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{description}</DialogDescription>
+    <Dialog open={!!chapter} onOpenChange={(o) => !o && onClose()}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg rounded-3xl p-6">
+        <DialogHeader className="text-left">
+          <DialogTitle className="text-lg font-bold">Customize Practice Quiz</DialogTitle>
+          <DialogDescription className="text-xs">
+            Configure question pool, timer and test mode.
+          </DialogDescription>
         </DialogHeader>
-        {body}
+        {content}
       </DialogContent>
     </Dialog>
   );
 }
-
