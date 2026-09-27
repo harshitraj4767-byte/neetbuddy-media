@@ -94,8 +94,9 @@ function GeneratePage() {
 
   const start = async (mode: "quiz" | "exam" | "cbt") => {
     if (!user || !chapIds.length) return;
-    if (chapIds.length > 30) {
-      toast.error("Please pick at most 30 chapters.");
+    // All chapters can be selected
+    if (chapIds.length > 200) {
+      toast.error("Please pick at most 200 chapters.");
       return;
     }
     // Bonus/wallet feature removed — tests are free now.
@@ -262,7 +263,7 @@ function GeneratePage() {
         <div className="mt-6 space-y-6">
           <div>
             <div className="mb-2 text-sm font-bold">Difficulty</div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
               {(["mix", "easy", "medium", "hard"] as const).map((d) => (
                 <button key={d} onClick={() => setDifficulty(d)} className={cn("rounded-xl border p-3 text-sm font-semibold capitalize", difficulty === d ? "border-primary bg-primary/5" : "border-border")}>{d === "mix" ? "Mix Qs." : d}</button>
               ))}
@@ -270,16 +271,16 @@ function GeneratePage() {
           </div>
           <div>
             <div className="mb-2 text-sm font-bold">Number of Questions</div>
-            <div className="grid grid-cols-5 gap-2">
-              {[10, 20, 30, 50, 90].map((n) => (
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              {[10, 20, 30, 50, 90, 180].map((n) => (
                 <button key={n} onClick={() => setCount(n)} className={cn("rounded-xl border p-3 text-sm font-semibold", count === n ? "border-primary bg-primary/5" : "border-border")}>{n} Qs.</button>
               ))}
             </div>
           </div>
           <div>
             <div className="mb-2 text-sm font-bold">Timer (minutes)</div>
-            <div className="grid grid-cols-4 gap-2">
-              {[10, 15, 30, 60].map((n) => (
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              {[10, 15, 30, 60, 90, 180].map((n) => (
                 <button key={n} onClick={() => setTimer(n)} className={cn("rounded-xl border p-3 text-sm font-semibold", timer === n ? "border-primary bg-primary/5" : "border-border")}>{n} min</button>
               ))}
             </div>

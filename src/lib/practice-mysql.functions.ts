@@ -93,7 +93,9 @@ export const getSubjectChapters = createServerFn({ method: "POST" })
         countFilter += " AND q.difficulty = ?";
         params.push(diff);
       }
-      if (data.qtype && data.qtype !== "any") {
+      if (data.qtype === "Graph/Figure" || data.qtype === "diagram") {
+        countFilter += " AND ((q.question_image_url IS NOT NULL AND q.question_image_url != '') OR q.qtype = 'Graph/Figure' OR q.question_html LIKE '%<img%')";
+      } else if (data.qtype && data.qtype !== "any") {
         countFilter += " AND q.qtype = ?";
         params.push(data.qtype);
       }
@@ -206,7 +208,9 @@ export const getChapterQuestionPool = createServerFn({ method: "POST" })
       where += " AND difficulty = ?";
       params.push(diff);
     }
-    if (data.qtype && data.qtype !== "any") {
+    if (data.qtype === "Graph/Figure" || data.qtype === "diagram") {
+      where += " AND ((question_image_url IS NOT NULL AND question_image_url != '') OR qtype = 'Graph/Figure' OR question_html LIKE '%<img%')";
+    } else if (data.qtype && data.qtype !== "any") {
       where += " AND qtype = ?";
       params.push(data.qtype);
     }
