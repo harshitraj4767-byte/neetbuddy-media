@@ -58,7 +58,12 @@ function MocksPage() {
   const nav = useNavigate();
 
   const [tests, setTests] = useState<Test[] | null>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([
+    { id: "full-syllabus", name: "Full Syllabus", sort_order: 1, active: true },
+    { id: "class-11", name: "Class 11th", sort_order: 2, active: true },
+    { id: "class-12", name: "Class 12th", sort_order: 3, active: true },
+    { id: "part-test", name: "Part Tests", sort_order: 4, active: true },
+  ]);
   const [activeCat, setActiveCat] = useState<string>("all");
   const loadCats = useServerFn(listMockCategories);
 
@@ -98,15 +103,33 @@ function MocksPage() {
             setTests(rows);
           });
       });
-    loadCats().then((c) => setCategories((c as Category[]).filter((x) => x.active))).catch(() => {});
+    loadCats()
+      .then((c) => {
+        const active = (c as Category[]).filter((x) => x.active);
+        if (active.length > 0) {
+          setCategories(active);
+        }
+      })
+      .catch(() => {});
   }, [loadCats]);
+
+  const resolveMockCategory = (t: Test) => {
+    if (t.category_id) {
+      const match = categories.find((c) => c.id === t.category_id);
+      if (match) return match.id;
+    }
+    const txt = `${t.title || ""} ${t.description || ""}`.toLowerCase();
+    if (txt.includes("part") || txt.includes("unit")) return "part-test";
+    if (txt.includes("11") || txt.includes("xi")) return "class-11";
+    if (txt.includes("12") || txt.includes("xii")) return "class-12";
+    return "full-syllabus";
+  };
 
   const filtered = useMemo(() => {
     if (!tests) return null;
     if (activeCat === "all") return tests;
-    if (activeCat === "uncat") return tests.filter((t) => !t.category_id);
-    return tests.filter((t) => t.category_id === activeCat);
-  }, [tests, activeCat]);
+    return tests.filter((t) => resolveMockCategory(t) === activeCat || t.category_id === activeCat);
+  }, [tests, activeCat, categories]);
 
   const { attempts } = useAttemptStates(useMemo(() => (tests ?? []).map((t) => t.id), [tests]));
 
@@ -125,12 +148,10 @@ function MocksPage() {
               <div className="flex min-w-max gap-2 pb-1">
                 <CatChip active={activeCat === "all"} onClick={() => setActiveCat("all")} label={`All (${tests.length})`} />
                 {categories.map((c) => {
-                  const n = tests.filter((t) => t.category_id === c.id).length;
+                  const n = tests.filter((t) => resolveMockCategory(t) === c.id || t.category_id === c.id).length;
+                  if (n === 0 && !["full-syllabus", "class-11", "class-12", "part-test"].includes(c.id)) return null;
                   return <CatChip key={c.id} active={activeCat === c.id} onClick={() => setActiveCat(c.id)} label={`${c.name} (${n})`} />;
                 })}
-                {tests.some((t) => !t.category_id) && (
-                  <CatChip active={activeCat === "uncat"} onClick={() => setActiveCat("uncat")} label={`Uncategorized (${tests.filter((t) => !t.category_id).length})`} />
-                )}
               </div>
             </div>
 
