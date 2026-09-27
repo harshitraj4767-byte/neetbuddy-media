@@ -141,6 +141,7 @@ function QuizPlayer() {
   const isCbt = mode === "cbt";
   // In CBT mode the experience mirrors NTA: timer, no in-quiz review, palette-driven.
   const isExam = mode === "exam" || isCbt;
+  const hasTimer = isExam || (test?.duration_min != null && test.duration_min > 0);
   const isQuiz = mode === "quiz";
   // Chapter-wise practice = no submit, persist answers, lock-on-pick reveal.
   // CBT mode is always exam-style (timer + submit), even for practice sets.
@@ -450,10 +451,10 @@ function QuizPlayer() {
       bookmarks: Array.from(bookmarks),
       visited: Array.from(visited),
       marked: Array.from(marked),
-      deadline: isExam ? deadlineRef.current : null,
+      deadline: hasTimer ? deadlineRef.current : null,
     };
     window.localStorage.setItem(key, JSON.stringify(saved));
-  }, [answers, bookmarks, idx, isExam, loading, marked, mode, progressReady, questions.length, secondsLeft, submitted, testId, user, visited]);
+  }, [answers, bookmarks, idx, hasTimer, isExam, loading, marked, mode, progressReady, questions.length, secondsLeft, submitted, testId, user, visited]);
 
   const clearSavedProgress = useCallback(() => {
     if (!user) return;
@@ -574,14 +575,14 @@ function QuizPlayer() {
   }, [answers, bookmarks, nav, questions, submitted, submitting, testId, user, test, battleMatchId, clearSavedProgress]);
 
   useEffect(() => {
-    if (loading || submitted || !isExam) return;
+    if (loading || submitted || !hasTimer) return;
     if (secondsLeft <= 0) {
       submit();
       return;
     }
     const t = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
     return () => clearTimeout(t);
-  }, [secondsLeft, loading, submitted, isExam, submit]);
+  }, [secondsLeft, loading, submitted, hasTimer, isExam, submit]);
 
   // ===== Contest anti-cheat =====
   // Disable text copy / selection / context menu on the whole document while
