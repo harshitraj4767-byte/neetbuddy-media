@@ -275,8 +275,37 @@ function BattlegroundsPage() {
         data = r2.data; error = r2.error;
       }
     }
+    if (error) {
+      // Fallback: If client-side RPC fails (e.g. cookie auth / unauthenticated in Supabase client),
+      // seamlessly match using server function
+      try {
+        const botRes = await requestBot({ data: { subject } });
+        setBusy(false);
+        if (botRes.ok && botRes.match?.matchId) {
+          const m = botRes.match;
+          const anchor = m.countdownStartsAt ? new Date(m.countdownStartsAt).getTime() : Date.now() + 10_000;
+          setState({
+            kind: "matched",
+            matchId: m.matchId,
+            testId: m.testId ?? "",
+            subject,
+            opponent: {
+              name: m.botName || "Aarav Prime",
+              avatar: m.botAvatarUrl,
+              isBot: true,
+            },
+            countdownStartsAt: anchor,
+          });
+          return;
+        }
+      } catch (fallbackErr) {
+        console.error("[bg] server fallback error", fallbackErr);
+      }
+      setBusy(false);
+      toast.error(error.message);
+      return;
+    }
     setBusy(false);
-    if (error) { toast.error(error.message); return; }
     const res = data as { status: string; match_id?: string; test_id?: string } | null;
     if (res?.status === "matched" && res.match_id && res.test_id) {
       try {
