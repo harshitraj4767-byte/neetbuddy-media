@@ -11,7 +11,7 @@ import {
   GraduationCap, Check, Sparkles, Trophy, ArrowRight,
   Star, ShieldCheck, Users, Clock, Loader2, Tag, X,
 } from "lucide-react";
-import akmalImage from "@/assets/akmal.jpg";
+const akmalImage = "/img/akmal.jpg";
 import { listFeaturedSelections } from "@/lib/selections.functions";
 import {
   previewMentorshipCoupon,
