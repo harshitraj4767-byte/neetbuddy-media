@@ -603,11 +603,6 @@ async function fetchQbQuestions(
  *     chapter overviews. Detailed or concept-heavy questions are guided to
  *     their specific subtopics.
  */
-
- *  1. Linked PYQs go on their exact NCERT line.
- *  2. Bank questions go to the topic their qb_topic maps to (falling back to
- *     text similarity), then to the closest paragraph inside that topic.
- */
 function assignQuestions(
   topics: KeyPointTopic[],
   pyqsByBlock: Map<number, KeyPointQuestion[]>,
