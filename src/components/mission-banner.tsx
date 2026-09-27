@@ -83,13 +83,13 @@ export function MissionBanner({
           <ArrowLeft className="mr-1 h-3.5 w-3.5" />
           Roadmap
         </Button>
-        <Button size="sm" className="h-8 text-xs" onClick={onFinish} disabled={saving || done}>
+        <Button size="sm" className="h-8 text-xs" onClick={onFinish} disabled={saving || done || scorePercent === undefined}>
           {saving ? (
             <Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" />
           ) : (
             <Check className="mr-1 h-3.5 w-3.5" />
           )}
-          {done ? "Mission complete" : "Mark mission done"}
+          {done ? "Mission verified" : scorePercent === undefined ? "In progress…" : "Verify & Complete"}
         </Button>
       </div>
 
