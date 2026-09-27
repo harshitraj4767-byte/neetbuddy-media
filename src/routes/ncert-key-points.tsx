@@ -1182,12 +1182,47 @@ function TopicAnalytics({
   const skipped = skippedList.length;
   const accuracy = attempted.length ? Math.round((correct / attempted.length) * 100) : 0;
 
-  // Difficulty breakdown
+  // Weak vs Strong subtopic analysis (grouped by question subtopic or paragraph reference)
+  const subtopicAnalysis = useMemo(() => {
+    const groups: Record<string, { total: number; attempted: number; correct: number; questions: typeof questions }> = {};
+
+    questions.forEach((q) => {
+      const subKey = q.topic || topic.title || "General Concept";
+      if (!groups[subKey]) {
+        groups[subKey] = { total: 0, attempted: 0, correct: 0, questions: [] };
+      }
+      groups[subKey].total += 1;
+      groups[subKey].questions.push(q);
+      const ans = byQuestion.get(q.key);
+      if (ans && !ans.skipped) {
+        groups[subKey].attempted += 1;
+        if (ans.is_correct) groups[subKey].correct += 1;
+      }
+    });
+
+    return Object.entries(groups).map(([name, data]) => {
+      const acc = data.attempted ? Math.round((data.correct / data.attempted) * 100) : 0;
+      const isWeak = data.attempted > 0 && acc < 60;
+      const isStrong = data.attempted > 0 && acc >= 80;
+      return {
+        name,
+        ...data,
+        accuracy: acc,
+        isWeak,
+        isStrong,
+      };
+    });
+  }, [questions, byQuestion, topic]);
+
+  const weakTopics = subtopicAnalysis.filter((st) => st.isWeak);
+  const strongTopics = subtopicAnalysis.filter((st) => st.isStrong);
+
+  // Difficulty breakdown with 1=Easy, 2=Medium, 3=Hard
   const diffStats = useMemo(() => {
     const levels = [
-      { key: "1", label: "Level 1 (Easy)", matches: ["1", "easy"] },
-      { key: "2", label: "Level 2 (Medium)", matches: ["2", "medium", "med"] },
-      { key: "3", label: "Level 3 (Hard)", matches: ["3", "hard"] },
+      { key: "1", label: "Level 1 (Easy)", color: "text-emerald-500", bg: "bg-emerald-500", matches: ["1", "easy"] },
+      { key: "2", label: "Level 2 (Medium)", color: "text-amber-500", bg: "bg-amber-500", matches: ["2", "medium", "med"] },
+      { key: "3", label: "Level 3 (Hard)", color: "text-rose-500", bg: "bg-rose-500", matches: ["3", "hard"] },
     ];
     return levels.map((lvl) => {
       const qInLvl = questions.filter((q) => {
@@ -1222,63 +1257,188 @@ function TopicAnalytics({
   }, [questions, byQuestion, filterTab, bookmarkedKeys]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {/* Top Header */}
-      <div className="sticky top-0 z-20 -mx-3 flex items-center justify-between border-b bg-background/90 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
-        <div className="flex items-center gap-2">
+      <div className="sticky top-0 z-20 -mx-3 flex items-center justify-between border-b bg-background/95 px-3 py-3 backdrop-blur sm:-mx-4 sm:px-4">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={onBack}
-            className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+            className="rounded-full p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
             aria-label="Back to topics"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <div className="min-w-0">
-            <h2 className="truncate text-sm font-bold text-foreground">{topic.title} · Analytics Hub</h2>
-            <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              {chapter.chapter.title}
+            <div className="flex items-center gap-2">
+              <h2 className="truncate text-sm sm:text-base font-extrabold text-foreground">{topic.title}</h2>
+              <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
+                <Sparkles className="h-3 w-3" /> Analytics
+              </span>
+            </div>
+            <div className="text-[11px] font-semibold text-muted-foreground">
+              {chapter.chapter.title} · {questions.length} Questions
             </div>
           </div>
         </div>
         <button
           onClick={onRevise}
-          className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:opacity-95"
+          className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-4 py-2 text-xs font-bold text-white shadow hover:opacity-95 transition"
         >
           Revise Topic
         </button>
       </div>
 
-      {/* Performance Scorecard */}
-      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5">
-        <Stat label="Attempted" value={`${attempted.length}/${questions.length}`} />
-        <Stat label="Accuracy" value={`${accuracy}%`} />
-        <Stat label="Correct / Wrong" value={`${correct} / ${wrong}`} />
-        <Stat label="Skipped" value={String(skipped)} />
-        <Stat label="Bookmarks" value={String(bookmarkedKeys.size)} />
+      {/* Hero Visual Card matching Subject Quiz & Flashcards style */}
+      <div className="relative isolate overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/15 via-card to-sky-500/15 p-5 sm:p-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">Topic Mastery Status</span>
+            <div className="flex items-center gap-3">
+              <div className="text-3xl sm:text-4xl font-black text-foreground">
+                {accuracy}%
+              </div>
+              <div>
+                <div className="text-sm font-bold text-foreground">
+                  {accuracy >= 80 ? "🌟 Excellent Mastery" : accuracy >= 60 ? "👍 Good Progress" : "⚠️ Weak Area — Needs Practice"}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {correct} correct out of {attempted.length} attempted
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="rounded-2xl border border-border/80 bg-card/80 p-3 text-center min-w-[90px]">
+              <div className="text-lg font-black text-emerald-600 dark:text-emerald-400">+{correct * 4}</div>
+              <div className="text-[10px] font-semibold uppercase text-muted-foreground">Score</div>
+            </div>
+            <div className="rounded-2xl border border-border/80 bg-card/80 p-3 text-center min-w-[90px]">
+              <div className="text-lg font-black text-rose-500">-{wrong * 1}</div>
+              <div className="text-[10px] font-semibold uppercase text-muted-foreground">Negative</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Difficulty vs Accuracy Grid */}
-      <div className="rounded-2xl border bg-card p-4 shadow-xs">
-        <div className="text-xs font-bold text-foreground mb-3 flex items-center gap-1.5">
+      {/* Statistical Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+        <Stat label="Attempted" value={`${attempted.length}/${questions.length}`} color="text-sky-500" />
+        <Stat label="Accuracy" value={`${accuracy}%`} color="text-indigo-500" />
+        <Stat label="Correct / Wrong" value={`${correct} / ${wrong}`} color="text-emerald-500" />
+        <Stat label="Skipped" value={String(skipped)} color="text-muted-foreground" />
+        <Stat label="Bookmarks" value={String(bookmarkedKeys.size)} color="text-amber-500" />
+      </div>
+
+      {/* Weak & Strong Topics Diagnostic Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Weak Topics Card */}
+        <div className="rounded-3xl border border-rose-500/30 bg-rose-500/5 p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className="rounded-xl bg-rose-500/20 p-2 text-rose-600 dark:text-rose-400">
+                <AlertCircle className="h-4 w-4" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-foreground">Weak Sub-Topics</h3>
+                <p className="text-[10px] text-muted-foreground">Accuracy &lt; 60% based on your attempts</p>
+              </div>
+            </div>
+            <span className="rounded-full bg-rose-500/15 px-2.5 py-0.5 text-[10px] font-bold text-rose-600 dark:text-rose-400">
+              {weakTopics.length} Identified
+            </span>
+          </div>
+
+          {weakTopics.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-rose-500/20 p-4 text-center text-xs text-muted-foreground">
+              {attempted.length > 0 ? "🎉 No weak sub-topics found! Keep up the great work." : "Attempt questions to identify weak sub-topics."}
+            </div>
+          ) : (
+            <div className="space-y-2.5">
+              {weakTopics.map((wt) => (
+                <div key={wt.name} className="rounded-2xl border border-border bg-card p-3 shadow-xs">
+                  <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                    <span className="truncate max-w-[70%] font-bold text-foreground">{wt.name}</span>
+                    <span className="text-rose-500 font-extrabold">{wt.accuracy}% Accuracy</span>
+                  </div>
+                  <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden">
+                    <div className="h-full bg-rose-500 rounded-full" style={{ width: `${wt.accuracy}%` }} />
+                  </div>
+                  <div className="mt-1.5 flex items-center justify-between text-[10px] text-muted-foreground">
+                    <span>{wt.correct}/{wt.attempted} Correct</span>
+                    <span className="text-primary font-semibold">Review paragraph</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Strong & Mastered Topics Card */}
+        <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className="rounded-xl bg-emerald-500/20 p-2 text-emerald-600 dark:text-emerald-400">
+                <CheckCircle2 className="h-4 w-4" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-foreground">Mastered Sub-Topics</h3>
+                <p className="text-[10px] text-muted-foreground">Accuracy &ge; 80% with high confidence</p>
+              </div>
+            </div>
+            <span className="rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+              {strongTopics.length} Mastered
+            </span>
+          </div>
+
+          {strongTopics.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-emerald-500/20 p-4 text-center text-xs text-muted-foreground">
+              Practice more questions to reach 80%+ mastery!
+            </div>
+          ) : (
+            <div className="space-y-2.5">
+              {strongTopics.map((st) => (
+                <div key={st.name} className="rounded-2xl border border-border bg-card p-3 shadow-xs">
+                  <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                    <span className="truncate max-w-[70%] font-bold text-foreground">{st.name}</span>
+                    <span className="text-emerald-500 font-extrabold">{st.accuracy}% Accuracy</span>
+                  </div>
+                  <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden">
+                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${st.accuracy}%` }} />
+                  </div>
+                  <div className="mt-1.5 flex items-center justify-between text-[10px] text-muted-foreground">
+                    <span>{st.correct}/{st.attempted} Correct</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Ready for NEET</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Difficulty vs Accuracy Breakdown */}
+      <div className="rounded-3xl border bg-card p-5 shadow-xs space-y-3">
+        <div className="text-xs font-bold text-foreground flex items-center gap-2">
           <BarChart3 className="h-4 w-4 text-primary" />
-          <span>Difficulty vs. Accuracy Breakdown</span>
+          <span>Difficulty vs. Accuracy Breakdown (Level 1, 2, 3)</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {diffStats.map((st) => (
-            <div key={st.key} className="rounded-xl border border-border/70 bg-secondary/30 p-3">
+            <div key={st.key} className="rounded-2xl border border-border/80 bg-secondary/30 p-3.5">
               <div className="flex items-center justify-between text-xs font-semibold mb-1">
-                <span>{st.label}</span>
-                <span className="font-bold text-primary">{st.accuracy}%</span>
+                <span className="font-bold text-foreground">{st.label}</span>
+                <span className={`font-extrabold ${st.color}`}>{st.accuracy}%</span>
               </div>
               <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-primary transition-all duration-300"
+                  className={`h-full rounded-full transition-all duration-300 ${st.bg}`}
                   style={{ width: `${st.accuracy}%` }}
                 />
               </div>
-              <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
-                <span>Attempted: {st.attempted}/{st.total}</span>
-                <span>Correct: {st.correct}</span>
+              <div className="mt-2 flex items-center justify-between text-[11px] text-muted-foreground">
+                <span>Attempted: <strong>{st.attempted}/{st.total}</strong></span>
+                <span>Correct: <strong className="text-emerald-600 dark:text-emerald-400">{st.correct}</strong></span>
               </div>
             </div>
           ))}
@@ -1289,7 +1449,7 @@ function TopicAnalytics({
       <div className="flex items-center gap-1.5 border-b border-border pb-1">
         <button
           onClick={() => setFilterTab("all")}
-          className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+          className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition ${
             filterTab === "all"
               ? "bg-primary text-primary-foreground shadow-xs"
               : "text-muted-foreground hover:bg-secondary"
@@ -1299,9 +1459,9 @@ function TopicAnalytics({
         </button>
         <button
           onClick={() => setFilterTab("mistakes")}
-          className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+          className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition ${
             filterTab === "mistakes"
-              ? "bg-destructive text-destructive-foreground shadow-xs"
+              ? "bg-rose-500 text-white shadow-xs"
               : "text-muted-foreground hover:bg-secondary"
           }`}
         >
@@ -1309,7 +1469,7 @@ function TopicAnalytics({
         </button>
         <button
           onClick={() => setFilterTab("bookmarks")}
-          className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+          className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition ${
             filterTab === "bookmarks"
               ? "bg-amber-500 text-white shadow-xs"
               : "text-muted-foreground hover:bg-secondary"
@@ -1321,12 +1481,12 @@ function TopicAnalytics({
 
       {/* Questions Review List */}
       {filteredQuestions.length === 0 ? (
-        <div className="rounded-2xl border border-dashed p-8 text-center text-xs text-muted-foreground">
+        <div className="rounded-3xl border border-dashed p-8 text-center text-xs text-muted-foreground">
           {filterTab === "mistakes"
-            ? "Great job! No mistakes found in this topic."
+            ? "🎉 Outstanding! No mistakes found in this topic."
             : filterTab === "bookmarks"
               ? "No questions bookmarked in this topic yet."
-              : "No responses recorded yet. Complete the reading steps to see analysis."}
+              : "No responses recorded yet. Complete reading and answering to see questions here."}
         </div>
       ) : (
         <ul className="space-y-3">
@@ -1334,26 +1494,26 @@ function TopicAnalytics({
             const a = byQuestion.get(q.key);
             const isBookmarked = bookmarkedKeys.has(q.key);
             return (
-              <li key={q.key} className="rounded-2xl border bg-card p-4 shadow-xs">
+              <li key={q.key} className="rounded-2xl border bg-card p-4 sm:p-5 shadow-xs">
                 <div className="mb-2 flex items-center justify-between text-[11px] font-bold text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <span>Q{idx + 1}</span>
-                    <span>{q.source === "pyq" ? "PYQ" : "Question Bank"}</span>
+                    <span className="rounded bg-secondary px-1.5 py-0.5 text-foreground font-black">Q{idx + 1}</span>
+                    <span>{q.source === "pyq" ? "NCERT PYQ" : "Question Bank"}</span>
                     {q.difficulty && (
                       <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px]">
-                        Diff: {q.difficulty}
+                        Level {q.difficulty}
                       </span>
                     )}
                   </div>
                   <div className="flex items-center gap-2">
                     {a && (
                       <span
-                        className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
                           a.is_correct
                             ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
                             : a.skipped
                               ? "bg-secondary text-muted-foreground"
-                              : "bg-destructive/15 text-destructive"
+                              : "bg-rose-500/15 text-rose-500"
                         }`}
                       >
                         {a.is_correct ? "Correct" : a.skipped ? "Skipped" : "Wrong"}
@@ -1361,7 +1521,8 @@ function TopicAnalytics({
                     )}
                     <button
                       onClick={() => toggleBookmark(q.key)}
-                      className="rounded p-1 hover:bg-secondary text-muted-foreground"
+                      className="rounded p-1 hover:bg-secondary text-muted-foreground transition"
+                      aria-label="Bookmark question"
                     >
                       {isBookmarked ? (
                         <BookmarkCheck className="h-4 w-4 text-amber-500 fill-amber-500" />
@@ -1374,19 +1535,19 @@ function TopicAnalytics({
 
                 <PyqRichText html={q.question} className="text-sm font-semibold text-foreground" />
 
-                <div className="mt-3 rounded-xl bg-secondary/40 p-2.5 text-xs">
+                <div className="mt-3 rounded-2xl bg-secondary/40 p-3 text-xs space-y-1.5">
                   {a && (
-                    <div className="mb-1 text-muted-foreground">
+                    <div className="text-muted-foreground">
                       Your Choice: <strong className="text-foreground">{a.selected ?? "—"}</strong>
                       {a.skipped && " (Skipped)"}
                     </div>
                   )}
-                  <div className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                  <div className="text-emerald-600 dark:text-emerald-400 font-bold">
                     Correct Answer: {q.correctKey ?? "—"}
                   </div>
                   {q.explanation && (
-                    <div className="mt-2 border-t border-border/50 pt-1.5 text-xs text-muted-foreground">
-                      <strong>Explanation: </strong>
+                    <div className="border-t border-border/50 pt-2 text-xs text-muted-foreground">
+                      <strong className="text-foreground">NCERT Explanation: </strong>
                       <PyqRichText html={q.explanation} className="inline" />
                     </div>
                   )}
@@ -1400,11 +1561,11 @@ function TopicAnalytics({
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, color }: { label: string; value: string; color?: string }) {
   return (
-    <div className="rounded-2xl border bg-card p-3.5 text-center shadow-xs">
-      <div className="text-lg font-bold text-foreground">{value}</div>
-      <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+    <div className="rounded-2xl border bg-card p-3 sm:p-4 text-center shadow-xs">
+      <div className={`text-base sm:text-lg font-black ${color || "text-foreground"}`}>{value}</div>
+      <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">
         {label}
       </div>
     </div>
