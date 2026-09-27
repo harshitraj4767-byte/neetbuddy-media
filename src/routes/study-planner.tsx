@@ -250,18 +250,13 @@ function StudyPlannerPage() {
                     <span className="text-xs text-muted-foreground">{task.minutes} min</span>
                     <div className="flex items-center gap-2">
                       {task.href && (
-                        <Button asChild size="sm" variant="secondary">
-                          <a href={task.href}>Open</a>
+                        <Button asChild size="sm" variant="default" className="rounded-xl text-xs font-semibold">
+                          <a href={task.href}>Start Task</a>
                         </Button>
                       )}
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        disabled={!user || saving === task.key}
-                        onClick={() => markDone(task)}
-                      >
-                        {saving === task.key ? "Saving…" : "Done"}
-                      </Button>
+                      <span className="text-[11px] font-medium text-muted-foreground px-2 py-1 rounded-lg bg-secondary/60">
+                        Auto-verified
+                      </span>
                     </div>
                   </li>
                 ))}
