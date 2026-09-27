@@ -86,16 +86,53 @@ export function resolveMissionRoute(mission: RoadmapMission): string | null {
   return ROUTE_OVERRIDES[mission.route] ?? mission.route;
 }
 
+export function cleanChapterSlug(chapterName: string): string {
+  return chapterName
+    .replace(/^\d+[.:]\s*/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export function missionHref(mission: RoadmapMission): string | null {
   const route = resolveMissionRoute(mission);
   if (!route) return null;
   const p = mission.launch_params;
+  const level = getLevel(p.level_id);
+  const subject = level?.primary_subject ? level.primary_subject.toLowerCase() : "biology";
+  const firstChapter = level?.chapters?.[0] ?? "";
+  const slug = cleanChapterSlug(firstChapter);
+
   const qs = new URLSearchParams({
     level_id: String(p.level_id),
     mission_id: p.mission_id,
     source: p.source,
     chapter_ids: p.chapter_ids.join(","),
+    subject,
   });
+
+  if (slug) {
+    qs.set("slug", slug);
+  }
+
+  // Exact target redirection based on mission type
+  if (route === "/highlighted-ncert" || route === "/ncert-key-points" || route === "/flashcards") {
+    if (slug) qs.set("slug", slug);
+    return `${route}?${qs.toString()}`;
+  }
+
+  if (route === "/quiz/subjects" || mission.type === "quiz" || mission.type === "boss") {
+    const rawSubj = level?.primary_subject ?? "Biology";
+    const chParam = encodeURIComponent(firstChapter.replace(/^\d+[.:]\s*/, ""));
+    return `/subjects/${rawSubj}?search=${chParam}&${qs.toString()}`;
+  }
+
+  if (route === "/chapter-pyqs") {
+    const rawSubj = level?.primary_subject ?? "Biology";
+    const chParam = encodeURIComponent(firstChapter.replace(/^\d+[.:]\s*/, ""));
+    return `/chapter-pyqs?subject=${encodeURIComponent(rawSubj)}&search=${chParam}&${qs.toString()}`;
+  }
+
   return `${route}?${qs.toString()}`;
 }
 
