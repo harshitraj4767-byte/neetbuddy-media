@@ -297,89 +297,75 @@ function SubjectPage() {
         </div>
       </HubHero>
 
-      {/* Modern Filter & Selector Bar */}
-      <div className="mb-4 rounded-2xl border border-border/80 bg-card/80 p-3 sm:p-4 shadow-xs backdrop-blur-md space-y-3">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+      {/* Concise Filter Bar */}
+      <div className="mb-3.5 rounded-xl border border-border/70 bg-card/70 p-2 sm:p-2.5 shadow-xs backdrop-blur-md">
+        <div className="flex flex-wrap items-center gap-2">
           {/* Chapter Search */}
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <div className="relative min-w-[160px] flex-1">
+            <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={`Search ${subject} chapters...`}
-              className="h-9 pl-9 pr-8 text-xs sm:text-sm bg-background/70 rounded-xl border-border/60"
+              placeholder={`Search ${subject}...`}
+              className="h-8 pl-8 pr-7 text-xs bg-background/80 rounded-lg border-border/60"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
               >
-                <X className="h-3.5 w-3.5" />
+                <X className="h-3 w-3" />
               </button>
             )}
           </div>
 
-          {/* Quick Random Action */}
-          <Button
-            size="sm"
-            onClick={handleRandomChapter}
-            disabled={!chapters || chapters.length === 0}
-            className="h-9 gap-1.5 rounded-xl bg-gradient-primary px-3.5 text-xs font-semibold shadow-xs shrink-0"
-          >
-            <Dices className="h-4 w-4" />
-            <span>Random Quiz</span>
-          </Button>
-        </div>
-
-        {/* Filters Row */}
-        <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-          <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground shrink-0">
-            <SlidersHorizontal className="h-3.5 w-3.5" />
-            <span>Filters:</span>
-          </div>
-
-          {/* Difficulty Selector */}
+          {/* Difficulty */}
           <Select value={difficulty} onValueChange={setDifficulty}>
-            <SelectTrigger className="h-8 min-w-[125px] rounded-lg border-border/60 bg-secondary/60 px-2.5 text-xs font-medium">
+            <SelectTrigger className="h-8 min-w-[110px] rounded-lg border-border/60 bg-secondary/50 px-2 text-xs">
               <SelectValue placeholder="Difficulty" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="any">Any difficulty</SelectItem>
+              <SelectItem value="any">All levels</SelectItem>
               {DIFFICULTIES.map((d) => (
                 <SelectItem key={d} value={d}>{d}</SelectItem>
               ))}
             </SelectContent>
           </Select>
 
-          {/* Question Type Selector */}
+          {/* Question Type */}
           <Select value={qtype} onValueChange={setQType}>
-            <SelectTrigger className="h-8 min-w-[135px] rounded-lg border-border/60 bg-secondary/60 px-2.5 text-xs font-medium">
-              <SelectValue placeholder="Question Type" />
+            <SelectTrigger className="h-8 min-w-[115px] rounded-lg border-border/60 bg-secondary/50 px-2 text-xs">
+              <SelectValue placeholder="Type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="any">Any type</SelectItem>
+              <SelectItem value="any">All types</SelectItem>
               {QTYPES.map((t) => (
                 <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
               ))}
             </SelectContent>
           </Select>
 
+          {/* Quick Random Action */}
+          <Button
+            size="sm"
+            onClick={handleRandomChapter}
+            disabled={!chapters || chapters.length === 0}
+            className="h-8 gap-1 rounded-lg bg-gradient-primary px-2.5 text-xs font-medium shadow-xs shrink-0"
+          >
+            <Dices className="h-3.5 w-3.5" />
+            <span>Random</span>
+          </Button>
+
           {activeFiltersCount > 0 && (
             <Button
               size="sm"
               variant="ghost"
-              className="h-8 gap-1 px-2.5 text-xs text-muted-foreground hover:text-foreground"
+              className="h-8 px-2 text-xs text-muted-foreground hover:text-foreground"
               onClick={resetFilters}
             >
-              <RotateCcw className="h-3 w-3" />
-              Reset ({activeFiltersCount})
+              <RotateCcw className="h-3 w-3 mr-1" />
+              Reset
             </Button>
-          )}
-
-          {excluded.size > 0 && (
-            <Badge variant="outline" className="text-[10px] ml-auto">
-              {topicStats.selected}/{topicStats.total} sub-topics
-            </Badge>
           )}
         </div>
       </div>
