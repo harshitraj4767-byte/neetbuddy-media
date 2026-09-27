@@ -197,50 +197,40 @@ function Dashboard() {
     <PageShell>
       <div className="mx-auto w-full max-w-[1700px]">
 
-        {/* ── Greeting hero ─────────────────────────────────────────── */}
-        <div className="relative isolate overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-sky-500/15 p-4 shadow-soft sm:p-7">
+        {/* ── Greeting hero (compact) ─────────────────────────────── */}
+        <div className="relative isolate overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/10 via-card to-sky-500/10 p-3.5 sm:p-5 shadow-xs mb-3">
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.16] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:14px_14px] text-foreground/40 [mask-image:linear-gradient(to_bottom_right,black,transparent_70%)]"
+            className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-gradient-to-br from-primary to-sky-400 opacity-20 blur-2xl"
           />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 animate-pulse rounded-full bg-gradient-to-br from-primary to-sky-400 opacity-25 blur-3xl [animation-duration:7s]"
-          />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 animate-pulse rounded-full bg-gradient-to-br from-sky-400 to-violet-500 opacity-20 blur-3xl [animation-duration:9s]"
-          />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-40 dark:via-white/[0.05]"
-          />
-          <div className="relative z-10 max-w-[58%] sm:max-w-[56%]">
-            <div className="text-sm font-semibold text-muted-foreground">{greeting}, {firstName}! 👋</div>
-            <h1 className="mt-2 text-[clamp(1.3rem,5.6vw,1.6rem)] font-extrabold leading-tight tracking-tight sm:text-3xl">
-              Let&apos;s make today count towards your{" "}
-              <span className="text-primary">NEET {targetYear} dream</span>.
-            </h1>
-            <div className="mt-3 flex items-center gap-1.5 text-xs text-muted-foreground sm:text-sm">
-              <Sparkles className="h-4 w-4 shrink-0 text-primary" />
-              <span className="italic">&ldquo;Discipline today, success tomorrow.&rdquo;</span>
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-muted-foreground">{greeting}, {firstName}! 👋</span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
+                  NEET {targetYear}
+                </span>
+              </div>
+              <h1 className="mt-1 text-base sm:text-lg font-bold leading-tight tracking-tight text-foreground">
+                Let&apos;s make today count towards your medical dream.
+              </h1>
+              <div className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" />
+                <span className="italic truncate">&ldquo;Discipline today, success tomorrow.&rdquo;</span>
+              </div>
             </div>
-            <Link
-              to="/leaderboard"
-              className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-border bg-card/90 px-3 py-1.5 shadow-sm backdrop-blur"
-            >
-              <Flame className="h-4 w-4 text-orange-500" />
-              <span className="text-sm font-bold">{streak}</span>
-              <span className="text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">Day Streak</span>
-              <span className="ml-1 border-l border-border pl-2 text-[11px] font-semibold text-primary">View leaderboard</span>
-            </Link>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <Link
+                to="/leaderboard"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border/80 bg-card/90 px-2.5 py-1.5 text-xs shadow-xs hover:border-primary/40 transition"
+              >
+                <Flame className="h-4 w-4 text-orange-500" />
+                <span className="font-bold text-foreground">{streak}</span>
+                <span className="text-[10px] font-medium text-muted-foreground uppercase">Streak</span>
+              </Link>
+            </div>
           </div>
-          <img
-            src={publicMediaAsset("illustrations/study-desk.png")}
-            alt="Student studying at a desk"
-            loading="lazy"
-            className="pointer-events-none absolute bottom-0 right-0 z-0 h-[85%] max-h-[180px] w-[38%] max-w-[180px] select-none object-contain object-bottom object-right drop-shadow-[0_12px_28px_rgba(0,0,0,0.22)] sm:h-[92%] sm:max-h-[240px] sm:w-[42%] sm:max-w-[280px] lg:h-[96%] lg:max-h-[270px] lg:w-[45%] lg:max-w-[340px]"
-          />
         </div>
 
         {/* ── Banner plot (admin managed, 8:3 like the hero card) ───── */}

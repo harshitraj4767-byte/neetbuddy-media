@@ -41,6 +41,8 @@ import {
   RotateCcw,
   Search,
   GraduationCap,
+  Bookmark,
+  BookmarkCheck,
   CheckCircle2,
 } from "lucide-react";
 
@@ -917,32 +919,114 @@ function BookFigure({
 function QuestionCard({
   subject,
   question,
-  result,
   choice,
+  result,
   onChoose,
   onSubmit,
   onSkip,
 }: {
   subject: string;
   question: KeyPointQuestion;
-  result?: { selected: string | null; correct: boolean };
   choice: string | null;
-  onChoose: (k: string) => void;
+  result: { selected: string | null; correct: boolean; skipped: boolean } | null;
+  onChoose: (key: string) => void;
   onSubmit: () => void;
   onSkip: () => void;
 }) {
   const answered = !!result;
   const selected = result?.selected ?? choice;
 
-  return (
-    <section className="rounded-3xl border bg-card p-5 shadow-soft sm:p-6">
-      <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-        <span className="rounded-full bg-sky-500/12 px-2 py-0.5 text-sky-600 dark:text-sky-400">
-          Question
+  // Local bookmark state
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(() => {
+    try {
+      const stored = localStorage.getItem("nugget_bookmarks");
+      const list: string[] = stored ? JSON.parse(stored) : [];
+      return list.includes(question.key);
+    } catch {
+      return false;
+    }
+  });
+
+  const toggleBookmark = () => {
+    try {
+      const stored = localStorage.getItem("nugget_bookmarks");
+      const list: string[] = stored ? JSON.parse(stored) : [];
+      let next: string[];
+      if (list.includes(question.key)) {
+        next = list.filter((k) => k !== question.key);
+        setIsBookmarked(false);
+      } else {
+        next = [...list, question.key];
+        setIsBookmarked(true);
+      }
+      localStorage.setItem("nugget_bookmarks", JSON.stringify(next));
+    } catch {}
+  };
+
+  const getDifficultyBadge = (diff: string | null) => {
+    if (!diff) return null;
+    const d = String(diff).toLowerCase().trim();
+    if (d === "1" || d === "easy") {
+      return (
+        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+          ● Level 1 · Easy
         </span>
-        {question.source === "pyq" && <span>PYQ</span>}
-        {question.year && <span>{question.year}</span>}
-        {question.difficulty && <span>{question.difficulty}</span>}
+      );
+    }
+    if (d === "2" || d === "medium" || d === "med") {
+      return (
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">
+          ● Level 2 · Medium
+        </span>
+      );
+    }
+    if (d === "3" || d === "hard") {
+      return (
+        <span className="inline-flex items-center gap-1 rounded-full bg-rose-500/15 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:text-rose-400">
+          ● Level 3 · Hard
+        </span>
+      );
+    }
+    return (
+      <span className="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+        {diff}
+      </span>
+    );
+  };
+
+  return (
+    <section className="rounded-3xl border bg-card p-5 shadow-soft sm:p-6 transition hover:shadow-md">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-border/50 pb-2.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-sky-600 dark:text-sky-400 font-extrabold">
+            Question
+          </span>
+          {question.source === "pyq" && (
+            <span className="rounded-full bg-purple-500/15 px-2 py-0.5 text-purple-600 dark:text-purple-400">
+              PYQ
+            </span>
+          )}
+          {question.year && <span>{question.year}</span>}
+          {getDifficultyBadge(question.difficulty)}
+        </div>
+
+        <button
+          onClick={toggleBookmark}
+          className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold transition hover:bg-secondary"
+          title={isBookmarked ? "Remove bookmark" : "Bookmark question"}
+        >
+          {isBookmarked ? (
+            <>
+              <BookmarkCheck className="h-4 w-4 text-amber-500 fill-amber-500" />
+              <span className="text-amber-600 dark:text-amber-400">Saved</span>
+            </>
+          ) : (
+            <>
+              <Bookmark className="h-4 w-4 text-muted-foreground" />
+              <span>Bookmark</span>
+            </>
+          )}
+        </button>
       </div>
 
       <PyqRichText html={question.question} className="text-[15px] font-semibold leading-relaxed" />
@@ -968,53 +1052,61 @@ function QuestionCard({
                     ? "border-destructive/60 bg-destructive/10"
                     : isPicked
                       ? "border-sky-500/60 bg-sky-500/10"
-                      : "hover:border-sky-500/40")
+                      : "border-border hover:border-sky-500/40")
               }
             >
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-secondary text-[11px] font-bold">
-                {isRight ? (
-                  <Check className="h-3.5 w-3.5 text-emerald-600" />
-                ) : isWrong ? (
-                  <X className="h-3.5 w-3.5 text-destructive" />
-                ) : (
-                  o.key
-                )}
+              <span
+                className={
+                  "flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold " +
+                  (isRight
+                    ? "bg-emerald-500 text-white"
+                    : isWrong
+                      ? "bg-destructive text-white"
+                      : isPicked
+                        ? "bg-sky-500 text-white"
+                        : "bg-secondary text-muted-foreground")
+                }
+              >
+                {o.key}
               </span>
-              <PyqRichText html={o.text} className="min-w-0 flex-1" />
+              <span className="flex-1 leading-relaxed">{o.text}</span>
             </button>
           );
         })}
       </div>
 
-      {!answered ? (
-        <div className="mt-4 flex gap-2">
+      {!answered && (
+        <div className="mt-4 flex items-center justify-between gap-3">
           <button
             onClick={onSkip}
-            className="rounded-full border px-4 py-2.5 text-xs font-bold text-muted-foreground"
+            className="rounded-full px-4 py-2 text-xs font-semibold text-muted-foreground hover:bg-secondary"
           >
-            Don't Know
+            Skip for now
           </button>
           <button
-            onClick={onSubmit}
             disabled={!choice}
-            className="flex-1 rounded-full bg-foreground py-2.5 text-sm font-bold text-background disabled:opacity-40"
+            onClick={onSubmit}
+            className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-5 py-2 text-xs font-bold text-white shadow-sm disabled:opacity-40"
           >
-            Submit
+            Submit answer
           </button>
         </div>
-      ) : (
-        <div className="mt-4 rounded-2xl border bg-secondary/40 p-4">
-          <div
-            className={
-              "text-xs font-bold " +
-              (result?.correct ? "text-emerald-600 dark:text-emerald-400" : "text-destructive")
-            }
-          >
-            {result?.correct
-              ? "Correct"
-              : result?.selected
-                ? `Incorrect · answer ${question.correctKey ?? "—"}`
-                : `Skipped · answer ${question.correctKey ?? "—"}`}
+      )}
+
+      {answered && (
+        <div className="mt-4 rounded-2xl bg-secondary/50 p-4">
+          <div className="flex items-center gap-2 font-bold text-sm">
+            {result?.correct ? (
+              <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
+                <Check className="h-4 w-4" /> Correct answer!
+              </span>
+            ) : result?.skipped ? (
+              <span className="text-muted-foreground">Question skipped</span>
+            ) : (
+              <span className="flex items-center gap-1.5 text-destructive">
+                <X className="h-4 w-4" /> Incorrect
+              </span>
+            )}
           </div>
           {question.explanation && (
             <PyqRichText
@@ -1031,7 +1123,7 @@ function QuestionCard({
   );
 }
 
-/* ------------------------------ analytics ----------------------------- */
+/* ------------------------------ analytics (redesigned) ----------------------------- */
 
 function TopicAnalytics({
   chapter,
@@ -1046,9 +1138,31 @@ function TopicAnalytics({
   onBack: () => void;
   onRevise: () => void;
 }) {
+  const [filterTab, setFilterTab] = useState<"all" | "mistakes" | "bookmarks">("all");
+  const [bookmarkedKeys, setBookmarkedKeys] = useState<Set<string>>(() => {
+    try {
+      const stored = localStorage.getItem("nugget_bookmarks");
+      return new Set(stored ? JSON.parse(stored) : []);
+    } catch {
+      return new Set();
+    }
+  });
+
+  const toggleBookmark = (key: string) => {
+    setBookmarkedKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      try {
+        localStorage.setItem("nugget_bookmarks", JSON.stringify(Array.from(next)));
+      } catch {}
+      return next;
+    });
+  };
+
   const byQuestion = useMemo(() => {
     const m = new Map<string, KeyPointAnswer>();
-    for (const a of answers) m.set(`${a.source}:${a.question_id}`, a); // last attempt wins
+    for (const a of answers) m.set(`${a.source}:${a.question_id}`, a);
     return m;
   }, [answers]);
 
@@ -1060,99 +1174,221 @@ function TopicAnalytics({
     [topic],
   );
 
-  // A response can be an answer OR a skip — they must not be mixed up.
   const responded = questions.filter((q) => byQuestion.has(q.key));
   const skippedList = responded.filter((q) => byQuestion.get(q.key)!.skipped);
   const attempted = responded.filter((q) => !byQuestion.get(q.key)!.skipped);
   const correct = attempted.filter((q) => byQuestion.get(q.key)!.is_correct).length;
   const wrong = attempted.length - correct;
   const skipped = skippedList.length;
-  const timed = responded.filter((q) => (byQuestion.get(q.key)!.time_ms ?? 0) > 0);
-  const avgSec =
-    timed.length > 0
-      ? Math.max(
-          1,
-          Math.round(
-            timed.reduce((n, q) => n + (byQuestion.get(q.key)!.time_ms ?? 0), 0) / timed.length / 1000,
-          ),
-        )
-      : 0;
-  // Accuracy is out of the questions actually answered, skips excluded.
   const accuracy = attempted.length ? Math.round((correct / attempted.length) * 100) : 0;
 
+  // Difficulty breakdown
+  const diffStats = useMemo(() => {
+    const levels = [
+      { key: "1", label: "Level 1 (Easy)", matches: ["1", "easy"] },
+      { key: "2", label: "Level 2 (Medium)", matches: ["2", "medium", "med"] },
+      { key: "3", label: "Level 3 (Hard)", matches: ["3", "hard"] },
+    ];
+    return levels.map((lvl) => {
+      const qInLvl = questions.filter((q) => {
+        const d = String(q.difficulty || "").toLowerCase().trim();
+        return lvl.matches.includes(d);
+      });
+      const attInLvl = qInLvl.filter((q) => byQuestion.has(q.key) && !byQuestion.get(q.key)!.skipped);
+      const corInLvl = attInLvl.filter((q) => byQuestion.get(q.key)!.is_correct).length;
+      const acc = attInLvl.length ? Math.round((corInLvl / attInLvl.length) * 100) : 0;
+      return {
+        ...lvl,
+        total: qInLvl.length,
+        attempted: attInLvl.length,
+        correct: corInLvl,
+        accuracy: acc,
+      };
+    });
+  }, [questions, byQuestion]);
+
+  // Filtered question list
+  const filteredQuestions = useMemo(() => {
+    return questions.filter((q) => {
+      const a = byQuestion.get(q.key);
+      if (filterTab === "mistakes") {
+        return a && !a.skipped && !a.is_correct;
+      }
+      if (filterTab === "bookmarks") {
+        return bookmarkedKeys.has(q.key);
+      }
+      return !!a; // all answered/attempted
+    });
+  }, [questions, byQuestion, filterTab, bookmarkedKeys]);
+
   return (
-    <div>
-      <div className="sticky top-0 z-20 -mx-3 mb-4 flex items-center gap-2 border-b bg-background/85 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
-        <button
-          onClick={onBack}
-          className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
-          aria-label="Back to topics"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <div className="min-w-0 flex-1">
-          <div className="truncate text-sm font-bold">{topic.title} · Analysis</div>
-          <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-            {chapter.chapter.title}
+    <div className="space-y-4">
+      {/* Top Header */}
+      <div className="sticky top-0 z-20 -mx-3 flex items-center justify-between border-b bg-background/90 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onBack}
+            className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+            aria-label="Back to topics"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <div className="min-w-0">
+            <h2 className="truncate text-sm font-bold text-foreground">{topic.title} · Analytics Hub</h2>
+            <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              {chapter.chapter.title}
+            </div>
           </div>
         </div>
         <button
           onClick={onRevise}
-          className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-3 py-1.5 text-[11px] font-bold text-white"
+          className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:opacity-95"
         >
-          Revise again
+          Revise Topic
         </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+      {/* Performance Scorecard */}
+      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5">
         <Stat label="Attempted" value={`${attempted.length}/${questions.length}`} />
         <Stat label="Accuracy" value={`${accuracy}%`} />
-        <Stat label="Correct" value={`${correct} / ${wrong} wrong`} />
+        <Stat label="Correct / Wrong" value={`${correct} / ${wrong}`} />
         <Stat label="Skipped" value={String(skipped)} />
-        <Stat label="Avg time" value={avgSec ? `${avgSec}s` : "—"} />
+        <Stat label="Bookmarks" value={String(bookmarkedKeys.size)} />
       </div>
 
-      <h3 className="mb-2 mt-6 text-sm font-bold">Your responses</h3>
-      {responded.length === 0 ? (
-        <p className="rounded-2xl border border-dashed p-8 text-center text-xs text-muted-foreground">
-          You haven't answered any question in this topic yet.
-        </p>
+      {/* Difficulty vs Accuracy Grid */}
+      <div className="rounded-2xl border bg-card p-4 shadow-xs">
+        <div className="text-xs font-bold text-foreground mb-3 flex items-center gap-1.5">
+          <BarChart3 className="h-4 w-4 text-primary" />
+          <span>Difficulty vs. Accuracy Breakdown</span>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {diffStats.map((st) => (
+            <div key={st.key} className="rounded-xl border border-border/70 bg-secondary/30 p-3">
+              <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                <span>{st.label}</span>
+                <span className="font-bold text-primary">{st.accuracy}%</span>
+              </div>
+              <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-300"
+                  style={{ width: `${st.accuracy}%` }}
+                />
+              </div>
+              <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
+                <span>Attempted: {st.attempted}/{st.total}</span>
+                <span>Correct: {st.correct}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Analysis Tabs */}
+      <div className="flex items-center gap-1.5 border-b border-border pb-1">
+        <button
+          onClick={() => setFilterTab("all")}
+          className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+            filterTab === "all"
+              ? "bg-primary text-primary-foreground shadow-xs"
+              : "text-muted-foreground hover:bg-secondary"
+          }`}
+        >
+          All Responses ({responded.length})
+        </button>
+        <button
+          onClick={() => setFilterTab("mistakes")}
+          className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+            filterTab === "mistakes"
+              ? "bg-destructive text-destructive-foreground shadow-xs"
+              : "text-muted-foreground hover:bg-secondary"
+          }`}
+        >
+          Mistakes ({wrong})
+        </button>
+        <button
+          onClick={() => setFilterTab("bookmarks")}
+          className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+            filterTab === "bookmarks"
+              ? "bg-amber-500 text-white shadow-xs"
+              : "text-muted-foreground hover:bg-secondary"
+          }`}
+        >
+          Bookmarked ({bookmarkedKeys.size})
+        </button>
+      </div>
+
+      {/* Questions Review List */}
+      {filteredQuestions.length === 0 ? (
+        <div className="rounded-2xl border border-dashed p-8 text-center text-xs text-muted-foreground">
+          {filterTab === "mistakes"
+            ? "Great job! No mistakes found in this topic."
+            : filterTab === "bookmarks"
+              ? "No questions bookmarked in this topic yet."
+              : "No responses recorded yet. Complete the reading steps to see analysis."}
+        </div>
       ) : (
-        <ul className="space-y-2">
-          {questions.map((q, i) => ({ q, a: byQuestion.get(q.key), n: i + 1 }))
-            .filter((r): r is { q: KeyPointQuestion; a: KeyPointAnswer; n: number } => !!r.a)
-            .map(({ q, a, n }, i) => {
+        <ul className="space-y-3">
+          {filteredQuestions.map((q, idx) => {
+            const a = byQuestion.get(q.key);
+            const isBookmarked = bookmarkedKeys.has(q.key);
             return (
-              <li key={q.key} className="rounded-2xl border bg-card p-4">
-                <div className="mb-1 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                  <span>Q{i + 1}</span>
-                  <span className="font-normal normal-case tracking-normal">(question {n} of {questions.length})</span>
-                  <span>{q.source === "pyq" ? "PYQ" : "Question bank"}</span>
-                  <span
-                    className={
-                      "ml-auto rounded-full px-2 py-0.5 " +
-                      (a.is_correct
-                        ? "bg-emerald-500/12 text-emerald-600 dark:text-emerald-400"
-                        : a.skipped
-                          ? "bg-secondary text-muted-foreground"
-                          : "bg-destructive/12 text-destructive")
-                    }
-                  >
-                    {a.is_correct ? "Correct" : a.skipped ? "Skipped" : "Wrong"}
-                  </span>
+              <li key={q.key} className="rounded-2xl border bg-card p-4 shadow-xs">
+                <div className="mb-2 flex items-center justify-between text-[11px] font-bold text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <span>Q{idx + 1}</span>
+                    <span>{q.source === "pyq" ? "PYQ" : "Question Bank"}</span>
+                    {q.difficulty && (
+                      <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px]">
+                        Diff: {q.difficulty}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {a && (
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                          a.is_correct
+                            ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                            : a.skipped
+                              ? "bg-secondary text-muted-foreground"
+                              : "bg-destructive/15 text-destructive"
+                        }`}
+                      >
+                        {a.is_correct ? "Correct" : a.skipped ? "Skipped" : "Wrong"}
+                      </span>
+                    )}
+                    <button
+                      onClick={() => toggleBookmark(q.key)}
+                      className="rounded p-1 hover:bg-secondary text-muted-foreground"
+                    >
+                      {isBookmarked ? (
+                        <BookmarkCheck className="h-4 w-4 text-amber-500 fill-amber-500" />
+                      ) : (
+                        <Bookmark className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
                 </div>
-                <PyqRichText html={q.question} className="text-sm font-semibold" />
-                <div className="mt-2 text-xs text-muted-foreground">
-                  {a.skipped ? (
-                    <>Skipped</>
-                  ) : (
-                    <>
-                      Your answer: <strong>{a.selected ?? "—"}</strong>
-                    </>
-                  )}{" "}
-                  · Correct: <strong>{q.correctKey ?? "—"}</strong>
-                  {a.time_ms != null && a.time_ms > 0 && (
-                    <> · {Math.max(1, Math.round(a.time_ms / 1000))}s</>
+
+                <PyqRichText html={q.question} className="text-sm font-semibold text-foreground" />
+
+                <div className="mt-3 rounded-xl bg-secondary/40 p-2.5 text-xs">
+                  {a && (
+                    <div className="mb-1 text-muted-foreground">
+                      Your Choice: <strong className="text-foreground">{a.selected ?? "—"}</strong>
+                      {a.skipped && " (Skipped)"}
+                    </div>
+                  )}
+                  <div className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                    Correct Answer: {q.correctKey ?? "—"}
+                  </div>
+                  {q.explanation && (
+                    <div className="mt-2 border-t border-border/50 pt-1.5 text-xs text-muted-foreground">
+                      <strong>Explanation: </strong>
+                      <PyqRichText html={q.explanation} className="inline" />
+                    </div>
                   )}
                 </div>
               </li>
@@ -1166,8 +1402,8 @@ function TopicAnalytics({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border bg-card p-4 text-center shadow-soft">
-      <div className="text-lg font-bold">{value}</div>
+    <div className="rounded-2xl border bg-card p-3.5 text-center shadow-xs">
+      <div className="text-lg font-bold text-foreground">{value}</div>
       <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
         {label}
       </div>

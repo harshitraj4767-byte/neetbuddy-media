@@ -30,16 +30,34 @@ if ($method === "GET") {
     switch ($action) {
         case "stats":
             $usersCount = (int)$pdo->query("SELECT COUNT(*) FROM auth_users")->fetchColumn();
-            $questionsCount = (int)$pdo->query("SELECT COUNT(*) FROM qb_questions")->fetchColumn();
+            $qbCount = (int)$pdo->query("SELECT COUNT(*) FROM qb_questions")->fetchColumn();
+            $nuggetQCount = (int)$pdo->query("SELECT COUNT(*) FROM nugget_questions")->fetchColumn();
+            $nuggetChCount = (int)$pdo->query("SELECT COUNT(*) FROM nugget_chapters")->fetchColumn();
+            $pyqCount = (int)$pdo->query("SELECT COUNT(*) FROM ncert_book_pyq")->fetchColumn();
             $attemptsCount = (int)$pdo->query("SELECT COUNT(*) FROM attempts")->fetchColumn();
             $activeSubsCount = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE status = 'active'")->fetchColumn();
+            $totalQuestions = $qbCount + $nuggetQCount + $pyqCount;
+
+            // Subject breakdown
+            $bioQ = (int)$pdo->query("SELECT COUNT(*) FROM nugget_questions WHERE LOWER(subject) = 'biology'")->fetchColumn();
+            $chemQ = (int)$pdo->query("SELECT COUNT(*) FROM nugget_questions WHERE LOWER(subject) = 'chemistry'")->fetchColumn();
+            $phyQ = (int)$pdo->query("SELECT COUNT(*) FROM nugget_questions WHERE LOWER(subject) = 'physics'")->fetchColumn();
 
             nb_json([
                 "stats" => [
                     "users" => $usersCount,
-                    "questions" => $questionsCount,
+                    "questions" => $totalQuestions,
+                    "qb_questions" => $qbCount,
+                    "nugget_questions" => $nuggetQCount,
+                    "nugget_chapters" => $nuggetChCount,
+                    "pyq_questions" => $pyqCount,
                     "attempts" => $attemptsCount,
-                    "active_subscriptions" => $activeSubsCount
+                    "active_subscriptions" => $activeSubsCount,
+                    "subject_nuggets" => [
+                        "biology" => $bioQ,
+                        "chemistry" => $chemQ,
+                        "physics" => $phyQ
+                    ]
                 ]
             ]);
             exit;

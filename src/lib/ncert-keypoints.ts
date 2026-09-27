@@ -598,6 +598,13 @@ async function fetchQbQuestions(
 /**
  * Attach every question to a paragraph:
  *  1. Linked PYQs go on their exact NCERT line.
+ *  2. Bank questions go to their specific topic and paragraph.
+ *     Strict guard: Introduction only receives questions that are general
+ *     chapter overviews. Detailed or concept-heavy questions are guided to
+ *     their specific subtopics.
+ */
+
+ *  1. Linked PYQs go on their exact NCERT line.
  *  2. Bank questions go to the topic their qb_topic maps to (falling back to
  *     text similarity), then to the closest paragraph inside that topic.
  */
@@ -660,15 +667,23 @@ function assignQuestions(
       let bestScore = 0;
       let bestTopic: KeyPointTopic | undefined;
       for (const t of topics) {
-        const s = overlap(qTokens, topicTokens.get(t.key)!);
+        let s = overlap(qTokens, topicTokens.get(t.key)!);
+        // Heavily downweight 'intro' for non-explicit questions so specific concepts
+        // are never dumped into introduction
+        if (t.key === "intro" || t.title.toLowerCase().includes("intro")) {
+          s = s * 0.35;
+        }
         if (s > bestScore) {
           bestScore = s;
           bestTopic = t;
         }
       }
       // Never place an unrelated question just to make every bank row visible.
-      // Weak matches caused questions from other concepts to appear in a topic.
-      if (!bestTopic || bestScore < 0.12) continue;
+      if (!bestTopic || bestScore < 0.14) continue;
+      // If best was intro but score is low, skip assignment to intro
+      if ((bestTopic.key === "intro" || bestTopic.title.toLowerCase().includes("intro")) && bestScore < 0.25) {
+        continue;
+      }
       topic = bestTopic;
     }
 
