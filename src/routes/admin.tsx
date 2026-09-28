@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import {
   Users,
-  Layers,
   BookOpen,
   Sparkles,
   RefreshCw,
@@ -17,15 +16,12 @@ import {
   Loader2,
   SlidersHorizontal,
   ChevronRight,
-  ExternalLink,
   Plus,
   BarChart2,
-  CheckCircle2,
   FileQuestion,
   GraduationCap,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Admin Portal — Neet Buddy" }] }),
@@ -67,8 +63,8 @@ interface UserFeedbackItem {
   context_url?: string;
 }
 
-export default function AdminPage() {
-  const { user, loading: authLoading, isAdmin } = useAuth();
+function AdminPage() {
+  const { user, loading: authLoading } = useAuth();
   const nav = useNavigate();
   const routerState = useRouterState();
   const pathname = routerState.location.pathname;
@@ -88,7 +84,7 @@ export default function AdminPage() {
   const fetchAdminData = async () => {
     setLoading(true);
     try {
-      // 1. Fetch system stats
+      // 1. Fetch system stats from Hostinger MySQL API
       try {
         const res = await fetch("/api/admin.php?action=stats", {
           headers: { Accept: "application/json" },
@@ -96,7 +92,23 @@ export default function AdminPage() {
         });
         if (res.ok) {
           const json = await res.json();
-          if (json.success && json.data) {
+          if (json.stats) {
+            setStats({
+              users_count: json.stats.users ?? 0,
+              total_attempts_count: json.stats.attempts ?? 0,
+              nuggets_questions_count: json.stats.nugget_questions ?? 0,
+              nuggets_chapters_count: json.stats.nugget_chapters ?? 0,
+              nuggets_by_subject: {
+                biology: json.stats.subject_nuggets?.biology ?? 0,
+                chemistry: json.stats.subject_nuggets?.chemistry ?? 0,
+                physics: json.stats.subject_nuggets?.physics ?? 0,
+              },
+              qb_questions_count: json.stats.qb_questions ?? 0,
+              ncert_pyqs_count: json.stats.pyq_questions ?? 0,
+              active_subscriptions_count: json.stats.active_subscriptions ?? 0,
+              estimated_revenue: `₹${((json.stats.active_subscriptions || 0) * 499).toLocaleString()}`,
+            });
+          } else if (json.data) {
             setStats(json.data);
           }
         }
@@ -115,14 +127,29 @@ export default function AdminPage() {
         });
       }
 
-      // 2. Fetch feedback
+      // 2. Fetch feedback from Hostinger MySQL API
       try {
-        const { data } = await (supabase as any)
-          .from("user_feedback")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(20);
-        if (data) setFeedbacks(data);
+        const res = await fetch("/api/admin.php?action=feedback", {
+          headers: { Accept: "application/json" },
+          credentials: "include",
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.feedback && Array.isArray(json.feedback)) {
+            setFeedbacks(
+              json.feedback.map((f: any) => ({
+                id: String(f.id),
+                type: f.category || f.type || "feedback",
+                message: f.message || "",
+                rating: f.rating ? Number(f.rating) : undefined,
+                created_at: f.created_at || new Date().toISOString(),
+                user_email: f.email || undefined,
+                user_name: f.full_name || undefined,
+                context_url: f.context_url || undefined,
+              }))
+            );
+          }
+        }
       } catch {}
     } finally {
       setLoading(false);
@@ -161,8 +188,8 @@ export default function AdminPage() {
   }
 
   const modules = [
-    { name: "Dashboard Sliders", desc: "Manage hero banners & carousels", path: "/admin-banners", icon: SlidersHorizontal, count: "Active" },
-    { name: "User Inbox & Reports", desc: "Student queries and feedback", path: "/admin-inbox", icon: MessageSquare, count: feedbacks.length },
+    { name: "Dashboard Sliders", desc: "Manage hero banners & carousels", path: "/admin-banners", icon: SlidersHorizontal },
+    { name: "User Inbox & Reports", desc: "Student queries and feedback", path: "/admin-inbox", icon: MessageSquare },
     { name: "Question Scanner", desc: "OCR and batch question audit", path: "/admin/question-scan", icon: FileQuestion },
     { name: "Study Materials", desc: "PDFs, formula sheets & notes", path: "/admin-study-materials", icon: BookOpen },
     { name: "Mock Categories", desc: "Test series & mock packages", path: "/admin-mock-categories", icon: GraduationCap },
