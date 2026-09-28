@@ -436,6 +436,21 @@ function Reader({
       {q.isPending && <Spinner />}
       {q.isError && <ErrorBox message={(q.error as Error).message} onRetry={() => q.refetch()} />}
 
+      {!q.isPending && !q.data && (
+        <div className="mt-8 rounded-2xl border border-border/60 bg-card p-6 text-center shadow-sm">
+          <p className="text-sm font-semibold text-foreground">Chapter not found</p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            The requested chapter could not be loaded. Please select an available chapter.
+          </p>
+          <button
+            onClick={onBack}
+            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow transition hover:opacity-90"
+          >
+            <ChevronLeft className="h-4 w-4" /> Browse chapters
+          </button>
+        </div>
+      )}
+
       {q.data && visible.length === 0 && (
         <p className="mt-8 rounded-xl border border-dashed p-8 text-center text-xs text-muted-foreground">
           No highlighted lines in this chapter yet.

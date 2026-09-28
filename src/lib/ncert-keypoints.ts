@@ -730,7 +730,11 @@ function assignQuestions(
 
 /** Everything the Key Points page needs for one chapter. */
 export async function getChapterKeyPoints(slug: string): Promise<ChapterKeyPoints> {
-  const { chapter, blocks } = await getBookChapter(slug);
+  const bookData = await getBookChapter(slug);
+  if (!bookData) {
+    throw new Error(`Chapter "${slug}" could not be loaded. Please choose another chapter.`);
+  }
+  const { chapter, blocks } = bookData;
   const topics = buildTopics(blocks);
 
   const allPyqIds = blocks.flatMap((b) => b.pyq_ids ?? []);

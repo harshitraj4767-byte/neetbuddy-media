@@ -1,3 +1,4 @@
+import { MissionBanner } from "@/components/mission-banner";
 import { publicMediaAsset } from "@/lib/media-assets";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -47,6 +48,15 @@ import {
 
 export const Route = createFileRoute("/subjects/$subject")({
   head: () => ({ meta: [{ title: "Subject — Neet Buddy" }] }),
+  validateSearch: (search: Record<string, unknown>) => ({
+    search: typeof search.search === "string" ? search.search : undefined,
+    chapter: typeof search.chapter === "string" ? search.chapter : undefined,
+    count: !isNaN(Number(search.count)) ? Number(search.count) : undefined,
+    autoOpen: search.autoOpen === "1" || search.autoOpen === "true" || search.autoOpen === true,
+    level_id: search.level_id != null ? String(search.level_id) : undefined,
+    mission_id: search.mission_id != null ? String(search.mission_id) : undefined,
+    source: search.source != null ? String(search.source) : undefined,
+  }),
   component: SubjectPage,
 });
 
@@ -127,11 +137,12 @@ function shuffleArray<T>(array: T[]): T[] {
 
 function SubjectPage() {
   const { subject } = Route.useParams();
+  const searchParams = Route.useSearch();
   const { user, loading } = useAuth();
   const nav = useNavigate();
   const [chapters, setChapters] = useState<Chapter[] | null>(null);
   const [launching, setLaunching] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(searchParams.search ?? searchParams.chapter ?? "");
   const [difficulty, setDifficulty] = useState<string>("any");
   const [qtype, setQType] = useState<string>("any");
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -152,6 +163,17 @@ function SubjectPage() {
         })) as Chapter[];
         if (cancelled) return;
         setChapters(list);
+        if (searchParams.chapter || searchParams.search) {
+          const query = (searchParams.chapter || searchParams.search || "").toLowerCase();
+          const cleanQ = query.replace(/^\d+[.:]\s*/, "").trim();
+          const found = list.find((ch) => {
+            const name = ch.name.toLowerCase();
+            return name.includes(cleanQ) || cleanQ.includes(name);
+          });
+          if (found) {
+            setSelectedChapter(found);
+          }
+        }
       } catch (e) {
         console.warn("chapter load failed:", e);
         if (!cancelled) setChapters([]);
@@ -269,6 +291,7 @@ function SubjectPage() {
 
   return (
     <PageShell>
+      <MissionBanner />
       <HubHero
         variant="banner"
         compact

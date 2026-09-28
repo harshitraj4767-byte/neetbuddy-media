@@ -310,13 +310,25 @@ function StudyRoadmapPage() {
                 </div>
               </div>
 
-              <div className="relative mt-5">
-                <img
-                  src={worldPose.src}
-                  alt=""
-                  aria-hidden
-                  className="pointer-events-none absolute right-0 top-1/3 h-20 w-20 object-contain opacity-70 sm:h-28 sm:w-28"
-                />
+              <div className="relative mt-6">
+                {/* Alternating mascot: shifts left on odd worlds, right on even worlds */}
+                <div
+                  className={`pointer-events-none absolute top-1/4 z-0 flex flex-col items-center gap-1.5 transition-all duration-500 ${
+                    world.index % 2 === 1
+                      ? "left-2 sm:left-6 md:left-12"
+                      : "right-2 sm:right-6 md:right-12"
+                  }`}
+                >
+                  <div className="hidden rounded-full border border-border/40 bg-card/80 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-foreground shadow-sm backdrop-blur sm:block animate-pulse">
+                    {world.index % 2 === 1 ? "Keep advancing! 🎯" : "You got this! 🚀"}
+                  </div>
+                  <img
+                    src={worldPose.src}
+                    alt=""
+                    aria-hidden
+                    className="h-20 w-20 object-contain drop-shadow-md sm:h-28 sm:w-28 animate-bounce [animation-duration:4s]"
+                  />
+                </div>
                 <ul className="relative flex flex-col items-center">
                   {levels.map((level, i) => (
                     <li key={level.level_id} className="w-full">

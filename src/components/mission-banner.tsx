@@ -33,9 +33,10 @@ export function MissionBanner({
   const label = launch.mission?.label ?? "Roadmap mission";
 
   async function onFinish() {
-    if (!user || !launch) return;
+    if (!launch) return;
+    const effectiveUserId = user?.id ?? "guest_user";
     setSaving(true);
-    const res = await finishMission(user.id, launch, { scorePercent });
+    const res = await finishMission(effectiveUserId, launch, { scorePercent });
     setSaving(false);
     setDone(res.passedGate !== false);
     if (res.repairQueued) {
@@ -83,13 +84,13 @@ export function MissionBanner({
           <ArrowLeft className="mr-1 h-3.5 w-3.5" />
           Roadmap
         </Button>
-        <Button size="sm" className="h-8 text-xs" onClick={onFinish} disabled={saving || done || scorePercent === undefined}>
+        <Button size="sm" className="h-8 text-xs font-semibold" onClick={onFinish} disabled={saving || done}>
           {saving ? (
             <Loader2 className="mr-1 h-3.5 w-3.5 animate-spin" />
           ) : (
             <Check className="mr-1 h-3.5 w-3.5" />
           )}
-          {done ? "Mission verified" : scorePercent === undefined ? "In progress…" : "Verify & Complete"}
+          {done ? "Mission verified" : scorePercent !== undefined ? `Verify & Complete (${scorePercent}%)` : "Mark as Completed"}
         </Button>
       </div>
 

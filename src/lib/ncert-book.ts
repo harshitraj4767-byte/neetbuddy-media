@@ -64,8 +64,29 @@ export async function getBookChapter(slug: string): Promise<{ chapter: BookChapt
     const res = await fetch(`/api/ncert.php?action=book_chapter&slug=${encodeURIComponent(slug)}`);
     if (res.ok) {
       const data = await res.json();
-      if (data.chapter && Array.isArray(data.blocks)) {
+      if (data.chapter && Array.isArray(data.blocks) && data.blocks.length > 0) {
         return { chapter: data.chapter, blocks: data.blocks };
+      }
+    }
+    // Fallback: If exact slug lookup fails, find best matching chapter by slug or title
+    const allChapters = await listBookChapters();
+    if (allChapters.length > 0) {
+      const clean = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const target = clean(slug);
+      const match = allChapters.find((c) => {
+        const cSlug = clean(c.slug);
+        const cTitle = clean(c.title);
+        return cSlug === target || cSlug.includes(target) || target.includes(cSlug) || cTitle.includes(target) || target.includes(cTitle);
+      }) ?? allChapters[0];
+
+      if (match && match.slug !== slug) {
+        const retryRes = await fetch(`/api/ncert.php?action=book_chapter&slug=${encodeURIComponent(match.slug)}`);
+        if (retryRes.ok) {
+          const retryData = await retryRes.json();
+          if (retryData.chapter && Array.isArray(retryData.blocks)) {
+            return { chapter: retryData.chapter, blocks: retryData.blocks };
+          }
+        }
       }
     }
   } catch (e) {

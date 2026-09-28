@@ -70,6 +70,7 @@ import { Route as AdminSupportRouteImport } from './routes/admin.support'
 import { Route as AnalysisAttemptIdRouteImport } from './routes/analysis.$attemptId'
 import { Route as BatchesBatchIdRouteImport } from './routes/batches.$batchId'
 import { Route as BatchesCompareRouteImport } from './routes/batches.compare'
+import { Route as BattlePlayRouteImport } from './routes/battle..play'
 import { Route as BattlegroundsHistoryRouteImport } from './routes/battlegrounds.history'
 import { Route as BattlegroundsViewAllRouteImport } from './routes/battlegrounds.view-all'
 import { Route as ContestContestIdRouteImport } from './routes/contest.$contestId'
@@ -406,6 +407,11 @@ const BatchesCompareRoute = BatchesCompareRouteImport.update({
   path: '/batches/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BattlePlayRoute = BattlePlayRouteImport.update({
+  id: '/battle/play',
+  path: '/battle/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BattlegroundsHistoryRoute = BattlegroundsHistoryRouteImport.update({
   id: '/history',
   path: '/history',
@@ -629,6 +635,7 @@ export interface FileRoutesByFullPath {
   '/analysis/$attemptId': typeof AnalysisAttemptIdRoute
   '/batches/$batchId': typeof BatchesBatchIdRoute
   '/batches/compare': typeof BatchesCompareRoute
+  '/battle/play': typeof BattlePlayRoute
   '/battlegrounds/history': typeof BattlegroundsHistoryRoute
   '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
   '/contest/$contestId': typeof ContestContestIdRouteWithChildren
@@ -722,6 +729,7 @@ export interface FileRoutesByTo {
   '/analysis/$attemptId': typeof AnalysisAttemptIdRoute
   '/batches/$batchId': typeof BatchesBatchIdRoute
   '/batches/compare': typeof BatchesCompareRoute
+  '/battle/play': typeof BattlePlayRoute
   '/battlegrounds/history': typeof BattlegroundsHistoryRoute
   '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
   '/contest/$contestId': typeof ContestContestIdRouteWithChildren
@@ -816,6 +824,7 @@ export interface FileRoutesById {
   '/analysis/$attemptId': typeof AnalysisAttemptIdRoute
   '/batches/$batchId': typeof BatchesBatchIdRoute
   '/batches/compare': typeof BatchesCompareRoute
+  '/battle/play': typeof BattlePlayRoute
   '/battlegrounds/history': typeof BattlegroundsHistoryRoute
   '/battlegrounds/view-all': typeof BattlegroundsViewAllRoute
   '/contest/$contestId': typeof ContestContestIdRouteWithChildren
@@ -911,6 +920,7 @@ export interface FileRouteTypes {
     | '/analysis/$attemptId'
     | '/batches/$batchId'
     | '/batches/compare'
+    | '/battle/play'
     | '/battlegrounds/history'
     | '/battlegrounds/view-all'
     | '/contest/$contestId'
@@ -1004,6 +1014,7 @@ export interface FileRouteTypes {
     | '/analysis/$attemptId'
     | '/batches/$batchId'
     | '/batches/compare'
+    | '/battle/play'
     | '/battlegrounds/history'
     | '/battlegrounds/view-all'
     | '/contest/$contestId'
@@ -1097,6 +1108,7 @@ export interface FileRouteTypes {
     | '/analysis/$attemptId'
     | '/batches/$batchId'
     | '/batches/compare'
+    | '/battle/play'
     | '/battlegrounds/history'
     | '/battlegrounds/view-all'
     | '/contest/$contestId'
@@ -1188,6 +1200,7 @@ export interface RootRouteChildren {
   AnalysisAttemptIdRoute: typeof AnalysisAttemptIdRoute
   BatchesBatchIdRoute: typeof BatchesBatchIdRoute
   BatchesCompareRoute: typeof BatchesCompareRoute
+  BattlePlayRoute: typeof BattlePlayRoute
   ContestContestIdRoute: typeof ContestContestIdRouteWithChildren
   QuizTestIdRoute: typeof QuizTestIdRoute
   QuizSubjectsRoute: typeof QuizSubjectsRoute
@@ -1644,6 +1657,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BatchesCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/battle/play': {
+      id: '/battle/play'
+      path: '/battle/play'
+      fullPath: '/battle/play'
+      preLoaderRoute: typeof BattlePlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/battlegrounds/history': {
       id: '/battlegrounds/history'
       path: '/history'
@@ -1967,6 +1987,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnalysisAttemptIdRoute: AnalysisAttemptIdRoute,
   BatchesBatchIdRoute: BatchesBatchIdRoute,
   BatchesCompareRoute: BatchesCompareRoute,
+  BattlePlayRoute: BattlePlayRoute,
   ContestContestIdRoute: ContestContestIdRouteWithChildren,
   QuizTestIdRoute: QuizTestIdRoute,
   QuizSubjectsRoute: QuizSubjectsRoute,
