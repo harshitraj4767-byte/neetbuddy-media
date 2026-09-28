@@ -36,6 +36,18 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Admin Control Centre — Neet Buddy" }] }),
   component: AdminPage,
+  errorComponent: ({ error, reset }) => (
+    <PageShell eyebrow="Admin" title="Admin Portal" description="Control centre recovery">
+      <div className="rounded-3xl border border-destructive/30 bg-destructive/5 p-6 text-center max-w-md mx-auto">
+        <ShieldAlert className="h-10 w-10 text-destructive mx-auto mb-3" />
+        <h3 className="text-base font-bold text-foreground mb-1">Could not load Admin Panel</h3>
+        <p className="text-xs text-muted-foreground mb-4">{error?.message || "An unexpected error occurred while loading administration tools."}</p>
+        <button onClick={reset} className="rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground">
+          Retry
+        </button>
+      </div>
+    </PageShell>
+  ),
 });
 
 interface AdminStats {
@@ -434,7 +446,7 @@ export default function AdminPage() {
                   <Users className="h-4 w-4 text-sky-500" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {stats ? stats.users_count.toLocaleString() : "..."}
+                  {stats?.users_count != null ? Number(stats.users_count).toLocaleString() : "..."}
                 </div>
                 <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
                   Active NEET aspirants
@@ -447,10 +459,10 @@ export default function AdminPage() {
                   <CreditCard className="h-4 w-4 text-emerald-500" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {stats ? stats.estimated_revenue : "..."}
+                  {stats?.estimated_revenue != null ? String(stats.estimated_revenue) : "..."}
                 </div>
                 <div className="text-[11px] text-muted-foreground mt-1">
-                  {stats ? stats.active_subscriptions_count : 0} active subscriptions
+                  {stats?.active_subscriptions_count != null ? stats.active_subscriptions_count : 0} active subscriptions
                 </div>
               </div>
 
@@ -473,7 +485,7 @@ export default function AdminPage() {
                   <Activity className="h-4 w-4 text-amber-500" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-foreground">
-                  {stats ? stats.total_attempts_count.toLocaleString() : "..."}
+                  {stats?.total_attempts_count != null ? Number(stats.total_attempts_count).toLocaleString() : "..."}
                 </div>
                 <div className="text-[11px] text-muted-foreground mt-1">
                   Completed sessions

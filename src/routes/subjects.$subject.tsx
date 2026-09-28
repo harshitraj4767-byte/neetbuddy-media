@@ -24,6 +24,8 @@ import {
   Trophy,
   X,
   Layers,
+  Minus,
+  Plus,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
@@ -298,7 +300,7 @@ function SubjectPage() {
       </HubHero>
 
       {/* Concise Filter Bar */}
-      <div className="mb-2.5 rounded-xl border border-border/60 bg-card/60 px-2 py-1.5 shadow-xs backdrop-blur-md">
+      <div className="mb-2 rounded-xl border border-border/50 bg-card/50 px-2 py-1 shadow-xs backdrop-blur-sm">
         <div className="flex flex-wrap items-center gap-2">
           {/* Chapter Search */}
           <div className="relative min-w-[160px] flex-1">
@@ -535,335 +537,295 @@ const TIMER_PRESETS = [
 
 function PracticeConfigModal({ chapter, subject, busy, onClose, onStart }: PracticeConfigModalProps) {
   const isMobile = useIsMobile();
-  const maxPool = chapter?.q_count ?? 30;
+  const maxPool = Math.max(5, chapter?.q_count ?? 30);
 
-  const [count, setCount] = useState<number>(() => Math.min(20, Math.max(5, maxPool)));
-  const [customCountInput, setCustomCountInput] = useState<string>("");
-  const [isCustomCount, setIsCustomCount] = useState(false);
-
-  const [timer, setTimer] = useState<number>(15);
-  const [customTimerInput, setCustomTimerInput] = useState<string>("");
-  const [isCustomTimer, setIsCustomTimer] = useState(false);
-
+  // Standard default count: 25 (clamped to available questions)
+  const [count, setCount] = useState<number>(() => Math.min(25, maxPool));
+  // Standard default timer: 25 minutes
+  const [timer, setTimer] = useState<number>(25);
   const [mode, setMode] = useState<QuizMode>("quiz");
 
-  // Keep count bounded when chapter changes
   useEffect(() => {
     if (chapter) {
-      const initial = Math.min(20, Math.max(5, chapter.q_count ?? 30));
-      setCount(initial);
-      setIsCustomCount(false);
-      setCustomCountInput("");
+      const available = Math.max(5, chapter.q_count ?? 30);
+      setCount(Math.min(25, available));
     }
   }, [chapter]);
 
   if (!chapter) return null;
 
-  const handleRollRandomCount = () => {
-    const minQ = 5;
-    const maxQ = Math.max(minQ, Math.min(chapter.q_count ?? 50, 60));
-    // Pick common intervals or a nice rounded number
-    const randomChoices = [10, 15, 20, 25, 30, 40, 50].filter((n) => n <= maxQ && n >= minQ);
-    const rolled = randomChoices.length
-      ? randomChoices[Math.floor(Math.random() * randomChoices.length)]
-      : Math.floor(Math.random() * (maxQ - minQ + 1)) + minQ;
-    setCount(rolled);
-    setIsCustomCount(false);
-    toast.success(`🎲 Rolled ${rolled} questions!`);
+  const stepCount = (delta: number) => {
+    setCount((prev) => Math.min(maxPool, Math.max(5, prev + delta)));
   };
 
-  const handleRollRandomTimer = () => {
-    const timerChoices = [10, 15, 20, 30, 45];
-    const rolled = timerChoices[Math.floor(Math.random() * timerChoices.length)];
-    setTimer(rolled);
-    setIsCustomTimer(false);
-    toast.success(`🎲 Rolled ${rolled} minutes timer!`);
-  };
-
-  const handleCustomCountChange = (val: string) => {
-    setCustomCountInput(val);
-    const num = parseInt(val, 10);
-    if (!isNaN(num) && num > 0) {
-      setCount(Math.min(num, chapter.q_count ?? 999));
-    }
-  };
-
-  const handleCustomTimerChange = (val: string) => {
-    setCustomTimerInput(val);
-    const num = parseInt(val, 10);
-    if (!isNaN(num) && num >= 0) {
-      setTimer(num);
-    }
+  const stepTimer = (delta: number) => {
+    setTimer((prev) => Math.min(180, Math.max(0, prev + delta)));
   };
 
   const content = (
-    <div className="space-y-3.5 py-1 text-xs">
-      {/* Chapter Context Banner */}
-      <div className="rounded-xl bg-secondary/50 border border-border/60 p-3 flex items-center justify-between">
-        <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">{subject}</span>
-          <h4 className="text-sm font-semibold text-foreground line-clamp-1">{chapter.name}</h4>
+    <div className="space-y-3 py-1 text-xs">
+      {/* Chapter Context Header */}
+      <div className="rounded-xl bg-secondary/40 border border-border/60 px-3 py-2 flex items-center justify-between">
+        <div className="min-w-0 pr-2">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{subject}</span>
+          <h4 className="text-xs font-semibold text-foreground truncate">{chapter.name}</h4>
         </div>
-        <Badge variant="outline" className="text-xs bg-background/80 shrink-0">
-          {chapter.q_count ?? 0} Qs in pool
+        <Badge variant="outline" className="text-[10px] px-2 py-0.5 bg-background shrink-0">
+          {chapter.q_count ?? 0} Qs total
         </Badge>
       </div>
 
-      {/* 1. Questions Selector */}
-      <div className="space-y-2">
+      {/* 1. Questions Selector (Standard 25 with +/- 5 steppers) */}
+      <div className="rounded-xl border border-border/60 bg-card p-2.5 space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-1.5">
-            <BookOpen className="h-4 w-4 text-primary" />
-            <span>Number of Questions</span>
+          <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+            <BookOpen className="h-3.5 w-3.5 text-primary" />
+            <span>Questions</span>
           </label>
-          <span className="text-xs font-semibold text-primary">
+          <span className="text-xs font-bold text-primary">
             {count} Questions
           </span>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
-          {COUNT_PRESETS.map((n) => {
-            const disabled = (chapter.q_count ?? 0) < n;
-            const active = !isCustomCount && count === n;
+        {/* Stepper + Input */}
+        <div className="flex items-center gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => stepCount(-5)}
+            disabled={count <= 5}
+            className="h-8 w-10 px-0 shrink-0 rounded-lg text-xs font-bold"
+            title="Decrease 5 questions"
+          >
+            <Minus className="h-3.5 w-3.5" />
+          </Button>
+
+          <div className="flex-1 text-center font-extrabold text-sm text-foreground bg-secondary/40 py-1.5 rounded-lg border border-border/40">
+            {count} <span className="text-xs font-medium text-muted-foreground">Qs</span>
+          </div>
+
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => stepCount(5)}
+            disabled={count >= maxPool}
+            className="h-8 w-10 px-0 shrink-0 rounded-lg text-xs font-bold"
+            title="Increase 5 questions"
+          >
+            <Plus className="h-3.5 w-3.5" />
+          </Button>
+        </div>
+
+        {/* Quick presets */}
+        <div className="flex items-center gap-1.5 pt-0.5">
+          {[10, 25, 45].map((n) => {
+            const disabled = maxPool < n;
+            const active = count === n;
             return (
               <button
                 key={n}
                 type="button"
                 disabled={disabled}
-                onClick={() => {
-                  setCount(n);
-                  setIsCustomCount(false);
-                }}
+                onClick={() => setCount(n)}
                 className={cn(
-                  "rounded-xl border p-2 text-xs font-semibold transition disabled:opacity-40",
+                  "flex-1 rounded-md border py-1 text-[11px] font-semibold transition disabled:opacity-30",
                   active
-                    ? "border-primary bg-primary/10 text-primary font-bold shadow-xs"
-                    : "border-border bg-card text-muted-foreground hover:border-border/80 hover:text-foreground",
+                    ? "border-primary bg-primary/10 text-primary font-bold"
+                    : "border-border/60 bg-secondary/20 text-muted-foreground hover:text-foreground",
                 )}
               >
-                {n} Qs
+                {n}
               </button>
             );
           })}
-
-          {/* All Questions */}
           <button
             type="button"
-            onClick={() => {
-              setCount(chapter.q_count ?? 30);
-              setIsCustomCount(false);
-            }}
+            onClick={() => setCount(maxPool)}
             className={cn(
-              "rounded-xl border p-2 text-xs font-semibold transition",
-              !isCustomCount && count === (chapter.q_count ?? 30)
-                ? "border-primary bg-primary/10 text-primary font-bold shadow-xs"
-                : "border-border bg-card text-muted-foreground hover:border-border/80 hover:text-foreground",
+              "flex-1 rounded-md border py-1 text-[11px] font-semibold transition",
+              count === maxPool
+                ? "border-primary bg-primary/10 text-primary font-bold"
+                : "border-border/60 bg-secondary/20 text-muted-foreground hover:text-foreground",
             )}
           >
-            All ({chapter.q_count ?? 0})
+            All ({maxPool})
           </button>
-
-          {/* Random Roll Button */}
-          <button
-            type="button"
-            onClick={handleRollRandomCount}
-            className="rounded-xl border border-dashed border-primary/50 bg-primary/5 p-2 text-xs font-semibold text-primary transition hover:bg-primary/15 flex items-center justify-center gap-1"
-          >
-            <Dices className="h-3.5 w-3.5" />
-            <span>Random</span>
-          </button>
-        </div>
-
-        {/* Custom Count Toggle/Input */}
-        <div className="pt-1 flex items-center gap-2">
-          <Input
-            type="number"
-            min={1}
-            max={chapter.q_count ?? 200}
-            placeholder={`Custom count (max ${chapter.q_count ?? 200})`}
-            value={customCountInput}
-            onChange={(e) => {
-              setIsCustomCount(true);
-              handleCustomCountChange(e.target.value);
-            }}
-            className="h-8 text-xs rounded-xl flex-1"
-          />
         </div>
       </div>
 
-      {/* 2. Timer Selector */}
-      <div className="space-y-2">
+      {/* 2. Timer Selector (Standard 25m with +/- 5 steppers) */}
+      <div className="rounded-xl border border-border/60 bg-card p-2.5 space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-1.5">
-            <Clock className="h-4 w-4 text-primary" />
-            <span>Timer / Duration</span>
+          <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+            <Clock className="h-3.5 w-3.5 text-primary" />
+            <span>Duration</span>
           </label>
-          <span className="text-xs font-semibold text-primary">
-            {timer === 0 ? "Untimed" : `${timer} Minutes`}
+          <span className="text-xs font-bold text-primary">
+            {timer === 0 ? "Untimed" : `${timer} min`}
           </span>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5">
-          {TIMER_PRESETS.map((t) => {
-            const active = !isCustomTimer && timer === t.value;
-            return (
-              <button
-                key={t.value}
-                type="button"
-                onClick={() => {
-                  setTimer(t.value);
-                  setIsCustomTimer(false);
-                }}
-                className={cn(
-                  "rounded-xl border p-2 text-xs font-semibold transition",
-                  active
-                    ? "border-primary bg-primary/10 text-primary font-bold shadow-xs"
-                    : "border-border bg-card text-muted-foreground hover:border-border/80 hover:text-foreground",
-                )}
-              >
-                {t.label}
-              </button>
-            );
-          })}
-
-          {/* Random Timer Button */}
-          <button
+        {/* Stepper */}
+        <div className="flex items-center gap-2">
+          <Button
             type="button"
-            onClick={handleRollRandomTimer}
-            className="rounded-xl border border-dashed border-primary/50 bg-primary/5 p-2 text-xs font-semibold text-primary transition hover:bg-primary/15 flex items-center justify-center gap-1 col-span-3 sm:col-span-2"
+            variant="outline"
+            size="sm"
+            onClick={() => stepTimer(-5)}
+            disabled={timer <= 0}
+            className="h-8 w-10 px-0 shrink-0 rounded-lg text-xs font-bold"
+            title="Decrease 5 minutes"
           >
-            <Dices className="h-3.5 w-3.5" />
-            <span>Random Timer</span>
-          </button>
+            <Minus className="h-3.5 w-3.5" />
+          </Button>
+
+          <div className="flex-1 text-center font-extrabold text-sm text-foreground bg-secondary/40 py-1.5 rounded-lg border border-border/40">
+            {timer === 0 ? "Untimed (No limit)" : `${timer} min`}
+          </div>
+
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => stepTimer(5)}
+            disabled={timer >= 180}
+            className="h-8 w-10 px-0 shrink-0 rounded-lg text-xs font-bold"
+            title="Increase 5 minutes"
+          >
+            <Plus className="h-3.5 w-3.5" />
+          </Button>
         </div>
 
-        {/* Custom Timer Input */}
-        <div className="pt-1 flex items-center gap-2">
-          <Input
-            type="number"
-            min={0}
-            max={180}
-            placeholder="Custom duration in minutes (0 for untimed)"
-            value={customTimerInput}
-            onChange={(e) => {
-              setIsCustomTimer(true);
-              handleCustomTimerChange(e.target.value);
-            }}
-            className="h-8 text-xs rounded-xl flex-1"
-          />
+        {/* Quick timer presets */}
+        <div className="flex items-center gap-1.5 pt-0.5">
+          <button
+            type="button"
+            onClick={() => setTimer(0)}
+            className={cn(
+              "flex-1 rounded-md border py-1 text-[11px] font-semibold transition",
+              timer === 0
+                ? "border-primary bg-primary/10 text-primary font-bold"
+                : "border-border/60 bg-secondary/20 text-muted-foreground hover:text-foreground",
+            )}
+          >
+            Untimed
+          </button>
+          {[15, 25, 45, 60].map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setTimer(t)}
+              className={cn(
+                "flex-1 rounded-md border py-1 text-[11px] font-semibold transition",
+                timer === t
+                  ? "border-primary bg-primary/10 text-primary font-bold"
+                  : "border-border/60 bg-secondary/20 text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {t}m
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* 3. Mode Selector */}
-      <div className="space-y-2">
-        <label className="text-xs sm:text-sm font-bold text-foreground">Practice Mode</label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {/* Quiz Mode Card */}
-          <button
-            type="button"
-            onClick={() => setMode("quiz")}
-            className={cn(
-              "flex flex-col text-left rounded-2xl border p-3.5 transition",
-              mode === "quiz"
-                ? "border-primary bg-primary/5 ring-1 ring-primary/40 shadow-xs"
-                : "border-border bg-card hover:border-border/80",
-            )}
-          >
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs sm:text-sm font-bold flex items-center gap-1.5 text-foreground">
-                <Sparkles className="h-4 w-4 text-primary" />
-                Quiz Mode
-              </span>
-              <Badge variant="secondary" className="text-[10px]">Instant Solutions</Badge>
-            </div>
-            <p className="text-[11px] text-muted-foreground leading-normal">
-              Reveal answers and full NCERT explanations immediately after each question.
-            </p>
-          </button>
-
-          {/* CBT / Exam Mode Card */}
-          <button
-            type="button"
-            onClick={() => setMode("cbt")}
-            className={cn(
-              "flex flex-col text-left rounded-2xl border p-3.5 transition",
-              mode === "cbt"
-                ? "border-emerald-500 bg-emerald-500/5 ring-1 ring-emerald-500/40 shadow-xs"
-                : "border-border bg-card hover:border-border/80",
-            )}
-          >
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs sm:text-sm font-bold flex items-center gap-1.5 text-foreground">
-                <Trophy className="h-4 w-4 text-emerald-500" />
-                CBT Exam Mode
-              </span>
-              <Badge variant="secondary" className="text-[10px] bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
-                NTA Simulation
-              </Badge>
-            </div>
-            <p className="text-[11px] text-muted-foreground leading-normal">
-              Full NTA exam simulation with question palette. Results displayed after final submit.
-            </p>
-          </button>
-        </div>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="pt-2 flex flex-col sm:flex-row items-center gap-2">
-        <Button
+      {/* 3. Mode Toggle (Compact) */}
+      <div className="grid grid-cols-2 gap-2">
+        <button
           type="button"
-          variant="outline"
-          onClick={onClose}
-          className="w-full sm:w-auto rounded-xl text-xs sm:text-sm"
-        >
-          Cancel
-        </Button>
-        <Button
-          type="button"
-          disabled={busy || count < 1}
-          onClick={() => onStart(chapter, mode, { count, timerMin: timer })}
-          className="w-full sm:flex-1 rounded-xl bg-gradient-primary h-11 text-xs sm:text-sm font-bold shadow-md"
-        >
-          {busy ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Building Practice Session...
-            </>
-          ) : (
-            `Start ${mode === "cbt" ? "CBT Exam" : "Quiz"} (${count} Qs · ${timer > 0 ? `${timer}m` : "Untimed"})`
+          onClick={() => setMode("quiz")}
+          className={cn(
+            "flex flex-col text-left rounded-xl border p-2.5 transition",
+            mode === "quiz"
+              ? "border-primary bg-primary/5 ring-1 ring-primary/40 shadow-xs"
+              : "border-border/60 bg-card hover:border-border",
           )}
-        </Button>
+        >
+          <span className="text-xs font-bold flex items-center gap-1.5 text-foreground">
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            Quiz Mode
+          </span>
+          <span className="text-[10px] text-muted-foreground mt-0.5">Instant solutions</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setMode("cbt")}
+          className={cn(
+            "flex flex-col text-left rounded-xl border p-2.5 transition",
+            mode === "cbt"
+              ? "border-emerald-500 bg-emerald-500/5 ring-1 ring-emerald-500/40 shadow-xs"
+              : "border-border/60 bg-card hover:border-border",
+          )}
+        >
+          <span className="text-xs font-bold flex items-center gap-1.5 text-foreground">
+            <Trophy className="h-3.5 w-3.5 text-emerald-500" />
+            CBT Exam
+          </span>
+          <span className="text-[10px] text-muted-foreground mt-0.5">Real NEET test feel</span>
+        </button>
       </div>
+    </div>
+  );
+
+  const footer = (
+    <div className="flex items-center gap-2 pt-2">
+      <Button variant="outline" size="sm" onClick={onClose} disabled={busy} className="h-9 flex-1 rounded-xl text-xs font-medium">
+        Cancel
+      </Button>
+      <Button
+        size="sm"
+        disabled={busy || count < 1}
+        onClick={() => onStart(chapter, mode, { count, timerMin: timer })}
+        className="h-9 flex-1 gap-1.5 rounded-xl bg-gradient-primary text-xs font-bold shadow-xs"
+      >
+        {busy ? (
+          <>
+            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            <span>Starting...</span>
+          </>
+        ) : (
+          <>
+            <Play className="h-3.5 w-3.5 fill-current" />
+            <span>Start Practice</span>
+          </>
+        )}
+      </Button>
     </div>
   );
 
   if (isMobile) {
     return (
-      <Sheet open={!!chapter} onOpenChange={(o) => !o && onClose()}>
-        <SheetContent side="bottom" className="max-h-[90vh] overflow-y-auto rounded-t-3xl p-5">
-          <SheetHeader className="text-left pb-1">
-            <SheetTitle className="text-base font-bold">Customize Practice Quiz</SheetTitle>
-            <SheetDescription className="text-xs">
-              Configure question pool, timer and test mode.
-            </SheetDescription>
+      <Sheet open={Boolean(chapter)} onOpenChange={(open) => !open && onClose()}>
+        <SheetContent side="bottom" className="rounded-t-3xl p-4 max-h-[92vh] overflow-y-auto">
+          <SheetHeader className="text-left pb-2">
+            <SheetTitle className="text-sm font-bold flex items-center gap-2">
+              <SlidersHorizontal className="h-4 w-4 text-primary" />
+              <span>Configure Practice</span>
+            </SheetTitle>
           </SheetHeader>
           {content}
+          <SheetFooter className="mt-3">{footer}</SheetFooter>
         </SheetContent>
       </Sheet>
     );
   }
 
   return (
-    <Dialog open={!!chapter} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg rounded-3xl p-6">
-        <DialogHeader className="text-left">
-          <DialogTitle className="text-lg font-bold">Customize Practice Quiz</DialogTitle>
-          <DialogDescription className="text-xs">
-            Configure question pool, timer and test mode.
-          </DialogDescription>
+    <Dialog open={Boolean(chapter)} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="max-w-md rounded-2xl p-5">
+        <DialogHeader className="pb-1">
+          <DialogTitle className="text-base font-bold flex items-center gap-2">
+            <SlidersHorizontal className="h-4 w-4 text-primary" />
+            <span>Configure Practice</span>
+          </DialogTitle>
         </DialogHeader>
         {content}
+        <DialogFooter className="mt-2">{footer}</DialogFooter>
       </DialogContent>
     </Dialog>
   );
 }
+
+

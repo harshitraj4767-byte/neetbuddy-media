@@ -373,7 +373,7 @@ export const createCustomTestMysql = createServerFn({ method: "POST" })
     const userId = await requireUserId();
     const chapterIds = numericIds(data.chapterIds);
     if (!chapterIds.length) throw new Error("Please pick at least one chapter.");
-    const count = Math.min(90, Math.max(5, Number(data.count) || 10));
+    const count = Math.min(180, Math.max(5, Number(data.count) || 10));
     const { query } = await import("@/lib/db/mysql.server");
 
     const params: Array<string | number> = [...chapterIds];

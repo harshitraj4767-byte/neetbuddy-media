@@ -44,6 +44,7 @@ import {
   Bookmark,
   BookmarkCheck,
   CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 
 type Subject = "biology" | "chemistry" | "physics";
