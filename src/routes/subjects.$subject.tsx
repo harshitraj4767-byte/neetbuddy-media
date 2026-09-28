@@ -36,8 +36,8 @@ import { countSelectedTopics, toTopicFilter } from "@/lib/topic-tree";
 import { mixQuestions, type MixableQuestion } from "@/lib/question-mix";
 import type { QuizMode } from "@/components/quiz-mode-picker";
 import { cn } from "@/lib/utils";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { HubHero, type TileAccent } from "@/components/nav-tiles";
 import {
@@ -48,7 +48,15 @@ import {
 
 export const Route = createFileRoute("/subjects/$subject")({
   head: () => ({ meta: [{ title: "Subject — Neet Buddy" }] }),
-  validateSearch: (search: Record<string, unknown>) => ({
+  validateSearch: (search: Record<string, unknown>): {
+    search?: string;
+    chapter?: string;
+    count?: number;
+    autoOpen?: boolean;
+    level_id?: string;
+    mission_id?: string;
+    source?: string;
+  } => ({
     search: typeof search.search === "string" ? search.search : undefined,
     chapter: typeof search.chapter === "string" ? search.chapter : undefined,
     count: !isNaN(Number(search.count)) ? Number(search.count) : undefined,
@@ -269,14 +277,39 @@ function SubjectPage() {
       const timerTag = options.timerMin > 0 ? `${options.timerMin}m` : "Untimed";
       const title = `${subject} · ${chapter.name} (${qids.length} Qs · ${timerTag}${filterTag ? ` · ${filterTag}` : ""})`;
 
-      const { testId } = await createPracticeTest({
-        data: {
-          title,
-          questionIds: qids,
-          difficulty: difficulty !== "any" ? difficulty : "medium",
-          durationMin: options.timerMin,
-        },
-      });
+      let testId: string | undefined;
+      try {
+        const res = await createPracticeTest({
+          data: {
+            title,
+            questionIds: qids,
+            difficulty: difficulty !== "any" ? difficulty : "medium",
+            durationMin: options.timerMin,
+          },
+        });
+        testId = res.testId;
+      } catch (serverErr) {
+        // Hostinger/PHP fallback: create the test through /api/quiz.php
+        console.warn("createPracticeTest failed, trying /api/quiz.php fallback", serverErr);
+        const r = await fetch("/api/quiz.php?action=createSubjectQuiz", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            subject,
+            chapter_id: chapter.id,
+            title,
+            qids,
+            count: qids.length,
+            difficulty: difficulty !== "any" ? difficulty : "medium",
+          }),
+        });
+        if (!r.ok) throw serverErr;
+        const data = await r.json();
+        const id = data?.test_id || data?.testId || data?.id;
+        if (!id) throw serverErr;
+        testId = String(id);
+      }
 
       nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
     } catch (e) {
