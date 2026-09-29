@@ -1801,10 +1801,10 @@ function RevisionModePlayer({
         </div>
       </div>
 
-      {/* Main Split Body: Desktop 50/50, Mobile Responsive Tabs */}
+      {/* Main Split Body: Desktop 50/50 with independent scrolling containers, Mobile Responsive Tabs */}
       <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
-        {/* Left Column: Authentic NCERT Textbook Page */}
-        <div className={`space-y-4 ${mobileTab === "questions" ? "hidden lg:block" : "block"}`}>
+        {/* Left Column: Authentic NCERT Textbook Page (Independent scroll slider) */}
+        <div className={`space-y-4 lg:h-[calc(100vh-10rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-2 lg:scrollbar-thin ${mobileTab === "questions" ? "hidden lg:block" : "block"}`}>
           <div className="flex items-center justify-between px-1">
             <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               NCERT Textbook Page
@@ -1878,8 +1878,8 @@ function RevisionModePlayer({
           </article>
         </div>
 
-        {/* Right Column: Questions Accordion for this page */}
-        <div className={`space-y-4 ${mobileTab === "ncert" ? "hidden lg:block" : "block"}`}>
+        {/* Right Column: Questions Accordion for this page (Independent scroll slider) */}
+        <div className={`space-y-4 lg:h-[calc(100vh-10rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-2 lg:scrollbar-thin ${mobileTab === "ncert" ? "hidden lg:block" : "block"}`}>
           <div className="flex items-center justify-between px-1">
             <div>
               <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">

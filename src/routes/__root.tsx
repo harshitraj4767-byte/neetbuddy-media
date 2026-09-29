@@ -28,7 +28,7 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <img
-          src="/mascot/dr-vanshu.png"
+          src="/catalyst/dr-catalyst-thinking.webp"
           alt="Dr Vanshu"
           className="mx-auto mb-2 h-24 w-24 object-contain"
         />
@@ -58,7 +58,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <img
-          src="/mascot/dr-vanshu.png"
+          src="/catalyst/dr-catalyst-shocked.webp"
           alt="Dr Vanshu"
           className="mx-auto mb-4 h-24 w-24 object-contain"
         />

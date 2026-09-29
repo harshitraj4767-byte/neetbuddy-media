@@ -314,7 +314,7 @@ function BattlegroundsPage() {
       const friendlyMsg = error?.message && !/failed to fetch|fetch|network/i.test(error.message)
         ? error.message
         : "Matchmaking service temporarily unavailable. Please retry in a moment.";
-      toast.error(friendlyMsg);
+      if (!/failed to fetch|fetch|network/i.test(String(friendlyMsg || ""))) { toast.error(friendlyMsg); }
       return;
     }
     setBusy(false);

@@ -423,23 +423,23 @@ function TrailConnector({
         />
       ))}
 
-      {/* Dr. Catalyst Mascot placed in between levels in the side whitespace */}
+      {/* Dr. Catalyst Mascot placed cleanly in the lateral whitespace without crowding level buttons */}
       {showMascot && (
         <div
           className={`pointer-events-none absolute top-1/2 -translate-y-1/2 select-none transition-transform ${
             mascotSide === "left"
-              ? "left-2 sm:left-12 lg:left-24"
-              : "right-2 sm:right-12 lg:right-24"
+              ? "left-0 sm:left-4 md:left-10"
+              : "right-0 sm:right-4 md:right-10"
           }`}
         >
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex items-center gap-1.5 opacity-90 transition-all hover:opacity-100">
             <img
               src={mascotPose.src}
               alt={mascotPose.alt}
-              className="h-16 w-16 object-contain drop-shadow-sm transition-transform hover:scale-105 sm:h-20 sm:w-20 md:h-24 md:w-24"
+              className="h-12 w-12 object-contain drop-shadow sm:h-16 sm:w-16 md:h-20 md:w-20"
             />
-            <div className="hidden rounded-full border border-border/60 bg-card/90 px-2.5 py-1 text-[10px] font-bold text-muted-foreground shadow-sm backdrop-blur md:block">
-              {index % 4 === 0 ? "Keep it up! 🔥" : "Almost there! 🎯"}
+            <div className="hidden rounded-full border border-border/70 bg-card/95 px-2.5 py-1 text-[10px] font-semibold text-muted-foreground shadow-sm backdrop-blur lg:block">
+              {index % 4 === 0 ? "Keep going! 🔥" : "Almost there! 🎯"}
             </div>
           </div>
         </div>
