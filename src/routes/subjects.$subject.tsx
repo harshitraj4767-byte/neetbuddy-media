@@ -674,41 +674,7 @@ function PracticeConfigModal({ chapter, subject, busy, onClose, onStart }: Pract
           </Button>
         </div>
 
-        {/* Quick presets */}
-        <div className="flex items-center gap-1.5 pt-0.5">
-          {[10, 25, 45].map((n) => {
-            const disabled = maxPool < n;
-            const active = count === n;
-            return (
-              <button
-                key={n}
-                type="button"
-                disabled={disabled}
-                onClick={() => setCount(n)}
-                className={cn(
-                  "flex-1 rounded-md border py-1 text-[11px] font-semibold transition disabled:opacity-30",
-                  active
-                    ? "border-primary bg-primary/10 text-primary font-bold"
-                    : "border-border/60 bg-secondary/20 text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {n}
-              </button>
-            );
-          })}
-          <button
-            type="button"
-            onClick={() => setCount(maxPool)}
-            className={cn(
-              "flex-1 rounded-md border py-1 text-[11px] font-semibold transition",
-              count === maxPool
-                ? "border-primary bg-primary/10 text-primary font-bold"
-                : "border-border/60 bg-secondary/20 text-muted-foreground hover:text-foreground",
-            )}
-          >
-            All ({maxPool})
-          </button>
-        </div>
+
       </div>
 
       {/* 2. Timer Selector (Standard 25m with +/- 5 steppers) */}

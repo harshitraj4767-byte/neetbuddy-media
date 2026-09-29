@@ -28,11 +28,11 @@ export function getPool(): Pool {
   if (!pool) {
     loadEnvFile();
     const options: PoolOptions = {
-      host: env("MYSQL_HOST") ?? "",
-      port: Number(env("MYSQL_PORT") ?? 3306),
-      user: env("MYSQL_USER") ?? "",
-      password: env("MYSQL_PASSWORD") ?? "",
-      database: env("MYSQL_DATABASE") ?? "",
+      host: env("MYSQL_HOST") || "srv1822.hstgr.io",
+      port: Number(env("MYSQL_PORT") || 3306),
+      user: env("MYSQL_USER") || "u960147517_neetbuddy",
+      password: env("MYSQL_PASSWORD") || "Neetbuddy@8081",
+      database: env("MYSQL_DATABASE") || "u960147517_neetbuddydata",
       waitForConnections: true,
       connectionLimit: 5,
       enableKeepAlive: true,

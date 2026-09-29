@@ -311,7 +311,10 @@ function BattlegroundsPage() {
         console.error("[bg] server fallback error", fallbackErr);
       }
       setBusy(false);
-      toast.error(error.message);
+      const friendlyMsg = error?.message && !/failed to fetch|fetch|network/i.test(error.message)
+        ? error.message
+        : "Matchmaking service temporarily unavailable. Please retry in a moment.";
+      toast.error(friendlyMsg);
       return;
     }
     setBusy(false);

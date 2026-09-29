@@ -1107,7 +1107,8 @@ function QuizPlayer() {
           {/* Palette */}
           <div ref={paletteRef} className="rounded border border-slate-300 bg-white p-3">
             <div className="mb-2 hidden text-xs font-bold uppercase tracking-wider text-slate-600 lg:block">Question Palette</div>
-            <div className="flex flex-wrap gap-1.5 lg:grid lg:grid-cols-6">
+            <div className="max-h-[min(55vh,440px)] overflow-y-auto pr-1 scrollbar-thin">
+              <div className="flex flex-wrap gap-1.5 lg:grid lg:grid-cols-6">
               {questions.map((qq, i) => {
                 const st = cbtStatus(qq.id);
                 return (
@@ -1128,6 +1129,7 @@ function QuizPlayer() {
                   </button>
                 );
               })}
+              </div>
             </div>
           </div>
           </aside>

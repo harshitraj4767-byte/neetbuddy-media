@@ -436,7 +436,7 @@ function TrailConnector({
             <img
               src={mascotPose.src}
               alt={mascotPose.alt}
-              className="h-20 w-20 object-contain drop-shadow-md sm:h-24 sm:w-24 md:h-28 md:w-28"
+              className="h-16 w-16 object-contain drop-shadow-sm transition-transform hover:scale-105 sm:h-20 sm:w-20 md:h-24 md:w-24"
             />
             <div className="hidden rounded-full border border-border/60 bg-card/90 px-2.5 py-1 text-[10px] font-bold text-muted-foreground shadow-sm backdrop-blur md:block">
               {index % 4 === 0 ? "Keep it up! 🔥" : "Almost there! 🎯"}

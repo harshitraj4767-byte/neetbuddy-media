@@ -574,42 +574,49 @@ function ModeSheet({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm p-0 sm:items-center sm:p-4 animate-in fade-in duration-200">
       <div
         className="absolute inset-0"
         onClick={onClose}
         role="presentation"
         aria-hidden="true"
       />
-      <div className="relative w-full max-w-md rounded-t-3xl border bg-card p-5 shadow-elegant sm:rounded-3xl">
-        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-border sm:hidden" />
-        <div className="text-sm font-bold">{topic.title}</div>
-        <div className="text-xs text-muted-foreground">
-          {topic.paraCount} nuggets · {topic.questionCount} questions
+      <div className="relative w-full max-w-md rounded-t-[28px] border border-border/80 bg-card p-6 shadow-2xl backdrop-blur-xl sm:rounded-[28px]">
+        <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-muted-foreground/20 sm:hidden" />
+        <div className="flex items-center justify-between gap-3 pb-3 border-b border-border/50">
+          <div>
+            <div className="text-base font-extrabold tracking-tight text-foreground">{topic.title}</div>
+            <div className="text-xs font-medium text-muted-foreground">
+              {topic.paraCount} nuggets · {topic.questionCount} questions
+            </div>
+          </div>
+          <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-bold text-primary">
+            NEET Buddy
+          </span>
         </div>
-        <div className="mt-4 space-y-2">
+        <div className="mt-4 space-y-2.5">
           {options.map((o) => (
             <button
               key={o.id}
               onClick={() => onPick(o.id)}
-              className="flex w-full items-center gap-3 rounded-2xl border bg-background p-3 text-left transition hover:border-sky-500/50"
+              className="group flex w-full items-center gap-3.5 rounded-2xl border border-border/70 bg-secondary/30 p-3.5 text-left transition-all duration-200 hover:border-primary/50 hover:bg-secondary/60 hover:shadow-sm active:scale-[0.99]"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/12 text-sky-600 dark:text-sky-400">
-                <o.Icon className="h-4 w-4" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary shadow-sm transition-transform group-hover:scale-105">
+                <o.Icon className="h-5 w-5" />
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block text-sm font-semibold">{o.label}</span>
-                <span className="block text-xs text-muted-foreground">{o.desc}</span>
+                <span className="block text-sm font-bold text-foreground group-hover:text-primary transition-colors">{o.label}</span>
+                <span className="block text-xs text-muted-foreground leading-relaxed">{o.desc}</span>
               </span>
-              <ChevronRight className="h-4 w-4 text-muted-foreground/60" />
+              <ChevronRight className="h-4 w-4 text-muted-foreground/60 transition-transform group-hover:translate-x-0.5" />
             </button>
           ))}
         </div>
         <button
           onClick={onClose}
-          className="mt-4 w-full rounded-full bg-secondary py-2.5 text-sm font-semibold text-muted-foreground"
+          className="mt-4 w-full rounded-2xl border border-border/60 bg-secondary/50 py-2.5 text-xs font-bold text-muted-foreground transition hover:bg-secondary hover:text-foreground"
         >
-          Close
+          Cancel
         </button>
       </div>
     </div>
@@ -756,23 +763,25 @@ function TopicPlayer({
         </div>
       </div>
 
-      {step.kind === "para" ? (
-        <PaperPage
-          subject={chapter.chapter.subject}
-          para={step.para}
-          questionCount={step.para.questions.length}
-        />
-      ) : (
-        <QuestionCard
-          subject={chapter.chapter.subject}
-          question={step.question}
-          result={picked[step.question.key]}
-          choice={choice}
-          onChoose={setChoice}
-          onSubmit={() => submit(choice, false)}
-          onSkip={() => submit(null, true)}
-        />
-      )}
+      <div className="w-full max-h-[calc(100vh-13rem)] overflow-y-auto overscroll-contain pr-1 scrollbar-thin">
+        {step.kind === "para" ? (
+          <PaperPage
+            subject={chapter.chapter.subject}
+            para={step.para}
+            questionCount={step.para.questions.length}
+          />
+        ) : (
+          <QuestionCard
+            subject={chapter.chapter.subject}
+            question={step.question}
+            result={picked[step.question.key]}
+            choice={choice}
+            onChoose={setChoice}
+            onSubmit={() => submit(choice, false)}
+            onSkip={() => submit(null, true)}
+          />
+        )}
+      </div>
 
       {/* bottom bar: back / continue, exactly like a book page turn */}
       <div className="fixed inset-x-0 bottom-0 z-[60] border-t bg-background/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:px-4">
