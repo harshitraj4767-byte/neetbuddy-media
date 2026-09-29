@@ -33,6 +33,8 @@ import {
   Loader2,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Lock,
   Check,
   X,
@@ -1600,6 +1602,13 @@ interface RevisionModePlayerProps {
   onNextTopic?: () => void;
 }
 
+interface NcertPageUnit {
+  pageNumber: number;
+  headings: string[];
+  paras: KeyPointPara[];
+  questions: KeyPointQuestion[];
+}
+
 function RevisionModePlayer({
   chapter,
   topic,
@@ -1608,26 +1617,63 @@ function RevisionModePlayer({
   nextTopicTitle,
   onNextTopic,
 }: RevisionModePlayerProps) {
-  // Aggregate all paras in this topic and their linked questions
-  const parasWithQuestions = useMemo(() => {
-    const list: Array<{ para: KeyPointPara; questions: KeyPointQuestion[] }> = [];
+  // Aggregate paragraphs into complete NCERT pages (not isolated single paragraphs)
+  const ncertPages = useMemo<NcertPageUnit[]>(() => {
+    const rawParas: KeyPointPara[] = [];
     for (const step of topic.steps) {
       if (step.kind === "para") {
-        list.push({ para: step.para, questions: [...step.para.questions] });
+        rawParas.push(step.para);
       }
     }
-    return list;
+
+    if (rawParas.length === 0) return [];
+
+    // Group paragraphs into complete NCERT pages
+    const pages: NcertPageUnit[] = [];
+    const parasPerPage = 2;
+    for (let i = 0; i < rawParas.length; i += parasPerPage) {
+      const slice = rawParas.slice(i, i + parasPerPage);
+      const pageQuestions: KeyPointQuestion[] = [];
+      const headings: string[] = [];
+      for (const p of slice) {
+        if (p.heading) headings.push(p.heading);
+        pageQuestions.push(...p.questions);
+      }
+
+      // Deduplicate questions by key
+      const uniqueQMap = new Map<string, KeyPointQuestion>();
+      for (const q of pageQuestions) {
+        if (!uniqueQMap.has(q.key)) uniqueQMap.set(q.key, q);
+      }
+
+      pages.push({
+        pageNumber: Math.floor(i / parasPerPage) + 1,
+        headings,
+        paras: slice,
+        questions: Array.from(uniqueQMap.values()),
+      });
+    }
+    return pages;
   }, [topic]);
 
-  const [activeParaIdx, setActiveParaIdx] = useState(0);
+  const [activePageIdx, setActivePageIdx] = useState(0);
   const [mobileTab, setMobileTab] = useState<"ncert" | "questions">("ncert");
   const [picked, setPicked] = useState<Record<string, { selected: string | null; correct: boolean; skipped: boolean }>>({});
   const [choices, setChoices] = useState<Record<string, string | null>>({});
+  // Track which question accordions are expanded (defaults to first question expanded)
+  const [expandedQuestions, setExpandedQuestions] = useState<Record<string, boolean>>({});
 
-  const current = parasWithQuestions[activeParaIdx] ?? parasWithQuestions[0];
-  const totalParas = parasWithQuestions.length;
+  const currentPage = ncertPages[activePageIdx] ?? ncertPages[0];
+  const totalPages = ncertPages.length;
 
-  if (!current) {
+  useEffect(() => {
+    // When changing pages, expand the first question by default
+    if (currentPage && currentPage.questions.length > 0) {
+      setExpandedQuestions({ [currentPage.questions[0].key]: true });
+    }
+  }, [activePageIdx, currentPage]);
+
+  if (!currentPage) {
     return (
       <div className="py-20 text-center text-sm text-muted-foreground">
         No NCERT content available for this topic.
@@ -1639,6 +1685,13 @@ function RevisionModePlayer({
       </div>
     );
   }
+
+  const toggleQuestion = (qKey: string) => {
+    setExpandedQuestions((prev) => ({
+      ...prev,
+      [qKey]: !prev[qKey],
+    }));
+  };
 
   const handleSelectChoice = (qKey: string, opt: string) => {
     setChoices((prev) => ({ ...prev, [qKey]: opt }));
@@ -1657,7 +1710,7 @@ function RevisionModePlayer({
   return (
     <div className="pb-32">
       {/* Sticky Top Header */}
-      <div className="sticky top-0 z-30 -mx-3 mb-4 border-b bg-background/90 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
+      <div className="sticky top-0 z-30 -mx-3 mb-5 border-b bg-background/95 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
         <div className="flex items-center gap-2">
           <button
             onClick={onExit}
@@ -1668,8 +1721,10 @@ function RevisionModePlayer({
           </button>
           <div className="min-w-0 flex-1">
             <div className="truncate text-sm font-bold">{topic.title}</div>
-            <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              {chapter.chapter.title} · <span className="font-bold text-primary">Revision Mode (Split View)</span>
+            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              <span>{chapter.chapter.title}</span>
+              <span>·</span>
+              <span className="font-bold text-primary">NCERT Textbook Revision</span>
             </div>
           </div>
           <button
@@ -1682,35 +1737,37 @@ function RevisionModePlayer({
 
         {/* Page navigator & Mobile Tab Switcher */}
         <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 border-t pt-2">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-muted-foreground">
-              Section {activeParaIdx + 1} of {totalParas}
+          <div className="flex items-center gap-2.5">
+            <span className="text-xs font-semibold text-foreground">
+              NCERT Page {currentPage.pageNumber} of {totalPages}
             </span>
             <div className="flex items-center gap-1">
               <button
-                disabled={activeParaIdx === 0}
+                disabled={activePageIdx === 0}
                 onClick={() => {
-                  setActiveParaIdx((i) => Math.max(0, i - 1));
+                  setActivePageIdx((i) => Math.max(0, i - 1));
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="rounded-md border p-1 text-xs disabled:opacity-30 hover:bg-secondary"
+                title="Previous NCERT Page"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button
-                disabled={activeParaIdx >= totalParas - 1}
+                disabled={activePageIdx >= totalPages - 1}
                 onClick={() => {
-                  setActiveParaIdx((i) => Math.min(totalParas - 1, i + 1));
+                  setActivePageIdx((i) => Math.min(totalPages - 1, i + 1));
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="rounded-md border p-1 text-xs disabled:opacity-30 hover:bg-secondary"
+                title="Next NCERT Page"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>
           </div>
 
-          {/* Mobile switcher: NCERT content vs Questions */}
+          {/* Mobile switcher: NCERT page vs Questions */}
           <div className="flex rounded-full bg-muted p-0.5 lg:hidden">
             <button
               onClick={() => setMobileTab("ncert")}
@@ -1718,17 +1775,17 @@ function RevisionModePlayer({
                 mobileTab === "ncert" ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"
               }`}
             >
-              📖 NCERT Page
+              📖 NCERT Page {currentPage.pageNumber}
             </button>
             <button
               onClick={() => setMobileTab("questions")}
-              className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition ${
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
                 mobileTab === "questions" ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"
               }`}
             >
               <span>❓ Questions</span>
               <span className="rounded-full bg-primary/15 px-1.5 py-0.2 text-[10px] font-bold text-primary">
-                {current.questions.length}
+                {currentPage.questions.length}
               </span>
             </button>
           </div>
@@ -1736,56 +1793,195 @@ function RevisionModePlayer({
       </div>
 
       {/* Main Split Body: Desktop 50/50, Mobile Responsive Tabs */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Left Column: NCERT Content Page */}
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+        {/* Left Column: Authentic NCERT Textbook Page */}
         <div className={`space-y-4 ${mobileTab === "questions" ? "hidden lg:block" : "block"}`}>
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-              NCERT Textbook Content
-            </h2>
-            <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
-              Active Concept
+          <div className="flex items-center justify-between px-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              NCERT Textbook Page
+            </span>
+            <span className="rounded-md bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+              Page {currentPage.pageNumber}
             </span>
           </div>
 
-          <div className="sticky top-24">
-            <PaperPage
-              subject={chapter.chapter.subject}
-              para={current.para}
-              questionCount={current.questions.length}
-            />
-          </div>
+          {/* NCERT White Book Page with Header & Branding */}
+          <article className="relative rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all sm:rounded-3xl sm:p-10 dark:border-zinc-800 dark:bg-zinc-950">
+            {/* Top Running Header Bar */}
+            <div className="mb-6 flex items-center justify-between border-b border-zinc-200 pb-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+              <div className="flex items-center gap-1.5 font-bold tracking-tight text-primary">
+                <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-black text-primary">NEETBUDDY</span>
+                <span>NCERT {chapter.chapter.subject}</span>
+              </div>
+              <div className="hidden truncate max-w-[200px] text-zinc-600 sm:block dark:text-zinc-300">
+                {chapter.chapter.title}
+              </div>
+              <div className="font-bold text-zinc-800 dark:text-zinc-200">
+                Page {currentPage.pageNumber}
+              </div>
+            </div>
+
+            {/* Complete Content of this NCERT Page (paragraphs + figures) */}
+            <div className="space-y-6 text-zinc-900 dark:text-zinc-100">
+              {currentPage.paras.map((p, pIdx) => (
+                <div key={`${p.blockId}-${pIdx}`} className="space-y-4">
+                  {/* Section / Sub-section heading */}
+                  {p.heading && (
+                    <h3 className="font-serif text-xl font-bold leading-snug text-zinc-900 sm:text-2xl dark:text-zinc-50">
+                      <ParaRuns runs={p.headingRuns} text={p.heading} subject={chapter.chapter.subject} />
+                    </h3>
+                  )}
+
+                  {/* Paragraph text / heading / image */}
+                  {p.kind === "heading" ? (
+                    !p.heading && (
+                      <h3 className="font-serif text-xl font-bold leading-snug text-zinc-900 sm:text-2xl dark:text-zinc-50">
+                        <ParaRuns runs={p.runs} text={p.text} subject={chapter.chapter.subject} />
+                      </h3>
+                    )
+                  ) : p.kind === "image" && p.imageUrl ? (
+                    <BookFigure src={p.imageUrl} caption={p.text} runs={p.runs} subject={chapter.chapter.subject} />
+                  ) : (
+                    <p className="text-justify font-serif text-[16px] leading-[1.85] text-zinc-800 sm:text-[17px] sm:leading-[1.95] dark:text-zinc-200">
+                      <ParaRuns runs={p.runs} text={p.text} subject={chapter.chapter.subject} />
+                    </p>
+                  )}
+
+                  {/* Any embedded figures for this paragraph */}
+                  {p.figures.map((f, fIdx) => (
+                    <BookFigure
+                      key={`${f.url}-${fIdx}`}
+                      src={f.url}
+                      caption={f.caption}
+                      runs={f.runs}
+                      subject={chapter.chapter.subject}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom Page Footnote / Branding */}
+            <div className="mt-8 flex items-center justify-between border-t border-zinc-200 pt-3 text-[10px] text-zinc-400 dark:border-zinc-800">
+              <span>NEETBUDDY · Standard NCERT Curriculum</span>
+              <span>Page {currentPage.pageNumber}</span>
+            </div>
+          </article>
         </div>
 
-        {/* Right Column: Questions related to this page */}
+        {/* Right Column: Questions Accordion for this page */}
         <div className={`space-y-4 ${mobileTab === "ncert" ? "hidden lg:block" : "block"}`}>
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-              Questions from this page ({current.questions.length})
-            </h2>
-            <span className="text-xs text-muted-foreground">
-              Instant Feedback & Solution
-            </span>
+          <div className="flex items-center justify-between px-1">
+            <div>
+              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                Questions on this Page ({currentPage.questions.length})
+              </h2>
+              <p className="text-[11px] text-muted-foreground">
+                Click any question to view and solve
+              </p>
+            </div>
+            {currentPage.questions.length > 0 && (
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const allOpen: Record<string, boolean> = {};
+                    for (const q of currentPage.questions) allOpen[q.key] = true;
+                    setExpandedQuestions(allOpen);
+                  }}
+                  className="text-[11px] font-semibold text-primary hover:underline"
+                >
+                  Expand all
+                </button>
+                <span className="text-muted-foreground">·</span>
+                <button
+                  type="button"
+                  onClick={() => setExpandedQuestions({})}
+                  className="text-[11px] font-semibold text-muted-foreground hover:underline"
+                >
+                  Collapse all
+                </button>
+              </div>
+            )}
           </div>
 
-          {current.questions.length === 0 ? (
+          {currentPage.questions.length === 0 ? (
             <div className="rounded-2xl border border-dashed p-8 text-center text-sm text-muted-foreground">
-              No direct questions attached to this paragraph yet. Advance to the next section!
+              No direct questions attached to this NCERT page yet. Proceed to the next page!
             </div>
           ) : (
-            <div className="space-y-4">
-              {current.questions.map((q, idx) => (
-                <QuestionCard
-                  key={q.key}
-                  subject={chapter.chapter.subject}
-                  question={q}
-                  result={picked[q.key] ?? null}
-                  choice={choices[q.key] ?? null}
-                  onChoose={(opt) => handleSelectChoice(q.key, opt)}
-                  onSubmit={() => handleAnswerSubmit(q)}
-                  onSkip={() => {}}
-                />
-              ))}
+            <div className="space-y-3">
+              {currentPage.questions.map((q, qIdx) => {
+                const isOpen = !!expandedQuestions[q.key];
+                const res = picked[q.key];
+                const isAnswered = !!res;
+
+                return (
+                  <div
+                    key={q.key}
+                    className={`overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-sm transition-all ${
+                      isOpen ? "border-primary/40 ring-1 ring-primary/20" : "border-border hover:border-border/80"
+                    }`}
+                  >
+                    {/* Collapsible Accordion Header */}
+                    <button
+                      type="button"
+                      onClick={() => toggleQuestion(q.key)}
+                      className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-secondary/40"
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-bold text-foreground">
+                          {qIdx + 1}
+                        </span>
+                        <span className="font-bold text-sm truncate">
+                          Question {qIdx + 1}
+                        </span>
+                        {q.difficulty && (
+                          <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-semibold uppercase text-muted-foreground">
+                            {q.difficulty}
+                          </span>
+                        )}
+                        {isAnswered && (
+                          <span
+                            className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                              res.correct
+                                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                : "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                            }`}
+                          >
+                            {res.correct ? <Check className="h-3 w-3" /> : <X className="h-3 w-3" />}
+                            {res.correct ? "Correct" : "Incorrect"}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Downward / Upward arrow */}
+                      <div className="shrink-0 text-muted-foreground transition-transform">
+                        {isOpen ? (
+                          <ChevronUp className="h-4 w-4 text-primary" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4" />
+                        )}
+                      </div>
+                    </button>
+
+                    {/* Question Content (Visible when expanded) */}
+                    {isOpen && (
+                      <div className="border-t border-border/60 p-4 pt-3">
+                        <QuestionCard
+                          subject={chapter.chapter.subject}
+                          question={q}
+                          result={res ?? null}
+                          choice={choices[q.key] ?? null}
+                          onChoose={(opt) => handleSelectChoice(q.key, opt)}
+                          onSubmit={() => handleAnswerSubmit(q)}
+                          onSkip={() => {}}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
@@ -1795,25 +1991,25 @@ function RevisionModePlayer({
       <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 px-3 py-3 backdrop-blur sm:px-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
           <button
-            disabled={activeParaIdx === 0}
+            disabled={activePageIdx === 0}
             onClick={() => {
-              setActiveParaIdx((i) => Math.max(0, i - 1));
+              setActivePageIdx((i) => Math.max(0, i - 1));
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="rounded-full border px-4 py-2 text-xs font-bold text-muted-foreground disabled:opacity-40 hover:bg-secondary"
           >
-            ← Previous Section
+            ← Previous Page
           </button>
 
-          {activeParaIdx < totalParas - 1 ? (
+          {activePageIdx < totalPages - 1 ? (
             <button
               onClick={() => {
-                setActiveParaIdx((i) => Math.min(totalParas - 1, i + 1));
+                setActivePageIdx((i) => Math.min(totalPages - 1, i + 1));
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className="rounded-full bg-primary px-5 py-2 text-xs font-bold text-primary-foreground shadow-sm hover:opacity-90"
             >
-              Next Section →
+              Next Page ({activePageIdx + 2}/{totalPages}) →
             </button>
           ) : onNextTopic ? (
             <button
