@@ -290,9 +290,10 @@ function BattlegroundsPage() {
             testId: m.testId ?? "",
             subject,
             opponent: {
-              name: m.botName || "Aarav Prime",
-              avatar: m.botAvatarUrl,
-              isBot: true,
+              user_id: "bot",
+              full_name: m.botName || "Aarav Prime",
+              avatar_url: m.botAvatarUrl,
+              is_bot: true,
             },
             countdownStartsAt: anchor,
           });

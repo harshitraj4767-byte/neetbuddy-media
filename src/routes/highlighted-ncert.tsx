@@ -554,7 +554,7 @@ function Block({
 
   if (block.type === "image") {
     return (
-      <Figure src={resolveBookImage(block.image_url, subject)} caption={block.text ?? undefined} />
+      <Figure src={resolveBookImage(block.image_url) ?? ''} caption={block.text ?? undefined} />
     );
   }
 
@@ -622,7 +622,7 @@ function Block({
         </p>
       )}
       {figures.map((r, i) => (
-        <Figure key={`f${i}`} src={resolveBookImage(runImageSrc(r), subject)} />
+        <Figure key={`f${i}`} src={resolveBookImage(runImageSrc(r)) ?? ''} />
       ))}
       {hasPyq && (
         <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-amber-600/80">

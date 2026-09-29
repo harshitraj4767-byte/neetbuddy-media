@@ -642,14 +642,15 @@ function TopicPlayer({
   const queryClient = useQueryClient();
   const total = topic.steps.length;
   const [index, setIndex] = useState(Math.min(Math.max(startIndex, 0), Math.max(total - 1, 0)));
-  const [picked, setPicked] = useState<Record<string, { selected: string | null; correct: boolean }>>(
+  const [picked, setPicked] = useState<Record<string, { selected: string | null; correct: boolean; skipped: boolean }>>(
     () => {
-      const seed: Record<string, { selected: string | null; correct: boolean }> = {};
+      const seed: Record<string, { selected: string | null; correct: boolean; skipped: boolean }> = {};
       if (mode !== "revision")
         for (const a of pastAnswers)
           seed[`${a.source}:${a.question_id}`] = {
             selected: a.selected,
             correct: a.is_correct,
+            skipped: Boolean((a as any).skipped),
           };
       return seed;
     },
@@ -685,7 +686,7 @@ function TopicPlayer({
     if (!step || step.kind !== "question") return;
     const q = step.question;
     const correct = !skipped && !!q.correctKey && selected === q.correctKey;
-    setPicked((m) => ({ ...m, [q.key]: { selected, correct } }));
+    setPicked((m) => ({ ...m, [q.key]: { selected, correct, skipped } }));
     try {
       await saveKeyPointAnswer({
         userId: user?.id,
@@ -832,7 +833,7 @@ function ParaRuns({ runs, text, subject }: { runs: Run[]; text: string; subject:
           return (
             <img
               key={i}
-              src={resolveBookImage(runImageSrc(r), subject)}
+              src={resolveBookImage(runImageSrc(r)) ?? ''}
               alt=""
               loading="lazy"
               className="mx-auto my-3 block max-h-[55vh] w-auto rounded-xl bg-white/60 p-2"
@@ -917,7 +918,7 @@ function BookFigure({
   return (
     <figure className="mt-4">
       <img
-        src={resolveBookImage(src, subject)}
+        src={resolveBookImage(src) ?? ''}
         alt={caption || "NCERT figure"}
         loading="lazy"
         className="mx-auto max-h-[60vh] w-auto rounded-xl bg-white/60 p-2"
@@ -1204,7 +1205,7 @@ function TopicAnalytics({
     const groups: Record<string, { total: number; attempted: number; correct: number; questions: typeof questions }> = {};
 
     questions.forEach((q) => {
-      const subKey = q.topic || topic.title || "General Concept";
+      const subKey = (q as any).topic || topic.title || "General Concept";
       if (!groups[subKey]) {
         groups[subKey] = { total: 0, attempted: 0, correct: 0, questions: [] };
       }
@@ -1620,7 +1621,7 @@ function RevisionModePlayer({
 
   const [activeParaIdx, setActiveParaIdx] = useState(0);
   const [mobileTab, setMobileTab] = useState<"ncert" | "questions">("ncert");
-  const [picked, setPicked] = useState<Record<string, { selected: string | null; correct: boolean }>>({});
+  const [picked, setPicked] = useState<Record<string, { selected: string | null; correct: boolean; skipped: boolean }>>({});
   const [choices, setChoices] = useState<Record<string, string | null>>({});
 
   const current = parasWithQuestions[activeParaIdx] ?? parasWithQuestions[0];
@@ -1646,10 +1647,10 @@ function RevisionModePlayer({
   const handleAnswerSubmit = (q: KeyPointQuestion) => {
     const chosen = choices[q.key];
     if (!chosen) return;
-    const isCorrect = chosen.trim().toLowerCase() === q.correct_option.trim().toLowerCase();
+    const isCorrect = chosen.trim().toLowerCase() === (q.correctKey || "").trim().toLowerCase();
     setPicked((prev) => ({
       ...prev,
-      [q.key]: { selected: chosen, correct: isCorrect },
+      [q.key]: { selected: chosen, correct: isCorrect, skipped: false },
     }));
   };
 
@@ -1778,7 +1779,7 @@ function RevisionModePlayer({
                   key={q.key}
                   subject={chapter.chapter.subject}
                   question={q}
-                  result={picked[q.key]}
+                  result={picked[q.key] ?? null}
                   choice={choices[q.key] ?? null}
                   onChoose={(opt) => handleSelectChoice(q.key, opt)}
                   onSubmit={() => handleAnswerSubmit(q)}

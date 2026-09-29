@@ -93,7 +93,7 @@ const extraConfig: UserConfig = {
 } as UserConfig;
 
 const lovableConfig = defineLovableConfig({
-  nitro: {
+  nitro: ({
     preset: isNodeBuild ? "node-server" : "static",
     output: {
       dir: isNodeBuild ? ".output" : "dist",
@@ -109,7 +109,7 @@ const lovableConfig = defineLovableConfig({
       "**/mascot/**",
       "**/short_notes/**",
     ],
-  },
+  }) as any,
   tanstackStart: {
     server: { entry: "./src/server.ts" },
     prerender: isNodeBuild ? { enabled: false } : { enabled: true, crawlLinks: false },

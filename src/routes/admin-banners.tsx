@@ -45,7 +45,7 @@ type Banner = {
 };
 
 function BannersAdmin() {
-  const { user, profile, loading: authLoading } = useAuth();
+  const { user, profile, isAdmin, loading: authLoading } = useAuth();
   const nav = useNavigate();
   const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ function BannersAdmin() {
   const [deletingAll, setDeletingAll] = useState(false);
 
   useEffect(() => {
-    if (!authLoading && (!user || profile?.role !== "admin")) {
+    if (!authLoading && (!user || !isAdmin)) {
       // Allow access if admin check or let user see
     }
   }, [user, profile, authLoading, nav]);

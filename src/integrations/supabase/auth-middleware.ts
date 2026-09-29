@@ -30,7 +30,7 @@ export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server
         context: {
           supabase,
           userId: 'guest',
-          claims: {},
+          claims: {} as any,
         },
       });
     }
@@ -46,7 +46,7 @@ export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server
         context: {
           supabase,
           userId: 'guest',
-          claims: {},
+          claims: {} as any,
         },
       });
     }
