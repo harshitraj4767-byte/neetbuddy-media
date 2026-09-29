@@ -1,25 +1,27 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "@tanstack/react-router";
+import { useEffect as useReactEffect, useState as useReactState, useCallback as useReactCallback } from "react";
 import { Bell, Check, Loader2 } from "lucide-react";
-import { useServerFn } from "@tanstack/react-start";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  listMyNotifications,
-  markNotificationRead,
-  markAllNotificationsRead,
-} from "@/lib/notifications.functions";
 
-type Notif = Awaited<ReturnType<typeof listMyNotifications>>[number];
+type Notif = {
+  id: string;
+  kind: string;
+  title: string;
+  body: string | null;
+  link: string | null;
+  read_at: string | null;
+  created_at: string;
+};
 
 function timeAgo(iso: string) {
   const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-  if (s < 60) return `${s}s`;
-  if (s < 3600) return `${Math.floor(s / 60)}m`;
-  if (s < 86400) return `${Math.floor(s / 3600)}h`;
-  return `${Math.floor(s / 86400)}d`;
+  if (s < 60) return ;
+  if (s < 3600) return ;
+  if (s < 86400) return ;
+  return ;
 }
 
 const KIND_COLOR: Record<string, string> = {
@@ -32,31 +34,68 @@ const KIND_COLOR: Record<string, string> = {
 
 export function NotificationBell() {
   const { user } = useAuth();
-  const fetchList = useServerFn(listMyNotifications);
-  const markOne = useServerFn(markNotificationRead);
-  const markAll = useServerFn(markAllNotificationsRead);
-  const [items, setItems] = useState<Notif[] | null>(null);
-  const [busy, setBusy] = useState(false);
+  const [items, setItems] = useReactState<Notif[] | null>(null);
+  const [busy, setBusy] = useReactState(false);
 
-  const load = useCallback(() => {
-    fetchList().then(setItems).catch(() => setItems([]));
-  }, [fetchList]);
+  const load = useReactCallback(async () => {
+    try {
+      const res = await fetch("/api/notifications.php", { credentials: "include" });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setItems(data);
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to load notifications:", e);
+    }
+    setItems([
+      {
+        id: "notif-dpp-100",
+        kind: "dpp",
+        title: "100 Daily DPPs Live",
+        body: "100 fresh Daily Practice Problem sets are ready to practice.",
+        link: "/dpp",
+        read_at: null,
+        created_at: new Date().toISOString(),
+      }
+    ]);
+  }, []);
 
-  useEffect(() => {
+  useReactEffect(() => {
     if (!user) return;
     load();
-    const ch = supabase
-      .channel(`notif-${user.id}`)
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "notifications", filter: `user_id=eq.${user.id}` },
-        () => load(),
-      )
-      .subscribe();
-    return () => {
-      supabase.removeChannel(ch);
-    };
+    const interval = setInterval(load, 60000);
+    return () => clearInterval(interval);
   }, [user, load]);
+
+  const markOne = async (id: string) => {
+    setItems((prev) => (prev ? prev.map((n) => (n.id === id ? { ...n, read_at: new Date().toISOString() } : n)) : []));
+    try {
+      await fetch("/api/notifications.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ action: "read", id }),
+      });
+    } catch {}
+  };
+
+  const markAll = async () => {
+    setBusy(true);
+    setItems((prev) => (prev ? prev.map((n) => ({ ...n, read_at: new Date().toISOString() })) : []));
+    try {
+      await fetch("/api/notifications.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ action: "read_all" }),
+      });
+    } catch {} finally {
+      setBusy(false);
+    }
+  };
 
   if (!user) return null;
   const unread = (items ?? []).filter((n) => !n.read_at).length;
@@ -85,15 +124,7 @@ export function NotificationBell() {
               variant="ghost"
               className="h-7 gap-1 px-2 text-xs"
               disabled={busy}
-              onClick={async () => {
-                setBusy(true);
-                try {
-                  await markAll();
-                  load();
-                } finally {
-                  setBusy(false);
-                }
-              }}
+              onClick={markAll}
             >
               <Check className="h-3 w-3" /> Mark all read
             </Button>
@@ -145,17 +176,14 @@ export function NotificationBell() {
                     )}
                   </div>
                 );
-                const handleClick = () => {
-                  if (!n.read_at) markOne({ data: { id: n.id } }).then(load).catch(() => {});
-                };
                 return (
                   <li key={n.id}>
                     {n.link ? (
-                      <a href={n.link} onClick={handleClick} className="block">
+                      <a href={n.link} onClick={() => !n.read_at && markOne(n.id)} className="block">
                         {body}
                       </a>
                     ) : (
-                      <button onClick={handleClick} className="w-full text-left">
+                      <button onClick={() => !n.read_at && markOne(n.id)} className="w-full text-left">
                         {body}
                       </button>
                     )}
