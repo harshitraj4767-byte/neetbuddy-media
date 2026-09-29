@@ -392,7 +392,7 @@ function Dashboard() {
                 <span className="text-sm font-bold">1-ON-1 Mentorship</span>
                 <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold">NEW</span>
               </div>
-              <div className="mt-1 truncate text-xs text-white/85">Personal mentor on WhatsApp · Plans from ₹1,999</div>
+              <div className="mt-1 truncate text-xs text-white/85">1-on-1 Personal Mentor · Plans from ₹1,999</div>
             </div>
             <span className="flex shrink-0 items-center gap-1 rounded-full bg-white px-3 py-2 text-xs font-bold text-indigo-700">
               Explore Plans <ArrowRight className="h-3.5 w-3.5" />
@@ -404,7 +404,7 @@ function Dashboard() {
         {/* ── More ─────────────────────────────────────────────────── */}
         <SectionHead title="More" />
         <div className="grid grid-cols-2 gap-3">
-          <SmallTool to="/community" title="Our Community" subtitle="WhatsApp & Telegram channels" icon={Users} tint="from-green-500 to-emerald-600" tall />
+          <SmallTool to="/community" title="Our Community" subtitle="Telegram, YouTube & Instagram" icon={Users} tint="from-green-500 to-emerald-600" tall />
           <SmallTool to="/referrals" title="Refer & Earn" subtitle="Invite friends to Neet Buddy" icon={Gift} tint="from-yellow-500 to-amber-600" tall />
           <Link to="/feedback" className="col-span-2 block h-full">
             <div className="flex h-full min-h-[88px] items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft transition-transform hover:-translate-y-0.5">

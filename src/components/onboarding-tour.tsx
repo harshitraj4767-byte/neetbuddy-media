@@ -141,7 +141,7 @@ const STEPS: Step[] = [
   {
     route: "/community",
     title: "Community & mentorship",
-    body: "Join our WhatsApp and Telegram channels, or get a 1-on-1 mentor to plan your months ahead.",
+    body: "Join our Telegram and YouTube community, or get a 1-on-1 mentor to plan your months ahead.",
     icon: Users,
   },
   {

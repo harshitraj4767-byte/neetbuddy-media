@@ -168,7 +168,6 @@ function BatchBody({ batch, share }: { batch: Batch; share: () => Promise<void> 
   );
 }
 
-const WHATSAPP_NUMBER = "917302871829";
 const ELITE_PLANS = [
   { key: "1m", label: "1 Month", price: 1999, duration: "30 days" },
   { key: "6m", label: "6 Months", price: 9999, duration: "180 days", badge: "Best value" },
@@ -176,13 +175,6 @@ const ELITE_PLANS = [
 ];
 
 function ElitePlans({ title }: { title: string }) {
-  function buy(plan: typeof ELITE_PLANS[number]) {
-    const text = encodeURIComponent(
-      `Hi Neet Buddy team,\n\nI want to purchase the ${title} — ${plan.label} plan (₹${plan.price} / ${plan.duration}).\n\nPlease share the payment details.`,
-    );
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-    window.open(url, "_blank", "noopener");
-  }
   return (
     <div className="space-y-3 pt-2">
       <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Choose your Elite plan</div>
@@ -193,14 +185,16 @@ function ElitePlans({ title }: { title: string }) {
             <div className="text-sm font-bold">{p.label}</div>
             <div className="mt-1 text-2xl font-bold">₹{p.price.toLocaleString("en-IN")}</div>
             <div className="text-xs text-muted-foreground">{p.duration}</div>
-            <Button onClick={() => buy(p)} className="mt-3 w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white">
-              <MessageCircle className="mr-1 h-4 w-4" /> Buy on WhatsApp
+            <Button asChild className="mt-3 w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white">
+              <Link to="/mentorship">
+                Enroll Now <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         ))}
       </div>
       <p className="text-[11px] text-muted-foreground">
-        Purchase happens over WhatsApp with our business account (+91 7302871829). Send us your details and we'll activate your access.
+        Instant activation with 1-on-1 mentor assignment upon enrollment.
       </p>
     </div>
   );

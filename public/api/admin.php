@@ -700,7 +700,6 @@ if ($action === 'save_social_links') {
         'telegram' => trim((string)($input['telegram'] ?? '')),
         'instagram' => trim((string)($input['instagram'] ?? '')),
         'youtube' => trim((string)($input['youtube'] ?? '')),
-        'whatsapp' => trim((string)($input['whatsapp'] ?? '')),
     ];
     $encoded = json_encode($links);
     $stmt = $pdo->prepare("INSERT INTO admin_settings (setting_key, setting_value) VALUES ('social_links', ?) ON DUPLICATE KEY UPDATE setting_value = ?");
@@ -716,7 +715,6 @@ if ($action === 'get_social_links') {
         'telegram' => 'https://t.me/neetbuddy',
         'instagram' => 'https://instagram.com/neetbuddy.in',
         'youtube' => 'https://youtube.com/@neetbuddy',
-        'whatsapp' => 'https://whatsapp.com/channel/neetbuddy',
     ];
     if ($raw) {
         $saved = json_decode((string)$raw, true);
@@ -737,7 +735,7 @@ if ($action === 'get_settings') {
         $maint = isset($rows['maintenance']) ? json_decode($rows['maintenance'], true) : ['enabled' => 0, 'message' => ''];
         $ticker = isset($rows['alert_ticker']) ? json_decode($rows['alert_ticker'], true) : ['enabled' => 1, 'text' => '⚡ 100 Daily DPPs live for NEET 2026', 'link' => '/dpp'];
         $battle = isset($rows['battle_settings']) ? json_decode($rows['battle_settings'], true) : ['question_count' => 5, 'seconds_per_question' => 20, 'bot_fallback' => 1];
-        $social = isset($rows['social_links']) ? json_decode($rows['social_links'], true) : ['telegram' => 'https://t.me/neetbuddy', 'instagram' => 'https://instagram.com/neetbuddy.in', 'youtube' => 'https://youtube.com/@neetbuddy', 'whatsapp' => 'https://whatsapp.com/channel/neetbuddy'];
+        $social = isset($rows['social_links']) ? json_decode($rows['social_links'], true) : ['telegram' => 'https://t.me/neetbuddy', 'instagram' => 'https://instagram.com/neetbuddy.in', 'youtube' => 'https://youtube.com/@neetbuddy',];
         nb_json(['razorpay' => $razorpay, 'ai' => $ai, 'maintenance' => $maint, 'alert_ticker' => $ticker, 'battle_settings' => $battle, 'social_links' => $social]);
     } catch (Throwable $e) {
         nb_json(['razorpay' => ['key_id' => ''], 'ai' => ['default_model' => 'gemini-1.5-flash']]);

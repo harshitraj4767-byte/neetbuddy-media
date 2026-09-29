@@ -53,7 +53,7 @@ const REPORT_SUBS = [
 ];
 
 const MGMT_SUBS = [
-  { key: "social-links" as SubTab, label: "Community & Social Links", desc: "Manage Telegram, Instagram, YouTube & WhatsApp links", icon: Share2 },
+  { key: "social-links" as SubTab, label: "Community & Social Links", desc: "Manage Telegram, Instagram & YouTube links", icon: Share2 },
   { key: "banners" as SubTab, label: "Banner Management", desc: "Create & remove promo banners", icon: Megaphone },
   { key: "maintenance" as SubTab, label: "Maintenance & Alert Bar", desc: "Toggle maintenance mode & top alert", icon: AlertTriangle },
   { key: "grant" as SubTab, label: "Grant Premium", desc: "Give premium access by email", icon: Star },
@@ -529,7 +529,7 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   const [tgLink, setTgLink] = useState("https://t.me/neetbuddy");
   const [igLink, setIgLink] = useState("https://instagram.com/neetbuddy.in");
   const [ytLink, setYtLink] = useState("https://youtube.com/@neetbuddy");
-  const [waLink, setWaLink] = useState("https://whatsapp.com/channel/neetbuddy");
+  
   const [busy, setBusy] = useState(false);
 
   const post = useCallback(async (action: string, payload: Record<string, unknown>) => {
@@ -551,7 +551,7 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
             if (d.links.telegram) setTgLink(d.links.telegram);
             if (d.links.instagram) setIgLink(d.links.instagram);
             if (d.links.youtube) setYtLink(d.links.youtube);
-            if (d.links.whatsapp) setWaLink(d.links.whatsapp);
+            
           }
         })
         .catch(() => {});
@@ -671,7 +671,7 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
             telegram: tgLink,
             instagram: igLink,
             youtube: ytLink,
-            whatsapp: waLink
+            
           });
           if (d.success) {
             toast.success(d.message || "Community & social links updated!");

@@ -18,14 +18,12 @@ interface SocialLinks {
   telegram: string;
   instagram: string;
   youtube: string;
-  whatsapp: string;
 }
 
 const DEFAULT_LINKS: SocialLinks = {
   telegram: "https://t.me/neetbuddy",
   instagram: "https://instagram.com/neetbuddy.in",
   youtube: "https://youtube.com/@neetbuddy",
-  whatsapp: "https://whatsapp.com/channel/neetbuddy",
 };
 
 function CommunityPage() {
@@ -41,7 +39,7 @@ function CommunityPage() {
             telegram: data.links.telegram || DEFAULT_LINKS.telegram,
             instagram: data.links.instagram || DEFAULT_LINKS.instagram,
             youtube: data.links.youtube || DEFAULT_LINKS.youtube,
-            whatsapp: data.links.whatsapp || DEFAULT_LINKS.whatsapp,
+            
           });
         }
         setLoaded(true);
@@ -58,37 +56,7 @@ function CommunityPage() {
       description="Join thousands of NEET aspirants. Ask doubts, get daily questions, watch high-yield video solutions, and grow together."
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        {/* WhatsApp Channel */}
-        <Card className="overflow-hidden border-2 border-emerald-400/40 bg-gradient-to-br from-emerald-50 to-green-50 shadow-sm dark:border-emerald-500/30 dark:from-emerald-950/20 dark:to-green-950/10 sm:col-span-2">
-          <CardContent className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6">
-            <div className="flex items-start gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-md">
-                <MessageCircle className="h-7 w-7" />
-              </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-extrabold text-foreground">WhatsApp Official Channel</span>
-                  <Badge variant="outline" className="border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-[10px] uppercase font-bold">
-                    Instant Updates
-                  </Badge>
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Get daily DPPs, mock test reminders, urgent NTA notifications, and high-yield revision summaries straight on WhatsApp.
-                </p>
-              </div>
-            </div>
-            <Button
-              className="w-full sm:w-auto shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white gap-2 font-semibold shadow-sm"
-              asChild
-            >
-              <a href={links.whatsapp} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-4 w-4" />
-                Join WhatsApp Channel
-                <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-              </a>
-            </Button>
-          </CardContent>
-        </Card>
+        
 
         {/* Telegram Community */}
         <Card className="overflow-hidden border border-sky-300/50 bg-gradient-to-br from-sky-50 to-blue-50 shadow-sm dark:border-sky-500/30 dark:from-sky-950/20 dark:to-blue-950/10">

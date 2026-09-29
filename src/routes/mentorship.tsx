@@ -11,7 +11,6 @@ import {
   GraduationCap, Check, Sparkles, Trophy, ArrowRight,
   Star, ShieldCheck, Users, Clock, Loader2, Tag, X,
 } from "lucide-react";
-const akmalImage = "/img/akmal.jpg";
 import { listFeaturedSelections } from "@/lib/selections.functions";
 import {
   previewMentorshipCoupon,
@@ -23,9 +22,9 @@ export const Route = createFileRoute("/mentorship")({
   head: () => ({
     meta: [
       { title: "Mentorship Program — Neet Buddy" },
-      { name: "description", content: "1-on-1 WhatsApp mentorship with Mohd Akmal. Daily doubt support, personal study plan, motivation and analytics reviews. Plans from ₹1,999." },
+      { name: "description", content: "1-on-1 Personal NEET Mentorship. Daily doubt support, customized study plan, motivation and analytics reviews. Plans from ₹1,999." },
       { property: "og:title", content: "Neet Buddy Mentorship Program" },
-      { property: "og:description", content: "1-on-1 WhatsApp mentorship with Mohd Akmal. All Prime features + personal mentor." },
+      { property: "og:description", content: "1-on-1 Personal NEET Mentorship. All Prime features + dedicated personal mentor." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -42,7 +41,7 @@ const PLANS: { key: PlanKey; label: string; price: number; duration: string; tag
 
 const MENTOR_FEATURES = [
   "Everything in the Prime batch",
-  "1-on-1 WhatsApp mentorship (chat + calls)",
+  "1-on-1 Personal mentorship (chat + calls)",
   "Personalised weekly study plan",
   "Daily doubt solving & concept clarity",
   "Test-paper analysis & weak-area drills",
@@ -50,12 +49,12 @@ const MENTOR_FEATURES = [
   "Priority support from a real NEET mentor",
 ];
 
-const AKMAL = {
-  name: "Mohd Akmal",
-  title: "3rd Year MBBS · NEET Mentor",
-  bio: "3rd Year MBBS student and a dedicated NEET mentor with years of experience guiding medical aspirants. His inspiring journey — from scoring 30 marks to 655 marks in just 9 months — reflects the power of determination, smart strategy, and consistent effort.",
+const MENTOR_PANEL = {
+  name: "Senior Medical Mentors",
+  title: "Top GMC Medicos & Senior NEET Mentors",
+  bio: "Our mentorship panel consists of top-scoring MBBS students and doctors from premier government medical colleges. Every mentor brings hands-on exam experience, subject mastery, and practical strategies to guide your NEET journey.",
   mission: "To inspire and mentor future doctors by providing practical guidance, motivation, and a clear roadmap to crack NEET.",
-  quote: "The only impossible journey is the one you never begin.",
+  quote: "Consistent daily execution combined with the right guidance turns every aspirant's dream into reality.",
 };
 
 declare global {
@@ -156,7 +155,7 @@ function MentorshipPurchasePage() {
     <PageShell
       eyebrow="Program"
       title="1-on-1 NEET Mentorship"
-      description="A personal NEET mentor on WhatsApp. Daily doubts, planning, motivation — all handled by Mohd Akmal."
+      description="Personal NEET mentorship. Daily doubts, planning, motivation & strategy — guided by senior medicos and top rankers."
     >
       <div className="space-y-8">
         {/* 1. MENTOR — shown first */}
@@ -164,32 +163,30 @@ function MentorshipPurchasePage() {
           <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Meet your mentor</div>
           <Card className="mt-3 overflow-hidden border-amber-500/40 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent">
             <CardContent className="grid grid-cols-[auto_1fr] items-start gap-4 p-4 sm:gap-6 sm:p-6">
-              <img
-                src={akmalImage}
-                alt={AKMAL.name}
-                className="h-24 w-24 rounded-2xl border-4 border-background object-cover shadow-lg sm:h-40 sm:w-40"
-              />
+              <div className="flex h-24 w-24 sm:h-36 sm:w-36 items-center justify-center rounded-2xl border-4 border-background bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg">
+                <GraduationCap className="h-12 w-12 sm:h-16 sm:w-16" />
+              </div>
               <div className="min-w-0">
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 sm:text-xs">
-                  <Sparkles className="h-3 w-3" /> Your NEET Mentor
+                  <Sparkles className="h-3 w-3" /> NEET Mentorship Panel
                 </div>
-                <h2 className="mt-1.5 text-xl font-bold leading-tight sm:text-3xl">{AKMAL.name}</h2>
-                <div className="text-xs text-muted-foreground sm:text-sm">{AKMAL.title}</div>
+                <h2 className="mt-1.5 text-xl font-bold leading-tight sm:text-3xl">{MENTOR_PANEL.name}</h2>
+                <div className="text-xs text-muted-foreground sm:text-sm">{MENTOR_PANEL.title}</div>
                 <div className="mt-1 flex items-center gap-0.5 text-amber-500">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current sm:h-4 sm:w-4" />)}
                 </div>
               </div>
               <div className="col-span-2 min-w-0">
-                <p className="text-sm text-foreground/90">{AKMAL.bio}</p>
+                <p className="text-sm text-foreground/90">{MENTOR_PANEL.bio}</p>
                 <div className="mt-3 rounded-lg border border-border/60 bg-background/60 p-3">
                   <div className="text-[11px] font-bold uppercase tracking-widest text-primary">Mission</div>
-                  <p className="mt-1 text-sm text-foreground/90">{AKMAL.mission}</p>
+                  <p className="mt-1 text-sm text-foreground/90">{MENTOR_PANEL.mission}</p>
                 </div>
                 <blockquote className="mt-3 border-l-4 border-amber-500 pl-3 text-sm italic text-foreground/90">
-                  “{AKMAL.quote}”
+                  “{MENTOR_PANEL.quote}”
                 </blockquote>
                 <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted-foreground">
-                  <span className="inline-flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> Verified mentor</span>
+                  <span className="inline-flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> Verified mentors</span>
                   <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-primary" /> Same-day replies</span>
                   <span className="inline-flex items-center gap-1"><Users className="h-3.5 w-3.5 text-amber-500" /> 1-on-1, never groups</span>
                 </div>

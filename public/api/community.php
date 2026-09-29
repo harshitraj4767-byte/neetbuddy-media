@@ -11,7 +11,6 @@ $defaultLinks = [
     'telegram' => 'https://t.me/neetbuddy',
     'instagram' => 'https://instagram.com/neetbuddy.in',
     'youtube' => 'https://youtube.com/@neetbuddy',
-    'whatsapp' => 'https://whatsapp.com/channel/neetbuddy',
 ];
 
 try {

@@ -6,8 +6,7 @@ import { GraduationCap, Sparkles, Target, Rocket, Heart, Quote, Zap, Coffee, Fla
 import { mediaAsset } from "@/lib/media-assets";
 
 const sanskarImage = mediaAsset("src/assets/sanskar.jpg");
-// Mohd Akmal photo removed per request
-const akmalImage = "";
+const harshitImage = "";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -98,7 +97,7 @@ function AboutPage() {
           />
 
           <FounderCard
-            image={akmalImage}
+            image={harshitImage}
             name="Harshit Kumar"
             role="Founder, Neet Buddy"
             badge="3rd Year MBBS · NEET Mentor"
