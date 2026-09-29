@@ -577,7 +577,8 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
           Community & Social Media Links
         </div>
         <p className="text-xs text-muted-foreground mt-1">
-          Configure official links for the community page and mobile app buttons. Students clicking on Telegram, Instagram, YouTube, or WhatsApp will open these exact URLs.
+          Configure official links for the community page and mobile app buttons. Students clicking on Telegram, Instagram, or YouTube will open these exact URLs.
+
         </p>
       </div>
 
@@ -606,21 +607,6 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
           <div className="flex items-center justify-between">
             <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
               <MessageCircle className="h-4 w-4 text-emerald-500" />
-              WhatsApp Channel / Group Link
-            </label>
-            {waLink && (
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className="text-xs text-emerald-600 hover:underline flex items-center gap-1">
-                Test Link <ExternalLink className="h-3 w-3" />
-              </a>
-            )}
-          </div>
-          <Input
-            placeholder="https://whatsapp.com/channel/..."
-            value={waLink}
-            onChange={(e) => setWaLink(e.target.value)}
-          />
-          <div className="text-[11px] text-muted-foreground">Used on the primary WhatsApp alert & daily DPP notification card.</div>
-        </div>
 
         <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
           <div className="flex items-center justify-between">
