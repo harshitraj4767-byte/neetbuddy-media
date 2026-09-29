@@ -1,3 +1,4 @@
+import { attachQuestionMedia } from "@/lib/question-media";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -230,13 +231,13 @@ function BattlePlayPage() {
       const qCountTarget = questionCountForStake(Number(m.stake ?? 0));
       const qids: string[] = ((test as any)?.question_ids ?? []).slice(0, qCountTarget);
       if (!qids.length) { setErr("No questions in this match"); return; }
-      const { data: qs, error: qErr } = await supabase.from("questions").select("id,text,options,correct_index").in("id", qids);
+      const { data: qs, error: qErr } = await supabase.from("questions").select("id,text,options,correct_index,question_image_url,explanation_image_url").in("id", qids);
       if (qErr) {
         console.error("[battle] failed to load questions", qErr, { matchId, testId: m.test_id, qids });
         setErr(qErr.message ?? "Could not load battle questions");
         return;
       }
-      const questionMap = new Map(((qs ?? []) as any[]).map((q) => [q.id, q]));
+      const questionMap = new Map(((qs ?? []) as any[]).map((q) => [q.id, attachQuestionMedia(q)]));
       const ordered = qids
         .map((id) => normalizeBattleQuestion(questionMap.get(id)))
         .filter((q): q is Question => Boolean(q));
