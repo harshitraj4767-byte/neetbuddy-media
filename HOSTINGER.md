@@ -13,14 +13,14 @@ Set these exact fields in Hostinger hPanel under Web Apps / Deploy Settings:
 | Root directory | / (or empty) | Repository root |
 | Build script | build | Runs npm run build |
 | Output directory | .output | Nitro output directory |
-| Entry file | server/index.mjs | Relative to Output directory (.output/server/index.mjs) |
+| Entry file | .output/server/index.mjs (or server/index.mjs) | Points to Nitro compiled server bundle |
 
 Important Note on Entry File in Hostinger:
-In Hostinger's Nitro application preset, the Entry file path is evaluated relative to the Output directory:
-- Set Output directory to: .output
-- Set Entry file to: server/index.mjs
+Hostinger offers two ways to configure the Entry File depending on your hPanel panel version:
+- Recommended: Set Entry file to `.output/server/index.mjs` (matching package.json "main").
+- Fallback: If set to `server/index.mjs`, our repository includes a root `server/index.mjs` that proxies directly into `.output/server/index.mjs`.
 
-Do NOT set Entry file to .output/server/index.mjs (which would resolve to .output/.output/server/index.mjs) and do NOT set Output directory to .output/public.
+Both configurations are fully supported and will start the Nitro server cleanly without 404 or unreached errors.
 
 ## Local Build & Startup Verification (Passed)
 
