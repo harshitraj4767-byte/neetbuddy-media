@@ -43,12 +43,42 @@ function FeedbackPage() {
     if (message.trim().length < 3) return toast.error("Tell us a bit more");
     setBusy(true);
     try {
-      await submit({ data: { rating, category, message: message.trim() } });
+      let saved = false;
+      try {
+        const res = await fetch("/api/feedback.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            rating,
+            category,
+            message: message.trim(),
+            name: (user as any)?.name || (user as any)?.full_name || "NEET Student",
+            email: (user as any)?.email || "student@neetbuddy.in",
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && (data.success || data.id)) {
+          saved = true;
+        }
+      } catch (err) {
+        // Fall back to server function
+      }
+
+      if (!saved) {
+        await submit({ data: { rating, category, message: message.trim() } });
+      }
+
       toast.success("Thanks! Your feedback helps us improve.");
       setDone(true);
-      setRating(0); setMessage(""); setCategory("other");
-    } catch (e: any) { toast.error(e?.message ?? "Could not send"); }
-    finally { setBusy(false); }
+      setRating(0);
+      setMessage("");
+      setCategory("other");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Could not send feedback. Please try again.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   if (done) {

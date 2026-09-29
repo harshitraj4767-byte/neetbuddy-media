@@ -215,7 +215,7 @@ function StudyRoadmapPage() {
           <img
             src={pose.src}
             alt={pose.alt}
-            className="h-24 w-24 shrink-0 object-contain drop-shadow-xl sm:h-32 sm:w-32"
+            className="h-32 w-32 shrink-0 object-contain drop-shadow-xl sm:h-40 sm:w-40"
           />
         </div>
 
@@ -316,7 +316,7 @@ function StudyRoadmapPage() {
                   <img
                     src={worldPose.src}
                     alt={worldPose.alt}
-                    className="h-12 w-12 shrink-0 object-contain drop-shadow-sm sm:h-14 sm:w-14"
+                    className="h-16 w-16 shrink-0 object-contain drop-shadow-sm sm:h-20 sm:w-20"
                   />
                   <div>
                     <div className="text-xs font-bold text-foreground">
@@ -436,7 +436,7 @@ function TrailConnector({
             <img
               src={mascotPose.src}
               alt={mascotPose.alt}
-              className="h-12 w-12 object-contain drop-shadow sm:h-16 sm:w-16 md:h-20 md:w-20"
+              className="h-16 w-16 object-contain drop-shadow sm:h-20 sm:w-20 md:h-24 md:w-24"
             />
             <div className="hidden rounded-full border border-border/70 bg-card/95 px-2.5 py-1 text-[10px] font-semibold text-muted-foreground shadow-sm backdrop-blur lg:block">
               {index % 4 === 0 ? "Keep going! 🔥" : "Almost there! 🎯"}
@@ -626,7 +626,7 @@ function LevelSheet({
               <img
                 src={pose.src}
                 alt={pose.alt}
-                className="h-20 w-20 shrink-0 object-contain drop-shadow-lg"
+                className="h-28 w-28 shrink-0 object-contain drop-shadow-lg"
               />
             </div>
           </SheetHeader>

@@ -52,6 +52,19 @@ export function PremiumGate() {
   // it ("Not now") never re-opens it on the same page.
   const shownFor = useRef<string | null>(null);
 
+  const DISMISS_KEY = "nb_trial_gate_dismissed_until";
+
+  const isDismissed = () => {
+    try {
+      const val = localStorage.getItem(DISMISS_KEY);
+      if (!val) return false;
+      const until = Number(val);
+      return !isNaN(until) && Date.now() < until;
+    } catch {
+      return false;
+    }
+  };
+
   const blocked =
     !isLoading &&
     isSignedIn &&
@@ -61,7 +74,7 @@ export function PremiumGate() {
     !isAllowed(pathname);
 
   useEffect(() => {
-    if (!blocked) {
+    if (!blocked || isDismissed()) {
       shownFor.current = null;
       setOpen(false);
       return;
@@ -73,6 +86,10 @@ export function PremiumGate() {
   }, [blocked, pathname]);
 
   const dismiss = () => {
+    try {
+      // Dismiss popup for 24 hours so user experience is smooth
+      localStorage.setItem(DISMISS_KEY, String(Date.now() + 24 * 60 * 60 * 1000));
+    } catch {}
     setOpen(false);
     nav({ to: "/", replace: true });
   };
