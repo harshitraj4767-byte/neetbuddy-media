@@ -175,16 +175,24 @@ export const TOTAL_XP_AVAILABLE = ROADMAP_LEVELS.reduce(
 /** Load progress + completions for a signed-in user. Never throws. */
 const LOCAL_STORAGE_KEY = "nb_roadmap_progress";
 
-function readLocalRoadmapState(): RoadmapState | null {
+function getStorageKey(userId?: string): string {
+  return userId ? `${LOCAL_STORAGE_KEY}_${userId}` : LOCAL_STORAGE_KEY;
+}
+
+function readLocalRoadmapState(userId?: string): RoadmapState | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+    const key = getStorageKey(userId);
+    let raw = window.localStorage.getItem(key);
+    if (!raw && userId) {
+      raw = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+    }
     if (!raw) return null;
     const data = JSON.parse(raw);
     return {
-      currentLevel: Number(data.currentLevel || 1),
-      highestUnlocked: Number(data.highestUnlocked || 1),
-      totalXp: Number(data.totalXp || 0),
+      currentLevel: Math.max(1, Number(data.currentLevel || 1)),
+      highestUnlocked: Math.max(1, Number(data.highestUnlocked || 1)),
+      totalXp: Math.max(0, Number(data.totalXp || 0)),
       plannerMode: data.plannerMode ?? "Normal",
       completedMissionIds: new Set(Array.isArray(data.completedMissionIds) ? data.completedMissionIds : []),
       offline: false,
@@ -194,25 +202,48 @@ function readLocalRoadmapState(): RoadmapState | null {
   }
 }
 
-function writeLocalRoadmapState(state: RoadmapState) {
+function writeLocalRoadmapState(state: RoadmapState, userId?: string) {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify({
-        currentLevel: state.currentLevel,
-        highestUnlocked: state.highestUnlocked,
-        totalXp: state.totalXp,
-        plannerMode: state.plannerMode,
-        completedMissionIds: Array.from(state.completedMissionIds),
-      }),
-    );
+    const payload = JSON.stringify({
+      currentLevel: state.currentLevel,
+      highestUnlocked: state.highestUnlocked,
+      totalXp: state.totalXp,
+      plannerMode: state.plannerMode,
+      completedMissionIds: Array.from(state.completedMissionIds),
+    });
+    window.localStorage.setItem(getStorageKey(userId), payload);
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, payload);
   } catch {}
 }
 
 export async function fetchRoadmapState(userId: string): Promise<RoadmapState> {
-  const local = readLocalRoadmapState();
+  const local = readLocalRoadmapState(userId);
   try {
+    // Try Hostinger PHP API first
+    try {
+      const res = await fetch(`/api/roadmap.php?user_id=${encodeURIComponent(userId)}`);
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.ok && json.data) {
+          const d = json.data;
+          const merged: RoadmapState = {
+            currentLevel: Math.max(local?.currentLevel ?? 1, Number(d.current_level || 1)),
+            highestUnlocked: Math.max(local?.highestUnlocked ?? 1, Number(d.highest_unlocked || 1)),
+            totalXp: Math.max(local?.totalXp ?? 0, Number(d.total_xp || 0)),
+            plannerMode: d.planner_mode || local?.plannerMode || "Normal",
+            completedMissionIds: new Set([
+              ...(Array.isArray(d.completed_mission_ids) ? d.completed_mission_ids : []),
+              ...(local ? Array.from(local.completedMissionIds) : []),
+            ]),
+            offline: false,
+          };
+          writeLocalRoadmapState(merged, userId);
+          return merged;
+        }
+      }
+    } catch {}
+
     const [progressRes, missionsRes] = await Promise.all([
       db
         .from("roadmap_progress")
@@ -225,7 +256,7 @@ export async function fetchRoadmapState(userId: string): Promise<RoadmapState> {
         .eq("user_id", userId),
     ]);
 
-    if (progressRes.error && missionsRes.error) return { ...DEFAULT_STATE };
+    if (progressRes.error && missionsRes.error) return local ?? { ...DEFAULT_STATE };
 
     const done = new Set<string>(
       ((missionsRes.data ?? []) as { mission_id: string }[]).map(
@@ -285,7 +316,21 @@ export async function completeMission(
     currentLevel: justCleared ? Math.min(levelId + 1, ROADMAP_LEVELS.length) : state.currentLevel,
   };
 
-  writeLocalRoadmapState(next);
+  writeLocalRoadmapState(next, userId);
+  try {
+    fetch("/api/roadmap.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: userId,
+        current_level: next.currentLevel,
+        highest_unlocked: next.highestUnlocked,
+        total_xp: next.totalXp,
+        planner_mode: next.plannerMode,
+        completed_mission_ids: Array.from(next.completedMissionIds),
+      }),
+    }).catch(() => {});
+  } catch {}
 
   try {
     await db.from("mission_completion").upsert(
