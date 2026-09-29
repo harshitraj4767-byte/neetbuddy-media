@@ -217,7 +217,11 @@ function MockCard({ t, autoOpen, state }: { t: Test; autoOpen?: boolean; state?:
     try {
       await gate({ data: { test_id: t.id } });
       setPickMode(false);
-      nav({ to: "/quiz/$testId", params: { testId: t.id }, search: { mode } as never });
+      if (mode === "chat") {
+        nav({ to: "/chat", search: { context: `mock-${t.id}` } as never });
+      } else {
+        nav({ to: "/quiz/$testId", params: { testId: t.id }, search: { mode } as never });
+      }
     } catch (e: any) {
       toast.error(e?.message ?? "Could not start this mock");
     } finally {

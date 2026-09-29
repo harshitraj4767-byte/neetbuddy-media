@@ -56,7 +56,7 @@ function DppPage() {
     })();
   }, [user]);
 
-  async function startWithMode(t: Test, mode: "quiz" | "cbt") {
+  async function startWithMode(t: Test, mode: QuizMode) {
     if (gating) return;
     setGating(t.id);
     setModePick(null);
@@ -66,7 +66,11 @@ function DppPage() {
       } catch (ignore) {
         // Fallback directly to quiz player
       }
-      nav({ to: "/quiz/$testId", params: { testId: t.id }, search: { mode } as never });
+      if (mode === "chat") {
+        nav({ to: "/chat", search: { context: `dpp-${t.id}` } as never });
+      } else {
+        nav({ to: "/quiz/$testId", params: { testId: t.id }, search: { mode } as never });
+      }
     } catch (e: any) {
       toast.error(e?.message ?? "Could not start DPP");
     } finally {

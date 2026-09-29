@@ -1,12 +1,12 @@
-// Shared "Quiz mode vs CBT mode" chooser shown before starting a DPP/quiz.
+// Shared "Quiz vs Test vs Chat mode" chooser shown before starting a DPP/quiz/mock.
 // Renders as a bottom sheet on mobile and a dialog on desktop.
 
-import { BookOpen, Timer } from "lucide-react";
+import { BookOpen, CheckCircle2, MessageSquare, Timer } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export type QuizMode = "quiz" | "cbt";
+export type QuizMode = "quiz" | "test" | "cbt" | "chat";
 
 export function QuizModePicker({
   open,
@@ -25,34 +25,67 @@ export function QuizModePicker({
   const title = "Choose your mode";
 
   const body = (
-    <div className="grid gap-3 py-2">
+    <div className="grid gap-2.5 py-2">
       <button
         onClick={() => onPick("quiz")}
         disabled={busy}
-        className="group flex items-start gap-3 rounded-xl border border-border p-4 text-left transition hover:border-primary hover:bg-primary/5 disabled:opacity-60"
+        className="group flex items-start gap-3 rounded-xl border border-border p-3.5 text-left transition hover:border-primary hover:bg-primary/5 disabled:opacity-60"
       >
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
           <BookOpen className="h-5 w-5" />
         </div>
         <div>
-          <div className="font-semibold">Quiz mode</div>
+          <div className="font-semibold text-sm">Quiz mode</div>
           <div className="text-xs text-muted-foreground">
-            See explanations after each question. Learn as you go.
+            Instant feedback. See answers & explanations after each question.
           </div>
         </div>
       </button>
+
+      <button
+        onClick={() => onPick("test")}
+        disabled={busy}
+        className="group flex items-start gap-3 rounded-xl border border-border p-3.5 text-left transition hover:border-primary hover:bg-primary/5 disabled:opacity-60"
+      >
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+          <CheckCircle2 className="h-5 w-5" />
+        </div>
+        <div>
+          <div className="font-semibold text-sm">Test mode</div>
+          <div className="text-xs text-muted-foreground">
+            Same clean quiz UI. Select answers freely; review answers only after submit.
+          </div>
+        </div>
+      </button>
+
+      <button
+        onClick={() => onPick("chat")}
+        disabled={busy}
+        className="group flex items-start gap-3 rounded-xl border border-border p-3.5 text-left transition hover:border-primary hover:bg-primary/5 disabled:opacity-60"
+      >
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-violet-500/15 text-violet-600 dark:text-violet-400">
+          <MessageSquare className="h-5 w-5" />
+        </div>
+        <div>
+          <div className="font-semibold text-sm">Chat mode</div>
+          <div className="text-xs text-muted-foreground">
+            AI-assisted learning. Solve questions step-by-step with interactive hints.
+          </div>
+        </div>
+      </button>
+
       <button
         onClick={() => onPick("cbt")}
         disabled={busy}
-        className="group flex items-start gap-3 rounded-xl border border-border p-4 text-left transition hover:border-primary hover:bg-primary/5 disabled:opacity-60"
+        className="group flex items-start gap-3 rounded-xl border border-border p-3.5 text-left transition hover:border-primary hover:bg-primary/5 disabled:opacity-60"
       >
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-destructive/15 text-destructive">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-destructive/15 text-destructive">
           <Timer className="h-5 w-5" />
         </div>
         <div>
-          <div className="font-semibold">CBT mode (NTA-like)</div>
+          <div className="font-semibold text-sm">CBT mode (NTA-like)</div>
           <div className="text-xs text-muted-foreground">
-            Timed, exam-style. Review answers only after submitting.
+            Timed exam interface with full NTA question palette.
           </div>
         </div>
       </button>

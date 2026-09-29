@@ -66,8 +66,8 @@ export const Route = createFileRoute("/quiz/$testId")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  validateSearch: (s: Record<string, unknown>): { mode?: "quiz" | "exam" | "cbt" } => ({
-    mode: (s.mode === "quiz" ? "quiz" : s.mode === "cbt" ? "cbt" : "exam") as "quiz" | "exam" | "cbt",
+  validateSearch: (s: Record<string, unknown>): { mode?: "quiz" | "test" | "exam" | "cbt" } => ({
+    mode: (s.mode === "quiz" ? "quiz" : s.mode === "test" ? "test" : s.mode === "cbt" ? "cbt" : "exam") as "quiz" | "test" | "exam" | "cbt",
   }),
   component: QuizPlayer,
 });
@@ -143,6 +143,7 @@ function QuizPlayer() {
   const isExam = mode === "exam" || isCbt;
   const hasTimer = isExam || (test?.duration_min != null && test.duration_min > 0);
   const isQuiz = mode === "quiz";
+  const isTest = mode === "test";
   // Chapter-wise practice = no submit, persist answers, lock-on-pick reveal.
   // CBT mode is always exam-style (timer + submit), even for practice sets.
   const isChapterPractice = test?.type === "practice" && !isCbt;
@@ -1398,18 +1399,20 @@ function QuizPlayer() {
         <div className="mt-4 space-y-2">
           {q.options.map((opt, i) => {
             const selected = answers[q.id] === i;
-            const locked = (isChapterPractice || isQuiz) && answers[q.id] !== undefined;
-            const isCorrectOpt = locked && i === q.correct_index;
-            const isWrongPick = locked && selected && i !== q.correct_index;
+            const isSubmitted = !!submitted || contestDone !== null;
+            const locked = (isChapterPractice || isQuiz || (isTest && isSubmitted)) && answers[q.id] !== undefined;
+            const showFeedback = (isChapterPractice || isQuiz || (isTest && isSubmitted)) && answers[q.id] !== undefined;
+            const isCorrectOpt = showFeedback && i === q.correct_index;
+            const isWrongPick = showFeedback && selected && i !== q.correct_index;
             return (
               <button
                 key={i}
-                onClick={() => !locked && setAnswer(i)}
-                disabled={locked}
+                onClick={() => (!locked || (isTest && !isSubmitted)) && setAnswer(i)}
+                disabled={locked && !(isTest && !isSubmitted)}
                 className={cn(
                   "flex w-full items-center gap-3 rounded-lg border bg-card p-3.5 text-left text-base transition outline-none focus:outline-none focus-visible:outline-none",
-                  !locked && "hover:border-primary/50",
-                  selected && !locked && "border-primary",
+                  (!locked || (isTest && !isSubmitted)) && "hover:border-primary/50",
+                  selected && !showFeedback && "border-primary bg-primary/5",
                   isCorrectOpt && "border-emerald-400/60 bg-emerald-500/5",
                   isWrongPick && "border-rose-400/60 bg-rose-500/5",
                   locked && !isCorrectOpt && !isWrongPick && "border-border opacity-90",
@@ -1448,7 +1451,7 @@ function QuizPlayer() {
           })}
         </div>
 
-        {(isChapterPractice || isQuiz) && answers[q.id] !== undefined && (
+        {(isChapterPractice || isQuiz || (isTest && (!!submitted || contestDone !== null))) && answers[q.id] !== undefined && (
           <div className="mt-6">
             <h3 className="text-lg font-bold">Explanation</h3>
             <div className="mt-2 flex flex-wrap items-center gap-2">
@@ -1617,6 +1620,14 @@ function QuizPlayer() {
             <Button className="h-11 flex-1" onClick={() => submit()} disabled={submitting}>
               {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : "Finish"}
             </Button>
+          ) : isTest ? (
+            <Button
+              className="h-11 flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
+              onClick={() => setConfirmSubmit(true)}
+              disabled={submitting}
+            >
+              {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : "Submit Test"}
+            </Button>
           ) : (
             <Button
               className="h-11 flex-1 bg-emerald-600 hover:bg-emerald-700"
@@ -1689,7 +1700,7 @@ function QuizPlayer() {
           <div className="flex items-center gap-2 border-b border-border px-4 py-3">
             <img src={publicMediaAsset("icons/icon-192.png")} alt="Neet Buddy" className="h-8 w-8 rounded-md" />
             <div className="min-w-0">
-              <div className="truncate text-sm font-bold">{isCbt ? "Neet Buddy CBT" : "Neet Buddy Quiz"}</div>
+              <div className="truncate text-sm font-bold">{isCbt ? "Neet Buddy CBT" : isTest ? "Neet Buddy Test" : "Neet Buddy Quiz"}</div>
               <div className="truncate text-[10px] text-muted-foreground">{test.title}</div>
             </div>
             {isExam && (
