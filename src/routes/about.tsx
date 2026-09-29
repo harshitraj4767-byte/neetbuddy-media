@@ -135,7 +135,7 @@ function AboutPage() {
                   <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary/40 to-amber-500/40 blur-xl opacity-75" />
                   <div className="relative flex h-48 w-48 items-center justify-center rounded-3xl border-2 border-primary/30 bg-background/80 p-2 shadow-2xl backdrop-blur-sm sm:h-56 sm:w-56">
                     <img
-                      src="/catalyst/dr-catalyst-confident.webp"
+                      src="/catalyst/dr-catalyst-confident.webp?v=catalyst_v2"
                       alt="Dr. Catalyst standing with sunglasses and swag"
                       className="h-full w-full object-contain drop-shadow-md"
                     />
@@ -157,10 +157,10 @@ function AboutPage() {
                 {/* Fun mini mood avatars */}
                 <div className="mt-4 flex items-center justify-center gap-2">
                   {[
-                    { src: "/catalyst/dr-catalyst-coffee-break.webp", label: "2 AM Fuel", alt: "Coffee break" },
-                    { src: "/catalyst/dr-catalyst-idea.webp", label: "Cheat Codes", alt: "Idea" },
-                    { src: "/catalyst/dr-catalyst-excited.webp", label: "High Hype", alt: "Excited" },
-                    { src: "/catalyst/dr-catalyst-calm.webp", label: "Zen Mode", alt: "Calm" },
+                    { src: "/catalyst/dr-catalyst-coffee-break.webp?v=catalyst_v2", label: "2 AM Fuel", alt: "Coffee break" },
+                    { src: "/catalyst/dr-catalyst-idea.webp?v=catalyst_v2", label: "Cheat Codes", alt: "Idea" },
+                    { src: "/catalyst/dr-catalyst-excited.webp?v=catalyst_v2", label: "High Hype", alt: "Excited" },
+                    { src: "/catalyst/dr-catalyst-calm.webp?v=catalyst_v2", label: "Zen Mode", alt: "Calm" },
                   ].map((m, i) => (
                     <div
                       key={i}

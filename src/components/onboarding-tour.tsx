@@ -9,7 +9,7 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 
-export const DR_CATALYST_IMG = "/catalyst/dr-catalyst-waving.webp";
+export const DR_CATALYST_IMG = "/catalyst/dr-catalyst-waving.webp?v=catalyst_v2";
 export const DR_VANSHU_IMG = DR_CATALYST_IMG;
 export const TOUR_EVENT = "neetbuddy:start-tour";
 
