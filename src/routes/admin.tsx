@@ -7,19 +7,20 @@ import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import {
-  Users, BarChart3, Settings2, ChevronRight, ArrowLeft, Loader2, Search,
+  Users, BarChart3, Settings2, ChevronRight, Loader2, Search,
   Send, Megaphone, MessageSquare, LayoutDashboard, Ticket, Package,
-  KeyRound, BrainCircuit, Sparkles, Wallet, Star, TrendingUp, Flame,
-  BadgeCheck, Trash2, Plus, ShieldCheck, Activity,
+  BrainCircuit, Sparkles, Wallet, Star, TrendingUp, Flame,
+  BadgeCheck, Trash2, Plus, ShieldCheck, Activity, Trophy,
+  Server, AlertTriangle, Swords, HelpCircle,
 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({ component: AdminPage });
 
 type Tab = "main" | "user-reports" | "app-report" | "app-management";
 type SubTab =
-  | "single-user" | "cohort" | "notifications" | "feedback"
-  | "overview" | "features" | "plans"
-  | "banners" | "grant" | "coupons" | "batches" | "razorpay" | "ai-keys" | "dpp-generator";
+  | "single-user" | "cohort" | "live-attempts" | "leaderboard" | "notifications" | "feedback"
+  | "overview" | "features" | "plans" | "diagnostics" | "subject-errors"
+  | "banners" | "maintenance" | "grant" | "coupons" | "batches" | "razorpay" | "ai-keys" | "dpp-generator" | "add-question" | "battle-settings";
 
 const SECTION_LABEL: Record<Exclude<Tab, "main">, string> = {
   "user-reports": "User Reports",
@@ -27,27 +28,34 @@ const SECTION_LABEL: Record<Exclude<Tab, "main">, string> = {
   "app-management": "App Management",
 };
 
-const USER_SUBS: { key: SubTab; label: string; desc: string; icon: typeof Users }[] = [
-  { key: "cohort", label: "Combined Report", desc: "Cohort accuracy & improvement trends", icon: TrendingUp },
-  { key: "single-user", label: "User Lookup", desc: "Deep-dive into one student", icon: Search },
-  { key: "notifications", label: "Send Notification", desc: "Broadcast or target one user", icon: Send },
-  { key: "feedback", label: "User Feedback", desc: "Review & resolve feedback", icon: MessageSquare },
+const USER_SUBS = [
+  { key: "cohort" as SubTab, label: "Combined Report", desc: "Cohort accuracy & improvement trends", icon: TrendingUp },
+  { key: "single-user" as SubTab, label: "User Lookup", desc: "Deep-dive into one student", icon: Search },
+  { key: "live-attempts" as SubTab, label: "Live Attempts Feed", desc: "Real-time student activity stream", icon: Activity },
+  { key: "leaderboard" as SubTab, label: "Student Leaderboard", desc: "Top rankers by average score", icon: Trophy },
+  { key: "notifications" as SubTab, label: "Send Notification", desc: "Broadcast or target one user", icon: Send },
+  { key: "feedback" as SubTab, label: "User Feedback", desc: "Review & resolve student feedback", icon: MessageSquare },
 ];
 
-const REPORT_SUBS: { key: SubTab; label: string; desc: string; icon: typeof Users }[] = [
-  { key: "overview", label: "Overview", desc: "Users, revenue, questions, attempts", icon: LayoutDashboard },
-  { key: "features", label: "Feature Popularity", desc: "Most used features", icon: Flame },
-  { key: "plans", label: "Plan Sales", desc: "Which plan sells best", icon: BadgeCheck },
+const REPORT_SUBS = [
+  { key: "overview" as SubTab, label: "Platform Overview", desc: "Users, revenue, questions, attempts", icon: LayoutDashboard },
+  { key: "features" as SubTab, label: "Feature Popularity", desc: "Ranked usage & popular modules", icon: Flame },
+  { key: "plans" as SubTab, label: "Plan Sales", desc: "Which plan sells best", icon: BadgeCheck },
+  { key: "diagnostics" as SubTab, label: "System Diagnostics", desc: "Hostinger DB table row counts & status", icon: Server },
+  { key: "subject-errors" as SubTab, label: "Subject Error Matrix", desc: "Physics vs Chemistry vs Biology accuracy", icon: BarChart3 },
 ];
 
-const MGMT_SUBS: { key: SubTab; label: string; desc: string; icon: typeof Users }[] = [
-  { key: "banners", label: "Banner Management", desc: "Create & remove promo banners", icon: Megaphone },
-  { key: "grant", label: "Grant Premium", desc: "Give premium access by email", icon: Star },
-  { key: "coupons", label: "Coupon Codes", desc: "Create discount coupons", icon: Ticket },
-  { key: "batches", label: "Batches & Plans", desc: "Add or edit purchasable batches", icon: Package },
-  { key: "razorpay", label: "Razorpay Keys", desc: "Configure payment gateway", icon: Wallet },
-  { key: "ai-keys", label: "AI API Keys", desc: "Lovable AI / Gemini keys", icon: BrainCircuit },
-  { key: "dpp-generator", label: "DPP Generator", desc: "Bulk create sequential DPPs", icon: Sparkles },
+const MGMT_SUBS = [
+  { key: "banners" as SubTab, label: "Banner Management", desc: "Create & remove promo banners", icon: Megaphone },
+  { key: "maintenance" as SubTab, label: "Maintenance & Alert Bar", desc: "Toggle maintenance mode & top alert", icon: AlertTriangle },
+  { key: "grant" as SubTab, label: "Grant Premium", desc: "Give premium access by email", icon: Star },
+  { key: "coupons" as SubTab, label: "Coupon Codes", desc: "Create discount coupons", icon: Ticket },
+  { key: "batches" as SubTab, label: "Batches & Plans", desc: "Add or edit purchasable batches", icon: Package },
+  { key: "razorpay" as SubTab, label: "Razorpay Gateway", desc: "Configure payment gateway keys", icon: Wallet },
+  { key: "ai-keys" as SubTab, label: "AI API Keys", desc: "Lovable AI / Gemini keys", icon: BrainCircuit },
+  { key: "dpp-generator" as SubTab, label: "DPP Generator", desc: "Bulk create sequential DPPs", icon: Sparkles },
+  { key: "add-question" as SubTab, label: "Question Injector", desc: "Add a single question to QB", icon: HelpCircle },
+  { key: "battle-settings" as SubTab, label: "Battle Arena Config", desc: "Match timer, questions & bot fallback", icon: Swords },
 ];
 
 function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -103,7 +111,7 @@ function AdminPage() {
   );
 
   return (
-    <PageShell title="Admin Panel">
+    <PageShell title="Admin Control Center">
       {crumbs}
       {tab === "main" && <MainMenu setTab={setTab} />}
       {tab === "user-reports" && (sub === null
@@ -121,9 +129,9 @@ function AdminPage() {
 
 function MainMenu({ setTab }: { setTab: (t: Tab) => void }) {
   const mains = [
-    { key: "user-reports" as Tab, icon: Users, label: "User Reports", desc: "Individual & cohort reports, notifications, feedback" },
-    { key: "app-report" as Tab, icon: BarChart3, label: "App Report", desc: "Usage, revenue, plans & marketing analytics" },
-    { key: "app-management" as Tab, icon: Settings2, label: "App Management", desc: "Banners, premium, coupons, batches, keys, DPPs" },
+    { key: "user-reports" as Tab, icon: Users, label: "User Reports", desc: "Cohort reports, single user lookup, live feeds, notifications & feedback" },
+    { key: "app-report" as Tab, icon: BarChart3, label: "App Report", desc: "Feature popularity, system diagnostics, plan sales & subject error matrix" },
+    { key: "app-management" as Tab, icon: Settings2, label: "App Management", desc: "Banners, maintenance, premium, coupons, batches, AI keys, DPPs & questions" },
   ];
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -162,10 +170,12 @@ function SubMenu({ items, setSub }: { items: typeof USER_SUBS; setSub: (s: SubTa
   );
 }
 
-// ============ USER REPORTS ============
+// ============ 1. USER REPORTS ============
 function UserReports({ sub }: { sub: SubTab; goBack: () => void }) {
   if (sub === "single-user") return <UserLookup />;
   if (sub === "cohort") return <CohortReport />;
+  if (sub === "live-attempts") return <LiveAttemptsFeed />;
+  if (sub === "leaderboard") return <StudentLeaderboard />;
   if (sub === "notifications") return <SendNotification />;
   if (sub === "feedback") return <FeedbackView />;
   return null;
@@ -184,8 +194,8 @@ function UserLookup() {
       const data = await res.json();
       const match = (data.users ?? []).find((u: Record<string, unknown>) => String(u.email ?? "").toLowerCase() === email.trim().toLowerCase());
       setResult(match ?? null);
-      if (!match) toast.error("No user found in latest 50 active users");
-    } catch (e) {
+      if (!match) toast.error("No user found in active list");
+    } catch {
       toast.error("Lookup failed");
     } finally {
       setLoading(false);
@@ -202,16 +212,17 @@ function UserLookup() {
       </Card>
       {result && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Stat label="Attempts" value={result.attempts_count ?? 0} icon={Activity} />
+          <Stat label="Total Attempts" value={result.attempts_count ?? 0} icon={Activity} />
           <Stat label="Avg Score" value={result.avg_score ?? 0} icon={TrendingUp} />
           <Stat label="Accuracy %" value={`${result.accuracy ?? 0}%`} icon={Flame} />
-          <Stat label="Joined" value={String(result.created_at ?? "").slice(0, 10)} icon={Users} />
+          <Stat label="Account Joined" value={String(result.created_at ?? "").slice(0, 10)} icon={Users} />
         </div>
       )}
       {result && (
         <Card>
-          <div className="text-sm text-muted-foreground">Email: <b className="text-foreground">{result.email}</b></div>
-          <div className="text-sm text-muted-foreground">Name: <b className="text-foreground">{result.name}</b></div>
+          <div className="text-sm text-muted-foreground">Student Name: <b className="text-foreground">{String(result.name)}</b></div>
+          <div className="text-sm text-muted-foreground">Registered Email: <b className="text-foreground">{String(result.email)}</b></div>
+          <div className="text-sm text-muted-foreground">User ID: <span className="font-mono text-xs">{String(result.id)}</span></div>
         </Card>
       )}
     </div>
@@ -238,9 +249,85 @@ function CohortReport() {
         <Stat label="Cohort Accuracy" value={`${cohort.cohort_accuracy ?? 0}%`} icon={Flame} />
       </div>
       <Card>
-        <div className="flex items-center gap-2 font-semibold"><TrendingUp className="h-4 w-4 text-primary" /> Cohort Trend</div>
-        <p className="mt-1 text-sm text-muted-foreground">Approximately {data?.accuracy_increase_rate ?? 72}% of active students show improving accuracy across recent tests. Keep pushing Daily DPPs to raise this further.</p>
+        <div className="flex items-center gap-2 font-semibold"><TrendingUp className="h-4 w-4 text-primary" /> Cohort Progression Index</div>
+        <p className="mt-1 text-sm text-muted-foreground">Approximately {data?.accuracy_increase_rate ?? 74}% of active students exhibit rising accuracy over consecutive test sessions.</p>
       </Card>
+    </div>
+  );
+}
+
+function LiveAttemptsFeed() {
+  const [attempts, setAttempts] = useState<Record<string, unknown>[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const load = useCallback(() => {
+    fetch("/api/admin.php?action=live_attempts", { credentials: "include" })
+      .then((r) => r.json()).then((d) => setAttempts(d.attempts ?? [])).catch(() => {}).finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    load();
+    const iv = setInterval(load, 30000);
+    return () => clearInterval(iv);
+  }, [load]);
+
+  if (loading) return <div className="flex justify-center py-10"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+
+  return (
+    <div className="space-y-3">
+      {attempts.length === 0 ? (
+        <Card className="text-center text-sm text-muted-foreground">No recent attempts logged.</Card>
+      ) : (
+        attempts.map((a) => (
+          <Card key={String(a.id)} className="flex items-center gap-4">
+            <Activity className="h-8 w-8 text-primary shrink-0" />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2">
+                <b className="truncate text-sm">{String(a.student_name ?? "Student")}</b>
+                <span className="text-xs text-muted-foreground font-mono">({String(a.email ?? "")})</span>
+                <Badge variant={a.status === "completed" ? "default" : "secondary"} className="ml-auto text-xs">{String(a.status)}</Badge>
+              </div>
+              <div className="text-xs text-muted-foreground mt-0.5">{String(a.test_title ?? "Daily DPP")}</div>
+            </div>
+            <div className="text-right">
+              <div className="font-bold text-sm text-emerald-600">Score: {String(a.score ?? 0)}</div>
+              <div className="text-xs text-muted-foreground">+{a.correct_count} / -{a.wrong_count}</div>
+            </div>
+          </Card>
+        ))
+      )}
+    </div>
+  );
+}
+
+function StudentLeaderboard() {
+  const [leaders, setLeaders] = useState<Record<string, unknown>[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/admin.php?action=leaderboard", { credentials: "include" })
+      .then((r) => r.json()).then((d) => setLeaders(d.leaderboard ?? [])).catch(() => {}).finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <div className="flex justify-center py-10"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
+
+  return (
+    <div className="space-y-3">
+      {leaders.map((l, i) => (
+        <Card key={i} className="flex items-center gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 font-bold text-amber-600">
+            {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `#${i + 1}`}
+          </div>
+          <div className="min-w-0 flex-1">
+            <b className="text-sm">{String(l.name)}</b>
+            <div className="text-xs text-muted-foreground font-mono">{String(l.email)}</div>
+          </div>
+          <div className="text-right">
+            <div className="font-bold text-primary">{String(l.accuracy)}% Acc</div>
+            <div className="text-xs text-muted-foreground">{String(l.tests_taken)} tests taken • Max {String(l.highest_score)}</div>
+          </div>
+        </Card>
+      ))}
     </div>
   );
 }
@@ -320,7 +407,7 @@ function FeedbackView() {
   );
 }
 
-// ============ APP REPORT ============
+// ============ 2. APP REPORT ============
 function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
   const [data, setData] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
@@ -335,8 +422,8 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
   if (sub === "overview") return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Stat label="Total Users" value={data?.total_users ?? 0} icon={Users} />
-      <Stat label="Total Revenue" value={`₹${data?.total_revenue ?? 0}`} icon={Wallet} accent="text-emerald-500" />
-      <Stat label="Total Questions" value={data?.total_questions ?? 0} icon={BarChart3} />
+      <Stat label="Estimated Gross Revenue" value={`₹${data?.total_revenue ?? 0}`} icon={Wallet} accent="text-emerald-500" />
+      <Stat label="Total Questions in Bank" value={data?.total_questions ?? 0} icon={BarChart3} />
       <Stat label="Daily DPPs" value={data?.total_dpps ?? 0} icon={Sparkles} />
       <Stat label="Mock Tests" value={data?.total_mocks ?? 0} icon={Activity} />
       <Stat label="Total Attempts" value={data?.total_attempts ?? 0} icon={TrendingUp} />
@@ -357,7 +444,7 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
           </div>
           <div className="text-right">
             <div className="font-bold text-primary">{f.popularity_percent}%</div>
-            <div className="text-xs text-muted-foreground">{Math.round(Number(f.usage_count))} uses</div>
+            <div className="text-xs text-muted-foreground">{Math.round(Number(f.usage_count))} sessions</div>
           </div>
         </Card>
       ))}
@@ -371,17 +458,49 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
           <Package className="h-8 w-8 text-primary" />
           <div className="min-w-0 flex-1">
             <div className="font-semibold">{String(p.plan)}</div>
-            <div className="text-xs text-muted-foreground">₹{p.price} • {p.share} of sales</div>
+            <div className="text-xs text-muted-foreground">₹{p.price} • {p.share} of total orders</div>
           </div>
-          <Badge className="bg-emerald-500/15 text-emerald-600">{p.purchases} sold</Badge>
+          <Badge className="bg-emerald-500/15 text-emerald-600">{p.purchases} active</Badge>
         </Card>
       ))}
     </div>
   );
+
+  if (sub === "diagnostics") return (
+    <div className="space-y-3">
+      {(data?.tables as Record<string, unknown>[] ?? []).map((t, i) => (
+        <Card key={i} className="flex items-center justify-between">
+          <div>
+            <b>{String(t.table)}</b>
+            <div className="text-xs text-muted-foreground font-mono">{String(t.rows)} records</div>
+          </div>
+          <Badge variant="outline" className="text-emerald-600 border-emerald-500/30 bg-emerald-500/10">{String(t.status)}</Badge>
+        </Card>
+      ))}
+    </div>
+  );
+
+  if (sub === "subject-errors") return (
+    <div className="space-y-3">
+      {(data?.subject_errors as Record<string, unknown>[] ?? []).map((s, i) => (
+        <Card key={i} className="space-y-2">
+          <div className="flex items-center justify-between">
+            <b className="text-base">{String(s.subject)}</b>
+            <div className="text-sm font-semibold text-primary">{s.accuracy}% Accuracy (Error rate {s.error_rate}%)</div>
+          </div>
+          <div className="h-2 overflow-hidden rounded-full bg-muted">
+            <div className="h-full rounded-full bg-primary" style={{ width: `${s.accuracy}%` }} />
+          </div>
+          <p className="text-xs text-muted-foreground">Most Challenging Chapters: <span className="font-medium text-foreground">{String(s.tough_topics)}</span></p>
+        </Card>
+      ))}
+    </div>
+  );
+
   return null;
 }
 
-// ============ APP MANAGEMENT ============
+// ============ 3. APP MANAGEMENT ============
 function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   const [banners, setBanners] = useState<Record<string, unknown>[]>([]);
   const [bTitle, setBTitle] = useState(""); const [bSub, setBSub] = useState(""); const [bLink, setBLink] = useState("/dpp");
@@ -392,6 +511,12 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   const [rzpId, setRzpId] = useState(""); const [rzpSecret, setRzpSecret] = useState("");
   const [lovKey, setLovKey] = useState(""); const [gemKey, setGemKey] = useState("");
   const [dppQty, setDppQty] = useState("10");
+  const [maintEnabled, setMaintEnabled] = useState(false); const [maintMsg, setMaintMsg] = useState("");
+  const [tickerText, setTickerText] = useState(""); const [tickerLink, setTickerLink] = useState("/dpp");
+  const [qSubject, setQSubject] = useState("Biology"); const [qChapter, setQChapter] = useState("Genetics");
+  const [qText, setQText] = useState(""); const [qOptA, setQOptA] = useState(""); const [qOptB, setQOptB] = useState("");
+  const [qOptC, setQOptC] = useState(""); const [qOptD, setQOptD] = useState(""); const [qCorrect, setQCorrect] = useState("A"); const [qExpl, setQExpl] = useState("");
+  const [battleQCount, setBattleQCount] = useState("5"); const [battleTimer, setBattleTimer] = useState("20");
   const [busy, setBusy] = useState(false);
 
   const post = useCallback(async (action: string, payload: Record<string, unknown>) => {
@@ -405,9 +530,15 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   useEffect(() => {
     if (sub === "banners") fetch("/api/admin.php?action=banners", { credentials: "include" }).then((r) => r.json()).then((d) => setBanners(d.banners ?? [])).catch(() => {});
     if (sub === "coupons") fetch("/api/admin.php?action=coupons", { credentials: "include" }).then((r) => r.json()).then((d) => setCoupons(d.coupons ?? [])).catch(() => {});
-    if (sub === "razorpay" || sub === "ai-keys") fetch("/api/admin.php?action=get_settings", { credentials: "include" }).then((r) => r.json()).then((d) => {
-      if (d.razorpay) { setRzpId(d.razorpay.key_id ?? ""); }
-    }).catch(() => {});
+    if (sub === "razorpay" || sub === "ai-keys" || sub === "maintenance" || sub === "battle-settings") {
+      fetch("/api/admin.php?action=get_settings", { credentials: "include" }).then((r) => r.json()).then((d) => {
+        if (d.razorpay) setRzpId(d.razorpay.key_id ?? "");
+        if (d.ai) { setLovKey(d.ai.lovable_ai_key ?? ""); setGemKey(d.ai.gemini_api_key ?? ""); }
+        if (d.maintenance) { setMaintEnabled(Boolean(d.maintenance.enabled)); setMaintMsg(d.maintenance.message ?? ""); }
+        if (d.alert_ticker) { setTickerText(d.alert_ticker.text ?? ""); setTickerLink(d.alert_ticker.link ?? "/dpp"); }
+        if (d.battle_settings) { setBattleQCount(String(d.battle_settings.question_count ?? 5)); setBattleTimer(String(d.battle_settings.seconds_per_question ?? 20)); }
+      }).catch(() => {});
+    }
   }, [sub]);
 
   const wrap = async (fn: () => Promise<void>) => { setBusy(true); try { await fn(); } finally { setBusy(false); } };
@@ -415,15 +546,15 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   if (sub === "banners") return (
     <div className="space-y-4">
       <Card className="space-y-3">
-        <div className="font-semibold"><Megaphone className="mr-1 inline h-4 w-4 text-primary" /> Create Banner</div>
-        <Input placeholder="Title" value={bTitle} onChange={(e) => setBTitle(e.target.value)} />
-        <Input placeholder="Subtitle" value={bSub} onChange={(e) => setBSub(e.target.value)} />
-        <Input placeholder="CTA link (e.g. /dpp)" value={bLink} onChange={(e) => setBLink(e.target.value)} />
+        <div className="font-semibold"><Megaphone className="mr-1 inline h-4 w-4 text-primary" /> Create Promo Banner</div>
+        <Input placeholder="Banner Title (e.g. NEET 2026 Test Series)" value={bTitle} onChange={(e) => setBTitle(e.target.value)} />
+        <Input placeholder="Subtitle / Highlight" value={bSub} onChange={(e) => setBSub(e.target.value)} />
+        <Input placeholder="Target Link (e.g. /dpp)" value={bLink} onChange={(e) => setBLink(e.target.value)} />
         <Button disabled={busy} onClick={() => wrap(async () => {
-          const d = await post("save_banner", { title: bTitle || "NEET Daily Boost", subtitle: bSub, cta_link: bLink, active: 1 });
-          d.success ? toast.success("Banner saved") : toast.error(d.error ?? "Failed");
+          const d = await post("save_banner", { title: bTitle || "NEET High-Yield Boost", subtitle: bSub, cta_link: bLink, active: 1 });
+          d.success ? toast.success("Banner published") : toast.error(d.error ?? "Failed");
           setBTitle(""); setBSub("");
-        })}><Plus className="h-4 w-4" /> Save Banner</Button>
+        })}><Plus className="h-4 w-4" /> Publish Banner</Button>
       </Card>
       {banners.map((b) => (
         <Card key={String(b.id)} className="flex items-center gap-3">
@@ -434,15 +565,41 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
     </div>
   );
 
+  if (sub === "maintenance") return (
+    <div className="space-y-4 max-w-xl">
+      <Card className="space-y-3">
+        <div className="font-semibold"><AlertTriangle className="mr-1 inline h-4 w-4 text-amber-500" /> Maintenance Mode Switch</div>
+        <div className="flex items-center gap-2">
+          <input type="checkbox" id="maint_toggle" checked={maintEnabled} onChange={(e) => setMaintEnabled(e.target.checked)} className="h-4 w-4 rounded" />
+          <label htmlFor="maint_toggle" className="text-sm font-medium">Activate Emergency Maintenance Mode</label>
+        </div>
+        <Input placeholder="Maintenance notification message" value={maintMsg} onChange={(e) => setMaintMsg(e.target.value)} />
+        <Button disabled={busy} onClick={() => wrap(async () => {
+          const d = await post("save_maintenance", { enabled: maintEnabled ? 1 : 0, message: maintMsg });
+          d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
+        })}>Save Maintenance Mode</Button>
+      </Card>
+      <Card className="space-y-3">
+        <div className="font-semibold">Top Sitewide Alert Bar Ticker</div>
+        <Input placeholder="Alert banner text" value={tickerText} onChange={(e) => setTickerText(e.target.value)} />
+        <Input placeholder="Deep link" value={tickerLink} onChange={(e) => setTickerLink(e.target.value)} />
+        <Button disabled={busy} onClick={() => wrap(async () => {
+          const d = await post("save_alert_ticker", { enabled: 1, text: tickerText, link: tickerLink });
+          d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
+        })}>Update Alert Ticker</Button>
+      </Card>
+    </div>
+  );
+
   if (sub === "grant") return (
     <Card className="max-w-xl space-y-3">
-      <div className="font-semibold"><Star className="mr-1 inline h-4 w-4 text-amber-500" /> Grant Premium</div>
-      <Input placeholder="user@email.com" value={gEmail} onChange={(e) => setGEmail(e.target.value)} />
-      <Input placeholder="Duration in days" value={gDays} onChange={(e) => setGDays(e.target.value)} />
+      <div className="font-semibold"><Star className="mr-1 inline h-4 w-4 text-amber-500" /> Grant Premium Access</div>
+      <Input placeholder="student@email.com" value={gEmail} onChange={(e) => setGEmail(e.target.value)} />
+      <Input placeholder="Duration in days (e.g. 365)" value={gDays} onChange={(e) => setGDays(e.target.value)} />
       <Button disabled={busy} onClick={() => wrap(async () => {
         const d = await post("grant_premium", { email: gEmail, tier: "prime", duration_days: Number(gDays) || 365 });
         d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
-      })}>Grant Premium Access</Button>
+      })}>Grant Premium</Button>
     </Card>
   );
 
@@ -450,16 +607,16 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
     <div className="space-y-4">
       <Card className="max-w-xl space-y-3">
         <div className="font-semibold"><Ticket className="mr-1 inline h-4 w-4 text-primary" /> Create Coupon</div>
-        <Input placeholder="CODE (e.g. NEET50)" value={cCode} onChange={(e) => setCCode(e.target.value)} />
+        <Input placeholder="COUPON CODE (e.g. NEET50)" value={cCode} onChange={(e) => setCCode(e.target.value)} />
         <div className="flex gap-2">
-          <Input placeholder="% off" value={cPct} onChange={(e) => setCPct(e.target.value)} />
-          <Input placeholder="Max uses" value={cMax} onChange={(e) => setCMax(e.target.value)} />
+          <Input placeholder="Discount %" value={cPct} onChange={(e) => setCPct(e.target.value)} />
+          <Input placeholder="Max Uses" value={cMax} onChange={(e) => setCMax(e.target.value)} />
         </div>
         <Button disabled={busy} onClick={() => wrap(async () => {
           const d = await post("coupons", { code: cCode, discount_percent: Number(cPct) || 20, max_uses: Number(cMax) || 100 });
           d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
           setCCode("");
-        })}><Plus className="h-4 w-4" /> Create</Button>
+        })}><Plus className="h-4 w-4" /> Create Coupon</Button>
       </Card>
       {coupons.map((c) => (
         <Card key={String(c.id)} className="flex items-center gap-3">
@@ -476,7 +633,7 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
 
   if (sub === "batches") return (
     <Card className="max-w-xl space-y-3">
-      <div className="font-semibold"><Package className="mr-1 inline h-4 w-4 text-primary" /> Add / Update Batch</div>
+      <div className="font-semibold"><Package className="mr-1 inline h-4 w-4 text-primary" /> Batch & Pricing Configuration</div>
       <Input placeholder="Batch title" value={batchTitle} onChange={(e) => setBatchTitle(e.target.value)} />
       <Input placeholder="Price (₹)" value={batchPrice} onChange={(e) => setBatchPrice(e.target.value)} />
       <Input placeholder="Tagline" value={batchTag} onChange={(e) => setBatchTag(e.target.value)} />
@@ -489,21 +646,21 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
 
   if (sub === "razorpay") return (
     <Card className="max-w-xl space-y-3">
-      <div className="font-semibold"><Wallet className="mr-1 inline h-4 w-4 text-primary" /> Razorpay Configuration</div>
-      <Input placeholder="rzp_live_xxxxx" value={rzpId} onChange={(e) => setRzpId(e.target.value)} />
-      <Input placeholder="Key secret" type="password" value={rzpSecret} onChange={(e) => setRzpSecret(e.target.value)} />
+      <div className="font-semibold"><Wallet className="mr-1 inline h-4 w-4 text-primary" /> Razorpay Payment Gateway</div>
+      <Input placeholder="Razorpay Key ID (rzp_live_...)" value={rzpId} onChange={(e) => setRzpId(e.target.value)} />
+      <Input placeholder="Razorpay Key Secret" type="password" value={rzpSecret} onChange={(e) => setRzpSecret(e.target.value)} />
       <Button disabled={busy} onClick={() => wrap(async () => {
         const d = await post("save_razorpay", { key_id: rzpId, key_secret: rzpSecret });
         d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
-      })}>Save Keys</Button>
+      })}>Save Gateway Keys</Button>
     </Card>
   );
 
   if (sub === "ai-keys") return (
     <Card className="max-w-xl space-y-3">
-      <div className="font-semibold"><BrainCircuit className="mr-1 inline h-4 w-4 text-primary" /> AI API Keys</div>
-      <Input placeholder="Lovable AI key" value={lovKey} onChange={(e) => setLovKey(e.target.value)} />
-      <Input placeholder="Gemini API key" value={gemKey} onChange={(e) => setGemKey(e.target.value)} />
+      <div className="font-semibold"><BrainCircuit className="mr-1 inline h-4 w-4 text-primary" /> AI Engine Configuration</div>
+      <Input placeholder="Lovable AI API Key" value={lovKey} onChange={(e) => setLovKey(e.target.value)} />
+      <Input placeholder="Gemini API Key" value={gemKey} onChange={(e) => setGemKey(e.target.value)} />
       <Button disabled={busy} onClick={() => wrap(async () => {
         const d = await post("save_ai_keys", { lovable_ai_key: lovKey, gemini_api_key: gemKey });
         d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
@@ -513,13 +670,64 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
 
   if (sub === "dpp-generator") return (
     <Card className="max-w-xl space-y-3">
-      <div className="font-semibold"><Sparkles className="mr-1 inline h-4 w-4 text-primary" /> Bulk DPP Generator</div>
-      <p className="text-sm text-muted-foreground">Creates high-yield 20-Q Daily DPPs. Numbers auto-increment from the latest existing DPP (e.g. existing Daily DPP 130 + 10 new → Daily DPP 131…140).</p>
-      <Input placeholder="Quantity (1-100)" value={dppQty} onChange={(e) => setDppQty(e.target.value)} />
+      <div className="font-semibold"><Sparkles className="mr-1 inline h-4 w-4 text-primary" /> Sequential DPP Generator</div>
+      <p className="text-sm text-muted-foreground">Creates high-yield 20-question DPPs with automatically increasing sequential numbering starting after the highest existing DPP in your database.</p>
+      <Input placeholder="Quantity of DPPs to generate (1 - 100)" value={dppQty} onChange={(e) => setDppQty(e.target.value)} />
       <Button disabled={busy} onClick={() => wrap(async () => {
         const d = await post("generate_dpps", { quantity: Number(dppQty) || 10 });
         d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
-      })}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />} Generate DPPs</Button>
+      })}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />} Generate Sequential DPPs</Button>
+    </Card>
+  );
+
+  if (sub === "add-question") return (
+    <Card className="max-w-xl space-y-3">
+      <div className="font-semibold"><HelpCircle className="mr-1 inline h-4 w-4 text-primary" /> Inject Custom Question into Bank</div>
+      <div className="grid grid-cols-2 gap-2">
+        <Input placeholder="Subject (Biology / Physics / Chemistry)" value={qSubject} onChange={(e) => setQSubject(e.target.value)} />
+        <Input placeholder="Chapter Name" value={qChapter} onChange={(e) => setQChapter(e.target.value)} />
+      </div>
+      <Input placeholder="Question statement..." value={qText} onChange={(e) => setQText(e.target.value)} />
+      <div className="grid grid-cols-2 gap-2">
+        <Input placeholder="Option A" value={qOptA} onChange={(e) => setQOptA(e.target.value)} />
+        <Input placeholder="Option B" value={qOptB} onChange={(e) => setQOptB(e.target.value)} />
+        <Input placeholder="Option C" value={qOptC} onChange={(e) => setQOptC(e.target.value)} />
+        <Input placeholder="Option D" value={qOptD} onChange={(e) => setQOptD(e.target.value)} />
+      </div>
+      <div className="flex gap-2 items-center">
+        <span className="text-xs font-semibold">Correct:</span>
+        {["A", "B", "C", "D"].map((opt) => (
+          <Button key={opt} size="sm" variant={qCorrect === opt ? "default" : "outline"} onClick={() => setQCorrect(opt)}>{opt}</Button>
+        ))}
+      </div>
+      <Input placeholder="Detailed step-by-step explanation" value={qExpl} onChange={(e) => setQExpl(e.target.value)} />
+      <Button disabled={busy} onClick={() => wrap(async () => {
+        const d = await post("add_question", {
+          subject: qSubject, chapter: qChapter, question: qText,
+          option_a: qOptA, option_b: qOptB, option_c: qOptC, option_d: qOptD,
+          correct_option: qCorrect, explanation: qExpl,
+        });
+        d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
+        setQText(""); setQOptA(""); setQOptB(""); setQOptC(""); setQOptD(""); setQExpl("");
+      })}>Save Question to Question Bank</Button>
+    </Card>
+  );
+
+  if (sub === "battle-settings") return (
+    <Card className="max-w-xl space-y-3">
+      <div className="font-semibold"><Swords className="mr-1 inline h-4 w-4 text-primary" /> Battlegrounds Arena Configuration</div>
+      <div>
+        <label className="text-xs text-muted-foreground font-semibold">Questions per 1v1 Battle</label>
+        <Input placeholder="5" value={battleQCount} onChange={(e) => setBattleQCount(e.target.value)} />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground font-semibold">Seconds per Question</label>
+        <Input placeholder="20" value={battleTimer} onChange={(e) => setBattleTimer(e.target.value)} />
+      </div>
+      <Button disabled={busy} onClick={() => wrap(async () => {
+        const d = await post("save_battle_settings", { question_count: Number(battleQCount) || 5, seconds_per_question: Number(battleTimer) || 20, bot_fallback_enabled: 1 });
+        d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
+      })}>Save Battle Settings</Button>
     </Card>
   );
 
