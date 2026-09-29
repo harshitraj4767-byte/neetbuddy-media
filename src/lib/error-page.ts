@@ -19,7 +19,7 @@ export function renderErrorPage(): string {
   </head>
   <body>
     <div class="card">
-      <img class="mascot" src="/mascot/dr-vanshu.png" alt="Dr Vanshu" />
+      <img class="mascot" src="/catalyst/dr-catalyst-shocked.webp" alt="Dr Catalyst" />
       <h1>The web is under maintenance</h1>
       <p>It will be back soon. Please try again in a moment.</p>
       <div class="actions">

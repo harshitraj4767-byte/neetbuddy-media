@@ -1,22 +1,3 @@
-import { mediaAsset } from "@/lib/media-assets";
-
-const waving = mediaAsset("src/assets/mascot/dr-vanshu-waving.webp");
-const happy = mediaAsset("src/assets/mascot/dr-vanshu-happy.webp");
-const thinking = mediaAsset("src/assets/mascot/dr-vanshu-thinking.webp");
-const idea = mediaAsset("src/assets/mascot/dr-vanshu-idea.webp");
-const studying = mediaAsset("src/assets/mascot/dr-vanshu-studying.webp");
-const thumbsUp = mediaAsset("src/assets/mascot/dr-vanshu-thumbs-up.webp");
-const excited = mediaAsset("src/assets/mascot/dr-vanshu-excited.webp");
-const confident = mediaAsset("src/assets/mascot/dr-vanshu-confident.webp");
-const shocked = mediaAsset("src/assets/mascot/dr-vanshu-shocked.webp");
-const pointing = mediaAsset("src/assets/mascot/dr-vanshu-pointing.webp");
-const coffeeBreak = mediaAsset("src/assets/mascot/dr-vanshu-coffee-break.webp");
-const working = mediaAsset("src/assets/mascot/dr-vanshu-working.webp");
-const calm = mediaAsset("src/assets/mascot/dr-vanshu-calm.webp");
-const bored = mediaAsset("src/assets/mascot/dr-vanshu-bored.webp");
-const grateful = mediaAsset("src/assets/mascot/dr-vanshu-grateful.webp");
-
-
 export type MascotMood =
   | "waving"
   | "happy"
@@ -45,112 +26,112 @@ export interface MascotPose {
   tags: string[];
 }
 
-export const MASCOT_NAME = "Dr. Vanshu";
+export const MASCOT_NAME = "Dr. Catalyst";
 
 export const MASCOT_POSES: Record<MascotMood, MascotPose> = {
   waving: {
     mood: "waving",
-    src: waving,
+    src: "/catalyst/dr-catalyst-waving.webp",
     label: "Waving",
-    alt: "Dr. Vanshu waving hello",
+    alt: "Dr. Catalyst waving hello",
     tags: ["hello", "hi", "welcome", "greeting", "onboarding", "friendly"],
   },
   happy: {
     mood: "happy",
-    src: happy,
+    src: "/catalyst/dr-catalyst-happy.webp",
     label: "Happy",
-    alt: "Dr. Vanshu smiling happily",
+    alt: "Dr. Catalyst smiling happily",
     tags: ["happy", "good", "cheerful", "smile", "positive", "cute"],
   },
   thinking: {
     mood: "thinking",
-    src: thinking,
+    src: "/catalyst/dr-catalyst-thinking.webp",
     label: "Thinking",
-    alt: "Dr. Vanshu thinking with question marks",
+    alt: "Dr. Catalyst thinking with question marks",
     tags: ["thinking", "confused", "doubt", "question", "hmm", "why", "help"],
   },
   idea: {
     mood: "idea",
-    src: idea,
+    src: "/catalyst/dr-catalyst-idea.webp",
     label: "Idea",
-    alt: "Dr. Vanshu with a lightbulb idea",
+    alt: "Dr. Catalyst with a lightbulb idea",
     tags: ["idea", "tip", "hint", "explanation", "aha", "insight", "solution"],
   },
   studying: {
     mood: "studying",
-    src: studying,
+    src: "/catalyst/dr-catalyst-studying.webp",
     label: "Studying",
-    alt: "Dr. Vanshu writing notes in a book",
+    alt: "Dr. Catalyst writing notes in a book",
     tags: ["studying", "notes", "writing", "revision", "reading", "focus"],
   },
   "thumbs-up": {
     mood: "thumbs-up",
-    src: thumbsUp,
+    src: "/catalyst/dr-catalyst-thumbs-up.webp",
     label: "Thumbs up",
-    alt: "Dr. Vanshu giving a thumbs up",
+    alt: "Dr. Catalyst giving a thumbs up",
     tags: ["thumbs up", "correct", "well done", "approve", "success", "good job"],
   },
   excited: {
     mood: "excited",
-    src: excited,
+    src: "/catalyst/dr-catalyst-excited.webp",
     label: "Excited",
-    alt: "Dr. Vanshu hugging books with hearts",
-    tags: ["excited", "love", "loved", "celebrate", "streak", "reward", "hearts"],
+    alt: "Dr. Catalyst cheering excitedly",
+    tags: ["excited", "love", "loved", "celebrate", "streak", "reward", "win"],
   },
   confident: {
     mood: "confident",
-    src: confident,
+    src: "/catalyst/dr-catalyst-confident.webp",
     label: "Confident",
-    alt: "Dr. Vanshu standing confidently with arms crossed",
+    alt: "Dr. Catalyst standing confidently with sunglasses",
     tags: ["confident", "ready", "strong", "challenge", "test", "serious"],
   },
   shocked: {
     mood: "shocked",
-    src: shocked,
+    src: "/catalyst/dr-catalyst-shocked.webp",
     label: "Shocked",
-    alt: "Dr. Vanshu looking shocked and tensed",
+    alt: "Dr. Catalyst looking shocked",
     tags: ["shocked", "tensed", "surprised", "oops", "wrong", "error", "warning"],
   },
   pointing: {
     mood: "pointing",
-    src: pointing,
+    src: "/catalyst/dr-catalyst-pointing.webp",
     label: "Pointing",
-    alt: "Dr. Vanshu pointing to the side",
+    alt: "Dr. Catalyst pointing to the side",
     tags: ["pointing", "look here", "guide", "tour", "attention", "callout"],
   },
   "coffee-break": {
     mood: "coffee-break",
-    src: coffeeBreak,
+    src: "/catalyst/dr-catalyst-coffee-break.webp",
     label: "Coffee break",
-    alt: "Dr. Vanshu holding a NEET coffee cup",
+    alt: "Dr. Catalyst taking a coffee break",
     tags: ["break", "coffee", "rest", "pause", "chill", "relax"],
   },
   working: {
     mood: "working",
-    src: working,
+    src: "/catalyst/dr-catalyst-working.webp",
     label: "Working",
-    alt: "Dr. Vanshu working on a laptop",
+    alt: "Dr. Catalyst working on a laptop",
     tags: ["working", "loading", "processing", "analysis", "practice", "laptop"],
   },
   calm: {
     mood: "calm",
-    src: calm,
+    src: "/catalyst/dr-catalyst-calm.webp",
     label: "Calm",
-    alt: "Dr. Vanshu meditating calmly",
+    alt: "Dr. Catalyst feeling calm and relaxed",
     tags: ["calm", "relax", "peace", "breathe", "stress free", "meditation"],
   },
   bored: {
     mood: "bored",
-    src: bored,
+    src: "/catalyst/dr-catalyst-bored.webp",
     label: "Bored",
-    alt: "Dr. Vanshu resting on a stack of textbooks",
+    alt: "Dr. Catalyst resting tiredly on textbooks",
     tags: ["bored", "tired", "sleepy", "empty state", "waiting", "lazy"],
   },
   grateful: {
     mood: "grateful",
-    src: grateful,
+    src: "/catalyst/dr-catalyst-grateful.webp",
     label: "Grateful",
-    alt: "Dr. Vanshu making a heart with her hands",
+    alt: "Dr. Catalyst expressing appreciation",
     tags: ["thank you", "grateful", "love", "heart", "appreciation", "kind"],
   },
 };

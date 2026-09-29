@@ -310,26 +310,32 @@ function StudyRoadmapPage() {
                 </div>
               </div>
 
-              <div className="relative mt-6">
-                {/* Alternating mascot: shifts left on odd worlds, right on even worlds */}
-                <div
-                  className={`pointer-events-none absolute top-1/4 z-0 flex flex-col items-center gap-1.5 transition-all duration-500 ${
-                    world.index % 2 === 1
-                      ? "left-2 sm:left-6 md:left-12"
-                      : "right-2 sm:right-6 md:right-12"
-                  }`}
-                >
-                  <div className="hidden rounded-full border border-border/40 bg-card/80 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-foreground shadow-sm backdrop-blur sm:block animate-pulse">
-                    {world.index % 2 === 1 ? "Keep advancing! 🎯" : "You got this! 🚀"}
-                  </div>
+              {/* World mascot guide banner - positioned above trail without covering buttons */}
+              <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-border/50 bg-card/60 p-3 shadow-sm backdrop-blur">
+                <div className="flex items-center gap-2.5">
                   <img
                     src={worldPose.src}
-                    alt=""
-                    aria-hidden
-                    className="h-20 w-20 object-contain drop-shadow-md sm:h-28 sm:w-28 animate-bounce [animation-duration:4s]"
+                    alt={worldPose.alt}
+                    className="h-12 w-12 shrink-0 object-contain drop-shadow-sm sm:h-14 sm:w-14"
                   />
+                  <div>
+                    <div className="text-xs font-bold text-foreground">
+                      Dr. Catalyst&apos;s World {world.index} Tip
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      {world.index % 2 === 1
+                        ? "Master every concept thoroughly and conquer the boss quiz!"
+                        : "Maintain your daily streak and earn maximum XP!"}
+                    </p>
+                  </div>
                 </div>
-                <ul className="relative flex flex-col items-center">
+                <div className="hidden sm:inline-flex rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
+                  World {world.index}
+                </div>
+              </div>
+
+              <div className="relative mt-6">
+                <ul className="relative z-10 flex flex-col items-center">
                   {levels.map((level, i) => (
                     <li key={level.level_id} className="w-full">
                       <div

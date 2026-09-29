@@ -249,11 +249,11 @@ function ProfilePage() {
         <CardContent className="flex items-center gap-3 p-4">
           <img
             src={DR_VANSHU_IMG}
-            alt="Dr. Vanshu, your Neet Buddy guide"
+            alt="Dr. Catalyst, your Neet Buddy guide"
             className="h-16 w-16 shrink-0 select-none object-contain"
           />
           <div className="min-w-0 flex-1">
-            <div className="text-sm font-bold leading-tight text-foreground">Take a tour with Dr. Vanshu</div>
+            <div className="text-sm font-bold leading-tight text-foreground">Take a tour with Dr. Catalyst</div>
             <div className="mt-0.5 text-xs text-muted-foreground">
               A quick guided walkthrough of every feature and page.
             </div>

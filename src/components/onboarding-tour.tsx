@@ -9,7 +9,8 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 
-export const DR_VANSHU_IMG = "/mascot/dr-vanshu.png";
+export const DR_CATALYST_IMG = "/catalyst/dr-catalyst-waving.webp";
+export const DR_VANSHU_IMG = DR_CATALYST_IMG;
 export const TOUR_EVENT = "neetbuddy:start-tour";
 
 /** Start (or restart) the guided tour from anywhere in the app. */
@@ -28,7 +29,7 @@ type Step = {
 const STEPS: Step[] = [
   {
     route: "/dashboard",
-    title: "Hi, I'm Dr. Vanshu",
+    title: "Hi, I'm Dr. Catalyst",
     body:
       "I'll walk you through Neet Buddy in under a minute. The app stays fully interactive during the tour — tap anything as we go, or skip whenever you like.",
     icon: Hand,
@@ -226,17 +227,17 @@ export function OnboardingTour() {
       {/* No backdrop — the app stays fully interactive so users can explore
           each feature during the tour. */}
       <div className="fixed inset-x-3 bottom-3 z-[101] mx-auto max-w-md sm:bottom-6 sm:right-6 sm:left-auto">
-        {/* Dr. Vanshu sits on the edge of the card */}
+        {/* Dr. Catalyst sits on the edge of the card */}
         <img
           src={DR_VANSHU_IMG}
-          alt="Dr. Vanshu, your Neet Buddy guide"
+          alt="Dr. Catalyst, your Neet Buddy guide"
           className="pointer-events-none relative z-10 -mb-6 ml-1 h-24 w-24 select-none object-contain drop-shadow-lg sm:h-28 sm:w-28"
         />
         <div className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-2xl">
           <div className="flex items-center gap-2 bg-gradient-primary px-4 py-3 text-primary-foreground">
             <StepIcon className="h-4 w-4" strokeWidth={2} />
             <div className="text-xs font-semibold uppercase tracking-widest">
-              Tour with Dr. Vanshu · {idx + 1}/{STEPS.length}
+              Tour with Dr. Catalyst · {idx + 1}/{STEPS.length}
             </div>
             <button
               className="ml-auto rounded-md p-1 transition hover:bg-white/15"
