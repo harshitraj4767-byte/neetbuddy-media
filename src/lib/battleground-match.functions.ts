@@ -116,14 +116,18 @@ export const matchWithBot = createServerFn({ method: "POST" })
       ok: true as const,
       match: {
         id: matchId,
+        matchId,
         testId: `battle_${data.subject.toLowerCase()}`,
         status: "active" as const,
         startedAt: new Date().toISOString(),
+        countdownStartsAt: new Date(Date.now() + 3_000).toISOString(),
         durationSeconds: 180,
+        botName: "Aarav Prime",
+        botAvatarUrl: "/catalyst/catalyst-cheer.png",
         players: [
           { userId: "player", score: 0, accuracy: 0 },
           { userId: "bot_catalyst", score: 0, accuracy: 0 }
         ]
-      }
+      } as any
     };
   });

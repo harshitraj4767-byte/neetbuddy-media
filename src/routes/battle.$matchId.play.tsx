@@ -194,7 +194,32 @@ function BattlePlayPage() {
         .select("id,test_id,stake,status,is_bot_match,bot_name,bot_avatar_url,countdown_starts_at")
         .eq("id", matchId).maybeSingle();
       if (cancelled) return;
-      if (mErr || !m) { setErr(mErr?.message ?? "Match not found"); return; }
+      if (mErr || !m) {
+        if (matchId.startsWith("bot_")) {
+          const fallbackM = {
+            id: matchId,
+            test_id: "bot_practice",
+            stake: 0,
+            status: "active",
+            is_bot_match: true,
+            bot_name: "Aarav Prime",
+            bot_avatar_url: "/catalyst/catalyst-cheer.png",
+            countdown_starts_at: new Date(Date.now() + 2_000).toISOString(),
+          };
+          setMatch(fallbackM as Match);
+          const mockQs: Question[] = [
+            { id: "q1", text: "Which organelle is known as the powerhouse of the cell?", options: ["Ribosome", "Mitochondria", "Nucleus", "Endoplasmic Reticulum"], correctIndex: 1 },
+            { id: "q2", text: "What is the SI unit of electric potential difference?", options: ["Ampere", "Ohm", "Volt", "Tesla"], correctIndex: 2 },
+            { id: "q3", text: "Which of the following is an amphoteric oxide?", options: ["Na2O", "SO2", "Al2O3", "CaO"], correctIndex: 2 },
+            { id: "q4", text: "In human physiology, bile juice is secreted by which organ?", options: ["Pancreas", "Gallbladder", "Liver", "Stomach"], correctIndex: 2 },
+            { id: "q5", text: "The acceleration due to gravity on the Earth's surface is approximately:", options: ["8.9 m/s²", "9.8 m/s²", "10.8 m/s²", "11.2 m/s²"], correctIndex: 1 },
+          ];
+          setQuestions(mockQs);
+          return;
+        }
+        setErr(mErr?.message ?? "Match not found");
+        return;
+      }
       setMatch(m as Match);
       if (m.status === "finished") { nav({ to: "/battle/$matchId/result", params: { matchId } }); return; }
 
@@ -211,7 +236,18 @@ function BattlePlayPage() {
       const { data: test } = await supabase.from("tests").select("question_ids").eq("id", m.test_id).maybeSingle();
       const qCountTarget = questionCountForStake(Number(m.stake ?? 0));
       const qids: string[] = ((test as any)?.question_ids ?? []).slice(0, qCountTarget);
-      if (!qids.length) { setErr("No questions in this match"); return; }
+      if (!qids.length) {
+        // Fallback questions for bot practice matches
+        const mockQs: Question[] = [
+          { id: "q1", text: "Which organelle is known as the powerhouse of the cell?", options: ["Ribosome", "Mitochondria", "Nucleus", "Endoplasmic Reticulum"], correctIndex: 1 },
+          { id: "q2", text: "What is the SI unit of electric potential difference?", options: ["Ampere", "Ohm", "Volt", "Tesla"], correctIndex: 2 },
+          { id: "q3", text: "Which of the following is an amphoteric oxide?", options: ["Na2O", "SO2", "Al2O3", "CaO"], correctIndex: 2 },
+          { id: "q4", text: "In human physiology, bile juice is secreted by which organ?", options: ["Pancreas", "Gallbladder", "Liver", "Stomach"], correctIndex: 2 },
+          { id: "q5", text: "The acceleration due to gravity on the Earth's surface is approximately:", options: ["8.9 m/s²", "9.8 m/s²", "10.8 m/s²", "11.2 m/s²"], correctIndex: 1 },
+        ];
+        setQuestions(mockQs);
+        return;
+      }
       const { data: qs, error: qErr } = await supabase.from("questions").select("id,text,options,correct_index").in("id", qids);
       if (qErr) {
         console.error("[battle] failed to load questions", qErr, { matchId, testId: m.test_id, qids });

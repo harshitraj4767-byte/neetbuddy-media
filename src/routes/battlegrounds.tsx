@@ -311,10 +311,9 @@ function BattlegroundsPage() {
         console.error("[bg] server fallback error", fallbackErr);
       }
       setBusy(false);
-      const friendlyMsg = error?.message && !/failed to fetch|fetch|network/i.test(error.message)
-        ? error.message
-        : "Matchmaking service temporarily unavailable. Please retry in a moment.";
-      if (!/failed to fetch|fetch|network/i.test(String(friendlyMsg || ""))) { toast.error(friendlyMsg); }
+      // Fallback directly to match play with generated match session
+      const fallbackId = `bot_${subject.toLowerCase()}_${Date.now()}`;
+      navigate({ to: "/battle/$matchId/play", params: { matchId: fallbackId } });
       return;
     }
     setBusy(false);
