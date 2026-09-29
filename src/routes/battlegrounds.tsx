@@ -115,7 +115,8 @@ function BattlegroundsPage() {
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
-      const { data, error } = await supabase.rpc("bg_daily_leaderboard", { _limit: 10 });
+      try {
+        const { data, error } = await supabase.rpc("bg_daily_leaderboard", { _limit: 10 });
       const seen = new Set<string>();
       const cleaned: { display_name: string; avatar_url: string | null; wins: number; battles: number; xp: number }[] = [];
       if (!error && Array.isArray(data)) {
@@ -139,6 +140,9 @@ function BattlegroundsPage() {
       cleaned.sort((a, b) => b.xp - a.xp || b.wins - a.wins);
       if (cancelled) return;
       setLeaderboard(cleaned.slice(0, 10).map((r, i) => ({ rank: i + 1, ...r })));
+      } catch (err) {
+        console.warn('[bg] leaderboard fetch suppressed:', err);
+      }
     };
     load();
     const id = setInterval(load, 30_000);
@@ -156,9 +160,13 @@ function BattlegroundsPage() {
     if (!user) return;
     let cancelled = false;
     const fetchLive = async () => {
-      const { data: live } = await supabase.rpc("bg_live_count");
-      if (cancelled) return;
-      setLiveCount(realisticLiveCount((live as any)?.players));
+      try {
+        const { data: live } = await supabase.rpc("bg_live_count");
+        if (cancelled) return;
+        setLiveCount(realisticLiveCount((live as any)?.players));
+      } catch (e) {
+        if (!cancelled) setLiveCount(realisticLiveCount(null));
+      }
     };
     fetchLive();
     const id = setInterval(fetchLive, 5000);
@@ -261,19 +269,19 @@ function BattlegroundsPage() {
   async function joinSubject(subject: BattleSubject) {
     setBusy(true);
     setSearchError(null);
-    // Clear any stale queue row from a previous session so bg_join_queue
-    // doesn't hit the unique(user_id) waiting constraint and return an error.
     try { await supabase.rpc("bg_leave_queue"); } catch { /* best-effort */ }
-    // stake=0 → free battle. Pass subject so server picks a matching test.
     let data: any = null;
     let error: any = null;
-    {
+    try {
       const r = await supabase.rpc("bg_join_queue", { _stake: 0, _subject: subject });
       data = r.data; error = r.error;
       if (error && /_subject|argument|does not exist|schema cache/i.test(error.message ?? "")) {
         const r2 = await supabase.rpc("bg_join_queue", { _stake: 0 });
         data = r2.data; error = r2.error;
       }
+    } catch (rpcErr: any) {
+      console.warn("[bg] bg_join_queue network/RPC call threw:", rpcErr);
+      error = rpcErr || { message: "Failed to connect to matchmaking server" };
     }
     if (error) {
       // Fallback: If client-side RPC fails (e.g. cookie auth / unauthenticated in Supabase client),

@@ -351,6 +351,7 @@ function StudyRoadmapPage() {
                       </div>
                       {i < levels.length - 1 && (
                         <TrailConnector
+                          index={i}
                           from={offsetFor(i)}
                           to={offsetFor(i + 1)}
                           color={
@@ -386,24 +387,63 @@ function TrailConnector({
   from,
   to,
   color,
+  index = 0,
 }: {
   from: number;
   to: number;
   color: string;
+  index?: number;
 }) {
   const dots = [0.25, 0.5, 0.75];
+  // Determine if this interval should have a Dr. Catalyst mascot
+  // Show mascot on every other level step (e.g. index % 2 === 0)
+  const showMascot = index % 2 === 0;
+  // If connector is shifted to the right (positive), empty space is on the left
+  // If connector is shifted to the left (negative), empty space is on the right
+  const mascotSide = (from + to) / 2 >= 0 ? "left" : "right";
+  const poseMoods: Array<"thumbs-up" | "cheering" | "studying" | "idea" | "excited" | "confident"> = [
+    "thumbs-up",
+    "excited",
+    "studying",
+    "idea",
+    "confident",
+  ];
+  const mascotPose = mascot(poseMoods[index % poseMoods.length] as any);
+
   return (
-    <div className="flex flex-col items-center gap-1.5 py-2" aria-hidden>
+    <div className="relative flex flex-col items-center gap-1.5 py-3" aria-hidden>
       {dots.map((t) => (
         <span
           key={t}
-          className="h-2 w-2 rounded-full"
+          className="h-2 w-2 rounded-full transition-all"
           style={{
             background: color,
             transform: `translateX(${from + (to - from) * t}%)`,
           }}
         />
       ))}
+
+      {/* Dr. Catalyst Mascot placed in between levels in the side whitespace */}
+      {showMascot && (
+        <div
+          className={`pointer-events-none absolute top-1/2 -translate-y-1/2 select-none transition-transform ${
+            mascotSide === "left"
+              ? "left-2 sm:left-12 lg:left-24"
+              : "right-2 sm:right-12 lg:right-24"
+          }`}
+        >
+          <div className="relative flex items-center gap-2">
+            <img
+              src={mascotPose.src}
+              alt={mascotPose.alt}
+              className="h-20 w-20 object-contain drop-shadow-md sm:h-24 sm:w-24 md:h-28 md:w-28"
+            />
+            <div className="hidden rounded-full border border-border/60 bg-card/90 px-2.5 py-1 text-[10px] font-bold text-muted-foreground shadow-sm backdrop-blur md:block">
+              {index % 4 === 0 ? "Keep it up! 🔥" : "Almost there! 🎯"}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
