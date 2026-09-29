@@ -11,7 +11,7 @@ import {
   Send, Megaphone, MessageSquare, LayoutDashboard, Ticket, Package,
   BrainCircuit, Sparkles, Wallet, Star, TrendingUp, Flame,
   BadgeCheck, Trash2, Plus, ShieldCheck, Activity, Trophy,
-  Server, AlertTriangle, Swords, HelpCircle,
+  Server, AlertTriangle, Swords, HelpCircle, Share2, Youtube, Instagram, MessageCircle, ExternalLink,
 } from "lucide-react";
 import {
   ResponsiveContainer, AreaChart, Area, LineChart, Line, BarChart, Bar,
@@ -25,7 +25,7 @@ type Tab = "main" | "user-reports" | "app-report" | "app-management";
 type SubTab =
   | "single-user" | "cohort" | "live-attempts" | "leaderboard" | "notifications" | "feedback"
   | "overview" | "features" | "plans" | "diagnostics" | "subject-errors"
-  | "banners" | "maintenance" | "grant" | "coupons" | "batches" | "razorpay" | "ai-keys" | "dpp-generator" | "add-question" | "battle-settings"
+  | "social-links" | "banners" | "maintenance" | "grant" | "coupons" | "batches" | "razorpay" | "ai-keys" | "dpp-generator" | "add-question" | "battle-settings"
   | "stat-graphs";
 
 const SECTION_LABEL: Record<Exclude<Tab, "main">, string> = {
@@ -53,6 +53,7 @@ const REPORT_SUBS = [
 ];
 
 const MGMT_SUBS = [
+  { key: "social-links" as SubTab, label: "Community & Social Links", desc: "Manage Telegram, Instagram, YouTube & WhatsApp links", icon: Share2 },
   { key: "banners" as SubTab, label: "Banner Management", desc: "Create & remove promo banners", icon: Megaphone },
   { key: "maintenance" as SubTab, label: "Maintenance & Alert Bar", desc: "Toggle maintenance mode & top alert", icon: AlertTriangle },
   { key: "grant" as SubTab, label: "Grant Premium", desc: "Give premium access by email", icon: Star },
@@ -525,6 +526,10 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   const [qText, setQText] = useState(""); const [qOptA, setQOptA] = useState(""); const [qOptB, setQOptB] = useState("");
   const [qOptC, setQOptC] = useState(""); const [qOptD, setQOptD] = useState(""); const [qCorrect, setQCorrect] = useState("A"); const [qExpl, setQExpl] = useState("");
   const [battleQCount, setBattleQCount] = useState("5"); const [battleTimer, setBattleTimer] = useState("20");
+  const [tgLink, setTgLink] = useState("https://t.me/neetbuddy");
+  const [igLink, setIgLink] = useState("https://instagram.com/neetbuddy.in");
+  const [ytLink, setYtLink] = useState("https://youtube.com/@neetbuddy");
+  const [waLink, setWaLink] = useState("https://whatsapp.com/channel/neetbuddy");
   const [busy, setBusy] = useState(false);
 
   const post = useCallback(async (action: string, payload: Record<string, unknown>) => {
@@ -538,6 +543,19 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   useEffect(() => {
     if (sub === "banners") fetch("/api/admin.php?action=banners", { credentials: "include" }).then((r) => r.json()).then((d) => setBanners(d.banners ?? [])).catch(() => {});
     if (sub === "coupons") fetch("/api/admin.php?action=coupons", { credentials: "include" }).then((r) => r.json()).then((d) => setCoupons(d.coupons ?? [])).catch(() => {});
+    if (sub === "social-links") {
+      fetch("/api/admin.php?action=get_social_links", { credentials: "include" })
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.links) {
+            if (d.links.telegram) setTgLink(d.links.telegram);
+            if (d.links.instagram) setIgLink(d.links.instagram);
+            if (d.links.youtube) setYtLink(d.links.youtube);
+            if (d.links.whatsapp) setWaLink(d.links.whatsapp);
+          }
+        })
+        .catch(() => {});
+    }
     if (sub === "razorpay" || sub === "ai-keys" || sub === "maintenance" || sub === "battle-settings") {
       fetch("/api/admin.php?action=get_settings", { credentials: "include" }).then((r) => r.json()).then((d) => {
         if (d.razorpay) setRzpId(d.razorpay.key_id ?? "");
@@ -550,6 +568,123 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
   }, [sub]);
 
   const wrap = async (fn: () => Promise<void>) => { setBusy(true); try { await fn(); } finally { setBusy(false); } };
+
+  if (sub === "social-links") return (
+    <Card className="max-w-2xl space-y-5">
+      <div>
+        <div className="text-lg font-bold flex items-center gap-2">
+          <Share2 className="h-5 w-5 text-primary" />
+          Community & Social Media Links
+        </div>
+        <p className="text-xs text-muted-foreground mt-1">
+          Configure official links for the community page and mobile app buttons. Students clicking on Telegram, Instagram, YouTube, or WhatsApp will open these exact URLs.
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+              <Send className="h-4 w-4 text-sky-500" />
+              Telegram Channel / Group Link
+            </label>
+            {tgLink && (
+              <a href={tgLink} target="_blank" rel="noopener noreferrer" className="text-xs text-sky-600 hover:underline flex items-center gap-1">
+                Test Link <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+          <Input
+            placeholder="https://t.me/neetbuddy"
+            value={tgLink}
+            onChange={(e) => setTgLink(e.target.value)}
+          />
+          <div className="text-[11px] text-muted-foreground">Used on Community page Telegram cards & doubt discussion buttons.</div>
+        </div>
+
+        <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+              <MessageCircle className="h-4 w-4 text-emerald-500" />
+              WhatsApp Channel / Group Link
+            </label>
+            {waLink && (
+              <a href={waLink} target="_blank" rel="noopener noreferrer" className="text-xs text-emerald-600 hover:underline flex items-center gap-1">
+                Test Link <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+          <Input
+            placeholder="https://whatsapp.com/channel/..."
+            value={waLink}
+            onChange={(e) => setWaLink(e.target.value)}
+          />
+          <div className="text-[11px] text-muted-foreground">Used on the primary WhatsApp alert & daily DPP notification card.</div>
+        </div>
+
+        <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+              <Youtube className="h-4 w-4 text-red-500" />
+              YouTube Channel / Video Lectures Link
+            </label>
+            {ytLink && (
+              <a href={ytLink} target="_blank" rel="noopener noreferrer" className="text-xs text-red-600 hover:underline flex items-center gap-1">
+                Test Link <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+          <Input
+            placeholder="https://youtube.com/@neetbuddy"
+            value={ytLink}
+            onChange={(e) => setYtLink(e.target.value)}
+          />
+          <div className="text-[11px] text-muted-foreground">Direct link to watch mock analysis, video solutions, and NCERT masterclasses.</div>
+        </div>
+
+        <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+              <Instagram className="h-4 w-4 text-pink-500" />
+              Instagram Profile Link
+            </label>
+            {igLink && (
+              <a href={igLink} target="_blank" rel="noopener noreferrer" className="text-xs text-pink-600 hover:underline flex items-center gap-1">
+                Test Link <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+          <Input
+            placeholder="https://instagram.com/neetbuddy.in"
+            value={igLink}
+            onChange={(e) => setIgLink(e.target.value)}
+          />
+          <div className="text-[11px] text-muted-foreground">Used for daily mnemonics, quick revision reels, and student motivation.</div>
+        </div>
+      </div>
+
+      <Button
+        className="w-full sm:w-auto"
+        disabled={busy}
+        onClick={() => wrap(async () => {
+          const d = await post("save_social_links", {
+            telegram: tgLink,
+            instagram: igLink,
+            youtube: ytLink,
+            whatsapp: waLink
+          });
+          if (d.success) {
+            toast.success(d.message || "Community & social links updated!");
+          } else {
+            toast.error(d.error || "Failed to update links");
+          }
+        })}
+      >
+        {busy ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Share2 className="mr-2 h-4 w-4" />}
+        Save Community & Social Links
+      </Button>
+    </Card>
+  );
 
   if (sub === "banners") return (
     <div className="space-y-4">

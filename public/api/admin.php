@@ -197,85 +197,163 @@ if ($action === 'resolve_feedback') {
 
 if ($action === 'analytics_graphs') {
     try {
+        // Genuine data queries from actual database tables - NO fake defaults
         $todayQuestions = (int)$pdo->query("SELECT COALESCE(SUM(correct_count + wrong_count), 0) FROM attempts WHERE DATE(started_at) = CURDATE()")->fetchColumn();
-        if ($todayQuestions === 0) $todayQuestions = 560;
-
         $monthQuestions = (int)$pdo->query("SELECT COALESCE(SUM(correct_count + wrong_count), 0) FROM attempts WHERE started_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)")->fetchColumn();
-        if ($monthQuestions === 0) $monthQuestions = 16840;
-
         $activeUsers = (int)$pdo->query("SELECT COUNT(DISTINCT user_id) FROM attempts WHERE started_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)")->fetchColumn();
-        if ($activeUsers === 0) $activeUsers = 42;
-        $avgQPerStudent = round($monthQuestions / max(1, $activeUsers));
+        $avgQPerStudent = $activeUsers > 0 ? (int)round($monthQuestions / $activeUsers) : 0;
 
+        // Genuine 14-day daily trend from attempts
         $dailyTrend = [];
+        $stmt = $pdo->query("SELECT DATE(started_at) as dt, COALESCE(SUM(correct_count + wrong_count), 0) as q_cnt, COUNT(*) as t_cnt FROM attempts WHERE started_at >= DATE_SUB(CURDATE(), INTERVAL 13 DAY) GROUP BY DATE(started_at)");
+        $dateMap = [];
+        while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $dateMap[$r['dt']] = ['q' => (int)$r['q_cnt'], 't' => (int)$r['t_cnt']];
+        }
         for ($d = 13; $d >= 0; $d--) {
             $dayStr = date('M d', strtotime("-$d days"));
             $dateVal = date('Y-m-d', strtotime("-$d days"));
-            $dayQ = (int)$pdo->query("SELECT COALESCE(SUM(correct_count + wrong_count), 0) FROM attempts WHERE DATE(started_at) = '$dateVal'")->fetchColumn();
-            if ($dayQ === 0) {
-                $base = 380 + ($d % 4) * 85 + ($d % 2 == 0 ? 110 : 0);
-                $dayQ = $base;
-            }
             $dailyTrend[] = [
                 'date' => $dayStr,
-                'questions' => $dayQ,
-                'tests' => round($dayQ / 20)
+                'questions' => $dateMap[$dateVal]['q'] ?? 0,
+                'tests' => $dateMap[$dateVal]['t'] ?? 0
             ];
         }
 
+        // Subscriptions & Real Revenue
         $subsCount = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE status = 'active'")->fetchColumn();
-        $rankerSales = max($subsCount, 26);
-        $boosterSales = 14;
-        $totalBatchesSold = $rankerSales + $boosterSales;
-        $totalRev = ($rankerSales * 1499) + ($boosterSales * 499);
+        $totalBatchesSold = $subsCount;
+        $totalRev = $subsCount * 1499;
 
-        $revTrend = [
-            ['month' => 'May', 'revenue' => 19500, 'sales' => 15],
-            ['month' => 'Jun', 'revenue' => 28400, 'sales' => 21],
-            ['month' => 'Jul', 'revenue' => 41200, 'sales' => 31],
-            ['month' => 'Aug', 'revenue' => 49500, 'sales' => 37],
-            ['month' => 'Sep', 'revenue' => $totalRev, 'sales' => $totalBatchesSold]
-        ];
+        // Real 5-month revenue trend from actual subscriptions
+        $revTrend = [];
+        for ($m = 4; $m >= 0; $m--) {
+            $mStr = date('M', strtotime("-$m months"));
+            $mStart = date('Y-m-01 00:00:00', strtotime("-$m months"));
+            $mEnd = date('Y-m-t 23:59:59', strtotime("-$m months"));
+            $mSales = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE created_at >= '$mStart' AND created_at <= '$mEnd'")->fetchColumn();
+            $revTrend[] = [
+                'month' => $mStr,
+                'revenue' => $mSales * 1499,
+                'sales' => $mSales
+            ];
+        }
+
+        // Real hourly distribution from attempts
+        $hourlyMap = ['6-9 AM' => 0, '9-12 PM' => 0, '12-4 PM' => 0, '4-8 PM' => 0, '8-11 PM' => 0, '11-2 AM' => 0];
+        try {
+            $hStmt = $pdo->query("SELECT HOUR(started_at) as hr, COUNT(*) as cnt FROM attempts GROUP BY hr");
+            while ($hr = $hStmt->fetch(PDO::FETCH_ASSOC)) {
+                $h = (int)$hr['hr'];
+                $c = (int)$hr['cnt'];
+                if ($h >= 6 && $h < 9) $hourlyMap['6-9 AM'] += $c;
+                elseif ($h >= 9 && $h < 12) $hourlyMap['9-12 PM'] += $c;
+                elseif ($h >= 12 && $h < 16) $hourlyMap['12-4 PM'] += $c;
+                elseif ($h >= 16 && $h < 20) $hourlyMap['4-8 PM'] += $c;
+                elseif ($h >= 20 && $h < 23) $hourlyMap['8-11 PM'] += $c;
+                else $hourlyMap['11-2 AM'] += $c;
+            }
+        } catch (Throwable $e) {}
 
         $hourly = [
-            ['time' => '6-9 AM', 'activity' => 28, 'label' => 'Morning Focus'],
-            ['time' => '9-12 PM', 'activity' => 18, 'label' => 'Mid-day Study'],
-            ['time' => '12-4 PM', 'activity' => 14, 'label' => 'Afternoon Practice'],
-            ['time' => '4-8 PM', 'activity' => 34, 'label' => 'Evening Rush'],
-            ['time' => '8-11 PM', 'activity' => 48, 'label' => 'Night Rounds'],
-            ['time' => '11-2 AM', 'activity' => 22, 'label' => 'Late Revision']
+            ['time' => '6-9 AM', 'activity' => $hourlyMap['6-9 AM'], 'label' => 'Morning Focus'],
+            ['time' => '9-12 PM', 'activity' => $hourlyMap['9-12 PM'], 'label' => 'Mid-day Study'],
+            ['time' => '12-4 PM', 'activity' => $hourlyMap['12-4 PM'], 'label' => 'Afternoon Practice'],
+            ['time' => '4-8 PM', 'activity' => $hourlyMap['4-8 PM'], 'label' => 'Evening Rush'],
+            ['time' => '8-11 PM', 'activity' => $hourlyMap['8-11 PM'], 'label' => 'Night Rounds'],
+            ['time' => '11-2 AM', 'activity' => $hourlyMap['11-2 AM'], 'label' => 'Late Revision']
         ];
+
+        // Real Completion rate
+        $totalAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts")->fetchColumn();
+        $completedAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts WHERE status = 'completed'")->fetchColumn();
+        $inProgressAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts WHERE status = 'in_progress'")->fetchColumn();
+        $abandonedAttempts = max(0, $totalAttempts - $completedAttempts - $inProgressAttempts);
+
+        $compPct = $totalAttempts > 0 ? (int)round(($completedAttempts / $totalAttempts) * 100) : 0;
+        $progPct = $totalAttempts > 0 ? (int)round(($inProgressAttempts / $totalAttempts) * 100) : 0;
+        $abanPct = $totalAttempts > 0 ? max(0, 100 - $compPct - $progPct) : 0;
 
         $completionRate = [
-            ['status' => 'Completed & Scored', 'percent' => 84, 'color' => '#10b981'],
-            ['status' => 'Paused / Timed Out', 'percent' => 11, 'color' => '#f59e0b'],
-            ['status' => 'Abandoned', 'percent' => 5, 'color' => '#ef4444']
+            ['status' => 'Completed & Scored', 'percent' => $compPct, 'color' => '#10b981'],
+            ['status' => 'In Progress / Paused', 'percent' => $progPct, 'color' => '#f59e0b'],
+            ['status' => 'Abandoned / Exit', 'percent' => $abanPct, 'color' => '#ef4444']
         ];
 
+        // Real Subject split from attempts
+        $subjectCounts = ['Biology' => 0, 'Chemistry' => 0, 'Physics' => 0];
+        try {
+            $sStmt = $pdo->query("SELECT t.subject, COALESCE(SUM(a.correct_count + a.wrong_count), 0) as q_cnt FROM attempts a JOIN tests t ON a.test_id = t.id GROUP BY t.subject");
+            while ($sr = $sStmt->fetch(PDO::FETCH_ASSOC)) {
+                $subName = ucfirst(strtolower(trim((string)$sr['subject'])));
+                if (isset($subjectCounts[$subName])) {
+                    $subjectCounts[$subName] += (int)$sr['q_cnt'];
+                }
+            }
+        } catch (Throwable $e) {}
+        $totSubQ = array_sum($subjectCounts);
         $subjectSplit = [
-            ['subject' => 'Biology', 'questions' => round($monthQuestions * 0.50), 'share' => 50, 'color' => '#10b981'],
-            ['subject' => 'Chemistry', 'questions' => round($monthQuestions * 0.28), 'share' => 28, 'color' => '#6366f1'],
-            ['subject' => 'Physics', 'questions' => round($monthQuestions * 0.22), 'share' => 22, 'color' => '#f59e0b']
+            ['subject' => 'Biology', 'questions' => $subjectCounts['Biology'], 'share' => $totSubQ > 0 ? (int)round(($subjectCounts['Biology'] / $totSubQ) * 100) : 0, 'color' => '#10b981'],
+            ['subject' => 'Chemistry', 'questions' => $subjectCounts['Chemistry'], 'share' => $totSubQ > 0 ? (int)round(($subjectCounts['Chemistry'] / $totSubQ) * 100) : 0, 'color' => '#6366f1'],
+            ['subject' => 'Physics', 'questions' => $subjectCounts['Physics'], 'share' => $totSubQ > 0 ? (int)round(($subjectCounts['Physics'] / $totSubQ) * 100) : 0, 'color' => '#f59e0b']
         ];
 
-        $accuracyMilestones = [
-            ['tier' => '1 - 5 Tests', 'accuracy' => 52],
-            ['tier' => '6 - 15 Tests', 'accuracy' => 64],
-            ['tier' => '16 - 30 Tests', 'accuracy' => 73],
-            ['tier' => '30+ Tests', 'accuracy' => 82]
-        ];
+        // Real Accuracy Milestones
+        $accuracyMilestones = [];
+        try {
+            $accStmt = $pdo->query("SELECT user_id, COUNT(*) as t_count, SUM(correct_count) as c_sum, SUM(correct_count + wrong_count) as tot_sum FROM attempts GROUP BY user_id");
+            $buckets = ['1 - 5 Tests' => [], '6 - 15 Tests' => [], '16 - 30 Tests' => [], '30+ Tests' => []];
+            while ($ar = $accStmt->fetch(PDO::FETCH_ASSOC)) {
+                $tc = (int)$ar['t_count'];
+                $tot = (int)$ar['tot_sum'];
+                $acc = $tot > 0 ? (int)round(((int)$ar['c_sum'] / $tot) * 100) : 0;
+                if ($tc <= 5) $buckets['1 - 5 Tests'][] = $acc;
+                elseif ($tc <= 15) $buckets['6 - 15 Tests'][] = $acc;
+                elseif ($tc <= 30) $buckets['16 - 30 Tests'][] = $acc;
+                else $buckets['30+ Tests'][] = $acc;
+            }
+            foreach ($buckets as $k => $accList) {
+                $avg = count($accList) > 0 ? (int)round(array_sum($accList) / count($accList)) : 0;
+                $accuracyMilestones[] = ['tier' => $k, 'accuracy' => $avg];
+            }
+        } catch (Throwable $e) {
+            $accuracyMilestones = [
+                ['tier' => '1 - 5 Tests', 'accuracy' => 0],
+                ['tier' => '6 - 15 Tests', 'accuracy' => 0],
+                ['tier' => '16 - 30 Tests', 'accuracy' => 0],
+                ['tier' => '30+ Tests', 'accuracy' => 0]
+            ];
+        }
 
+        // Real Time per Question from attempts
         $timePerQ = [
-            ['subject' => 'Biology', 'seconds' => 44, 'target' => 45],
-            ['subject' => 'Chemistry', 'seconds' => 68, 'target' => 60],
-            ['subject' => 'Physics', 'seconds' => 86, 'target' => 75]
+            ['subject' => 'Biology', 'seconds' => 0, 'target' => 45],
+            ['subject' => 'Chemistry', 'seconds' => 0, 'target' => 60],
+            ['subject' => 'Physics', 'seconds' => 0, 'target' => 75]
         ];
+        try {
+            $tStmt = $pdo->query("SELECT t.subject, AVG(a.time_spent_seconds / NULLIF(a.correct_count + a.wrong_count, 0)) as avg_sec FROM attempts a JOIN tests t ON a.test_id = t.id WHERE a.time_spent_seconds > 0 GROUP BY t.subject");
+            while ($tr = $tStmt->fetch(PDO::FETCH_ASSOC)) {
+                $sub = ucfirst(strtolower(trim((string)$tr['subject'])));
+                foreach ($timePerQ as &$item) {
+                    if ($item['subject'] === $sub) {
+                        $item['seconds'] = (int)round((float)$tr['avg_sec']);
+                    }
+                }
+            }
+        } catch (Throwable $e) {}
+
+        // Real Mode Share
+        $dppAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('dpp', 'daily')")->fetchColumn();
+        $mockAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('mock', 'test')")->fetchColumn();
+        $battleAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts WHERE mode = 'battle' OR test_id LIKE 'battle_%'")->fetchColumn();
+        $otherAttempts = max(0, $totalAttempts - $dppAttempts - $mockAttempts - $battleAttempts);
 
         $modeShare = [
-            ['mode' => 'Daily DPPs', 'percent' => 48, 'color' => '#10b981'],
-            ['mode' => 'Full Mocks', 'percent' => 26, 'color' => '#6366f1'],
-            ['mode' => 'Battlegrounds', 'percent' => 16, 'color' => '#ec4899'],
-            ['mode' => 'Flashcards', 'percent' => 10, 'color' => '#f59e0b']
+            ['mode' => 'Daily DPPs', 'percent' => $totalAttempts > 0 ? (int)round(($dppAttempts / $totalAttempts) * 100) : 0, 'color' => '#10b981'],
+            ['mode' => 'Full Mocks', 'percent' => $totalAttempts > 0 ? (int)round(($mockAttempts / $totalAttempts) * 100) : 0, 'color' => '#6366f1'],
+            ['mode' => 'Battlegrounds', 'percent' => $totalAttempts > 0 ? (int)round(($battleAttempts / $totalAttempts) * 100) : 0, 'color' => '#ec4899'],
+            ['mode' => 'Other / Practice', 'percent' => $totalAttempts > 0 ? (int)round(($otherAttempts / $totalAttempts) * 100) : 0, 'color' => '#f59e0b']
         ];
 
         nb_json([
@@ -310,22 +388,42 @@ if ($action === 'app_report') {
         $subsCount = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE status = 'active'")->fetchColumn();
         $feedbacksCount = (int)$pdo->query("SELECT COUNT(*) FROM feedback")->fetchColumn();
         $bannersCount = (int)$pdo->query("SELECT COUNT(*) FROM dashboard_banners")->fetchColumn();
-        
+
+        $dppAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('dpp', 'daily')")->fetchColumn();
+        $mockAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('mock', 'test')")->fetchColumn();
+        $battleAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts WHERE mode = 'battle' OR test_id LIKE 'battle_%'")->fetchColumn();
+
+        // Real features derived from real table usage counts
         $features = [
-            ['name' => 'Daily DPPs', 'usage_count' => max($attemptsCount * 0.45, 120), 'popularity_percent' => 88],
-            ['name' => 'NEET Mock Tests', 'usage_count' => max($attemptsCount * 0.25, 65), 'popularity_percent' => 74],
-            ['name' => 'NCERT Explorer & Nuggets', 'usage_count' => max($qbCount * 0.2, 450), 'popularity_percent' => 82],
-            ['name' => 'Battlegrounds 1v1', 'usage_count' => max($attemptsCount * 0.15, 40), 'popularity_percent' => 62],
-            ['name' => 'Flashcards Revision', 'usage_count' => 310, 'popularity_percent' => 58],
-            ['name' => 'AI Tutor & Doubt Solver', 'usage_count' => 195, 'popularity_percent' => 50],
+            ['name' => 'Daily DPPs', 'usage_count' => $dppAttempts, 'popularity_percent' => $attemptsCount > 0 ? (int)round(($dppAttempts / $attemptsCount) * 100) : 0],
+            ['name' => 'NEET Mock Tests', 'usage_count' => $mockAttempts, 'popularity_percent' => $attemptsCount > 0 ? (int)round(($mockAttempts / $attemptsCount) * 100) : 0],
+            ['name' => 'NCERT Question Bank', 'usage_count' => $qbCount + $nuggetCount, 'popularity_percent' => 100],
+            ['name' => 'Battlegrounds 1v1', 'usage_count' => $battleAttempts, 'popularity_percent' => $attemptsCount > 0 ? (int)round(($battleAttempts / $attemptsCount) * 100) : 0],
+            ['name' => 'Student Feedback', 'usage_count' => $feedbacksCount, 'popularity_percent' => 100],
         ];
 
-        $planPurchases = [
-            ['plan' => 'NEET 2026 Rankers Batch (Full Prep)', 'purchases' => max($subsCount, 18), 'price' => 1499, 'share' => '68%'],
-            ['plan' => 'NEET Test Series & DPP Booster', 'purchases' => 9, 'price' => 499, 'share' => '32%']
-        ];
+        // Real plan purchases from subscriptions
+        $plansList = [];
+        try {
+            $pStmt = $pdo->query("SELECT plan_name, COUNT(*) as cnt FROM subscriptions GROUP BY plan_name");
+            while ($pr = $pStmt->fetch(PDO::FETCH_ASSOC)) {
+                $cnt = (int)$pr['cnt'];
+                $plansList[] = [
+                    'plan' => $pr['plan_name'] ?: 'NEET Rankers Batch',
+                    'purchases' => $cnt,
+                    'price' => 1499,
+                    'share' => $subsCount > 0 ? (string)round(($cnt / $subsCount) * 100) . '%' : '0%'
+                ];
+            }
+        } catch (Throwable $e) {}
 
-        // System database table diagnostics
+        if (empty($plansList)) {
+            $plansList = [
+                ['plan' => 'NEET Rankers Batch', 'purchases' => $subsCount, 'price' => 1499, 'share' => $subsCount > 0 ? '100%' : '0%']
+            ];
+        }
+
+        // Real database table diagnostics
         $tableDiagnostics = [
             ['table' => 'auth_users (Registered Students)', 'rows' => $usersCount, 'status' => 'Optimal'],
             ['table' => 'tests (DPPs & Full Mocks)', 'rows' => $dppCount + $mockCount, 'status' => 'Optimal'],
@@ -337,12 +435,31 @@ if ($action === 'app_report') {
             ['table' => 'dashboard_banners (Live Promos)', 'rows' => $bannersCount, 'status' => 'Serving'],
         ];
 
-        // Subject error metrics
+        // Real subject error metrics calculated from attempts
         $subjectErrors = [
-            ['subject' => 'Physics', 'accuracy' => 58, 'error_rate' => 42, 'tough_topics' => 'Rotational Motion, Optics, Thermodynamics'],
-            ['subject' => 'Chemistry', 'accuracy' => 69, 'error_rate' => 31, 'tough_topics' => 'Organic Reaction Mechanisms, Electrochemistry'],
-            ['subject' => 'Biology', 'accuracy' => 81, 'error_rate' => 19, 'tough_topics' => 'Genetics, Plant Physiology, Animal Kingdom'],
+            ['subject' => 'Physics', 'accuracy' => 0, 'error_rate' => 0, 'tough_topics' => 'Rotational Motion, Optics, Thermodynamics'],
+            ['subject' => 'Chemistry', 'accuracy' => 0, 'error_rate' => 0, 'tough_topics' => 'Organic Reaction Mechanisms, Electrochemistry'],
+            ['subject' => 'Biology', 'accuracy' => 0, 'error_rate' => 0, 'tough_topics' => 'Genetics, Plant Physiology, Animal Kingdom'],
         ];
+        try {
+            $seStmt = $pdo->query("SELECT t.subject, SUM(a.correct_count) as c_tot, SUM(a.wrong_count) as w_tot FROM attempts a JOIN tests t ON a.test_id = t.id GROUP BY t.subject");
+            while ($se = $seStmt->fetch(PDO::FETCH_ASSOC)) {
+                $sub = ucfirst(strtolower(trim((string)$se['subject'])));
+                $c = (int)$se['c_tot'];
+                $w = (int)$se['w_tot'];
+                $tot = $c + $w;
+                if ($tot > 0) {
+                    $acc = (int)round(($c / $tot) * 100);
+                    $err = 100 - $acc;
+                    foreach ($subjectErrors as &$sItem) {
+                        if ($sItem['subject'] === $sub) {
+                            $sItem['accuracy'] = $acc;
+                            $sItem['error_rate'] = $err;
+                        }
+                    }
+                }
+            }
+        } catch (Throwable $e) {}
 
         nb_json([
             'total_users' => $usersCount,
@@ -353,7 +470,7 @@ if ($action === 'app_report') {
             'active_subscribers' => $subsCount,
             'total_revenue' => $subsCount * 1499,
             'features' => $features,
-            'plans' => $planPurchases,
+            'plans' => $plansList,
             'tables' => $tableDiagnostics,
             'subject_errors' => $subjectErrors
         ]);
@@ -362,9 +479,6 @@ if ($action === 'app_report') {
     }
 }
 
-// ==========================================
-// 3. APP MANAGEMENT & CONTROLS
-// ==========================================
 if ($action === 'banners') {
     if ($method === 'GET') {
         $banners = $pdo->query("SELECT * FROM dashboard_banners ORDER BY sort_order ASC, created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
@@ -579,6 +693,42 @@ if ($action === 'add_question') {
     }
 }
 
+
+if ($action === 'save_social_links') {
+    $input = nb_input();
+    $links = [
+        'telegram' => trim((string)($input['telegram'] ?? '')),
+        'instagram' => trim((string)($input['instagram'] ?? '')),
+        'youtube' => trim((string)($input['youtube'] ?? '')),
+        'whatsapp' => trim((string)($input['whatsapp'] ?? '')),
+    ];
+    $encoded = json_encode($links);
+    $stmt = $pdo->prepare("INSERT INTO admin_settings (setting_key, setting_value) VALUES ('social_links', ?) ON DUPLICATE KEY UPDATE setting_value = ?");
+    $stmt->execute([$encoded, $encoded]);
+    nb_json(['success' => true, 'message' => 'Community & social links updated successfully', 'links' => $links]);
+}
+
+if ($action === 'get_social_links') {
+    $stmt = $pdo->prepare("SELECT setting_value FROM admin_settings WHERE setting_key = 'social_links' LIMIT 1");
+    $stmt->execute();
+    $raw = $stmt->fetchColumn();
+    $links = [
+        'telegram' => 'https://t.me/neetbuddy',
+        'instagram' => 'https://instagram.com/neetbuddy.in',
+        'youtube' => 'https://youtube.com/@neetbuddy',
+        'whatsapp' => 'https://whatsapp.com/channel/neetbuddy',
+    ];
+    if ($raw) {
+        $saved = json_decode((string)$raw, true);
+        if (is_array($saved)) {
+            foreach ($links as $k => $v) {
+                if (!empty($saved[$k])) $links[$k] = trim((string)$saved[$k]);
+            }
+        }
+    }
+    nb_json(['success' => true, 'links' => $links]);
+}
+
 if ($action === 'get_settings') {
     try {
         $rows = $pdo->query("SELECT setting_key, setting_value FROM admin_settings")->fetchAll(PDO::FETCH_KEY_PAIR);
@@ -587,7 +737,8 @@ if ($action === 'get_settings') {
         $maint = isset($rows['maintenance']) ? json_decode($rows['maintenance'], true) : ['enabled' => 0, 'message' => ''];
         $ticker = isset($rows['alert_ticker']) ? json_decode($rows['alert_ticker'], true) : ['enabled' => 1, 'text' => '⚡ 100 Daily DPPs live for NEET 2026', 'link' => '/dpp'];
         $battle = isset($rows['battle_settings']) ? json_decode($rows['battle_settings'], true) : ['question_count' => 5, 'seconds_per_question' => 20, 'bot_fallback' => 1];
-        nb_json(['razorpay' => $razorpay, 'ai' => $ai, 'maintenance' => $maint, 'alert_ticker' => $ticker, 'battle_settings' => $battle]);
+        $social = isset($rows['social_links']) ? json_decode($rows['social_links'], true) : ['telegram' => 'https://t.me/neetbuddy', 'instagram' => 'https://instagram.com/neetbuddy.in', 'youtube' => 'https://youtube.com/@neetbuddy', 'whatsapp' => 'https://whatsapp.com/channel/neetbuddy'];
+        nb_json(['razorpay' => $razorpay, 'ai' => $ai, 'maintenance' => $maint, 'alert_ticker' => $ticker, 'battle_settings' => $battle, 'social_links' => $social]);
     } catch (Throwable $e) {
         nb_json(['razorpay' => ['key_id' => ''], 'ai' => ['default_model' => 'gemini-1.5-flash']]);
     }
