@@ -350,7 +350,23 @@ function ChapterView({
     );
   }
 
-  if (topic && (mode === "experience" || mode === "revision")) {
+  if (topic && mode === "revision") {
+    const ti = data.topics.findIndex((t) => t.key === topic.key);
+    const nextTopic = ti >= 0 ? data.topics[ti + 1] : undefined;
+    return (
+      <RevisionModePlayer
+        key={topic.key + mode}
+        chapter={data}
+        topic={topic}
+        onExit={onCloseTopic}
+        onAnalytics={() => onOpenTopic(topic.key, "analytics")}
+        nextTopicTitle={nextTopic?.title ?? null}
+        onNextTopic={nextTopic ? () => onOpenTopic(nextTopic.key, mode) : undefined}
+      />
+    );
+  }
+
+  if (topic && mode === "experience") {
     const ti = data.topics.findIndex((t) => t.key === topic.key);
     const nextTopic = ti >= 0 ? data.topics[ti + 1] : undefined;
     return (
@@ -359,7 +375,7 @@ function ChapterView({
         chapter={data}
         topic={topic}
         mode={mode}
-        startIndex={mode === "revision" ? 0 : (progress[topic.key]?.step_index ?? 0)}
+        startIndex={progress[topic.key]?.step_index ?? 0}
         pastAnswers={answers.filter((a) => a.topic_key === topic.key)}
         onExit={onCloseTopic}
         onAnalytics={() => onOpenTopic(topic.key, "analytics")}
@@ -1568,6 +1584,252 @@ function Stat({ label, value, color }: { label: string; value: string; color?: s
       <div className={`text-base sm:text-lg font-black ${color || "text-foreground"}`}>{value}</div>
       <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">
         {label}
+      </div>
+    </div>
+  );
+}
+
+
+interface RevisionModePlayerProps {
+  chapter: ChapterKeyPoints;
+  topic: KeyPointTopic;
+  onExit: () => void;
+  onAnalytics: () => void;
+  nextTopicTitle?: string | null;
+  onNextTopic?: () => void;
+}
+
+function RevisionModePlayer({
+  chapter,
+  topic,
+  onExit,
+  onAnalytics,
+  nextTopicTitle,
+  onNextTopic,
+}: RevisionModePlayerProps) {
+  // Aggregate all paras in this topic and their linked questions
+  const parasWithQuestions = useMemo(() => {
+    const list: Array<{ para: KeyPointPara; questions: KeyPointQuestion[] }> = [];
+    for (const step of topic.steps) {
+      if (step.kind === "para") {
+        list.push({ para: step.para, questions: [...step.para.questions] });
+      }
+    }
+    return list;
+  }, [topic]);
+
+  const [activeParaIdx, setActiveParaIdx] = useState(0);
+  const [mobileTab, setMobileTab] = useState<"ncert" | "questions">("ncert");
+  const [picked, setPicked] = useState<Record<string, { selected: string | null; correct: boolean }>>({});
+  const [choices, setChoices] = useState<Record<string, string | null>>({});
+
+  const current = parasWithQuestions[activeParaIdx] ?? parasWithQuestions[0];
+  const totalParas = parasWithQuestions.length;
+
+  if (!current) {
+    return (
+      <div className="py-20 text-center text-sm text-muted-foreground">
+        No NCERT content available for this topic.
+        <div className="mt-4">
+          <button onClick={onExit} className="rounded-full bg-secondary px-4 py-2 text-xs font-semibold">
+            Back to topics
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const handleSelectChoice = (qKey: string, opt: string) => {
+    setChoices((prev) => ({ ...prev, [qKey]: opt }));
+  };
+
+  const handleAnswerSubmit = (q: KeyPointQuestion) => {
+    const chosen = choices[q.key];
+    if (!chosen) return;
+    const isCorrect = chosen.trim().toLowerCase() === q.correct_option.trim().toLowerCase();
+    setPicked((prev) => ({
+      ...prev,
+      [q.key]: { selected: chosen, correct: isCorrect },
+    }));
+  };
+
+  return (
+    <div className="pb-32">
+      {/* Sticky Top Header */}
+      <div className="sticky top-0 z-30 -mx-3 mb-4 border-b bg-background/90 px-3 py-2.5 backdrop-blur sm:-mx-4 sm:px-4">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onExit}
+            className="rounded-full p-1.5 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+            aria-label="Back to topics"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-sm font-bold">{topic.title}</div>
+            <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              {chapter.chapter.title} · <span className="font-bold text-primary">Revision Mode (Split View)</span>
+            </div>
+          </div>
+          <button
+            onClick={onAnalytics}
+            className="rounded-full bg-secondary px-3 py-1.5 text-[11px] font-bold text-muted-foreground transition hover:text-foreground"
+          >
+            Analytics
+          </button>
+        </div>
+
+        {/* Page navigator & Mobile Tab Switcher */}
+        <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 border-t pt-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium text-muted-foreground">
+              Section {activeParaIdx + 1} of {totalParas}
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                disabled={activeParaIdx === 0}
+                onClick={() => {
+                  setActiveParaIdx((i) => Math.max(0, i - 1));
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="rounded-md border p-1 text-xs disabled:opacity-30 hover:bg-secondary"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                disabled={activeParaIdx >= totalParas - 1}
+                onClick={() => {
+                  setActiveParaIdx((i) => Math.min(totalParas - 1, i + 1));
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="rounded-md border p-1 text-xs disabled:opacity-30 hover:bg-secondary"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile switcher: NCERT content vs Questions */}
+          <div className="flex rounded-full bg-muted p-0.5 lg:hidden">
+            <button
+              onClick={() => setMobileTab("ncert")}
+              className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                mobileTab === "ncert" ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"
+              }`}
+            >
+              📖 NCERT Page
+            </button>
+            <button
+              onClick={() => setMobileTab("questions")}
+              className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition ${
+                mobileTab === "questions" ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"
+              }`}
+            >
+              <span>❓ Questions</span>
+              <span className="rounded-full bg-primary/15 px-1.5 py-0.2 text-[10px] font-bold text-primary">
+                {current.questions.length}
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Split Body: Desktop 50/50, Mobile Responsive Tabs */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {/* Left Column: NCERT Content Page */}
+        <div className={`space-y-4 ${mobileTab === "questions" ? "hidden lg:block" : "block"}`}>
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              NCERT Textbook Content
+            </h2>
+            <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+              Active Concept
+            </span>
+          </div>
+
+          <div className="sticky top-24">
+            <PaperPage
+              subject={chapter.chapter.subject}
+              para={current.para}
+              questionCount={current.questions.length}
+            />
+          </div>
+        </div>
+
+        {/* Right Column: Questions related to this page */}
+        <div className={`space-y-4 ${mobileTab === "ncert" ? "hidden lg:block" : "block"}`}>
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              Questions from this page ({current.questions.length})
+            </h2>
+            <span className="text-xs text-muted-foreground">
+              Instant Feedback & Solution
+            </span>
+          </div>
+
+          {current.questions.length === 0 ? (
+            <div className="rounded-2xl border border-dashed p-8 text-center text-sm text-muted-foreground">
+              No direct questions attached to this paragraph yet. Advance to the next section!
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {current.questions.map((q, idx) => (
+                <QuestionCard
+                  key={q.key}
+                  subject={chapter.chapter.subject}
+                  question={q}
+                  result={picked[q.key]}
+                  choice={choices[q.key] ?? null}
+                  onChoose={(opt) => handleSelectChoice(q.key, opt)}
+                  onSubmit={() => handleAnswerSubmit(q)}
+                  onSkip={() => {}}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Footer Navigation Bar */}
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 px-3 py-3 backdrop-blur sm:px-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+          <button
+            disabled={activeParaIdx === 0}
+            onClick={() => {
+              setActiveParaIdx((i) => Math.max(0, i - 1));
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="rounded-full border px-4 py-2 text-xs font-bold text-muted-foreground disabled:opacity-40 hover:bg-secondary"
+          >
+            ← Previous Section
+          </button>
+
+          {activeParaIdx < totalParas - 1 ? (
+            <button
+              onClick={() => {
+                setActiveParaIdx((i) => Math.min(totalParas - 1, i + 1));
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="rounded-full bg-primary px-5 py-2 text-xs font-bold text-primary-foreground shadow-sm hover:opacity-90"
+            >
+              Next Section →
+            </button>
+          ) : onNextTopic ? (
+            <button
+              onClick={onNextTopic}
+              className="flex items-center gap-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 px-5 py-2 text-xs font-bold text-white shadow-md shadow-emerald-500/20"
+            >
+              Next Topic: {nextTopicTitle ?? "Continue"} <ChevronRight className="h-4 w-4" />
+            </button>
+          ) : (
+            <button
+              onClick={onExit}
+              className="rounded-full bg-emerald-600 px-5 py-2 text-xs font-bold text-white shadow-sm"
+            >
+              Finish Revision ✓
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
