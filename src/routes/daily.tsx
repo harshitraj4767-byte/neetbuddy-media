@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { QuizModePicker, type QuizMode } from "@/components/quiz-mode-picker";
 import { startDppAttempt } from "@/lib/dpp-gate.functions";
+import { getDppTests, type DppTestDTO } from "@/lib/dpp-mysql.functions";
 import { PageShell } from "@/components/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useAttemptStates } from "@/hooks/use-attempt-state";
 import { AttemptActions, AttemptBadge } from "@/components/attempt-actions";
 
-type Test = { id: string; title: string; description: string | null; difficulty: string; duration_min: number; total_questions: number; source: string; created_at: string };
+type Test = DppTestDTO;
 
 export const Route = createFileRoute("/daily")({
   head: () => ({ meta: [{ title: "Daily Free Quiz — Neet Buddy" }, { name: "description", content: "A fresh free NEET quiz every day. 10 questions, 15 minutes." }] }),
@@ -28,6 +29,7 @@ function DailyPage() {
   const [modePick, setModePick] = useState<Test | null>(null);
   const [gating, setGating] = useState(false);
   const startGate = useServerFn(startDppAttempt);
+  const fetchTests = useServerFn(getDppTests);
   const allIds = useMemo(
     () => [...(today ? [today.id] : []), ...past.map((p) => p.id)],
     [today, past],
@@ -55,92 +57,79 @@ function DailyPage() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/api/dpp.php", { credentials: "include" });
-        if (res.ok) {
-          const data = await res.json();
-          const list = (data.tests ?? []) as Test[];
-          const todayStr = new Date().toDateString();
-          const latest = list[0];
-          const isToday = latest && new Date(latest.created_at).toDateString() === todayStr;
-          setToday(isToday ? latest : (latest || null));
-          setPast(isToday ? list.slice(1) : list);
-          return;
-        }
+        const data = await fetchTests({ data: { userId: user?.id ?? null } });
+        const list = (data?.tests ?? []) as Test[];
+        const todayStr = new Date().toDateString();
+        const latest = list[0];
+        const isToday = latest && new Date(latest.created_at).toDateString() === todayStr;
+        setToday(isToday ? latest : (latest || null));
+        setPast(isToday ? list.slice(1) : list);
       } catch (e) {
-        console.warn("Failed to load /api/dpp.php:", e);
+        console.warn("Failed to load DPP tests:", e);
+        setToday(null);
+        setPast([]);
       }
-      setToday(null);
-      setPast([]);
     })();
-  }, []);
+  }, [user?.id]);
 
   return (
     <PageShell eyebrow="Free everyday" title="Daily quiz" description="Stay sharp with a free quiz, refreshed daily.">
       {today === undefined ? <Loader2 className="h-5 w-5 animate-spin text-primary" /> : !today ? (
         <Card><CardContent className="p-10 text-center text-sm text-muted-foreground">No daily quiz yet. Check back soon.</CardContent></Card>
       ) : (
-        <Card className="overflow-hidden border-primary/25 shadow-soft">
-          <div className="bg-gradient-to-br from-primary/90 via-accent/80 to-primary/75 p-6 text-primary-foreground sm:p-8">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" /> Today
+        <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 via-card to-card">
+          <CardContent className="p-5 sm:p-7">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge className="bg-primary text-primary-foreground">Today's DPP</Badge>
+              <Badge variant="outline" className="capitalize">{today.difficulty}</Badge>
+              <span className="flex items-center gap-1 text-xs text-muted-foreground"><Clock className="h-3 w-3" />{today.duration_min}m</span>
+              <span className="flex items-center gap-1 text-xs text-muted-foreground"><FileText className="h-3 w-3" />{today.total_questions}Q</span>
+              <AttemptBadge attempt={attempts[today.id]} />
             </div>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">{today.title}</h2>
-            {today.description && <p className="mt-2 max-w-xl text-sm opacity-90">{today.description}</p>}
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm opacity-90">
-              <span className="inline-flex items-center gap-1"><FileText className="h-4 w-4" />{today.total_questions} Qs</span>
-              <span className="inline-flex items-center gap-1"><Clock className="h-4 w-4" />{today.duration_min} min</span>
-              <Badge className="bg-white/20 capitalize">{today.difficulty}</Badge>
-              <Badge className="bg-white/20">{today.source}</Badge>
-              {attempts[today.id]?.status === "in_progress" && <Badge className="bg-white/20">In progress</Badge>}
-              {attempts[today.id] && attempts[today.id]!.status !== "in_progress" && (
-                <Badge className="bg-white/20">
-                  Attempted{attempts[today.id]!.score !== null ? ` · ${attempts[today.id]!.score}` : ""}
-                </Badge>
-              )}
+            <h2 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">{today.title}</h2>
+            {today.description && <p className="mt-1 text-sm text-muted-foreground">{today.description}</p>}
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <AttemptActions
+                testId={today.id}
+                attempt={attempts[today.id]}
+                onStart={() => setModePick(today)}
+                resumeTo={`/quiz/${today.id}`}
+                gating={gating}
+                size="default"
+              />
             </div>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Button
-                size="lg"
-                className="bg-background text-foreground hover:bg-background/90"
-                onClick={() => setModePick(today)}
-              >
-                {!attempts[today.id]
-                  ? "Start now"
-                  : attempts[today.id]!.status === "in_progress"
-                    ? "Resume"
-                    : "Reattempt"}
-              </Button>
-              {attempts[today.id] && attempts[today.id]!.status !== "in_progress" && (
-                <Button asChild size="lg" variant="outline" className="border-white/50 bg-white/10 text-primary-foreground hover:bg-white/20">
-                  <Link to="/analysis/$attemptId" params={{ attemptId: attempts[today.id]!.attemptId }}>
-                    View solution
-                  </Link>
-                </Button>
-              )}
-            </div>
-          </div>
+          </CardContent>
         </Card>
       )}
 
       {past.length > 0 && (
-        <div className="mt-10">
-          <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">Previous quizzes</h3>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 space-y-3">
+          <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
+            <CalendarDays className="h-4 w-4" /> Past DPPs ({past.length})
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
             {past.map((t) => (
-              <Card key={t.id} className="hover-lift">
-                <CardContent className="space-y-3 p-5">
+              <Card key={t.id} className="hover:border-primary/40 transition-colors">
+                <CardContent className="p-4 space-y-2">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <CalendarDays className="h-3.5 w-3.5" />
-                      {new Date(t.created_at).toLocaleDateString()}
+                    <span className="text-xs text-muted-foreground">{new Date(t.created_at).toLocaleDateString()}</span>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="secondary" className="capitalize text-xs">{t.difficulty}</Badge>
+                      <AttemptBadge attempt={attempts[t.id]} />
                     </div>
-                    <AttemptBadge state={attempts[t.id]} />
                   </div>
-                  <div className="text-base font-semibold leading-tight">{t.title}</div>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <span>{t.total_questions} Qs</span><span>·</span><span>{t.duration_min} min</span>
+                  <h3 className="font-semibold leading-snug line-clamp-1">{t.title}</h3>
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="text-xs text-muted-foreground">{t.total_questions} questions · {t.duration_min}m</span>
+                    <AttemptActions
+                      testId={t.id}
+                      attempt={attempts[t.id]}
+                      onStart={() => setModePick(t)}
+                      resumeTo={`/quiz/${t.id}`}
+                      gating={gating}
+                      size="sm"
+                    />
                   </div>
-                  <AttemptActions state={attempts[t.id]} onStart={() => setModePick(t)} size="sm" />
                 </CardContent>
               </Card>
             ))}
@@ -149,11 +138,12 @@ function DailyPage() {
       )}
 
       <QuizModePicker
-        open={!!modePick}
-        subtitle={modePick?.title}
-        onClose={() => setModePick(null)}
-        onPick={(m) => modePick && startWithMode(modePick, m)}
-        busy={gating}
+        open={Boolean(modePick)}
+        onOpenChange={(open) => { if (!open) setModePick(null); }}
+        onSelect={(mode) => { if (modePick) void startWithMode(modePick, mode); }}
+        title={modePick?.title}
+        totalQuestions={modePick?.total_questions}
+        durationMin={modePick?.duration_min}
       />
     </PageShell>
   );

@@ -570,7 +570,7 @@ function DailyDppTile({ testId, streak, today }: { testId: string | null; streak
     if (!testId || busy) return;
     setBusy(true);
     try {
-      await startGate({ data: { test_id: testId } });
+      try { await startGate({ data: { test_id: testId } }); } catch (gateErr) { console.warn("Gate check non-blocking:", gateErr); }
       setPick(false);
       nav({ to: "/quiz/$testId", params: { testId }, search: { mode } as never });
     } catch (e) {
