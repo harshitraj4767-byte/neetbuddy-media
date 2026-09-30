@@ -30,7 +30,7 @@ export function getPool(): Pool {
     const options: PoolOptions = {
       host: env("MYSQL_HOST") || "srv1822.hstgr.io",
       port: Number(env("MYSQL_PORT") || 3306),
-      user: env("MYSQL_USER") || "u960147517_neetbuddydata",
+      user: env("MYSQL_USER") || "u960147517_neetbuddy",
       password: env("MYSQL_PASSWORD") || "Neetbuddy@8081",
       database: env("MYSQL_DATABASE") || "u960147517_neetbuddydata",
       waitForConnections: true,
