@@ -215,7 +215,7 @@ function StudyRoadmapPage() {
           <img
             src={pose.src}
             alt={pose.alt}
-            className="h-32 w-32 shrink-0 object-contain drop-shadow-xl sm:h-40 sm:w-40"
+            className="h-36 w-36 shrink-0 object-contain drop-shadow-2xl transition-transform hover:scale-105 sm:h-44 sm:w-44 md:h-48 md:w-48"
           />
         </div>
 
@@ -311,25 +311,25 @@ function StudyRoadmapPage() {
               </div>
 
               {/* World mascot guide banner - positioned above trail without covering buttons */}
-              <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-border/50 bg-card/60 p-3 shadow-sm backdrop-blur">
-                <div className="flex items-center gap-2.5">
+              <div className="mt-4 flex items-center justify-between gap-3.5 rounded-2xl border border-border/50 bg-card/70 p-3.5 shadow-sm backdrop-blur">
+                <div className="flex items-center gap-3">
                   <img
                     src={worldPose.src}
                     alt={worldPose.alt}
-                    className="h-16 w-16 shrink-0 object-contain drop-shadow-sm sm:h-20 sm:w-20"
+                    className="h-20 w-20 shrink-0 object-contain drop-shadow sm:h-24 sm:w-24"
                   />
                   <div>
-                    <div className="text-xs font-bold text-foreground">
+                    <div className="text-xs font-bold text-foreground sm:text-sm">
                       Dr. Catalyst&apos;s World {world.index} Tip
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground sm:text-[13px]">
                       {world.index % 2 === 1
                         ? "Master every concept thoroughly and conquer the boss quiz!"
                         : "Maintain your daily streak and earn maximum XP!"}
                     </p>
                   </div>
                 </div>
-                <div className="hidden sm:inline-flex rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
+                <div className="hidden sm:inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                   World {world.index}
                 </div>
               </div>
@@ -428,15 +428,19 @@ function TrailConnector({
         <div
           className={`pointer-events-none absolute top-1/2 -translate-y-1/2 select-none transition-transform ${
             mascotSide === "left"
-              ? "left-0 sm:left-4 md:left-10"
-              : "right-0 sm:right-4 md:right-10"
+              ? "left-1 sm:left-6 md:left-12"
+              : "right-1 sm:right-6 md:right-12"
           }`}
         >
-          <div className="relative flex items-center gap-1.5 opacity-90 transition-all hover:opacity-100">
+          <div
+            className={`relative flex items-center gap-2 opacity-95 transition-all ${
+              mascotSide === "left" ? "flex-row" : "flex-row-reverse"
+            }`}
+          >
             <img
               src={mascotPose.src}
               alt={mascotPose.alt}
-              className="h-16 w-16 object-contain drop-shadow sm:h-20 sm:w-20 md:h-24 md:w-24"
+              className="h-20 w-20 object-contain drop-shadow-md sm:h-24 sm:w-24 md:h-28 md:w-28"
             />
             <div className="hidden rounded-full border border-border/70 bg-card/95 px-2.5 py-1 text-[10px] font-semibold text-muted-foreground shadow-sm backdrop-blur lg:block">
               {index % 4 === 0 ? "Keep going! 🔥" : "Almost there! 🎯"}
@@ -626,7 +630,7 @@ function LevelSheet({
               <img
                 src={pose.src}
                 alt={pose.alt}
-                className="h-28 w-28 shrink-0 object-contain drop-shadow-lg"
+                className="h-32 w-32 shrink-0 object-contain drop-shadow-xl sm:h-36 sm:w-36"
               />
             </div>
           </SheetHeader>
