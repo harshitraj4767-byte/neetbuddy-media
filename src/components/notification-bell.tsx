@@ -1,4 +1,3 @@
-import { useEffect, useState, useCallback } from "@tanstack/react-router";
 import { useEffect as useReactEffect, useState as useReactState, useCallback as useReactCallback } from "react";
 import { Bell, Check, Loader2 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
@@ -16,9 +15,28 @@ type Notif = {
   created_at: string;
 };
 
+const READ_STORAGE_KEY = "nb_seen_notifications_v1";
+
+function getLocalReadIds(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = localStorage.getItem(READ_STORAGE_KEY);
+    return new Set(raw ? JSON.parse(raw) : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveLocalReadIds(ids: Set<string>) {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(READ_STORAGE_KEY, JSON.stringify(Array.from(ids)));
+  } catch {}
+}
+
 function timeAgo(iso: string) {
   const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-  if (s < 60) return ;
+  if (s < 60) return "just now";
   if (s < 3600) return ;
   if (s < 86400) return ;
   return ;
@@ -37,20 +55,31 @@ export function NotificationBell() {
   const [items, setItems] = useReactState<Notif[] | null>(null);
   const [busy, setBusy] = useReactState(false);
 
+  const applyReadState = (notifs: Notif[]): Notif[] => {
+    const readIds = getLocalReadIds();
+    return notifs.map((n) => {
+      if (readIds.has(n.id)) {
+        return { ...n, read_at: n.read_at || new Date().toISOString() };
+      }
+      return n;
+    });
+  };
+
   const load = useReactCallback(async () => {
     try {
       const res = await fetch("/api/notifications.php", { credentials: "include" });
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data)) {
-          setItems(data);
+          setItems(applyReadState(data));
           return;
         }
       }
     } catch (e) {
       console.warn("Failed to load notifications:", e);
     }
-    setItems([
+    // Fallback item if server route is pending
+    const fallback: Notif[] = [
       {
         id: "notif-dpp-100",
         kind: "dpp",
@@ -59,8 +88,9 @@ export function NotificationBell() {
         link: "/dpp",
         read_at: null,
         created_at: new Date().toISOString(),
-      }
-    ]);
+      },
+    ];
+    setItems(applyReadState(fallback));
   }, []);
 
   useReactEffect(() => {
@@ -71,7 +101,14 @@ export function NotificationBell() {
   }, [user, load]);
 
   const markOne = async (id: string) => {
-    setItems((prev) => (prev ? prev.map((n) => (n.id === id ? { ...n, read_at: new Date().toISOString() } : n)) : []));
+    const readIds = getLocalReadIds();
+    readIds.add(id);
+    saveLocalReadIds(readIds);
+
+    setItems((prev) =>
+      prev ? prev.map((n) => (n.id === id ? { ...n, read_at: n.read_at || new Date().toISOString() } : n)) : []
+    );
+
     try {
       await fetch("/api/notifications.php", {
         method: "POST",
@@ -84,7 +121,12 @@ export function NotificationBell() {
 
   const markAll = async () => {
     setBusy(true);
-    setItems((prev) => (prev ? prev.map((n) => ({ ...n, read_at: new Date().toISOString() })) : []));
+    const readIds = getLocalReadIds();
+    (items ?? []).forEach((n) => readIds.add(n.id));
+    saveLocalReadIds(readIds);
+
+    setItems((prev) => (prev ? prev.map((n) => ({ ...n, read_at: n.read_at || new Date().toISOString() })) : []));
+
     try {
       await fetch("/api/notifications.php", {
         method: "POST",
@@ -147,13 +189,13 @@ export function NotificationBell() {
                   <div
                     className={cn(
                       "flex items-start gap-2 px-3 py-2.5 transition hover:bg-secondary/50",
-                      !n.read_at && "bg-primary/5",
+                      !n.read_at && "bg-primary/5"
                     )}
                   >
                     <span
                       className={cn(
                         "mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold uppercase",
-                        dot,
+                        dot
                       )}
                     >
                       {n.kind.charAt(0)}
