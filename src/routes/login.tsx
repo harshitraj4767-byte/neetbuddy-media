@@ -43,7 +43,9 @@ function LoginPage() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const r = new URLSearchParams(window.location.search).get("ref");
+    const qs = new URLSearchParams(window.location.search);
+    if (qs.get("tab") === "signup") setTab("signup");
+    const r = qs.get("ref");
     if (r) {
       const code = r.toUpperCase();
       setRefCode(code); setTab("signup");

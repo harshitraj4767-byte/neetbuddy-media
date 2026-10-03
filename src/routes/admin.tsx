@@ -606,11 +606,6 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
         <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
-              <MessageCircle className="h-4 w-4 text-emerald-500" />
-
-        <div className="rounded-xl border bg-muted/20 p-4 space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
               <Youtube className="h-4 w-4 text-red-500" />
               YouTube Channel / Video Lectures Link
             </label>
