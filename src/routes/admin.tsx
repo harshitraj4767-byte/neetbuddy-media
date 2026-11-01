@@ -198,11 +198,11 @@ function UserLookup() {
     if (!email.trim()) return toast.error("Enter an email");
     setLoading(true);
     try {
-      const res = await fetch(`/api/admin.php?action=user_reports`, { credentials: "include" });
+      const res = await fetch(`/api/admin.php?action=user_reports&email=${encodeURIComponent(email.trim())}`, { credentials: "include" });
       const data = await res.json();
-      const match = (data.users ?? []).find((u: Record<string, unknown>) => String(u.email ?? "").toLowerCase() === email.trim().toLowerCase());
+      const match = data.user ?? (data.users ?? []).find((u: Record<string, unknown>) => String(u.email ?? "").toLowerCase() === email.trim().toLowerCase());
       setResult(match ?? null);
-      if (!match) toast.error("No user found in active list");
+      if (!match) toast.error("No user found");
     } catch {
       toast.error("Lookup failed");
     } finally {
@@ -258,7 +258,7 @@ function CohortReport() {
       </div>
       <Card>
         <div className="flex items-center gap-2 font-semibold"><TrendingUp className="h-4 w-4 text-primary" /> Cohort Progression Index</div>
-        <p className="mt-1 text-sm text-muted-foreground">Approximately {data?.accuracy_increase_rate ?? 74}% of active students exhibit rising accuracy over consecutive test sessions.</p>
+        <p className="mt-1 text-sm text-muted-foreground">{Number(data?.accuracy_increase_rate ?? 0)}% of students with at least two answered attempts had higher accuracy in their latest attempt than their first recorded attempt.</p>
       </Card>
     </div>
   );
@@ -404,11 +404,11 @@ function FeedbackView() {
               <b>{String(f.user_name ?? "Anonymous")}</b>
               <Badge variant="secondary">{String(f.category)}</Badge>
               <span className="text-amber-500">{"★".repeat(Number(f.rating) || 0)}</span>
-              {f.status === "resolved" ? <Badge className="bg-emerald-500/15 text-emerald-600">resolved</Badge> : <Badge className="bg-amber-500/15 text-amber-600">pending</Badge>}
+              {Boolean(f.resolved) ? <Badge className="bg-emerald-500/15 text-emerald-600">resolved</Badge> : <Badge className="bg-amber-500/15 text-amber-600">pending</Badge>}
             </div>
             <p className="mt-1 text-sm text-muted-foreground">{String(f.message)}</p>
           </div>
-          {f.status !== "resolved" && <Button size="sm" variant="outline" onClick={() => resolve(String(f.id))}><BadgeCheck className="h-4 w-4" /> Resolve</Button>}
+          {!Boolean(f.resolved) && <Button size="sm" variant="outline" onClick={() => resolve(String(f.id))}><BadgeCheck className="h-4 w-4" /> Resolve</Button>}
         </Card>
       ))}
     </div>
@@ -430,7 +430,7 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
   if (sub === "overview") return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Stat label="Total Users" value={data?.total_users ?? 0} icon={Users} />
-      <Stat label="Estimated Gross Revenue" value={`₹${data?.total_revenue ?? 0}`} icon={Wallet} accent="text-emerald-500" />
+      <Stat label="Captured Purchase Revenue" value={`₹${data?.total_revenue ?? 0}`} icon={Wallet} accent="text-emerald-500" />
       <Stat label="Total Questions in Bank" value={data?.total_questions ?? 0} icon={BarChart3} />
       <Stat label="Daily DPPs" value={data?.total_dpps ?? 0} icon={Sparkles} />
       <Stat label="Mock Tests" value={data?.total_mocks ?? 0} icon={Activity} />
@@ -441,7 +441,7 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
 
   if (sub === "features") return (
     <div className="space-y-3">
-      {(data?.features as Record<string, unknown>[] ?? []).sort((a, b) => Number(b.popularity_percent) - Number(a.popularity_percent)).map((f, i) => (
+      {(data?.features as Record<string, unknown>[] ?? []).sort((a, b) => Number(b.usage_count) - Number(a.usage_count)).map((f, i) => (
         <Card key={i} className="flex items-center gap-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 font-bold text-primary">#{i + 1}</div>
           <div className="min-w-0 flex-1">
@@ -451,8 +451,8 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
             </div>
           </div>
           <div className="text-right">
-            <div className="font-bold text-primary">{f.popularity_percent}%</div>
-            <div className="text-xs text-muted-foreground">{Math.round(Number(f.usage_count))} sessions</div>
+            <div className="font-bold text-primary">{f.popularity_percent == null ? "—" : `${f.popularity_percent}%`}</div>
+            <div className="text-xs text-muted-foreground">{Math.round(Number(f.usage_count))} recorded</div>
           </div>
         </Card>
       ))}
@@ -466,7 +466,7 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
           <Package className="h-8 w-8 text-primary" />
           <div className="min-w-0 flex-1">
             <div className="font-semibold">{String(p.plan)}</div>
-            <div className="text-xs text-muted-foreground">₹{p.price} • {p.share} of total orders</div>
+            <div className="text-xs text-muted-foreground">{p.price == null ? `${String(p.status ?? "unknown")} • ${p.share}` : `₹${p.price} • ${p.share} of total orders`}</div>
           </div>
           <Badge className="bg-emerald-500/15 text-emerald-600">{p.purchases} active</Badge>
         </Card>
@@ -495,12 +495,12 @@ function AppReport({ sub }: { sub: SubTab; goBack: () => void }) {
         <Card key={i} className="space-y-2">
           <div className="flex items-center justify-between">
             <b className="text-base">{String(s.subject)}</b>
-            <div className="text-sm font-semibold text-primary">{s.accuracy}% Accuracy (Error rate {s.error_rate}%)</div>
+            <div className="text-sm font-semibold text-primary">{s.accuracy == null ? "Not enough answered questions" : `${s.accuracy}% Accuracy (Error rate ${s.error_rate}%)`}</div>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-muted">
             <div className="h-full rounded-full bg-primary" style={{ width: `${s.accuracy}%` }} />
           </div>
-          <p className="text-xs text-muted-foreground">Most Challenging Chapters: <span className="font-medium text-foreground">{String(s.tough_topics)}</span></p>
+          <p className="text-xs text-muted-foreground">Based on {String(s.attempts ?? 0)} attempts whose test titles identify this subject.</p>
         </Card>
       ))}
     </div>
@@ -542,7 +542,7 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
 
   useEffect(() => {
     if (sub === "banners") fetch("/api/admin.php?action=banners", { credentials: "include" }).then((r) => r.json()).then((d) => setBanners(d.banners ?? [])).catch(() => {});
-    if (sub === "coupons") fetch("/api/admin.php?action=coupons", { credentials: "include" }).then((r) => r.json()).then((d) => setCoupons(d.coupons ?? [])).catch(() => {});
+    if (sub === "coupons") fetch("/api/admin.php?action=coupons", { credentials: "include" }).then((r) => r.json()).then((d) => { if (!d.error) setCoupons(d.coupons ?? []); else toast.error(d.error); }).catch(() => toast.error("Failed to load coupons"));
     if (sub === "social-links") {
       fetch("/api/admin.php?action=get_social_links", { credentials: "include" })
         .then((r) => r.json())
@@ -737,7 +737,7 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
           <Input placeholder="Max Uses" value={cMax} onChange={(e) => setCMax(e.target.value)} />
         </div>
         <Button disabled={busy} onClick={() => wrap(async () => {
-          const d = await post("coupons", { code: cCode, discount_percent: Number(cPct) || 20, max_uses: Number(cMax) || 100 });
+          const d = await post("coupons", { code: cCode, kind: "percent", value: Number(cPct), max_uses: cMax ? Number(cMax) : null });
           d.success ? toast.success(d.message) : toast.error(d.error ?? "Failed");
           setCCode("");
         })}><Plus className="h-4 w-4" /> Create Coupon</Button>
@@ -745,10 +745,12 @@ function AppManagement({ sub }: { sub: SubTab; goBack: () => void }) {
       {coupons.map((c) => (
         <Card key={String(c.id)} className="flex items-center gap-3">
           <b className="font-mono text-primary">{String(c.code)}</b>
-          <Badge variant="secondary">{String(c.discount_percent)}% off</Badge>
+          <Badge variant="secondary">{String(c.value ?? 0)}{String(c.kind) === "percent" ? "% off" : " off"}</Badge>
           <span className="text-xs text-muted-foreground">{c.used_count}/{c.max_uses} used</span>
           <Button size="sm" variant="destructive" className="ml-auto" onClick={() => wrap(async () => {
-            await post("delete_coupon", { id: c.id }); setCoupons((p) => p.filter((x) => x.id !== c.id)); toast.success("Coupon deleted");
+            const d = await post("delete_coupon", { id: c.id });
+          if (d.success) { setCoupons((p) => p.filter((x) => x.id !== c.id)); toast.success("Coupon deleted"); }
+          else toast.error(d.error ?? "Could not delete coupon");
           })}><Trash2 className="h-4 w-4" /></Button>
         </Card>
       ))}
