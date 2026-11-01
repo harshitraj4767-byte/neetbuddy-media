@@ -13,64 +13,30 @@ if (!$user) {
 
 // Allow admin access
 $isAdmin = false;
-$userEmail = strtolower($user['email'] ?? '');
-if (in_array($userEmail, ['mohdakmal87741@gmail.com', 'admin@neetbuddy.in', 'harshitraj4767@gmail.com'])) {
-    $isAdmin = true;
-} else {
-    try {
-        $stmt = $pdo->prepare("SELECT 1 FROM user_roles WHERE user_id = ? AND role = 'admin' LIMIT 1");
-        $stmt->execute([$user["id"]]);
-        $isAdmin = (bool)$stmt->fetchColumn();
-    } catch (Throwable $e) {
-        $isAdmin = true;
-    }
+try {
+    $stmt = $pdo->prepare("SELECT 1 FROM user_roles WHERE user_id = ? AND role = 'admin' LIMIT 1");
+    $stmt->execute([$user["id"]]);
+    $isAdmin = (bool)$stmt->fetchColumn();
+} catch (Throwable $e) {
+    $isAdmin = false;
 }
 
 if (!$isAdmin) {
     nb_fail("Forbidden: Admin privileges required", 403);
 }
 
-// Ensure support tables exist
+// Create only the small settings table used by this endpoint. Core tables such as
+// coupons, feedback, and study_materials already exist with their application schema;
+// never create parallel tables with conflicting columns here.
 try {
     $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
         setting_key VARCHAR(64) PRIMARY KEY,
         setting_value TEXT NOT NULL,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
-
-    $pdo->exec("CREATE TABLE IF NOT EXISTS coupons (
-        id VARCHAR(64) PRIMARY KEY,
-        code VARCHAR(32) UNIQUE NOT NULL,
-        discount_percent INT NOT NULL,
-        max_uses INT NOT NULL DEFAULT 100,
-        used_count INT NOT NULL DEFAULT 0,
-        expires_at DATETIME NULL,
-        active TINYINT NOT NULL DEFAULT 1,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
-
-    $pdo->exec("CREATE TABLE IF NOT EXISTS feedback (
-        id VARCHAR(64) PRIMARY KEY,
-        user_id VARCHAR(64) NULL,
-        user_name VARCHAR(128) NULL,
-        user_email VARCHAR(128) NULL,
-        category VARCHAR(64) NOT NULL DEFAULT 'general',
-        rating INT NOT NULL DEFAULT 5,
-        message TEXT NOT NULL,
-        status VARCHAR(32) NOT NULL DEFAULT 'pending',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
-
-    $pdo->exec("CREATE TABLE IF NOT EXISTS study_materials (
-        id VARCHAR(64) PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
-        subject VARCHAR(64) NOT NULL,
-        file_url VARCHAR(512) NOT NULL,
-        type VARCHAR(32) NOT NULL DEFAULT 'notes',
-        is_free TINYINT NOT NULL DEFAULT 1,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
-} catch (Throwable $e) {}
+} catch (Throwable $e) {
+    nb_fail("Admin settings table is unavailable", 500);
+}
 
 $action = $_GET["action"] ?? $_POST["action"] ?? "";
 $method = $_SERVER["REQUEST_METHOD"] ?? "GET";
@@ -84,6 +50,21 @@ if (!$action && isset($input["action"])) {
 // ==========================================
 if ($action === 'user_reports') {
     try {
+        $searchEmail = trim((string)($_GET['email'] ?? ''));
+        if ($searchEmail !== '') {
+            $uStmt = $pdo->prepare("SELECT u.id, u.email, COALESCE(p.full_name, 'NEET Aspirant') as name, u.created_at,
+                (SELECT COUNT(*) FROM attempts a WHERE a.user_id = u.id) as attempts_count,
+                (SELECT ROUND(AVG(score), 1) FROM attempts a WHERE a.user_id = u.id) as avg_score,
+                (SELECT ROUND((SUM(correct_count) / NULLIF(SUM(correct_count + wrong_count), 0)) * 100, 1) FROM attempts a WHERE a.user_id = u.id) as accuracy
+                FROM auth_users u LEFT JOIN profiles p ON u.id = p.id WHERE LOWER(u.email) = LOWER(?) LIMIT 1");
+            $uStmt->execute([$searchEmail]);
+            $foundUser = $uStmt->fetch(PDO::FETCH_ASSOC);
+            nb_json([
+                'user' => $foundUser ?: null,
+                'users' => $foundUser ? [$foundUser] : []
+            ]);
+        }
+
         $usersStmt = $pdo->query("SELECT u.id, u.email, COALESCE(p.full_name, 'NEET Aspirant') as name, u.created_at,
             (SELECT COUNT(*) FROM attempts a WHERE a.user_id = u.id) as attempts_count,
             (SELECT ROUND(AVG(score), 1) FROM attempts a WHERE a.user_id = u.id) as avg_score,
@@ -100,10 +81,34 @@ if ($action === 'user_reports') {
             FROM attempts WHERE started_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)");
         $cohortStats = $cohortStmt ? $cohortStmt->fetch(PDO::FETCH_ASSOC) : [];
 
+        // Real Progression Index calculated from multi-attempt students
+        $progressionRate = 0;
+        try {
+            $progStmt = $pdo->query("SELECT 
+                COUNT(DISTINCT user_id) as multi_users,
+                SUM(CASE WHEN last_acc > first_acc THEN 1 ELSE 0 END) as improved_users
+                FROM (
+                    SELECT 
+                        user_id,
+                        SUBSTRING_INDEX(GROUP_CONCAT((correct_count / NULLIF(correct_count + wrong_count, 0)) * 100 ORDER BY started_at ASC), ',', 1) as first_acc,
+                        SUBSTRING_INDEX(GROUP_CONCAT((correct_count / NULLIF(correct_count + wrong_count, 0)) * 100 ORDER BY started_at DESC), ',', 1) as last_acc,
+                        COUNT(*) as att_cnt
+                    FROM attempts
+                    WHERE correct_count + wrong_count > 0
+                    GROUP BY user_id
+                    HAVING att_cnt >= 2
+                ) sub");
+            if ($progStmt && ($progData = $progStmt->fetch(PDO::FETCH_ASSOC))) {
+                $multi = (int)($progData['multi_users'] ?? 0);
+                $imp = (int)($progData['improved_users'] ?? 0);
+                $progressionRate = $multi > 0 ? (int)round(($imp / $multi) * 100) : 0;
+            }
+        } catch (Throwable $e) {}
+
         nb_json([
             'users' => $usersList,
             'cohort' => $cohortStats,
-            'accuracy_increase_rate' => 74,
+            'accuracy_increase_rate' => $progressionRate,
         ]);
     } catch (Throwable $e) {
         nb_fail($e->getMessage(), 500);
@@ -157,13 +162,13 @@ if ($action === 'send_notification') {
             $stmt = $pdo->prepare("INSERT INTO notifications (id, user_id, kind, title, body, link, created_at) VALUES (UUID(), ?, ?, ?, ?, ?, NOW())");
             $stmt->execute([$targetUserId, $kind, $title, $body, $link]);
         } else {
-            $userRows = $pdo->query("SELECT id FROM auth_users LIMIT 500")->fetchAll(PDO::FETCH_COLUMN);
+            $userRows = $pdo->query("SELECT id FROM auth_users")->fetchAll(PDO::FETCH_COLUMN);
             $stmt = $pdo->prepare("INSERT INTO notifications (id, user_id, kind, title, body, link, created_at) VALUES (UUID(), ?, ?, ?, ?, ?, NOW())");
             foreach ($userRows as $uid) {
                 $stmt->execute([$uid, $kind, $title, $body, $link]);
             }
         }
-        nb_json(['success' => true, 'message' => 'Notification dispatched successfully']);
+        nb_json(['success' => true, 'sent_count' => $targetUserId ? 1 : count($userRows), 'message' => 'Notification dispatched successfully']);
     } catch (Throwable $e) {
         nb_fail($e->getMessage(), 500);
     }
@@ -181,10 +186,10 @@ if ($action === 'feedback') {
 
 if ($action === 'resolve_feedback') {
     $id = $input['id'] ?? '';
-    $status = $input['status'] ?? 'resolved';
+    $isResolved = !empty($input['resolved']) || ($input['status'] ?? '') === 'resolved' ? 1 : 0;
     try {
-        $stmt = $pdo->prepare("UPDATE feedback SET status = ? WHERE id = ?");
-        $stmt->execute([$status, $id]);
+        $stmt = $pdo->prepare("UPDATE feedback SET resolved = ? WHERE id = ?");
+        $stmt->execute([$isResolved, $id]);
         nb_json(['success' => true]);
     } catch (Throwable $e) {
         nb_fail($e->getMessage(), 500);
@@ -220,22 +225,26 @@ if ($action === 'analytics_graphs') {
             ];
         }
 
-        // Subscriptions & Real Revenue
+        // Financial metrics are based only on completed captured purchases.
         $subsCount = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE status = 'active'")->fetchColumn();
-        $totalBatchesSold = $subsCount;
-        $totalRev = $subsCount * 1499;
+        $salesStmt = $pdo->query("SELECT COUNT(*) as sales, COALESCE(SUM(amount_paid), 0) as revenue FROM batch_purchases WHERE status IN ('active', 'paid', 'completed')");
+        $salesSummary = $salesStmt ? $salesStmt->fetch(PDO::FETCH_ASSOC) : ['sales' => 0, 'revenue' => 0];
+        $totalBatchesSold = (int)($salesSummary['sales'] ?? 0);
+        $totalRev = (float)($salesSummary['revenue'] ?? 0);
 
-        // Real 5-month revenue trend from actual subscriptions
+        // Monthly paid purchase trend; no estimated prices.
         $revTrend = [];
         for ($m = 4; $m >= 0; $m--) {
             $mStr = date('M', strtotime("-$m months"));
             $mStart = date('Y-m-01 00:00:00', strtotime("-$m months"));
             $mEnd = date('Y-m-t 23:59:59', strtotime("-$m months"));
-            $mSales = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE created_at >= '$mStart' AND created_at <= '$mEnd'")->fetchColumn();
+            $revStmt = $pdo->prepare("SELECT COUNT(*) as sales, COALESCE(SUM(amount_paid), 0) as revenue FROM batch_purchases WHERE status IN ('active', 'paid', 'completed') AND created_at >= ? AND created_at <= ?");
+            $revStmt->execute([$mStart, $mEnd]);
+            $monthSales = $revStmt->fetch(PDO::FETCH_ASSOC) ?: ['sales' => 0, 'revenue' => 0];
             $revTrend[] = [
                 'month' => $mStr,
-                'revenue' => $mSales * 1499,
-                'sales' => $mSales
+                'revenue' => (float)($monthSales['revenue'] ?? 0),
+                'sales' => (int)($monthSales['sales'] ?? 0)
             ];
         }
 
@@ -280,12 +289,20 @@ if ($action === 'analytics_graphs') {
             ['status' => 'Abandoned / Exit', 'percent' => $abanPct, 'color' => '#ef4444']
         ];
 
-        // Real Subject split from attempts
+        // Subject attribution uses explicit subject names present in test titles.
         $subjectCounts = ['Biology' => 0, 'Chemistry' => 0, 'Physics' => 0];
         try {
-            $sStmt = $pdo->query("SELECT t.subject, COALESCE(SUM(a.correct_count + a.wrong_count), 0) as q_cnt FROM attempts a JOIN tests t ON a.test_id = t.id GROUP BY t.subject");
+            $sStmt = $pdo->query("SELECT 
+                CASE
+                    WHEN LOWER(t.title) REGEXP 'biology|botany|zoology' THEN 'Biology'
+                    WHEN LOWER(t.title) LIKE '%chemistry%' THEN 'Chemistry'
+                    WHEN LOWER(t.title) LIKE '%physics%' THEN 'Physics'
+                    ELSE 'Mixed / Unlabelled'
+                END as subject_name,
+                COALESCE(SUM(a.correct_count + a.wrong_count), 0) as q_cnt
+                FROM attempts a JOIN tests t ON a.test_id = t.id GROUP BY subject_name");
             while ($sr = $sStmt->fetch(PDO::FETCH_ASSOC)) {
-                $subName = ucfirst(strtolower(trim((string)$sr['subject'])));
+                $subName = $sr['subject_name'] ?? '';
                 if (isset($subjectCounts[$subName])) {
                     $subjectCounts[$subName] += (int)$sr['q_cnt'];
                 }
@@ -325,29 +342,39 @@ if ($action === 'analytics_graphs') {
             ];
         }
 
-        // Real Time per Question from attempts
+        // Time per question uses attempts.time_taken_sec and answered question counts.
         $timePerQ = [
             ['subject' => 'Biology', 'seconds' => 0, 'target' => 45],
             ['subject' => 'Chemistry', 'seconds' => 0, 'target' => 60],
             ['subject' => 'Physics', 'seconds' => 0, 'target' => 75]
         ];
         try {
-            $tStmt = $pdo->query("SELECT t.subject, AVG(a.time_spent_seconds / NULLIF(a.correct_count + a.wrong_count, 0)) as avg_sec FROM attempts a JOIN tests t ON a.test_id = t.id WHERE a.time_spent_seconds > 0 GROUP BY t.subject");
+            $tStmt = $pdo->query("SELECT 
+                CASE
+                    WHEN LOWER(t.title) REGEXP 'biology|botany|zoology' THEN 'Biology'
+                    WHEN LOWER(t.title) LIKE '%chemistry%' THEN 'Chemistry'
+                    WHEN LOWER(t.title) LIKE '%physics%' THEN 'Physics'
+                    ELSE 'Mixed / Unlabelled'
+                END as subject_name,
+                AVG(a.time_taken_sec / NULLIF(a.correct_count + a.wrong_count, 0)) as avg_sec
+                FROM attempts a JOIN tests t ON a.test_id = t.id
+                WHERE a.time_taken_sec > 0 GROUP BY subject_name");
             while ($tr = $tStmt->fetch(PDO::FETCH_ASSOC)) {
-                $sub = ucfirst(strtolower(trim((string)$tr['subject'])));
+                $sub = $tr['subject_name'] ?? '';
                 foreach ($timePerQ as &$item) {
                     if ($item['subject'] === $sub) {
                         $item['seconds'] = (int)round((float)$tr['avg_sec']);
                     }
                 }
+                unset($item);
             }
         } catch (Throwable $e) {}
 
-        // Real Mode Share
+        // Mode share from actual test types; battlegrounds are tracked in battle_matches.
         $dppAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('dpp', 'daily')")->fetchColumn();
         $mockAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('mock', 'test')")->fetchColumn();
-        $battleAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts WHERE mode = 'battle' OR test_id LIKE 'battle_%'")->fetchColumn();
-        $otherAttempts = max(0, $totalAttempts - $dppAttempts - $mockAttempts - $battleAttempts);
+        $battleAttempts = (int)$pdo->query("SELECT COUNT(*) FROM battle_matches")->fetchColumn();
+        $otherAttempts = max(0, $totalAttempts - $dppAttempts - $mockAttempts);
 
         $modeShare = [
             ['mode' => 'Daily DPPs', 'percent' => $totalAttempts > 0 ? (int)round(($dppAttempts / $totalAttempts) * 100) : 0, 'color' => '#10b981'],
@@ -382,93 +409,95 @@ if ($action === 'app_report') {
         $usersCount = (int)$pdo->query("SELECT COUNT(*) FROM auth_users")->fetchColumn();
         $qbCount = (int)$pdo->query("SELECT COUNT(*) FROM qb_questions")->fetchColumn();
         $nuggetCount = (int)$pdo->query("SELECT COUNT(*) FROM nugget_questions")->fetchColumn();
+        $pyqCount = (int)$pdo->query("SELECT COUNT(*) FROM neet_pyq_questions")->fetchColumn();
         $dppCount = (int)$pdo->query("SELECT COUNT(*) FROM tests WHERE type IN ('dpp', 'daily')")->fetchColumn();
         $mockCount = (int)$pdo->query("SELECT COUNT(*) FROM tests WHERE type IN ('mock', 'test')")->fetchColumn();
         $attemptsCount = (int)$pdo->query("SELECT COUNT(*) FROM attempts")->fetchColumn();
         $subsCount = (int)$pdo->query("SELECT COUNT(*) FROM subscriptions WHERE status = 'active'")->fetchColumn();
         $feedbacksCount = (int)$pdo->query("SELECT COUNT(*) FROM feedback")->fetchColumn();
         $bannersCount = (int)$pdo->query("SELECT COUNT(*) FROM dashboard_banners")->fetchColumn();
+        $battleMatchesCount = (int)$pdo->query("SELECT COUNT(*) FROM battle_matches")->fetchColumn();
+        $reviewCount = (int)$pdo->query("SELECT COUNT(*) FROM flashcard_reviews")->fetchColumn();
+        $bookmarkCount = (int)$pdo->query("SELECT COUNT(*) FROM bookmarks")->fetchColumn();
+        $mistakeCount = (int)$pdo->query("SELECT COUNT(*) FROM wrong_questions")->fetchColumn();
 
         $dppAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('dpp', 'daily')")->fetchColumn();
         $mockAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts a JOIN tests t ON a.test_id = t.id WHERE t.type IN ('mock', 'test')")->fetchColumn();
-        $battleAttempts = (int)$pdo->query("SELECT COUNT(*) FROM attempts WHERE mode = 'battle' OR test_id LIKE 'battle_%'")->fetchColumn();
+        $purchaseStmt = $pdo->query("SELECT COUNT(*) as sales, COALESCE(SUM(amount_paid), 0) as revenue FROM batch_purchases WHERE status IN ('active', 'paid', 'completed')");
+        $purchaseSummary = $purchaseStmt ? ($purchaseStmt->fetch(PDO::FETCH_ASSOC) ?: ['sales' => 0, 'revenue' => 0]) : ['sales' => 0, 'revenue' => 0];
 
-        // Real features derived from real table usage counts
         $features = [
             ['name' => 'Daily DPPs', 'usage_count' => $dppAttempts, 'popularity_percent' => $attemptsCount > 0 ? (int)round(($dppAttempts / $attemptsCount) * 100) : 0],
             ['name' => 'NEET Mock Tests', 'usage_count' => $mockAttempts, 'popularity_percent' => $attemptsCount > 0 ? (int)round(($mockAttempts / $attemptsCount) * 100) : 0],
-            ['name' => 'NCERT Question Bank', 'usage_count' => $qbCount + $nuggetCount, 'popularity_percent' => 100],
-            ['name' => 'Battlegrounds 1v1', 'usage_count' => $battleAttempts, 'popularity_percent' => $attemptsCount > 0 ? (int)round(($battleAttempts / $attemptsCount) * 100) : 0],
-            ['name' => 'Student Feedback', 'usage_count' => $feedbacksCount, 'popularity_percent' => 100],
+            ['name' => 'Question Bank', 'usage_count' => $qbCount, 'popularity_percent' => null],
+            ['name' => 'NCERT Nuggets', 'usage_count' => $nuggetCount, 'popularity_percent' => null],
+            ['name' => 'Battlegrounds', 'usage_count' => $battleMatchesCount, 'popularity_percent' => null],
+            ['name' => 'Flashcard Reviews', 'usage_count' => $reviewCount, 'popularity_percent' => null],
+            ['name' => 'Bookmarks', 'usage_count' => $bookmarkCount, 'popularity_percent' => null],
+            ['name' => 'Mistakes Saved', 'usage_count' => $mistakeCount, 'popularity_percent' => null],
+            ['name' => 'Student Feedback', 'usage_count' => $feedbacksCount, 'popularity_percent' => null],
         ];
 
-        // Real plan purchases from subscriptions
+        // Group actual subscriptions by their real plan field.
         $plansList = [];
-        try {
-            $pStmt = $pdo->query("SELECT plan_name, COUNT(*) as cnt FROM subscriptions GROUP BY plan_name");
-            while ($pr = $pStmt->fetch(PDO::FETCH_ASSOC)) {
-                $cnt = (int)$pr['cnt'];
-                $plansList[] = [
-                    'plan' => $pr['plan_name'] ?: 'NEET Rankers Batch',
-                    'purchases' => $cnt,
-                    'price' => 1499,
-                    'share' => $subsCount > 0 ? (string)round(($cnt / $subsCount) * 100) . '%' : '0%'
-                ];
-            }
-        } catch (Throwable $e) {}
-
-        if (empty($plansList)) {
-            $plansList = [
-                ['plan' => 'NEET Rankers Batch', 'purchases' => $subsCount, 'price' => 1499, 'share' => $subsCount > 0 ? '100%' : '0%']
+        $planStmt = $pdo->query("SELECT plan, status, COUNT(*) as cnt FROM subscriptions GROUP BY plan, status ORDER BY plan, status");
+        while ($pr = $planStmt->fetch(PDO::FETCH_ASSOC)) {
+            $plansList[] = [
+                'plan' => $pr['plan'] ?: 'Unspecified',
+                'status' => $pr['status'] ?: 'unknown',
+                'purchases' => (int)$pr['cnt'],
+                'price' => null,
+                'share' => $subsCount > 0 ? (string)round(((int)$pr['cnt'] / $subsCount) * 100) . '%' : '0%'
             ];
         }
 
-        // Real database table diagnostics
+        // Table diagnostic list reports measured row counts without claiming unmeasured index/health status.
         $tableDiagnostics = [
-            ['table' => 'auth_users (Registered Students)', 'rows' => $usersCount, 'status' => 'Optimal'],
-            ['table' => 'tests (DPPs & Full Mocks)', 'rows' => $dppCount + $mockCount, 'status' => 'Optimal'],
-            ['table' => 'attempts (Student Test Sessions)', 'rows' => $attemptsCount, 'status' => 'Active'],
-            ['table' => 'qb_questions (Master Question Bank)', 'rows' => $qbCount, 'status' => 'Indexed'],
-            ['table' => 'nugget_questions (NCERT Micro-Concepts)', 'rows' => $nuggetCount, 'status' => 'Indexed'],
-            ['table' => 'subscriptions (Active Memberships)', 'rows' => $subsCount, 'status' => 'Monitored'],
-            ['table' => 'feedback (Student Reviews)', 'rows' => $feedbacksCount, 'status' => 'Active'],
-            ['table' => 'dashboard_banners (Live Promos)', 'rows' => $bannersCount, 'status' => 'Serving'],
+            ['table' => 'auth_users (Registered Students)', 'rows' => $usersCount, 'status' => 'Available'],
+            ['table' => 'tests (DPPs & Full Mocks)', 'rows' => $dppCount + $mockCount, 'status' => 'Available'],
+            ['table' => 'attempts (Student Test Sessions)', 'rows' => $attemptsCount, 'status' => 'Available'],
+            ['table' => 'qb_questions (Master Question Bank)', 'rows' => $qbCount, 'status' => 'Available'],
+            ['table' => 'nugget_questions (NCERT Micro-Concepts)', 'rows' => $nuggetCount, 'status' => 'Available'],
+            ['table' => 'neet_pyq_questions (PYQ Bank)', 'rows' => $pyqCount, 'status' => 'Available'],
+            ['table' => 'subscriptions (Memberships)', 'rows' => $subsCount, 'status' => 'Available'],
+            ['table' => 'feedback (Student Reviews)', 'rows' => $feedbacksCount, 'status' => 'Available'],
+            ['table' => 'dashboard_banners (Promos)', 'rows' => $bannersCount, 'status' => 'Available'],
         ];
 
-        // Real subject error metrics calculated from attempts
-        $subjectErrors = [
-            ['subject' => 'Physics', 'accuracy' => 0, 'error_rate' => 0, 'tough_topics' => 'Rotational Motion, Optics, Thermodynamics'],
-            ['subject' => 'Chemistry', 'accuracy' => 0, 'error_rate' => 0, 'tough_topics' => 'Organic Reaction Mechanisms, Electrochemistry'],
-            ['subject' => 'Biology', 'accuracy' => 0, 'error_rate' => 0, 'tough_topics' => 'Genetics, Plant Physiology, Animal Kingdom'],
-        ];
-        try {
-            $seStmt = $pdo->query("SELECT t.subject, SUM(a.correct_count) as c_tot, SUM(a.wrong_count) as w_tot FROM attempts a JOIN tests t ON a.test_id = t.id GROUP BY t.subject");
-            while ($se = $seStmt->fetch(PDO::FETCH_ASSOC)) {
-                $sub = ucfirst(strtolower(trim((string)$se['subject'])));
-                $c = (int)$se['c_tot'];
-                $w = (int)$se['w_tot'];
-                $tot = $c + $w;
-                if ($tot > 0) {
-                    $acc = (int)round(($c / $tot) * 100);
-                    $err = 100 - $acc;
-                    foreach ($subjectErrors as &$sItem) {
-                        if ($sItem['subject'] === $sub) {
-                            $sItem['accuracy'] = $acc;
-                            $sItem['error_rate'] = $err;
-                        }
-                    }
-                }
-            }
-        } catch (Throwable $e) {}
+        // Subject accuracy is only attributed for attempts whose test titles explicitly identify a subject.
+        $subjectErrors = [];
+        $seStmt = $pdo->query("SELECT 
+            CASE
+                WHEN LOWER(t.title) REGEXP 'biology|botany|zoology' THEN 'Biology'
+                WHEN LOWER(t.title) LIKE '%chemistry%' THEN 'Chemistry'
+                WHEN LOWER(t.title) LIKE '%physics%' THEN 'Physics'
+                ELSE 'Mixed / Unlabelled'
+            END as subject_name,
+            SUM(a.correct_count) as c_tot,
+            SUM(a.wrong_count) as w_tot,
+            COUNT(a.id) as attempts
+            FROM attempts a JOIN tests t ON a.test_id = t.id GROUP BY subject_name");
+        while ($se = $seStmt->fetch(PDO::FETCH_ASSOC)) {
+            $c = (int)($se['c_tot'] ?? 0);
+            $w = (int)($se['w_tot'] ?? 0);
+            $tot = $c + $w;
+            $subjectErrors[] = [
+                'subject' => $se['subject_name'],
+                'accuracy' => $tot > 0 ? round(($c / $tot) * 100, 1) : null,
+                'error_rate' => $tot > 0 ? round(($w / $tot) * 100, 1) : null,
+                'attempts' => (int)$se['attempts']
+            ];
+        }
 
         nb_json([
             'total_users' => $usersCount,
-            'total_questions' => $qbCount + $nuggetCount,
+            'total_questions' => $qbCount + $nuggetCount + $pyqCount,
             'total_dpps' => $dppCount,
             'total_mocks' => $mockCount,
             'total_attempts' => $attemptsCount,
             'active_subscribers' => $subsCount,
-            'total_revenue' => $subsCount * 1499,
+            'total_batches_sold' => (int)($purchaseSummary['sales'] ?? 0),
+            'total_revenue' => (float)($purchaseSummary['revenue'] ?? 0),
             'features' => $features,
             'plans' => $plansList,
             'tables' => $tableDiagnostics,
@@ -478,29 +507,48 @@ if ($action === 'app_report') {
         nb_fail($e->getMessage(), 500);
     }
 }
-
 if ($action === 'banners') {
     if ($method === 'GET') {
-        $banners = $pdo->query("SELECT * FROM dashboard_banners ORDER BY sort_order ASC, created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
-        nb_json(['banners' => $banners]);
+        try {
+            $banners = $pdo->query("SELECT id, title, image_url, link_url, link_path, image_url_dark, sort_order, active, created_at, updated_at FROM dashboard_banners ORDER BY sort_order ASC, created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+            nb_json(['banners' => $banners]);
+        } catch (Throwable $e) {
+            nb_fail($e->getMessage(), 500);
+        }
+    }
+    if ($method === 'POST') {
+        $id = trim((string)($input['id'] ?? sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', random_int(0, 65535), random_int(0, 65535), random_int(0, 65535), random_int(16384, 20479), random_int(32768, 49151), random_int(0, 65535), random_int(0, 65535), random_int(0, 65535))));
+        $title = trim((string)($input['title'] ?? ''));
+        $imageUrl = trim((string)($input['image_url'] ?? ''));
+        $imageUrlDark = trim((string)($input['image_url_dark'] ?? ''));
+        $linkUrl = trim((string)($input['link_url'] ?? ''));
+        $sortOrder = (int)($input['sort_order'] ?? 0);
+        $active = isset($input['active']) ? (int)(bool)$input['active'] : 1;
+        if ($title === '') nb_fail("Banner title is required", 400);
+        if ($imageUrl === '') nb_fail("Banner image URL is required", 400);
+        try {
+            $stmt = $pdo->prepare("INSERT INTO dashboard_banners (id, title, image_url, image_url_dark, link_url, link_path, sort_order, active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW()) ON DUPLICATE KEY UPDATE title=VALUES(title), image_url=VALUES(image_url), image_url_dark=VALUES(image_url_dark), link_url=VALUES(link_url), link_path=VALUES(link_path), sort_order=VALUES(sort_order), active=VALUES(active), updated_at=NOW()");
+            $stmt->execute([$id, $title, $imageUrl, $imageUrlDark ?: null, $linkUrl, $linkUrl, $sortOrder, $active]);
+            nb_json(['success' => true, 'id' => $id]);
+        } catch (Throwable $e) {
+            nb_fail($e->getMessage(), 500);
+        }
     }
 }
 
 if ($action === 'save_banner') {
-    $id = $input['id'] ?? sprintf('banner_%d', time());
-    $title = $input['title'] ?? 'NEET High-Yield Boost';
-    $subtitle = $input['subtitle'] ?? 'New Daily DPPs Live';
-    $imageUrl = $input['image_url'] ?? '/catalyst/mascot-celebrating.png';
-    $ctaText = $input['cta_text'] ?? 'Start Practicing';
-    $ctaLink = $input['cta_link'] ?? '/dpp';
-    $active = isset($input['active']) ? (int)$input['active'] : 1;
-
+    $id = trim((string)($input['id'] ?? sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', random_int(0, 65535), random_int(0, 65535), random_int(0, 65535), random_int(16384, 20479), random_int(32768, 49151), random_int(0, 65535), random_int(0, 65535), random_int(0, 65535))));
+    $title = trim((string)($input['title'] ?? ''));
+    $imageUrl = trim((string)($input['image_url'] ?? ''));
+    $linkUrl = trim((string)($input['link_url'] ?? $input['cta_link'] ?? ''));
+    $sortOrder = (int)($input['sort_order'] ?? 0);
+    $active = isset($input['active']) ? (int)(bool)$input['active'] : 1;
+    if ($title === '') nb_fail("Banner title is required", 400);
+    if ($imageUrl === '') nb_fail("Banner image URL is required", 400);
     try {
-        $stmt = $pdo->prepare("INSERT INTO dashboard_banners (id, title, subtitle, image_url, cta_text, cta_link, is_active, sort_order)
-            VALUES (?, ?, ?, ?, ?, ?, ?, 1)
-            ON DUPLICATE KEY UPDATE title=VALUES(title), subtitle=VALUES(subtitle), image_url=VALUES(image_url), cta_text=VALUES(cta_text), cta_link=VALUES(cta_link), is_active=VALUES(is_active)");
-        $stmt->execute([$id, $title, $subtitle, $imageUrl, $ctaText, $ctaLink, $active]);
-        nb_json(['success' => true]);
+        $stmt = $pdo->prepare("INSERT INTO dashboard_banners (id, title, image_url, link_url, link_path, sort_order, active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW()) ON DUPLICATE KEY UPDATE title=VALUES(title), image_url=VALUES(image_url), link_url=VALUES(link_url), link_path=VALUES(link_path), sort_order=VALUES(sort_order), active=VALUES(active), updated_at=NOW()");
+        $stmt->execute([$id, $title, $imageUrl, $linkUrl, $linkUrl, $sortOrder, $active]);
+        nb_json(['success' => true, 'id' => $id]);
     } catch (Throwable $e) {
         nb_fail($e->getMessage(), 500);
     }
@@ -543,22 +591,29 @@ if ($action === 'grant_premium') {
 if ($action === 'coupons') {
     if ($method === 'GET') {
         try {
-            $coupons = $pdo->query("SELECT * FROM coupons ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+            $coupons = $pdo->query("SELECT id, code, kind, value, max_uses, used_count, expires_at, batch_id, active, created_at, owner_user_id, program, allowed_plans FROM coupons ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
             nb_json(['coupons' => $coupons]);
         } catch (Throwable $e) {
-            nb_json(['coupons' => []]);
+            nb_fail($e->getMessage(), 500);
         }
     }
     if ($method === 'POST') {
         $code = strtoupper(trim((string)($input['code'] ?? '')));
-        $discount = (int)($input['discount_percent'] ?? 20);
-        $maxUses = (int)($input['max_uses'] ?? 100);
+        $discount = (float)($input['value'] ?? $input['discount_percent'] ?? 20);
+        $kind = strtolower(trim((string)($input['kind'] ?? 'percent')));
+        $maxUsesRaw = $input['max_uses'] ?? null;
+        $maxUses = $maxUsesRaw === null || $maxUsesRaw === '' ? null : (string)(int)$maxUsesRaw;
         if (!$code) nb_fail("Coupon code required", 400);
+        if (!in_array($kind, ['percent', 'flat'], true)) nb_fail("Coupon kind must be percent or flat", 400);
+        if ($discount <= 0 || ($kind === 'percent' && $discount > 100)) nb_fail("Coupon value is invalid", 400);
 
         try {
-            $stmt = $pdo->prepare("INSERT INTO coupons (id, code, discount_percent, max_uses, used_count, active) VALUES (UUID(), ?, ?, ?, 0, 1)");
-            $stmt->execute([$code, $discount, $maxUses]);
-            nb_json(['success' => true, 'message' => "Coupon {$code} created ({$discount}% off)"]);
+            $exists = $pdo->prepare("SELECT COUNT(*) FROM coupons WHERE code = ?");
+            $exists->execute([$code]);
+            if ((int)$exists->fetchColumn() > 0) nb_fail("Coupon code already exists", 409);
+            $stmt = $pdo->prepare("INSERT INTO coupons (id, code, kind, value, max_uses, used_count, active, created_at) VALUES (UUID(), ?, ?, ?, ?, 0, 1, NOW())");
+            $stmt->execute([$code, $kind, $discount, $maxUses]);
+            nb_json(['success' => true, 'message' => "Coupon {$code} created"]);
         } catch (Throwable $e) {
             nb_fail($e->getMessage(), 500);
         }
@@ -566,11 +621,12 @@ if ($action === 'coupons') {
 }
 
 if ($action === 'delete_coupon') {
-    $id = $input['id'] ?? '';
+    $id = trim((string)($input['id'] ?? ''));
+    if ($id === '') nb_fail("Coupon id required", 400);
     try {
         $stmt = $pdo->prepare("DELETE FROM coupons WHERE id = ?");
         $stmt->execute([$id]);
-        nb_json(['success' => true]);
+        nb_json(['success' => $stmt->rowCount() > 0, 'deleted' => $stmt->rowCount() > 0]);
     } catch (Throwable $e) {
         nb_fail($e->getMessage(), 500);
     }
@@ -586,7 +642,7 @@ if ($action === 'batches') {
         }
     }
     if ($method === 'POST') {
-        $id = $input['id'] ?? sprintf('batch_%d', time());
+        $id = $input['id'] ?? sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', random_int(0, 65535), random_int(0, 65535), random_int(0, 65535), random_int(16384, 20479), random_int(32768, 49151), random_int(0, 65535), random_int(0, 65535), random_int(0, 65535));
         $title = trim((string)($input['title'] ?? 'New NEET Batch'));
         $price = (int)($input['price'] ?? 1999);
         $discPrice = (int)($input['discounted_price'] ?? 999);
