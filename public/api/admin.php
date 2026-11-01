@@ -554,6 +554,41 @@ if ($action === 'save_banner') {
     }
 }
 
+if ($action === 'upload_banner') {
+    if ($method !== 'POST') nb_fail("Method not allowed", 405);
+    if (empty($_FILES['file'])) {
+        nb_fail("No file uploaded", 400);
+    }
+    $file = $_FILES['file'];
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        nb_fail("File upload error code: " . $file['error'], 400);
+    }
+
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
+    if (!in_array($ext, $allowed, true)) {
+        nb_fail("Invalid file extension. Allowed: " . implode(', ', $allowed), 400);
+    }
+
+    $filename = sprintf('banner_%d_%s.%s', time(), bin2hex(random_bytes(4)), $ext);
+    $uploadDir = __DIR__ . '/../uploads/banners';
+    if (!is_dir($uploadDir)) {
+        @mkdir($uploadDir, 0775, true);
+    }
+
+    $destination = $uploadDir . '/' . $filename;
+    if (!move_uploaded_file($file['tmp_name'], $destination)) {
+        nb_fail("Failed to save uploaded file", 500);
+    }
+
+    $publicUrl = '/uploads/banners/' . $filename;
+    nb_json([
+        'success' => true,
+        'url' => $publicUrl,
+        'image_url' => $publicUrl
+    ]);
+}
+
 if ($action === 'delete_banner') {
     $id = $input['id'] ?? '';
     try {
