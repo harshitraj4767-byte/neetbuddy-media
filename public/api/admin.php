@@ -554,7 +554,7 @@ if ($action === 'save_banner') {
     }
 }
 
-if ($action === 'upload_banner') {
+if ($action === 'upload_banner' || $action === 'upload_batch_image') {
     if ($method !== 'POST') nb_fail("Method not allowed", 405);
     if (empty($_FILES['file'])) {
         nb_fail("No file uploaded", 400);

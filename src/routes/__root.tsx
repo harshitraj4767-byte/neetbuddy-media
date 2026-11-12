@@ -1,4 +1,3 @@
-import { publicMediaAsset } from "@/lib/media-assets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -13,12 +12,10 @@ import appCss from "../styles.css?url";
 import { AuthProvider } from "@/hooks/use-auth";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { Toaster } from "@/components/ui/sonner";
-import { OnboardingTour } from "@/components/onboarding-tour";
 import { SupportWidget } from "@/components/support-widget";
+import { RateUsPrompt } from "@/components/rate-us-prompt";
 import { AppVersionGate } from "@/components/app-version-gate";
 import { PremiumGate } from "@/components/premium-gate";
-import { BottomNav } from "@/components/bottom-nav";
-import { MaintenanceNotice } from "@/components/maintenance-notice";
 import { getPublicSupabaseConfig } from "@/integrations/supabase/config";
 
 const THEME_INIT = `(function(){try{var t=localStorage.getItem('neetiq-theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){}})();`;
@@ -27,11 +24,6 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <img
-          src="/catalyst/dr-catalyst-thinking.webp"
-          alt="Dr Vanshu"
-          className="mx-auto mb-2 h-24 w-24 object-contain"
-        />
         <h1 className="text-7xl font-bold text-gradient-primary">404</h1>
         <h2 className="mt-4 text-xl font-semibold">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -39,10 +31,10 @@ function NotFoundComponent() {
         </p>
         <div className="mt-6">
           <Link
-            to="/dashboard"
+            to="/"
             className="inline-flex items-center justify-center rounded-md bg-gradient-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-elegant transition-opacity hover:opacity-95"
           >
-            Go to dashboard
+            Go home
           </Link>
         </div>
       </div>
@@ -50,21 +42,16 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <img
-          src="/catalyst/dr-catalyst-shocked.webp"
-          alt="Dr Vanshu"
-          className="mx-auto mb-4 h-24 w-24 object-contain"
-        />
         <h1 className="text-xl font-semibold tracking-tight">This page didn't load</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back to your dashboard.
+          Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -74,10 +61,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/dashboard"
+            href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            Go to dashboard
+            Go home
           </a>
         </div>
       </div>
@@ -109,12 +96,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&display=swap" },
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/x-icon", sizes: "32x32", href: "/favicon.ico" },
       { rel: "icon", type: "image/x-icon", sizes: "192x192", href: "/favicon.ico" },
-      { rel: "apple-touch-icon", sizes: "180x180", href: publicMediaAsset("icons/apple-touch-icon.png") },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/icons/apple-touch-icon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -150,12 +136,10 @@ function RootComponent() {
         <AuthProvider>
           <Outlet />
           <Toaster richColors position="top-center" />
-          <OnboardingTour />
+          <RateUsPrompt />
           <SupportWidget />
           <AppVersionGate />
           <PremiumGate />
-          <MaintenanceNotice />
-          <BottomNav />
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>

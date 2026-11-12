@@ -34,8 +34,10 @@ export function AdminBatchesTab() {
   const [draft, setDraft] = useState(empty());
   const [busy, setBusy] = useState(false);
   const [aiBusy, setAiBusy] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState<null | "banner" | "description">(null);
+  const bannerRef = useRef<HTMLInputElement>(null);
+  const descRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const listFn = useServerFn(adminListBatches);
   const upsert = useServerFn(adminUpsertBatch);
   const del = useServerFn(adminDeleteBatch);
@@ -48,16 +50,70 @@ export function AdminBatchesTab() {
   }
   useEffect(() => { refresh().catch((e) => toast.error(e.message)); }, []);
 
-  async function onUpload(f: File) {
-    setUploading(true);
+  /** Upload one file to the batch-images bucket and return its public URL. */
+  async function uploadOne(f: File): Promise<string> {
+    const r = await uploadUrl({ data: { filename: f.name } });
+    const { error } = await supabase.storage.from("batch-images").uploadToSignedUrl(r.path, r.token, f, { contentType: f.type });
+    if (error) throw error;
+    return r.public_url as string;
+  }
+
+  async function onBannerUpload(files: FileList | null) {
+    const f = files?.[0];
+    if (!f) return;
+    setUploading("banner");
     try {
-      const r = await uploadUrl({ data: { filename: f.name } });
-      const { error } = await supabase.storage.from("batch-images").uploadToSignedUrl(r.path, r.token, f, { contentType: f.type });
-      if (error) throw error;
-      setDraft({ ...draft, image_url: r.public_url });
-      toast.success("Image uploaded");
+      const url = await uploadOne(f);
+      setDraft((d) => ({ ...d, image_url: url }));
+      toast.success("Banner image uploaded");
     } catch (e: any) { toast.error(e.message); }
-    finally { setUploading(false); }
+    finally { setUploading(null); }
+  }
+
+  async function onDescriptionUpload(files: FileList | null) {
+    if (!files || files.length === 0) return;
+    setUploading("description");
+    try {
+      const urls: string[] = [];
+      for (const f of Array.from(files)) urls.push(await uploadOne(f));
+      const md = urls.map((u) => `![image](${u})`).join("\n");
+      insertIntoDescription(md);
+      toast.success(`${urls.length} image${urls.length > 1 ? "s" : ""} added to description`);
+    } catch (e: any) { toast.error(e.message); }
+    finally { setUploading(null); }
+  }
+
+  /** Insert markdown at the textarea cursor (or append at the end). */
+  function insertIntoDescription(snippet: string) {
+    const el = textareaRef.current;
+    const current = draft.ai_description ?? "";
+    if (el) {
+      const start = el.selectionStart ?? current.length;
+      const end = el.selectionEnd ?? current.length;
+      const before = current.slice(0, start);
+      const after = current.slice(end);
+      const pad = before && !before.endsWith("\n") ? "\n" : "";
+      const next = `${before}${pad}${snippet}\n${after}`;
+      setDraft((d) => ({ ...d, ai_description: next }));
+      requestAnimationFrame(() => {
+        el.focus();
+        const pos = (before + pad + snippet).length + 1;
+        el.setSelectionRange(pos, pos);
+      });
+    } else {
+      setDraft((d) => ({ ...d, ai_description: `${current}${current && !current.endsWith("\n") ? "\n" : ""}${snippet}\n` }));
+    }
+  }
+
+  /** Paste an image straight into the description box. */
+  function onDescriptionPaste(e: React.ClipboardEvent<HTMLTextAreaElement>) {
+    const files = Array.from(e.clipboardData?.files ?? []).filter((f) => f.type.startsWith("image/"));
+    if (files.length) {
+      e.preventDefault();
+      const dt = new DataTransfer();
+      files.forEach((f) => dt.items.add(f));
+      onDescriptionUpload(dt.files);
+    }
   }
 
   async function generate() {
@@ -105,16 +161,16 @@ export function AdminBatchesTab() {
           </div>
 
           <div>
-            <Label>Cover image</Label>
+            <Label>Banner image (wide, shown at the top of the batch page)</Label>
             <div className="mt-2 flex items-center gap-3">
               {draft.image_url ? (
-                <img src={draft.image_url} alt="" className="h-24 w-32 rounded-lg object-cover" />
+                <img src={draft.image_url} alt="" className="h-24 w-full max-w-xs rounded-lg border border-border object-cover" />
               ) : (
-                <div className="flex h-24 w-32 items-center justify-center rounded-lg bg-muted text-muted-foreground"><ImagePlus className="h-8 w-8" /></div>
+                <div className="flex h-24 w-full max-w-xs items-center justify-center rounded-lg border border-dashed border-border bg-muted text-muted-foreground"><ImagePlus className="h-8 w-8" /></div>
               )}
-              <input ref={fileRef} type="file" accept="image/*" hidden onChange={(e) => e.target.files?.[0] && onUpload(e.target.files[0])} />
-              <Button variant="secondary" onClick={() => fileRef.current?.click()} disabled={uploading}>
-                {uploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ImagePlus className="mr-2 h-4 w-4" />} Upload
+              <input ref={bannerRef} type="file" accept="image/*" hidden onChange={(e) => { onBannerUpload(e.target.files); e.target.value = ""; }} />
+              <Button variant="secondary" onClick={() => bannerRef.current?.click()} disabled={uploading === "banner"}>
+                {uploading === "banner" ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ImagePlus className="mr-2 h-4 w-4" />} Upload banner
               </Button>
               {draft.image_url && <Button variant="ghost" size="sm" onClick={() => setDraft({ ...draft, image_url: null })}>Remove</Button>}
             </div>
@@ -142,13 +198,36 @@ export function AdminBatchesTab() {
           </div>
 
           <div>
-            <div className="mb-1 flex items-center justify-between">
-              <Label>User-facing description (AI generated)</Label>
-              <Button size="sm" variant="secondary" onClick={generate} disabled={aiBusy}>
-                {aiBusy ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />} Generate with AI
-              </Button>
+            <div className="mb-1 flex items-center justify-between gap-2">
+              <Label>User-facing description</Label>
+              <div className="flex items-center gap-2">
+                <input
+                  ref={descRef}
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  hidden
+                  onChange={(e) => { onDescriptionUpload(e.target.files); e.target.value = ""; }}
+                />
+                <Button size="sm" variant="secondary" onClick={() => descRef.current?.click()} disabled={uploading === "description"}>
+                  {uploading === "description" ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ImagePlus className="mr-2 h-4 w-4" />} Insert image{uploading === "description" ? "s" : ""}
+                </Button>
+                <Button size="sm" variant="secondary" onClick={generate} disabled={aiBusy}>
+                  {aiBusy ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />} AI
+                </Button>
+              </div>
             </div>
-            <Textarea rows={5} value={draft.ai_description ?? ""} onChange={(e) => setDraft({ ...draft, ai_description: e.target.value })} placeholder="Click 'Generate with AI' to auto-fill." />
+            <Textarea
+              ref={textareaRef}
+              rows={7}
+              value={draft.ai_description ?? ""}
+              onChange={(e) => setDraft({ ...draft, ai_description: e.target.value })}
+              onPaste={onDescriptionPaste}
+              placeholder="Write the description, or click 'AI' to auto-fill. Use 'Insert image' (or paste an image) to add photos inside the description."
+            />
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Tip: select several images at once, or paste from your clipboard. Images appear between paragraphs on the batch page.
+            </p>
           </div>
 
           <div className="flex items-center justify-between">
@@ -165,7 +244,7 @@ export function AdminBatchesTab() {
             {list.map((b) => (
               <Card key={b.id}>
                 <CardContent className="flex gap-3 p-3">
-                  {b.image_url && <img src={b.image_url} alt="" className="h-20 w-24 rounded-lg object-cover" />}
+                  {b.image_url && <img src={b.image_url} alt="" className="h-20 w-28 rounded-lg border border-border object-cover" />}
                   <div className="flex-1">
                     <div className="font-semibold">{b.title} {!b.active && <span className="ml-1 text-xs text-muted-foreground">(inactive)</span>}</div>
                     <div className="text-xs text-muted-foreground">₹{b.discounted_price} • {b.duration_days}d</div>
