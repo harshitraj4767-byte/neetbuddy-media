@@ -632,10 +632,28 @@ function assignQuestions(
   // qb topic -> book topic
   const topicOfQbTopic = new Map<number, KeyPointTopic>();
   for (const qt of qb.topics) {
+    const rawName = qt.name.trim().toLowerCase();
+    // NEVER bind a generic "Introduction" / "Overview" / "General" QB topic directly to the
+    // NCERT preamble 'intro'. In NEET coaching question banks, "Introduction" is a broad bucket
+    // of 50-150 questions covering the chapter's opening sections (e.g. 9.1, 8.1, etc.).
+    // By skipping the hard binding for intro-named QB topics, questions in those buckets are
+    // intelligently routed to their true specific NCERT sections by content matching!
+    if (
+      rawName === "introduction" ||
+      rawName === "intro" ||
+      rawName === "general" ||
+      rawName === "overview" ||
+      rawName.startsWith("introduction to ") ||
+      rawName.startsWith("introduction -")
+    ) {
+      continue;
+    }
+
     const tk = tokens(qt.name);
     let best: KeyPointTopic | null = null;
     let bestScore = 0;
     for (const t of topics) {
+      if (t.key === "intro") continue; // Keep intro out of coarse topic-level binding
       const titleScore = overlap(tk, tokens(t.title));
       const sectionScore = overlap(tk, topicTokens.get(t.key)!) * 0.6;
       const s = Math.max(titleScore, sectionScore);
@@ -658,7 +676,7 @@ function assignQuestions(
     const qTokens = tokens(q.question + " " + q.options.map((o) => o.text).join(" "));
 
     let topic = row.topic_id != null ? topicOfQbTopic.get(row.topic_id) : undefined;
-    if (!topic) {
+    if (!topic || topic.key === "intro") {
       let bestScore = 0;
       let bestTopic: KeyPointTopic | undefined;
       for (const t of topics) {
@@ -666,7 +684,7 @@ function assignQuestions(
         // Heavily downweight 'intro' for non-explicit questions so specific concepts
         // are never dumped into introduction
         if (t.key === "intro" || t.title.toLowerCase().includes("intro")) {
-          s = s * 0.35;
+          s = s * 0.25;
         }
         if (s > bestScore) {
           bestScore = s;
@@ -674,12 +692,14 @@ function assignQuestions(
         }
       }
       // Never place an unrelated question just to make every bank row visible.
-      if (!bestTopic || bestScore < 0.14) continue;
-      // If best was intro but score is low, skip assignment to intro
-      if ((bestTopic.key === "intro" || bestTopic.title.toLowerCase().includes("intro")) && bestScore < 0.25) {
+      if (bestTopic && bestScore >= 0.10) {
+        topic = bestTopic;
+      } else if (topic && topic.key === "intro") {
+        const introOverlap = overlap(qTokens, topicTokens.get("intro") ?? new Set());
+        if (introOverlap < 0.08) continue;
+      } else {
         continue;
       }
-      topic = bestTopic;
     }
 
     const paras = topic.paras.filter((p) => p.kind === "paragraph");
@@ -702,6 +722,16 @@ function assignQuestions(
     }
     target.questions.push(q);
     seen.add(q.key);
+  }
+
+  // Cap introduction questions to avoid overwhelming students on preambles
+  const introTopic = topics.find((t) => t.key === "intro");
+  if (introTopic) {
+    for (const p of introTopic.paras) {
+      if (p.questions.length > 8) {
+        p.questions = p.questions.slice(0, 8);
+      }
+    }
   }
 
   // Flatten into the linear step list the player walks through.
