@@ -693,10 +693,13 @@ function assignQuestions(
         target = p;
       }
     }
-    // A mapped QB topic is already chapter/topic relevant. Keep low-overlap
-    // questions together on the topic's first page instead of round-robin
-    // scattering them across unrelated NCERT paragraphs.
-    if (bestScore < 0.08) target = paras[0];
+    // Prevent premature questions: if a question synthesizes multiple paragraphs
+    // or has low single-paragraph overlap, attach it to the LAST paragraph of the
+    // topic/page block so the student has read all preceding paragraphs first.
+    // Never dump multi-paragraph or general questions onto paras[0].
+    if (!target || bestScore < 0.12) {
+      target = paras[paras.length - 1];
+    }
     target.questions.push(q);
     seen.add(q.key);
   }
